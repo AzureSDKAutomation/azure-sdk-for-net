@@ -37,17 +37,17 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// Vault containing the SSL certificate</param>
         /// <param name="resourceGroupName">Resource group of the user's Key
         /// Vault containing the SSL certificate</param>
-        /// <param name="vaultName">The name of the user's Key Vault containing
-        /// the SSL certificate</param>
         /// <param name="secretName">The name of Key Vault Secret (representing
         /// the full certificate PFX) in Key Vault.</param>
         /// <param name="secretVersion">The version(GUID) of Key Vault Secret
         /// in Key Vault.</param>
-        public KeyVaultCertificateSourceParameters(string subscriptionId, string resourceGroupName, string vaultName, string secretName, string secretVersion)
+        /// <param name="vaultNameGRAPES">The name of the user's Key Vault
+        /// containing the SSL certificate</param>
+        public KeyVaultCertificateSourceParameters(string subscriptionId, string resourceGroupName, string secretName, string secretVersion, string vaultNameGRAPES = default(string))
         {
             SubscriptionId = subscriptionId;
             ResourceGroupName = resourceGroupName;
-            VaultName = vaultName;
+            VaultNameGRAPES = vaultNameGRAPES;
             SecretName = secretName;
             SecretVersion = secretVersion;
             CustomInit();
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// Gets or sets the name of the user's Key Vault containing the SSL
         /// certificate
         /// </summary>
-        [JsonProperty(PropertyName = "vaultName")]
-        public string VaultName { get; set; }
+        [JsonProperty(PropertyName = "vaultNameGRAPES")]
+        public string VaultNameGRAPES { get; set; }
 
         /// <summary>
         /// Gets or sets the name of Key Vault Secret (representing the full
@@ -135,10 +135,6 @@ namespace Microsoft.Azure.Management.Cdn.Models
             if (ResourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ResourceGroupName");
-            }
-            if (VaultName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VaultName");
             }
             if (SecretName == null)
             {

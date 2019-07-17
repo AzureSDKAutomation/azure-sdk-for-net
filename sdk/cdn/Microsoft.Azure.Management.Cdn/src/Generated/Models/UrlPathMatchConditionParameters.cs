@@ -34,18 +34,18 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// Initializes a new instance of the UrlPathMatchConditionParameters
         /// class.
         /// </summary>
-        /// <param name="operatorProperty">Describes operator to be matched.
+        /// <param name="matchValues">The match value for the condition of the
+        /// delivery rule</param>
+        /// <param name="operatorSTUFF">Describes operator to be matched.
         /// Possible values include: 'Any', 'Equal', 'Contains', 'BeginsWith',
         /// 'EndsWith', 'LessThan', 'LessThanOrEqual', 'GreaterThan',
         /// 'GreaterThanOrEqual', 'Wildcard'</param>
-        /// <param name="matchValues">The match value for the condition of the
-        /// delivery rule</param>
         /// <param name="negateCondition">Describes if this is negate condition
         /// or not</param>
         /// <param name="transforms">List of transforms</param>
-        public UrlPathMatchConditionParameters(string operatorProperty, IList<string> matchValues, bool? negateCondition = default(bool?), IList<string> transforms = default(IList<string>))
+        public UrlPathMatchConditionParameters(IList<string> matchValues, string operatorSTUFF = default(string), bool? negateCondition = default(bool?), IList<string> transforms = default(IList<string>))
         {
-            OperatorProperty = operatorProperty;
+            OperatorSTUFF = operatorSTUFF;
             NegateCondition = negateCondition;
             MatchValues = matchValues;
             Transforms = transforms;
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// 'LessThan', 'LessThanOrEqual', 'GreaterThan', 'GreaterThanOrEqual',
         /// 'Wildcard'
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
-        public string OperatorProperty { get; set; }
+        [JsonProperty(PropertyName = "operatorSTUFF")]
+        public string OperatorSTUFF { get; set; }
 
         /// <summary>
         /// Gets or sets describes if this is negate condition or not
@@ -104,10 +104,6 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (OperatorProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "OperatorProperty");
-            }
             if (MatchValues == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "MatchValues");

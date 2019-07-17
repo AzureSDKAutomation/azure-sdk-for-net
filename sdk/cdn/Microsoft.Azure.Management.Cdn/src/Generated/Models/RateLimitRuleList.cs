@@ -11,32 +11,30 @@
 namespace Microsoft.Azure.Management.Cdn.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The pricing tier (defines a CDN provider, feature list and rate) of the
-    /// CDN profile.
+    /// Defines contents of rate limit rules
     /// </summary>
-    public partial class Sku
+    public partial class RateLimitRuleList
     {
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the RateLimitRuleList class.
         /// </summary>
-        public Sku()
+        public RateLimitRuleList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the RateLimitRuleList class.
         /// </summary>
-        /// <param name="name">Name of the pricing tier. Possible values
-        /// include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn',
-        /// 'Standard_Microsoft'</param>
-        public Sku(string name = default(string))
+        /// <param name="rules">List of rules</param>
+        public RateLimitRuleList(IList<RateLimitRule> rules = default(IList<RateLimitRule>))
         {
-            Name = name;
+            Rules = rules;
             CustomInit();
         }
 
@@ -46,12 +44,10 @@ namespace Microsoft.Azure.Management.Cdn.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the pricing tier. Possible values include:
-        /// 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
+        /// Gets or sets list of rules
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "rules")]
+        public IList<RateLimitRule> Rules { get; set; }
 
     }
 }

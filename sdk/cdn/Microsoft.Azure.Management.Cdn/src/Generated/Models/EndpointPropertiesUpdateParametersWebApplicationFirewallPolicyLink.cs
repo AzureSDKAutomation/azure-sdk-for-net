@@ -14,29 +14,30 @@ namespace Microsoft.Azure.Management.Cdn.Models
     using System.Linq;
 
     /// <summary>
-    /// The pricing tier (defines a CDN provider, feature list and rate) of the
-    /// CDN profile.
+    /// Defines the Web Application Firewall policy for the endpoint (if
+    /// applicable)
     /// </summary>
-    public partial class Sku
+    public partial class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink
     {
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the
+        /// EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink
+        /// class.
         /// </summary>
-        public Sku()
+        public EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the
+        /// EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink
+        /// class.
         /// </summary>
-        /// <param name="name">Name of the pricing tier. Possible values
-        /// include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn',
-        /// 'Standard_Microsoft'</param>
-        public Sku(string name = default(string))
+        /// <param name="id">Resource ID.</param>
+        public EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(string id = default(string))
         {
-            Name = name;
+            Id = id;
             CustomInit();
         }
 
@@ -46,12 +47,10 @@ namespace Microsoft.Azure.Management.Cdn.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the pricing tier. Possible values include:
-        /// 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
+        /// Gets or sets resource ID.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
     }
 }
