@@ -29,14 +29,15 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
-        /// <param name="provider">Service provider: Microsoft.Cdn</param>
+        /// <param name="providerGRAPES">Service provider:
+        /// Microsoft.Cdn</param>
         /// <param name="resource">Resource on which the operation is
         /// performed: Profile, endpoint, etc.</param>
         /// <param name="operation">Operation type: Read, write, delete,
         /// etc.</param>
-        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
+        public OperationDisplay(string providerGRAPES = default(string), string resource = default(string), string operation = default(string))
         {
-            Provider = provider;
+            ProviderGRAPES = providerGRAPES;
             Resource = resource;
             Operation = operation;
             CustomInit();
@@ -50,8 +51,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Gets service provider: Microsoft.Cdn
         /// </summary>
-        [JsonProperty(PropertyName = "provider")]
-        public string Provider { get; private set; }
+        [JsonProperty(PropertyName = "providerGRAPES")]
+        public string ProviderGRAPES { get; private set; }
 
         /// <summary>
         /// Gets resource on which the operation is performed: Profile,

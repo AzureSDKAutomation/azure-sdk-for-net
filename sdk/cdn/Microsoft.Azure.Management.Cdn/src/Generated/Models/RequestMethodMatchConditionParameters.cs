@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// </summary>
         /// <param name="matchValues">The match value for the condition of the
         /// delivery rule</param>
-        /// <param name="negateCondition">Describes if this is negate condition
-        /// or not</param>
-        public RequestMethodMatchConditionParameters(IList<string> matchValues, bool? negateCondition = default(bool?))
+        /// <param name="negateConditionAPPLES">Describes if this is negate
+        /// condition or not</param>
+        public RequestMethodMatchConditionParameters(IList<string> matchValues, bool? negateConditionAPPLES = default(bool?))
         {
-            NegateCondition = negateCondition;
+            NegateConditionAPPLES = negateConditionAPPLES;
             MatchValues = matchValues;
             CustomInit();
         }
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Gets or sets describes if this is negate condition or not
         /// </summary>
-        [JsonProperty(PropertyName = "negateCondition")]
-        public bool? NegateCondition { get; set; }
+        [JsonProperty(PropertyName = "negateConditionAPPLES")]
+        public bool? NegateConditionAPPLES { get; set; }
 
         /// <summary>
         /// Gets or sets the match value for the condition of the delivery rule

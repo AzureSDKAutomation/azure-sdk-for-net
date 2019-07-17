@@ -14,29 +14,25 @@ namespace Microsoft.Azure.Management.Cdn.Models
     using System.Linq;
 
     /// <summary>
-    /// The pricing tier (defines a CDN provider, feature list and rate) of the
-    /// CDN profile.
+    /// Defines the ARM Resource ID for the linked endpoints
     /// </summary>
-    public partial class Sku
+    public partial class CdnEndpoint
     {
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the CdnEndpoint class.
         /// </summary>
-        public Sku()
+        public CdnEndpoint()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the CdnEndpoint class.
         /// </summary>
-        /// <param name="name">Name of the pricing tier. Possible values
-        /// include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn',
-        /// 'Standard_Microsoft'</param>
-        public Sku(string name = default(string))
+        /// <param name="id">ARM Resource ID string.</param>
+        public CdnEndpoint(string id = default(string))
         {
-            Name = name;
+            Id = id;
             CustomInit();
         }
 
@@ -46,12 +42,10 @@ namespace Microsoft.Azure.Management.Cdn.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the pricing tier. Possible values include:
-        /// 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-        /// 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
+        /// Gets or sets ARM Resource ID string.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
     }
 }

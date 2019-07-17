@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="code">Error code.</param>
+        /// <param name="codeTHING">Error code.</param>
         /// <param name="message">Error message indicating why the operation
         /// failed.</param>
-        public ErrorResponse(string code = default(string), string message = default(string))
+        public ErrorResponse(string codeTHING = default(string), string message = default(string))
         {
-            Code = code;
+            CodeTHING = codeTHING;
             Message = message;
             CustomInit();
         }
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Gets error code.
         /// </summary>
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; private set; }
+        [JsonProperty(PropertyName = "codeTHING")]
+        public string CodeTHING { get; private set; }
 
         /// <summary>
         /// Gets error message indicating why the operation failed.
