@@ -43,12 +43,15 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// 'NotAllowed'</param>
         /// <param name="viewCharges">Who can view charges. Possible values
         /// include: 'Allowed', 'NotAllowed'</param>
-        public Policy(string id = default(string), string name = default(string), string type = default(string), string marketplacePurchases = default(string), string reservationPurchases = default(string), string viewCharges = default(string))
+        /// <param name="enableMicrosoftAzurePlan">Enable Microsoft azure
+        /// plan</param>
+        public Policy(string id = default(string), string name = default(string), string type = default(string), string marketplacePurchases = default(string), string reservationPurchases = default(string), string viewCharges = default(string), PolicyPropertiesEnableMicrosoftAzurePlan enableMicrosoftAzurePlan = default(PolicyPropertiesEnableMicrosoftAzurePlan))
             : base(id, name, type)
         {
             MarketplacePurchases = marketplacePurchases;
             ReservationPurchases = reservationPurchases;
             ViewCharges = viewCharges;
+            EnableMicrosoftAzurePlan = enableMicrosoftAzurePlan;
             CustomInit();
         }
 
@@ -78,6 +81,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.viewCharges")]
         public string ViewCharges { get; set; }
+
+        /// <summary>
+        /// Gets or sets enable Microsoft azure plan
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableMicrosoftAzurePlan")]
+        public PolicyPropertiesEnableMicrosoftAzurePlan EnableMicrosoftAzurePlan { get; set; }
 
     }
 }
