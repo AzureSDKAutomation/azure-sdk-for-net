@@ -49,7 +49,9 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// plans.</param>
         /// <param name="invoiceSections">The invoice sections associated to
         /// the billing profile.</param>
-        public BillingProfile(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string poNumber = default(string), AddressDetails address = default(AddressDetails), bool? invoiceEmailOptIn = default(bool?), int? invoiceDay = default(int?), string currency = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>), IList<InvoiceSection> invoiceSections = default(IList<InvoiceSection>))
+        /// <param name="budgetInformation">The budget information associated
+        /// with the billing profile.</param>
+        public BillingProfile(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string poNumber = default(string), AddressDetails address = default(AddressDetails), bool? invoiceEmailOptIn = default(bool?), int? invoiceDay = default(int?), string currency = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>), IList<InvoiceSection> invoiceSections = default(IList<InvoiceSection>), BudgetInformation budgetInformation = default(BudgetInformation))
             : base(id, name, type)
         {
             DisplayName = displayName;
@@ -60,6 +62,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             Currency = currency;
             EnabledAzurePlans = enabledAzurePlans;
             InvoiceSections = invoiceSections;
+            BudgetInformation = budgetInformation;
             CustomInit();
         }
 
@@ -117,6 +120,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceSections")]
         public IList<InvoiceSection> InvoiceSections { get; set; }
+
+        /// <summary>
+        /// Gets or sets the budget information associated with the billing
+        /// profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.budgetInformation")]
+        public BudgetInformation BudgetInformation { get; set; }
 
     }
 }

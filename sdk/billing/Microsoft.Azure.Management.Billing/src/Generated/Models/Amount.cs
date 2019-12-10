@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the currency for the amount value.
+        /// Gets or sets the currency for the amount value.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
-        public string Currency { get; private set; }
+        public string Currency { get; set; }
 
         /// <summary>
         /// Gets or sets amount value.
