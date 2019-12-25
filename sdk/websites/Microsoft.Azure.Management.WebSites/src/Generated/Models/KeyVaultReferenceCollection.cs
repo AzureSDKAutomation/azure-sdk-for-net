@@ -13,34 +13,37 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A domain specific resource identifier.
+    /// Web app key vault reference and status ARM resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Identifier : ProxyOnlyResource
+    public partial class KeyVaultReferenceCollection : ProxyOnlyResource
     {
         /// <summary>
-        /// Initializes a new instance of the Identifier class.
+        /// Initializes a new instance of the KeyVaultReferenceCollection
+        /// class.
         /// </summary>
-        public Identifier()
+        public KeyVaultReferenceCollection()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Identifier class.
+        /// Initializes a new instance of the KeyVaultReferenceCollection
+        /// class.
         /// </summary>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="value">String representation of the identity.</param>
-        public Identifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string value = default(string))
+        public KeyVaultReferenceCollection(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, ApiKVReference> keyToReferenceStatuses = default(IDictionary<string, ApiKVReference>))
             : base(id, name, kind, type)
         {
-            Value = value;
+            KeyToReferenceStatuses = keyToReferenceStatuses;
             CustomInit();
         }
 
@@ -50,10 +53,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets string representation of the identity.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public string Value { get; set; }
+        [JsonProperty(PropertyName = "properties.keyToReferenceStatuses")]
+        public IDictionary<string, ApiKVReference> KeyToReferenceStatuses { get; set; }
 
     }
 }
