@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models
+namespace Microsoft.Azure.Management.MachineLearning.Workspaces.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
