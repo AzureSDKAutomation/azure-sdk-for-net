@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <summary>
         /// Initializes a new instance of the ApiRevisionContract class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
         /// <param name="apiId">Identifier of the API Revision.</param>
         /// <param name="apiRevision">Revision number of API.</param>
         /// <param name="createdDateTime">The time the API Revision was
@@ -45,8 +46,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// revision.</param>
         /// <param name="isCurrent">Indicates if API revision is accessible via
         /// the gateway.</param>
-        public ApiRevisionContract(string apiId = default(string), string apiRevision = default(string), System.DateTime? createdDateTime = default(System.DateTime?), System.DateTime? updatedDateTime = default(System.DateTime?), string description = default(string), string privateUrl = default(string), bool? isOnline = default(bool?), bool? isCurrent = default(bool?))
+        public ApiRevisionContract(string id = default(string), string apiId = default(string), string apiRevision = default(string), System.DateTime? createdDateTime = default(System.DateTime?), System.DateTime? updatedDateTime = default(System.DateTime?), string description = default(string), string privateUrl = default(string), bool? isOnline = default(bool?), bool? isCurrent = default(bool?))
         {
+            Id = id;
             ApiId = apiId;
             ApiRevision = apiRevision;
             CreatedDateTime = createdDateTime;
@@ -62,6 +64,12 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets resource ID.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
 
         /// <summary>
         /// Gets identifier of the API Revision.
