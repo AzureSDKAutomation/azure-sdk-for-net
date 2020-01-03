@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.Security
             /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
             /// (/providers/Microsoft.Management/managementGroups/mgName).
             /// </param>
-            public static IPage<SecuritySubAssessment> ListAll(this ISubAssessmentsOperations operations, string scope)
+            public static IPage<SecuritySubAssessment> List(this ISubAssessmentsOperations operations, string scope)
             {
-                return operations.ListAllAsync(scope).GetAwaiter().GetResult();
+                return operations.ListAsync(scope).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecuritySubAssessment>> ListAllAsync(this ISubAssessmentsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecuritySubAssessment>> ListAsync(this ISubAssessmentsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAllWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='assessmentName'>
             /// The Assessment Key - Unique key for the assessment type
             /// </param>
-            public static IPage<SecuritySubAssessment> List(this ISubAssessmentsOperations operations, string scope, string assessmentName)
+            public static IPage<SecuritySubAssessment> ListByAssessment(this ISubAssessmentsOperations operations, string scope, string assessmentName)
             {
-                return operations.ListAsync(scope, assessmentName).GetAwaiter().GetResult();
+                return operations.ListByAssessmentAsync(scope, assessmentName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecuritySubAssessment>> ListAsync(this ISubAssessmentsOperations operations, string scope, string assessmentName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecuritySubAssessment>> ListByAssessmentAsync(this ISubAssessmentsOperations operations, string scope, string assessmentName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(scope, assessmentName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByAssessmentWithHttpMessagesAsync(scope, assessmentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<SecuritySubAssessment> ListAllNext(this ISubAssessmentsOperations operations, string nextPageLink)
+            public static IPage<SecuritySubAssessment> ListNext(this ISubAssessmentsOperations operations, string nextPageLink)
             {
-                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -183,9 +183,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecuritySubAssessment>> ListAllNextAsync(this ISubAssessmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecuritySubAssessment>> ListNextAsync(this ISubAssessmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -200,9 +200,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<SecuritySubAssessment> ListNext(this ISubAssessmentsOperations operations, string nextPageLink)
+            public static IPage<SecuritySubAssessment> ListByAssessmentNext(this ISubAssessmentsOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListByAssessmentNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -217,9 +217,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecuritySubAssessment>> ListNextAsync(this ISubAssessmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecuritySubAssessment>> ListByAssessmentNextAsync(this ISubAssessmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByAssessmentNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

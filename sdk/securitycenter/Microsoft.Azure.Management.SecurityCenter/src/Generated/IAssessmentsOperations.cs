@@ -19,37 +19,12 @@ namespace Microsoft.Azure.Management.Security
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SubAssessmentsOperations operations.
+    /// AssessmentsOperations operations.
     /// </summary>
-    public partial interface ISubAssessmentsOperations
+    public partial interface IAssessmentsOperations
     {
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a
-        /// subscription scope
-        /// </summary>
-        /// <param name='scope'>
-        /// Scope of the query, can be subscription
-        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
-        /// group (/providers/Microsoft.Management/managementGroups/mgName).
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<SecuritySubAssessment>>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a
+        /// Get security assessments on all your scanned resources inside a
         /// scope
         /// </summary>
         /// <param name='scope'>
@@ -57,9 +32,6 @@ namespace Microsoft.Azure.Management.Security
         /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
         /// group (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
-        /// <param name='assessmentName'>
-        /// The Assessment Key - Unique key for the assessment type
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -75,20 +47,19 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SecuritySubAssessment>>> ListByAssessmentWithHttpMessagesAsync(string scope, string assessmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecurityAssessment>>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get a security sub-assessment on your scanned resource
+        /// Get a security assessment on your scanned resource
         /// </summary>
-        /// <param name='scope'>
-        /// Scope of the query, can be subscription
-        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
-        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// <param name='resourceId'>
+        /// The identifier of the resource.
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
         /// </param>
-        /// <param name='subAssessmentName'>
-        /// The Sub-Assessment Key - Unique key for the sub-assessment type
+        /// <param name='expand'>
+        /// OData expand. Optional. Possible values include: 'links',
+        /// 'metadata'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -105,10 +76,64 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SecuritySubAssessment>> GetWithHttpMessagesAsync(string scope, string assessmentName, string subAssessmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SecurityAssessment>> GetWithHttpMessagesAsync(string resourceId, string assessmentName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a
-        /// subscription scope
+        /// Create a security assessment on your resource. An assessment
+        /// metadata that describes this assessment must be predefined with the
+        /// same name before inserting the assessment result
+        /// </summary>
+        /// <param name='resourceId'>
+        /// The identifier of the resource.
+        /// </param>
+        /// <param name='assessmentName'>
+        /// The Assessment Key - Unique key for the assessment type
+        /// </param>
+        /// <param name='assessment'>
+        /// Calculated assessment on a pre-defined assessment metadata
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SecurityAssessment>> CreateOrUpdateWithHttpMessagesAsync(string resourceId, string assessmentName, SecurityAssessment assessment, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete a security assessment on your resource. An assessment
+        /// metadata that describes this assessment must be predefined with the
+        /// same name before inserting the assessment result
+        /// </summary>
+        /// <param name='resourceId'>
+        /// The identifier of the resource.
+        /// </param>
+        /// <param name='assessmentName'>
+        /// The Assessment Key - Unique key for the assessment type
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceId, string assessmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get security assessments on all your scanned resources inside a
+        /// scope
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -128,29 +153,6 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SecuritySubAssessment>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a
-        /// scope
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<SecuritySubAssessment>>> ListByAssessmentNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecurityAssessment>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
