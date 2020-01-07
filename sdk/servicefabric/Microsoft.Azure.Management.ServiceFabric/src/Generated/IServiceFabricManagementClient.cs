@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         /// <summary>
         /// The version of the Service Fabric resource provider API. This is a
-        /// required parameter and it's value must be "2019-03-01" for this
-        /// specification.
+        /// required parameter and it's value must be "2020-01-01-preview" for
+        /// this specification.
         /// </summary>
         string ApiVersion { get; }
 
@@ -72,14 +72,9 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
 
         /// <summary>
-        /// Gets the IClustersOperations.
+        /// Gets the IManagedClustersOperations.
         /// </summary>
-        IClustersOperations Clusters { get; }
-
-        /// <summary>
-        /// Gets the IClusterVersionsOperations.
-        /// </summary>
-        IClusterVersionsOperations ClusterVersions { get; }
+        IManagedClustersOperations ManagedClusters { get; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -87,24 +82,9 @@ namespace Microsoft.Azure.Management.ServiceFabric
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IApplicationTypesOperations.
+        /// Gets the INodeTypesOperations.
         /// </summary>
-        IApplicationTypesOperations ApplicationTypes { get; }
-
-        /// <summary>
-        /// Gets the IApplicationTypeVersionsOperations.
-        /// </summary>
-        IApplicationTypeVersionsOperations ApplicationTypeVersions { get; }
-
-        /// <summary>
-        /// Gets the IApplicationsOperations.
-        /// </summary>
-        IApplicationsOperations Applications { get; }
-
-        /// <summary>
-        /// Gets the IServicesOperations.
-        /// </summary>
-        IServicesOperations Services { get; }
+        INodeTypesOperations NodeTypes { get; }
 
     }
 }

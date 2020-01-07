@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         /// <summary>
         /// The version of the Service Fabric resource provider API. This is a required
-        /// parameter and it's value must be "2019-03-01" for this specification.
+        /// parameter and it's value must be "2020-01-01-preview" for this
+        /// specification.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -76,14 +77,9 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IClustersOperations.
+        /// Gets the IManagedClustersOperations.
         /// </summary>
-        public virtual IClustersOperations Clusters { get; private set; }
-
-        /// <summary>
-        /// Gets the IClusterVersionsOperations.
-        /// </summary>
-        public virtual IClusterVersionsOperations ClusterVersions { get; private set; }
+        public virtual IManagedClustersOperations ManagedClusters { get; private set; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -91,24 +87,9 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IApplicationTypesOperations.
+        /// Gets the INodeTypesOperations.
         /// </summary>
-        public virtual IApplicationTypesOperations ApplicationTypes { get; private set; }
-
-        /// <summary>
-        /// Gets the IApplicationTypeVersionsOperations.
-        /// </summary>
-        public virtual IApplicationTypeVersionsOperations ApplicationTypeVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the IApplicationsOperations.
-        /// </summary>
-        public virtual IApplicationsOperations Applications { get; private set; }
-
-        /// <summary>
-        /// Gets the IServicesOperations.
-        /// </summary>
-        public virtual IServicesOperations Services { get; private set; }
+        public virtual INodeTypesOperations NodeTypes { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ServiceFabricManagementClient class.
@@ -351,15 +332,11 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// </summary>
         private void Initialize()
         {
-            Clusters = new ClustersOperations(this);
-            ClusterVersions = new ClusterVersionsOperations(this);
+            ManagedClusters = new ManagedClustersOperations(this);
             Operations = new Operations(this);
-            ApplicationTypes = new ApplicationTypesOperations(this);
-            ApplicationTypeVersions = new ApplicationTypeVersionsOperations(this);
-            Applications = new ApplicationsOperations(this);
-            Services = new ServicesOperations(this);
+            NodeTypes = new NodeTypesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-03-01";
+            ApiVersion = "2020-01-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -389,14 +366,6 @@ namespace Microsoft.Azure.Management.ServiceFabric
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<PartitionSchemeDescription>("partitionScheme"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<PartitionSchemeDescription>("partitionScheme"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ServicePlacementPolicyDescription>("Type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ServicePlacementPolicyDescription>("Type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ServiceResourceProperties>("serviceKind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ServiceResourceProperties>("serviceKind"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ServiceResourceUpdateProperties>("serviceKind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ServiceResourceUpdateProperties>("serviceKind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
