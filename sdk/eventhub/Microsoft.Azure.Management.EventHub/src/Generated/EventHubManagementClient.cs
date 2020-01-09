@@ -107,6 +107,11 @@ namespace Microsoft.Azure.Management.EventHub
         public virtual IRegionsOperations Regions { get; private set; }
 
         /// <summary>
+        /// Gets the INamespaceOperations.
+        /// </summary>
+        public virtual INamespaceOperations NamespaceOperations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the EventHubManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -353,6 +358,7 @@ namespace Microsoft.Azure.Management.EventHub
             EventHubs = new EventHubsOperations(this);
             ConsumerGroups = new ConsumerGroupsOperations(this);
             Regions = new RegionsOperations(this);
+            NamespaceOperations = new NamespaceOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2017-04-01";
             AcceptLanguage = "en-US";

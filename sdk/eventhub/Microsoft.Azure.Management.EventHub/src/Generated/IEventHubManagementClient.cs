@@ -101,5 +101,10 @@ namespace Microsoft.Azure.Management.EventHub
         /// </summary>
         IRegionsOperations Regions { get; }
 
+        /// <summary>
+        /// Gets the INamespaceOperations.
+        /// </summary>
+        INamespaceOperations NamespaceOperations { get; }
+
     }
 }

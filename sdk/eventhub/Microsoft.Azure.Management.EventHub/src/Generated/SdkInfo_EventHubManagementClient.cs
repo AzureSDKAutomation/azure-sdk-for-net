@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.EventHub
                 new Tuple<string, string, string>("EventHub", "ConsumerGroups", "2017-04-01"),
                 new Tuple<string, string, string>("EventHub", "DisasterRecoveryConfigs", "2017-04-01"),
                 new Tuple<string, string, string>("EventHub", "EventHubs", "2017-04-01"),
+                new Tuple<string, string, string>("EventHub", "NamespaceOperations", "2017-04-01"),
                 new Tuple<string, string, string>("EventHub", "Namespaces", "2017-04-01"),
                 new Tuple<string, string, string>("EventHub", "Operations", "2017-04-01"),
                 new Tuple<string, string, string>("EventHub", "Regions", "2017-04-01"),
