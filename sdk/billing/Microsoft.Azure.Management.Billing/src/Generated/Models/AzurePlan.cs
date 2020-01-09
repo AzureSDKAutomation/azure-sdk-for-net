@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.Billing.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -31,10 +33,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         /// <param name="skuId">The sku id.</param>
         /// <param name="skuDescription">The sku description.</param>
-        public AzurePlan(string skuId = default(string), string skuDescription = default(string))
+        /// <param name="suspensionReasons">Reasons for suspension.</param>
+        public AzurePlan(string skuId = default(string), string skuDescription = default(string), IList<SuspensionReasonDetails> suspensionReasons = default(IList<SuspensionReasonDetails>))
         {
             SkuId = skuId;
             SkuDescription = skuDescription;
+            SuspensionReasons = suspensionReasons;
             CustomInit();
         }
 
@@ -54,6 +58,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "skuDescription")]
         public string SkuDescription { get; private set; }
+
+        /// <summary>
+        /// Gets or sets reasons for suspension.
+        /// </summary>
+        [JsonProperty(PropertyName = "suspensionReasons")]
+        public IList<SuspensionReasonDetails> SuspensionReasons { get; set; }
 
     }
 }

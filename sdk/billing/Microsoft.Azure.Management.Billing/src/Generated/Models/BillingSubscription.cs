@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Billing.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -57,7 +59,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="reseller">Reseller for this subscription.</param>
         /// <param name="skuId">The sku id.</param>
         /// <param name="skuDescription">The sku description.</param>
-        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
+        /// <param name="suspensionReasons">Reasons for suspension.</param>
+        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string), IList<SuspensionReasonDetails> suspensionReasons = default(IList<SuspensionReasonDetails>))
             : base(id, name, type)
         {
             DisplayName = displayName;
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             Reseller = reseller;
             SkuId = skuId;
             SkuDescription = skuDescription;
+            SuspensionReasons = suspensionReasons;
             CustomInit();
         }
 
@@ -166,6 +170,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.skuDescription")]
         public string SkuDescription { get; private set; }
+
+        /// <summary>
+        /// Gets or sets reasons for suspension.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.suspensionReasons")]
+        public IList<SuspensionReasonDetails> SuspensionReasons { get; set; }
 
     }
 }

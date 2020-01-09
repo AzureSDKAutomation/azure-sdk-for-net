@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Billing.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="productName">Product name.</param>
         /// <param name="skuId">SKU Id.</param>
         /// <param name="skuDescription">SKU description.</param>
-        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string))
+        /// <param name="suspensionReasons">Reasons for suspension.</param>
+        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string), IList<SuspensionReasonDetails> suspensionReasons = default(IList<SuspensionReasonDetails>))
             : base(id, name, type)
         {
             BillingTenantId = billingTenantId;
@@ -65,6 +68,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             ProductName = productName;
             SkuId = skuId;
             SkuDescription = skuDescription;
+            SuspensionReasons = suspensionReasons;
             CustomInit();
         }
 
@@ -144,6 +148,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.skuDescription")]
         public string SkuDescription { get; private set; }
+
+        /// <summary>
+        /// Gets or sets reasons for suspension.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.suspensionReasons")]
+        public IList<SuspensionReasonDetails> SuspensionReasons { get; set; }
 
     }
 }
