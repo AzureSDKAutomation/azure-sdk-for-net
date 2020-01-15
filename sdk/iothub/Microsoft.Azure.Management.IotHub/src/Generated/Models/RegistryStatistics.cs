@@ -30,11 +30,14 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// Initializes a new instance of the RegistryStatistics class.
         /// </summary>
         /// <param name="totalDeviceCount">The total count of devices in the
-        /// identity registry.</param>
+        /// identity registry. This API is eventually consistent and may not
+        /// reflect correct device count immediately.</param>
         /// <param name="enabledDeviceCount">The count of enabled devices in
-        /// the identity registry.</param>
+        /// the identity registry. This API is eventually consistent and may
+        /// not reflect correct device count immediately.</param>
         /// <param name="disabledDeviceCount">The count of disabled devices in
-        /// the identity registry.</param>
+        /// the identity registry. This API is eventually consistent and may
+        /// not reflect correct device count immediately.</param>
         public RegistryStatistics(long? totalDeviceCount = default(long?), long? enabledDeviceCount = default(long?), long? disabledDeviceCount = default(long?))
         {
             TotalDeviceCount = totalDeviceCount;
@@ -49,19 +52,25 @@ namespace Microsoft.Azure.Management.IotHub.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the total count of devices in the identity registry.
+        /// Gets the total count of devices in the identity registry. This API
+        /// is eventually consistent and may not reflect correct device count
+        /// immediately.
         /// </summary>
         [JsonProperty(PropertyName = "totalDeviceCount")]
         public long? TotalDeviceCount { get; private set; }
 
         /// <summary>
-        /// Gets the count of enabled devices in the identity registry.
+        /// Gets the count of enabled devices in the identity registry. This
+        /// API is eventually consistent and may not reflect correct device
+        /// count immediately.
         /// </summary>
         [JsonProperty(PropertyName = "enabledDeviceCount")]
         public long? EnabledDeviceCount { get; private set; }
 
         /// <summary>
-        /// Gets the count of disabled devices in the identity registry.
+        /// Gets the count of disabled devices in the identity registry. This
+        /// API is eventually consistent and may not reflect correct device
+        /// count immediately.
         /// </summary>
         [JsonProperty(PropertyName = "disabledDeviceCount")]
         public long? DisabledDeviceCount { get; private set; }
