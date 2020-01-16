@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// Door.</param>
         /// <param name="cname">The host that each frontendEndpoint must CNAME
         /// to.</param>
-        public FrontDoorModel(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string friendlyName = default(string), IList<RoutingRule> routingRules = default(IList<RoutingRule>), IList<LoadBalancingSettingsModel> loadBalancingSettings = default(IList<LoadBalancingSettingsModel>), IList<HealthProbeSettingsModel> healthProbeSettings = default(IList<HealthProbeSettingsModel>), IList<BackendPool> backendPools = default(IList<BackendPool>), IList<FrontendEndpoint> frontendEndpoints = default(IList<FrontendEndpoint>), BackendPoolsSettings backendPoolsSettings = default(BackendPoolsSettings), string enabledState = default(string), string resourceState = default(string), string provisioningState = default(string), string cname = default(string))
+        /// <param name="frontdoorId">The Id of the frontdoor.</param>
+        public FrontDoorModel(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string friendlyName = default(string), IList<RoutingRule> routingRules = default(IList<RoutingRule>), IList<LoadBalancingSettingsModel> loadBalancingSettings = default(IList<LoadBalancingSettingsModel>), IList<HealthProbeSettingsModel> healthProbeSettings = default(IList<HealthProbeSettingsModel>), IList<BackendPool> backendPools = default(IList<BackendPool>), IList<FrontendEndpoint> frontendEndpoints = default(IList<FrontendEndpoint>), BackendPoolsSettings backendPoolsSettings = default(BackendPoolsSettings), string enabledState = default(string), string resourceState = default(string), string provisioningState = default(string), string cname = default(string), string frontdoorId = default(string))
             : base(id, name, type, location, tags)
         {
             FriendlyName = friendlyName;
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
             ResourceState = resourceState;
             ProvisioningState = provisioningState;
             Cname = cname;
+            FrontdoorId = frontdoorId;
             CustomInit();
         }
 
@@ -157,6 +159,12 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.cname")]
         public string Cname { get; private set; }
+
+        /// <summary>
+        /// Gets the Id of the frontdoor.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.frontdoorId")]
+        public string FrontdoorId { get; private set; }
 
         /// <summary>
         /// Validate the object.
