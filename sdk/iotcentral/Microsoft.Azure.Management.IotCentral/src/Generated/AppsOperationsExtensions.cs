@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='app'>
             /// The IoT Central application metadata and security metadata.
             /// </param>
-            public static App CreateOrUpdate(this IAppsOperations operations, string resourceGroupName, string resourceName, App app)
+            public static object CreateOrUpdate(this IAppsOperations operations, string resourceGroupName, string resourceName, App app)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, resourceName, app).GetAwaiter().GetResult();
             }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<App> CreateOrUpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, App app, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> CreateOrUpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, App app, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, app, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='appPatch'>
             /// The IoT Central application metadata and security metadata.
             /// </param>
-            public static App Update(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch)
+            public static object Update(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch)
             {
                 return operations.UpdateAsync(resourceGroupName, resourceName, appPatch).GetAwaiter().GetResult();
             }
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<App> UpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> UpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, appPatch, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='app'>
             /// The IoT Central application metadata and security metadata.
             /// </param>
-            public static App BeginCreateOrUpdate(this IAppsOperations operations, string resourceGroupName, string resourceName, App app)
+            public static object BeginCreateOrUpdate(this IAppsOperations operations, string resourceGroupName, string resourceName, App app)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, resourceName, app).GetAwaiter().GetResult();
             }
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<App> BeginCreateOrUpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, App app, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> BeginCreateOrUpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, App app, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, app, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='appPatch'>
             /// The IoT Central application metadata and security metadata.
             /// </param>
-            public static App BeginUpdate(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch)
+            public static object BeginUpdate(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, resourceName, appPatch).GetAwaiter().GetResult();
             }
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Management.IotCentral
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<App> BeginUpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> BeginUpdateAsync(this IAppsOperations operations, string resourceGroupName, string resourceName, AppPatch appPatch, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, appPatch, null, cancellationToken).ConfigureAwait(false))
                 {

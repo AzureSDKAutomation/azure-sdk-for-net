@@ -262,10 +262,10 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<App>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<App> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, app, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<object> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, app, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -287,10 +287,10 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<App>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<App> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, appPatch, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<object> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, appPatch, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<App>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -1378,7 +1378,7 @@ namespace Microsoft.Azure.Management.IotCentral
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202 && (int)_statusCode != 400)
             {
                 var ex = new ErrorDetailsException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -1408,7 +1408,7 @@ namespace Microsoft.Azure.Management.IotCentral
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<App>();
+            var _result = new AzureOperationResponse<object>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1440,6 +1440,24 @@ namespace Microsoft.Azure.Management.IotCentral
                 try
                 {
                     _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<App>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 400)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ARMErrorResponseBody>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1491,7 +1509,7 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<App>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -1601,7 +1619,7 @@ namespace Microsoft.Azure.Management.IotCentral
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202 && (int)_statusCode != 400)
             {
                 var ex = new ErrorDetailsException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -1631,7 +1649,7 @@ namespace Microsoft.Azure.Management.IotCentral
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<App>();
+            var _result = new AzureOperationResponse<object>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1645,6 +1663,24 @@ namespace Microsoft.Azure.Management.IotCentral
                 try
                 {
                     _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<App>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 400)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ARMErrorResponseBody>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
