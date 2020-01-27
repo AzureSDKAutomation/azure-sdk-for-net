@@ -10,15 +10,12 @@
 
 namespace Microsoft.Azure.Management.ManagementGroups.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The results of an asynchronous operation.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
     public partial class OperationResults
     {
         /// <summary>
@@ -36,16 +33,16 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
         /// For example,
         /// /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000</param>
         /// <param name="type">The type of the resource.  For example,
-        /// /providers/Microsoft.Management/managementGroups</param>
+        /// Microsoft.Management/managementGroups</param>
         /// <param name="name">The name of the management group. For example,
         /// 00000000-0000-0000-0000-000000000000</param>
-        /// <param name="provisioningState">Provisioning State</param>
-        public OperationResults(string id = default(string), string type = default(string), string name = default(string), string provisioningState = default(string))
+        /// <param name="status">The current status of the operation</param>
+        public OperationResults(string id = default(string), string type = default(string), string name = default(string), string status = default(string))
         {
             Id = id;
             Type = type;
             Name = name;
-            ProvisioningState = provisioningState;
+            Status = status;
             CustomInit();
         }
 
@@ -63,7 +60,7 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
 
         /// <summary>
         /// Gets the type of the resource.  For example,
-        /// /providers/Microsoft.Management/managementGroups
+        /// Microsoft.Management/managementGroups
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
@@ -76,13 +73,10 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or sets provisioning State
+        /// Gets the current status of the operation
         /// </summary>
-        /// <remarks>
-        /// Possible values include: 'Updating'
-        /// </remarks>
-        [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; private set; }
 
     }
 }
