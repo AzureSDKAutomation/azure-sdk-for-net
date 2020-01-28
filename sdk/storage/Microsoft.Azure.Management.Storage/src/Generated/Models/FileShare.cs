@@ -49,12 +49,23 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="shareQuota">The maximum size of the share, in
         /// gigabytes. Must be greater than 0, and less than or equal to 5TB
         /// (5120). For Large File Shares, the maximum size is 102400.</param>
-        public FileShare(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?))
+        /// <param name="version">The version of the share.</param>
+        /// <param name="deleted">Indicates whether the share was
+        /// deleted.</param>
+        /// <param name="deletedTime">The deleted time if the share was
+        /// deleted.</param>
+        /// <param name="remainingRetentionDays">Remaining retention days for
+        /// share that was soft deleted.</param>
+        public FileShare(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?))
             : base(id, name, type, etag)
         {
             LastModifiedTime = lastModifiedTime;
             Metadata = metadata;
             ShareQuota = shareQuota;
+            Version = version;
+            Deleted = deleted;
+            DeletedTime = deletedTime;
+            RemainingRetentionDays = remainingRetentionDays;
             CustomInit();
         }
 
@@ -83,6 +94,30 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.shareQuota")]
         public int? ShareQuota { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version of the share.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.version")]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets indicates whether the share was deleted.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.deleted")]
+        public bool? Deleted { get; private set; }
+
+        /// <summary>
+        /// Gets the deleted time if the share was deleted.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.deletedTime")]
+        public System.DateTime? DeletedTime { get; private set; }
+
+        /// <summary>
+        /// Gets remaining retention days for share that was soft deleted.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.remainingRetentionDays")]
+        public int? RemainingRetentionDays { get; private set; }
 
         /// <summary>
         /// Validate the object.
