@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<App>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update the metadata of an IoT Central application.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<App>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete an IoT Central application.
         /// </summary>
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<App>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, App app, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update the metadata of an IoT Central application.
         /// </summary>
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.IotCentral
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<App>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, AppPatch appPatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete an IoT Central application.
         /// </summary>
