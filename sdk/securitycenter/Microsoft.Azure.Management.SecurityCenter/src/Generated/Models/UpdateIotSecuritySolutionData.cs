@@ -17,6 +17,9 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Security Solution data
+    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class UpdateIotSecuritySolutionData : TagsResource
     {
