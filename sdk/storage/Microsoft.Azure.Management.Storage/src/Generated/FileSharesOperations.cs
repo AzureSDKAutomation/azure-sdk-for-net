@@ -327,13 +327,8 @@ namespace Microsoft.Azure.Management.Storage
         /// lower-case letters and dash (-) only. Every dash (-) character must be
         /// immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='metadata'>
-        /// A name-value pair to associate with the share as metadata.
-        /// </param>
-        /// <param name='shareQuota'>
-        /// The maximum size of the share, in gigabytes. Must be greater than 0, and
-        /// less than or equal to 5TB (5120). For Large File Shares, the maximum size
-        /// is 102400.
+        /// <param name='fileShare'>
+        /// Properties of the file share to create.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -356,7 +351,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<FileShare>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<FileShare>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileShare fileShare, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -407,6 +402,14 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
                 }
             }
+            if (fileShare == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "fileShare");
+            }
+            if (fileShare != null)
+            {
+                fileShare.Validate();
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -428,20 +431,6 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
-            }
-            if (shareQuota > 102400)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "shareQuota", 102400);
-            }
-            if (shareQuota < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "shareQuota", 1);
-            }
-            FileShare fileShare = new FileShare();
-            if (metadata != null || shareQuota != null)
-            {
-                fileShare.Metadata = metadata;
-                fileShare.ShareQuota = shareQuota;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -638,13 +627,8 @@ namespace Microsoft.Azure.Management.Storage
         /// lower-case letters and dash (-) only. Every dash (-) character must be
         /// immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='metadata'>
-        /// A name-value pair to associate with the share as metadata.
-        /// </param>
-        /// <param name='shareQuota'>
-        /// The maximum size of the share, in gigabytes. Must be greater than 0, and
-        /// less than or equal to 5TB (5120). For Large File Shares, the maximum size
-        /// is 102400.
+        /// <param name='fileShare'>
+        /// Properties to update for the file share.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -667,7 +651,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<FileShare>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<FileShare>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileShare fileShare, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -718,6 +702,10 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
                 }
             }
+            if (fileShare == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "fileShare");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -739,20 +727,6 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
-            }
-            if (shareQuota > 102400)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "shareQuota", 102400);
-            }
-            if (shareQuota < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "shareQuota", 1);
-            }
-            FileShare fileShare = new FileShare();
-            if (metadata != null || shareQuota != null)
-            {
-                fileShare.Metadata = metadata;
-                fileShare.ShareQuota = shareQuota;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;

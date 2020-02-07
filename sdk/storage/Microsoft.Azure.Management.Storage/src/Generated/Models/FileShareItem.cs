@@ -48,12 +48,19 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="shareQuota">The maximum size of the share, in
         /// gigabytes. Must be greater than 0, and less than or equal to 5TB
         /// (5120). For Large File Shares, the maximum size is 102400.</param>
-        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?))
+        /// <param name="enabledProtocols">Immutable property for file shares
+        /// protocol. Possible values include: 'SMB', 'NFS'</param>
+        /// <param name="rootSquash">Reduction of the access rights for the
+        /// remote superuser. Possible values include: 'NoRootSquash',
+        /// 'RootSquash', 'AllSquash'</param>
+        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), string enabledProtocols = default(string), string rootSquash = default(string))
             : base(id, name, type, etag)
         {
             LastModifiedTime = lastModifiedTime;
             Metadata = metadata;
             ShareQuota = shareQuota;
+            EnabledProtocols = enabledProtocols;
+            RootSquash = rootSquash;
             CustomInit();
         }
 
@@ -82,6 +89,21 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.shareQuota")]
         public int? ShareQuota { get; set; }
+
+        /// <summary>
+        /// Gets or sets immutable property for file shares protocol. Possible
+        /// values include: 'SMB', 'NFS'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enabledProtocols")]
+        public string EnabledProtocols { get; set; }
+
+        /// <summary>
+        /// Gets or sets reduction of the access rights for the remote
+        /// superuser. Possible values include: 'NoRootSquash', 'RootSquash',
+        /// 'AllSquash'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.rootSquash")]
+        public string RootSquash { get; set; }
 
         /// <summary>
         /// Validate the object.
