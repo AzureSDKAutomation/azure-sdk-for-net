@@ -16,28 +16,27 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines all possible authentication profiles for the OpenShift cluster.
+    /// Desired outbound IP resources for the cluster load balancer.
     /// </summary>
-    public partial class OpenShiftManagedClusterAuthProfile
+    public partial class ManagedClusterLoadBalancerProfileOutboundIPs
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// OpenShiftManagedClusterAuthProfile class.
+        /// ManagedClusterLoadBalancerProfileOutboundIPs class.
         /// </summary>
-        public OpenShiftManagedClusterAuthProfile()
+        public ManagedClusterLoadBalancerProfileOutboundIPs()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// OpenShiftManagedClusterAuthProfile class.
+        /// ManagedClusterLoadBalancerProfileOutboundIPs class.
         /// </summary>
-        /// <param name="identityProviders">Type of authentication profile to
-        /// use.</param>
-        public OpenShiftManagedClusterAuthProfile(IList<OpenShiftManagedClusterIdentityProvider> identityProviders = default(IList<OpenShiftManagedClusterIdentityProvider>))
+        /// <param name="publicIPs">A list of public IP resources.</param>
+        public ManagedClusterLoadBalancerProfileOutboundIPs(IList<ResourceReference> publicIPs = default(IList<ResourceReference>))
         {
-            IdentityProviders = identityProviders;
+            PublicIPs = publicIPs;
             CustomInit();
         }
 
@@ -47,10 +46,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets type of authentication profile to use.
+        /// Gets or sets a list of public IP resources.
         /// </summary>
-        [JsonProperty(PropertyName = "identityProviders")]
-        public IList<OpenShiftManagedClusterIdentityProvider> IdentityProviders { get; set; }
+        [JsonProperty(PropertyName = "publicIPs")]
+        public IList<ResourceReference> PublicIPs { get; set; }
 
     }
 }
