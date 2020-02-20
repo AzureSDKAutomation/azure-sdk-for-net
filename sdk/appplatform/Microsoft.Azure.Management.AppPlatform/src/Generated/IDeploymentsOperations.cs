@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Deployment or update an exiting Deployment.
         /// </summary>
+        /// <param name='deploymentResource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -72,9 +75,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='deploymentName'>
         /// The name of the Deployment resource.
-        /// </param>
-        /// <param name='deploymentResource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeploymentResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeploymentResource>> CreateOrUpdateWithHttpMessagesAsync(DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Operation to delete a Deployment.
         /// </summary>
@@ -125,6 +125,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Deployment.
         /// </summary>
+        /// <param name='deploymentResource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -138,9 +141,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='deploymentName'>
         /// The name of the Deployment resource.
-        /// </param>
-        /// <param name='deploymentResource'>
-        /// Parameters for the update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeploymentResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeploymentResource>> UpdateWithHttpMessagesAsync(DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Handles requests to list all resources in an App.
         /// </summary>
@@ -347,42 +347,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Deployment or update an exiting Deployment.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can
-        /// obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='serviceName'>
-        /// The name of the Service resource.
-        /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the Deployment resource.
-        /// </param>
         /// <param name='deploymentResource'>
         /// Parameters for the create or update operation
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<DeploymentResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Operation to update an exiting Deployment.
-        /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -397,8 +364,41 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='deploymentName'>
         /// The name of the Deployment resource.
         /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<DeploymentResource>> BeginCreateOrUpdateWithHttpMessagesAsync(DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Operation to update an exiting Deployment.
+        /// </summary>
         /// <param name='deploymentResource'>
         /// Parameters for the update operation
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the Service resource.
+        /// </param>
+        /// <param name='appName'>
+        /// The name of the App resource.
+        /// </param>
+        /// <param name='deploymentName'>
+        /// The name of the Deployment resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeploymentResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeploymentResource>> BeginUpdateWithHttpMessagesAsync(DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Start the deployment.
         /// </summary>

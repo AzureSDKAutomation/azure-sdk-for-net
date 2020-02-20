@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -76,12 +79,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static ServiceResource CreateOrUpdate(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource))
+            public static ServiceResource CreateOrUpdate(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, serviceName, resource).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resource, resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -90,6 +90,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -97,15 +100,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceResource> CreateOrUpdateAsync(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceResource> CreateOrUpdateAsync(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, resource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resource, resourceGroupName, serviceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -156,6 +156,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -163,12 +166,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the update operation
-            /// </param>
-            public static ServiceResource Update(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource))
+            public static ServiceResource Update(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName)
             {
-                return operations.UpdateAsync(resourceGroupName, serviceName, resource).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resource, resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -177,6 +177,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -184,15 +187,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceResource> UpdateAsync(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceResource> UpdateAsync(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceName, resource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resource, resourceGroupName, serviceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -246,6 +246,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='regenerateTestKeyRequest'>
+            /// Parameters for the operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -253,12 +256,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='regenerateTestKeyRequest'>
-            /// Parameters for the operation
-            /// </param>
-            public static TestKeys RegenerateTestKey(this IServicesOperations operations, string resourceGroupName, string serviceName, RegenerateTestKeyRequestPayload regenerateTestKeyRequest = default(RegenerateTestKeyRequestPayload))
+            public static TestKeys RegenerateTestKey(this IServicesOperations operations, RegenerateTestKeyRequestPayload regenerateTestKeyRequest, string resourceGroupName, string serviceName)
             {
-                return operations.RegenerateTestKeyAsync(resourceGroupName, serviceName, regenerateTestKeyRequest).GetAwaiter().GetResult();
+                return operations.RegenerateTestKeyAsync(regenerateTestKeyRequest, resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -267,6 +267,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='regenerateTestKeyRequest'>
+            /// Parameters for the operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -274,15 +277,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='regenerateTestKeyRequest'>
-            /// Parameters for the operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TestKeys> RegenerateTestKeyAsync(this IServicesOperations operations, string resourceGroupName, string serviceName, RegenerateTestKeyRequestPayload regenerateTestKeyRequest = default(RegenerateTestKeyRequestPayload), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TestKeys> RegenerateTestKeyAsync(this IServicesOperations operations, RegenerateTestKeyRequestPayload regenerateTestKeyRequest, string resourceGroupName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.RegenerateTestKeyWithHttpMessagesAsync(resourceGroupName, serviceName, regenerateTestKeyRequest, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.RegenerateTestKeyWithHttpMessagesAsync(regenerateTestKeyRequest, resourceGroupName, serviceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -467,6 +467,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -474,12 +477,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static ServiceResource BeginCreateOrUpdate(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource))
+            public static ServiceResource BeginCreateOrUpdate(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, serviceName, resource).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resource, resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -488,6 +488,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -495,15 +498,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceResource> BeginCreateOrUpdateAsync(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceResource> BeginCreateOrUpdateAsync(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, resource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resource, resourceGroupName, serviceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -554,6 +554,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -561,12 +564,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the update operation
-            /// </param>
-            public static ServiceResource BeginUpdate(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource))
+            public static ServiceResource BeginUpdate(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName)
             {
-                return operations.BeginUpdateAsync(resourceGroupName, serviceName, resource).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(resource, resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -575,6 +575,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -582,15 +585,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='serviceName'>
             /// The name of the Service resource.
             /// </param>
-            /// <param name='resource'>
-            /// Parameters for the update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceResource> BeginUpdateAsync(this IServicesOperations operations, string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceResource> BeginUpdateAsync(this IServicesOperations operations, ServiceResource resource, string resourceGroupName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, resource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resource, resourceGroupName, serviceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

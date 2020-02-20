@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Service or update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -60,9 +63,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='resource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServiceResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceResource>> CreateOrUpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Operation to delete a Service.
         /// </summary>
@@ -107,6 +107,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -114,9 +117,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='resource'>
-        /// Parameters for the update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServiceResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceResource>> UpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List test keys for a Service.
         /// </summary>
@@ -164,6 +164,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Regenerate a test key for a Service.
         /// </summary>
+        /// <param name='regenerateTestKeyRequest'>
+        /// Parameters for the operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -171,9 +174,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='regenerateTestKeyRequest'>
-        /// Parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TestKeys>> RegenerateTestKeyWithHttpMessagesAsync(string resourceGroupName, string serviceName, RegenerateTestKeyRequestPayload regenerateTestKeyRequest = default(RegenerateTestKeyRequestPayload), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TestKeys>> RegenerateTestKeyWithHttpMessagesAsync(RegenerateTestKeyRequestPayload regenerateTestKeyRequest, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -307,6 +307,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Service or update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -314,9 +317,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='resource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServiceResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceResource>> BeginCreateOrUpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Operation to delete a Service.
         /// </summary>
@@ -361,6 +361,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -368,9 +371,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='resource'>
-        /// Parameters for the update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServiceResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceResource>> BeginUpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Handles requests to list all resources in a subscription.
         /// </summary>

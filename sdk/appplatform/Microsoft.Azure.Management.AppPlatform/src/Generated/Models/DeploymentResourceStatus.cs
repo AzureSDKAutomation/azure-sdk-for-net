@@ -23,5 +23,6 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public const string Allocating = "Allocating";
         public const string Upgrading = "Upgrading";
         public const string Compiling = "Compiling";
+        public const string Processing = "Processing";
     }
 }

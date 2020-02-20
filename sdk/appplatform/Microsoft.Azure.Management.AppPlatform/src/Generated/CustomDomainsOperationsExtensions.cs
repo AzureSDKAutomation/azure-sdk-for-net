@@ -17,15 +17,17 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for BindingsOperations.
+    /// Extension methods for CustomDomainsOperations.
     /// </summary>
-    public static partial class BindingsOperationsExtensions
+    public static partial class CustomDomainsOperationsExtensions
     {
             /// <summary>
-            /// Get a Binding and its properties.
+            /// Get the custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -37,19 +39,18 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
-            /// </param>
-            public static BindingResource Get(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName)
+            public static CustomDomainResource GetAsync(this ICustomDomainsOperations operations, string domainName, string resourceGroupName, string serviceName, string appName)
             {
-                return operations.GetAsync(resourceGroupName, serviceName, appName, bindingName).GetAwaiter().GetResult();
+                return operations.GetAsyncAsync(domainName, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get a Binding and its properties.
+            /// Get the custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -60,29 +61,27 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// </param>
             /// <param name='appName'>
             /// The name of the App resource.
-            /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BindingResource> GetAsync(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomDomainResource> GetAsyncAsync(this ICustomDomainsOperations operations, string domainName, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serviceName, appName, bindingName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAsyncWithHttpMessagesAsync(domainName, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Create a new Binding or update an exiting Binding.
+            /// Create or update custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the create or update operation
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='domainResource'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -94,22 +93,20 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
-            /// </param>
-            public static BindingResource CreateOrUpdate(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName)
+            public static CustomDomainResource CreateOrUpdateAsync(this ICustomDomainsOperations operations, string domainName, CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName)
             {
-                return operations.CreateOrUpdateAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsyncAsync(domainName, domainResource, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Create a new Binding or update an exiting Binding.
+            /// Create or update custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the create or update operation
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='domainResource'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -120,26 +117,25 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// </param>
             /// <param name='appName'>
             /// The name of the App resource.
-            /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BindingResource> CreateOrUpdateAsync(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomDomainResource> CreateOrUpdateAsyncAsync(this ICustomDomainsOperations operations, string domainName, CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateAsyncWithHttpMessagesAsync(domainName, domainResource, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Operation to delete a Binding.
+            /// Delete the custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -151,19 +147,18 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
-            /// </param>
-            public static void Delete(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName)
+            public static CustomDomainResource DeleteAsync(this ICustomDomainsOperations operations, string domainName, string resourceGroupName, string serviceName, string appName)
             {
-                operations.DeleteAsync(resourceGroupName, serviceName, appName, bindingName).GetAwaiter().GetResult();
+                return operations.DeleteAsyncAsync(domainName, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Operation to delete a Binding.
+            /// Delete the custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -174,83 +169,27 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// </param>
             /// <param name='appName'>
             /// The name of the App resource.
-            /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomDomainResource> DeleteAsyncAsync(this ICustomDomainsOperations operations, string domainName, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serviceName, appName, bindingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Operation to update an exiting Binding.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the update operation
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serviceName'>
-            /// The name of the Service resource.
-            /// </param>
-            /// <param name='appName'>
-            /// The name of the App resource.
-            /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
-            /// </param>
-            public static BindingResource Update(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName)
-            {
-                return operations.UpdateAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Operation to update an exiting Binding.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the update operation
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serviceName'>
-            /// The name of the Service resource.
-            /// </param>
-            /// <param name='appName'>
-            /// The name of the App resource.
-            /// </param>
-            /// <param name='bindingName'>
-            /// The name of the Binding resource.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<BindingResource> UpdateAsync(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteAsyncWithHttpMessagesAsync(domainName, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Handles requests to list all resources in an App.
+            /// Update custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='domainResource'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -262,16 +201,20 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            public static IPage<BindingResource> List(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName)
+            public static CustomDomainResource PatchAsync(this ICustomDomainsOperations operations, string domainName, CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName)
             {
-                return operations.ListAsync(resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
+                return operations.PatchAsyncAsync(domainName, domainResource, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Handles requests to list all resources in an App.
+            /// Update custom domain of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='domainResource'>
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
@@ -286,43 +229,117 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BindingResource>> ListAsync(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomDomainResource> PatchAsyncAsync(this ICustomDomainsOperations operations, string domainName, CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PatchAsyncWithHttpMessagesAsync(domainName, domainResource, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Handles requests to list all resources in an App.
+            /// List the custom domains of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='domainName'>
             /// </param>
-            public static IPage<BindingResource> ListNext(this IBindingsOperations operations, string nextPageLink)
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            public static CustomDomainResourceCollection ListAsync(this ICustomDomainsOperations operations, string domainName, string resourceGroupName, string serviceName, string appName)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListAsyncAsync(domainName, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Handles requests to list all resources in an App.
+            /// List the custom domains of one lifecycle application.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BindingResource>> ListNextAsync(this IBindingsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomDomainResourceCollection> ListAsyncAsync(this ICustomDomainsOperations operations, string domainName, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAsyncWithHttpMessagesAsync(domainName, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update custom domain of one lifecycle application.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='domainResource'>
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            public static CustomDomainResource BeginCreateOrUpdateAsync(this ICustomDomainsOperations operations, string domainName, CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName)
+            {
+                return operations.BeginCreateOrUpdateAsyncAsync(domainName, domainResource, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update custom domain of one lifecycle application.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='domainName'>
+            /// </param>
+            /// <param name='domainResource'>
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CustomDomainResource> BeginCreateOrUpdateAsyncAsync(this ICustomDomainsOperations operations, string domainName, CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateAsyncWithHttpMessagesAsync(domainName, domainResource, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

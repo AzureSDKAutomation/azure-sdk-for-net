@@ -246,6 +246,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Service or update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
@@ -253,19 +256,16 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='resource'>
-        /// Parameters for the create or update operation
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ServiceResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServiceResource>> CreateOrUpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<ServiceResource> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ServiceResource> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resource, resourceGroupName, serviceName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -295,6 +295,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
@@ -302,19 +305,16 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='resource'>
-        /// Parameters for the update operation
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ServiceResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServiceResource>> UpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<ServiceResource> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ServiceResource> _response = await BeginUpdateWithHttpMessagesAsync(resource, resourceGroupName, serviceName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -514,15 +514,15 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Regenerate a test key for a Service.
         /// </summary>
+        /// <param name='regenerateTestKeyRequest'>
+        /// Parameters for the operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='regenerateTestKeyRequest'>
-        /// Parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -545,8 +545,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<TestKeys>> RegenerateTestKeyWithHttpMessagesAsync(string resourceGroupName, string serviceName, RegenerateTestKeyRequestPayload regenerateTestKeyRequest = default(RegenerateTestKeyRequestPayload), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<TestKeys>> RegenerateTestKeyWithHttpMessagesAsync(RegenerateTestKeyRequestPayload regenerateTestKeyRequest, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (regenerateTestKeyRequest == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "regenerateTestKeyRequest");
+            }
             if (regenerateTestKeyRequest != null)
             {
                 regenerateTestKeyRequest.Validate();
@@ -1639,15 +1643,15 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Service or update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='resource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1670,8 +1674,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ServiceResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServiceResource>> BeginCreateOrUpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
             if (resource != null)
             {
                 resource.Validate();
@@ -2036,15 +2044,15 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Service.
         /// </summary>
+        /// <param name='resource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the Service resource.
-        /// </param>
-        /// <param name='resource'>
-        /// Parameters for the update operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2067,8 +2075,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ServiceResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, ServiceResource resource = default(ServiceResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServiceResource>> BeginUpdateWithHttpMessagesAsync(ServiceResource resource, string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");

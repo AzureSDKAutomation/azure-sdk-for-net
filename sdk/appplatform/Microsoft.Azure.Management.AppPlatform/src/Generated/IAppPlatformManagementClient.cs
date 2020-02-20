@@ -87,14 +87,34 @@ namespace Microsoft.Azure.Management.AppPlatform
         IBindingsOperations Bindings { get; }
 
         /// <summary>
+        /// Gets the ICertificateOperations.
+        /// </summary>
+        ICertificateOperations Certificate { get; }
+
+        /// <summary>
+        /// Gets the ICustomDomainsOperations.
+        /// </summary>
+        ICustomDomainsOperations CustomDomains { get; }
+
+        /// <summary>
         /// Gets the IDeploymentsOperations.
         /// </summary>
         IDeploymentsOperations Deployments { get; }
 
         /// <summary>
+        /// Gets the IHealthOperations.
+        /// </summary>
+        IHealthOperations Health { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the ISkuOperations.
+        /// </summary>
+        ISkuOperations Sku { get; }
 
     }
 }
