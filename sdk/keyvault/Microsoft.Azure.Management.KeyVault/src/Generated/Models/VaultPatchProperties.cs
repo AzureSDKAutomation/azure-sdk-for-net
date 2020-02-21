@@ -48,8 +48,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// whether Azure Resource Manager is permitted to retrieve secrets
         /// from the key vault.</param>
         /// <param name="enableSoftDelete">Property to specify whether the
-        /// 'soft delete' functionality is enabled for this key vault. It does
-        /// not accept false value.</param>
+        /// 'soft delete' functionality is enabled for this key vault. If
+        /// omitted, assume false as default value when patching an existing
+        /// vault. Once set to true, cannot be reverted to false.</param>
+        /// <param name="softDeleteRetentionInDays">softDelete data retention
+        /// days. It accepts &gt;=7 and &lt;=90.</param>
         /// <param name="createMode">The vault's create mode to indicate
         /// whether the vault need to be recovered or not. Possible values
         /// include: 'recover', 'default'</param>
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// - that is, the property does not accept false as its value.</param>
         /// <param name="networkAcls">A collection of rules governing the
         /// accessibility of the vault from specific network locations.</param>
-        public VaultPatchProperties(System.Guid? tenantId = default(System.Guid?), Sku sku = default(Sku), IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?), NetworkRuleSet networkAcls = default(NetworkRuleSet))
+        public VaultPatchProperties(System.Guid? tenantId = default(System.Guid?), Sku sku = default(Sku), IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?), NetworkRuleSet networkAcls = default(NetworkRuleSet))
         {
             TenantId = tenantId;
             Sku = sku;
@@ -71,6 +74,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             EnabledForDiskEncryption = enabledForDiskEncryption;
             EnabledForTemplateDeployment = enabledForTemplateDeployment;
             EnableSoftDelete = enableSoftDelete;
+            SoftDeleteRetentionInDays = softDeleteRetentionInDays;
             CreateMode = createMode;
             EnablePurgeProtection = enablePurgeProtection;
             NetworkAcls = networkAcls;
@@ -127,11 +131,19 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <summary>
         /// Gets or sets property to specify whether the 'soft delete'
-        /// functionality is enabled for this key vault. It does not accept
-        /// false value.
+        /// functionality is enabled for this key vault. If omitted, assume
+        /// false as default value when patching an existing vault. Once set to
+        /// true, cannot be reverted to false.
         /// </summary>
         [JsonProperty(PropertyName = "enableSoftDelete")]
         public bool? EnableSoftDelete { get; set; }
+
+        /// <summary>
+        /// Gets or sets softDelete data retention days. It accepts &amp;gt;=7
+        /// and &amp;lt;=90.
+        /// </summary>
+        [JsonProperty(PropertyName = "softDeleteRetentionInDays")]
+        public int? SoftDeleteRetentionInDays { get; set; }
 
         /// <summary>
         /// Gets or sets the vault's create mode to indicate whether the vault
