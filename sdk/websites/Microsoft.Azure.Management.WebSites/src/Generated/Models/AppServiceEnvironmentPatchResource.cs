@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// e.g. "West US".</param>
         /// <param name="virtualNetwork">Description of the Virtual
         /// Network.</param>
-        /// <param name="workerPools">Description of worker pools with worker
-        /// size IDs, VM sizes, and number of workers in each pool.</param>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
@@ -66,6 +64,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="multiSize">Front-end VM size, e.g. "Medium",
         /// "Large".</param>
         /// <param name="multiRoleCount">Number of front-end instances.</param>
+        /// <param name="workerPools">Description of worker pools with worker
+        /// size IDs, VM sizes, and number of workers in each pool.</param>
         /// <param name="ipsslAddressCount">Number of IP SSL addresses reserved
         /// for the App Service Environment.</param>
         /// <param name="databaseEdition">Edition of the metadata database for
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Environment default SSL certificate</param>
         /// <param name="sslCertKeyVaultSecretName">Key Vault Secret Name for
         /// ILB App Service Environment default SSL certificate</param>
-        public AppServiceEnvironmentPatchResource(string appServiceEnvironmentPatchResourceName, string location, VirtualNetworkProfile virtualNetwork, IList<WorkerPool> workerPools, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string vnetName = default(string), string vnetResourceGroupName = default(string), string vnetSubnetName = default(string), InternalLoadBalancingMode? internalLoadBalancingMode = default(InternalLoadBalancingMode?), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string databaseEdition = default(string), string databaseServiceObjective = default(string), int? upgradeDomains = default(int?), string subscriptionId = default(string), string dnsSuffix = default(string), string lastAction = default(string), string lastActionResult = default(string), string allowedMultiSizes = default(string), string allowedWorkerSizes = default(string), int? maximumNumberOfMachines = default(int?), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>), IList<StampCapacity> environmentCapacities = default(IList<StampCapacity>), IList<NetworkAccessControlEntry> networkAccessControlList = default(IList<NetworkAccessControlEntry>), bool? environmentIsHealthy = default(bool?), string environmentStatus = default(string), string resourceGroup = default(string), int? frontEndScaleFactor = default(int?), int? defaultFrontEndScaleFactor = default(int?), string apiManagementAccountId = default(string), bool? suspended = default(bool?), bool? dynamicCacheEnabled = default(bool?), IList<NameValuePair> clusterSettings = default(IList<NameValuePair>), IList<string> userWhitelistedIpRanges = default(IList<string>), bool? hasLinuxWorkers = default(bool?), string sslCertKeyVaultId = default(string), string sslCertKeyVaultSecretName = default(string))
+        public AppServiceEnvironmentPatchResource(string appServiceEnvironmentPatchResourceName, string location, VirtualNetworkProfile virtualNetwork, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string vnetName = default(string), string vnetResourceGroupName = default(string), string vnetSubnetName = default(string), InternalLoadBalancingMode? internalLoadBalancingMode = default(InternalLoadBalancingMode?), string multiSize = default(string), int? multiRoleCount = default(int?), IList<WorkerPool> workerPools = default(IList<WorkerPool>), int? ipsslAddressCount = default(int?), string databaseEdition = default(string), string databaseServiceObjective = default(string), int? upgradeDomains = default(int?), string subscriptionId = default(string), string dnsSuffix = default(string), string lastAction = default(string), string lastActionResult = default(string), string allowedMultiSizes = default(string), string allowedWorkerSizes = default(string), int? maximumNumberOfMachines = default(int?), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>), IList<StampCapacity> environmentCapacities = default(IList<StampCapacity>), IList<NetworkAccessControlEntry> networkAccessControlList = default(IList<NetworkAccessControlEntry>), bool? environmentIsHealthy = default(bool?), string environmentStatus = default(string), string resourceGroup = default(string), int? frontEndScaleFactor = default(int?), int? defaultFrontEndScaleFactor = default(int?), string apiManagementAccountId = default(string), bool? suspended = default(bool?), bool? dynamicCacheEnabled = default(bool?), IList<NameValuePair> clusterSettings = default(IList<NameValuePair>), IList<string> userWhitelistedIpRanges = default(IList<string>), bool? hasLinuxWorkers = default(bool?), string sslCertKeyVaultId = default(string), string sslCertKeyVaultSecretName = default(string))
             : base(id, name, kind, type)
         {
             AppServiceEnvironmentPatchResourceName = appServiceEnvironmentPatchResourceName;
@@ -459,10 +459,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             if (VirtualNetwork == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "VirtualNetwork");
-            }
-            if (WorkerPools == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "WorkerPools");
             }
         }
     }
