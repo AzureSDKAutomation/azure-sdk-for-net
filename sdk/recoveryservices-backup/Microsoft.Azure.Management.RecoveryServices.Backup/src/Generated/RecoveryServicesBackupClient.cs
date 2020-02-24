@@ -150,6 +150,46 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public virtual IOperationOperations Operation { get; private set; }
 
         /// <summary>
+        /// Gets the IAadPropertiesOperations.
+        /// </summary>
+        public virtual IAadPropertiesOperations AadProperties { get; private set; }
+
+        /// <summary>
+        /// Gets the ICrossRegionRestoreOperations.
+        /// </summary>
+        public virtual ICrossRegionRestoreOperations CrossRegionRestore { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupCrrJobDetailsOperations.
+        /// </summary>
+        public virtual IBackupCrrJobDetailsOperations BackupCrrJobDetails { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupCrrJobsOperations.
+        /// </summary>
+        public virtual IBackupCrrJobsOperations BackupCrrJobs { get; private set; }
+
+        /// <summary>
+        /// Gets the ICrrOperationResultsOperations.
+        /// </summary>
+        public virtual ICrrOperationResultsOperations CrrOperationResults { get; private set; }
+
+        /// <summary>
+        /// Gets the ICrrOperationStatusOperations.
+        /// </summary>
+        public virtual ICrrOperationStatusOperations CrrOperationStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecoveryPointsCrrOperations.
+        /// </summary>
+        public virtual IRecoveryPointsCrrOperations RecoveryPointsCrr { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupProtectedItemsCrrOperations.
+        /// </summary>
+        public virtual IBackupProtectedItemsCrrOperations BackupProtectedItemsCrr { get; private set; }
+
+        /// <summary>
         /// Gets the IProtectionIntentOperations.
         /// </summary>
         public virtual IProtectionIntentOperations ProtectionIntent { get; private set; }
@@ -516,6 +556,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             Jobs = new JobsOperations(this);
             BackupProtectedItems = new BackupProtectedItemsOperations(this);
             Operation = new OperationOperations(this);
+            AadProperties = new AadPropertiesOperations(this);
+            CrossRegionRestore = new CrossRegionRestoreOperations(this);
+            BackupCrrJobDetails = new BackupCrrJobDetailsOperations(this);
+            BackupCrrJobs = new BackupCrrJobsOperations(this);
+            CrrOperationResults = new CrrOperationResultsOperations(this);
+            CrrOperationStatus = new CrrOperationStatusOperations(this);
+            RecoveryPointsCrr = new RecoveryPointsCrrOperations(this);
+            BackupProtectedItemsCrr = new BackupProtectedItemsCrrOperations(this);
             ProtectionIntent = new ProtectionIntentOperations(this);
             BackupStatus = new BackupStatusOperations(this);
             FeatureSupport = new FeatureSupportOperations(this);
@@ -585,6 +633,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RestoreRequest>("objectType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ValidateOperationRequest>("objectType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ValidateOperationRequest>("objectType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FeatureSupportRequest>("featureType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FeatureSupportRequest>("featureType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
@@ -595,8 +645,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<BackupRequest>("objectType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ILRRequest>("objectType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ILRRequest>("objectType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProtectableContainer>("protectableContainerType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ProtectableContainer>("protectableContainerType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProtectionContainer>("containerType"));
