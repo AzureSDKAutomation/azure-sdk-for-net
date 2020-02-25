@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Management.ContainerService
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -70,16 +75,6 @@ namespace Microsoft.Azure.Management.ContainerService
         /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
-
-        /// <summary>
-        /// Gets the IOpenShiftManagedClustersOperations.
-        /// </summary>
-        public virtual IOpenShiftManagedClustersOperations OpenShiftManagedClusters { get; private set; }
-
-        /// <summary>
-        /// Gets the IContainerServicesOperations.
-        /// </summary>
-        public virtual IContainerServicesOperations ContainerServices { get; private set; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -337,12 +332,11 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         private void Initialize()
         {
-            OpenShiftManagedClusters = new OpenShiftManagedClustersOperations(this);
-            ContainerServices = new ContainerServicesOperations(this);
             Operations = new Operations(this);
             ManagedClusters = new ManagedClustersOperations(this);
             AgentPools = new AgentPoolsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2020-03-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -372,8 +366,6 @@ namespace Microsoft.Azure.Management.ContainerService
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<OpenShiftManagedClusterBaseIdentityProvider>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<OpenShiftManagedClusterBaseIdentityProvider>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

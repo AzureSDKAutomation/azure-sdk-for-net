@@ -10,27 +10,42 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Structure for any Identity provider.
+    /// A reference to an Azure resource.
     /// </summary>
-    public partial class OpenShiftManagedClusterBaseIdentityProvider
+    public partial class ResourceReference
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// OpenShiftManagedClusterBaseIdentityProvider class.
+        /// Initializes a new instance of the ResourceReference class.
         /// </summary>
-        public OpenShiftManagedClusterBaseIdentityProvider()
+        public ResourceReference()
         {
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the ResourceReference class.
+        /// </summary>
+        /// <param name="id">The fully qualified Azure resource id.</param>
+        public ResourceReference(string id = default(string))
+        {
+            Id = id;
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the fully qualified Azure resource id.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
     }
 }

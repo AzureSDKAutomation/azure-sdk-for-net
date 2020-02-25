@@ -12,14 +12,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ContainerServiceOrchestratorTypes.
+    /// Defines values for ManagedClusterSKUName.
     /// </summary>
-    public static class ContainerServiceOrchestratorTypes
+    public static class ManagedClusterSKUName
     {
-        public const string Kubernetes = "Kubernetes";
-        public const string Swarm = "Swarm";
-        public const string DCOS = "DCOS";
-        public const string DockerCE = "DockerCE";
-        public const string Custom = "Custom";
+        public const string Basic = "Basic";
     }
 }
