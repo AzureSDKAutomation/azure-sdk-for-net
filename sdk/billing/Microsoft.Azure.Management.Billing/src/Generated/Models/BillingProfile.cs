@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="displayName">The billing profile name.</param>
         /// <param name="poNumber">Purchase order number.</param>
         /// <param name="address">Billing address.</param>
+        /// <param name="azureUsageAddress">Azure usage address.</param>
         /// <param name="invoiceEmailOptIn">If the billing profile is opted in
         /// to receive invoices via email.</param>
         /// <param name="invoiceDay">Invoice day.</param>
@@ -49,17 +50,26 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// plans.</param>
         /// <param name="invoiceSections">The invoice sections associated to
         /// the billing profile.</param>
-        public BillingProfile(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string poNumber = default(string), AddressDetails address = default(AddressDetails), bool? invoiceEmailOptIn = default(bool?), int? invoiceDay = default(int?), string currency = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>), IList<InvoiceSection> invoiceSections = default(IList<InvoiceSection>))
+        /// <param name="status">The status of the billing profile.</param>
+        /// <param name="statusReasonCode">Reason for the specified billing
+        /// profile status.</param>
+        /// <param name="spendingLimit">The billing profile spending
+        /// limit.</param>
+        public BillingProfile(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string poNumber = default(string), AddressDetails address = default(AddressDetails), AddressDetails azureUsageAddress = default(AddressDetails), bool? invoiceEmailOptIn = default(bool?), int? invoiceDay = default(int?), string currency = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>), IList<InvoiceSection> invoiceSections = default(IList<InvoiceSection>), object status = default(object), object statusReasonCode = default(object), object spendingLimit = default(object))
             : base(id, name, type)
         {
             DisplayName = displayName;
             PoNumber = poNumber;
             Address = address;
+            AzureUsageAddress = azureUsageAddress;
             InvoiceEmailOptIn = invoiceEmailOptIn;
             InvoiceDay = invoiceDay;
             Currency = currency;
             EnabledAzurePlans = enabledAzurePlans;
             InvoiceSections = invoiceSections;
+            Status = status;
+            StatusReasonCode = statusReasonCode;
+            SpendingLimit = spendingLimit;
             CustomInit();
         }
 
@@ -85,6 +95,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.address")]
         public AddressDetails Address { get; set; }
+
+        /// <summary>
+        /// Gets or sets azure usage address.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureUsageAddress")]
+        public AddressDetails AzureUsageAddress { get; set; }
 
         /// <summary>
         /// Gets or sets if the billing profile is opted in to receive invoices
@@ -117,6 +133,24 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceSections")]
         public IList<InvoiceSection> InvoiceSections { get; set; }
+
+        /// <summary>
+        /// Gets the status of the billing profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.status")]
+        public object Status { get; private set; }
+
+        /// <summary>
+        /// Gets reason for the specified billing profile status.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.statusReasonCode")]
+        public object StatusReasonCode { get; private set; }
+
+        /// <summary>
+        /// Gets the billing profile spending limit.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.spendingLimit")]
+        public object SpendingLimit { get; private set; }
 
     }
 }
