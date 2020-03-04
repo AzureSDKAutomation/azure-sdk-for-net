@@ -48,14 +48,21 @@ namespace Microsoft.Azure.Management.DevSpaces.Models
         /// 'Canceled', 'Updating', 'Creating', 'Deleting', 'Deleted'</param>
         /// <param name="hostSuffix">DNS suffix for public endpoints running in
         /// the Azure Dev Spaces Controller.</param>
+        /// <param name="hostEndpointType">The endpoint type to be exposed for
+        /// a Azure Dev Spaces Controller. Possible values include: 'Public',
+        /// 'Private', 'None'</param>
         /// <param name="dataPlaneFqdn">DNS name for accessing DataPlane
         /// services</param>
-        public Controller(string targetContainerHostResourceId, string targetContainerHostCredentialsBase64, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), string provisioningState = default(string), string hostSuffix = default(string), string dataPlaneFqdn = default(string))
+        /// <param name="targetContainerHostApiServerFqdn">DNS of the target
+        /// container host's API server</param>
+        public Controller(string targetContainerHostResourceId, string targetContainerHostCredentialsBase64, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), string provisioningState = default(string), string hostSuffix = default(string), string hostEndpointType = default(string), string dataPlaneFqdn = default(string), string targetContainerHostApiServerFqdn = default(string))
             : base(id, name, type, tags, location)
         {
             ProvisioningState = provisioningState;
             HostSuffix = hostSuffix;
+            HostEndpointType = hostEndpointType;
             DataPlaneFqdn = dataPlaneFqdn;
+            TargetContainerHostApiServerFqdn = targetContainerHostApiServerFqdn;
             TargetContainerHostResourceId = targetContainerHostResourceId;
             TargetContainerHostCredentialsBase64 = targetContainerHostCredentialsBase64;
             Sku = sku;
@@ -83,10 +90,23 @@ namespace Microsoft.Azure.Management.DevSpaces.Models
         public string HostSuffix { get; private set; }
 
         /// <summary>
+        /// Gets or sets the endpoint type to be exposed for a Azure Dev Spaces
+        /// Controller. Possible values include: 'Public', 'Private', 'None'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostEndpointType")]
+        public string HostEndpointType { get; set; }
+
+        /// <summary>
         /// Gets DNS name for accessing DataPlane services
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataPlaneFqdn")]
         public string DataPlaneFqdn { get; private set; }
+
+        /// <summary>
+        /// Gets DNS of the target container host's API server
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.targetContainerHostApiServerFqdn")]
+        public string TargetContainerHostApiServerFqdn { get; private set; }
 
         /// <summary>
         /// Gets or sets resource ID of the target container host
