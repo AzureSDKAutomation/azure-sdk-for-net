@@ -467,6 +467,8 @@ namespace Microsoft.Azure.Management.DataFactory
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DependencyReference>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<StoreReadSettings>("type"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<StoreReadSettings>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CompressionReadSettings>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CompressionReadSettings>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FormatReadSettings>("type"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FormatReadSettings>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CopySource>("type"));
