@@ -11,30 +11,31 @@
 namespace Microsoft.Azure.Management.ApiManagement.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The response of the list policy snippets operation.
+    /// Defines headers for Get operation.
     /// </summary>
-    public partial class PolicySnippetsCollection
+    public partial class GatewayHostnameConfigurationGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PolicySnippetsCollection class.
+        /// Initializes a new instance of the
+        /// GatewayHostnameConfigurationGetHeaders class.
         /// </summary>
-        public PolicySnippetsCollection()
+        public GatewayHostnameConfigurationGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PolicySnippetsCollection class.
+        /// Initializes a new instance of the
+        /// GatewayHostnameConfigurationGetHeaders class.
         /// </summary>
-        /// <param name="value">Policy snippet value.</param>
-        public PolicySnippetsCollection(IList<PolicySnippetContract> value = default(IList<PolicySnippetContract>))
+        /// <param name="eTag">Current entity state version. Should be treated
+        /// as opaque and used to make conditional HTTP requests.</param>
+        public GatewayHostnameConfigurationGetHeaders(string eTag = default(string))
         {
-            Value = value;
+            ETag = eTag;
             CustomInit();
         }
 
@@ -44,10 +45,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets policy snippet value.
+        /// Gets or sets current entity state version. Should be treated as
+        /// opaque and used to make conditional HTTP requests.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<PolicySnippetContract> Value { get; set; }
+        [JsonProperty(PropertyName = "ETag")]
+        public string ETag { get; set; }
 
     }
 }

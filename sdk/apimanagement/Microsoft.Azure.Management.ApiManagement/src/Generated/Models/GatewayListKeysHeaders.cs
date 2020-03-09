@@ -14,26 +14,24 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for CreateOrUpdate operation.
+    /// Defines headers for ListKeys operation.
     /// </summary>
-    public partial class PropertyCreateOrUpdateHeaders
+    public partial class GatewayListKeysHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PropertyCreateOrUpdateHeaders
-        /// class.
+        /// Initializes a new instance of the GatewayListKeysHeaders class.
         /// </summary>
-        public PropertyCreateOrUpdateHeaders()
+        public GatewayListKeysHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PropertyCreateOrUpdateHeaders
-        /// class.
+        /// Initializes a new instance of the GatewayListKeysHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public PropertyCreateOrUpdateHeaders(string eTag = default(string))
+        public GatewayListKeysHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.ApiManagement
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,13 +19,13 @@ namespace Microsoft.Azure.Management.ApiManagement
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PropertyOperations operations.
+    /// GatewayHostnameConfigurationOperations operations.
     /// </summary>
-    public partial interface IPropertyOperations
+    public partial interface IGatewayHostnameConfigurationOperations
     {
         /// <summary>
-        /// Lists a collection of properties defined within a service instance.
-        /// <see href="https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-properties" />
+        /// Lists the collection of hostname configurations for the specified
+        /// gateway.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -34,8 +33,15 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='serviceName'>
         /// The name of the API Management service.
         /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
+        /// <param name='gatewayId'>
+        /// Gateway entity identifier. Must be unique in the current API
+        /// Management service instance. Must not have value 'managed'
+        /// </param>
+        /// <param name='top'>
+        /// Number of records to return.
+        /// </param>
+        /// <param name='skip'>
+        /// Number of records to skip.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,9 +58,40 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<PropertyContract>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string serviceName, ODataQuery<PropertyContract> odataQuery = default(ODataQuery<PropertyContract>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GatewayHostnameConfigurationContract>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string serviceName, string gatewayId, int? top = default(int?), int? skip = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the entity state (Etag) version of the property specified by
+        /// Checks that hostname configuration entity specified by identifier
+        /// exists for specified Gateway entity.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the API Management service.
+        /// </param>
+        /// <param name='gatewayId'>
+        /// Gateway entity identifier. Must be unique in the current API
+        /// Management service instance. Must not have value 'managed'
+        /// </param>
+        /// <param name='hcId'>
+        /// Gateway hostname configuration identifier. Must be unique in the
+        /// scope of parent Gateway entity.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<GatewayHostnameConfigurationGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string gatewayId, string hcId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the details of the Gateway hostname configuration specified by
         /// its identifier.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -63,33 +100,13 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='serviceName'>
         /// The name of the API Management service.
         /// </param>
-        /// <param name='propId'>
-        /// Identifier of the property.
+        /// <param name='gatewayId'>
+        /// Gateway entity identifier. Must be unique in the current API
+        /// Management service instance. Must not have value 'managed'
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationHeaderResponse<PropertyGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string propId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets the details of the property specified by its identifier.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceName'>
-        /// The name of the API Management service.
-        /// </param>
-        /// <param name='propId'>
-        /// Identifier of the property.
+        /// <param name='hcId'>
+        /// Gateway hostname configuration identifier. Must be unique in the
+        /// scope of parent Gateway entity.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -106,9 +123,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PropertyContract,PropertyGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string propId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GatewayHostnameConfigurationContract,GatewayHostnameConfigurationGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string gatewayId, string hcId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a property.
+        /// Creates of updates hostname configuration for a Gateway.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -116,15 +133,15 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='serviceName'>
         /// The name of the API Management service.
         /// </param>
-        /// <param name='propId'>
-        /// Identifier of the property.
+        /// <param name='gatewayId'>
+        /// Gateway entity identifier. Must be unique in the current API
+        /// Management service instance. Must not have value 'managed'
+        /// </param>
+        /// <param name='hcId'>
+        /// Gateway hostname configuration identifier. Must be unique in the
+        /// scope of parent Gateway entity.
         /// </param>
         /// <param name='parameters'>
-        /// Create parameters.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag of the Entity. Not required when creating an entity, but
-        /// required when updating an entity.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -141,9 +158,10 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PropertyContract,PropertyCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string propId, PropertyContract parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GatewayHostnameConfigurationContract,GatewayHostnameConfigurationCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string gatewayId, string hcId, GatewayHostnameConfigurationContract parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates the specific property.
+        /// Deletes the specified hostname configuration from the specified
+        /// Gateway.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -151,16 +169,13 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='serviceName'>
         /// The name of the API Management service.
         /// </param>
-        /// <param name='propId'>
-        /// Identifier of the property.
+        /// <param name='gatewayId'>
+        /// Gateway entity identifier. Must be unique in the current API
+        /// Management service instance. Must not have value 'managed'
         /// </param>
-        /// <param name='parameters'>
-        /// Update parameters.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag of the Entity. ETag should match the current entity state from
-        /// the header response of the GET request or it should be * for
-        /// unconditional update.
+        /// <param name='hcId'>
+        /// Gateway hostname configuration identifier. Must be unique in the
+        /// scope of parent Gateway entity.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -174,40 +189,10 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string propId, PropertyUpdateParameters parameters, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string gatewayId, string hcId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes specific property from the API Management service instance.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceName'>
-        /// The name of the API Management service.
-        /// </param>
-        /// <param name='propId'>
-        /// Identifier of the property.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag of the Entity. ETag should match the current entity state from
-        /// the header response of the GET request or it should be * for
-        /// unconditional update.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string propId, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists a collection of properties defined within a service instance.
-        /// <see href="https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-properties" />
+        /// Lists the collection of hostname configurations for the specified
+        /// gateway.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -227,6 +212,6 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<PropertyContract>>> ListByServiceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GatewayHostnameConfigurationContract>>> ListByServiceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

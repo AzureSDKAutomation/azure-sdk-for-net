@@ -197,6 +197,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         IEmailTemplateOperations EmailTemplate { get; }
 
         /// <summary>
+        /// Gets the IGatewayOperations.
+        /// </summary>
+        IGatewayOperations Gateway { get; }
+
+        /// <summary>
+        /// Gets the IGatewayHostnameConfigurationOperations.
+        /// </summary>
+        IGatewayHostnameConfigurationOperations GatewayHostnameConfiguration { get; }
+
+        /// <summary>
+        /// Gets the IGatewayApiOperations.
+        /// </summary>
+        IGatewayApiOperations GatewayApi { get; }
+
+        /// <summary>
         /// Gets the IGroupOperations.
         /// </summary>
         IGroupOperations Group { get; }
@@ -252,9 +267,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         IPolicyOperations Policy { get; }
 
         /// <summary>
-        /// Gets the IPolicySnippetOperations.
+        /// Gets the IPolicyDescriptionOperations.
         /// </summary>
-        IPolicySnippetOperations PolicySnippet { get; }
+        IPolicyDescriptionOperations PolicyDescription { get; }
 
         /// <summary>
         /// Gets the ISignInSettingsOperations.
@@ -297,9 +312,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         IProductPolicyOperations ProductPolicy { get; }
 
         /// <summary>
-        /// Gets the IPropertyOperations.
+        /// Gets the INamedValueOperations.
         /// </summary>
-        IPropertyOperations Property { get; }
+        INamedValueOperations NamedValue { get; }
 
         /// <summary>
         /// Gets the IQuotaByCounterKeysOperations.

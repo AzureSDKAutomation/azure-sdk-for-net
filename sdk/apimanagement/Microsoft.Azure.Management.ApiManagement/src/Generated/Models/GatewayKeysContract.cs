@@ -14,28 +14,27 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for GetEntityTag operation.
+    /// Gateway authentication keys.
     /// </summary>
-    public partial class PropertyGetEntityTagHeaders
+    public partial class GatewayKeysContract
     {
         /// <summary>
-        /// Initializes a new instance of the PropertyGetEntityTagHeaders
-        /// class.
+        /// Initializes a new instance of the GatewayKeysContract class.
         /// </summary>
-        public PropertyGetEntityTagHeaders()
+        public GatewayKeysContract()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PropertyGetEntityTagHeaders
-        /// class.
+        /// Initializes a new instance of the GatewayKeysContract class.
         /// </summary>
-        /// <param name="eTag">Current entity state version. Should be treated
-        /// as opaque and used to make conditional HTTP requests.</param>
-        public PropertyGetEntityTagHeaders(string eTag = default(string))
+        /// <param name="primary">Primary gateway key.</param>
+        /// <param name="secondary">Secondary gateway key.</param>
+        public GatewayKeysContract(string primary = default(string), string secondary = default(string))
         {
-            ETag = eTag;
+            Primary = primary;
+            Secondary = secondary;
             CustomInit();
         }
 
@@ -45,11 +44,16 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets current entity state version. Should be treated as
-        /// opaque and used to make conditional HTTP requests.
+        /// Gets or sets primary gateway key.
         /// </summary>
-        [JsonProperty(PropertyName = "ETag")]
-        public string ETag { get; set; }
+        [JsonProperty(PropertyName = "primary")]
+        public string Primary { get; set; }
+
+        /// <summary>
+        /// Gets or sets secondary gateway key.
+        /// </summary>
+        [JsonProperty(PropertyName = "secondary")]
+        public string Secondary { get; set; }
 
     }
 }
