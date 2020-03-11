@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// tags can be provided for a resource. Each tag must have a key with
         /// a length no greater than 128 characters and a value with a length
         /// no greater than 256 characters.</param>
+        /// <param name="properties">StorageSyncService Body Properties
+        /// object.</param>
         public StorageSyncServiceCreateParameters(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), object properties = default(object))
         {
             Location = location;
@@ -81,6 +83,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets storageSyncService Body Properties object.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public object Properties { get; set; }

@@ -47,11 +47,14 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// status.</param>
         /// <param name="storageSyncServiceUid">Storage Sync service
         /// Uid</param>
-        public StorageSyncService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? storageSyncServiceStatus = default(int?), string storageSyncServiceUid = default(string))
+        /// <param name="privateEndpointConnections">List of private endpoint
+        /// connections associated with the storage sync service.</param>
+        public StorageSyncService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? storageSyncServiceStatus = default(int?), string storageSyncServiceUid = default(string), IList<PrivateEndpointConnectionItem> privateEndpointConnections = default(IList<PrivateEndpointConnectionItem>))
             : base(location, id, name, type, tags)
         {
             StorageSyncServiceStatus = storageSyncServiceStatus;
             StorageSyncServiceUid = storageSyncServiceUid;
+            PrivateEndpointConnections = privateEndpointConnections;
             CustomInit();
         }
 
@@ -71,6 +74,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageSyncServiceUid")]
         public string StorageSyncServiceUid { get; private set; }
+
+        /// <summary>
+        /// Gets list of private endpoint connections associated with the
+        /// storage sync service.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnectionItem> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
         /// Validate the object.
