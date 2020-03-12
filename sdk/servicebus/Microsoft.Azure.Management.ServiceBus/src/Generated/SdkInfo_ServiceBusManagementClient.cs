@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.ServiceBus
                 new Tuple<string, string, string>("ServiceBus", "DisasterRecoveryConfigs", "2017-04-01"),
                 new Tuple<string, string, string>("ServiceBus", "EventHubs", "2017-04-01"),
                 new Tuple<string, string, string>("ServiceBus", "MigrationConfigs", "2017-04-01"),
+                new Tuple<string, string, string>("ServiceBus", "NamespaceOperations", "2017-04-01"),
                 new Tuple<string, string, string>("ServiceBus", "Namespaces", "2017-04-01"),
                 new Tuple<string, string, string>("ServiceBus", "Operations", "2017-04-01"),
                 new Tuple<string, string, string>("ServiceBus", "PremiumMessagingRegions", "2017-04-01"),

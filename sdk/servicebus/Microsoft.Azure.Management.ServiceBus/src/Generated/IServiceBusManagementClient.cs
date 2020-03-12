@@ -126,5 +126,10 @@ namespace Microsoft.Azure.Management.ServiceBus
         /// </summary>
         IEventHubsOperations EventHubs { get; }
 
+        /// <summary>
+        /// Gets the INamespaceOperations.
+        /// </summary>
+        INamespaceOperations NamespaceOperations { get; }
+
     }
 }

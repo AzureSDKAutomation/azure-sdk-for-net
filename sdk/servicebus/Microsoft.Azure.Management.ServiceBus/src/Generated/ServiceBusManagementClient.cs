@@ -132,6 +132,11 @@ namespace Microsoft.Azure.Management.ServiceBus
         public virtual IEventHubsOperations EventHubs { get; private set; }
 
         /// <summary>
+        /// Gets the INamespaceOperations.
+        /// </summary>
+        public virtual INamespaceOperations NamespaceOperations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the ServiceBusManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -383,6 +388,7 @@ namespace Microsoft.Azure.Management.ServiceBus
             Regions = new RegionsOperations(this);
             PremiumMessagingRegions = new PremiumMessagingRegionsOperations(this);
             EventHubs = new EventHubsOperations(this);
+            NamespaceOperations = new NamespaceOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2017-04-01";
             AcceptLanguage = "en-US";
