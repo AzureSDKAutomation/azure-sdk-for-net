@@ -23,9 +23,6 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>
-    /// Azure Resource Graph API Reference
-    /// </summary>
     public partial class ResourceGraphClient : ServiceClient<ResourceGraphClient>, IResourceGraphClient, IAzureClient
     {
         /// <summary>
@@ -49,9 +46,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// API version.
+        /// The Azure subscription Id.
         /// </summary>
-        public string ApiVersion { get; private set; }
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -75,6 +72,11 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
+        /// Gets the IGraphQueryOperations.
+        /// </summary>
+        public virtual IGraphQueryOperations GraphQuery { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ResourceGraphClient class.
@@ -318,8 +320,8 @@ namespace Microsoft.Azure.Management.ResourceGraph
         private void Initialize()
         {
             Operations = new Operations(this);
+            GraphQuery = new GraphQueryOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-04-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -336,6 +338,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -351,6 +354,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Facet>("resultType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Facet>("resultType"));
             CustomInitialize();
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
         /// <summary>
@@ -384,10 +388,6 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// </return>
         public async Task<AzureOperationResponse<QueryResponse>> ResourcesWithHttpMessagesAsync(QueryRequest query, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
-            }
             if (query == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "query");
@@ -396,6 +396,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
             {
                 query.Validate();
             }
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -403,6 +404,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("query", query);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Resources", tracingParameters);
@@ -411,9 +413,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
             var _baseUrl = BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.ResourceGraph/resources").ToString();
             List<string> _queryParameters = new List<string>();
-            if (ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

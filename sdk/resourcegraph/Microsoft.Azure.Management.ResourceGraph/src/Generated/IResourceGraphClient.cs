@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Azure Resource Graph API Reference
     /// </summary>
     public partial interface IResourceGraphClient : System.IDisposable
     {
@@ -45,9 +44,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// API version.
+        /// The Azure subscription Id.
         /// </summary>
-        string ApiVersion { get; }
+        string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -72,6 +71,11 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IGraphQueryOperations.
+        /// </summary>
+        IGraphQueryOperations GraphQuery { get; }
 
         /// <summary>
         /// Queries the resources managed by Azure Resource Manager for all

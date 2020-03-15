@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("ResourceGraph", "GraphQuery", "2018-09-01-preview"),
                 new Tuple<string, string, string>("ResourceGraph", "Operations", "2019-04-01"),
                 new Tuple<string, string, string>("ResourceGraph", "Resources", "2019-04-01"),
               }.AsEnumerable();
