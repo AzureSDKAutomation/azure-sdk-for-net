@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using Microsoft.Rest.Azure;
     using Models;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Azure Resource Graph API Reference
@@ -69,24 +65,14 @@ namespace Microsoft.Azure.Management.ResourceGraph
 
 
         /// <summary>
+        /// Gets the IResourcesOperations.
+        /// </summary>
+        IResourcesOperations Resources { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
-
-        /// <summary>
-        /// Queries the resources managed by Azure Resource Manager for all
-        /// subscriptions specified in the request.
-        /// </summary>
-        /// <param name='query'>
-        /// Request specifying query and its options.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<AzureOperationResponse<QueryResponse>> ResourcesWithHttpMessagesAsync(QueryRequest query, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

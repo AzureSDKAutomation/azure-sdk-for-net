@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for ResourceGraphClient.
+    /// Extension methods for ResourcesOperations.
     /// </summary>
-    public static partial class ResourceGraphClientExtensions
+    public static partial class ResourcesOperationsExtensions
     {
             /// <summary>
             /// Queries the resources managed by Azure Resource Manager for all
@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
             /// <param name='query'>
             /// Request specifying query and its options.
             /// </param>
-            public static QueryResponse Resources(this IResourceGraphClient operations, QueryRequest query)
+            public static QueryResponse Query(this IResourcesOperations operations, QueryRequest query)
             {
-                return operations.ResourcesAsync(query).GetAwaiter().GetResult();
+                return operations.QueryAsync(query).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<QueryResponse> ResourcesAsync(this IResourceGraphClient operations, QueryRequest query, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<QueryResponse> QueryAsync(this IResourcesOperations operations, QueryRequest query, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ResourcesWithHttpMessagesAsync(query, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.QueryWithHttpMessagesAsync(query, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
