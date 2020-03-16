@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// BindingsOperations operations.
+    /// CustomDomainsOperations operations.
     /// </summary>
-    internal partial class BindingsOperations : IServiceOperations<AppPlatformManagementClient>, IBindingsOperations
+    internal partial class CustomDomainsOperations : IServiceOperations<AppPlatformManagementClient>, ICustomDomainsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the BindingsOperations class.
+        /// Initializes a new instance of the CustomDomainsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal BindingsOperations(AppPlatformManagementClient client)
+        internal CustomDomainsOperations(AppPlatformManagementClient client)
         {
             if (client == null)
             {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         public AppPlatformManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get a Binding and its properties.
+        /// Get the custom domain of one lifecycle application.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='appName'>
         /// The name of the App resource.
         /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
+        /// <param name='domainName'>
+        /// The name of the custom domain resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BindingResource>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CustomDomainResource>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string domainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "appName");
             }
-            if (bindingName == null)
+            if (domainName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "bindingName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -119,18 +119,18 @@ namespace Microsoft.Azure.Management.AppPlatform
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("appName", appName);
-                tracingParameters.Add("bindingName", bindingName);
+                tracingParameters.Add("domainName", domainName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
             _url = _url.Replace("{appName}", System.Uri.EscapeDataString(appName));
-            _url = _url.Replace("{bindingName}", System.Uri.EscapeDataString(bindingName));
+            _url = _url.Replace("{domainName}", System.Uri.EscapeDataString(domainName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<BindingResource>();
+            var _result = new AzureOperationResponse<CustomDomainResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<BindingResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CustomDomainResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -262,8 +262,11 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Create a new Binding or update an exiting Binding.
+        /// Create or update custom domain of one lifecycle application.
         /// </summary>
+        /// <param name='domainResource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
@@ -274,11 +277,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='appName'>
         /// The name of the App resource.
         /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
-        /// </param>
-        /// <param name='bindingResource'>
-        /// Parameters for the create or update operation
+        /// <param name='domainName'>
+        /// The name of the custom domain resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -301,8 +301,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BindingResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CustomDomainResource>> CreateOrUpdateWithHttpMessagesAsync(CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName, string domainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (domainResource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainResource");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -319,13 +323,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "appName");
             }
-            if (bindingName == null)
+            if (domainName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "bindingName");
-            }
-            if (bindingResource == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "bindingResource");
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -334,22 +334,22 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("domainResource", domainResource);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("appName", appName);
-                tracingParameters.Add("bindingName", bindingName);
-                tracingParameters.Add("bindingResource", bindingResource);
+                tracingParameters.Add("domainName", domainName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
             _url = _url.Replace("{appName}", System.Uri.EscapeDataString(appName));
-            _url = _url.Replace("{bindingName}", System.Uri.EscapeDataString(bindingName));
+            _url = _url.Replace("{domainName}", System.Uri.EscapeDataString(domainName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -393,9 +393,9 @@ namespace Microsoft.Azure.Management.AppPlatform
 
             // Serialize Request
             string _requestContent = null;
-            if(bindingResource != null)
+            if(domainResource != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(bindingResource, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(domainResource, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<BindingResource>();
+            var _result = new AzureOperationResponse<CustomDomainResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<BindingResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CustomDomainResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Operation to delete a Binding.
+        /// Delete the custom domain of one lifecycle application.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -499,8 +499,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='appName'>
         /// The name of the App resource.
         /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
+        /// <param name='domainName'>
+        /// The name of the custom domain resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -511,6 +511,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -520,7 +523,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CustomDomainResource>> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string domainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -538,9 +541,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "appName");
             }
-            if (bindingName == null)
+            if (domainName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "bindingName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -552,18 +555,18 @@ namespace Microsoft.Azure.Management.AppPlatform
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("appName", appName);
-                tracingParameters.Add("bindingName", bindingName);
+                tracingParameters.Add("domainName", domainName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
             _url = _url.Replace("{appName}", System.Uri.EscapeDataString(appName));
-            _url = _url.Replace("{bindingName}", System.Uri.EscapeDataString(bindingName));
+            _url = _url.Replace("{domainName}", System.Uri.EscapeDataString(domainName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -662,12 +665,48 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse();
+            var _result = new AzureOperationResponse<CustomDomainResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CustomDomainResource>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 204)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CustomDomainResource>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {
@@ -677,8 +716,11 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Operation to update an exiting Binding.
+        /// Update custom domain of one lifecycle application.
         /// </summary>
+        /// <param name='domainResource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
@@ -689,11 +731,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='appName'>
         /// The name of the App resource.
         /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
-        /// </param>
-        /// <param name='bindingResource'>
-        /// Parameters for the update operation
+        /// <param name='domainName'>
+        /// The name of the custom domain resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -716,8 +755,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BindingResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CustomDomainResource>> PatchWithHttpMessagesAsync(CustomDomainResource domainResource, string resourceGroupName, string serviceName, string appName, string domainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (domainResource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainResource");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -734,13 +777,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "appName");
             }
-            if (bindingName == null)
+            if (domainName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "bindingName");
-            }
-            if (bindingResource == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "bindingResource");
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -749,22 +788,22 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("domainResource", domainResource);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("appName", appName);
-                tracingParameters.Add("bindingName", bindingName);
-                tracingParameters.Add("bindingResource", bindingResource);
+                tracingParameters.Add("domainName", domainName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Patch", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
             _url = _url.Replace("{appName}", System.Uri.EscapeDataString(appName));
-            _url = _url.Replace("{bindingName}", System.Uri.EscapeDataString(bindingName));
+            _url = _url.Replace("{domainName}", System.Uri.EscapeDataString(domainName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -808,9 +847,9 @@ namespace Microsoft.Azure.Management.AppPlatform
 
             // Serialize Request
             string _requestContent = null;
-            if(bindingResource != null)
+            if(domainResource != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(bindingResource, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(domainResource, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -869,7 +908,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<BindingResource>();
+            var _result = new AzureOperationResponse<CustomDomainResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -882,7 +921,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<BindingResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CustomDomainResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -902,7 +941,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Handles requests to list all resources in an App.
+        /// List the custom domains of one lifecycle application.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -913,6 +952,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='appName'>
         /// The name of the App resource.
+        /// </param>
+        /// <param name='domainName'>
+        /// The name of the custom domain resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -935,7 +977,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<BindingResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CustomDomainResourceCollection>> ListWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string domainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -953,6 +995,10 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "appName");
             }
+            if (domainName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainName");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -963,16 +1009,18 @@ namespace Microsoft.Azure.Management.AppPlatform
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("appName", appName);
+                tracingParameters.Add("domainName", domainName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
             _url = _url.Replace("{appName}", System.Uri.EscapeDataString(appName));
+            _url = _url.Replace("{domainName}", System.Uri.EscapeDataString(domainName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -1071,7 +1119,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<BindingResource>>();
+            var _result = new AzureOperationResponse<CustomDomainResourceCollection>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1084,7 +1132,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BindingResource>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CustomDomainResourceCollection>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1104,10 +1152,22 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Handles requests to list all resources in an App.
+        /// Check the resource name is valid as well as not in use.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='parameters'>
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the Service resource.
+        /// </param>
+        /// <param name='appName'>
+        /// The name of the App resource.
+        /// </param>
+        /// <param name='domainName'>
+        /// The name of the custom domain resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1130,11 +1190,35 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<BindingResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NameAvailability>> CheckNameAvailabilityWithHttpMessagesAsync(NameAvailabilityParameters parameters, string resourceGroupName, string serviceName, string appName, string domainName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (nextPageLink == null)
+            if (parameters == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (serviceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "serviceName");
+            }
+            if (appName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "appName");
+            }
+            if (domainName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "domainName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1143,14 +1227,27 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("serviceName", serviceName);
+                tracingParameters.Add("appName", appName);
+                tracingParameters.Add("domainName", domainName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "CheckNameAvailability", tracingParameters);
             }
             // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/checknameavailability").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
+            _url = _url.Replace("{appName}", System.Uri.EscapeDataString(appName));
+            _url = _url.Replace("{domainName}", System.Uri.EscapeDataString(domainName));
             List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -1158,7 +1255,7 @@ namespace Microsoft.Azure.Management.AppPlatform
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -1189,6 +1286,12 @@ namespace Microsoft.Azure.Management.AppPlatform
 
             // Serialize Request
             string _requestContent = null;
+            if(parameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {
@@ -1244,7 +1347,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<BindingResource>>();
+            var _result = new AzureOperationResponse<NameAvailability>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1257,7 +1360,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BindingResource>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<NameAvailability>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
