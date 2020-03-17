@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Binding or update an exiting Binding.
         /// </summary>
+        /// <param name='bindingResource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -72,9 +75,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='bindingName'>
         /// The name of the Binding resource.
-        /// </param>
-        /// <param name='bindingResource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BindingResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BindingResource>> CreateOrUpdateWithHttpMessagesAsync(BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Operation to delete a Binding.
         /// </summary>
@@ -125,6 +125,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Binding.
         /// </summary>
+        /// <param name='bindingResource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -138,9 +141,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='bindingName'>
         /// The name of the Binding resource.
-        /// </param>
-        /// <param name='bindingResource'>
-        /// Parameters for the update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BindingResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BindingResource>> UpdateWithHttpMessagesAsync(BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Handles requests to list all resources in an App.
         /// </summary>

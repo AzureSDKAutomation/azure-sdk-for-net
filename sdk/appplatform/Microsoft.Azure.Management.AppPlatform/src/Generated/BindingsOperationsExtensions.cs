@@ -81,6 +81,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='bindingResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -94,12 +97,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='bindingName'>
             /// The name of the Binding resource.
             /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static BindingResource CreateOrUpdate(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource))
+            public static BindingResource CreateOrUpdate(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, serviceName, appName, bindingName, bindingResource).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -108,6 +108,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='bindingResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -121,15 +124,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='bindingName'>
             /// The name of the Binding resource.
             /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BindingResource> CreateOrUpdateAsync(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BindingResource> CreateOrUpdateAsync(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, bindingName, bindingResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -192,6 +192,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='bindingResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -205,12 +208,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='bindingName'>
             /// The name of the Binding resource.
             /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the update operation
-            /// </param>
-            public static BindingResource Update(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource))
+            public static BindingResource Update(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName)
             {
-                return operations.UpdateAsync(resourceGroupName, serviceName, appName, bindingName, bindingResource).GetAwaiter().GetResult();
+                return operations.UpdateAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -219,6 +219,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='bindingResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -232,15 +235,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='bindingName'>
             /// The name of the Binding resource.
             /// </param>
-            /// <param name='bindingResource'>
-            /// Parameters for the update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BindingResource> UpdateAsync(this IBindingsOperations operations, string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BindingResource> UpdateAsync(this IBindingsOperations operations, BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, bindingName, bindingResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(bindingResource, resourceGroupName, serviceName, appName, bindingName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

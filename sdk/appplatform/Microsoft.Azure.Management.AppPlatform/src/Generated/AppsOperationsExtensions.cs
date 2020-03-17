@@ -81,6 +81,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -91,12 +94,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static AppResource CreateOrUpdate(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource))
+            public static AppResource CreateOrUpdate(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, serviceName, appName, appResource).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(appResource, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -105,6 +105,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -115,15 +118,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppResource> CreateOrUpdateAsync(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppResource> CreateOrUpdateAsync(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, appResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(appResource, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,6 +180,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -190,12 +193,21 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the update operation
+            /// <param name='xMsIdentityUrl'>
+            /// The URL to the data plane of MSI for the given resource
             /// </param>
-            public static AppResource Update(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource))
+            /// <param name='xMsIdentityPrincipalId'>
+            /// The object id of the identity resource
+            /// </param>
+            /// <param name='xMsHomeTenantId'>
+            /// The tenant id of the resource
+            /// </param>
+            /// <param name='xMsClientTenantId'>
+            /// he tenant id of the caller that made the request to ARM
+            /// </param>
+            public static AppResource Update(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName, string xMsIdentityUrl = default(string), string xMsIdentityPrincipalId = default(string), string xMsHomeTenantId = default(string), string xMsClientTenantId = default(string))
             {
-                return operations.UpdateAsync(resourceGroupName, serviceName, appName, appResource).GetAwaiter().GetResult();
+                return operations.UpdateAsync(appResource, resourceGroupName, serviceName, appName, xMsIdentityUrl, xMsIdentityPrincipalId, xMsHomeTenantId, xMsClientTenantId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -204,6 +216,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -214,15 +229,24 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the update operation
+            /// <param name='xMsIdentityUrl'>
+            /// The URL to the data plane of MSI for the given resource
+            /// </param>
+            /// <param name='xMsIdentityPrincipalId'>
+            /// The object id of the identity resource
+            /// </param>
+            /// <param name='xMsHomeTenantId'>
+            /// The tenant id of the resource
+            /// </param>
+            /// <param name='xMsClientTenantId'>
+            /// he tenant id of the caller that made the request to ARM
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppResource> UpdateAsync(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppResource> UpdateAsync(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName, string xMsIdentityUrl = default(string), string xMsIdentityPrincipalId = default(string), string xMsHomeTenantId = default(string), string xMsClientTenantId = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, appResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(appResource, resourceGroupName, serviceName, appName, xMsIdentityUrl, xMsIdentityPrincipalId, xMsHomeTenantId, xMsClientTenantId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -326,6 +350,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -336,12 +363,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static AppResource BeginCreateOrUpdate(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource))
+            public static AppResource BeginCreateOrUpdate(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, serviceName, appName, appResource).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(appResource, resourceGroupName, serviceName, appName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -350,6 +374,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -360,15 +387,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppResource> BeginCreateOrUpdateAsync(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppResource> BeginCreateOrUpdateAsync(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, appResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(appResource, resourceGroupName, serviceName, appName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -380,6 +404,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -390,12 +417,21 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the update operation
+            /// <param name='xMsIdentityUrl'>
+            /// The URL to the data plane of MSI for the given resource
             /// </param>
-            public static AppResource BeginUpdate(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource))
+            /// <param name='xMsIdentityPrincipalId'>
+            /// The object id of the identity resource
+            /// </param>
+            /// <param name='xMsHomeTenantId'>
+            /// The tenant id of the resource
+            /// </param>
+            /// <param name='xMsClientTenantId'>
+            /// he tenant id of the caller that made the request to ARM
+            /// </param>
+            public static AppResource BeginUpdate(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName, string xMsIdentityUrl = default(string), string xMsIdentityPrincipalId = default(string), string xMsHomeTenantId = default(string), string xMsClientTenantId = default(string))
             {
-                return operations.BeginUpdateAsync(resourceGroupName, serviceName, appName, appResource).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(appResource, resourceGroupName, serviceName, appName, xMsIdentityUrl, xMsIdentityPrincipalId, xMsHomeTenantId, xMsClientTenantId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -404,6 +440,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='appResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -414,15 +453,24 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='appName'>
             /// The name of the App resource.
             /// </param>
-            /// <param name='appResource'>
-            /// Parameters for the update operation
+            /// <param name='xMsIdentityUrl'>
+            /// The URL to the data plane of MSI for the given resource
+            /// </param>
+            /// <param name='xMsIdentityPrincipalId'>
+            /// The object id of the identity resource
+            /// </param>
+            /// <param name='xMsHomeTenantId'>
+            /// The tenant id of the resource
+            /// </param>
+            /// <param name='xMsClientTenantId'>
+            /// he tenant id of the caller that made the request to ARM
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppResource> BeginUpdateAsync(this IAppsOperations operations, string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppResource> BeginUpdateAsync(this IAppsOperations operations, AppResource appResource, string resourceGroupName, string serviceName, string appName, string xMsIdentityUrl = default(string), string xMsIdentityPrincipalId = default(string), string xMsHomeTenantId = default(string), string xMsClientTenantId = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, appResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(appResource, resourceGroupName, serviceName, appName, xMsIdentityUrl, xMsIdentityPrincipalId, xMsHomeTenantId, xMsClientTenantId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

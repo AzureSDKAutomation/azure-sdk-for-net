@@ -35,16 +35,19 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="cpu">Required CPU</param>
         /// <param name="memoryInGB">Required Memory size in GB</param>
         /// <param name="jvmOptions">JVM parameter</param>
+        /// <param name="netCoreMainEntryPath">The path to the .NET executable
+        /// relative to zip root</param>
         /// <param name="instanceCount">Instance count</param>
         /// <param name="environmentVariables">Collection of environment
         /// variables</param>
         /// <param name="runtimeVersion">Runtime version. Possible values
-        /// include: 'Java_8', 'Java_11'</param>
-        public DeploymentSettings(int? cpu = default(int?), int? memoryInGB = default(int?), string jvmOptions = default(string), int? instanceCount = default(int?), IDictionary<string, string> environmentVariables = default(IDictionary<string, string>), string runtimeVersion = default(string))
+        /// include: 'Java_8', 'Java_11', 'NetCore_31'</param>
+        public DeploymentSettings(int? cpu = default(int?), int? memoryInGB = default(int?), string jvmOptions = default(string), string netCoreMainEntryPath = default(string), int? instanceCount = default(int?), IDictionary<string, string> environmentVariables = default(IDictionary<string, string>), string runtimeVersion = default(string))
         {
             Cpu = cpu;
             MemoryInGB = memoryInGB;
             JvmOptions = jvmOptions;
+            NetCoreMainEntryPath = netCoreMainEntryPath;
             InstanceCount = instanceCount;
             EnvironmentVariables = environmentVariables;
             RuntimeVersion = runtimeVersion;
@@ -75,6 +78,12 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public string JvmOptions { get; set; }
 
         /// <summary>
+        /// Gets or sets the path to the .NET executable relative to zip root
+        /// </summary>
+        [JsonProperty(PropertyName = "netCoreMainEntryPath")]
+        public string NetCoreMainEntryPath { get; set; }
+
+        /// <summary>
         /// Gets or sets instance count
         /// </summary>
         [JsonProperty(PropertyName = "instanceCount")]
@@ -88,7 +97,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 
         /// <summary>
         /// Gets or sets runtime version. Possible values include: 'Java_8',
-        /// 'Java_11'
+        /// 'Java_11', 'NetCore_31'
         /// </summary>
         [JsonProperty(PropertyName = "runtimeVersion")]
         public string RuntimeVersion { get; set; }

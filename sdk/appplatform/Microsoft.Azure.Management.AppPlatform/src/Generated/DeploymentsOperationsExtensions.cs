@@ -83,6 +83,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -96,12 +99,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static DeploymentResource CreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource))
+            public static DeploymentResource CreateOrUpdate(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -110,6 +110,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -123,15 +126,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentResource> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentResource> CreateOrUpdateAsync(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -194,6 +194,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -207,12 +210,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the update operation
-            /// </param>
-            public static DeploymentResource Update(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource))
+            public static DeploymentResource Update(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName)
             {
-                return operations.UpdateAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource).GetAwaiter().GetResult();
+                return operations.UpdateAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -221,6 +221,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -234,15 +237,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentResource> UpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentResource> UpdateAsync(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -345,6 +345,54 @@ namespace Microsoft.Azure.Management.AppPlatform
             public static async Task<IPage<DeploymentResource>> ListClusterAllDeploymentsAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, IList<string> version = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListClusterAllDeploymentsWithHttpMessagesAsync(resourceGroupName, serviceName, version, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the Deployment resource.
+            /// </param>
+            public static AutoScaleSkuCollection GetSkus(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName)
+            {
+                return operations.GetSkusAsync(resourceGroupName, serviceName, appName, deploymentName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the Deployment resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AutoScaleSkuCollection> GetSkusAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSkusWithHttpMessagesAsync(resourceGroupName, serviceName, appName, deploymentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -563,6 +611,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -576,12 +627,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the create or update operation
-            /// </param>
-            public static DeploymentResource BeginCreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource))
+            public static DeploymentResource BeginCreateOrUpdate(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -590,6 +638,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the create or update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -603,15 +654,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the create or update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentResource> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentResource> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -623,6 +671,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -636,12 +687,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the update operation
-            /// </param>
-            public static DeploymentResource BeginUpdate(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource))
+            public static DeploymentResource BeginUpdate(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName)
             {
-                return operations.BeginUpdateAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -650,6 +698,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='deploymentResource'>
+            /// Parameters for the update operation
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
@@ -663,15 +714,12 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='deploymentName'>
             /// The name of the Deployment resource.
             /// </param>
-            /// <param name='deploymentResource'>
-            /// Parameters for the update operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeploymentResource> BeginUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, DeploymentResource deploymentResource = default(DeploymentResource), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeploymentResource> BeginUpdateAsync(this IDeploymentsOperations operations, DeploymentResource deploymentResource, string resourceGroupName, string serviceName, string appName, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, appName, deploymentName, deploymentResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(deploymentResource, resourceGroupName, serviceName, appName, deploymentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

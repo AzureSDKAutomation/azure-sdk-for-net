@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="appName">App name of the deployment</param>
         /// <param name="provisioningState">Provisioning state of the
         /// Deployment. Possible values include: 'Creating', 'Updating',
-        /// 'Succeeded', 'Failed'</param>
+        /// 'Succeeded', 'Failed', 'Deleting'</param>
         /// <param name="deploymentSettings">Deployment settings of the
         /// Deployment</param>
         /// <param name="status">Status of the Deployment. Possible values
         /// include: 'Unknown', 'Stopped', 'Running', 'Failed', 'Allocating',
-        /// 'Upgrading', 'Compiling'</param>
+        /// 'Upgrading', 'Compiling', 'Processing'</param>
         /// <param name="active">Indicates whether the Deployment is
         /// active</param>
         /// <param name="createdTime">Date time when the resource is
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 
         /// <summary>
         /// Gets provisioning state of the Deployment. Possible values include:
-        /// 'Creating', 'Updating', 'Succeeded', 'Failed'
+        /// 'Creating', 'Updating', 'Succeeded', 'Failed', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <summary>
         /// Gets status of the Deployment. Possible values include: 'Unknown',
         /// 'Stopped', 'Running', 'Failed', 'Allocating', 'Upgrading',
-        /// 'Compiling'
+        /// 'Compiling', 'Processing'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }

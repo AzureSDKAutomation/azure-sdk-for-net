@@ -264,6 +264,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new Binding or update an exiting Binding.
         /// </summary>
+        /// <param name='bindingResource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
@@ -276,9 +279,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='bindingName'>
         /// The name of the Binding resource.
-        /// </param>
-        /// <param name='bindingResource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -301,8 +301,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BindingResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BindingResource>> CreateOrUpdateWithHttpMessagesAsync(BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (bindingResource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "bindingResource");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -675,6 +679,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting Binding.
         /// </summary>
+        /// <param name='bindingResource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
         /// this value from the Azure Resource Manager API or the portal.
@@ -687,9 +694,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='bindingName'>
         /// The name of the Binding resource.
-        /// </param>
-        /// <param name='bindingResource'>
-        /// Parameters for the update operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -712,8 +716,12 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BindingResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, BindingResource bindingResource = default(BindingResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BindingResource>> UpdateWithHttpMessagesAsync(BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (bindingResource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "bindingResource");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");

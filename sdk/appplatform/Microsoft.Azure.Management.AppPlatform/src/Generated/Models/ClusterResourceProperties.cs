@@ -36,16 +36,19 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="configServerProperties">Config server git properties
         /// of the Service</param>
         /// <param name="trace">Trace properties of the Service</param>
+        /// <param name="vNet">VNet injection properties of the Service</param>
         /// <param name="version">Version of the Service</param>
         /// <param name="serviceId">ServiceInstanceEntity GUID which uniquely
         /// identifies a created resource</param>
-        public ClusterResourceProperties(string provisioningState = default(string), ConfigServerProperties configServerProperties = default(ConfigServerProperties), TraceProperties trace = default(TraceProperties), int? version = default(int?), string serviceId = default(string))
+        public ClusterResourceProperties(string provisioningState = default(string), ConfigServerProperties configServerProperties = default(ConfigServerProperties), TraceProperties trace = default(TraceProperties), VNetProperties vNet = default(VNetProperties), int? version = default(int?), string serviceId = default(string), EncryptionProperties encryption = default(EncryptionProperties))
         {
             ProvisioningState = provisioningState;
             ConfigServerProperties = configServerProperties;
             Trace = trace;
+            VNet = vNet;
             Version = version;
             ServiceId = serviceId;
+            Encryption = encryption;
             CustomInit();
         }
 
@@ -75,6 +78,12 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public TraceProperties Trace { get; set; }
 
         /// <summary>
+        /// Gets or sets vNet injection properties of the Service
+        /// </summary>
+        [JsonProperty(PropertyName = "vNet")]
+        public VNetProperties VNet { get; set; }
+
+        /// <summary>
         /// Gets version of the Service
         /// </summary>
         [JsonProperty(PropertyName = "version")]
@@ -86,6 +95,11 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "serviceId")]
         public string ServiceId { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "encryption")]
+        public EncryptionProperties Encryption { get; set; }
 
         /// <summary>
         /// Validate the object.

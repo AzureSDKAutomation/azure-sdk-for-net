@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new App or update an exiting App.
         /// </summary>
+        /// <param name='appResource'>
+        /// Parameters for the create or update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -69,9 +72,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </param>
         /// <param name='appName'>
         /// The name of the App resource.
-        /// </param>
-        /// <param name='appResource'>
-        /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AppResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AppResource>> CreateOrUpdateWithHttpMessagesAsync(AppResource appResource, string resourceGroupName, string serviceName, string appName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Operation to delete an App.
         /// </summary>
@@ -119,6 +119,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Operation to update an exiting App.
         /// </summary>
+        /// <param name='appResource'>
+        /// Parameters for the update operation
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -130,8 +133,17 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='appName'>
         /// The name of the App resource.
         /// </param>
-        /// <param name='appResource'>
-        /// Parameters for the update operation
+        /// <param name='xMsIdentityUrl'>
+        /// The URL to the data plane of MSI for the given resource
+        /// </param>
+        /// <param name='xMsIdentityPrincipalId'>
+        /// The object id of the identity resource
+        /// </param>
+        /// <param name='xMsHomeTenantId'>
+        /// The tenant id of the resource
+        /// </param>
+        /// <param name='xMsClientTenantId'>
+        /// he tenant id of the caller that made the request to ARM
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -148,7 +160,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AppResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AppResource>> UpdateWithHttpMessagesAsync(AppResource appResource, string resourceGroupName, string serviceName, string appName, string xMsIdentityUrl = default(string), string xMsIdentityPrincipalId = default(string), string xMsHomeTenantId = default(string), string xMsClientTenantId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Handles requests to list all resources in a Service.
         /// </summary>
@@ -210,39 +222,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <summary>
         /// Create a new App or update an exiting App.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can
-        /// obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='serviceName'>
-        /// The name of the Service resource.
-        /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
-        /// </param>
         /// <param name='appResource'>
         /// Parameters for the create or update operation
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<AppResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Operation to update an exiting App.
-        /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
@@ -254,8 +236,50 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='appName'>
         /// The name of the App resource.
         /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<AppResource>> BeginCreateOrUpdateWithHttpMessagesAsync(AppResource appResource, string resourceGroupName, string serviceName, string appName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Operation to update an exiting App.
+        /// </summary>
         /// <param name='appResource'>
         /// Parameters for the update operation
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the Service resource.
+        /// </param>
+        /// <param name='appName'>
+        /// The name of the App resource.
+        /// </param>
+        /// <param name='xMsIdentityUrl'>
+        /// The URL to the data plane of MSI for the given resource
+        /// </param>
+        /// <param name='xMsIdentityPrincipalId'>
+        /// The object id of the identity resource
+        /// </param>
+        /// <param name='xMsHomeTenantId'>
+        /// The tenant id of the resource
+        /// </param>
+        /// <param name='xMsClientTenantId'>
+        /// he tenant id of the caller that made the request to ARM
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -272,7 +296,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AppResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, AppResource appResource = default(AppResource), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AppResource>> BeginUpdateWithHttpMessagesAsync(AppResource appResource, string resourceGroupName, string serviceName, string appName, string xMsIdentityUrl = default(string), string xMsIdentityPrincipalId = default(string), string xMsHomeTenantId = default(string), string xMsClientTenantId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Handles requests to list all resources in a Service.
         /// </summary>

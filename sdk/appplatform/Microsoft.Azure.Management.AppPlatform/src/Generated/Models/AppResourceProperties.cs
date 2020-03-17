@@ -34,19 +34,23 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="url">URL of the App</param>
         /// <param name="provisioningState">Provisioning state of the App.
         /// Possible values include: 'Succeeded', 'Failed', 'Creating',
-        /// 'Updating'</param>
+        /// 'Updating', 'Deleting'</param>
         /// <param name="activeDeploymentName">Name of the active deployment of
         /// the App</param>
+        /// <param name="fqdn">Fully qualified dns Name.</param>
+        /// <param name="httpsOnly">Indicate if only https is allowed.</param>
         /// <param name="createdTime">Date time when the resource is
         /// created</param>
         /// <param name="temporaryDisk">Temporary disk settings</param>
         /// <param name="persistentDisk">Persistent disk settings</param>
-        public AppResourceProperties(bool? publicProperty = default(bool?), string url = default(string), string provisioningState = default(string), string activeDeploymentName = default(string), System.DateTime? createdTime = default(System.DateTime?), TemporaryDisk temporaryDisk = default(TemporaryDisk), PersistentDisk persistentDisk = default(PersistentDisk))
+        public AppResourceProperties(bool? publicProperty = default(bool?), string url = default(string), string provisioningState = default(string), string activeDeploymentName = default(string), string fqdn = default(string), bool? httpsOnly = default(bool?), System.DateTime? createdTime = default(System.DateTime?), TemporaryDisk temporaryDisk = default(TemporaryDisk), PersistentDisk persistentDisk = default(PersistentDisk))
         {
             PublicProperty = publicProperty;
             Url = url;
             ProvisioningState = provisioningState;
             ActiveDeploymentName = activeDeploymentName;
+            Fqdn = fqdn;
+            HttpsOnly = httpsOnly;
             CreatedTime = createdTime;
             TemporaryDisk = temporaryDisk;
             PersistentDisk = persistentDisk;
@@ -72,7 +76,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 
         /// <summary>
         /// Gets provisioning state of the App. Possible values include:
-        /// 'Succeeded', 'Failed', 'Creating', 'Updating'
+        /// 'Succeeded', 'Failed', 'Creating', 'Updating', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }
@@ -82,6 +86,18 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "activeDeploymentName")]
         public string ActiveDeploymentName { get; set; }
+
+        /// <summary>
+        /// Gets or sets fully qualified dns Name.
+        /// </summary>
+        [JsonProperty(PropertyName = "fqdn")]
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicate if only https is allowed.
+        /// </summary>
+        [JsonProperty(PropertyName = "httpsOnly")]
+        public bool? HttpsOnly { get; set; }
 
         /// <summary>
         /// Gets date time when the resource is created
