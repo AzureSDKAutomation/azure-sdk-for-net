@@ -19,19 +19,24 @@ namespace Microsoft.Azure.Management.Security
     using System.Threading.Tasks;
 
     /// <summary>
-    /// AdaptiveApplicationControlsOperations operations.
+    /// SecureScoreControlsOperations operations.
     /// </summary>
-    public partial interface IAdaptiveApplicationControlsOperations
+    public partial interface ISecureScoreControlsOperations
     {
         /// <summary>
-        /// Gets a list of application control VM/server groups for the
-        /// subscription.
+        /// Get all secure score controls on specific initiatives inside a
+        /// scope
         /// </summary>
-        /// <param name='includePathRecommendations'>
-        /// Include the policy rules
+        /// <param name='scope'>
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
+        /// group (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
-        /// <param name='summary'>
-        /// Return output in a summarized form
+        /// <param name='secureScoreName'>
+        /// The secure score initiative name
+        /// </param>
+        /// <param name='expand'>
+        /// OData expand. Optional. Possible values include: 'definition'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -48,12 +53,18 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AppWhitelistingGroups>> ListWithHttpMessagesAsync(bool? includePathRecommendations = default(bool?), bool? summary = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListBySecureScoreWithHttpMessagesAsync(string scope, string secureScoreName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets an application control VM/server group.
+        /// Get all secure score controls on specific initiatives inside a
+        /// scope
         /// </summary>
-        /// <param name='groupName'>
-        /// Name of an application control VM/server group
+        /// <param name='scope'>
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
+        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// </param>
+        /// <param name='expand'>
+        /// OData expand. Optional. Possible values include: 'definition'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -70,15 +81,13 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AppWhitelistingGroup>> GetWithHttpMessagesAsync(string groupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListWithHttpMessagesAsync(string scope, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update an application control VM/server group
+        /// Get all secure score controls on specific initiatives inside a
+        /// scope
         /// </summary>
-        /// <param name='groupName'>
-        /// Name of an application control VM/server group
-        /// </param>
-        /// <param name='body'>
-        /// The updated VM/server group data
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -95,12 +104,13 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AppWhitelistingGroup>> PutWithHttpMessagesAsync(string groupName, AppWhitelistingPutGroupData body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListBySecureScoreNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete an application control VM/server group
+        /// Get all secure score controls on specific initiatives inside a
+        /// scope
         /// </summary>
-        /// <param name='groupName'>
-        /// Name of an application control VM/server group
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -111,9 +121,12 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string groupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
