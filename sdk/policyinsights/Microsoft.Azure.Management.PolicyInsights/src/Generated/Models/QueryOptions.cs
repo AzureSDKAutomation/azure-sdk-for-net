@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Management.PolicyInsights.Models
         /// <param name="apply">OData apply expression for
         /// aggregations.</param>
         /// <param name="expand">The $expand query parameter. For example, to
-        /// expand policyEvaluationDetails, use
-        /// $expand=policyEvaluationDetails</param>
+        /// expand components use $expand=components</param>
         public QueryOptions(int? top = default(int?), string filter = default(string), string orderBy = default(string), string select = default(string), System.DateTime? fromProperty = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), string apply = default(string), string expand = default(string))
         {
             Top = top;
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Management.PolicyInsights.Models
 
         /// <summary>
         /// Gets or sets the $expand query parameter. For example, to expand
-        /// policyEvaluationDetails, use $expand=policyEvaluationDetails
+        /// components use $expand=components
         /// </summary>
         [Newtonsoft.Json.JsonIgnore]
         public string Expand { get; set; }
