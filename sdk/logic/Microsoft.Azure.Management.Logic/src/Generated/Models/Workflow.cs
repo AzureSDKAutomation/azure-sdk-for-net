@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// <param name="accessEndpoint">Gets the access endpoint.</param>
         /// <param name="endpointsConfiguration">The endpoints
         /// configuration.</param>
-        /// <param name="sku">The sku.</param>
         /// <param name="integrationAccount">The integration account.</param>
-        /// <param name="integrationServiceEnvironment">The integration service environment.</param>
+        /// <param name="integrationServiceEnvironment">The integration service
+        /// environment.</param>
         /// <param name="definition">The definition.</param>
         /// <param name="parameters">The parameters.</param>
-        public Workflow(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), string state = default(string), string version = default(string), string accessEndpoint = default(string), FlowEndpointsConfiguration endpointsConfiguration = default(FlowEndpointsConfiguration), Sku sku = default(Sku), ResourceReference integrationAccount = default(ResourceReference), ResourceReference integrationServiceEnvironment = default(ResourceReference), object definition = default(object), IDictionary<string, WorkflowParameter> parameters = default(IDictionary<string, WorkflowParameter>))
+        public Workflow(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), string state = default(string), string version = default(string), string accessEndpoint = default(string), FlowEndpointsConfiguration endpointsConfiguration = default(FlowEndpointsConfiguration), ResourceReference integrationAccount = default(ResourceReference), ResourceReference integrationServiceEnvironment = default(ResourceReference), object definition = default(object), IDictionary<string, WorkflowParameter> parameters = default(IDictionary<string, WorkflowParameter>))
             : base(id, name, type, location, tags)
         {
             ProvisioningState = provisioningState;
@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Management.Logic.Models
             Version = version;
             AccessEndpoint = accessEndpoint;
             EndpointsConfiguration = endpointsConfiguration;
-            Sku = sku;
             IntegrationAccount = integrationAccount;
             IntegrationServiceEnvironment = integrationServiceEnvironment;
             Definition = definition;
@@ -129,12 +128,6 @@ namespace Microsoft.Azure.Management.Logic.Models
         public FlowEndpointsConfiguration EndpointsConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the sku.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.sku")]
-        public Sku Sku { get; set; }
-
-        /// <summary>
         /// Gets or sets the integration account.
         /// </summary>
         [JsonProperty(PropertyName = "properties.integrationAccount")]
@@ -158,18 +151,5 @@ namespace Microsoft.Azure.Management.Logic.Models
         [JsonProperty(PropertyName = "properties.parameters")]
         public IDictionary<string, WorkflowParameter> Parameters { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Sku != null)
-            {
-                Sku.Validate();
-            }
-        }
     }
 }
