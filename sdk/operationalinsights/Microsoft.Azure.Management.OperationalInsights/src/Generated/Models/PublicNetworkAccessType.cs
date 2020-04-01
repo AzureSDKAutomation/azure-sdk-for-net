@@ -12,16 +12,17 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
 {
 
     /// <summary>
-    /// Defines values for SkuNameEnum.
+    /// Defines values for PublicNetworkAccessType.
     /// </summary>
-    public static class SkuNameEnum
+    public static class PublicNetworkAccessType
     {
-        public const string Free = "Free";
-        public const string Standard = "Standard";
-        public const string Premium = "Premium";
-        public const string PerNode = "PerNode";
-        public const string PerGB2018 = "PerGB2018";
-        public const string Standalone = "Standalone";
-        public const string CapacityReservation = "CapacityReservation";
+        /// <summary>
+        /// Enables connectivity to Log Analytics through public DNS.
+        /// </summary>
+        public const string Enabled = "Enabled";
+        /// <summary>
+        /// Disables public connectivity to Log Analytics through public DNS.
+        /// </summary>
+        public const string Disabled = "Disabled";
     }
 }
