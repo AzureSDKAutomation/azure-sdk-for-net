@@ -108,6 +108,114 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
+            /// Creates or updates a load balancer backend address pool.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='loadBalancerName'>
+            /// The name of the load balancer.
+            /// </param>
+            /// <param name='backendAddressPoolName'>
+            /// The name of the backend address pool.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update load balancer backend address
+            /// pool operation.
+            /// </param>
+            public static BackendAddressPool Put(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters)
+            {
+                return operations.PutAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a load balancer backend address pool.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='loadBalancerName'>
+            /// The name of the load balancer.
+            /// </param>
+            /// <param name='backendAddressPoolName'>
+            /// The name of the backend address pool.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update load balancer backend address
+            /// pool operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BackendAddressPool> PutAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates a load balancer backend address pool.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='loadBalancerName'>
+            /// The name of the load balancer.
+            /// </param>
+            /// <param name='backendAddressPoolName'>
+            /// The name of the backend address pool.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update load balancer backend address
+            /// pool operation.
+            /// </param>
+            public static BackendAddressPool BeginPut(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters)
+            {
+                return operations.BeginPutAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a load balancer backend address pool.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='loadBalancerName'>
+            /// The name of the load balancer.
+            /// </param>
+            /// <param name='backendAddressPoolName'>
+            /// The name of the backend address pool.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update load balancer backend address
+            /// pool operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BackendAddressPool> BeginPutAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginPutWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets all the load balancer backed address pools.
             /// </summary>
             /// <param name='operations'>
