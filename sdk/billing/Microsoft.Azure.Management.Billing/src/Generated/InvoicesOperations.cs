@@ -51,16 +51,20 @@ namespace Microsoft.Azure.Management.Billing
         public BillingManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List of invoices for a billing account.
+        /// Lists the invoices for a billing account for a given start date and end
+        /// date. The operation is supported for billing accounts with agreement type
+        /// Microsoft Partner Agreement or Microsoft Customer Agreement.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// billing Account Id.
+        /// The ID that uniquely identifies a billing account.
         /// </param>
         /// <param name='periodStartDate'>
-        /// Invoice period start date.
+        /// The start date to fetch the invoices. The date should be specified in
+        /// MM-DD-YYYY format.
         /// </param>
         /// <param name='periodEndDate'>
-        /// Invoice period end date.
+        /// The end date to fetch the invoices. The date should be specified in
+        /// MM-DD-YYYY format.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -252,19 +256,23 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// List of invoices for a billing profile.
+        /// Lists the invoices for a billing profile for a given start date and end
+        /// date. The operation is supported for billing accounts with agreement type
+        /// Microsoft Partner Agreement or Microsoft Customer Agreement.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// billing Account Id.
+        /// The ID that uniquely identifies a billing account.
         /// </param>
         /// <param name='billingProfileName'>
-        /// Billing Profile Id.
+        /// The ID that uniquely identifies a billing profile.
         /// </param>
         /// <param name='periodStartDate'>
-        /// Invoice period start date.
+        /// The start date to fetch the invoices. The date should be specified in
+        /// MM-DD-YYYY format.
         /// </param>
         /// <param name='periodEndDate'>
-        /// Invoice period end date.
+        /// The end date to fetch the invoices. The date should be specified in
+        /// MM-DD-YYYY format.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -462,16 +470,17 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Get the invoice by name.
+        /// Gets an invoice by ID. The operation is supported for billing accounts with
+        /// agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// billing Account Id.
+        /// The ID that uniquely identifies a billing account.
         /// </param>
         /// <param name='billingProfileName'>
-        /// Billing Profile Id.
+        /// The ID that uniquely identifies a billing profile.
         /// </param>
         /// <param name='invoiceName'>
-        /// Invoice Id.
+        /// The ID that uniquely identifies an invoice.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -657,14 +666,41 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Lists invoices by billing subscriptions name.
+        /// Gets a URL to download an invoice. The operation is supported for billing
+        /// accounts with agreement type Microsoft Partner Agreement or Microsoft
+        /// Customer Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='billingProfileName'>
+        /// The ID that uniquely identifies a billing profile.
+        /// </param>
+        /// <param name='invoiceName'>
+        /// The ID that uniquely identifies an invoice.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<DownloadUrl,InvoicesDownloadHeaders>> DownloadWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse<DownloadUrl,InvoicesDownloadHeaders> _response = await BeginDownloadWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Lists the invoices for a subscription.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
-        /// billing Account Id.
+        /// The ID that uniquely identifies a billing account.
         /// </param>
         /// <param name='billingSubscriptionName'>
-        /// Billing Subscription Id.
+        /// The ID that uniquely identifies a subscription.
         /// </param>
         /// <param name='periodStartDate'>
         /// Invoice period start date.
@@ -868,17 +904,18 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Gets the invoice by name.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Gets a URL to download an invoice. The operation is supported for billing
+        /// accounts with agreement type Microsoft Partner Agreement or Microsoft
+        /// Customer Agreement.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// billing Account Id.
+        /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='billingSubscriptionName'>
-        /// Billing Subscription Id.
+        /// <param name='billingProfileName'>
+        /// The ID that uniquely identifies a billing profile.
         /// </param>
         /// <param name='invoiceName'>
-        /// Invoice Id.
+        /// The ID that uniquely identifies an invoice.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -901,23 +938,23 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Invoice>> GetByIdWithHttpMessagesAsync(string billingAccountName, string billingSubscriptionName, string invoiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DownloadUrl,InvoicesDownloadHeaders>> BeginDownloadWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (billingAccountName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingAccountName");
             }
-            if (billingSubscriptionName == null)
+            if (billingProfileName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "billingSubscriptionName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "billingProfileName");
             }
             if (invoiceName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "invoiceName");
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -927,16 +964,16 @@ namespace Microsoft.Azure.Management.Billing
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("billingAccountName", billingAccountName);
-                tracingParameters.Add("billingSubscriptionName", billingSubscriptionName);
+                tracingParameters.Add("billingProfileName", billingProfileName);
                 tracingParameters.Add("invoiceName", invoiceName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "GetById", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDownload", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/invoices/{invoiceName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/download").ToString();
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
-            _url = _url.Replace("{billingSubscriptionName}", System.Uri.EscapeDataString(billingSubscriptionName));
+            _url = _url.Replace("{billingProfileName}", System.Uri.EscapeDataString(billingProfileName));
             _url = _url.Replace("{invoiceName}", System.Uri.EscapeDataString(invoiceName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -950,7 +987,7 @@ namespace Microsoft.Azure.Management.Billing
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -1001,7 +1038,7 @@ namespace Microsoft.Azure.Management.Billing
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -1031,7 +1068,7 @@ namespace Microsoft.Azure.Management.Billing
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Invoice>();
+            var _result = new AzureOperationResponse<DownloadUrl,InvoicesDownloadHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1044,7 +1081,7 @@ namespace Microsoft.Azure.Management.Billing
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Invoice>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DownloadUrl>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1056,6 +1093,19 @@ namespace Microsoft.Azure.Management.Billing
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<InvoicesDownloadHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+            }
+            catch (JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -1064,7 +1114,7 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Lists invoices by billing subscriptions name.
+        /// Lists the invoices for a subscription.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='nextPageLink'>

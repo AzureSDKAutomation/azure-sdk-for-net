@@ -14,25 +14,29 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Update operation.
+    /// Defines headers for Download operation.
     /// </summary>
-    public partial class LineOfCreditsUpdateHeaders
+    public partial class BillingSubscriptionInvoicesDownloadHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the LineOfCreditsUpdateHeaders class.
+        /// Initializes a new instance of the
+        /// BillingSubscriptionInvoicesDownloadHeaders class.
         /// </summary>
-        public LineOfCreditsUpdateHeaders()
+        public BillingSubscriptionInvoicesDownloadHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LineOfCreditsUpdateHeaders class.
+        /// Initializes a new instance of the
+        /// BillingSubscriptionInvoicesDownloadHeaders class.
         /// </summary>
-        /// <param name="location">Location URI to poll for result.</param>
-        /// <param name="retryAfter">Recommends the retryable time after
-        /// receiving this.</param>
-        public LineOfCreditsUpdateHeaders(string location = default(string), int? retryAfter = default(int?))
+        /// <param name="location">GET this URL to retrieve the status of the
+        /// asynchronous operation.</param>
+        /// <param name="retryAfter">The amount of delay to use while the
+        /// status of the operation is checked. The value is expressed in
+        /// seconds.</param>
+        public BillingSubscriptionInvoicesDownloadHeaders(string location = default(string), string retryAfter = default(string))
         {
             Location = location;
             RetryAfter = retryAfter;
@@ -45,16 +49,18 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets location URI to poll for result.
+        /// Gets or sets GET this URL to retrieve the status of the
+        /// asynchronous operation.
         /// </summary>
         [JsonProperty(PropertyName = "Location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets recommends the retryable time after receiving this.
+        /// Gets or sets the amount of delay to use while the status of the
+        /// operation is checked. The value is expressed in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter { get; set; }
+        public string RetryAfter { get; set; }
 
     }
 }

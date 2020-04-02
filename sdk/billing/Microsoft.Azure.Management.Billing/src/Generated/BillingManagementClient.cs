@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.Billing
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Version of the API to be used with the client request. The current version
-        /// is 2019-10-01-preview.
+        /// The version of the API to be used with the client request. The current
+        /// version is 2019-10-01-preview.
         /// </summary>
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Azure Subscription ID.
+        /// The ID that uniquely identifies an Azure subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Management.Billing
         public virtual IAvailableBalancesOperations AvailableBalances { get; private set; }
 
         /// <summary>
+        /// Gets the IInstructionsOperations.
+        /// </summary>
+        public virtual IInstructionsOperations Instructions { get; private set; }
+
+        /// <summary>
         /// Gets the IBillingProfilesOperations.
         /// </summary>
         public virtual IBillingProfilesOperations BillingProfiles { get; private set; }
@@ -130,16 +135,41 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the ITransactionsOperations.
         /// </summary>
         public virtual ITransactionsOperations Transactions { get; private set; }
-        
+
+        /// <summary>
+        /// Gets the IDepartmentsOperations.
+        /// </summary>
+        public virtual IDepartmentsOperations Departments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEnrollmentAccountsOperations.
+        /// </summary>
+        public virtual IEnrollmentAccountsOperations EnrollmentAccounts { get; private set; }
+
         /// <summary>
         /// Gets the IInvoicesOperations.
         /// </summary>
         public virtual IInvoicesOperations Invoices { get; private set; }
 
         /// <summary>
+        /// Gets the IBillingAccountInvoicesOperations.
+        /// </summary>
+        public virtual IBillingAccountInvoicesOperations BillingAccountInvoices { get; private set; }
+
+        /// <summary>
+        /// Gets the IEaInvoicesOperations.
+        /// </summary>
+        public virtual IEaInvoicesOperations EaInvoices { get; private set; }
+
+        /// <summary>
         /// Gets the IPriceSheetOperations.
         /// </summary>
         public virtual IPriceSheetOperations PriceSheet { get; private set; }
+
+        /// <summary>
+        /// Gets the IBillingSubscriptionInvoicesOperations.
+        /// </summary>
+        public virtual IBillingSubscriptionInvoicesOperations BillingSubscriptionInvoices { get; private set; }
 
         /// <summary>
         /// Gets the IPoliciesOperations.
@@ -150,6 +180,21 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IBillingPropertyOperations.
         /// </summary>
         public virtual IBillingPropertyOperations BillingProperty { get; private set; }
+
+        /// <summary>
+        /// Gets the ITransfersOperations.
+        /// </summary>
+        public virtual ITransfersOperations Transfers { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartnerTransfersOperations.
+        /// </summary>
+        public virtual IPartnerTransfersOperations PartnerTransfers { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecipientTransfersOperations.
+        /// </summary>
+        public virtual IRecipientTransfersOperations RecipientTransfers { get; private set; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -416,6 +461,7 @@ namespace Microsoft.Azure.Management.Billing
             PaymentMethods = new PaymentMethodsOperations(this);
             Address = new AddressOperations(this);
             AvailableBalances = new AvailableBalancesOperations(this);
+            Instructions = new InstructionsOperations(this);
             BillingProfiles = new BillingProfilesOperations(this);
             Customers = new CustomersOperations(this);
             InvoiceSections = new InvoiceSectionsOperations(this);
@@ -423,10 +469,18 @@ namespace Microsoft.Azure.Management.Billing
             BillingSubscriptions = new BillingSubscriptionsOperations(this);
             Products = new ProductsOperations(this);
             Transactions = new TransactionsOperations(this);
+            Departments = new DepartmentsOperations(this);
+            EnrollmentAccounts = new EnrollmentAccountsOperations(this);
             Invoices = new InvoicesOperations(this);
+            BillingAccountInvoices = new BillingAccountInvoicesOperations(this);
+            EaInvoices = new EaInvoicesOperations(this);
             PriceSheet = new PriceSheetOperations(this);
+            BillingSubscriptionInvoices = new BillingSubscriptionInvoicesOperations(this);
             Policies = new PoliciesOperations(this);
             BillingProperty = new BillingPropertyOperations(this);
+            Transfers = new TransfersOperations(this);
+            PartnerTransfers = new PartnerTransfersOperations(this);
+            RecipientTransfers = new RecipientTransfersOperations(this);
             Operations = new Operations(this);
             BillingRoleDefinitions = new BillingRoleDefinitionsOperations(this);
             BillingRoleAssignments = new BillingRoleAssignmentsOperations(this);
