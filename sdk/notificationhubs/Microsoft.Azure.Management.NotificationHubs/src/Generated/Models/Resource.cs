@@ -35,15 +35,13 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="sku">The sku of the created namespace</param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku))
+        public Resource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Id = id;
             Name = name;
             Type = type;
             Location = location;
             Tags = tags;
-            Sku = sku;
             CustomInit();
         }
 
@@ -82,24 +80,5 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
 
-        /// <summary>
-        /// Gets or sets the sku of the created namespace
-        /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Sku != null)
-            {
-                Sku.Validate();
-            }
-        }
     }
 }

@@ -39,16 +39,16 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="sku">The sku of the created namespace</param>
         /// <param name="namespaceResourceName">The name of the
         /// namespace.</param>
         /// <param name="provisioningState">Provisioning state of the
         /// Namespace.</param>
         /// <param name="region">Specifies the targeted region in which the
         /// namespace should be created. It can be any of the following values:
-        /// Australia EastAustralia SoutheastCentral USEast USEast US 2West
-        /// USNorth Central USSouth Central USEast AsiaSoutheast AsiaBrazil
-        /// SouthJapan EastJapan WestNorth EuropeWest Europe</param>
+        /// Australia East, Australia Southeast, Central US, East US, East US
+        /// 2, West US, North Central US, South Central US, East Asia,
+        /// Southeast Asia, Brazil South, Japan East, Japan West, North Europe,
+        /// West Europe</param>
         /// <param name="metricId">Identifier for Azure Insights
         /// metrics</param>
         /// <param name="status">Status of the namespace. It can be any of
@@ -69,8 +69,9 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="dataCenter">Data center for the namespace</param>
         /// <param name="namespaceType">The namespace type. Possible values
         /// include: 'Messaging', 'NotificationHub'</param>
-        public NamespaceResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string namespaceResourceName = default(string), string provisioningState = default(string), string region = default(string), string metricId = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string subscriptionId = default(string), string scaleUnit = default(string), bool? enabled = default(bool?), bool? critical = default(bool?), string dataCenter = default(string), NamespaceType? namespaceType = default(NamespaceType?))
-            : base(id, name, type, location, tags, sku)
+        /// <param name="sku">The sku of the created namespace</param>
+        public NamespaceResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string namespaceResourceName = default(string), string provisioningState = default(string), string region = default(string), string metricId = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string subscriptionId = default(string), string scaleUnit = default(string), bool? enabled = default(bool?), bool? critical = default(bool?), string dataCenter = default(string), NamespaceType? namespaceType = default(NamespaceType?), Sku sku = default(Sku))
+            : base(id, name, type, location, tags)
         {
             NamespaceResourceName = namespaceResourceName;
             ProvisioningState = provisioningState;
@@ -86,6 +87,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
             Critical = critical;
             DataCenter = dataCenter;
             NamespaceType = namespaceType;
+            Sku = sku;
             CustomInit();
         }
 
@@ -109,9 +111,9 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <summary>
         /// Gets or sets specifies the targeted region in which the namespace
         /// should be created. It can be any of the following values: Australia
-        /// EastAustralia SoutheastCentral USEast USEast US 2West USNorth
-        /// Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan
-        /// EastJapan WestNorth EuropeWest Europe
+        /// East, Australia Southeast, Central US, East US, East US 2, West US,
+        /// North Central US, South Central US, East Asia, Southeast Asia,
+        /// Brazil South, Japan East, Japan West, North Europe, West Europe
         /// </summary>
         [JsonProperty(PropertyName = "properties.region")]
         public string Region { get; set; }
@@ -187,14 +189,23 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         public NamespaceType? NamespaceType { get; set; }
 
         /// <summary>
+        /// Gets or sets the sku of the created namespace
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public Sku Sku { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
+            if (Sku != null)
+            {
+                Sku.Validate();
+            }
         }
     }
 }

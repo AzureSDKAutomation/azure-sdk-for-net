@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="sku">The sku of the created namespace</param>
         /// <param name="notificationHubResourceName">The NotificationHub
         /// name.</param>
         /// <param name="registrationTtl">The RegistrationTtl of the created
@@ -58,8 +57,8 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// NotificationHub</param>
         /// <param name="baiduCredential">The BaiduCredential of the created
         /// NotificationHub</param>
-        public NotificationHubResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string notificationHubResourceName = default(string), string registrationTtl = default(string), IList<SharedAccessAuthorizationRuleProperties> authorizationRules = default(IList<SharedAccessAuthorizationRuleProperties>), ApnsCredential apnsCredential = default(ApnsCredential), WnsCredential wnsCredential = default(WnsCredential), GcmCredential gcmCredential = default(GcmCredential), MpnsCredential mpnsCredential = default(MpnsCredential), AdmCredential admCredential = default(AdmCredential), BaiduCredential baiduCredential = default(BaiduCredential))
-            : base(id, name, type, location, tags, sku)
+        public NotificationHubResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string notificationHubResourceName = default(string), string registrationTtl = default(string), IList<SharedAccessAuthorizationRuleProperties> authorizationRules = default(IList<SharedAccessAuthorizationRuleProperties>), ApnsCredential apnsCredential = default(ApnsCredential), WnsCredential wnsCredential = default(WnsCredential), GcmCredential gcmCredential = default(GcmCredential), MpnsCredential mpnsCredential = default(MpnsCredential), AdmCredential admCredential = default(AdmCredential), BaiduCredential baiduCredential = default(BaiduCredential))
+            : base(id, name, type, location, tags)
         {
             NotificationHubResourceName = notificationHubResourceName;
             RegistrationTtl = registrationTtl;
@@ -132,15 +131,5 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         [JsonProperty(PropertyName = "properties.baiduCredential")]
         public BaiduCredential BaiduCredential { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

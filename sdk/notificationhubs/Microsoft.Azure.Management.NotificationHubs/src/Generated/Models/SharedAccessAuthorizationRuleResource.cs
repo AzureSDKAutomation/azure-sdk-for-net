@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="sku">The sku of the created namespace</param>
         /// <param name="rights">The rights associated with the rule.</param>
         /// <param name="primaryKey">A base64-encoded 256-bit primary key for
         /// signing and validating the SAS token.</param>
@@ -57,8 +56,8 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// rule</param>
         /// <param name="createdTime">The created time for this rule</param>
         /// <param name="revision">The revision number for the rule</param>
-        public SharedAccessAuthorizationRuleResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), IList<AccessRights?> rights = default(IList<AccessRights?>), string primaryKey = default(string), string secondaryKey = default(string), string keyName = default(string), string claimType = default(string), string claimValue = default(string), string modifiedTime = default(string), string createdTime = default(string), int? revision = default(int?))
-            : base(id, name, type, location, tags, sku)
+        public SharedAccessAuthorizationRuleResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AccessRights?> rights = default(IList<AccessRights?>), string primaryKey = default(string), string secondaryKey = default(string), string keyName = default(string), string claimType = default(string), string claimValue = default(string), string modifiedTime = default(string), string createdTime = default(string), int? revision = default(int?))
+            : base(id, name, type, location, tags)
         {
             Rights = rights;
             PrimaryKey = primaryKey;
@@ -133,15 +132,5 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         [JsonProperty(PropertyName = "properties.revision")]
         public int? Revision { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of a CheckAvailibility resource.
+    /// Description of a CheckAvailability resource.
     /// </summary>
     public partial class CheckAvailabilityResult : Resource
     {
@@ -36,12 +36,11 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="sku">The sku of the created namespace</param>
         /// <param name="isAvailiable">True if the name is available and can be
         /// used to create new Namespace/NotificationHub. Otherwise
         /// false.</param>
-        public CheckAvailabilityResult(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), bool? isAvailiable = default(bool?))
-            : base(id, name, type, location, tags, sku)
+        public CheckAvailabilityResult(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? isAvailiable = default(bool?))
+            : base(id, name, type, location, tags)
         {
             IsAvailiable = isAvailiable;
             CustomInit();
@@ -59,15 +58,5 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         [JsonProperty(PropertyName = "isAvailiable")]
         public bool? IsAvailiable { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

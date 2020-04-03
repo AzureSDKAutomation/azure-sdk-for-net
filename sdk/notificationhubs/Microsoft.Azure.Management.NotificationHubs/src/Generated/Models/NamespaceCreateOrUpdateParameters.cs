@@ -10,9 +10,6 @@
 
 namespace Microsoft.Azure.Management.NotificationHubs.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -20,8 +17,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     /// <summary>
     /// Parameters supplied to the CreateOrUpdate Namespace operation.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class NamespaceCreateOrUpdateParameters : Resource
+    public partial class NamespaceCreateOrUpdateParameters : NamespaceResource
     {
         /// <summary>
         /// Initializes a new instance of the NamespaceCreateOrUpdateParameters
@@ -41,16 +37,16 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="type">Resource type</param>
         /// <param name="location">Resource location</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="sku">The sku of the created namespace</param>
-        /// <param name="namespaceCreateOrUpdateParametersName">The name of the
+        /// <param name="namespaceResourceName">The name of the
         /// namespace.</param>
         /// <param name="provisioningState">Provisioning state of the
         /// Namespace.</param>
         /// <param name="region">Specifies the targeted region in which the
         /// namespace should be created. It can be any of the following values:
-        /// Australia EastAustralia SoutheastCentral USEast USEast US 2West
-        /// USNorth Central USSouth Central USEast AsiaSoutheast AsiaBrazil
-        /// SouthJapan EastJapan WestNorth EuropeWest Europe</param>
+        /// Australia East, Australia Southeast, Central US, East US, East US
+        /// 2, West US, North Central US, South Central US, East Asia,
+        /// Southeast Asia, Brazil South, Japan East, Japan West, North Europe,
+        /// West Europe</param>
         /// <param name="metricId">Identifier for Azure Insights
         /// metrics</param>
         /// <param name="status">Status of the namespace. It can be any of
@@ -71,23 +67,10 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <param name="dataCenter">Data center for the namespace</param>
         /// <param name="namespaceType">The namespace type. Possible values
         /// include: 'Messaging', 'NotificationHub'</param>
-        public NamespaceCreateOrUpdateParameters(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string namespaceCreateOrUpdateParametersName = default(string), string provisioningState = default(string), string region = default(string), string metricId = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string subscriptionId = default(string), string scaleUnit = default(string), bool? enabled = default(bool?), bool? critical = default(bool?), string dataCenter = default(string), NamespaceType? namespaceType = default(NamespaceType?))
-            : base(id, name, type, location, tags, sku)
+        /// <param name="sku">The sku of the created namespace</param>
+        public NamespaceCreateOrUpdateParameters(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string namespaceResourceName = default(string), string provisioningState = default(string), string region = default(string), string metricId = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string subscriptionId = default(string), string scaleUnit = default(string), bool? enabled = default(bool?), bool? critical = default(bool?), string dataCenter = default(string), NamespaceType? namespaceType = default(NamespaceType?), Sku sku = default(Sku))
+            : base(id, name, type, location, tags, namespaceResourceName, provisioningState, region, metricId, status, createdAt, updatedAt, serviceBusEndpoint, subscriptionId, scaleUnit, enabled, critical, dataCenter, namespaceType, sku)
         {
-            NamespaceCreateOrUpdateParametersName = namespaceCreateOrUpdateParametersName;
-            ProvisioningState = provisioningState;
-            Region = region;
-            MetricId = metricId;
-            Status = status;
-            CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
-            ServiceBusEndpoint = serviceBusEndpoint;
-            SubscriptionId = subscriptionId;
-            ScaleUnit = scaleUnit;
-            Enabled = enabled;
-            Critical = critical;
-            DataCenter = dataCenter;
-            NamespaceType = namespaceType;
             CustomInit();
         }
 
@@ -97,101 +80,9 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the namespace.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string NamespaceCreateOrUpdateParametersName { get; set; }
-
-        /// <summary>
-        /// Gets or sets provisioning state of the Namespace.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// Gets or sets specifies the targeted region in which the namespace
-        /// should be created. It can be any of the following values: Australia
-        /// EastAustralia SoutheastCentral USEast USEast US 2West USNorth
-        /// Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan
-        /// EastJapan WestNorth EuropeWest Europe
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.region")]
-        public string Region { get; set; }
-
-        /// <summary>
-        /// Gets identifier for Azure Insights metrics
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.metricId")]
-        public string MetricId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets status of the namespace. It can be any of these
-        /// values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.status")]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or sets the time the namespace was created.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.createdAt")]
-        public System.DateTime? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets the time the namespace was updated.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.updatedAt")]
-        public System.DateTime? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets endpoint you can use to perform NotificationHub
-        /// operations.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.serviceBusEndpoint")]
-        public string ServiceBusEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Id of the Azure subscription associated with the
-        /// namespace.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.subscriptionId")]
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets scaleUnit where the namespace gets created
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.scaleUnit")]
-        public string ScaleUnit { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether or not the namespace is currently enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enabled")]
-        public bool? Enabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether or not the namespace is set as Critical.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.critical")]
-        public bool? Critical { get; set; }
-
-        /// <summary>
-        /// Gets or sets data center for the namespace
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.dataCenter")]
-        public string DataCenter { get; set; }
-
-        /// <summary>
-        /// Gets or sets the namespace type. Possible values include:
-        /// 'Messaging', 'NotificationHub'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.namespaceType")]
-        public NamespaceType? NamespaceType { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public override void Validate()
