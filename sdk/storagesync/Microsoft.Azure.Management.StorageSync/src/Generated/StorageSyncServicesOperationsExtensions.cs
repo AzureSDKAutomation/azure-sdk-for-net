@@ -297,5 +297,51 @@ namespace Microsoft.Azure.Management.StorageSync
                 }
             }
 
+            /// <summary>
+            /// Create a new StorageSyncService.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='storageSyncServiceName'>
+            /// Name of Storage Sync Service resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Storage Sync Service resource name.
+            /// </param>
+            public static StorageSyncService BeginCreate(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, StorageSyncServiceCreateParameters parameters)
+            {
+                return operations.BeginCreateAsync(resourceGroupName, storageSyncServiceName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a new StorageSyncService.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='storageSyncServiceName'>
+            /// Name of Storage Sync Service resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Storage Sync Service resource name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageSyncService> BeginCreateAsync(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, StorageSyncServiceCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
     }
 }
