@@ -14,36 +14,24 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// An error response from the service.
+    /// alert meta data property bag
     /// </summary>
-    public partial class ErrorResponse
+    [Newtonsoft.Json.JsonObject("alertsMetaDataProperties")]
+    public partial class AlertsMetaDataProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the AlertsMetaDataProperties class.
         /// </summary>
-        public ErrorResponse()
+        public AlertsMetaDataProperties()
         {
             CustomInit();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
-        /// </summary>
-        public ErrorResponse(ErrorResponseBody error = default(ErrorResponseBody))
-        {
-            Error = error;
-            CustomInit();
-        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseBody Error { get; set; }
 
     }
 }
