@@ -16,36 +16,34 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Rule condition of type application.
+    /// Rule of type application.
     /// </summary>
-    public partial class ApplicationRuleCondition : FirewallPolicyRuleCondition
+    [Newtonsoft.Json.JsonObject("ApplicationRule")]
+    public partial class ApplicationRule : FirewallPolicyRule
     {
         /// <summary>
-        /// Initializes a new instance of the ApplicationRuleCondition class.
+        /// Initializes a new instance of the ApplicationRule class.
         /// </summary>
-        public ApplicationRuleCondition()
+        public ApplicationRule()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ApplicationRuleCondition class.
+        /// Initializes a new instance of the ApplicationRule class.
         /// </summary>
-        /// <param name="name">Name of the rule condition.</param>
-        /// <param name="description">Description of the rule
-        /// condition.</param>
+        /// <param name="name">Name of the rule.</param>
+        /// <param name="description">Description of the rule.</param>
         /// <param name="sourceAddresses">List of source IP addresses for this
         /// rule.</param>
         /// <param name="destinationAddresses">List of destination IP addresses
         /// or Service Tags.</param>
         /// <param name="protocols">Array of Application Protocols.</param>
-        /// <param name="targetFqdns">List of FQDNs for this rule
-        /// condition.</param>
-        /// <param name="fqdnTags">List of FQDN Tags for this rule
-        /// condition.</param>
+        /// <param name="targetFqdns">List of FQDNs for this rule.</param>
+        /// <param name="fqdnTags">List of FQDN Tags for this rule.</param>
         /// <param name="sourceIpGroups">List of source IpGroups for this
         /// rule.</param>
-        public ApplicationRuleCondition(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<FirewallPolicyRuleConditionApplicationProtocol> protocols = default(IList<FirewallPolicyRuleConditionApplicationProtocol>), IList<string> targetFqdns = default(IList<string>), IList<string> fqdnTags = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>))
+        public ApplicationRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<FirewallPolicyRuleApplicationProtocol> protocols = default(IList<FirewallPolicyRuleApplicationProtocol>), IList<string> targetFqdns = default(IList<string>), IList<string> fqdnTags = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>))
             : base(name, description)
         {
             SourceAddresses = sourceAddresses;
@@ -78,16 +76,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets array of Application Protocols.
         /// </summary>
         [JsonProperty(PropertyName = "protocols")]
-        public IList<FirewallPolicyRuleConditionApplicationProtocol> Protocols { get; set; }
+        public IList<FirewallPolicyRuleApplicationProtocol> Protocols { get; set; }
 
         /// <summary>
-        /// Gets or sets list of FQDNs for this rule condition.
+        /// Gets or sets list of FQDNs for this rule.
         /// </summary>
         [JsonProperty(PropertyName = "targetFqdns")]
         public IList<string> TargetFqdns { get; set; }
 
         /// <summary>
-        /// Gets or sets list of FQDN Tags for this rule condition.
+        /// Gets or sets list of FQDN Tags for this rule.
         /// </summary>
         [JsonProperty(PropertyName = "fqdnTags")]
         public IList<string> FqdnTags { get; set; }

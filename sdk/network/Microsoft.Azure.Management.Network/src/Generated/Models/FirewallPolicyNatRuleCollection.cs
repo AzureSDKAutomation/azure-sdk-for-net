@@ -14,38 +14,41 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Firewall Policy NAT Rule.
+    /// Firewall Policy NAT Rule Collection.
     /// </summary>
-    public partial class FirewallPolicyNatRule : FirewallPolicyRule
+    [Newtonsoft.Json.JsonObject("FirewallPolicyNatRuleCollection")]
+    public partial class FirewallPolicyNatRuleCollection : FirewallPolicyRuleCollection
     {
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyNatRule class.
+        /// Initializes a new instance of the FirewallPolicyNatRuleCollection
+        /// class.
         /// </summary>
-        public FirewallPolicyNatRule()
+        public FirewallPolicyNatRuleCollection()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyNatRule class.
+        /// Initializes a new instance of the FirewallPolicyNatRuleCollection
+        /// class.
         /// </summary>
-        /// <param name="name">The name of the rule.</param>
+        /// <param name="name">The name of the rule collection.</param>
         /// <param name="priority">Priority of the Firewall Policy Rule
-        /// resource.</param>
-        /// <param name="action">The action type of a Nat rule.</param>
+        /// Collection resource.</param>
+        /// <param name="action">The action type of a Nat rule
+        /// collection.</param>
         /// <param name="translatedAddress">The translated address for this NAT
-        /// rule.</param>
-        /// <param name="translatedPort">The translated port for this NAT
-        /// rule.</param>
-        /// <param name="ruleCondition">The match conditions for incoming
-        /// traffic.</param>
-        public FirewallPolicyNatRule(string name = default(string), int? priority = default(int?), FirewallPolicyNatRuleAction action = default(FirewallPolicyNatRuleAction), string translatedAddress = default(string), string translatedPort = default(string), FirewallPolicyRuleCondition ruleCondition = default(FirewallPolicyRuleCondition))
+        /// rule collection.</param>
+        /// <param name="translatedPort">The translated port for this NAT rule
+        /// collection.</param>
+        /// <param name="rule">The match rule for incoming traffic.</param>
+        public FirewallPolicyNatRuleCollection(string name = default(string), int? priority = default(int?), FirewallPolicyNatRuleCollectionAction action = default(FirewallPolicyNatRuleCollectionAction), string translatedAddress = default(string), string translatedPort = default(string), FirewallPolicyRule rule = default(FirewallPolicyRule))
             : base(name, priority)
         {
             Action = action;
             TranslatedAddress = translatedAddress;
             TranslatedPort = translatedPort;
-            RuleCondition = ruleCondition;
+            Rule = rule;
             CustomInit();
         }
 
@@ -55,28 +58,28 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the action type of a Nat rule.
+        /// Gets or sets the action type of a Nat rule collection.
         /// </summary>
         [JsonProperty(PropertyName = "action")]
-        public FirewallPolicyNatRuleAction Action { get; set; }
+        public FirewallPolicyNatRuleCollectionAction Action { get; set; }
 
         /// <summary>
-        /// Gets or sets the translated address for this NAT rule.
+        /// Gets or sets the translated address for this NAT rule collection.
         /// </summary>
         [JsonProperty(PropertyName = "translatedAddress")]
         public string TranslatedAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the translated port for this NAT rule.
+        /// Gets or sets the translated port for this NAT rule collection.
         /// </summary>
         [JsonProperty(PropertyName = "translatedPort")]
         public string TranslatedPort { get; set; }
 
         /// <summary>
-        /// Gets or sets the match conditions for incoming traffic.
+        /// Gets or sets the match rule for incoming traffic.
         /// </summary>
-        [JsonProperty(PropertyName = "ruleCondition")]
-        public FirewallPolicyRuleCondition RuleCondition { get; set; }
+        [JsonProperty(PropertyName = "rule")]
+        public FirewallPolicyRule Rule { get; set; }
 
         /// <summary>
         /// Validate the object.

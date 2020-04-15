@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPoliciesOperations FirewallPolicies { get; }
 
         /// <summary>
-        /// Gets the IFirewallPolicyRuleGroupsOperations.
+        /// Gets the IFirewallPolicyRuleCollectionGroupsOperations.
         /// </summary>
-        IFirewallPolicyRuleGroupsOperations FirewallPolicyRuleGroups { get; }
+        IFirewallPolicyRuleCollectionGroupsOperations FirewallPolicyRuleCollectionGroups { get; }
 
         /// <summary>
         /// Gets the IIpAllocationsOperations.
