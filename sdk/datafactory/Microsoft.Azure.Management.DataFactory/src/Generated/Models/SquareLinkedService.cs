@@ -37,10 +37,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         /// <param name="host">The URL of the Square instance. (i.e.
         /// mystore.mysquare.com)</param>
-        /// <param name="clientId">The client ID associated with your Square
-        /// application.</param>
-        /// <param name="redirectUri">The redirect URL assigned in the Square
-        /// application dashboard. (i.e. http://localhost:2500)</param>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
         /// <param name="connectVia">The integration runtime reference.</param>
@@ -48,8 +44,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="parameters">Parameters for linked service.</param>
         /// <param name="annotations">List of tags that can be used for
         /// describing the linked service.</param>
+        /// <param name="clientId">The client ID associated with your Square
+        /// application.</param>
         /// <param name="clientSecret">The client secret associated with your
         /// Square application.</param>
+        /// <param name="accessToken">The access token for OAuth 2.0
+        /// authentication.</param>
+        /// <param name="refreshToken">The OAuth 2.0 refresh token associated
+        /// with your Square application, used to refresh the access token when
+        /// it expires.</param>
+        /// <param name="redirectUri">The redirect URL assigned in the Square
+        /// application dashboard. (i.e. http://localhost:2500)
+        /// [Deprecated]</param>
         /// <param name="useEncryptedEndpoints">Specifies whether the data
         /// source endpoints are encrypted using HTTPS. The default value is
         /// true.</param>
@@ -63,12 +69,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// authentication. Credentials are encrypted using the integration
         /// runtime credential manager. Type: string (or Expression with
         /// resultType string).</param>
-        public SquareLinkedService(object host, object clientId, object redirectUri, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), SecretBase clientSecret = default(SecretBase), object useEncryptedEndpoints = default(object), object useHostVerification = default(object), object usePeerVerification = default(object), object encryptedCredential = default(object))
+        public SquareLinkedService(object host, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), object clientId = default(object), SecretBase clientSecret = default(SecretBase), SecretBase accessToken = default(SecretBase), SecretBase refreshToken = default(SecretBase), object redirectUri = default(object), object useEncryptedEndpoints = default(object), object useHostVerification = default(object), object usePeerVerification = default(object), object encryptedCredential = default(object))
             : base(additionalProperties, connectVia, description, parameters, annotations)
         {
             Host = host;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            AccessToken = accessToken;
+            RefreshToken = refreshToken;
             RedirectUri = redirectUri;
             UseEncryptedEndpoints = useEncryptedEndpoints;
             UseHostVerification = useHostVerification;
@@ -103,8 +111,22 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase ClientSecret { get; set; }
 
         /// <summary>
+        /// Gets or sets the access token for OAuth 2.0 authentication.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.accessToken")]
+        public SecretBase AccessToken { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OAuth 2.0 refresh token associated with your
+        /// Square application, used to refresh the access token when it
+        /// expires.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.refreshToken")]
+        public SecretBase RefreshToken { get; set; }
+
+        /// <summary>
         /// Gets or sets the redirect URL assigned in the Square application
-        /// dashboard. (i.e. http://localhost:2500)
+        /// dashboard. (i.e. http://localhost:2500) [Deprecated]
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.redirectUri")]
         public object RedirectUri { get; set; }
@@ -151,14 +173,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             if (Host == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Host");
-            }
-            if (ClientId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ClientId");
-            }
-            if (RedirectUri == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "RedirectUri");
             }
         }
     }
