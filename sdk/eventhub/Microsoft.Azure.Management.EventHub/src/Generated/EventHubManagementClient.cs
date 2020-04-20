@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.EventHub
     using System.Net.Http;
 
     /// <summary>
-    /// Azure Event Hubs client
+    /// Azure Event Hubs client for managing Event Hubs Cluster, IPFilter Rules
+    /// and VirtualNetworkRules resources.
     /// </summary>
     public partial class EventHubManagementClient : ServiceClient<EventHubManagementClient>, IEventHubManagementClient, IAzureClient
     {
@@ -47,16 +48,16 @@ namespace Microsoft.Azure.Management.EventHub
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// Client API Version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// Subscription credentials that uniquely identify a Microsoft Azure
         /// subscription. The subscription ID forms part of the URI for every service
         /// call.
         /// </summary>
         public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Client API Version.
-        /// </summary>
-        public string ApiVersion { get; private set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -77,9 +78,9 @@ namespace Microsoft.Azure.Management.EventHub
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IOperations.
+        /// Gets the IClustersOperations.
         /// </summary>
-        public virtual IOperations Operations { get; private set; }
+        public virtual IClustersOperations Clusters { get; private set; }
 
         /// <summary>
         /// Gets the INamespacesOperations.
@@ -87,24 +88,14 @@ namespace Microsoft.Azure.Management.EventHub
         public virtual INamespacesOperations Namespaces { get; private set; }
 
         /// <summary>
-        /// Gets the IDisasterRecoveryConfigsOperations.
+        /// Gets the IOperations.
         /// </summary>
-        public virtual IDisasterRecoveryConfigsOperations DisasterRecoveryConfigs { get; private set; }
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IEventHubsOperations.
+        /// Gets the IConfigurationOperations.
         /// </summary>
-        public virtual IEventHubsOperations EventHubs { get; private set; }
-
-        /// <summary>
-        /// Gets the IConsumerGroupsOperations.
-        /// </summary>
-        public virtual IConsumerGroupsOperations ConsumerGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IRegionsOperations.
-        /// </summary>
-        public virtual IRegionsOperations Regions { get; private set; }
+        public virtual IConfigurationOperations Configuration { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the EventHubManagementClient class.
@@ -347,14 +338,12 @@ namespace Microsoft.Azure.Management.EventHub
         /// </summary>
         private void Initialize()
         {
-            Operations = new Operations(this);
+            Clusters = new ClustersOperations(this);
             Namespaces = new NamespacesOperations(this);
-            DisasterRecoveryConfigs = new DisasterRecoveryConfigsOperations(this);
-            EventHubs = new EventHubsOperations(this);
-            ConsumerGroups = new ConsumerGroupsOperations(this);
-            Regions = new RegionsOperations(this);
+            Operations = new Operations(this);
+            Configuration = new ConfigurationOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2017-04-01";
+            ApiVersion = "2018-01-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

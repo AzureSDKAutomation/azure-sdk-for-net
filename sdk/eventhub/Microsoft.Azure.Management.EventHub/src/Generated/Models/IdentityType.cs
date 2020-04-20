@@ -16,43 +16,37 @@ namespace Microsoft.Azure.Management.EventHub.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for KeyType.
+    /// Defines values for IdentityType.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum KeyType
+    public enum IdentityType
     {
-        [EnumMember(Value = "PrimaryKey")]
-        PrimaryKey,
-        [EnumMember(Value = "SecondaryKey")]
-        SecondaryKey
+        [EnumMember(Value = "SystemAssigned")]
+        SystemAssigned
     }
-    internal static class KeyTypeEnumExtension
+    internal static class IdentityTypeEnumExtension
     {
-        internal static string ToSerializedValue(this KeyType? value)
+        internal static string ToSerializedValue(this IdentityType? value)
         {
-            return value == null ? null : ((KeyType)value).ToSerializedValue();
+            return value == null ? null : ((IdentityType)value).ToSerializedValue();
         }
 
-        internal static string ToSerializedValue(this KeyType value)
+        internal static string ToSerializedValue(this IdentityType value)
         {
             switch( value )
             {
-                case KeyType.PrimaryKey:
-                    return "PrimaryKey";
-                case KeyType.SecondaryKey:
-                    return "SecondaryKey";
+                case IdentityType.SystemAssigned:
+                    return "SystemAssigned";
             }
             return null;
         }
 
-        internal static KeyType? ParseKeyType(this string value)
+        internal static IdentityType? ParseIdentityType(this string value)
         {
             switch( value )
             {
-                case "PrimaryKey":
-                    return KeyType.PrimaryKey;
-                case "SecondaryKey":
-                    return KeyType.SecondaryKey;
+                case "SystemAssigned":
+                    return IdentityType.SystemAssigned;
             }
             return null;
         }

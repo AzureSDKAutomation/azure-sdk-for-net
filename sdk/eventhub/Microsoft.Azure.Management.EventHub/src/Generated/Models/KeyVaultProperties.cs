@@ -13,25 +13,28 @@ namespace Microsoft.Azure.Management.EventHub.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class MessagingRegionsProperties
+    /// <summary>
+    /// Properties to configure keyVault Properties
+    /// </summary>
+    public partial class KeyVaultProperties
     {
         /// <summary>
-        /// Initializes a new instance of the MessagingRegionsProperties class.
+        /// Initializes a new instance of the KeyVaultProperties class.
         /// </summary>
-        public MessagingRegionsProperties()
+        public KeyVaultProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MessagingRegionsProperties class.
+        /// Initializes a new instance of the KeyVaultProperties class.
         /// </summary>
-        /// <param name="code">Region code</param>
-        /// <param name="fullName">Full name of the region</param>
-        public MessagingRegionsProperties(string code = default(string), string fullName = default(string))
+        /// <param name="keyName">Name of the Key from KeyVault</param>
+        /// <param name="keyVaultUri">Uri of KeyVault</param>
+        public KeyVaultProperties(string keyName = default(string), string keyVaultUri = default(string))
         {
-            Code = code;
-            FullName = fullName;
+            KeyName = keyName;
+            KeyVaultUri = keyVaultUri;
             CustomInit();
         }
 
@@ -41,16 +44,16 @@ namespace Microsoft.Azure.Management.EventHub.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets region code
+        /// Gets or sets name of the Key from KeyVault
         /// </summary>
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; private set; }
+        [JsonProperty(PropertyName = "keyName")]
+        public string KeyName { get; set; }
 
         /// <summary>
-        /// Gets full name of the region
+        /// Gets or sets uri of KeyVault
         /// </summary>
-        [JsonProperty(PropertyName = "fullName")]
-        public string FullName { get; private set; }
+        [JsonProperty(PropertyName = "keyVaultUri")]
+        public string KeyVaultUri { get; set; }
 
     }
 }

@@ -19,15 +19,23 @@ namespace Microsoft.Azure.Management.EventHub
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RegionsOperations operations.
+    /// ConfigurationOperations operations.
     /// </summary>
-    public partial interface IRegionsOperations
+    public partial interface IConfigurationOperations
     {
         /// <summary>
-        /// Gets the available Regions for a given sku
+        /// Replace all specified Event Hubs Cluster settings with those
+        /// contained in the request body. Leaves the settings not specified in
+        /// the request body unmodified.
         /// </summary>
-        /// <param name='sku'>
-        /// The sku type.
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group within the azure subscription.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the Event Hubs Cluster.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters for creating an Event Hubs Cluster resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,12 +52,17 @@ namespace Microsoft.Azure.Management.EventHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<MessagingRegions>>> ListBySkuWithHttpMessagesAsync(string sku, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ClusterQuotaConfigurationProperties>> PatchWithHttpMessagesAsync(string resourceGroupName, string clusterName, ClusterQuotaConfigurationProperties parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the available Regions for a given sku
+        /// Get all Event Hubs Cluster settings - a collection of key/value
+        /// pairs which represent the quotas and settings imposed on the
+        /// cluster.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group within the azure subscription.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the Event Hubs Cluster.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -66,6 +79,6 @@ namespace Microsoft.Azure.Management.EventHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<MessagingRegions>>> ListBySkuNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ClusterQuotaConfigurationProperties>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
