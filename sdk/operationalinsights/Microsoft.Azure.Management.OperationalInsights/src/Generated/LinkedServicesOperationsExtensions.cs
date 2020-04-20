@@ -30,11 +30,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that will contain the linkedServices
-            /// resource
+            /// The name of the workspace.
             /// </param>
             /// <param name='linkedServiceName'>
             /// Name of the linkedServices resource
@@ -54,11 +53,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that will contain the linkedServices
-            /// resource
+            /// The name of the workspace.
             /// </param>
             /// <param name='linkedServiceName'>
             /// Name of the linkedServices resource
@@ -84,11 +82,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that contains the linkedServices
-            /// resource
+            /// The name of the workspace.
             /// </param>
             /// <param name='linkedServiceName'>
             /// Name of the linked service.
@@ -105,11 +102,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that contains the linkedServices
-            /// resource
+            /// The name of the workspace.
             /// </param>
             /// <param name='linkedServiceName'>
             /// Name of the linked service.
@@ -129,11 +125,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that contains the linkedServices
-            /// resource
+            /// The name of the workspace.
             /// </param>
             /// <param name='linkedServiceName'>
             /// Name of the linked service.
@@ -150,11 +145,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that contains the linkedServices
-            /// resource
+            /// The name of the workspace.
             /// </param>
             /// <param name='linkedServiceName'>
             /// Name of the linked service.
@@ -177,10 +171,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that contains the linked services.
+            /// The name of the workspace.
             /// </param>
             public static IEnumerable<LinkedService> ListByWorkspace(this ILinkedServicesOperations operations, string resourceGroupName, string workspaceName)
             {
@@ -194,10 +188,10 @@ namespace Microsoft.Azure.Management.OperationalInsights
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group to get. The name is case insensitive.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='workspaceName'>
-            /// Name of the Log Analytics Workspace that contains the linked services.
+            /// The name of the workspace.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -208,6 +202,101 @@ namespace Microsoft.Azure.Management.OperationalInsights
                 {
                     return _result.Body;
                 }
+            }
+
+            /// <summary>
+            /// Create or update a linked service.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='linkedServiceName'>
+            /// Name of the linkedServices resource
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters required to create or update a linked service.
+            /// </param>
+            public static LinkedService BeginCreateOrUpdate(this ILinkedServicesOperations operations, string resourceGroupName, string workspaceName, string linkedServiceName, LinkedService parameters)
+            {
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, workspaceName, linkedServiceName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update a linked service.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='linkedServiceName'>
+            /// Name of the linkedServices resource
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters required to create or update a linked service.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<LinkedService> BeginCreateOrUpdateAsync(this ILinkedServicesOperations operations, string resourceGroupName, string workspaceName, string linkedServiceName, LinkedService parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, linkedServiceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a linked service instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='linkedServiceName'>
+            /// Name of the linked service.
+            /// </param>
+            public static void BeginDelete(this ILinkedServicesOperations operations, string resourceGroupName, string workspaceName, string linkedServiceName)
+            {
+                operations.BeginDeleteAsync(resourceGroupName, workspaceName, linkedServiceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a linked service instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='linkedServiceName'>
+            /// Name of the linked service.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAsync(this ILinkedServicesOperations operations, string resourceGroupName, string workspaceName, string linkedServiceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, linkedServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }
