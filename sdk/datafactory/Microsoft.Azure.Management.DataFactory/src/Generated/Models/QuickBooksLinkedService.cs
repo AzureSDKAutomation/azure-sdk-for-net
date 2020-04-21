@@ -37,16 +37,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         /// <param name="endpoint">The endpoint of the QuickBooks server. (i.e.
         /// quickbooks.api.intuit.com)</param>
-        /// <param name="companyId">The company ID of the QuickBooks company to
-        /// authorize.</param>
-        /// <param name="consumerKey">The consumer key for OAuth 1.0
-        /// authentication.</param>
-        /// <param name="consumerSecret">The consumer secret for OAuth 1.0
-        /// authentication.</param>
-        /// <param name="accessToken">The access token for OAuth 1.0
-        /// authentication.</param>
-        /// <param name="accessTokenSecret">The access token secret for OAuth
-        /// 1.0 authentication.</param>
+        /// <param name="companyId">The company ID associated with your
+        /// QuickBooks account.</param>
+        /// <param name="consumerKey">The client ID associated with your
+        /// QuickBooks application.</param>
+        /// <param name="consumerSecret">The client secret associated with your
+        /// QuickBooks application.</param>
+        /// <param name="refreshToken">The OAuth 2.0 refresh token associated
+        /// with your QuickBooks application,used to refresh the access token
+        /// when it expires.</param>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
         /// <param name="connectVia">The integration runtime reference.</param>
@@ -54,6 +53,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="parameters">Parameters for linked service.</param>
         /// <param name="annotations">List of tags that can be used for
         /// describing the linked service.</param>
+        /// <param name="accessToken">The access token for OAuth 2.0
+        /// authentication. This is deprecated from OAuth 2.0.</param>
+        /// <param name="accessTokenSecret">The access token secret for OAuth
+        /// 1.0 authentication. This is deprecated from OAuth 2.0.</param>
         /// <param name="useEncryptedEndpoints">Specifies whether the data
         /// source endpoints are encrypted using HTTPS. The default value is
         /// true.</param>
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// authentication. Credentials are encrypted using the integration
         /// runtime credential manager. Type: string (or Expression with
         /// resultType string).</param>
-        public QuickBooksLinkedService(object endpoint, object companyId, object consumerKey, SecretBase consumerSecret, SecretBase accessToken, SecretBase accessTokenSecret, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), object useEncryptedEndpoints = default(object), object encryptedCredential = default(object))
+        public QuickBooksLinkedService(object endpoint, object companyId, object consumerKey, SecretBase consumerSecret, SecretBase refreshToken, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), SecretBase accessToken = default(SecretBase), SecretBase accessTokenSecret = default(SecretBase), object useEncryptedEndpoints = default(object), object encryptedCredential = default(object))
             : base(additionalProperties, connectVia, description, parameters, annotations)
         {
             Endpoint = endpoint;
@@ -70,6 +73,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             ConsumerSecret = consumerSecret;
             AccessToken = accessToken;
             AccessTokenSecret = accessTokenSecret;
+            RefreshToken = refreshToken;
             UseEncryptedEndpoints = useEncryptedEndpoints;
             EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -88,34 +92,47 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object Endpoint { get; set; }
 
         /// <summary>
-        /// Gets or sets the company ID of the QuickBooks company to authorize.
+        /// Gets or sets the company ID associated with your QuickBooks
+        /// account.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.companyId")]
         public object CompanyId { get; set; }
 
         /// <summary>
-        /// Gets or sets the consumer key for OAuth 1.0 authentication.
+        /// Gets or sets the client ID associated with your QuickBooks
+        /// application.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.consumerKey")]
         public object ConsumerKey { get; set; }
 
         /// <summary>
-        /// Gets or sets the consumer secret for OAuth 1.0 authentication.
+        /// Gets or sets the client secret associated with your QuickBooks
+        /// application.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.consumerSecret")]
         public SecretBase ConsumerSecret { get; set; }
 
         /// <summary>
-        /// Gets or sets the access token for OAuth 1.0 authentication.
+        /// Gets or sets the access token for OAuth 2.0 authentication. This is
+        /// deprecated from OAuth 2.0.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.accessToken")]
         public SecretBase AccessToken { get; set; }
 
         /// <summary>
         /// Gets or sets the access token secret for OAuth 1.0 authentication.
+        /// This is deprecated from OAuth 2.0.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.accessTokenSecret")]
         public SecretBase AccessTokenSecret { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OAuth 2.0 refresh token associated with your
+        /// QuickBooks application,used to refresh the access token when it
+        /// expires.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.refreshToken")]
+        public SecretBase RefreshToken { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the data source endpoints are
@@ -157,13 +174,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ConsumerSecret");
             }
-            if (AccessToken == null)
+            if (RefreshToken == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AccessToken");
-            }
-            if (AccessTokenSecret == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AccessTokenSecret");
+                throw new ValidationException(ValidationRules.CannotBeNull, "RefreshToken");
             }
         }
     }
