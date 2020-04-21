@@ -14,6 +14,10 @@ namespace Microsoft.Azure.Management.Relay
     using Microsoft.Rest.Azure;
     using Models;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Use these API to manage Azure Relay resources through Azure Resource
@@ -49,9 +53,9 @@ namespace Microsoft.Azure.Management.Relay
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client API version.
+        /// Operation Type
         /// </summary>
-        string ApiVersion { get; }
+        string OperationType { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -83,6 +87,16 @@ namespace Microsoft.Azure.Management.Relay
         INamespacesOperations Namespaces { get; }
 
         /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IOperationStatusPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IOperationStatusPrivateEndpointConnectionsOperations OperationStatusPrivateEndpointConnections { get; }
+
+        /// <summary>
         /// Gets the IHybridConnectionsOperations.
         /// </summary>
         IHybridConnectionsOperations HybridConnections { get; }
@@ -91,6 +105,37 @@ namespace Microsoft.Azure.Management.Relay
         /// Gets the IWCFRelaysOperations.
         /// </summary>
         IWCFRelaysOperations WCFRelays { get; }
+
+        /// <summary>
+        /// Gets the private link resources supported for the Relay namespace
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the Resource group within the Azure subscription.
+        /// </param>
+        /// <param name='namespaceName'>
+        /// The namespace name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<PrivateLinkResource>>> PrivateLinkResourcesGetWithHttpMessagesAsync(string resourceGroupName, string namespaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets the private link resources supported for the Relay namespace
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<PrivateLinkResource>>> PrivateLinkResourcesGetNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

@@ -22,189 +22,6 @@ namespace Microsoft.Azure.Management.Relay
     public static partial class HybridConnectionsOperationsExtensions
     {
             /// <summary>
-            /// Lists the hybrid connection within the namespace.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            public static IPage<HybridConnection> ListByNamespace(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName)
-            {
-                return operations.ListByNamespaceAsync(resourceGroupName, namespaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the hybrid connection within the namespace.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<HybridConnection>> ListByNamespaceAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByNamespaceWithHttpMessagesAsync(resourceGroupName, namespaceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Creates or updates a service hybrid connection. This operation is
-            /// idempotent.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='hybridConnectionName'>
-            /// The hybrid connection name.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to create a hybrid connection.
-            /// </param>
-            public static HybridConnection CreateOrUpdate(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, HybridConnection parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, namespaceName, hybridConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a service hybrid connection. This operation is
-            /// idempotent.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='hybridConnectionName'>
-            /// The hybrid connection name.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to create a hybrid connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<HybridConnection> CreateOrUpdateAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, HybridConnection parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, hybridConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a hybrid connection.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='hybridConnectionName'>
-            /// The hybrid connection name.
-            /// </param>
-            public static void Delete(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName)
-            {
-                operations.DeleteAsync(resourceGroupName, namespaceName, hybridConnectionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a hybrid connection.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='hybridConnectionName'>
-            /// The hybrid connection name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, namespaceName, hybridConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Returns the description for the specified hybrid connection.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='hybridConnectionName'>
-            /// The hybrid connection name.
-            /// </param>
-            public static HybridConnection Get(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName)
-            {
-                return operations.GetAsync(resourceGroupName, namespaceName, hybridConnectionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Returns the description for the specified hybrid connection.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='hybridConnectionName'>
-            /// The hybrid connection name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<HybridConnection> GetAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, namespaceName, hybridConnectionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Authorization rules for a hybrid connection.
             /// </summary>
             /// <param name='operations'>
@@ -527,12 +344,15 @@ namespace Microsoft.Azure.Management.Relay
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
             /// </param>
-            public static IPage<HybridConnection> ListByNamespaceNext(this IHybridConnectionsOperations operations, string nextPageLink)
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            public static IPage<HybridConnection> ListByNamespace(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName)
             {
-                return operations.ListByNamespaceNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListByNamespaceAsync(resourceGroupName, namespaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -541,15 +361,161 @@ namespace Microsoft.Azure.Management.Relay
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<HybridConnection>> ListByNamespaceNextAsync(this IHybridConnectionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<HybridConnection>> ListByNamespaceAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByNamespaceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByNamespaceWithHttpMessagesAsync(resourceGroupName, namespaceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates a service hybrid connection. This operation is
+            /// idempotent.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='hybridConnectionName'>
+            /// The hybrid connection name.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to create a hybrid connection.
+            /// </param>
+            public static HybridConnection CreateOrUpdate(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, HybridConnection parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, namespaceName, hybridConnectionName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a service hybrid connection. This operation is
+            /// idempotent.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='hybridConnectionName'>
+            /// The hybrid connection name.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to create a hybrid connection.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<HybridConnection> CreateOrUpdateAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, HybridConnection parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, hybridConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a hybrid connection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='hybridConnectionName'>
+            /// The hybrid connection name.
+            /// </param>
+            public static void Delete(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName)
+            {
+                operations.DeleteAsync(resourceGroupName, namespaceName, hybridConnectionName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a hybrid connection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='hybridConnectionName'>
+            /// The hybrid connection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, namespaceName, hybridConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Returns the description for the specified hybrid connection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='hybridConnectionName'>
+            /// The hybrid connection name.
+            /// </param>
+            public static HybridConnection Get(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName)
+            {
+                return operations.GetAsync(resourceGroupName, namespaceName, hybridConnectionName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns the description for the specified hybrid connection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='hybridConnectionName'>
+            /// The hybrid connection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<HybridConnection> GetAsync(this IHybridConnectionsOperations operations, string resourceGroupName, string namespaceName, string hybridConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, namespaceName, hybridConnectionName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -584,6 +550,40 @@ namespace Microsoft.Azure.Management.Relay
             public static async Task<IPage<AuthorizationRule>> ListAuthorizationRulesNextAsync(this IHybridConnectionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAuthorizationRulesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the hybrid connection within the namespace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<HybridConnection> ListByNamespaceNext(this IHybridConnectionsOperations operations, string nextPageLink)
+            {
+                return operations.ListByNamespaceNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the hybrid connection within the namespace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<HybridConnection>> ListByNamespaceNextAsync(this IHybridConnectionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByNamespaceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

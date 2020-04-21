@@ -12,10 +12,13 @@ namespace Microsoft.Azure.Management.Relay.Models
 {
 
     /// <summary>
-    /// Defines values for SkuTier.
+    /// Defines values for PrivateEndpointServiceConnectionStatus.
     /// </summary>
-    public static class SkuTier
+    public static class PrivateEndpointServiceConnectionStatus
     {
-        public const string Standard = "Standard";
+        public const string Pending = "Pending";
+        public const string Approved = "Approved";
+        public const string Rejected = "Rejected";
+        public const string Disconnected = "Disconnected";
     }
 }

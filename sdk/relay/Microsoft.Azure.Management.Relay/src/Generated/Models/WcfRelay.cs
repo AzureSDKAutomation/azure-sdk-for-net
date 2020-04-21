@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Management.Relay.Models
         /// authorization is needed for this relay; otherwise, false.</param>
         /// <param name="requiresTransportSecurity">Returns true if transport
         /// security is needed for this relay; otherwise, false.</param>
-        /// <param name="userMetadata">The usermetadata is a placeholder to
+        /// <param name="userMetadata">The user meta data is a placeholder to
         /// store user-defined string data for the WCF Relay endpoint. For
         /// example, it can be used to store descriptive data, such as list of
         /// teams and their contact information. Also, user-defined
         /// configuration settings can be stored.</param>
-        public WcfRelay(string id = default(string), string name = default(string), string type = default(string), bool? isDynamic = default(bool?), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), int? listenerCount = default(int?), Relaytype? relayType = default(Relaytype?), bool? requiresClientAuthorization = default(bool?), bool? requiresTransportSecurity = default(bool?), string userMetadata = default(string))
+        public WcfRelay(string id = default(string), string name = default(string), string type = default(string), bool? isDynamic = default(bool?), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), int? listenerCount = default(int?), RelayType? relayType = default(RelayType?), bool? requiresClientAuthorization = default(bool?), bool? requiresTransportSecurity = default(bool?), string userMetadata = default(string))
             : base(id, name, type)
         {
             IsDynamic = isDynamic;
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Relay.Models
         /// 'Http'
         /// </summary>
         [JsonProperty(PropertyName = "properties.relayType")]
-        public Relaytype? RelayType { get; set; }
+        public RelayType? RelayType { get; set; }
 
         /// <summary>
         /// Gets or sets returns true if client authorization is needed for
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Relay.Models
         public bool? RequiresTransportSecurity { get; set; }
 
         /// <summary>
-        /// Gets or sets the usermetadata is a placeholder to store
+        /// Gets or sets the user meta data is a placeholder to store
         /// user-defined string data for the WCF Relay endpoint. For example,
         /// it can be used to store descriptive data, such as list of teams and
         /// their contact information. Also, user-defined configuration

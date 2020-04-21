@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Relay.Models
         /// <param name="requiresClientAuthorization">Returns true if client
         /// authorization is needed for this hybrid connection; otherwise,
         /// false.</param>
-        /// <param name="userMetadata">The usermetadata is a placeholder to
+        /// <param name="userMetadata">The user meta data is a placeholder to
         /// store user-defined string data for the hybrid connection endpoint.
         /// For example, it can be used to store descriptive data, such as a
         /// list of teams and their contact information. Also, user-defined
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Relay.Models
         public bool? RequiresClientAuthorization { get; set; }
 
         /// <summary>
-        /// Gets or sets the usermetadata is a placeholder to store
+        /// Gets or sets the user meta data is a placeholder to store
         /// user-defined string data for the hybrid connection endpoint. For
         /// example, it can be used to store descriptive data, such as a list
         /// of teams and their contact information. Also, user-defined

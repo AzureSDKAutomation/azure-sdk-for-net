@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Management.Relay.Models
 {
 
     /// <summary>
-    /// Defines values for SkuTier.
+    /// Defines values for NetworkRuleIPAction.
     /// </summary>
-    public static class SkuTier
+    public static class NetworkRuleIPAction
     {
-        public const string Standard = "Standard";
+        public const string Allow = "Allow";
     }
 }

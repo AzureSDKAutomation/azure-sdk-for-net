@@ -22,187 +22,6 @@ namespace Microsoft.Azure.Management.Relay
     public static partial class WCFRelaysOperationsExtensions
     {
             /// <summary>
-            /// Lists the WCF relays within the namespace.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            public static IPage<WcfRelay> ListByNamespace(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName)
-            {
-                return operations.ListByNamespaceAsync(resourceGroupName, namespaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the WCF relays within the namespace.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<WcfRelay>> ListByNamespaceAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByNamespaceWithHttpMessagesAsync(resourceGroupName, namespaceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Creates or updates a WCF relay. This operation is idempotent.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='relayName'>
-            /// The relay name.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to create a WCF relay.
-            /// </param>
-            public static WcfRelay CreateOrUpdate(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, WcfRelay parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, namespaceName, relayName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a WCF relay. This operation is idempotent.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='relayName'>
-            /// The relay name.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to create a WCF relay.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<WcfRelay> CreateOrUpdateAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, WcfRelay parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, relayName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a WCF relay.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='relayName'>
-            /// The relay name.
-            /// </param>
-            public static void Delete(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName)
-            {
-                operations.DeleteAsync(resourceGroupName, namespaceName, relayName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a WCF relay.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='relayName'>
-            /// The relay name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, namespaceName, relayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Returns the description for the specified WCF relay.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='relayName'>
-            /// The relay name.
-            /// </param>
-            public static WcfRelay Get(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName)
-            {
-                return operations.GetAsync(resourceGroupName, namespaceName, relayName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Returns the description for the specified WCF relay.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='namespaceName'>
-            /// The namespace name
-            /// </param>
-            /// <param name='relayName'>
-            /// The relay name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<WcfRelay> GetAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, namespaceName, relayName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Authorization rules for a WCF relay.
             /// </summary>
             /// <param name='operations'>
@@ -523,12 +342,15 @@ namespace Microsoft.Azure.Management.Relay
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
             /// </param>
-            public static IPage<WcfRelay> ListByNamespaceNext(this IWCFRelaysOperations operations, string nextPageLink)
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            public static IPage<WcfRelay> ListByNamespace(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName)
             {
-                return operations.ListByNamespaceNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListByNamespaceAsync(resourceGroupName, namespaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -537,15 +359,159 @@ namespace Microsoft.Azure.Management.Relay
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<WcfRelay>> ListByNamespaceNextAsync(this IWCFRelaysOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<WcfRelay>> ListByNamespaceAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByNamespaceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByNamespaceWithHttpMessagesAsync(resourceGroupName, namespaceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates a WCF relay. This operation is idempotent.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='relayName'>
+            /// The relay name.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to create a WCF relay.
+            /// </param>
+            public static WcfRelay CreateOrUpdate(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, WcfRelay parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, namespaceName, relayName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a WCF relay. This operation is idempotent.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='relayName'>
+            /// The relay name.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to create a WCF relay.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WcfRelay> CreateOrUpdateAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, WcfRelay parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, relayName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a WCF relay.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='relayName'>
+            /// The relay name.
+            /// </param>
+            public static void Delete(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName)
+            {
+                operations.DeleteAsync(resourceGroupName, namespaceName, relayName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a WCF relay.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='relayName'>
+            /// The relay name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, namespaceName, relayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Returns the description for the specified WCF relay.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='relayName'>
+            /// The relay name.
+            /// </param>
+            public static WcfRelay Get(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName)
+            {
+                return operations.GetAsync(resourceGroupName, namespaceName, relayName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns the description for the specified WCF relay.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the Resource group within the Azure subscription.
+            /// </param>
+            /// <param name='namespaceName'>
+            /// The namespace name
+            /// </param>
+            /// <param name='relayName'>
+            /// The relay name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<WcfRelay> GetAsync(this IWCFRelaysOperations operations, string resourceGroupName, string namespaceName, string relayName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, namespaceName, relayName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -580,6 +546,40 @@ namespace Microsoft.Azure.Management.Relay
             public static async Task<IPage<AuthorizationRule>> ListAuthorizationRulesNextAsync(this IWCFRelaysOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAuthorizationRulesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the WCF relays within the namespace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<WcfRelay> ListByNamespaceNext(this IWCFRelaysOperations operations, string nextPageLink)
+            {
+                return operations.ListByNamespaceNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the WCF relays within the namespace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<WcfRelay>> ListByNamespaceNextAsync(this IWCFRelaysOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByNamespaceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -14,34 +14,29 @@ namespace Microsoft.Azure.Management.Relay.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU of the namespace.
+    /// The response from the List namespace operation.
     /// </summary>
-    public partial class Sku
+    public partial class NWRuleSetIpRules
     {
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the NWRuleSetIpRules class.
         /// </summary>
-        public Sku()
+        public NWRuleSetIpRules()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Sku class.
+        /// Initializes a new instance of the NWRuleSetIpRules class.
         /// </summary>
-        /// <param name="tier">The tier of this SKU. Possible values include:
-        /// 'Standard'</param>
-        public Sku(string tier = default(string))
+        /// <param name="ipMask">IP Mask</param>
+        /// <param name="action">The IP Filter Action. Possible values include:
+        /// 'Allow'</param>
+        public NWRuleSetIpRules(string ipMask = default(string), string action = default(string))
         {
-            Tier = tier;
+            IpMask = ipMask;
+            Action = action;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for Sku class.
-        /// </summary>
-        static Sku()
-        {
-            Name = "Standard";
         }
 
         /// <summary>
@@ -50,17 +45,16 @@ namespace Microsoft.Azure.Management.Relay.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the tier of this SKU. Possible values include:
-        /// 'Standard'
+        /// Gets or sets IP Mask
         /// </summary>
-        [JsonProperty(PropertyName = "tier")]
-        public string Tier { get; set; }
+        [JsonProperty(PropertyName = "ipMask")]
+        public string IpMask { get; set; }
 
         /// <summary>
-        /// Name of this SKU.
+        /// Gets or sets the IP Filter Action. Possible values include: 'Allow'
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public static string Name { get; private set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; set; }
 
     }
 }

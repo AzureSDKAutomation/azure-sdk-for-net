@@ -16,43 +16,43 @@ namespace Microsoft.Azure.Management.Relay.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for Relaytype.
+    /// Defines values for RelayType.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Relaytype
+    public enum RelayType
     {
         [EnumMember(Value = "NetTcp")]
         NetTcp,
         [EnumMember(Value = "Http")]
         Http
     }
-    internal static class RelaytypeEnumExtension
+    internal static class RelayTypeEnumExtension
     {
-        internal static string ToSerializedValue(this Relaytype? value)
+        internal static string ToSerializedValue(this RelayType? value)
         {
-            return value == null ? null : ((Relaytype)value).ToSerializedValue();
+            return value == null ? null : ((RelayType)value).ToSerializedValue();
         }
 
-        internal static string ToSerializedValue(this Relaytype value)
+        internal static string ToSerializedValue(this RelayType value)
         {
             switch( value )
             {
-                case Relaytype.NetTcp:
+                case RelayType.NetTcp:
                     return "NetTcp";
-                case Relaytype.Http:
+                case RelayType.Http:
                     return "Http";
             }
             return null;
         }
 
-        internal static Relaytype? ParseRelaytype(this string value)
+        internal static RelayType? ParseRelayType(this string value)
         {
             switch( value )
             {
                 case "NetTcp":
-                    return Relaytype.NetTcp;
+                    return RelayType.NetTcp;
                 case "Http":
-                    return Relaytype.Http;
+                    return RelayType.Http;
             }
             return null;
         }

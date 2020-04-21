@@ -19,9 +19,14 @@ namespace Microsoft.Azure.Management.Relay
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("EventHub", "Namespaces", "2018-01-01-preview"),
                 new Tuple<string, string, string>("Relay", "HybridConnections", "2017-04-01"),
                 new Tuple<string, string, string>("Relay", "Namespaces", "2017-04-01"),
-                new Tuple<string, string, string>("Relay", "Operations", "2017-04-01"),
+                new Tuple<string, string, string>("Relay", "Namespaces", "2018-01-01-preview"),
+                new Tuple<string, string, string>("Relay", "OperationStatusPrivateEndpointConnections", "2018-01-01-preview"),
+                new Tuple<string, string, string>("Relay", "Operations", "2018-01-01-preview"),
+                new Tuple<string, string, string>("Relay", "PrivateEndpointConnections", "2018-01-01-preview"),
+                new Tuple<string, string, string>("Relay", "PrivateLinkResourcesGet", "2018-01-01-preview"),
                 new Tuple<string, string, string>("Relay", "WCFRelays", "2017-04-01"),
               }.AsEnumerable();
           }
