@@ -55,7 +55,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// (or Expression with resultType boolean).</param>
         /// <param name="logStorageSettings">Log storage settings customer need
         /// to provide when enableLogging is true.</param>
-        public DeleteActivity(string name, DatasetReference dataset, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), IList<ActivityDependency> dependsOn = default(IList<ActivityDependency>), IList<UserProperty> userProperties = default(IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object recursive = default(object), int? maxConcurrentConnections = default(int?), object enableLogging = default(object), LogStorageSettings logStorageSettings = default(LogStorageSettings))
+        /// <param name="storeSettings">Delete activity binary store
+        /// settings.</param>
+        public DeleteActivity(string name, DatasetReference dataset, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), IList<ActivityDependency> dependsOn = default(IList<ActivityDependency>), IList<UserProperty> userProperties = default(IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object recursive = default(object), int? maxConcurrentConnections = default(int?), object enableLogging = default(object), LogStorageSettings logStorageSettings = default(LogStorageSettings), StoreReadSettings storeSettings = default(StoreReadSettings))
             : base(name, additionalProperties, description, dependsOn, userProperties, linkedServiceName, policy)
         {
             Recursive = recursive;
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             EnableLogging = enableLogging;
             LogStorageSettings = logStorageSettings;
             Dataset = dataset;
+            StoreSettings = storeSettings;
             CustomInit();
         }
 
@@ -106,6 +109,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.dataset")]
         public DatasetReference Dataset { get; set; }
+
+        /// <summary>
+        /// Gets or sets delete activity binary store settings.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.storeSettings")]
+        public StoreReadSettings StoreSettings { get; set; }
 
         /// <summary>
         /// Validate the object.

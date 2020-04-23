@@ -46,12 +46,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="userProperties">Activity user properties.</param>
         /// <param name="linkedServiceName">Linked service reference.</param>
         /// <param name="policy">Activity policy.</param>
+        /// <param name="storeSettings">GetMetadata activity binary store
+        /// settings.</param>
         /// <param name="fieldList">Fields of metadata to get from
         /// dataset.</param>
-        public GetMetadataActivity(string name, DatasetReference dataset, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), IList<ActivityDependency> dependsOn = default(IList<ActivityDependency>), IList<UserProperty> userProperties = default(IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), IList<object> fieldList = default(IList<object>))
+        public GetMetadataActivity(string name, DatasetReference dataset, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), IList<ActivityDependency> dependsOn = default(IList<ActivityDependency>), IList<UserProperty> userProperties = default(IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), StoreReadSettings storeSettings = default(StoreReadSettings), IList<object> fieldList = default(IList<object>))
             : base(name, additionalProperties, description, dependsOn, userProperties, linkedServiceName, policy)
         {
             Dataset = dataset;
+            StoreSettings = storeSettings;
             FieldList = fieldList;
             CustomInit();
         }
@@ -66,6 +69,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.dataset")]
         public DatasetReference Dataset { get; set; }
+
+        /// <summary>
+        /// Gets or sets getMetadata activity binary store settings.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.storeSettings")]
+        public StoreReadSettings StoreSettings { get; set; }
 
         /// <summary>
         /// Gets or sets fields of metadata to get from dataset.
