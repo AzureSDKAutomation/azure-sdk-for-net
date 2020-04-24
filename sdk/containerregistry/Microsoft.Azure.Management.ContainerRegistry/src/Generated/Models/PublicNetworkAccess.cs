@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
 {
 
     /// <summary>
-    /// Defines values for StepType.
+    /// Defines values for PublicNetworkAccess.
     /// </summary>
-    public static class StepType
+    public static class PublicNetworkAccess
     {
-        public const string Docker = "Docker";
-        public const string FileTask = "FileTask";
-        public const string EncodedTask = "EncodedTask";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
     }
 }
