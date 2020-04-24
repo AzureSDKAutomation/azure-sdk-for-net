@@ -45,10 +45,14 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// basic vs. standard)</param>
         /// <param name="properties">Settings used to provision or configure
         /// the resource</param>
-        public SignalRCreateParameters(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceSku sku = default(ResourceSku), SignalRCreateOrUpdateProperties properties = default(SignalRCreateOrUpdateProperties))
+        /// <param name="kind">The kind of the service. (e.g. signalr vs.
+        /// rawwebsockets). Possible values include: 'SignalR',
+        /// 'RawWebSockets'</param>
+        public SignalRCreateParameters(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceSku sku = default(ResourceSku), SignalRCreateOrUpdateProperties properties = default(SignalRCreateOrUpdateProperties), string kind = default(string))
             : base(tags, sku, properties)
         {
             Location = location;
+            Kind = kind;
             CustomInit();
         }
 
@@ -65,6 +69,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the kind of the service. (e.g. signalr vs.
+        /// rawwebsockets). Possible values include: 'SignalR', 'RawWebSockets'
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
 
         /// <summary>
         /// Validate the object.

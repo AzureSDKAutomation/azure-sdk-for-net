@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="id">Fully qualified resource Id for the
         /// resource.</param>
         /// <param name="name">The name of the resource.</param>
-        /// <param name="type">The type of the service - e.g.
-        /// "Microsoft.SignalRService/SignalR"</param>
+        /// <param name="type">The type of the resource - e.g.
+        /// "Microsoft.SignalRService/SignalR",
+        /// "Microsoft.SignalRService/SignalR/PrivateEndpointConnections"</param>
         /// <param name="location">The GEO location of the SignalR service.
         /// e.g. West US | East US | North Central US | South Central
         /// US.</param>
@@ -62,6 +63,9 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// in terms of different FeatureFlags.</param>
         /// <param name="cors">Cross-Origin Resource Sharing (CORS)
         /// settings.</param>
+        /// <param name="upstream">Upstream settings when the Azure SignalR is
+        /// in server-less mode.</param>
+        /// <param name="networkACLs">Network ACLs</param>
         /// <param name="provisioningState">Provisioning state of the resource.
         /// Possible values include: 'Unknown', 'Succeeded', 'Failed',
         /// 'Canceled', 'Running', 'Creating', 'Updating', 'Deleting',
@@ -78,19 +82,28 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// usage.</param>
         /// <param name="version">Version of the SignalR resource. Probably you
         /// need the same or higher version of client SDKs.</param>
-        public SignalRResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string hostNamePrefix = default(string), IList<SignalRFeature> features = default(IList<SignalRFeature>), SignalRCorsSettings cors = default(SignalRCorsSettings), string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string))
+        /// <param name="privateEndpointConnections">Private endpoint
+        /// connections to the SignalR resource.</param>
+        /// <param name="kind">The kind of the service - e.g. "SignalR", or
+        /// "RawWebSockets" for "Microsoft.SignalRService/SignalR". Possible
+        /// values include: 'SignalR', 'RawWebSockets'</param>
+        public SignalRResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string hostNamePrefix = default(string), IList<SignalRFeature> features = default(IList<SignalRFeature>), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkACLs = default(SignalRNetworkACLs), string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string kind = default(string))
             : base(id, name, type, location, tags)
         {
             Sku = sku;
             HostNamePrefix = hostNamePrefix;
             Features = features;
             Cors = cors;
+            Upstream = upstream;
+            NetworkACLs = networkACLs;
             ProvisioningState = provisioningState;
             ExternalIP = externalIP;
             HostName = hostName;
             PublicPort = publicPort;
             ServerPort = serverPort;
             Version = version;
+            PrivateEndpointConnections = privateEndpointConnections;
+            Kind = kind;
             CustomInit();
         }
 
@@ -136,6 +149,19 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public SignalRCorsSettings Cors { get; set; }
 
         /// <summary>
+        /// Gets or sets upstream settings when the Azure SignalR is in
+        /// server-less mode.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.upstream")]
+        public ServerlessUpstreamSettings Upstream { get; set; }
+
+        /// <summary>
+        /// Gets or sets network ACLs
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkACLs")]
+        public SignalRNetworkACLs NetworkACLs { get; set; }
+
+        /// <summary>
         /// Gets provisioning state of the resource. Possible values include:
         /// 'Unknown', 'Succeeded', 'Failed', 'Canceled', 'Running',
         /// 'Creating', 'Updating', 'Deleting', 'Moving'
@@ -176,6 +202,20 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.version")]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets private endpoint connections to the SignalR resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+
+        /// <summary>
+        /// Gets the kind of the service - e.g. "SignalR", or "RawWebSockets"
+        /// for "Microsoft.SignalRService/SignalR". Possible values include:
+        /// 'SignalR', 'RawWebSockets'
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; private set; }
 
         /// <summary>
         /// Validate the object.
