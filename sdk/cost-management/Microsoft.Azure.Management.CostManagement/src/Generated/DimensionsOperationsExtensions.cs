@@ -112,5 +112,75 @@ namespace Microsoft.Azure.Management.CostManagement
                 }
             }
 
+            /// <summary>
+            /// Lists the dimensions by the external cloud provider type.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='externalCloudProviderType'>
+            /// The external cloud provider type associated with dimension/query
+            /// operations. This includes 'externalSubscriptions' for linked account and
+            /// 'externalBillingAccounts' for consolidated account. Possible values
+            /// include: 'externalSubscriptions', 'externalBillingAccounts'
+            /// </param>
+            /// <param name='externalCloudProviderId'>
+            /// This can be '{externalSubscriptionId}' for linked account or
+            /// '{externalBillingAccountId}' for consolidated account used with
+            /// dimension/query operations.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            /// <param name='skiptoken'>
+            /// Skiptoken is only used if a previous operation returned a partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls.
+            /// </param>
+            public static IEnumerable<Dimension> ByExternalCloudProviderType(this IDimensionsOperations operations, string externalCloudProviderType, string externalCloudProviderId, ODataQuery<Dimension> odataQuery = default(ODataQuery<Dimension>), string skiptoken = default(string))
+            {
+                return operations.ByExternalCloudProviderTypeAsync(externalCloudProviderType, externalCloudProviderId, odataQuery, skiptoken).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the dimensions by the external cloud provider type.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='externalCloudProviderType'>
+            /// The external cloud provider type associated with dimension/query
+            /// operations. This includes 'externalSubscriptions' for linked account and
+            /// 'externalBillingAccounts' for consolidated account. Possible values
+            /// include: 'externalSubscriptions', 'externalBillingAccounts'
+            /// </param>
+            /// <param name='externalCloudProviderId'>
+            /// This can be '{externalSubscriptionId}' for linked account or
+            /// '{externalBillingAccountId}' for consolidated account used with
+            /// dimension/query operations.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            /// <param name='skiptoken'>
+            /// Skiptoken is only used if a previous operation returned a partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<Dimension>> ByExternalCloudProviderTypeAsync(this IDimensionsOperations operations, string externalCloudProviderType, string externalCloudProviderId, ODataQuery<Dimension> odataQuery = default(ODataQuery<Dimension>), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ByExternalCloudProviderTypeWithHttpMessagesAsync(externalCloudProviderType, externalCloudProviderId, odataQuery, skiptoken, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
     }
 }

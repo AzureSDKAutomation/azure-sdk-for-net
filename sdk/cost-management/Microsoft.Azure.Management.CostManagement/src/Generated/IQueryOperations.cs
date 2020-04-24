@@ -66,5 +66,40 @@ namespace Microsoft.Azure.Management.CostManagement
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<QueryResult>> UsageWithHttpMessagesAsync(string scope, QueryDefinition parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Query the usage data for external cloud provider type defined.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+        /// </summary>
+        /// <param name='externalCloudProviderType'>
+        /// The external cloud provider type associated with dimension/query
+        /// operations. This includes 'externalSubscriptions' for linked
+        /// account and 'externalBillingAccounts' for consolidated account.
+        /// Possible values include: 'externalSubscriptions',
+        /// 'externalBillingAccounts'
+        /// </param>
+        /// <param name='externalCloudProviderId'>
+        /// This can be '{externalSubscriptionId}' for linked account or
+        /// '{externalBillingAccountId}' for consolidated account used with
+        /// dimension/query operations.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the CreateOrUpdate Query Config operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<QueryResult>> UsageByExternalCloudProviderTypeWithHttpMessagesAsync(string externalCloudProviderType, string externalCloudProviderId, QueryDefinition parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

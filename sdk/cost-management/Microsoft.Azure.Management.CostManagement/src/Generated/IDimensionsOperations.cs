@@ -73,5 +73,46 @@ namespace Microsoft.Azure.Management.CostManagement
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<Dimension>>> ListWithHttpMessagesAsync(string scope, ODataQuery<Dimension> odataQuery = default(ODataQuery<Dimension>), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists the dimensions by the external cloud provider type.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+        /// </summary>
+        /// <param name='externalCloudProviderType'>
+        /// The external cloud provider type associated with dimension/query
+        /// operations. This includes 'externalSubscriptions' for linked
+        /// account and 'externalBillingAccounts' for consolidated account.
+        /// Possible values include: 'externalSubscriptions',
+        /// 'externalBillingAccounts'
+        /// </param>
+        /// <param name='externalCloudProviderId'>
+        /// This can be '{externalSubscriptionId}' for linked account or
+        /// '{externalBillingAccountId}' for consolidated account used with
+        /// dimension/query operations.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='skiptoken'>
+        /// Skiptoken is only used if a previous operation returned a partial
+        /// result. If a previous response contains a nextLink element, the
+        /// value of the nextLink element will include a skiptoken parameter
+        /// that specifies a starting point to use for subsequent calls.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IEnumerable<Dimension>>> ByExternalCloudProviderTypeWithHttpMessagesAsync(string externalCloudProviderType, string externalCloudProviderId, ODataQuery<Dimension> odataQuery = default(ODataQuery<Dimension>), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

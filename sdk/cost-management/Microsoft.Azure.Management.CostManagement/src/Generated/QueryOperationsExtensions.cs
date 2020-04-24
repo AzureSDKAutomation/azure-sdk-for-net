@@ -97,5 +97,63 @@ namespace Microsoft.Azure.Management.CostManagement
                 }
             }
 
+            /// <summary>
+            /// Query the usage data for external cloud provider type defined.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='externalCloudProviderType'>
+            /// The external cloud provider type associated with dimension/query
+            /// operations. This includes 'externalSubscriptions' for linked account and
+            /// 'externalBillingAccounts' for consolidated account. Possible values
+            /// include: 'externalSubscriptions', 'externalBillingAccounts'
+            /// </param>
+            /// <param name='externalCloudProviderId'>
+            /// This can be '{externalSubscriptionId}' for linked account or
+            /// '{externalBillingAccountId}' for consolidated account used with
+            /// dimension/query operations.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the CreateOrUpdate Query Config operation.
+            /// </param>
+            public static QueryResult UsageByExternalCloudProviderType(this IQueryOperations operations, string externalCloudProviderType, string externalCloudProviderId, QueryDefinition parameters)
+            {
+                return operations.UsageByExternalCloudProviderTypeAsync(externalCloudProviderType, externalCloudProviderId, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Query the usage data for external cloud provider type defined.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='externalCloudProviderType'>
+            /// The external cloud provider type associated with dimension/query
+            /// operations. This includes 'externalSubscriptions' for linked account and
+            /// 'externalBillingAccounts' for consolidated account. Possible values
+            /// include: 'externalSubscriptions', 'externalBillingAccounts'
+            /// </param>
+            /// <param name='externalCloudProviderId'>
+            /// This can be '{externalSubscriptionId}' for linked account or
+            /// '{externalBillingAccountId}' for consolidated account used with
+            /// dimension/query operations.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the CreateOrUpdate Query Config operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<QueryResult> UsageByExternalCloudProviderTypeAsync(this IQueryOperations operations, string externalCloudProviderType, string externalCloudProviderId, QueryDefinition parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UsageByExternalCloudProviderTypeWithHttpMessagesAsync(externalCloudProviderType, externalCloudProviderId, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
     }
 }
