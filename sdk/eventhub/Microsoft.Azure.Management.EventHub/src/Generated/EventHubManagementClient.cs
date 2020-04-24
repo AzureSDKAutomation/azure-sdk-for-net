@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Management.EventHub
         public virtual INamespacesOperations Namespaces { get; private set; }
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
         /// Gets the IConfigurationOperations.
         /// </summary>
         public virtual IConfigurationOperations Configuration { get; private set; }
@@ -102,6 +97,11 @@ namespace Microsoft.Azure.Management.EventHub
         /// Gets the IConsumerGroupsOperations.
         /// </summary>
         public virtual IConsumerGroupsOperations ConsumerGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the IRegionsOperations.
@@ -351,11 +351,11 @@ namespace Microsoft.Azure.Management.EventHub
         {
             Clusters = new ClustersOperations(this);
             Namespaces = new NamespacesOperations(this);
-            Operations = new Operations(this);
             Configuration = new ConfigurationOperations(this);
             DisasterRecoveryConfigs = new DisasterRecoveryConfigsOperations(this);
             EventHubs = new EventHubsOperations(this);
             ConsumerGroups = new ConsumerGroupsOperations(this);
+            Operations = new Operations(this);
             Regions = new RegionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";

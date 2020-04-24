@@ -76,11 +76,6 @@ namespace Microsoft.Azure.Management.EventHub
         INamespacesOperations Namespaces { get; }
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
         /// Gets the IConfigurationOperations.
         /// </summary>
         IConfigurationOperations Configuration { get; }
@@ -99,6 +94,11 @@ namespace Microsoft.Azure.Management.EventHub
         /// Gets the IConsumerGroupsOperations.
         /// </summary>
         IConsumerGroupsOperations ConsumerGroups { get; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IRegionsOperations.
