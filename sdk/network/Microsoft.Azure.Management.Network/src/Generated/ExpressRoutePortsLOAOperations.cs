@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Network
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ServiceTagsOperations operations.
+    /// ExpressRoutePortsLOAOperations operations.
     /// </summary>
-    internal partial class ServiceTagsOperations : IServiceOperations<NetworkManagementClient>, IServiceTagsOperations
+    internal partial class ExpressRoutePortsLOAOperations : IServiceOperations<NetworkManagementClient>, IExpressRoutePortsLOAOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ServiceTagsOperations class.
+        /// Initializes a new instance of the ExpressRoutePortsLOAOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ServiceTagsOperations(NetworkManagementClient client)
+        internal ExpressRoutePortsLOAOperations(NetworkManagementClient client)
         {
             if (client == null)
             {
@@ -51,13 +51,16 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a list of service tag information resources.
+        /// Generate LOA for the requested ExpressRoutePort resource.
         /// </summary>
-        /// <param name='location'>
-        /// The location that will be used as a reference for version (not as a filter
-        /// based on location, you will get the list of service tags with prefix
-        /// details across all regions but limited to the cloud that your subscription
-        /// belongs to).
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of ExpressRoutePort.
+        /// </param>
+        /// <param name='request'>
+        /// Request parameters supplied to generate LOA.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -80,15 +83,27 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ServiceTagsListResult>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<GenerateExpressRoutePortsLOAResult>> GenerationWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
-            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (expressRoutePortName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
+            }
+            if (request == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "request");
+            }
+            if (request != null)
+            {
+                request.Validate();
             }
             string apiVersion = "2020-04-01";
             // Tracing
@@ -98,16 +113,19 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("expressRoutePortName", expressRoutePortName);
+                tracingParameters.Add("request", request);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Generation", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/generateLOA").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{expressRoutePortName}", System.Uri.EscapeDataString(expressRoutePortName));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
             {
@@ -120,7 +138,7 @@ namespace Microsoft.Azure.Management.Network
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -151,6 +169,12 @@ namespace Microsoft.Azure.Management.Network
 
             // Serialize Request
             string _requestContent = null;
+            if(request != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(request, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {
@@ -206,7 +230,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ServiceTagsListResult>();
+            var _result = new AzureOperationResponse<GenerateExpressRoutePortsLOAResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -219,7 +243,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ServiceTagsListResult>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<GenerateExpressRoutePortsLOAResult>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

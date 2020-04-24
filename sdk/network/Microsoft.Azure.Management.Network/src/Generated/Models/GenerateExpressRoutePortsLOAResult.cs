@@ -14,28 +14,28 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the FirewallPolicyNatRuleAction.
+    /// Response for GenerateExpressRoutePortsLOA API service call.
     /// </summary>
-    public partial class FirewallPolicyNatRuleAction
+    public partial class GenerateExpressRoutePortsLOAResult
     {
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyNatRuleAction
-        /// class.
+        /// Initializes a new instance of the
+        /// GenerateExpressRoutePortsLOAResult class.
         /// </summary>
-        public FirewallPolicyNatRuleAction()
+        public GenerateExpressRoutePortsLOAResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyNatRuleAction
-        /// class.
+        /// Initializes a new instance of the
+        /// GenerateExpressRoutePortsLOAResult class.
         /// </summary>
-        /// <param name="type">The type of action. Possible values include:
-        /// 'DNAT'</param>
-        public FirewallPolicyNatRuleAction(string type = default(string))
+        /// <param name="encodedPdf">The pdf as a base64 encoded
+        /// string.</param>
+        public GenerateExpressRoutePortsLOAResult(string encodedPdf = default(string))
         {
-            Type = type;
+            EncodedPdf = encodedPdf;
             CustomInit();
         }
 
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the type of action. Possible values include: 'DNAT'
+        /// Gets or sets the pdf as a base64 encoded string.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        [JsonProperty(PropertyName = "encodedPdf")]
+        public string EncodedPdf { get; set; }
 
     }
 }

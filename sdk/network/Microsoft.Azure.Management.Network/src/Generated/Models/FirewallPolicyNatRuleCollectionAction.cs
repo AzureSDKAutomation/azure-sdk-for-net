@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the FirewallPolicyFilterRuleAction.
+    /// Properties of the FirewallPolicyNatRuleCollectionAction.
     /// </summary>
-    public partial class FirewallPolicyFilterRuleAction
+    public partial class FirewallPolicyNatRuleCollectionAction
     {
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyFilterRuleAction
-        /// class.
+        /// Initializes a new instance of the
+        /// FirewallPolicyNatRuleCollectionAction class.
         /// </summary>
-        public FirewallPolicyFilterRuleAction()
+        public FirewallPolicyNatRuleCollectionAction()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyFilterRuleAction
-        /// class.
+        /// Initializes a new instance of the
+        /// FirewallPolicyNatRuleCollectionAction class.
         /// </summary>
         /// <param name="type">The type of action. Possible values include:
-        /// 'Allow', 'Deny'</param>
-        public FirewallPolicyFilterRuleAction(string type = default(string))
+        /// 'DNAT'</param>
+        public FirewallPolicyNatRuleCollectionAction(string type = default(string))
         {
             Type = type;
             CustomInit();
@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the type of action. Possible values include: 'Allow',
-        /// 'Deny'
+        /// Gets or sets the type of action. Possible values include: 'DNAT'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

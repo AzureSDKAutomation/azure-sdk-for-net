@@ -186,14 +186,19 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteLinksOperations ExpressRouteLinks { get; }
 
         /// <summary>
+        /// Gets the IExpressRoutePortsLOAOperations.
+        /// </summary>
+        IExpressRoutePortsLOAOperations ExpressRoutePortsLOA { get; }
+
+        /// <summary>
         /// Gets the IFirewallPoliciesOperations.
         /// </summary>
         IFirewallPoliciesOperations FirewallPolicies { get; }
 
         /// <summary>
-        /// Gets the IFirewallPolicyRuleGroupsOperations.
+        /// Gets the IFirewallPolicyRuleCollectionGroupsOperations.
         /// </summary>
-        IFirewallPolicyRuleGroupsOperations FirewallPolicyRuleGroups { get; }
+        IFirewallPolicyRuleCollectionGroupsOperations FirewallPolicyRuleCollectionGroups { get; }
 
         /// <summary>
         /// Gets the IIpAllocationsOperations.
