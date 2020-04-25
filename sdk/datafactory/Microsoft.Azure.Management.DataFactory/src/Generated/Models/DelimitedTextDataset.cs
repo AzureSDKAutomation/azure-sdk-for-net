@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// https://msdn.microsoft.com/library/system.text.encoding.aspx. Type:
         /// string (or Expression with resultType string).</param>
         /// <param name="compressionLevel">The data compression method used for
-        /// DelimitedText.</param>
+        /// DelimitedText. Possible values include: 'Optimal',
+        /// 'Fastest'</param>
         /// <param name="quoteChar">The quote character. Type: string (or
         /// Expression with resultType string).</param>
         /// <param name="escapeChar">The escape character. Type: string (or
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Type: boolean (or Expression with resultType boolean).</param>
         /// <param name="nullValue">The null value string. Type: string (or
         /// Expression with resultType string).</param>
-        public DelimitedTextDataset(LinkedServiceReference linkedServiceName, DatasetLocation location, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), DatasetFolder folder = default(DatasetFolder), object columnDelimiter = default(object), object rowDelimiter = default(object), object encodingName = default(object), object compressionCodec = default(object), object compressionLevel = default(object), object quoteChar = default(object), object escapeChar = default(object), object firstRowAsHeader = default(object), object nullValue = default(object))
+        public DelimitedTextDataset(LinkedServiceReference linkedServiceName, DatasetLocation location, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), DatasetFolder folder = default(DatasetFolder), object columnDelimiter = default(object), object rowDelimiter = default(object), object encodingName = default(object), object compressionCodec = default(object), string compressionLevel = default(string), object quoteChar = default(object), object escapeChar = default(object), object firstRowAsHeader = default(object), object nullValue = default(object))
             : base(linkedServiceName, additionalProperties, description, structure, schema, parameters, annotations, folder)
         {
             Location = location;
@@ -134,9 +135,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the data compression method used for DelimitedText.
+        /// Possible values include: 'Optimal', 'Fastest'
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.compressionLevel")]
-        public object CompressionLevel { get; set; }
+        public string CompressionLevel { get; set; }
 
         /// <summary>
         /// Gets or sets the quote character. Type: string (or Expression with

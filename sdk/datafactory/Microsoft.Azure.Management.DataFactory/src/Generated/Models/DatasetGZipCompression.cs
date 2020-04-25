@@ -34,8 +34,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
-        /// <param name="level">The GZip compression level.</param>
-        public DatasetGZipCompression(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object level = default(object))
+        /// <param name="level">The GZip compression level. Possible values
+        /// include: 'Optimal', 'Fastest'</param>
+        public DatasetGZipCompression(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string level = default(string))
             : base(additionalProperties)
         {
             Level = level;
@@ -48,10 +49,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the GZip compression level.
+        /// Gets or sets the GZip compression level. Possible values include:
+        /// 'Optimal', 'Fastest'
         /// </summary>
         [JsonProperty(PropertyName = "level")]
-        public object Level { get; set; }
+        public string Level { get; set; }
 
     }
 }
