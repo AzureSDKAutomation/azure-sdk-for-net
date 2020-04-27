@@ -253,6 +253,52 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
+            /// Generate LOA for the requested ExpressRoutePort resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='expressRoutePortName'>
+            /// The name of ExpressRoutePort.
+            /// </param>
+            /// <param name='request'>
+            /// Request parameters supplied to generate LOA.
+            /// </param>
+            public static GenerateExpressRoutePortsLOAResult GenerateLOA(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request)
+            {
+                return operations.GenerateLOAAsync(resourceGroupName, expressRoutePortName, request).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Generate LOA for the requested ExpressRoutePort resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='expressRoutePortName'>
+            /// The name of ExpressRoutePort.
+            /// </param>
+            /// <param name='request'>
+            /// Request parameters supplied to generate LOA.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GenerateExpressRoutePortsLOAResult> GenerateLOAAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GenerateLOAWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, request, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes the specified ExpressRoutePort resource.
             /// </summary>
             /// <param name='operations'>
