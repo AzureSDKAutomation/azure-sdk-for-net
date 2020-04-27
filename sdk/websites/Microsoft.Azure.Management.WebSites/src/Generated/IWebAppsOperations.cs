@@ -9311,6 +9311,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Name of the site.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

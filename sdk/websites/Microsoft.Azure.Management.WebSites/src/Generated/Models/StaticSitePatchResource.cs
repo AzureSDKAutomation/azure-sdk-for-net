@@ -50,7 +50,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// secrets.</param>
         /// <param name="buildProperties">Build properties to configure on the
         /// repository.</param>
-        public StaticSitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), IList<string> customDomains = default(IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties))
+        /// <param name="privateEndpointConnections">Private endpoint
+        /// connections referencing this resource.</param>
+        public StaticSitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), IList<string> customDomains = default(IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), IList<PrivateEndpointConnectionResource> privateEndpointConnections = default(IList<PrivateEndpointConnectionResource>))
             : base(id, name, kind, type)
         {
             DefaultHostname = defaultHostname;
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             CustomDomains = customDomains;
             RepositoryToken = repositoryToken;
             BuildProperties = buildProperties;
+            PrivateEndpointConnections = privateEndpointConnections;
             CustomInit();
         }
 
@@ -103,6 +106,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.buildProperties")]
         public StaticSiteBuildProperties BuildProperties { get; set; }
+
+        /// <summary>
+        /// Gets private endpoint connections referencing this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnectionResource> PrivateEndpointConnections { get; private set; }
 
     }
 }

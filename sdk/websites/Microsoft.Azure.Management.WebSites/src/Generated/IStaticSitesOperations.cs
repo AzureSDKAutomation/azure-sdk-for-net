@@ -446,10 +446,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteBuildFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, string prId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the application settings of a static site.
+        /// Gets the application settings of a static site build.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the application settings of a static site.
+        /// Description for Gets the application settings of a static site
+        /// build.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.

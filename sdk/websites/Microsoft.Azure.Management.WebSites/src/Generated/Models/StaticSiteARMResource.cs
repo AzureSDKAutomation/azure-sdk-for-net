@@ -52,7 +52,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// secrets.</param>
         /// <param name="buildProperties">Build properties to configure on the
         /// repository.</param>
-        public StaticSiteARMResource(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), IList<string> customDomains = default(IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), SkuDescription sku = default(SkuDescription))
+        /// <param name="privateEndpointConnections">Private endpoint
+        /// connections referencing this resource.</param>
+        public StaticSiteARMResource(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), IList<string> customDomains = default(IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), IList<PrivateEndpointConnectionResource> privateEndpointConnections = default(IList<PrivateEndpointConnectionResource>), SkuDescription sku = default(SkuDescription))
             : base(location, id, name, kind, type, tags)
         {
             DefaultHostname = defaultHostname;
@@ -61,6 +63,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             CustomDomains = customDomains;
             RepositoryToken = repositoryToken;
             BuildProperties = buildProperties;
+            PrivateEndpointConnections = privateEndpointConnections;
             Sku = sku;
             CustomInit();
         }
@@ -106,6 +109,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.buildProperties")]
         public StaticSiteBuildProperties BuildProperties { get; set; }
+
+        /// <summary>
+        /// Gets private endpoint connections referencing this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnectionResource> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
         /// </summary>

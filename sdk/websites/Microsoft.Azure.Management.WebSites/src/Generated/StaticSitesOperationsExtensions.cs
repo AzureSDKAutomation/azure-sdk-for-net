@@ -725,10 +725,10 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
-            /// Gets the application settings of a static site.
+            /// Gets the application settings of a static site build.
             /// </summary>
             /// <remarks>
-            /// Description for Gets the application settings of a static site.
+            /// Description for Gets the application settings of a static site build.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -748,10 +748,10 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
-            /// Gets the application settings of a static site.
+            /// Gets the application settings of a static site build.
             /// </summary>
             /// <remarks>
-            /// Description for Gets the application settings of a static site.
+            /// Description for Gets the application settings of a static site build.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
