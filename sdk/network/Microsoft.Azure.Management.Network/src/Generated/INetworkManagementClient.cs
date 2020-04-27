@@ -81,6 +81,16 @@ namespace Microsoft.Azure.Management.Network
         IApplicationGatewaysOperations ApplicationGateways { get; }
 
         /// <summary>
+        /// Gets the IApplicationGatewayPrivateLinkResourcesOperations.
+        /// </summary>
+        IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IApplicationGatewayPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IApplicationGatewayPrivateEndpointConnectionsOperations ApplicationGatewayPrivateEndpointConnections { get; }
+
+        /// <summary>
         /// Gets the IApplicationSecurityGroupsOperations.
         /// </summary>
         IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; }
@@ -191,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPoliciesOperations FirewallPolicies { get; }
 
         /// <summary>
-        /// Gets the IFirewallPolicyRuleGroupsOperations.
+        /// Gets the IFirewallPolicyRuleCollectionGroupsOperations.
         /// </summary>
-        IFirewallPolicyRuleGroupsOperations FirewallPolicyRuleGroups { get; }
+        IFirewallPolicyRuleCollectionGroupsOperations FirewallPolicyRuleCollectionGroups { get; }
 
         /// <summary>
         /// Gets the IIpAllocationsOperations.
