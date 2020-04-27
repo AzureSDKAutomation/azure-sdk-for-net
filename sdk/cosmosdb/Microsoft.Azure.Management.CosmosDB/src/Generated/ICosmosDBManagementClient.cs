@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId1 { get; set; }
