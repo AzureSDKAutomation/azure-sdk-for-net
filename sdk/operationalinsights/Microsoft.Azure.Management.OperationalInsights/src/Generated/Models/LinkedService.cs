@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.OperationalInsights.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
     /// The top level Linked service resource container.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class LinkedService : IResource
+    public partial class LinkedService : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the LinkedService class.
@@ -35,6 +34,12 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Initializes a new instance of the LinkedService class.
         /// </summary>
+        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. Ex-
+        /// Microsoft.Compute/virtualMachines or
+        /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="resourceId">The resource id of the resource that will
         /// be linked to the workspace. This should be used for linking
         /// resources which require read access</param>
@@ -45,7 +50,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// linked service. Possible values include: 'Succeeded', 'Deleting',
         /// 'ProvisioningAccount', 'Updating'</param>
         /// <param name="tags">Resource tags.</param>
-        public LinkedService(string resourceId = default(string), string writeAccessResourceId = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public LinkedService(string id = default(string), string name = default(string), string type = default(string), string resourceId = default(string), string writeAccessResourceId = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(id, name, type)
         {
             ResourceId = resourceId;
             WriteAccessResourceId = writeAccessResourceId;

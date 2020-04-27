@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.OperationalInsights.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
     /// <summary>
     /// Datasources under OMS Workspace.
     /// </summary>
-    public partial class DataSource : IResource
+    public partial class DataSource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DataSource class.
@@ -51,9 +50,16 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// 'SecurityInsightsSecurityEventCollectionConfiguration',
         /// 'ImportComputerGroup', 'NetworkMonitoring', 'Itsm', 'DnsAnalytics',
         /// 'ApplicationInsights', 'SqlDataClassification'</param>
+        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. Ex-
+        /// Microsoft.Compute/virtualMachines or
+        /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="eTag">The ETag of the data source.</param>
         /// <param name="tags">Resource tags.</param>
-        public DataSource(object properties, string kind, string eTag = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public DataSource(object properties, string kind, string id = default(string), string name = default(string), string type = default(string), string eTag = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(id, name, type)
         {
             Properties = properties;
             ETag = eTag;

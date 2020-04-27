@@ -11,16 +11,17 @@
 namespace Microsoft.Azure.Management.OperationalInsights.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The top level Log Analytics cluster resource container.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Cluster : IResource
+    public partial class Cluster : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the Cluster class.
@@ -33,6 +34,15 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Initializes a new instance of the Cluster class.
         /// </summary>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. Ex-
+        /// Microsoft.Compute/virtualMachines or
+        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="tags">Resource tags.</param>
         /// <param name="identity">The identity of the resource.</param>
         /// <param name="sku">The sku properties.</param>
         /// <param name="nextLink">The link used to get the next page of
@@ -44,7 +54,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// 'Updating'</param>
         /// <param name="keyVaultProperties">The associated key
         /// properties.</param>
-        public Cluster(Identity identity = default(Identity), ClusterSku sku = default(ClusterSku), string nextLink = default(string), string clusterId = default(string), string provisioningState = default(string), KeyVaultProperties keyVaultProperties = default(KeyVaultProperties))
+        public Cluster(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), ClusterSku sku = default(ClusterSku), string nextLink = default(string), string clusterId = default(string), string provisioningState = default(string), KeyVaultProperties keyVaultProperties = default(KeyVaultProperties))
+            : base(location, id, name, type, tags)
         {
             Identity = identity;
             Sku = sku;
@@ -104,8 +115,9 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Identity != null)
             {
                 Identity.Validate();

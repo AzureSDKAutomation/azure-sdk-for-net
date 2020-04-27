@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.OperationalInsights.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
     /// The top level Workspace resource container.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class WorkspacePatch : IResource
+    public partial class WorkspacePatch : AzureEntityResource
     {
         /// <summary>
         /// Initializes a new instance of the WorkspacePatch class.
@@ -35,6 +34,13 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Initializes a new instance of the WorkspacePatch class.
         /// </summary>
+        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. Ex-
+        /// Microsoft.Compute/virtualMachines or
+        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="etag">Resource Etag.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// workspace. Possible values include: 'Creating', 'Succeeded',
         /// 'Failed', 'Canceled', 'Deleting', 'ProvisioningAccount',
@@ -54,7 +60,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <param name="privateLinkScopedResources">List of linked private
         /// link scope resources.</param>
         /// <param name="tags">Resource tags. Optional.</param>
-        public WorkspacePatch(string provisioningState = default(string), string customerId = default(string), WorkspaceSku sku = default(WorkspaceSku), int? retentionInDays = default(int?), string publicNetworkAccessForIngestion = default(string), string publicNetworkAccessForQuery = default(string), IList<PrivateLinkScopedResource> privateLinkScopedResources = default(IList<PrivateLinkScopedResource>), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public WorkspacePatch(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string customerId = default(string), WorkspaceSku sku = default(WorkspaceSku), int? retentionInDays = default(int?), string publicNetworkAccessForIngestion = default(string), string publicNetworkAccessForQuery = default(string), IList<PrivateLinkScopedResource> privateLinkScopedResources = default(IList<PrivateLinkScopedResource>), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(id, name, type, etag)
         {
             ProvisioningState = provisioningState;
             CustomerId = customerId;

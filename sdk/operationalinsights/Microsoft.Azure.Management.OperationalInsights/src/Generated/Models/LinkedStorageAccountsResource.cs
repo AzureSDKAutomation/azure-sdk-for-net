@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.OperationalInsights.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
     /// Linked storage accounts top level resource container.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class LinkedStorageAccountsResource : IResource
+    public partial class LinkedStorageAccountsResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the LinkedStorageAccountsResource
@@ -37,11 +36,18 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// Initializes a new instance of the LinkedStorageAccountsResource
         /// class.
         /// </summary>
+        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. Ex-
+        /// Microsoft.Compute/virtualMachines or
+        /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="dataSourceType">Linked storage accounts type. Possible
         /// values include: 'CustomLogs', 'AzureWatson'</param>
         /// <param name="storageAccountIds">Linked storage accounts resources
         /// ids.</param>
-        public LinkedStorageAccountsResource(DataSourceType? dataSourceType = default(DataSourceType?), IList<string> storageAccountIds = default(IList<string>))
+        public LinkedStorageAccountsResource(string id = default(string), string name = default(string), string type = default(string), DataSourceType? dataSourceType = default(DataSourceType?), IList<string> storageAccountIds = default(IList<string>))
+            : base(id, name, type)
         {
             DataSourceType = dataSourceType;
             StorageAccountIds = storageAccountIds;
