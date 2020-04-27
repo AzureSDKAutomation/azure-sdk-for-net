@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "frontdoor/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "frontdoor/resource-manager" -AutoRestVersion "latest"
