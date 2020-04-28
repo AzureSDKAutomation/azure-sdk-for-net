@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// Network are allowed. Possible values include: 'Enabled',
         /// 'Disabled'</param>
         /// <param name="ipFilterRules">The IP filter rules.</param>
+        /// <param name="minTlsVersion">Specifies the minimum TLS version to
+        /// support for this hub. Can be set to "1.2" to have clients that use
+        /// a TLS version below 1.2 to be rejected.</param>
         /// <param name="privateEndpointConnections">Private endpoint
         /// connections created on this IotHub</param>
         /// <param name="provisioningState">The provisioning state.</param>
@@ -63,11 +66,12 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// 'DeviceManagement'</param>
         /// <param name="locations">Primary and secondary location for iot
         /// hub</param>
-        public IotHubProperties(IList<SharedAccessSignatureAuthorizationRule> authorizationPolicies = default(IList<SharedAccessSignatureAuthorizationRule>), string publicNetworkAccess = default(string), IList<IpFilterRule> ipFilterRules = default(IList<IpFilterRule>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string provisioningState = default(string), string state = default(string), string hostName = default(string), IDictionary<string, EventHubProperties> eventHubEndpoints = default(IDictionary<string, EventHubProperties>), RoutingProperties routing = default(RoutingProperties), IDictionary<string, StorageEndpointProperties> storageEndpoints = default(IDictionary<string, StorageEndpointProperties>), IDictionary<string, MessagingEndpointProperties> messagingEndpoints = default(IDictionary<string, MessagingEndpointProperties>), bool? enableFileUploadNotifications = default(bool?), CloudToDeviceProperties cloudToDevice = default(CloudToDeviceProperties), string comments = default(string), string features = default(string), IList<IotHubLocationDescription> locations = default(IList<IotHubLocationDescription>))
+        public IotHubProperties(IList<SharedAccessSignatureAuthorizationRule> authorizationPolicies = default(IList<SharedAccessSignatureAuthorizationRule>), string publicNetworkAccess = default(string), IList<IpFilterRule> ipFilterRules = default(IList<IpFilterRule>), string minTlsVersion = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string provisioningState = default(string), string state = default(string), string hostName = default(string), IDictionary<string, EventHubProperties> eventHubEndpoints = default(IDictionary<string, EventHubProperties>), RoutingProperties routing = default(RoutingProperties), IDictionary<string, StorageEndpointProperties> storageEndpoints = default(IDictionary<string, StorageEndpointProperties>), IDictionary<string, MessagingEndpointProperties> messagingEndpoints = default(IDictionary<string, MessagingEndpointProperties>), bool? enableFileUploadNotifications = default(bool?), CloudToDeviceProperties cloudToDevice = default(CloudToDeviceProperties), string comments = default(string), string features = default(string), IList<IotHubLocationDescription> locations = default(IList<IotHubLocationDescription>))
         {
             AuthorizationPolicies = authorizationPolicies;
             PublicNetworkAccess = publicNetworkAccess;
             IpFilterRules = ipFilterRules;
+            MinTlsVersion = minTlsVersion;
             PrivateEndpointConnections = privateEndpointConnections;
             ProvisioningState = provisioningState;
             State = state;
@@ -108,6 +112,14 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "ipFilterRules")]
         public IList<IpFilterRule> IpFilterRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the minimum TLS version to support for this
+        /// hub. Can be set to "1.2" to have clients that use a TLS version
+        /// below 1.2 to be rejected.
+        /// </summary>
+        [JsonProperty(PropertyName = "minTlsVersion")]
+        public string MinTlsVersion { get; set; }
 
         /// <summary>
         /// Gets or sets private endpoint connections created on this IotHub
