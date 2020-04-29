@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="volumeType">What type of volume is this</param>
         /// <param name="dataProtection">DataProtection</param>
         /// <param name="isRestoring">Restoring</param>
-        public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), string baremetalTenantId = default(string), IList<MountTarget> mountTargets = default(IList<MountTarget>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?))
+        /// <param name="snapshotDirectoryVisible">If enabled (true) the volume
+        /// will contain a read-only .snapshot directory which provides access
+        /// to each of the volume's snapshots (default to true).</param>
+        public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), string baremetalTenantId = default(string), IList<MountTargetProperties> mountTargets = default(IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?))
         {
             Location = location;
             Id = id;
@@ -76,6 +79,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             VolumeType = volumeType;
             DataProtection = dataProtection;
             IsRestoring = isRestoring;
+            SnapshotDirectoryVisible = snapshotDirectoryVisible;
             CustomInit();
         }
 
@@ -209,7 +213,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// List of mount targets
         /// </remarks>
         [JsonProperty(PropertyName = "properties.mountTargets")]
-        public IList<MountTarget> MountTargets { get; set; }
+        public IList<MountTargetProperties> MountTargets { get; set; }
 
         /// <summary>
         /// Gets or sets what type of volume is this
@@ -232,6 +236,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.isRestoring")]
         public bool? IsRestoring { get; set; }
+
+        /// <summary>
+        /// Gets or sets if enabled (true) the volume will contain a read-only
+        /// .snapshot directory which provides access to each of the volume's
+        /// snapshots (default to true).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotDirectoryVisible")]
+        public bool? SnapshotDirectoryVisible { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -304,21 +316,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 if (!System.Text.RegularExpressions.Regex.IsMatch(SnapshotId, "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}|(\\\\?([^\\/]*[\\/])*)([^\\/]+)$"))
                 {
                     throw new ValidationException(ValidationRules.Pattern, "SnapshotId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}|(\\\\?([^\\/]*[\\/])*)([^\\/]+)$");
-                }
-            }
-            if (BaremetalTenantId != null)
-            {
-                if (BaremetalTenantId.Length > 36)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "BaremetalTenantId", 36);
-                }
-                if (BaremetalTenantId.Length < 36)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "BaremetalTenantId", 36);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(BaremetalTenantId, "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "BaremetalTenantId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
                 }
             }
             if (MountTargets != null)

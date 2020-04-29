@@ -19,27 +19,18 @@ namespace Microsoft.Azure.Management.NetApp
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SnapshotsOperations operations.
+    /// SnapshotPoliciesOperations operations.
     /// </summary>
-    public partial interface ISnapshotsOperations
+    public partial interface ISnapshotPoliciesOperations
     {
         /// <summary>
-        /// Describe all snapshots
+        /// List snapshot policy
         /// </summary>
-        /// <remarks>
-        /// List all snapshots associated with the volume
-        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -56,27 +47,18 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Snapshot>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<SnapshotPolicy>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Describe a snapshot
+        /// Get a snapshot Policy
         /// </summary>
-        /// <remarks>
-        /// Get details of the specified snapshot
-        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the mount target
+        /// <param name='snapshotPolicyName'>
+        /// The name of the snapshot policy target
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -93,15 +75,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SnapshotPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string snapshotPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create a snapshot
+        /// Create a snapshot policy
         /// </summary>
-        /// <remarks>
-        /// Create the specified snapshot within the given volume
-        /// </remarks>
         /// <param name='body'>
-        /// Snapshot object supplied in the body of the operation.
+        /// Snapshot policy object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -109,14 +88,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the mount target
+        /// <param name='snapshotPolicyName'>
+        /// The name of the snapshot policy target
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -133,15 +106,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> CreateWithHttpMessagesAsync(Snapshot body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SnapshotPolicy>> CreateWithHttpMessagesAsync(SnapshotPolicy body, string resourceGroupName, string accountName, string snapshotPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update a snapshot
+        /// Patch a snapshot policy
         /// </summary>
-        /// <remarks>
-        /// Patch a snapshot
-        /// </remarks>
         /// <param name='body'>
-        /// Snapshot object supplied in the body of the operation.
+        /// Snapshot policy object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -149,14 +119,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the mount target
+        /// <param name='snapshotPolicyName'>
+        /// The name of the snapshot policy target
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -173,27 +137,18 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> UpdateWithHttpMessagesAsync(object body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SnapshotPolicy>> UpdateWithHttpMessagesAsync(SnapshotPolicyPatch body, string resourceGroupName, string accountName, string snapshotPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a snapshot
+        /// Delete snapshot policy
         /// </summary>
-        /// <remarks>
-        /// Delete snapshot
-        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the mount target
+        /// <param name='snapshotPolicyName'>
+        /// The name of the snapshot policy target
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -207,30 +162,21 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string snapshotPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create a snapshot
+        /// Get volumes associated with snapshot policy
         /// </summary>
         /// <remarks>
-        /// Create the specified snapshot within the given volume
+        /// Get volumes associated with snapshot policy
         /// </remarks>
-        /// <param name='body'>
-        /// Snapshot object supplied in the body of the operation.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the mount target
+        /// <param name='snapshotPolicyName'>
+        /// The name of the snapshot policy target
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -247,27 +193,18 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> BeginCreateWithHttpMessagesAsync(Snapshot body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SnapshotPolicyVolumeList>> ListVolumesWithHttpMessagesAsync(string resourceGroupName, string accountName, string snapshotPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a snapshot
+        /// Delete snapshot policy
         /// </summary>
-        /// <remarks>
-        /// Delete snapshot
-        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the mount target
+        /// <param name='snapshotPolicyName'>
+        /// The name of the snapshot policy target
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -281,6 +218,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string snapshotPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

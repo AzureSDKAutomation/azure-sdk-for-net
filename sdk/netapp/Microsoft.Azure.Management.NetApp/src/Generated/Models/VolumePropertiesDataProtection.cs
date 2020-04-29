@@ -36,9 +36,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// class.
         /// </summary>
         /// <param name="replication">Replication</param>
-        public VolumePropertiesDataProtection(ReplicationObject replication = default(ReplicationObject))
+        public VolumePropertiesDataProtection(ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties))
         {
             Replication = replication;
+            Snapshot = snapshot;
             CustomInit();
         }
 
@@ -55,6 +56,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </remarks>
         [JsonProperty(PropertyName = "replication")]
         public ReplicationObject Replication { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "snapshot")]
+        public VolumeSnapshotProperties Snapshot { get; set; }
 
         /// <summary>
         /// Validate the object.

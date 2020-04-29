@@ -101,5 +101,10 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         ISnapshotsOperations Snapshots { get; }
 
+        /// <summary>
+        /// Gets the ISnapshotPoliciesOperations.
+        /// </summary>
+        ISnapshotPoliciesOperations SnapshotPolicies { get; }
+
     }
 }
