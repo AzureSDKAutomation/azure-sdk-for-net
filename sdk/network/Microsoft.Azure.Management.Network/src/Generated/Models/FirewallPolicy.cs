@@ -53,11 +53,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="threatIntelMode">The operation mode for Threat
         /// Intelligence. Possible values include: 'Alert', 'Deny',
         /// 'Off'</param>
+        /// <param name="threatIntelWhitelist">ThreatIntel Whitelist for
+        /// Firewall Policy.</param>
         /// <param name="intrusionSystemMode">The operation mode for Intrusion
         /// system. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResource> ruleGroups = default(IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), IList<SubResource> firewalls = default(IList<SubResource>), IList<SubResource> childPolicies = default(IList<SubResource>), string threatIntelMode = default(string), string intrusionSystemMode = default(string), string etag = default(string))
+        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResource> ruleGroups = default(IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), IList<SubResource> firewalls = default(IList<SubResource>), IList<SubResource> childPolicies = default(IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), string intrusionSystemMode = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             RuleGroups = ruleGroups;
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
             Firewalls = firewalls;
             ChildPolicies = childPolicies;
             ThreatIntelMode = threatIntelMode;
+            ThreatIntelWhitelist = threatIntelWhitelist;
             IntrusionSystemMode = intrusionSystemMode;
             Etag = etag;
             CustomInit();
@@ -116,6 +119,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.threatIntelMode")]
         public string ThreatIntelMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets threatIntel Whitelist for Firewall Policy.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.threatIntelWhitelist")]
+        public FirewallPolicyThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 
         /// <summary>
         /// Gets or sets the operation mode for Intrusion system. Possible
