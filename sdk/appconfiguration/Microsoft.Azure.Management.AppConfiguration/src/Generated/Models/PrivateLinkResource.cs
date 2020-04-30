@@ -40,13 +40,16 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
         /// <param name="groupId">The private link resource group id.</param>
         /// <param name="requiredMembers">The private link resource required
         /// member names.</param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), IList<string> requiredMembers = default(IList<string>))
+        /// <param name="requiredZoneNames">The list of required DNS zone names
+        /// of the private link resource.</param>
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), IList<string> requiredMembers = default(IList<string>), IList<string> requiredZoneNames = default(IList<string>))
         {
             Id = id;
             Name = name;
             Type = type;
             GroupId = groupId;
             RequiredMembers = requiredMembers;
+            RequiredZoneNames = requiredZoneNames;
             CustomInit();
         }
 
@@ -84,6 +87,13 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.requiredMembers")]
         public IList<string> RequiredMembers { get; private set; }
+
+        /// <summary>
+        /// Gets the list of required DNS zone names of the private link
+        /// resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.requiredZoneNames")]
+        public IList<string> RequiredZoneNames { get; private set; }
 
     }
 }

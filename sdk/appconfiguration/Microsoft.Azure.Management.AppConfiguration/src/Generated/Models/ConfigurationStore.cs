@@ -53,7 +53,12 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
         /// store API will be available.</param>
         /// <param name="encryption">The encryption settings of the
         /// configuration store.</param>
-        public ConfigurationStore(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string provisioningState = default(string), System.DateTime? creationDate = default(System.DateTime?), string endpoint = default(string), EncryptionProperties encryption = default(EncryptionProperties))
+        /// <param name="privateEndpointConnections">The list of private
+        /// endpoint connections that are set up for this resource.</param>
+        /// <param name="publicNetworkAccess">Control permission for data plane
+        /// traffic coming from public networks while private endpoint is
+        /// enabled. Possible values include: 'Enabled', 'Disabled'</param>
+        public ConfigurationStore(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string provisioningState = default(string), System.DateTime? creationDate = default(System.DateTime?), string endpoint = default(string), EncryptionProperties encryption = default(EncryptionProperties), IList<PrivateEndpointConnectionReference> privateEndpointConnections = default(IList<PrivateEndpointConnectionReference>), string publicNetworkAccess = default(string))
             : base(location, id, name, type, tags)
         {
             Identity = identity;
@@ -61,6 +66,8 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
             CreationDate = creationDate;
             Endpoint = endpoint;
             Encryption = encryption;
+            PrivateEndpointConnections = privateEndpointConnections;
+            PublicNetworkAccess = publicNetworkAccess;
             Sku = sku;
             CustomInit();
         }
@@ -104,6 +111,21 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
         public EncryptionProperties Encryption { get; set; }
 
         /// <summary>
+        /// Gets the list of private endpoint connections that are set up for
+        /// this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnectionReference> PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets or sets control permission for data plane traffic coming from
+        /// public networks while private endpoint is enabled. Possible values
+        /// include: 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess { get; set; }
+
+        /// <summary>
         /// Gets or sets the sku of the configuration store.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
@@ -121,6 +143,16 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
             if (Sku == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
+            }
+            if (PrivateEndpointConnections != null)
+            {
+                foreach (var element in PrivateEndpointConnections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
             if (Sku != null)
             {
