@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "reservations/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "reservations/resource-manager" -AutoRestVersion "latest"
