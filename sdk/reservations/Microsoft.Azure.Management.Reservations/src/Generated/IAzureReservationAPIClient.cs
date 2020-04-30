@@ -68,19 +68,9 @@ namespace Microsoft.Azure.Management.Reservations
         IQuotaOperations Quota { get; }
 
         /// <summary>
-        /// Gets the IQuotaRequestOperations.
+        /// Gets the IQuotaRequestStatusOperations.
         /// </summary>
-        IQuotaRequestOperations QuotaRequest { get; }
-
-        /// <summary>
-        /// Gets the IQuotasOperations.
-        /// </summary>
-        IQuotasOperations Quotas { get; }
-
-        /// <summary>
-        /// Gets the IQuotaRequestsOperations.
-        /// </summary>
-        IQuotaRequestsOperations QuotaRequests { get; }
+        IQuotaRequestStatusOperations QuotaRequestStatus { get; }
 
         /// <summary>
         /// Gets the IAutoQuotaIncreaseOperations.

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <param name="onSuccess">The on success Actions.</param>
         /// <param name="supportTicketAction">The support ticket
         /// action.</param>
-        public AutoQuotaIncreaseDetail(string id = default(string), string name = default(string), string type = default(string), AqiSettings settings = default(AqiSettings), OnFailure onFailure = default(OnFailure), OnFailure onSuccess = default(OnFailure), SupportRequestAction supportTicketAction = default(SupportRequestAction))
+        public AutoQuotaIncreaseDetail(string id = default(string), string name = default(string), string type = default(string), AqiSettings settings = default(AqiSettings), Actions onFailure = default(Actions), Actions onSuccess = default(Actions), SupportRequestAction supportTicketAction = default(SupportRequestAction))
         {
             Id = id;
             Name = name;
@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// Gets or sets the on failure Actions.
         /// </summary>
         [JsonProperty(PropertyName = "properties.onFailure")]
-        public OnFailure OnFailure { get; set; }
+        public Actions OnFailure { get; set; }
 
         /// <summary>
         /// Gets or sets the on success Actions.
         /// </summary>
         [JsonProperty(PropertyName = "properties.onSuccess")]
-        public OnFailure OnSuccess { get; set; }
+        public Actions OnSuccess { get; set; }
 
         /// <summary>
         /// Gets or sets the support ticket action.

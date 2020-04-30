@@ -11,30 +11,29 @@
 namespace Microsoft.Azure.Management.Reservations.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The phone actions for auto quota increase.
+    /// Defines headers for Get operation.
     /// </summary>
-    public partial class OnFailurePhoneActions
+    public partial class QuotaGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the OnFailurePhoneActions class.
+        /// Initializes a new instance of the QuotaGetHeaders class.
         /// </summary>
-        public OnFailurePhoneActions()
+        public QuotaGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OnFailurePhoneActions class.
+        /// Initializes a new instance of the QuotaGetHeaders class.
         /// </summary>
-        /// <param name="value">The list of phone actions.</param>
-        public OnFailurePhoneActions(IList<PhoneAction> value = default(IList<PhoneAction>))
+        /// <param name="eTag">Current entity state version. Should be treated
+        /// as opaque and used to make conditional HTTP requests.</param>
+        public QuotaGetHeaders(string eTag = default(string))
         {
-            Value = value;
+            ETag = eTag;
             CustomInit();
         }
 
@@ -44,10 +43,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of phone actions.
+        /// Gets or sets current entity state version. Should be treated as
+        /// opaque and used to make conditional HTTP requests.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<PhoneAction> Value { get; set; }
+        [JsonProperty(PropertyName = "ETag")]
+        public string ETag { get; set; }
 
     }
 }

@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for listStatus operation.
+    /// The actions for auto quota increase.
     /// </summary>
-    public partial class QuotaListStatusHeaders
+    public partial class Actions
     {
         /// <summary>
-        /// Initializes a new instance of the QuotaListStatusHeaders class.
+        /// Initializes a new instance of the Actions class.
         /// </summary>
-        public QuotaListStatusHeaders()
+        public Actions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the QuotaListStatusHeaders class.
+        /// Initializes a new instance of the Actions class.
         /// </summary>
-        /// <param name="eTag">Current entity state version. Should be treated
-        /// as opaque and used to make conditional HTTP requests.</param>
-        public QuotaListStatusHeaders(string eTag = default(string))
+        /// <param name="emailActions">The email actions for auto quota
+        /// increase.</param>
+        public Actions(EmailActions emailActions = default(EmailActions))
         {
-            ETag = eTag;
+            EmailActions = emailActions;
             CustomInit();
         }
 
@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets current entity state version. Should be treated as
-        /// opaque and used to make conditional HTTP requests.
+        /// Gets or sets the email actions for auto quota increase.
         /// </summary>
-        [JsonProperty(PropertyName = "ETag")]
-        public string ETag { get; set; }
+        [JsonProperty(PropertyName = "emailActions")]
+        public EmailActions EmailActions { get; set; }
 
     }
 }

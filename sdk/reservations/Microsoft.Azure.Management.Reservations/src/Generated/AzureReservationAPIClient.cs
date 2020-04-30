@@ -69,19 +69,9 @@ namespace Microsoft.Azure.Management.Reservations
         public virtual IQuotaOperations Quota { get; private set; }
 
         /// <summary>
-        /// Gets the IQuotaRequestOperations.
+        /// Gets the IQuotaRequestStatusOperations.
         /// </summary>
-        public virtual IQuotaRequestOperations QuotaRequest { get; private set; }
-
-        /// <summary>
-        /// Gets the IQuotasOperations.
-        /// </summary>
-        public virtual IQuotasOperations Quotas { get; private set; }
-
-        /// <summary>
-        /// Gets the IQuotaRequestsOperations.
-        /// </summary>
-        public virtual IQuotaRequestsOperations QuotaRequests { get; private set; }
+        public virtual IQuotaRequestStatusOperations QuotaRequestStatus { get; private set; }
 
         /// <summary>
         /// Gets the IAutoQuotaIncreaseOperations.
@@ -345,9 +335,7 @@ namespace Microsoft.Azure.Management.Reservations
         private void Initialize()
         {
             Quota = new QuotaOperations(this);
-            QuotaRequest = new QuotaRequestOperations(this);
-            Quotas = new QuotasOperations(this);
-            QuotaRequests = new QuotaRequestsOperations(this);
+            QuotaRequestStatus = new QuotaRequestStatusOperations(this);
             AutoQuotaIncrease = new AutoQuotaIncreaseOperations(this);
             Reservation = new ReservationOperations(this);
             ReservationOrder = new ReservationOrderOperations(this);

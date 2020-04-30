@@ -31,11 +31,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the EmailActions class.
         /// </summary>
-        /// <param name="value">The list of email actions based on the success
-        /// or failure of automatic quota increase action.</param>
-        public EmailActions(IList<EmailAction> value = default(IList<EmailAction>))
+        /// <param name="emailAddresses">The list of email actions.</param>
+        public EmailActions(IList<EmailAction> emailAddresses = default(IList<EmailAction>))
         {
-            Value = value;
+            EmailAddresses = emailAddresses;
             CustomInit();
         }
 
@@ -45,11 +44,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of email actions based on the success or
-        /// failure of automatic quota increase action.
+        /// Gets or sets the list of email actions.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<EmailAction> Value { get; set; }
+        [JsonProperty(PropertyName = "emailAddresses")]
+        public IList<EmailAction> EmailAddresses { get; set; }
 
     }
 }

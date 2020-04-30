@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.Reservations
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for QuotaRequestsOperations.
+    /// Extension methods for QuotaRequestStatusOperations.
     /// </summary>
-    public static partial class QuotaRequestsOperationsExtensions
+    public static partial class QuotaRequestStatusOperationsExtensions
     {
             /// <summary>
             /// Gets the Quota request status by requestId, for the specified resource
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='id'>
             /// Quota Request id.
             /// </param>
-            public static QuotaRequestDetails GetStatus(this IQuotaRequestsOperations operations, string subscriptionId, string providerId, string location, string id)
+            public static QuotaRequestDetails Get(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string id)
             {
-                return operations.GetStatusAsync(subscriptionId, providerId, location, id).GetAwaiter().GetResult();
+                return operations.GetAsync(subscriptionId, providerId, location, id).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<QuotaRequestDetails> GetStatusAsync(this IQuotaRequestsOperations operations, string subscriptionId, string providerId, string location, string id, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<QuotaRequestDetails> GetAsync(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string id, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetStatusWithHttpMessagesAsync(subscriptionId, providerId, location, id, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, providerId, location, id, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Management.Reservations
             /// nextLink element will include a skiptoken parameter that specifies a
             /// starting point to use for subsequent calls
             /// </param>
-            public static IPage<QuotaRequestDetails> ListStatus(this IQuotaRequestsOperations operations, string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string))
+            public static IPage<QuotaRequestDetails> List(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string))
             {
-                return operations.ListStatusAsync(subscriptionId, providerId, location, filter, top, skiptoken).GetAwaiter().GetResult();
+                return operations.ListAsync(subscriptionId, providerId, location, filter, top, skiptoken).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -169,9 +169,9 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<QuotaRequestDetails>> ListStatusAsync(this IQuotaRequestsOperations operations, string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<QuotaRequestDetails>> ListAsync(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListStatusWithHttpMessagesAsync(subscriptionId, providerId, location, filter, top, skiptoken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(subscriptionId, providerId, location, filter, top, skiptoken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -194,9 +194,9 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<QuotaRequestDetails> ListStatusNext(this IQuotaRequestsOperations operations, string nextPageLink)
+            public static IPage<QuotaRequestDetails> ListNext(this IQuotaRequestStatusOperations operations, string nextPageLink)
             {
-                return operations.ListStatusNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -219,9 +219,9 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<QuotaRequestDetails>> ListStatusNextAsync(this IQuotaRequestsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<QuotaRequestDetails>> ListNextAsync(this IQuotaRequestStatusOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListStatusNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

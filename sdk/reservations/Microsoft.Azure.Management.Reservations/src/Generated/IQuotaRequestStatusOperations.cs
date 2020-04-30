@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.Reservations
     using System.Threading.Tasks;
 
     /// <summary>
-    /// QuotaRequestsOperations operations.
+    /// QuotaRequestStatusOperations operations.
     /// </summary>
-    public partial interface IQuotaRequestsOperations
+    public partial interface IQuotaRequestStatusOperations
     {
         /// <summary>
         /// Gets the Quota request status by requestId, for the specified
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<QuotaRequestDetails>> GetStatusWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<QuotaRequestDetails>> GetWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// For the specified location and resource Provider, gets the quota
         /// requests under the subscription over the time
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListStatusWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// For the specified location and resource Provider, gets the quota
         /// requests under the subscription over the time
@@ -143,6 +143,6 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListStatusNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

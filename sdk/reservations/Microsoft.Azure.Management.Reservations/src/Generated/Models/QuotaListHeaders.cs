@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for listStatus operation.
+    /// Defines headers for List operation.
     /// </summary>
-    public partial class QuotasListStatusHeaders
+    public partial class QuotaListHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the QuotasListStatusHeaders class.
+        /// Initializes a new instance of the QuotaListHeaders class.
         /// </summary>
-        public QuotasListStatusHeaders()
+        public QuotaListHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the QuotasListStatusHeaders class.
+        /// Initializes a new instance of the QuotaListHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public QuotasListStatusHeaders(string eTag = default(string))
+        public QuotaListHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();
