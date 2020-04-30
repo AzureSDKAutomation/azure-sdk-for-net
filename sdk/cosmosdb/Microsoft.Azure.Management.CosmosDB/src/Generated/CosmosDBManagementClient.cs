@@ -47,19 +47,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Azure subscription ID.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
-        public string SubscriptionId1 { get; set; }
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
