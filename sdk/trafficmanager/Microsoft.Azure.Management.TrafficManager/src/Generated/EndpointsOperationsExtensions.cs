@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='parameters'>
             /// The Traffic Manager endpoint parameters supplied to the Update operation.
             /// </param>
-            public static Endpoint Update(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters)
+            public static EndpointResource Update(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters)
             {
                 return operations.UpdateAsync(resourceGroupName, profileName, endpointType, endpointName, parameters).GetAwaiter().GetResult();
             }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Endpoint> UpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EndpointResource> UpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint.
             /// </param>
-            public static Endpoint Get(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName)
+            public static EndpointResource Get(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName)
             {
                 return operations.GetAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
             }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Endpoint> GetAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EndpointResource> GetAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// The Traffic Manager endpoint parameters supplied to the CreateOrUpdate
             /// operation.
             /// </param>
-            public static Endpoint CreateOrUpdate(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters)
+            public static EndpointResource CreateOrUpdate(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, profileName, endpointType, endpointName, parameters).GetAwaiter().GetResult();
             }
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Endpoint> CreateOrUpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EndpointResource> CreateOrUpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

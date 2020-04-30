@@ -21,19 +21,24 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     /// Class representing a Traffic Manager endpoint.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Endpoint
+    public partial class EndpointResource : ProxyResource
     {
         /// <summary>
-        /// Initializes a new instance of the Endpoint class.
+        /// Initializes a new instance of the EndpointResource class.
         /// </summary>
-        public Endpoint()
+        public EndpointResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Endpoint class.
+        /// Initializes a new instance of the EndpointResource class.
         /// </summary>
+        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. Ex-
+        /// Microsoft.Network/trafficManagerProfiles.</param>
         /// <param name="targetResourceId">The Azure Resource URI of the of the
         /// endpoint. Not applicable to endpoints of type
         /// 'ExternalEndpoints'.</param>
@@ -71,8 +76,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// traffic routing method. An empty list will match all ranges not
         /// covered by other endpoints.</param>
         /// <param name="customHeaders">List of custom headers.</param>
-        /// <param name="name">The name of the resource.</param>
-        public Endpoint(string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>), IList<EndpointPropertiesSubnetsItem> subnets = default(IList<EndpointPropertiesSubnetsItem>), IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(IList<EndpointPropertiesCustomHeadersItem>), string name = default(string))
+        public EndpointResource(string id = default(string), string name = default(string), string type = default(string), string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>), IList<EndpointPropertiesSubnetsItem> subnets = default(IList<EndpointPropertiesSubnetsItem>), IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(IList<EndpointPropertiesCustomHeadersItem>))
+            : base(id, name, type)
         {
             TargetResourceId = targetResourceId;
             Target = target;
@@ -85,7 +90,6 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
             GeoMapping = geoMapping;
             Subnets = subnets;
             CustomHeaders = customHeaders;
-            Name = name;
             CustomInit();
         }
 
@@ -182,12 +186,6 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.customHeaders")]
         public IList<EndpointPropertiesCustomHeadersItem> CustomHeaders { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
 
     }
 }

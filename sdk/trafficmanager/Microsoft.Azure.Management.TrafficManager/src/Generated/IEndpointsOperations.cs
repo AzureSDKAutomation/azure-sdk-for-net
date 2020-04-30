@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EndpointResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a Traffic Manager endpoint.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EndpointResource>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create or update a Traffic Manager endpoint.
         /// </summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EndpointResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a Traffic Manager endpoint.
         /// </summary>

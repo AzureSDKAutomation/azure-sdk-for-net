@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EndpointResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Endpoint>();
+            var _result = new AzureOperationResponse<EndpointResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Endpoint>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EndpointResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EndpointResource>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Endpoint>();
+            var _result = new AzureOperationResponse<EndpointResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Endpoint>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EndpointResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EndpointResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Endpoint>();
+            var _result = new AzureOperationResponse<EndpointResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Endpoint>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EndpointResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Endpoint>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EndpointResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
