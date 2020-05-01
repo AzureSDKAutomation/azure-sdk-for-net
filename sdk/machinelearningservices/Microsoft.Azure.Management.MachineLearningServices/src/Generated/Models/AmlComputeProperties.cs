@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="subnet">Subnet.</param>
         /// <param name="remoteLoginPortPublicAccess">Close remote Login Access
         /// Port</param>
+        /// <param name="provisionPublicIp">Provision public IP.</param>
         /// <param name="allocationState">Allocation state.</param>
         /// <param name="allocationStateTransitionTime">Allocation state
         /// transition time.</param>
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="currentNodeCount">Current node count.</param>
         /// <param name="targetNodeCount">Target node count.</param>
         /// <param name="nodeStateCounts">Node state counts.</param>
-        public AmlComputeProperties(string vmSize = default(string), string vmPriority = default(string), ScaleSettings scaleSettings = default(ScaleSettings), UserAccountCredentials userAccountCredentials = default(UserAccountCredentials), ResourceId subnet = default(ResourceId), string remoteLoginPortPublicAccess = default(string), string allocationState = default(string), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), IList<MachineLearningServiceError> errors = default(IList<MachineLearningServiceError>), int? currentNodeCount = default(int?), int? targetNodeCount = default(int?), NodeStateCounts nodeStateCounts = default(NodeStateCounts))
+        public AmlComputeProperties(string vmSize = default(string), string vmPriority = default(string), ScaleSettings scaleSettings = default(ScaleSettings), UserAccountCredentials userAccountCredentials = default(UserAccountCredentials), ResourceId subnet = default(ResourceId), string remoteLoginPortPublicAccess = default(string), string provisionPublicIp = default(string), string allocationState = default(string), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), IList<MachineLearningServiceError> errors = default(IList<MachineLearningServiceError>), int? currentNodeCount = default(int?), int? targetNodeCount = default(int?), NodeStateCounts nodeStateCounts = default(NodeStateCounts))
         {
             VmSize = vmSize;
             VmPriority = vmPriority;
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
             UserAccountCredentials = userAccountCredentials;
             Subnet = subnet;
             RemoteLoginPortPublicAccess = remoteLoginPortPublicAccess;
+            ProvisionPublicIp = provisionPublicIp;
             AllocationState = allocationState;
             AllocationStateTransitionTime = allocationStateTransitionTime;
             Errors = errors;
@@ -123,6 +125,19 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </remarks>
         [JsonProperty(PropertyName = "remoteLoginPortPublicAccess")]
         public string RemoteLoginPortPublicAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets provision public IP.
+        /// </summary>
+        /// <remarks>
+        /// State of public IP provisioning. Possible values are: Enabled -
+        /// Indicates that the compute nodes will have public IPs provisioned.
+        /// Disabled - Indicates that the compute nodes will have a private
+        /// endpoint and no public IPs. Possible values include: 'Enabled',
+        /// 'Disabled'
+        /// </remarks>
+        [JsonProperty(PropertyName = "provisionPublicIp")]
+        public string ProvisionPublicIp { get; set; }
 
         /// <summary>
         /// Gets allocation state.
