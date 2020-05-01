@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Automation.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -37,24 +35,52 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="id">Gets the id of the resource.</param>
         /// <param name="name">Gets the name of the variable.</param>
         /// <param name="type">Resource type</param>
-        /// <param name="jobScheduleId">Gets or sets the id of job
+        /// <param name="startTime">Gets or sets the start time of the
         /// schedule.</param>
-        /// <param name="schedule">Gets or sets the schedule.</param>
-        /// <param name="runbook">Gets or sets the runbook.</param>
-        /// <param name="runOn">Gets or sets the hybrid worker group that the
-        /// scheduled job should run on.</param>
-        /// <param name="parameters">Gets or sets the parameters of the job
+        /// <param name="startTimeOffsetMinutes">Gets the start time's offset
+        /// in minutes.</param>
+        /// <param name="expiryTime">Gets or sets the end time of the
         /// schedule.</param>
-        public JobSchedule(string id = default(string), string name = default(string), string type = default(string), string jobScheduleId = default(string), ScheduleAssociationProperty schedule = default(ScheduleAssociationProperty), RunbookAssociationProperty runbook = default(RunbookAssociationProperty), string runOn = default(string), IDictionary<string, string> parameters = default(IDictionary<string, string>))
+        /// <param name="expiryTimeOffsetMinutes">Gets or sets the expiry
+        /// time's offset in minutes.</param>
+        /// <param name="isEnabled">Gets or sets a value indicating whether
+        /// this schedule is enabled.</param>
+        /// <param name="nextRun">Gets or sets the next run time of the
+        /// schedule.</param>
+        /// <param name="nextRunOffsetMinutes">Gets or sets the next run time's
+        /// offset in minutes.</param>
+        /// <param name="interval">Gets or sets the interval of the
+        /// schedule.</param>
+        /// <param name="frequency">Gets or sets the frequency of the schedule.
+        /// Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month',
+        /// 'Minute'</param>
+        /// <param name="timeZone">Gets or sets the time zone of the
+        /// schedule.</param>
+        /// <param name="advancedSchedule">Gets or sets the advanced
+        /// schedule.</param>
+        /// <param name="creationTime">Gets or sets the creation time.</param>
+        /// <param name="lastModifiedTime">Gets or sets the last modified
+        /// time.</param>
+        /// <param name="description">Gets or sets the description.</param>
+        public JobSchedule(string id = default(string), string name = default(string), string type = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), double startTimeOffsetMinutes = default(double), System.DateTimeOffset? expiryTime = default(System.DateTimeOffset?), double expiryTimeOffsetMinutes = default(double), bool? isEnabled = default(bool?), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?), double nextRunOffsetMinutes = default(double), int? interval = default(int?), string frequency = default(string), string timeZone = default(string), AdvancedSchedule advancedSchedule = default(AdvancedSchedule), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
         {
             Id = id;
             Name = name;
             Type = type;
-            JobScheduleId = jobScheduleId;
-            Schedule = schedule;
-            Runbook = runbook;
-            RunOn = runOn;
-            Parameters = parameters;
+            StartTime = startTime;
+            StartTimeOffsetMinutes = startTimeOffsetMinutes;
+            ExpiryTime = expiryTime;
+            ExpiryTimeOffsetMinutes = expiryTimeOffsetMinutes;
+            IsEnabled = isEnabled;
+            NextRun = nextRun;
+            NextRunOffsetMinutes = nextRunOffsetMinutes;
+            Interval = interval;
+            Frequency = frequency;
+            TimeZone = timeZone;
+            AdvancedSchedule = advancedSchedule;
+            CreationTime = creationTime;
+            LastModifiedTime = lastModifiedTime;
+            Description = description;
             CustomInit();
         }
 
@@ -82,35 +108,89 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets the id of job schedule.
+        /// Gets or sets the start time of the schedule.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.jobScheduleId")]
-        public string JobScheduleId { get; set; }
+        [JsonProperty(PropertyName = "properties.startTime")]
+        public System.DateTimeOffset StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule.
+        /// Gets the start time's offset in minutes.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.schedule")]
-        public ScheduleAssociationProperty Schedule { get; set; }
+        [JsonProperty(PropertyName = "properties.startTimeOffsetMinutes")]
+        public double StartTimeOffsetMinutes { get; private set; }
 
         /// <summary>
-        /// Gets or sets the runbook.
+        /// Gets or sets the end time of the schedule.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.runbook")]
-        public RunbookAssociationProperty Runbook { get; set; }
+        [JsonProperty(PropertyName = "properties.expiryTime")]
+        public System.DateTimeOffset? ExpiryTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the hybrid worker group that the scheduled job should
-        /// run on.
+        /// Gets or sets the expiry time's offset in minutes.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.runOn")]
-        public string RunOn { get; set; }
+        [JsonProperty(PropertyName = "properties.expiryTimeOffsetMinutes")]
+        public double ExpiryTimeOffsetMinutes { get; set; }
 
         /// <summary>
-        /// Gets or sets the parameters of the job schedule.
+        /// Gets or sets a value indicating whether this schedule is enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.parameters")]
-        public IDictionary<string, string> Parameters { get; set; }
+        [JsonProperty(PropertyName = "properties.isEnabled")]
+        public bool? IsEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the next run time of the schedule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nextRun")]
+        public System.DateTimeOffset? NextRun { get; set; }
+
+        /// <summary>
+        /// Gets or sets the next run time's offset in minutes.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nextRunOffsetMinutes")]
+        public double NextRunOffsetMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval of the schedule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.interval")]
+        public int? Interval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the frequency of the schedule. Possible values
+        /// include: 'OneTime', 'Day', 'Hour', 'Week', 'Month', 'Minute'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.frequency")]
+        public string Frequency { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time zone of the schedule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.timeZone")]
+        public string TimeZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the advanced schedule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.advancedSchedule")]
+        public AdvancedSchedule AdvancedSchedule { get; set; }
+
+        /// <summary>
+        /// Gets or sets the creation time.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.creationTime")]
+        public System.DateTimeOffset CreationTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last modified time.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.lastModifiedTime")]
+        public System.DateTimeOffset LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.description")]
+        public string Description { get; set; }
 
     }
 }
