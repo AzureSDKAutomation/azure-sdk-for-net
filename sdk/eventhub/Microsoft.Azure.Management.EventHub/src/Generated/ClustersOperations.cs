@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.EventHub
         }
 
         /// <summary>
-        /// Lists the available Event Hubs Clusters within an ARM resource group.
+        /// Lists the available Event Hubs Clusters within an ARM resource group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -1569,7 +1569,7 @@ namespace Microsoft.Azure.Management.EventHub
         }
 
         /// <summary>
-        /// Lists the available Event Hubs Clusters within an ARM resource group.
+        /// Lists the available Event Hubs Clusters within an ARM resource group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

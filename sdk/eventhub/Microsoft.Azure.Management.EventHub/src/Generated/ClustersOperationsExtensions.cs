@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.EventHub
             }
 
             /// <summary>
-            /// Lists the available Event Hubs Clusters within an ARM resource group.
+            /// Lists the available Event Hubs Clusters within an ARM resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.EventHub
             }
 
             /// <summary>
-            /// Lists the available Event Hubs Clusters within an ARM resource group.
+            /// Lists the available Event Hubs Clusters within an ARM resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Management.EventHub
             }
 
             /// <summary>
-            /// Lists the available Event Hubs Clusters within an ARM resource group.
+            /// Lists the available Event Hubs Clusters within an ARM resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Management.EventHub
             }
 
             /// <summary>
-            /// Lists the available Event Hubs Clusters within an ARM resource group.
+            /// Lists the available Event Hubs Clusters within an ARM resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

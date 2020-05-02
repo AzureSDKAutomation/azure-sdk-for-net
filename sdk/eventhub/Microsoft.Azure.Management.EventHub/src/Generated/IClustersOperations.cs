@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.EventHub
         Task<AzureOperationResponse<AvailableClustersList>> ListAvailableClustersWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the available Event Hubs Clusters within an ARM resource
-        /// group.
+        /// group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Management.EventHub
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the available Event Hubs Clusters within an ARM resource
-        /// group.
+        /// group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
