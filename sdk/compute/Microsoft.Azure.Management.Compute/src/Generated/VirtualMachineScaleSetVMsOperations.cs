@@ -928,7 +928,9 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// Performs maintenance on a virtual machine in a VM scale set.
+        /// Shuts down the virtual machine in a VMScaleSet, moves it to a already
+        /// updated node, and powers it back on during the self-service phase of
+        /// planned maintenance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -2896,7 +2898,9 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// Performs maintenance on a virtual machine in a VM scale set.
+        /// Shuts down the virtual machine in a VMScaleSet, moves it to a already
+        /// updated node, and powers it back on during the self-service phase of
+        /// planned maintenance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

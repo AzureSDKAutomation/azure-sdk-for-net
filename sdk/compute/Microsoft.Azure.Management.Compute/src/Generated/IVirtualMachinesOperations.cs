@@ -214,7 +214,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <summary>
         /// Converts virtual machine disks from blob-based to managed disks.
         /// Virtual machine must be stop-deallocated before invoking this
-        /// operation.
+        /// operation. &lt;br&gt;For Windows, please refer to [Convert a
+        /// virtual machine from unmanaged disks to managed
+        /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).&lt;br&gt;For
+        /// Linux, please refer to [Convert a virtual machine from unmanaged
+        /// disks to managed
+        /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -510,7 +515,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmName, bool? tempDisk = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to perform maintenance on a virtual machine.
+        /// Shuts down the virtual machine, moves it to a already updated node,
+        /// and powers it back on during the self-service phase of planned
+        /// maintenance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -693,7 +700,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <summary>
         /// Converts virtual machine disks from blob-based to managed disks.
         /// Virtual machine must be stop-deallocated before invoking this
-        /// operation.
+        /// operation. &lt;br&gt;For Windows, please refer to [Convert a
+        /// virtual machine from unmanaged disks to managed
+        /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).&lt;br&gt;For
+        /// Linux, please refer to [Convert a virtual machine from unmanaged
+        /// disks to managed
+        /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -885,7 +897,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string vmName, bool? tempDisk = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to perform maintenance on a virtual machine.
+        /// Shuts down the virtual machine, moves it to a already updated node,
+        /// and powers it back on during the self-service phase of planned
+        /// maintenance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

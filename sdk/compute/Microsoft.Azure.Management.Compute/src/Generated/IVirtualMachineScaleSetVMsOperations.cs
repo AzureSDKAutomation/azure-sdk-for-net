@@ -369,7 +369,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> RedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Performs maintenance on a virtual machine in a VM scale set.
+        /// Shuts down the virtual machine in a VMScaleSet, moves it to a
+        /// already updated node, and powers it back on during the self-service
+        /// phase of planned maintenance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -705,7 +707,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Performs maintenance on a virtual machine in a VM scale set.
+        /// Shuts down the virtual machine in a VMScaleSet, moves it to a
+        /// already updated node, and powers it back on during the self-service
+        /// phase of planned maintenance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
