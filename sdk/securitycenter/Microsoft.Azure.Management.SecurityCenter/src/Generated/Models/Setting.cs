@@ -11,8 +11,6 @@
 namespace Microsoft.Azure.Management.Security.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,10 +33,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        /// <param name="additionalProperties">Unmatched properties from the
-        /// message are deserialized this collection</param>
-        public Setting(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, object> additionalProperties = default(IDictionary<string, object>))
-            : base(id, name, type, additionalProperties)
+        public Setting(string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
             CustomInit();
         }
