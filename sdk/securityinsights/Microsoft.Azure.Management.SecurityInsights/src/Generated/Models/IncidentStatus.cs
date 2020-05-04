@@ -12,25 +12,21 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for IncidentStatus.
     /// </summary>
-    public static class IncidentSeverity
+    public static class IncidentStatus
     {
         /// <summary>
-        /// High severity
+        /// An active incident which isn't being handled currently
         /// </summary>
-        public const string High = "High";
+        public const string New = "New";
         /// <summary>
-        /// Medium severity
+        /// An active incident which is being handled
         /// </summary>
-        public const string Medium = "Medium";
+        public const string Active = "Active";
         /// <summary>
-        /// Low severity
+        /// A non-active incident
         /// </summary>
-        public const string Low = "Low";
-        /// <summary>
-        /// Informational severity
-        /// </summary>
-        public const string Informational = "Informational";
+        public const string Closed = "Closed";
     }
 }

@@ -12,10 +12,14 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for CaseSeverity.
     /// </summary>
-    public static class IncidentSeverity
+    public static class CaseSeverity
     {
+        /// <summary>
+        /// Critical severity
+        /// </summary>
+        public const string Critical = "Critical";
         /// <summary>
         /// High severity
         /// </summary>

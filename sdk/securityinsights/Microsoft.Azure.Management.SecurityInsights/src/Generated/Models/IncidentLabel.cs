@@ -15,26 +15,28 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Action property bag base.
+    /// Represents an incident label
     /// </summary>
-    public partial class ActionPropertiesBase
+    public partial class IncidentLabel
     {
         /// <summary>
-        /// Initializes a new instance of the ActionPropertiesBase class.
+        /// Initializes a new instance of the IncidentLabel class.
         /// </summary>
-        public ActionPropertiesBase()
+        public IncidentLabel()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ActionPropertiesBase class.
+        /// Initializes a new instance of the IncidentLabel class.
         /// </summary>
-        /// <param name="logicAppResourceId">Logic App Resource Id,
-        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
-        public ActionPropertiesBase(string logicAppResourceId)
+        /// <param name="labelName">The name of the label</param>
+        /// <param name="labelType">The type of the label. Possible values
+        /// include: 'User', 'System'</param>
+        public IncidentLabel(string labelName, string labelType = default(string))
         {
-            LogicAppResourceId = logicAppResourceId;
+            LabelName = labelName;
+            LabelType = labelType;
             CustomInit();
         }
 
@@ -44,11 +46,17 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets logic App Resource Id,
-        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
+        /// Gets or sets the name of the label
         /// </summary>
-        [JsonProperty(PropertyName = "logicAppResourceId")]
-        public string LogicAppResourceId { get; set; }
+        [JsonProperty(PropertyName = "labelName")]
+        public string LabelName { get; set; }
+
+        /// <summary>
+        /// Gets the type of the label. Possible values include: 'User',
+        /// 'System'
+        /// </summary>
+        [JsonProperty(PropertyName = "labelType")]
+        public string LabelType { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -58,9 +66,9 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (LogicAppResourceId == null)
+            if (LabelName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LogicAppResourceId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "LabelName");
             }
         }
     }

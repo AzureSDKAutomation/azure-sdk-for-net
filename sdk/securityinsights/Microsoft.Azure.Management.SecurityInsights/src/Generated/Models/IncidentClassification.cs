@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for IncidentClassification.
     /// </summary>
-    public static class IncidentSeverity
+    public static class IncidentClassification
     {
         /// <summary>
-        /// High severity
+        /// Incident classification was undetermined
         /// </summary>
-        public const string High = "High";
+        public const string Undetermined = "Undetermined";
         /// <summary>
-        /// Medium severity
+        /// Incident was true positive
         /// </summary>
-        public const string Medium = "Medium";
+        public const string TruePositive = "TruePositive";
         /// <summary>
-        /// Low severity
+        /// Incident was benign positive
         /// </summary>
-        public const string Low = "Low";
+        public const string BenignPositive = "BenignPositive";
         /// <summary>
-        /// Informational severity
+        /// Incident was false positive
         /// </summary>
-        public const string Informational = "Informational";
+        public const string FalsePositive = "FalsePositive";
     }
 }

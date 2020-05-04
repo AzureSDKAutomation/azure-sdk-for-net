@@ -86,9 +86,29 @@ namespace Microsoft.Azure.Management.SecurityInsights
         IActionsOperations Actions { get; }
 
         /// <summary>
+        /// Gets the IAlertRuleTemplatesOperations.
+        /// </summary>
+        IAlertRuleTemplatesOperations AlertRuleTemplates { get; }
+
+        /// <summary>
+        /// Gets the IBookmarksOperations.
+        /// </summary>
+        IBookmarksOperations Bookmarks { get; }
+
+        /// <summary>
         /// Gets the IDataConnectorsOperations.
         /// </summary>
         IDataConnectorsOperations DataConnectors { get; }
+
+        /// <summary>
+        /// Gets the IIncidentsOperations.
+        /// </summary>
+        IIncidentsOperations Incidents { get; }
+
+        /// <summary>
+        /// Gets the IIncidentCommentsOperations.
+        /// </summary>
+        IIncidentCommentsOperations IncidentComments { get; }
 
     }
 }

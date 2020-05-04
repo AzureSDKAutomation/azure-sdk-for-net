@@ -12,25 +12,22 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for EntitiesMatchingMethod.
     /// </summary>
-    public static class IncidentSeverity
+    public static class EntitiesMatchingMethod
     {
         /// <summary>
-        /// High severity
+        /// Grouping alerts into a single incident if all the entities match
         /// </summary>
-        public const string High = "High";
+        public const string All = "All";
         /// <summary>
-        /// Medium severity
+        /// Grouping all alerts triggered by this rule into a single incident
         /// </summary>
-        public const string Medium = "Medium";
+        public const string None = "None";
         /// <summary>
-        /// Low severity
+        /// Grouping alerts into a single incident if the selected entities
+        /// match
         /// </summary>
-        public const string Low = "Low";
-        /// <summary>
-        /// Informational severity
-        /// </summary>
-        public const string Informational = "Informational";
+        public const string Custom = "Custom";
     }
 }

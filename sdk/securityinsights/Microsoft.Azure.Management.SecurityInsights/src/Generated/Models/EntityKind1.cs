@@ -15,26 +15,29 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Action property bag base.
+    /// Describes an entity with kind.
     /// </summary>
-    public partial class ActionPropertiesBase
+    public partial class EntityKind1
     {
         /// <summary>
-        /// Initializes a new instance of the ActionPropertiesBase class.
+        /// Initializes a new instance of the EntityKind1 class.
         /// </summary>
-        public ActionPropertiesBase()
+        public EntityKind1()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ActionPropertiesBase class.
+        /// Initializes a new instance of the EntityKind1 class.
         /// </summary>
-        /// <param name="logicAppResourceId">Logic App Resource Id,
-        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
-        public ActionPropertiesBase(string logicAppResourceId)
+        /// <param name="kind">The kind of the entity. Possible values include:
+        /// 'Account', 'Host', 'File', 'AzureResource', 'CloudApplication',
+        /// 'DnsResolution', 'FileHash', 'Ip', 'Malware', 'Process',
+        /// 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'Url',
+        /// 'IoTDevice', 'SecurityAlert', 'Bookmark'</param>
+        public EntityKind1(string kind)
         {
-            LogicAppResourceId = logicAppResourceId;
+            Kind = kind;
             CustomInit();
         }
 
@@ -44,11 +47,14 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets logic App Resource Id,
-        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
+        /// Gets or sets the kind of the entity. Possible values include:
+        /// 'Account', 'Host', 'File', 'AzureResource', 'CloudApplication',
+        /// 'DnsResolution', 'FileHash', 'Ip', 'Malware', 'Process',
+        /// 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'Url',
+        /// 'IoTDevice', 'SecurityAlert', 'Bookmark'
         /// </summary>
-        [JsonProperty(PropertyName = "logicAppResourceId")]
-        public string LogicAppResourceId { get; set; }
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -58,9 +64,9 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (LogicAppResourceId == null)
+            if (Kind == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LogicAppResourceId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");
             }
         }
     }

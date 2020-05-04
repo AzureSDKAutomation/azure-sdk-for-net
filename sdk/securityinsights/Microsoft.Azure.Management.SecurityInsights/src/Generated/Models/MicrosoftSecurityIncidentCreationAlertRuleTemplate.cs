@@ -59,9 +59,11 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// for this template</param>
         /// <param name="displayNamesFilter">the alerts' displayNames on which
         /// the cases will be generated</param>
+        /// <param name="displayNamesExcludeFilter">the alerts' displayNames on
+        /// which the cases will not be generated</param>
         /// <param name="severitiesFilter">the alerts' severities on which the
         /// cases will be generated</param>
-        public MicrosoftSecurityIncidentCreationAlertRuleTemplate(int alertRulesCreatedByTemplateCount, System.DateTime createdDateUTC, string description, string displayName, string status, string productFilter, string id = default(string), string name = default(string), string type = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), IList<string> displayNamesFilter = default(IList<string>), IList<string> severitiesFilter = default(IList<string>))
+        public MicrosoftSecurityIncidentCreationAlertRuleTemplate(int alertRulesCreatedByTemplateCount, System.DateTime createdDateUTC, string description, string displayName, string status, string productFilter, string id = default(string), string name = default(string), string type = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), IList<string> displayNamesFilter = default(IList<string>), IList<string> displayNamesExcludeFilter = default(IList<string>), IList<string> severitiesFilter = default(IList<string>))
             : base(id, name, type)
         {
             AlertRulesCreatedByTemplateCount = alertRulesCreatedByTemplateCount;
@@ -71,6 +73,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
             RequiredDataConnectors = requiredDataConnectors;
             Status = status;
             DisplayNamesFilter = displayNamesFilter;
+            DisplayNamesExcludeFilter = displayNamesExcludeFilter;
             ProductFilter = productFilter;
             SeveritiesFilter = severitiesFilter;
             CustomInit();
@@ -125,6 +128,13 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayNamesFilter")]
         public IList<string> DisplayNamesFilter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alerts' displayNames on which the cases will not
+        /// be generated
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.displayNamesExcludeFilter")]
+        public IList<string> DisplayNamesExcludeFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the alerts' productName on which the cases will be

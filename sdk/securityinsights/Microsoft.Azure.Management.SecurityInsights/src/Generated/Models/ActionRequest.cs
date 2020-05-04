@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Initializes a new instance of the ActionRequest class.
         /// </summary>
         /// <param name="logicAppResourceId">Logic App Resource Id,
-        /// providers/Microsoft.Logic/workflows/{WorkflowID}.</param>
+        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 
         /// <summary>
         /// Gets or sets logic App Resource Id,
-        /// providers/Microsoft.Logic/workflows/{WorkflowID}.
+        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
         /// </summary>
         [JsonProperty(PropertyName = "properties.logicAppResourceId")]
         public string LogicAppResourceId { get; set; }

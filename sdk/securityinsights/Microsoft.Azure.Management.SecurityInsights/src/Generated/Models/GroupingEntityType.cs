@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for GroupingEntityType.
     /// </summary>
-    public static class IncidentSeverity
+    public static class GroupingEntityType
     {
         /// <summary>
-        /// High severity
+        /// Account entity
         /// </summary>
-        public const string High = "High";
+        public const string Account = "Account";
         /// <summary>
-        /// Medium severity
+        /// Host entity
         /// </summary>
-        public const string Medium = "Medium";
+        public const string Host = "Host";
         /// <summary>
-        /// Low severity
+        /// Ip entity
         /// </summary>
-        public const string Low = "Low";
+        public const string Ip = "Ip";
         /// <summary>
-        /// Informational severity
+        /// Url entity
         /// </summary>
-        public const string Informational = "Informational";
+        public const string Url = "Url";
     }
 }

@@ -20,8 +20,12 @@ namespace Microsoft.Azure.Management.SecurityInsights
               return new Tuple<string, string, string>[]
               {
                 new Tuple<string, string, string>("OperationalInsights", "Actions", "2020-01-01"),
+                new Tuple<string, string, string>("OperationalInsights", "AlertRuleTemplates", "2020-01-01"),
                 new Tuple<string, string, string>("OperationalInsights", "AlertRules", "2020-01-01"),
+                new Tuple<string, string, string>("OperationalInsights", "Bookmarks", "2020-01-01"),
                 new Tuple<string, string, string>("OperationalInsights", "DataConnectors", "2020-01-01"),
+                new Tuple<string, string, string>("OperationalInsights", "IncidentComments", "2020-01-01"),
+                new Tuple<string, string, string>("OperationalInsights", "Incidents", "2020-01-01"),
                 new Tuple<string, string, string>("SecurityInsights", "Operations", "2020-01-01"),
               }.AsEnumerable();
           }
