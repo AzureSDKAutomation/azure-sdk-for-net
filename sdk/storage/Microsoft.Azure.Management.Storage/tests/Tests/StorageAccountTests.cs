@@ -1664,14 +1664,10 @@ namespace Storage.Tests
                 {
                     Sku = new Sku { Name = SkuName.StandardGRS },
                     Kind = Kind.StorageV2,
-                    Location = "eastus2euap"
+                    Location = "westus"
                 };
                 storageMgmtClient.StorageAccounts.Create(rgname, accountName, parameters);
                 List<ManagementPolicyRule> rules = new List<ManagementPolicyRule>();
-
-                List<TagFilter> tagFileter = new List<TagFilter>();
-                tagFileter.Add(new TagFilter("tag1", "==", "value1"));
-                tagFileter.Add(new TagFilter("tag2", "==", "value2"));
                 ManagementPolicyRule rule1 = new ManagementPolicyRule()
                 {
                     Enabled = true,
@@ -1680,11 +1676,11 @@ namespace Storage.Tests
                     {
                         Actions = new ManagementPolicyAction()
                         {
-                            BaseBlob = new ManagementPolicyBaseBlob(new DateAfterModification(1000), new DateAfterModification(90), new DateAfterModification(300))
+                            BaseBlob = new ManagementPolicyBaseBlob(new DateAfterModification(1000), new DateAfterModification(90), new DateAfterModification(300)),
+                            Snapshot = new ManagementPolicySnapShot(new DateAfterCreation(100))
                         },
                         Filters = new ManagementPolicyFilter(new List<string>() { "blockBlob" },
-                            new List<string>() { "olcmtestcontainer", "testblob" },
-                            tagFileter)
+                            new List<string>() { "olcmtestcontainer", "testblob" }),
                     }
                 };
                 rules.Add(rule1);
@@ -1698,7 +1694,6 @@ namespace Storage.Tests
                         Actions = new ManagementPolicyAction()
                         {
                             BaseBlob = new ManagementPolicyBaseBlob(delete: new DateAfterModification(1000)),
-                            Snapshot = new ManagementPolicySnapShot(new DateAfterCreation(100))
                         },
                         Filters = new ManagementPolicyFilter(blobTypes: new List<string>() { "blockBlob" }),
                     }
