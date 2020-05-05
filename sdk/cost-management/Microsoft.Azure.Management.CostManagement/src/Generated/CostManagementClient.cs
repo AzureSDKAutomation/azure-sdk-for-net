@@ -78,6 +78,16 @@ namespace Microsoft.Azure.Management.CostManagement
         public virtual IDimensionsOperations Dimensions { get; private set; }
 
         /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        public virtual IAlertsOperations Alerts { get; private set; }
+
+        /// <summary>
+        /// Gets the IForecastOperations.
+        /// </summary>
+        public virtual IForecastOperations Forecast { get; private set; }
+
+        /// <summary>
         /// Gets the IQueryOperations.
         /// </summary>
         public virtual IQueryOperations Query { get; private set; }
@@ -334,6 +344,8 @@ namespace Microsoft.Azure.Management.CostManagement
         private void Initialize()
         {
             Dimensions = new DimensionsOperations(this);
+            Alerts = new AlertsOperations(this);
+            Forecast = new ForecastOperations(this);
             Query = new QueryOperations(this);
             Exports = new ExportsOperations(this);
             Operations = new Operations(this);

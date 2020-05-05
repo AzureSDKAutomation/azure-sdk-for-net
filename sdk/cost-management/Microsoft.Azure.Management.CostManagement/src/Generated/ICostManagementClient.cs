@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Management.CostManagement
         IDimensionsOperations Dimensions { get; }
 
         /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        IAlertsOperations Alerts { get; }
+
+        /// <summary>
+        /// Gets the IForecastOperations.
+        /// </summary>
+        IForecastOperations Forecast { get; }
+
+        /// <summary>
         /// Gets the IQueryOperations.
         /// </summary>
         IQueryOperations Query { get; }
