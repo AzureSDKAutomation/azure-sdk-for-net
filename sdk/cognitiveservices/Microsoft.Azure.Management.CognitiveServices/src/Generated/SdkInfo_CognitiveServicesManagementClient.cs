@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 new Tuple<string, string, string>("CognitiveServices", "CheckDomainAvailability", "2017-04-18"),
                 new Tuple<string, string, string>("CognitiveServices", "CheckSkuAvailability", "2017-04-18"),
                 new Tuple<string, string, string>("CognitiveServices", "Operations", "2017-04-18"),
+                new Tuple<string, string, string>("CognitiveServices", "PrivateEndpointConnections", "2017-04-18"),
+                new Tuple<string, string, string>("CognitiveServices", "PrivateLinkResources", "2017-04-18"),
                 new Tuple<string, string, string>("CognitiveServices", "ResourceSkus", "2017-04-18"),
               }.AsEnumerable();
           }
