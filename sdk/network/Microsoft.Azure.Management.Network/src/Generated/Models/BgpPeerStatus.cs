@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="messagesSent">The number of BGP messages sent.</param>
         /// <param name="messagesReceived">The number of BGP messages
         /// received.</param>
-        public BgpPeerStatus(string localAddress = default(string), string neighbor = default(string), long? asn = default(long?), string state = default(string), string connectedDuration = default(string), long? routesReceived = default(long?), long? messagesSent = default(long?), long? messagesReceived = default(long?))
+        public BgpPeerStatus(string localAddress = default(string), string neighbor = default(string), int? asn = default(int?), string state = default(string), string connectedDuration = default(string), long? routesReceived = default(long?), long? messagesSent = default(long?), long? messagesReceived = default(long?))
         {
             LocalAddress = localAddress;
             Neighbor = neighbor;
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets the autonomous system number of the remote BGP peer.
         /// </summary>
         [JsonProperty(PropertyName = "asn")]
-        public long? Asn { get; private set; }
+        public int? Asn { get; private set; }
 
         /// <summary>
         /// Gets the BGP peer state. Possible values include: 'Unknown',
@@ -111,22 +110,5 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "messagesReceived")]
         public long? MessagesReceived { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Asn > 4294967295)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Asn", 4294967295);
-            }
-            if (Asn < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Asn", 0);
-            }
-        }
     }
 }

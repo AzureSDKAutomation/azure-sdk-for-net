@@ -536,11 +536,6 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteConnectionsOperations ExpressRouteConnections { get; }
 
         /// <summary>
-        /// Gets the IHubRouteTablesOperations.
-        /// </summary>
-        IHubRouteTablesOperations HubRouteTables { get; }
-
-        /// <summary>
         /// Gets the IWebApplicationFirewallPoliciesOperations.
         /// </summary>
         IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; }

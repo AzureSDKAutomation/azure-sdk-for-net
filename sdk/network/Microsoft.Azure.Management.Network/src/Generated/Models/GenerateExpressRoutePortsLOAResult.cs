@@ -11,31 +11,31 @@
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// List of routes that control routing from VirtualHub into a virtual
-    /// network connection.
+    /// Response for GenerateExpressRoutePortsLOA API service call.
     /// </summary>
-    public partial class VnetRoute
+    public partial class GenerateExpressRoutePortsLOAResult
     {
         /// <summary>
-        /// Initializes a new instance of the VnetRoute class.
+        /// Initializes a new instance of the
+        /// GenerateExpressRoutePortsLOAResult class.
         /// </summary>
-        public VnetRoute()
+        public GenerateExpressRoutePortsLOAResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VnetRoute class.
+        /// Initializes a new instance of the
+        /// GenerateExpressRoutePortsLOAResult class.
         /// </summary>
-        /// <param name="staticRoutes">List of all Static Routes.</param>
-        public VnetRoute(IList<StaticRoute> staticRoutes = default(IList<StaticRoute>))
+        /// <param name="encodedPdf">The pdf as a base64 encoded
+        /// string.</param>
+        public GenerateExpressRoutePortsLOAResult(string encodedPdf = default(string))
         {
-            StaticRoutes = staticRoutes;
+            EncodedPdf = encodedPdf;
             CustomInit();
         }
 
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of all Static Routes.
+        /// Gets or sets the pdf as a base64 encoded string.
         /// </summary>
-        [JsonProperty(PropertyName = "staticRoutes")]
-        public IList<StaticRoute> StaticRoutes { get; set; }
+        [JsonProperty(PropertyName = "encodedPdf")]
+        public string EncodedPdf { get; set; }
 
     }
 }
