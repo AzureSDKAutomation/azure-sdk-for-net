@@ -37,16 +37,16 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// <param name="type">The identity type. Possible values include:
         /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
         /// 'None'</param>
-        /// <param name="identityUserAssignedIdentitiesValue">The list of user
-        /// identities associated with the resource. The user identity
-        /// dictionary key references will be ARM resource ids in the form:
+        /// <param name="userAssignedIdentities">The list of user identities
+        /// associated with the resource. The user identity dictionary key
+        /// references will be ARM resource ids in the form:
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, IdentityUserAssignedIdentitiesValue> identityUserAssignedIdentitiesValue = default(IDictionary<string, IdentityUserAssignedIdentitiesValue>))
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, IdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, IdentityUserAssignedIdentitiesValue>))
         {
             PrincipalId = principalId;
             TenantId = tenantId;
             Type = type;
-            IdentityUserAssignedIdentitiesValue = identityUserAssignedIdentitiesValue;
+            UserAssignedIdentities = userAssignedIdentities;
             CustomInit();
         }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentities")]
-        public IDictionary<string, IdentityUserAssignedIdentitiesValue> IdentityUserAssignedIdentitiesValue { get; set; }
+        public IDictionary<string, IdentityUserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
 
     }
 }
