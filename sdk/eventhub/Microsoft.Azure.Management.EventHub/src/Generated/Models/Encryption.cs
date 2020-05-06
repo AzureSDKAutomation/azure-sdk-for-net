@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.EventHub.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -33,7 +35,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// <param name="keySource">Enumerates the possible value of keySource
         /// for Encryption. Possible values include:
         /// 'Microsoft.KeyVault'</param>
-        public Encryption(KeyVaultProperties keyVaultProperties = default(KeyVaultProperties), KeySource? keySource = default(KeySource?))
+        public Encryption(IList<KeyVaultProperties> keyVaultProperties = default(IList<KeyVaultProperties>), KeySource? keySource = default(KeySource?))
         {
             KeyVaultProperties = keyVaultProperties;
             KeySource = keySource;
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// Gets or sets properties of KeyVault
         /// </summary>
         [JsonProperty(PropertyName = "keyVaultProperties")]
-        public KeyVaultProperties KeyVaultProperties { get; set; }
+        public IList<KeyVaultProperties> KeyVaultProperties { get; set; }
 
         /// <summary>
         /// Gets or sets enumerates the possible value of keySource for
