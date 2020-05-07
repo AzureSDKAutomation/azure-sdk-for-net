@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="source">Possible values include: 'KeyVault'</param>
         /// <param name="location">Possible values include:
         /// 'ApplicationSetting'</param>
-        public KeyVaultReferenceResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string reference = default(string), ResolveStatus? status = default(ResolveStatus?), string vaultName = default(string), string secretName = default(string), string secretVersion = default(string), ManagedServiceIdentityType? identityType = default(ManagedServiceIdentityType?), string details = default(string), ConfigReferenceSource? source = default(ConfigReferenceSource?), ConfigReferenceLocation? location = default(ConfigReferenceLocation?))
+        public KeyVaultReferenceResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string reference = default(string), ResolveStatus? status = default(ResolveStatus?), string vaultName = default(string), string secretName = default(string), string secretVersion = default(string), KeyVaultReferenceIdentityType? identityType = default(KeyVaultReferenceIdentityType?), string details = default(string), ConfigReferenceSource? source = default(ConfigReferenceSource?), ConfigReferenceLocation? location = default(ConfigReferenceLocation?))
             : base(id, name, kind, type)
         {
             Reference = reference;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'UserAssigned'
         /// </summary>
         [JsonProperty(PropertyName = "properties.identityType")]
-        public ManagedServiceIdentityType? IdentityType { get; set; }
+        public KeyVaultReferenceIdentityType? IdentityType { get; set; }
 
         /// <summary>
         /// </summary>

@@ -26,7 +26,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [EnumMember(Value = "SystemAssigned")]
         SystemAssigned,
         [EnumMember(Value = "UserAssigned")]
-        UserAssigned
+        UserAssigned,
+        [EnumMember(Value = "SystemAssigned, UserAssigned")]
+        SystemAssignedUserAssigned
     }
     internal static class ManagedServiceIdentityTypeEnumExtension
     {
@@ -45,6 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "SystemAssigned";
                 case ManagedServiceIdentityType.UserAssigned:
                     return "UserAssigned";
+                case ManagedServiceIdentityType.SystemAssignedUserAssigned:
+                    return "SystemAssigned, UserAssigned";
             }
             return null;
         }
@@ -59,6 +63,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return ManagedServiceIdentityType.SystemAssigned;
                 case "UserAssigned":
                     return ManagedServiceIdentityType.UserAssigned;
+                case "SystemAssigned, UserAssigned":
+                    return ManagedServiceIdentityType.SystemAssignedUserAssigned;
             }
             return null;
         }

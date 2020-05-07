@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ManagedServiceIdentity class.
         /// </summary>
         /// <param name="type">Type of managed service identity. Possible
-        /// values include: 'None', 'SystemAssigned', 'UserAssigned'</param>
+        /// values include: 'None', 'SystemAssigned', 'UserAssigned',
+        /// 'SystemAssigned, UserAssigned'</param>
         /// <param name="tenantId">Tenant of managed service identity.</param>
         /// <param name="principalId">Principal Id of managed service
         /// identity.</param>
@@ -56,7 +57,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets type of managed service identity. Possible values
-        /// include: 'None', 'SystemAssigned', 'UserAssigned'
+        /// include: 'None', 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+        /// UserAssigned'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public ManagedServiceIdentityType? Type { get; set; }
