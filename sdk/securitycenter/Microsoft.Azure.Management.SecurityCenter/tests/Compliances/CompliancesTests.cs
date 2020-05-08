@@ -61,7 +61,7 @@ namespace SecurityCenter.Tests
             using (var context = MockContext.Start(this.GetType()))
             {
                 var securityCenterClient = GetSecurityCenterClient(context);
-                var compliance = securityCenterClient.Compliances.Get($"/subscriptions/{SubscriptionId}", "2020-05-03Z");
+                var compliance = securityCenterClient.Compliances.Get($"/subscriptions/{SubscriptionId}", "2018-07-05Z");
                 ValidateCompliance(compliance);
             }
         }
