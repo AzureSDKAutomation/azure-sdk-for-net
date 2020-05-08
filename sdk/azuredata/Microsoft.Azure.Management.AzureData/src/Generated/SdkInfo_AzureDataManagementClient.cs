@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.AzureData
                 new Tuple<string, string, string>("AzureData", "Operations", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "PostgresInstances", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlInstances", "2019-07-24-preview"),
+                new Tuple<string, string, string>("AzureData", "SqlServerInstances", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlServerRegistrations", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlServers", "2019-07-24-preview"),
               }.AsEnumerable();
