@@ -1,8 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See License.txt in the project root for license information.
-
-using System;
-using System.Net;
+﻿using System.Net;
 using Microsoft.Azure.Management.Security;
 using Microsoft.Azure.Management.Security.Models;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -13,11 +9,9 @@ using Xunit;
 
 namespace SecurityCenter.Tests
 {
-    public class CompliancesTests : TestBase
+    public class TopologyTests : TestBase
     {
         #region Test setup
-
-        private static string SubscriptionId = "487bb485-b5b0-471e-9c0d-10717612f869";
 
         public static TestEnvironment TestEnvironment { get; private set; }
 
@@ -34,35 +28,33 @@ namespace SecurityCenter.Tests
                 ? context.GetServiceClient<SecurityCenterClient>(TestEnvironment, handlers: handler)
                 : context.GetServiceClient<SecurityCenterClient>(handlers: handler);
 
-            securityCenterClient.AscLocation = "centralus";
+            securityCenterClient.AscLocation = "westcentralus";
 
             return securityCenterClient;
         }
 
         #endregion
 
-        #region Compliances Tests
-
+        #region Topology Tests
         [Fact]
-        public void Compliances_List()
+        public void Topology_List()
         {
             using (var context = MockContext.Start(this.GetType()))
             {
                 var securityCenterClient = GetSecurityCenterClient(context);
-
-                var compliances = securityCenterClient.Compliances.List($"/subscriptions/{SubscriptionId}");
-                ValidateCompliances(compliances);
+                var topologiesResources = securityCenterClient.Topology.List();
+                ValidateTopologiesResources(topologiesResources);
             }
         }
 
         [Fact]
-        public void Compliances_Get()
+        public void Topology_Get()
         {
             using (var context = MockContext.Start(this.GetType()))
             {
                 var securityCenterClient = GetSecurityCenterClient(context);
-                var compliance = securityCenterClient.Compliances.Get($"/subscriptions/{SubscriptionId}", "2020-05-03Z");
-                ValidateCompliance(compliance);
+                var topologyResource = securityCenterClient.Topology.Get("MyResourceGroup", "virtualNetworks");
+                ValidateTopologyResource(topologyResource);
             }
         }
 
@@ -70,16 +62,25 @@ namespace SecurityCenter.Tests
 
         #region Validations
 
-        private void ValidateCompliances(IPage<Compliance> CompliancesPage)
+        private void ValidateTopologiesResources(IPage<TopologyResource> topologiesResources)
         {
-            Assert.True(CompliancesPage.IsAny());
+            Assert.True(topologiesResources.IsAny());
 
-            CompliancesPage.ForEach(ValidateCompliance);
+            topologiesResources.ForEach(ValidateTopologyResource);
         }
 
-        private void ValidateCompliance(Compliance compliance)
+        private void ValidateTopologyResource(TopologyResource topologyResource)
         {
-            Assert.NotNull(compliance);
+            Assert.NotNull(topologyResource);
+            Assert.NotNull(topologyResource.CalculatedDateTime);
+            topologyResource.TopologyResources?.ForEach(singleTopologyResource =>
+                {
+                    Assert.NotNull(singleTopologyResource);
+                    Assert.NotNull(singleTopologyResource.ResourceId);
+                    Assert.NotNull(singleTopologyResource.RecommendationsExist);
+                    Assert.NotNull(singleTopologyResource.TopologyScore);
+                    Assert.NotNull(singleTopologyResource.NetworkZones);
+                });
         }
 
         #endregion

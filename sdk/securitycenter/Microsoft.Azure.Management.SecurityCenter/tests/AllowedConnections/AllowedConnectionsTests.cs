@@ -1,8 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See License.txt in the project root for license information.
-
-using System;
-using System.Net;
+﻿using System.Net;
 using Microsoft.Azure.Management.Security;
 using Microsoft.Azure.Management.Security.Models;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -13,11 +9,9 @@ using Xunit;
 
 namespace SecurityCenter.Tests
 {
-    public class CompliancesTests : TestBase
+    public class AllowedConnectionsTests : TestBase
     {
         #region Test setup
-
-        private static string SubscriptionId = "487bb485-b5b0-471e-9c0d-10717612f869";
 
         public static TestEnvironment TestEnvironment { get; private set; }
 
@@ -34,35 +28,34 @@ namespace SecurityCenter.Tests
                 ? context.GetServiceClient<SecurityCenterClient>(TestEnvironment, handlers: handler)
                 : context.GetServiceClient<SecurityCenterClient>(handlers: handler);
 
-            securityCenterClient.AscLocation = "centralus";
+            securityCenterClient.AscLocation = "westcentralus";
 
             return securityCenterClient;
         }
 
         #endregion
 
-        #region Compliances Tests
+        #region AllowedConnections tests
 
         [Fact]
-        public void Compliances_List()
+        public void AllowedConnections_List()
         {
             using (var context = MockContext.Start(this.GetType()))
             {
                 var securityCenterClient = GetSecurityCenterClient(context);
-
-                var compliances = securityCenterClient.Compliances.List($"/subscriptions/{SubscriptionId}");
-                ValidateCompliances(compliances);
+                var allowedConnectionsResources = securityCenterClient.AllowedConnections.List();
+                ValidateAllowedConnectionsResources(allowedConnectionsResources);
             }
         }
 
         [Fact]
-        public void Compliances_Get()
+        public void AllowedConnections_Get()
         {
             using (var context = MockContext.Start(this.GetType()))
             {
                 var securityCenterClient = GetSecurityCenterClient(context);
-                var compliance = securityCenterClient.Compliances.Get($"/subscriptions/{SubscriptionId}", "2020-05-03Z");
-                ValidateCompliance(compliance);
+                var allowedConnectionsResource = securityCenterClient.AllowedConnections.Get("MyResourceGroup", "internal");
+                ValidateAllowedConnectionsResource(allowedConnectionsResource);
             }
         }
 
@@ -70,16 +63,24 @@ namespace SecurityCenter.Tests
 
         #region Validations
 
-        private void ValidateCompliances(IPage<Compliance> CompliancesPage)
+        private void ValidateAllowedConnectionsResources(IPage<AllowedConnectionsResource> allowedConnectionsResources)
         {
-            Assert.True(CompliancesPage.IsAny());
+            Assert.True(allowedConnectionsResources.IsAny());
 
-            CompliancesPage.ForEach(ValidateCompliance);
+            allowedConnectionsResources.ForEach(ValidateAllowedConnectionsResource);
         }
 
-        private void ValidateCompliance(Compliance compliance)
+        private void ValidateAllowedConnectionsResource(AllowedConnectionsResource allowedConnectionsResource)
         {
-            Assert.NotNull(compliance);
+            Assert.NotNull(allowedConnectionsResource);
+            
+            Assert.NotNull(allowedConnectionsResource.CalculatedDateTime);
+            allowedConnectionsResource.ConnectableResources?.ForEach(connectableResource =>
+            {
+                Assert.NotNull(connectableResource.Id);
+                Assert.NotNull(connectableResource.InboundConnectedResources);
+                Assert.NotNull(connectableResource.OutboundConnectedResources);
+            });
         }
 
         #endregion
