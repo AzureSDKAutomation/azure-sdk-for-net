@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.OperationalInsights
                 new Tuple<string, string, string>("OperationalInsights", "Clusters", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "DataExports", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "DataSources", "2020-03-01-preview"),
+                new Tuple<string, string, string>("OperationalInsights", "DeletedWorkspaces", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "Gateways", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "IntelligencePacks", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "LinkedServices", "2020-03-01-preview"),
