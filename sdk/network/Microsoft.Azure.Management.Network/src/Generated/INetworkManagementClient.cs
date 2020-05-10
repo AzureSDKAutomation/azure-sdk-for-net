@@ -296,6 +296,16 @@ namespace Microsoft.Azure.Management.Network
         INetworkVirtualAppliancesOperations NetworkVirtualAppliances { get; }
 
         /// <summary>
+        /// Gets the IVirtualApplianceSitesOperations.
+        /// </summary>
+        IVirtualApplianceSitesOperations VirtualApplianceSites { get; }
+
+        /// <summary>
+        /// Gets the IVirtualApplianceSkusOperations.
+        /// </summary>
+        IVirtualApplianceSkusOperations VirtualApplianceSkus { get; }
+
+        /// <summary>
         /// Gets the INetworkWatchersOperations.
         /// </summary>
         INetworkWatchersOperations NetworkWatchers { get; }
@@ -534,6 +544,21 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IExpressRouteConnectionsOperations.
         /// </summary>
         IExpressRouteConnectionsOperations ExpressRouteConnections { get; }
+
+        /// <summary>
+        /// Gets the IVirtualHubBgpConnectionOperations.
+        /// </summary>
+        IVirtualHubBgpConnectionOperations VirtualHubBgpConnection { get; }
+
+        /// <summary>
+        /// Gets the IVirtualHubBgpConnectionsOperations.
+        /// </summary>
+        IVirtualHubBgpConnectionsOperations VirtualHubBgpConnections { get; }
+
+        /// <summary>
+        /// Gets the IVirtualHubIpConfigurationOperations.
+        /// </summary>
+        IVirtualHubIpConfigurationOperations VirtualHubIpConfiguration { get; }
 
         /// <summary>
         /// Gets the IHubRouteTablesOperations.
