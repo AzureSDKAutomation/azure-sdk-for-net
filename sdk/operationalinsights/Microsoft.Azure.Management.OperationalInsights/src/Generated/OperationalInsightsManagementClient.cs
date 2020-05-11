@@ -145,6 +145,11 @@ namespace Microsoft.Azure.Management.OperationalInsights
         public virtual ISavedSearchesOperations SavedSearches { get; private set; }
 
         /// <summary>
+        /// Gets the IAvailableServiceTiersOperations.
+        /// </summary>
+        public virtual IAvailableServiceTiersOperations AvailableServiceTiers { get; private set; }
+
+        /// <summary>
         /// Gets the IGatewaysOperations.
         /// </summary>
         public virtual IGatewaysOperations Gateways { get; private set; }
@@ -414,6 +419,7 @@ namespace Microsoft.Azure.Management.OperationalInsights
             Clusters = new ClustersOperations(this);
             StorageInsightConfigs = new StorageInsightConfigsOperations(this);
             SavedSearches = new SavedSearchesOperations(this);
+            AvailableServiceTiers = new AvailableServiceTiersOperations(this);
             Gateways = new GatewaysOperations(this);
             Schema = new SchemaOperations(this);
             WorkspacePurge = new WorkspacePurgeOperations(this);

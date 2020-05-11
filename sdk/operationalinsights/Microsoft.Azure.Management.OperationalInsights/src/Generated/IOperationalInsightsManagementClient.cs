@@ -140,6 +140,11 @@ namespace Microsoft.Azure.Management.OperationalInsights
         ISavedSearchesOperations SavedSearches { get; }
 
         /// <summary>
+        /// Gets the IAvailableServiceTiersOperations.
+        /// </summary>
+        IAvailableServiceTiersOperations AvailableServiceTiers { get; }
+
+        /// <summary>
         /// Gets the IGatewaysOperations.
         /// </summary>
         IGatewaysOperations Gateways { get; }

@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.OperationalInsights
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("OperationalInsights", "AvailableServiceTiers", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "Clusters", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "DataExports", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "DataSources", "2020-03-01-preview"),
