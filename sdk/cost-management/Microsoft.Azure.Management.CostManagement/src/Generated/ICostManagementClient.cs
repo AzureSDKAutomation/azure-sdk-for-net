@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Management.CostManagement
 
 
         /// <summary>
-        /// Gets the IDimensionsOperations.
+        /// Gets the IViewsOperations.
         /// </summary>
-        IDimensionsOperations Dimensions { get; }
+        IViewsOperations Views { get; }
 
         /// <summary>
         /// Gets the IAlertsOperations.
@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// Gets the IForecastOperations.
         /// </summary>
         IForecastOperations Forecast { get; }
+
+        /// <summary>
+        /// Gets the IDimensionsOperations.
+        /// </summary>
+        IDimensionsOperations Dimensions { get; }
 
         /// <summary>
         /// Gets the IQueryOperations.

@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Management.CostManagement
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IDimensionsOperations.
+        /// Gets the IViewsOperations.
         /// </summary>
-        public virtual IDimensionsOperations Dimensions { get; private set; }
+        public virtual IViewsOperations Views { get; private set; }
 
         /// <summary>
         /// Gets the IAlertsOperations.
@@ -86,6 +86,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// Gets the IForecastOperations.
         /// </summary>
         public virtual IForecastOperations Forecast { get; private set; }
+
+        /// <summary>
+        /// Gets the IDimensionsOperations.
+        /// </summary>
+        public virtual IDimensionsOperations Dimensions { get; private set; }
 
         /// <summary>
         /// Gets the IQueryOperations.
@@ -343,9 +348,10 @@ namespace Microsoft.Azure.Management.CostManagement
         /// </summary>
         private void Initialize()
         {
-            Dimensions = new DimensionsOperations(this);
+            Views = new ViewsOperations(this);
             Alerts = new AlertsOperations(this);
             Forecast = new ForecastOperations(this);
+            Dimensions = new DimensionsOperations(this);
             Query = new QueryOperations(this);
             Exports = new ExportsOperations(this);
             Operations = new Operations(this);
