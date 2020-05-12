@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Management.Storage
             /// numbers and lower-case letters only.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// The name of the private endpoint connection associated with the Azure
+            /// resource
             /// </param>
             public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
             {
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.Management.Storage
             /// numbers and lower-case letters only.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// The name of the private endpoint connection associated with the Azure
+            /// resource
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -144,8 +144,8 @@ namespace Microsoft.Azure.Management.Storage
             /// numbers and lower-case letters only.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// The name of the private endpoint connection associated with the Azure
+            /// resource
             /// </param>
             /// <param name='properties'>
             /// The private endpoint connection properties.
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Management.Storage
             /// numbers and lower-case letters only.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// The name of the private endpoint connection associated with the Azure
+            /// resource
             /// </param>
             /// <param name='properties'>
             /// The private endpoint connection properties.
@@ -206,8 +206,8 @@ namespace Microsoft.Azure.Management.Storage
             /// numbers and lower-case letters only.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// The name of the private endpoint connection associated with the Azure
+            /// resource
             /// </param>
             public static void Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
             {
@@ -231,8 +231,8 @@ namespace Microsoft.Azure.Management.Storage
             /// numbers and lower-case letters only.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// The name of the private endpoint connection associated with the Azure
+            /// resource
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

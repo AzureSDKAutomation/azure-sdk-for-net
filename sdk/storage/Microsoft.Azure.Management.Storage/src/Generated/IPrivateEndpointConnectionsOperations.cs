@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Storage Account
+        /// Azure resource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Storage Account
+        /// Azure resource
         /// </param>
         /// <param name='properties'>
         /// The private endpoint connection properties.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Storage Account
+        /// Azure resource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
