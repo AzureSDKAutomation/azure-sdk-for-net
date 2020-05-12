@@ -1310,10 +1310,6 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "deploymentResource");
             }
-            if (deploymentResource != null)
-            {
-                deploymentResource.Validate();
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
