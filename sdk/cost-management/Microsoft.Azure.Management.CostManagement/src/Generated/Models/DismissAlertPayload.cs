@@ -13,31 +13,25 @@ namespace Microsoft.Azure.Management.CostManagement.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// An individual alert.
+    /// The request payload to update an alert
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Alert : Resource
+    public partial class DismissAlertPayload
     {
         /// <summary>
-        /// Initializes a new instance of the Alert class.
+        /// Initializes a new instance of the DismissAlertPayload class.
         /// </summary>
-        public Alert()
+        public DismissAlertPayload()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Alert class.
+        /// Initializes a new instance of the DismissAlertPayload class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="tags">Resource tags.</param>
         /// <param name="definition">defines the type of alert</param>
         /// <param name="description">Alert description</param>
         /// <param name="source">Source of alert. Possible values include:
@@ -53,8 +47,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// modified</param>
         /// <param name="statusModificationTime">dateTime in which the alert
         /// status was last modified</param>
-        public Alert(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AlertPropertiesDefinition definition = default(AlertPropertiesDefinition), string description = default(string), string source = default(string), AlertPropertiesDetails details = default(AlertPropertiesDetails), string costEntityId = default(string), string status = default(string), string creationTime = default(string), string closeTime = default(string), string modificationTime = default(string), string statusModificationUserName = default(string), string statusModificationTime = default(string))
-            : base(id, name, type, tags)
+        public DismissAlertPayload(AlertPropertiesDefinition definition = default(AlertPropertiesDefinition), string description = default(string), string source = default(string), AlertPropertiesDetails details = default(AlertPropertiesDetails), string costEntityId = default(string), string status = default(string), string creationTime = default(string), string closeTime = default(string), string modificationTime = default(string), string statusModificationUserName = default(string), string statusModificationTime = default(string))
         {
             Definition = definition;
             Description = description;

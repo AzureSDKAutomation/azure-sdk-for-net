@@ -31,7 +31,9 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// <summary>
         /// Initializes a new instance of the AlertPropertiesDetails class.
         /// </summary>
-        /// <param name="timeGrainType">Type of timegrain cadence</param>
+        /// <param name="timeGrainType">Type of timegrain cadence. Possible
+        /// values include: 'None', 'Monthly', 'Quarterly', 'Annually',
+        /// 'BillingMonth', 'BillingQuarter', 'BillingAnnual'</param>
         /// <param name="periodStartDate">datetime of periodStartDate</param>
         /// <param name="triggeredBy">notificationId that triggered this
         /// alert</param>
@@ -44,7 +46,9 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// <param name="threshold">notification threshold percentage as a
         /// decimal which activated this alert</param>
         /// <param name="operatorProperty">operator used to compare
-        /// currentSpend with amount</param>
+        /// currentSpend with amount. Possible values include: 'None',
+        /// 'EqualTo', 'GreaterThan', 'GreaterThanOrEqualTo', 'LessThan',
+        /// 'LessThanOrEqualTo'</param>
         /// <param name="amount">budget threshold amount</param>
         /// <param name="unit">unit of currency being used</param>
         /// <param name="currentSpend">current spend</param>
@@ -80,7 +84,9 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets type of timegrain cadence
+        /// Gets or sets type of timegrain cadence. Possible values include:
+        /// 'None', 'Monthly', 'Quarterly', 'Annually', 'BillingMonth',
+        /// 'BillingQuarter', 'BillingAnnual'
         /// </summary>
         [JsonProperty(PropertyName = "timeGrainType")]
         public string TimeGrainType { get; set; }
@@ -129,7 +135,9 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         public decimal? Threshold { get; set; }
 
         /// <summary>
-        /// Gets or sets operator used to compare currentSpend with amount
+        /// Gets or sets operator used to compare currentSpend with amount.
+        /// Possible values include: 'None', 'EqualTo', 'GreaterThan',
+        /// 'GreaterThanOrEqualTo', 'LessThan', 'LessThanOrEqualTo'
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
         public string OperatorProperty { get; set; }

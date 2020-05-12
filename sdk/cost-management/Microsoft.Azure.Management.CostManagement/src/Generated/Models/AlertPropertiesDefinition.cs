@@ -29,9 +29,19 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// <summary>
         /// Initializes a new instance of the AlertPropertiesDefinition class.
         /// </summary>
-        /// <param name="type">type of alert</param>
-        /// <param name="category">Alert category</param>
-        /// <param name="criteria">Criteria that triggered alert</param>
+        /// <param name="type">type of alert. Possible values include:
+        /// 'Budget', 'Invoice', 'Credit', 'Quota', 'General', 'xCloud',
+        /// 'BudgetForecast'</param>
+        /// <param name="category">Alert category. Possible values include:
+        /// 'Cost', 'Usage', 'Billing', 'System'</param>
+        /// <param name="criteria">Criteria that triggered alert. Possible
+        /// values include: 'CostThresholdExceeded', 'UsageThresholdExceeded',
+        /// 'CreditThresholdApproaching', 'CreditThresholdReached',
+        /// 'QuotaThresholdApproaching', 'QuotaThresholdReached',
+        /// 'MultiCurrency', 'ForecastCostThresholdExceeded',
+        /// 'ForecastUsageThresholdExceeded', 'InvoiceDueDateApproaching',
+        /// 'InvoiceDueDateReached', 'CrossCloudNewDataAvailable',
+        /// 'CrossCloudCollectionError', 'GeneralThresholdError'</param>
         public AlertPropertiesDefinition(string type = default(string), string category = default(string), string criteria = default(string))
         {
             Type = type;
@@ -46,19 +56,28 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets type of alert
+        /// Gets or sets type of alert. Possible values include: 'Budget',
+        /// 'Invoice', 'Credit', 'Quota', 'General', 'xCloud', 'BudgetForecast'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets alert category
+        /// Gets or sets alert category. Possible values include: 'Cost',
+        /// 'Usage', 'Billing', 'System'
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
 
         /// <summary>
-        /// Gets or sets criteria that triggered alert
+        /// Gets or sets criteria that triggered alert. Possible values
+        /// include: 'CostThresholdExceeded', 'UsageThresholdExceeded',
+        /// 'CreditThresholdApproaching', 'CreditThresholdReached',
+        /// 'QuotaThresholdApproaching', 'QuotaThresholdReached',
+        /// 'MultiCurrency', 'ForecastCostThresholdExceeded',
+        /// 'ForecastUsageThresholdExceeded', 'InvoiceDueDateApproaching',
+        /// 'InvoiceDueDateReached', 'CrossCloudNewDataAvailable',
+        /// 'CrossCloudCollectionError', 'GeneralThresholdError'
         /// </summary>
         [JsonProperty(PropertyName = "criteria")]
         public string Criteria { get; set; }
