@@ -64,6 +64,95 @@ namespace Microsoft.Azure.Management.CostManagement
         /// </exception>
         Task<AzureOperationResponse<AlertsResult>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the alert for the scope by alert ID.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope associated with alerts operations. This includes
+        /// '/subscriptions/{subscriptionId}/' for subscription scope,
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+        /// for resourceGroup scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}'
+        /// for Billing Account scope and
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+        /// for Department scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+        /// for EnrollmentAccount scope,
+        /// '/providers/Microsoft.Management/managementGroups/{managementGroupId}
+        /// for Management Group scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+        /// for billingProfile scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}'
+        /// for invoiceSection scope, and
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}'
+        /// specific for partners.
+        /// </param>
+        /// <param name='alertId'>
+        /// Alert ID
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Alert>> GetWithHttpMessagesAsync(string scope, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Dismisses the specified alert
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope associated with alerts operations. This includes
+        /// '/subscriptions/{subscriptionId}/' for subscription scope,
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+        /// for resourceGroup scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}'
+        /// for Billing Account scope and
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+        /// for Department scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+        /// for EnrollmentAccount scope,
+        /// '/providers/Microsoft.Management/managementGroups/{managementGroupId}
+        /// for Management Group scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+        /// for billingProfile scope,
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}'
+        /// for invoiceSection scope, and
+        /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}'
+        /// specific for partners.
+        /// </param>
+        /// <param name='alertId'>
+        /// Alert ID
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Dismiss Alert operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Alert>> DismissWithHttpMessagesAsync(string scope, string alertId, DismissAlertPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists the Alerts for external cloud provider type defined.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
         /// </summary>
