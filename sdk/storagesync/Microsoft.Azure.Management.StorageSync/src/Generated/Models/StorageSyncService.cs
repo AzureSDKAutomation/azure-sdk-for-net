@@ -43,15 +43,31 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Microsoft.Compute/virtualMachines or
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="incomingTrafficPolicy">Incoming Traffic Policy.
+        /// Possible values include: 'AllowAllTraffic',
+        /// 'AllowVirtualNetworksOnly'</param>
         /// <param name="storageSyncServiceStatus">Storage Sync service
         /// status.</param>
         /// <param name="storageSyncServiceUid">Storage Sync service
         /// Uid</param>
-        public StorageSyncService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? storageSyncServiceStatus = default(int?), string storageSyncServiceUid = default(string))
+        /// <param name="provisioningState">StorageSyncService Provisioning
+        /// State</param>
+        /// <param name="lastWorkflowId">StorageSyncService
+        /// lastWorkflowId</param>
+        /// <param name="lastOperationName">Resource Last Operation
+        /// Name</param>
+        /// <param name="privateEndpointConnections">List of private endpoint
+        /// connections associated with the storage sync service.</param>
+        public StorageSyncService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string incomingTrafficPolicy = default(string), int? storageSyncServiceStatus = default(int?), string storageSyncServiceUid = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), IList<PrivateEndpointConnectionItem> privateEndpointConnections = default(IList<PrivateEndpointConnectionItem>))
             : base(location, id, name, type, tags)
         {
+            IncomingTrafficPolicy = incomingTrafficPolicy;
             StorageSyncServiceStatus = storageSyncServiceStatus;
             StorageSyncServiceUid = storageSyncServiceUid;
+            ProvisioningState = provisioningState;
+            LastWorkflowId = lastWorkflowId;
+            LastOperationName = lastOperationName;
+            PrivateEndpointConnections = privateEndpointConnections;
             CustomInit();
         }
 
@@ -59,6 +75,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets incoming Traffic Policy. Possible values include:
+        /// 'AllowAllTraffic', 'AllowVirtualNetworksOnly'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.incomingTrafficPolicy")]
+        public string IncomingTrafficPolicy { get; set; }
 
         /// <summary>
         /// Gets storage Sync service status.
@@ -71,6 +94,31 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageSyncServiceUid")]
         public string StorageSyncServiceUid { get; private set; }
+
+        /// <summary>
+        /// Gets storageSyncService Provisioning State
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets storageSyncService lastWorkflowId
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.lastWorkflowId")]
+        public string LastWorkflowId { get; private set; }
+
+        /// <summary>
+        /// Gets resource Last Operation Name
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.lastOperationName")]
+        public string LastOperationName { get; private set; }
+
+        /// <summary>
+        /// Gets list of private endpoint connections associated with the
+        /// storage sync service.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnectionItem> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
         /// Validate the object.
