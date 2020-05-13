@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Search
 
         /// <summary>
         /// The API version to use for each request. The current version is
-        /// 2015-08-19.
+        /// 2019-10-01-Preview.
         /// </summary>
         string ApiVersion { get; }
 
@@ -92,6 +92,21 @@ namespace Microsoft.Azure.Management.Search
         /// Gets the IServicesOperations.
         /// </summary>
         IServicesOperations Services { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the ISharedPrivateLinkResourcesOperations.
+        /// </summary>
+        ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; }
 
     }
 }

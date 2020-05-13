@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Management.Search
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The API version to use for each request. The current version is 2015-08-19.
+        /// The API version to use for each request. The current version is
+        /// 2019-10-01-Preview.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -95,6 +96,21 @@ namespace Microsoft.Azure.Management.Search
         /// Gets the IServicesOperations.
         /// </summary>
         public virtual IServicesOperations Services { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the ISharedPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SearchManagementClient class.
@@ -341,8 +357,11 @@ namespace Microsoft.Azure.Management.Search
             AdminKeys = new AdminKeysOperations(this);
             QueryKeys = new QueryKeysOperations(this);
             Services = new ServicesOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            SharedPrivateLinkResources = new SharedPrivateLinkResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2015-08-19";
+            ApiVersion = "2020-03-13";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

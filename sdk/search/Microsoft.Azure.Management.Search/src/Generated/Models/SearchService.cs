@@ -61,6 +61,12 @@ namespace Microsoft.Azure.Management.Search.Models
         /// the value is either 'default' or 'highDensity'. For all other SKUs,
         /// this value must be 'default'. Possible values include: 'default',
         /// 'highDensity'</param>
+        /// <param name="publicNetworkAccess">This value can be set to
+        /// 'enabled' to avoid breaking changes on existing customer resources
+        /// and templates. If set to 'disabled', traffic over public interface
+        /// is not allowed, and private endpoint connections would be the
+        /// exclusive access method. Possible values include: 'enabled',
+        /// 'disabled'</param>
         /// <param name="status">The status of the Search service. Possible
         /// values include: 'running': The Search service is running and no
         /// provisioning operations are underway. 'provisioning': The Search
@@ -91,18 +97,29 @@ namespace Microsoft.Azure.Management.Search.Models
         /// the call to Create Search service. This is because the free service
         /// uses capacity that is already set up. Possible values include:
         /// 'succeeded', 'provisioning', 'failed'</param>
+        /// <param name="networkRuleSet">Network specific rules that determine
+        /// how the Azure Cognitive Search service may be reached.</param>
+        /// <param name="privateEndpointConnections">The list of private
+        /// endpoint connections to the Azure Cognitive Search service.</param>
+        /// <param name="sharedPrivateLinkResources">The list of shared private
+        /// link resources managed by the Azure Cognitive Search
+        /// service.</param>
         /// <param name="sku">The SKU of the Search Service, which determines
         /// price tier and capacity limits. This property is required when
         /// creating a new Search Service.</param>
-        public SearchService(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), Sku sku = default(Sku))
+        public SearchService(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), PublicNetworkAccess? publicNetworkAccess = default(PublicNetworkAccess?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>), Sku sku = default(Sku))
             : base(id, name, type, location, tags, identity)
         {
             ReplicaCount = replicaCount;
             PartitionCount = partitionCount;
             HostingMode = hostingMode;
+            PublicNetworkAccess = publicNetworkAccess;
             Status = status;
             StatusDetails = statusDetails;
             ProvisioningState = provisioningState;
+            NetworkRuleSet = networkRuleSet;
+            PrivateEndpointConnections = privateEndpointConnections;
+            SharedPrivateLinkResources = sharedPrivateLinkResources;
             Sku = sku;
             CustomInit();
         }
@@ -141,6 +158,16 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostingMode")]
         public HostingMode? HostingMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets this value can be set to 'enabled' to avoid breaking
+        /// changes on existing customer resources and templates. If set to
+        /// 'disabled', traffic over public interface is not allowed, and
+        /// private endpoint connections would be the exclusive access method.
+        /// Possible values include: 'enabled', 'disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public PublicNetworkAccess? PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets the status of the Search service. Possible values include:
@@ -184,6 +211,27 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public ProvisioningState? ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets network specific rules that determine how the Azure
+        /// Cognitive Search service may be reached.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkRuleSet")]
+        public NetworkRuleSet NetworkRuleSet { get; set; }
+
+        /// <summary>
+        /// Gets the list of private endpoint connections to the Azure
+        /// Cognitive Search service.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the list of shared private link resources managed by the Azure
+        /// Cognitive Search service.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sharedPrivateLinkResources")]
+        public IList<SharedPrivateLinkResource> SharedPrivateLinkResources { get; private set; }
 
         /// <summary>
         /// Gets or sets the SKU of the Search Service, which determines price
