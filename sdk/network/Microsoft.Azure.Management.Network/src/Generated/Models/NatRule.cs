@@ -16,43 +16,48 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Rule condition of type nat.
+    /// Rule of type nat.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("NatRuleCondition")]
-    public partial class NatRuleCondition : FirewallPolicyRuleCondition
+    [Newtonsoft.Json.JsonObject("NatRule")]
+    public partial class NatRule : FirewallPolicyRule
     {
         /// <summary>
-        /// Initializes a new instance of the NatRuleCondition class.
+        /// Initializes a new instance of the NatRule class.
         /// </summary>
-        public NatRuleCondition()
+        public NatRule()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NatRuleCondition class.
+        /// Initializes a new instance of the NatRule class.
         /// </summary>
-        /// <param name="name">Name of the rule condition.</param>
-        /// <param name="description">Description of the rule
-        /// condition.</param>
+        /// <param name="name">Name of the rule.</param>
+        /// <param name="description">Description of the rule.</param>
         /// <param name="ipProtocols">Array of
-        /// FirewallPolicyRuleConditionNetworkProtocols.</param>
+        /// FirewallPolicyRuleNetworkProtocols.</param>
         /// <param name="sourceAddresses">List of source IP addresses for this
         /// rule.</param>
         /// <param name="destinationAddresses">List of destination IP addresses
         /// or Service Tags.</param>
         /// <param name="destinationPorts">List of destination ports.</param>
+        /// <param name="translatedAddress">The translated address for this NAT
+        /// rule.</param>
+        /// <param name="translatedPort">The translated port for this NAT
+        /// rule.</param>
         /// <param name="sourceIpGroups">List of source IpGroups for this
         /// rule.</param>
         /// <param name="terminateTLS">Terminate TLS connections for this
         /// rule.</param>
-        public NatRuleCondition(string name = default(string), string description = default(string), IList<string> ipProtocols = default(IList<string>), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>), bool? terminateTLS = default(bool?))
+        public NatRule(string name = default(string), string description = default(string), IList<string> ipProtocols = default(IList<string>), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), string translatedAddress = default(string), string translatedPort = default(string), IList<string> sourceIpGroups = default(IList<string>), bool? terminateTLS = default(bool?))
             : base(name, description)
         {
             IpProtocols = ipProtocols;
             SourceAddresses = sourceAddresses;
             DestinationAddresses = destinationAddresses;
             DestinationPorts = destinationPorts;
+            TranslatedAddress = translatedAddress;
+            TranslatedPort = translatedPort;
             SourceIpGroups = sourceIpGroups;
             TerminateTLS = terminateTLS;
             CustomInit();
@@ -64,7 +69,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of FirewallPolicyRuleConditionNetworkProtocols.
+        /// Gets or sets array of FirewallPolicyRuleNetworkProtocols.
         /// </summary>
         [JsonProperty(PropertyName = "ipProtocols")]
         public IList<string> IpProtocols { get; set; }
@@ -86,6 +91,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "destinationPorts")]
         public IList<string> DestinationPorts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the translated address for this NAT rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "translatedAddress")]
+        public string TranslatedAddress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the translated port for this NAT rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "translatedPort")]
+        public string TranslatedPort { get; set; }
 
         /// <summary>
         /// Gets or sets list of source IpGroups for this rule.
