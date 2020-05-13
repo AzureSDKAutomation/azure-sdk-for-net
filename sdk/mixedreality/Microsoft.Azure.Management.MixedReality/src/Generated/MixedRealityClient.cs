@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Management.MixedReality
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The API version to be used with the HTTP request.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The Azure subscription ID. This is a GUID-formatted string (e.g.
         /// 00000000-0000-0000-0000-000000000000)
         /// </summary>
@@ -86,6 +81,11 @@ namespace Microsoft.Azure.Management.MixedReality
         /// Gets the ISpatialAnchorsAccountsOperations.
         /// </summary>
         public virtual ISpatialAnchorsAccountsOperations SpatialAnchorsAccounts { get; private set; }
+
+        /// <summary>
+        /// Gets the IRemoteRenderingAccountsOperations.
+        /// </summary>
+        public virtual IRemoteRenderingAccountsOperations RemoteRenderingAccounts { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MixedRealityClient class.
@@ -330,8 +330,8 @@ namespace Microsoft.Azure.Management.MixedReality
         {
             Operations = new Operations(this);
             SpatialAnchorsAccounts = new SpatialAnchorsAccountsOperations(this);
+            RemoteRenderingAccounts = new RemoteRenderingAccountsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-05-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -428,10 +428,7 @@ namespace Microsoft.Azure.Management.MixedReality
             {
                 checkNameAvailability.Validate();
             }
-            if (ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
-            }
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -441,6 +438,7 @@ namespace Microsoft.Azure.Management.MixedReality
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("checkNameAvailability", checkNameAvailability);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CheckNameAvailabilityLocal", tracingParameters);
             }
@@ -450,9 +448,9 @@ namespace Microsoft.Azure.Management.MixedReality
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
-            if (ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
