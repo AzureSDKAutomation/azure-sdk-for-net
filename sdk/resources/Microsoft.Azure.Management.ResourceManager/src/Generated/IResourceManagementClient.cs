@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <summary>
         /// The ID of the source subscription.
         /// </summary>
-        string SubscriptionId1 { get; set; }
+        string SourceSubscriptionId { get; set; }
 
         /// <summary>
         /// The API version to use for this operation.
