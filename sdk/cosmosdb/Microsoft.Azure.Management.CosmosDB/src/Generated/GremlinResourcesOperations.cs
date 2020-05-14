@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                     throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
                 }
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -934,7 +934,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1181,7 +1181,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1490,7 +1490,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1775,7 +1775,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 createUpdateGremlinDatabaseParameters.Validate();
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2019,7 +2019,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2253,7 +2253,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 updateThroughputParameters.Validate();
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2518,7 +2518,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 createUpdateGremlinGraphParameters.Validate();
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2771,7 +2771,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "graphName");
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3014,7 +3014,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             {
                 updateThroughputParameters.Validate();
             }
-            string apiVersion = "2020-03-01";
+            string apiVersion = "2020-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
