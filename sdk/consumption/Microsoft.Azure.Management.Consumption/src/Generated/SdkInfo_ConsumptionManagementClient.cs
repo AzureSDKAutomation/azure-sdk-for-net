@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Management.Consumption
                 new Tuple<string, string, string>("Consumption", "Marketplaces", "2019-10-01"),
                 new Tuple<string, string, string>("Consumption", "Operations", "2019-10-01"),
                 new Tuple<string, string, string>("Consumption", "PriceSheet", "2019-10-01"),
+                new Tuple<string, string, string>("Consumption", "ReservationRecommendationDetails", "2019-10-01"),
                 new Tuple<string, string, string>("Consumption", "ReservationRecommendations", "2019-10-01"),
                 new Tuple<string, string, string>("Consumption", "ReservationsDetails", "2019-10-01"),
                 new Tuple<string, string, string>("Consumption", "ReservationsSummaries", "2019-10-01"),

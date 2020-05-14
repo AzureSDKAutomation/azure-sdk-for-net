@@ -117,6 +117,11 @@ namespace Microsoft.Azure.Management.Consumption
         IReservationRecommendationsOperations ReservationRecommendations { get; }
 
         /// <summary>
+        /// Gets the IReservationRecommendationDetailsOperations.
+        /// </summary>
+        IReservationRecommendationDetailsOperations ReservationRecommendationDetails { get; }
+
+        /// <summary>
         /// Gets the IReservationTransactionsOperations.
         /// </summary>
         IReservationTransactionsOperations ReservationTransactions { get; }
