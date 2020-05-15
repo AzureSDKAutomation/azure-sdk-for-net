@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Management.MixedReality
               {
                 new Tuple<string, string, string>("MixedReality", "CheckNameAvailabilityLocal", "2020-05-01"),
                 new Tuple<string, string, string>("MixedReality", "Operations", "2020-05-01"),
-                new Tuple<string, string, string>("MixedReality", "RemoteRenderingAccounts", "2020-04-06-preview"),
                 new Tuple<string, string, string>("MixedReality", "SpatialAnchorsAccounts", "2020-05-01"),
               }.AsEnumerable();
           }
