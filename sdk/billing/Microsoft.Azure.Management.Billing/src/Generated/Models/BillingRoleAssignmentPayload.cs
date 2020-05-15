@@ -33,12 +33,11 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         /// <param name="principalId">The user's principal id that the role
         /// gets assigned to</param>
-        /// <param name="billingRoleDefinitionId">The role definition
-        /// id</param>
-        public BillingRoleAssignmentPayload(string principalId = default(string), string billingRoleDefinitionId = default(string))
+        /// <param name="roleDefinitionId">The role definition id</param>
+        public BillingRoleAssignmentPayload(string principalId = default(string), string roleDefinitionId = default(string))
         {
             PrincipalId = principalId;
-            BillingRoleDefinitionId = billingRoleDefinitionId;
+            RoleDefinitionId = roleDefinitionId;
             CustomInit();
         }
 
@@ -56,8 +55,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <summary>
         /// Gets or sets the role definition id
         /// </summary>
-        [JsonProperty(PropertyName = "billingRoleDefinitionId")]
-        public string BillingRoleDefinitionId { get; set; }
+        [JsonProperty(PropertyName = "roleDefinitionId")]
+        public string RoleDefinitionId { get; set; }
 
     }
 }

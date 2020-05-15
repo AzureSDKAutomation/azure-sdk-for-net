@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// Result of get list of role assignments
+    /// The list of role assignments.
     /// </summary>
     public partial class BillingRoleAssignmentListResult
     {
@@ -33,10 +33,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// Initializes a new instance of the BillingRoleAssignmentListResult
         /// class.
         /// </summary>
-        /// <param name="value">The list role assignments</param>
-        public BillingRoleAssignmentListResult(IList<BillingRoleAssignment> value = default(IList<BillingRoleAssignment>))
+        /// <param name="value">The list of role assignments.</param>
+        /// <param name="nextLink">The link (url) to the next page of
+        /// results.</param>
+        public BillingRoleAssignmentListResult(IList<BillingRoleAssignment> value = default(IList<BillingRoleAssignment>), string nextLink = default(string))
         {
             Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -46,10 +49,16 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the list role assignments
+        /// Gets the list of role assignments.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<BillingRoleAssignment> Value { get; private set; }
+
+        /// <summary>
+        /// Gets the link (url) to the next page of results.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; private set; }
 
     }
 }
