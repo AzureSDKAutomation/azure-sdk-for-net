@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 new Tuple<string, string, string>("AppPlatform", "Deployments", "2019-05-01-preview"),
                 new Tuple<string, string, string>("AppPlatform", "Operations", "2019-05-01-preview"),
                 new Tuple<string, string, string>("AppPlatform", "Services", "2019-05-01-preview"),
+                new Tuple<string, string, string>("AppPlatform", "Sku", "2019-05-01-preview"),
               }.AsEnumerable();
           }
       }
