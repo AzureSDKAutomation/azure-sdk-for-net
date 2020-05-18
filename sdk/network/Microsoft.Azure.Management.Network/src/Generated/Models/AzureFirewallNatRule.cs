@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// rule.</param>
         /// <param name="sourceIpGroups">List of source IpGroups for this
         /// rule.</param>
-        public AzureFirewallNatRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<string> protocols = default(IList<string>), string translatedAddress = default(string), string translatedPort = default(string), string translatedFqdn = default(string), IList<string> sourceIpGroups = default(IList<string>))
+        public AzureFirewallNatRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<double?> destinationPorts = default(IList<double?>), IList<string> protocols = default(IList<string>), string translatedAddress = default(string), string translatedPort = default(string), string translatedFqdn = default(string), IList<string> sourceIpGroups = default(IList<string>))
         {
             Name = name;
             Description = description;
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets list of destination ports.
         /// </summary>
         [JsonProperty(PropertyName = "destinationPorts")]
-        public IList<string> DestinationPorts { get; set; }
+        public IList<double?> DestinationPorts { get; set; }
 
         /// <summary>
         /// Gets or sets array of AzureFirewallNetworkRuleProtocols applicable
