@@ -57,12 +57,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Firewall Policy.</param>
         /// <param name="intrusionSystemMode">The operation mode for Intrusion
         /// system. Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="intrusionSystemConfiguration">The operation mode for
+        /// Intrusion system.</param>
         /// <param name="transportSecurity">TLS Configuration
         /// definition.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="identity">The identity of the firewall policy.</param>
-        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResource> ruleGroups = default(IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), IList<SubResource> firewalls = default(IList<SubResource>), IList<SubResource> childPolicies = default(IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), string intrusionSystemMode = default(string), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResource> ruleGroups = default(IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), IList<SubResource> firewalls = default(IList<SubResource>), IList<SubResource> childPolicies = default(IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), string intrusionSystemMode = default(string), FirewallPolicyIntrusionSystemConfiguration intrusionSystemConfiguration = default(FirewallPolicyIntrusionSystemConfiguration), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
             : base(id, name, type, location, tags)
         {
             RuleGroups = ruleGroups;
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Management.Network.Models
             ThreatIntelMode = threatIntelMode;
             ThreatIntelWhitelist = threatIntelWhitelist;
             IntrusionSystemMode = intrusionSystemMode;
+            IntrusionSystemConfiguration = intrusionSystemConfiguration;
             TransportSecurity = transportSecurity;
             Etag = etag;
             Identity = identity;
@@ -137,6 +140,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.intrusionSystemMode")]
         public string IntrusionSystemMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation mode for Intrusion system.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.intrusionSystemConfiguration")]
+        public FirewallPolicyIntrusionSystemConfiguration IntrusionSystemConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets TLS Configuration definition.
