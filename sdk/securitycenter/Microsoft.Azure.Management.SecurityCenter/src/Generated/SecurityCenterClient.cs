@@ -197,6 +197,11 @@ namespace Microsoft.Azure.Management.Security
         public virtual IAutomationsOperations Automations { get; private set; }
 
         /// <summary>
+        /// Gets the IAlertsSuppressionRulesOperations.
+        /// </summary>
+        public virtual IAlertsSuppressionRulesOperations AlertsSuppressionRules { get; private set; }
+
+        /// <summary>
         /// Gets the IAssessmentsMetadataOperations.
         /// </summary>
         public virtual IAssessmentsMetadataOperations AssessmentsMetadata { get; private set; }
@@ -240,6 +245,21 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IExternalSecuritySolutionsOperations.
         /// </summary>
         public virtual IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecureScoresOperations.
+        /// </summary>
+        public virtual ISecureScoresOperations SecureScores { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecureScoreControlsOperations.
+        /// </summary>
+        public virtual ISecureScoreControlsOperations SecureScoreControls { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecureScoreControlDefinitionsOperations.
+        /// </summary>
+        public virtual ISecureScoreControlDefinitionsOperations SecureScoreControlDefinitions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
@@ -506,6 +526,7 @@ namespace Microsoft.Azure.Management.Security
             ServerVulnerabilityAssessment = new ServerVulnerabilityAssessmentOperations(this);
             SubAssessments = new SubAssessmentsOperations(this);
             Automations = new AutomationsOperations(this);
+            AlertsSuppressionRules = new AlertsSuppressionRulesOperations(this);
             AssessmentsMetadata = new AssessmentsMetadataOperations(this);
             Assessments = new AssessmentsOperations(this);
             AdaptiveApplicationControls = new AdaptiveApplicationControlsOperations(this);
@@ -515,6 +536,9 @@ namespace Microsoft.Azure.Management.Security
             JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
             DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
             ExternalSecuritySolutions = new ExternalSecuritySolutionsOperations(this);
+            SecureScores = new SecureScoresOperations(this);
+            SecureScoreControls = new SecureScoreControlsOperations(this);
+            SecureScoreControlDefinitions = new SecureScoreControlDefinitionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
