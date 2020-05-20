@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.DataBoxEdge.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Compute role.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Role")]
     public partial class Role : ARMBaseModel
     {
         /// <summary>

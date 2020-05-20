@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.DataBoxEdge.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Trigger details.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Trigger")]
     public partial class Trigger : ARMBaseModel
     {
         /// <summary>
