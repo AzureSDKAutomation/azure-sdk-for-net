@@ -19,17 +19,15 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SubscriptionOperationOperations operations.
+    /// OperationResultsOperations operations.
     /// </summary>
-    public partial interface ISubscriptionOperationOperations
+    public partial interface IOperationResultsOperations
     {
         /// <summary>
-        /// Get the status of the pending Microsoft.Subscription API
-        /// operations.
+        /// The operation to find out the purchase Operation status
         /// </summary>
         /// <param name='operationId'>
-        /// The operation ID, which can be found from the Location field in the
-        /// generate recommendation response header.
+        /// the operation Id.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +35,7 @@ namespace Microsoft.Azure.Management.Subscription
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseBodyException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -46,6 +44,6 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SubscriptionCreationResult,SubscriptionOperationGetHeaders>> GetWithHttpMessagesAsync(string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DefaultSupportPlanResponseResult>> GetWithHttpMessagesAsync(string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -10,33 +10,35 @@
 
 namespace Microsoft.Azure.Management.Subscription.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// REST API operation
+    /// The Resource model definition.
     /// </summary>
-    public partial class Operation
+    public partial class ProxyResource : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the ProxyResource class.
         /// </summary>
-        public Operation()
+        public ProxyResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the ProxyResource class.
         /// </summary>
-        /// <param name="name">Operation name:
-        /// {provider}/{resource}/{operation}</param>
-        /// <param name="display">The object that represents the
-        /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        /// <param name="id">Resource Id.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
+        public ProxyResource(string id = default(string), string name = default(string), string type = default(string))
         {
+            Id = id;
             Name = name;
-            Display = display;
+            Type = type;
             CustomInit();
         }
 
@@ -46,16 +48,22 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets operation name: {provider}/{resource}/{operation}
+        /// Gets resource Id.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
 
         /// <summary>
-        /// Gets or sets the object that represents the operation.
+        /// Gets resource name.
         /// </summary>
-        [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets resource type.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

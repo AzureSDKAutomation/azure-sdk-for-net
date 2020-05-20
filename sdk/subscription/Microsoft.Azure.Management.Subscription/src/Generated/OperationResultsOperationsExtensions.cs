@@ -17,33 +17,39 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Operations.
+    /// Extension methods for OperationResultsOperations.
     /// </summary>
-    public static partial class OperationsExtensions
+    public static partial class OperationResultsOperationsExtensions
     {
             /// <summary>
-            /// Lists all of the available Microsoft.Subscription API operations.
+            /// The operation to find out the purchase Operation status
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static OperationListResult List(this IOperations operations)
+            /// <param name='operationId'>
+            /// the operation Id.
+            /// </param>
+            public static DefaultSupportPlanResponseResult Get(this IOperationResultsOperations operations, string operationId)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetAsync(operationId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists all of the available Microsoft.Subscription API operations.
+            /// The operation to find out the purchase Operation status
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='operationId'>
+            /// the operation Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationListResult> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DefaultSupportPlanResponseResult> GetAsync(this IOperationResultsOperations operations, string operationId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(operationId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

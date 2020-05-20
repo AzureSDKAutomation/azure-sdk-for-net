@@ -17,40 +17,46 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for TenantsOperations.
+    /// Extension methods for SupportPlansOperations.
     /// </summary>
-    public static partial class TenantsOperationsExtensions
+    public static partial class SupportPlansOperationsExtensions
     {
             /// <summary>
-            /// Gets the tenants for your account.
+            /// The operation lists support plans under the given subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<TenantIdDescription> List(this ITenantsOperations operations)
+            /// <param name='subscriptionId'>
+            /// the subscription Id.
+            /// </param>
+            public static IPage<DefaultSupportPlanResponseResult> ListBySubscription(this ISupportPlansOperations operations, string subscriptionId)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.ListBySubscriptionAsync(subscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the tenants for your account.
+            /// The operation lists support plans under the given subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// the subscription Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TenantIdDescription>> ListAsync(this ITenantsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DefaultSupportPlanResponseResult>> ListBySubscriptionAsync(this ISupportPlansOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets the tenants for your account.
+            /// The operation lists support plans under the given subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -58,13 +64,13 @@ namespace Microsoft.Azure.Management.Subscription
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<TenantIdDescription> ListNext(this ITenantsOperations operations, string nextPageLink)
+            public static IPage<DefaultSupportPlanResponseResult> ListBySubscriptionNext(this ISupportPlansOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the tenants for your account.
+            /// The operation lists support plans under the given subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -75,9 +81,9 @@ namespace Microsoft.Azure.Management.Subscription
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TenantIdDescription>> ListNextAsync(this ITenantsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DefaultSupportPlanResponseResult>> ListBySubscriptionNextAsync(this ISupportPlansOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

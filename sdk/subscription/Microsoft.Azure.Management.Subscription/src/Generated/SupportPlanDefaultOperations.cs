@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SubscriptionOperationOperations operations.
+    /// SupportPlanDefaultOperations operations.
     /// </summary>
-    internal partial class SubscriptionOperationOperations : IServiceOperations<SubscriptionClient>, ISubscriptionOperationOperations
+    internal partial class SupportPlanDefaultOperations : IServiceOperations<SubscriptionClient>, ISupportPlanDefaultOperations
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationOperations class.
+        /// Initializes a new instance of the SupportPlanDefaultOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal SubscriptionOperationOperations(SubscriptionClient client)
+        internal SupportPlanDefaultOperations(SubscriptionClient client)
         {
             if (client == null)
             {
@@ -51,11 +51,10 @@ namespace Microsoft.Azure.Management.Subscription
         public SubscriptionClient Client { get; private set; }
 
         /// <summary>
-        /// Get the status of the pending Microsoft.Subscription API operations.
+        /// returns the support plan for given subscription
         /// </summary>
-        /// <param name='operationId'>
-        /// The operation ID, which can be found from the Location field in the
-        /// generate recommendation response header.
+        /// <param name='subscriptionId'>
+        /// the subscription Id.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Management.Subscription
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseBodyException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -78,13 +77,16 @@ namespace Microsoft.Azure.Management.Subscription
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SubscriptionCreationResult,SubscriptionOperationGetHeaders>> GetWithHttpMessagesAsync(string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DefaultSupportPlanResponseResult>> GetWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (operationId == null)
+            if (subscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "operationId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "subscriptionId");
             }
-            string apiVersion = "2019-10-01-preview";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -92,19 +94,18 @@ namespace Microsoft.Azure.Management.Subscription
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("operationId", operationId);
-                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("subscriptionId", subscriptionId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Subscription/subscriptionOperations/{operationId}").ToString();
-            _url = _url.Replace("{operationId}", System.Uri.EscapeDataString(operationId));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscription/SupportPlan/default").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(subscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -164,16 +165,15 @@ namespace Microsoft.Azure.Management.Subscription
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseBodyException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponseBody _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponseBody>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -183,10 +183,6 @@ namespace Microsoft.Azure.Management.Subscription
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -199,7 +195,7 @@ namespace Microsoft.Azure.Management.Subscription
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<SubscriptionCreationResult,SubscriptionOperationGetHeaders>();
+            var _result = new AzureOperationResponse<DefaultSupportPlanResponseResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -212,7 +208,7 @@ namespace Microsoft.Azure.Management.Subscription
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SubscriptionCreationResult>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultSupportPlanResponseResult>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -223,19 +219,6 @@ namespace Microsoft.Azure.Management.Subscription
                     }
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
-            }
-            try
-            {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<SubscriptionOperationGetHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
-            }
-            catch (JsonException ex)
-            {
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw new SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {

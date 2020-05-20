@@ -19,20 +19,23 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// TenantsOperations operations.
+    /// SupportPlansOperations operations.
     /// </summary>
-    public partial interface ITenantsOperations
+    public partial interface ISupportPlansOperations
     {
         /// <summary>
-        /// Gets the tenants for your account.
+        /// The operation lists support plans under the given subscription
         /// </summary>
+        /// <param name='subscriptionId'>
+        /// the subscription Id.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseBodyException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -41,9 +44,9 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<TenantIdDescription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DefaultSupportPlanResponseResult>>> ListBySubscriptionWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the tenants for your account.
+        /// The operation lists support plans under the given subscription
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -54,7 +57,7 @@ namespace Microsoft.Azure.Management.Subscription
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseBodyException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -63,6 +66,6 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<TenantIdDescription>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DefaultSupportPlanResponseResult>>> ListBySubscriptionNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

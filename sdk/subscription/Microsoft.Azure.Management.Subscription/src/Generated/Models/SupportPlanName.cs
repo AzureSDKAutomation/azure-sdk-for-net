@@ -14,26 +14,27 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// The ID of the subscriptions that is being renamed
+    /// The supportPlan Name.
     /// </summary>
-    public partial class RenamedSubscriptionId
+    public partial class SupportPlanName
     {
         /// <summary>
-        /// Initializes a new instance of the RenamedSubscriptionId class.
+        /// Initializes a new instance of the SupportPlanName class.
         /// </summary>
-        public RenamedSubscriptionId()
+        public SupportPlanName()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RenamedSubscriptionId class.
+        /// Initializes a new instance of the SupportPlanName class.
         /// </summary>
-        /// <param name="value">The ID of the subscriptions that is being
-        /// renamed</param>
-        public RenamedSubscriptionId(string value = default(string))
+        /// <param name="planType">SupportPlan Type. Possible values include:
+        /// 'basic_support', 'developer_support', 'standard_support',
+        /// 'prodirect_support'</param>
+        public SupportPlanName(SupportPlanType? planType = default(SupportPlanType?))
         {
-            Value = value;
+            PlanType = planType;
             CustomInit();
         }
 
@@ -43,10 +44,12 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ID of the subscriptions that is being renamed
+        /// Gets or sets supportPlan Type. Possible values include:
+        /// 'basic_support', 'developer_support', 'standard_support',
+        /// 'prodirect_support'
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public string Value { get; private set; }
+        [JsonProperty(PropertyName = "planType")]
+        public SupportPlanType? PlanType { get; set; }
 
     }
 }

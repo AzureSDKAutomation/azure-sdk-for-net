@@ -19,20 +19,23 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operations operations.
+    /// SupportPlanDefaultOperations operations.
     /// </summary>
-    public partial interface IOperations
+    public partial interface ISupportPlanDefaultOperations
     {
         /// <summary>
-        /// Lists all of the available Microsoft.Subscription API operations.
+        /// returns the support plan for given subscription
         /// </summary>
+        /// <param name='subscriptionId'>
+        /// the subscription Id.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="ErrorResponseBodyException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -41,6 +44,6 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationListResult>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DefaultSupportPlanResponseResult>> GetWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

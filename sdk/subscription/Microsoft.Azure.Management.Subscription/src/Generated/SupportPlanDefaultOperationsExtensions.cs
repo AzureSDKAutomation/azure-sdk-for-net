@@ -17,41 +17,39 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for SubscriptionOperationOperations.
+    /// Extension methods for SupportPlanDefaultOperations.
     /// </summary>
-    public static partial class SubscriptionOperationOperationsExtensions
+    public static partial class SupportPlanDefaultOperationsExtensions
     {
             /// <summary>
-            /// Get the status of the pending Microsoft.Subscription API operations.
+            /// returns the support plan for given subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='operationId'>
-            /// The operation ID, which can be found from the Location field in the
-            /// generate recommendation response header.
+            /// <param name='subscriptionId'>
+            /// the subscription Id.
             /// </param>
-            public static SubscriptionCreationResult Get(this ISubscriptionOperationOperations operations, string operationId)
+            public static DefaultSupportPlanResponseResult Get(this ISupportPlanDefaultOperations operations, string subscriptionId)
             {
-                return operations.GetAsync(operationId).GetAwaiter().GetResult();
+                return operations.GetAsync(subscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the status of the pending Microsoft.Subscription API operations.
+            /// returns the support plan for given subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='operationId'>
-            /// The operation ID, which can be found from the Location field in the
-            /// generate recommendation response header.
+            /// <param name='subscriptionId'>
+            /// the subscription Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SubscriptionCreationResult> GetAsync(this ISubscriptionOperationOperations operations, string operationId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DefaultSupportPlanResponseResult> GetAsync(this ISupportPlanDefaultOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(operationId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
