@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// Input request for all pre job creation validation.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ValidationRequest")]
     public partial class ValidationRequest
     {
         /// <summary>

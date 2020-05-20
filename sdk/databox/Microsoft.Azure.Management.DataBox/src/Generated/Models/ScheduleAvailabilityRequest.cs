@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// Request body to get the availability for scheduling orders.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ScheduleAvailabilityRequest")]
     public partial class ScheduleAvailabilityRequest
     {
         /// <summary>

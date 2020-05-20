@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// Details of the destination storage accounts.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("DestinationAccountDetails")]
     public partial class DestinationAccountDetails
     {
         /// <summary>
