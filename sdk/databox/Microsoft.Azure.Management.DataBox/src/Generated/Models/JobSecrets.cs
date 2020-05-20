@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// The base class for the secrets
     /// </summary>
+    [Newtonsoft.Json.JsonObject("JobSecrets")]
     public partial class JobSecrets
     {
         /// <summary>

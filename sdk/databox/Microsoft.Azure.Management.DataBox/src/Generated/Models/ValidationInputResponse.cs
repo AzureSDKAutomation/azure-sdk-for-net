@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// Minimum properties that should be present in each individual validation
     /// response.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ValidationInputResponse")]
     public partial class ValidationInputResponse
     {
         /// <summary>
