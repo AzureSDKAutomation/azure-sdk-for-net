@@ -39,12 +39,10 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="tags">Tags of the service which is a list of key value
         /// pairs that describe the resource.</param>
         /// <param name="properties">Properties of the Service resource</param>
-        /// <param name="sku">Sku of the Service resource</param>
-        public ServiceResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ClusterResourceProperties properties = default(ClusterResourceProperties), Sku sku = default(Sku))
+        public ServiceResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ClusterResourceProperties properties = default(ClusterResourceProperties))
             : base(id, name, type, location, tags)
         {
             Properties = properties;
-            Sku = sku;
             CustomInit();
         }
 
@@ -60,12 +58,6 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public ClusterResourceProperties Properties { get; set; }
 
         /// <summary>
-        /// Gets or sets sku of the Service resource
-        /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="Rest.ValidationException">
@@ -76,10 +68,6 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
             if (Properties != null)
             {
                 Properties.Validate();
-            }
-            if (Sku != null)
-            {
-                Sku.Validate();
             }
         }
     }

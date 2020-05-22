@@ -112,11 +112,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the ISkuOperations.
-        /// </summary>
-        public virtual ISkuOperations Sku { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of the AppPlatformManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -364,7 +359,6 @@ namespace Microsoft.Azure.Management.AppPlatform
             CustomDomains = new CustomDomainsOperations(this);
             Deployments = new DeploymentsOperations(this);
             Operations = new Operations(this);
-            Sku = new SkuOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2019-05-01-preview";
             AcceptLanguage = "en-US";
