@@ -101,11 +101,6 @@ namespace Microsoft.Azure.Management.AzureData
         ISqlInstancesOperations SqlInstances { get; }
 
         /// <summary>
-        /// Gets the ISqlServerInstancesOperations.
-        /// </summary>
-        ISqlServerInstancesOperations SqlServerInstances { get; }
-
-        /// <summary>
         /// Gets the IPostgresInstancesOperations.
         /// </summary>
         IPostgresInstancesOperations PostgresInstances { get; }

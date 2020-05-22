@@ -106,11 +106,6 @@ namespace Microsoft.Azure.Management.AzureData
         public virtual ISqlInstancesOperations SqlInstances { get; private set; }
 
         /// <summary>
-        /// Gets the ISqlServerInstancesOperations.
-        /// </summary>
-        public virtual ISqlServerInstancesOperations SqlServerInstances { get; private set; }
-
-        /// <summary>
         /// Gets the IPostgresInstancesOperations.
         /// </summary>
         public virtual IPostgresInstancesOperations PostgresInstances { get; private set; }
@@ -365,7 +360,6 @@ namespace Microsoft.Azure.Management.AzureData
             SqlServerRegistrations = new SqlServerRegistrationsOperations(this);
             SqlServers = new SqlServersOperations(this);
             SqlInstances = new SqlInstancesOperations(this);
-            SqlServerInstances = new SqlServerInstancesOperations(this);
             PostgresInstances = new PostgresInstancesOperations(this);
             HybridDataManagers = new HybridDataManagersOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
