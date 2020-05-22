@@ -19,20 +19,27 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operations operations.
+    /// ComponentCurrentBillingFeaturesOperations operations.
     /// </summary>
-    public partial interface IOperations
+    public partial interface IComponentCurrentBillingFeaturesOperations
     {
         /// <summary>
-        /// Lists all of the available insights REST API operations.
+        /// Returns current billing features for an Application Insights
+        /// component.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Application Insights component resource.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -41,12 +48,20 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Operation>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationInsightsComponentBillingFeatures>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all of the available insights REST API operations.
+        /// Update current billing features for an Application Insights
+        /// component.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Application Insights component resource.
+        /// </param>
+        /// <param name='billingFeaturesProperties'>
+        /// Properties that need to be specified to update billing features for
+        /// an Application Insights component.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -54,7 +69,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -63,6 +78,6 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationInsightsComponentBillingFeatures>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, ApplicationInsightsComponentBillingFeatures billingFeaturesProperties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

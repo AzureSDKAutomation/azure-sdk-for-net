@@ -14,31 +14,31 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
     using System.Linq;
 
     /// <summary>
-    /// Information about an operation
+    /// The object that represents the operation.
     /// </summary>
-    public partial class OperationInfo
+    public partial class OperationDisplay
     {
         /// <summary>
-        /// Initializes a new instance of the OperationInfo class.
+        /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
-        public OperationInfo()
+        public OperationDisplay()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OperationInfo class.
+        /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
-        /// <param name="provider">Name of the provider</param>
-        /// <param name="resource">Name of the resource type</param>
-        /// <param name="operation">Name of the operation</param>
-        /// <param name="description">Description of the operation</param>
-        public OperationInfo(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
+        /// <param name="provider">Service provider: Microsoft.Cdn</param>
+        /// <param name="resource">Resource on which the operation is
+        /// performed: Profile, endpoint, etc.</param>
+        /// <param name="operation">Operation type: Read, write, delete,
+        /// etc.</param>
+        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
         {
             Provider = provider;
             Resource = resource;
             Operation = operation;
-            Description = description;
             CustomInit();
         }
 
@@ -48,28 +48,23 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the provider
+        /// Gets or sets service provider: Microsoft.Cdn
         /// </summary>
         [JsonProperty(PropertyName = "provider")]
         public string Provider { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource type
+        /// Gets or sets resource on which the operation is performed: Profile,
+        /// endpoint, etc.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public string Resource { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the operation
+        /// Gets or sets operation type: Read, write, delete, etc.
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
         public string Operation { get; set; }
-
-        /// <summary>
-        /// Gets or sets description of the operation
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
 
     }
 }

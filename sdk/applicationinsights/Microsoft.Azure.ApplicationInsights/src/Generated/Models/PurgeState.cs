@@ -12,17 +12,11 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
 {
 
     /// <summary>
-    /// Defines values for DownloadAs.
+    /// Defines values for PurgeState.
     /// </summary>
-    public static class DownloadAs
+    public static class PurgeState
     {
-        /// <summary>
-        /// Returned file will be in visual studio webtestresult file format.
-        /// </summary>
-        public const string WebTestResult = "WebTestResult";
-        /// <summary>
-        /// Returned file will be in json file format.
-        /// </summary>
-        public const string Json = "Json";
+        public const string Pending = "pending";
+        public const string Completed = "completed";
     }
 }

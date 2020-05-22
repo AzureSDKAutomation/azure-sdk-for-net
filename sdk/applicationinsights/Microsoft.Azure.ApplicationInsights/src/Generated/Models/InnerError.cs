@@ -14,29 +14,28 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
     using System.Linq;
 
     /// <summary>
-    /// CDN REST API operation
+    /// Inner error
     /// </summary>
-    public partial class Operation
+    public partial class InnerError
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the InnerError class.
         /// </summary>
-        public Operation()
+        public InnerError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the InnerError class.
         /// </summary>
-        /// <param name="name">Operation name:
-        /// {provider}/{resource}/{operation}</param>
-        /// <param name="display">The object that represents the
-        /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        /// <param name="diagnosticcontext">Provides correlation for
+        /// request</param>
+        /// <param name="time">Request time</param>
+        public InnerError(string diagnosticcontext = default(string), System.DateTime? time = default(System.DateTime?))
         {
-            Name = name;
-            Display = display;
+            Diagnosticcontext = diagnosticcontext;
+            Time = time;
             CustomInit();
         }
 
@@ -46,16 +45,16 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets operation name: {provider}/{resource}/{operation}
+        /// Gets or sets provides correlation for request
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "diagnosticcontext")]
+        public string Diagnosticcontext { get; set; }
 
         /// <summary>
-        /// Gets or sets the object that represents the operation.
+        /// Gets or sets request time
         /// </summary>
-        [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
+        [JsonProperty(PropertyName = "time")]
+        public System.DateTime? Time { get; set; }
 
     }
 }

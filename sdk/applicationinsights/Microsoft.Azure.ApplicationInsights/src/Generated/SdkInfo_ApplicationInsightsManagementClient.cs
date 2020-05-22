@@ -19,8 +19,22 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("insights", "Operations", "2020-02-10-preview"),
-                new Tuple<string, string, string>("insights", "getTestResultFile", "2020-02-10-preview"),
+                new Tuple<string, string, string>("Insights", "APIKeys", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "Annotations", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "ComponentAvailableFeatures", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "ComponentCurrentBillingFeatures", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "ComponentFeatureCapabilities", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "ComponentQuotaStatus", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "Components", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "ExportConfigurations", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "Favorites", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "Operations", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "ProactiveDetectionConfigurations", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "WebTests", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "WorkItemConfigurations", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "webTestLocations", "2015-05-01"),
+                new Tuple<string, string, string>("insights", "AnalyticsItems", "2015-05-01"),
+                new Tuple<string, string, string>("insights", "Workbooks", "2015-05-01"),
               }.AsEnumerable();
           }
       }

@@ -22,12 +22,8 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
     public static partial class OperationsExtensions
     {
             /// <summary>
-            /// List available operations.
+            /// Lists all of the available insights REST API operations.
             /// </summary>
-            /// <remarks>
-            /// List the available operations supported by the Microsoft.EventGrid resource
-            /// provider.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -37,12 +33,8 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             }
 
             /// <summary>
-            /// List available operations.
+            /// Lists all of the available insights REST API operations.
             /// </summary>
-            /// <remarks>
-            /// List the available operations supported by the Microsoft.EventGrid resource
-            /// provider.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -58,12 +50,8 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             }
 
             /// <summary>
-            /// List available operations.
+            /// Lists all of the available insights REST API operations.
             /// </summary>
-            /// <remarks>
-            /// List the available operations supported by the Microsoft.EventGrid resource
-            /// provider.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -76,12 +64,8 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             }
 
             /// <summary>
-            /// List available operations.
+            /// Lists all of the available insights REST API operations.
             /// </summary>
-            /// <remarks>
-            /// List the available operations supported by the Microsoft.EventGrid resource
-            /// provider.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
