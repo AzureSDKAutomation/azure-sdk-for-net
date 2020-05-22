@@ -31,9 +31,7 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </summary>
         /// <param name="modificationEvent">Reason for the modification.
         /// Possible values include: 'AlertCreated', 'StateChange',
-        /// 'MonitorConditionChange', 'SeverityChange', 'ActionRuleTriggered',
-        /// 'ActionRuleSuppressed', 'ActionsTriggered', 'ActionsSuppressed',
-        /// 'ActionsFailed'</param>
+        /// 'MonitorConditionChange'</param>
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <param name="modifiedAt">Modified date and time</param>
@@ -60,9 +58,7 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
 
         /// <summary>
         /// Gets or sets reason for the modification. Possible values include:
-        /// 'AlertCreated', 'StateChange', 'MonitorConditionChange',
-        /// 'SeverityChange', 'ActionRuleTriggered', 'ActionRuleSuppressed',
-        /// 'ActionsTriggered', 'ActionsSuppressed', 'ActionsFailed'
+        /// 'AlertCreated', 'StateChange', 'MonitorConditionChange'
         /// </summary>
         [JsonProperty(PropertyName = "modificationEvent")]
         public AlertModificationEvent? ModificationEvent { get; set; }

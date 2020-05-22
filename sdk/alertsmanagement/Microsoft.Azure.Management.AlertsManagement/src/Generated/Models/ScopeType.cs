@@ -18,6 +18,5 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     {
         public const string ResourceGroup = "ResourceGroup";
         public const string Resource = "Resource";
-        public const string Subscription = "Subscription";
     }
 }
