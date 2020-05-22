@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// 'Succeeded', 'Failed'</param>
         /// <param name="endpoint">Endpoint of the created account.</param>
         /// <param name="internalId">The internal identifier.</param>
+        /// <param name="capabilities">Gets the capabilities of the cognitive
+        /// services account. Each item indicates a specific feature is
+        /// supported by this account. The value is read only and for reference
+        /// only.</param>
         /// <param name="customSubDomainName">Optional subdomain name used for
         /// token-based authentication.</param>
         /// <param name="networkAcls">A collection of rules governing the
@@ -55,11 +59,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// 'Enabled', 'Disabled'</param>
         /// <param name="apiProperties">The api properties for special
         /// APIs.</param>
-        public CognitiveServicesAccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), CognitiveServicesAccountApiProperties apiProperties = default(CognitiveServicesAccountApiProperties))
+        public CognitiveServicesAccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<string> capabilities = default(IList<string>), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), CognitiveServicesAccountApiProperties apiProperties = default(CognitiveServicesAccountApiProperties))
         {
             ProvisioningState = provisioningState;
             Endpoint = endpoint;
             InternalId = internalId;
+            Capabilities = capabilities;
             CustomSubDomainName = customSubDomainName;
             NetworkAcls = networkAcls;
             Encryption = encryption;
@@ -94,6 +99,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "internalId")]
         public string InternalId { get; private set; }
+
+        /// <summary>
+        /// Gets the capabilities of the cognitive services account. Each item
+        /// indicates a specific feature is supported by this account. The
+        /// value is read only and for reference only.
+        /// </summary>
+        [JsonProperty(PropertyName = "capabilities")]
+        public IList<string> Capabilities { get; private set; }
 
         /// <summary>
         /// Gets or sets optional subdomain name used for token-based
