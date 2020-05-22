@@ -122,11 +122,6 @@ namespace Microsoft.Azure.Management.Consumption
         public virtual IReservationRecommendationsOperations ReservationRecommendations { get; private set; }
 
         /// <summary>
-        /// Gets the IReservationRecommendationDetailsOperations.
-        /// </summary>
-        public virtual IReservationRecommendationDetailsOperations ReservationRecommendationDetails { get; private set; }
-
-        /// <summary>
         /// Gets the IReservationTransactionsOperations.
         /// </summary>
         public virtual IReservationTransactionsOperations ReservationTransactions { get; private set; }
@@ -416,7 +411,6 @@ namespace Microsoft.Azure.Management.Consumption
             ReservationsSummaries = new ReservationsSummariesOperations(this);
             ReservationsDetails = new ReservationsDetailsOperations(this);
             ReservationRecommendations = new ReservationRecommendationsOperations(this);
-            ReservationRecommendationDetails = new ReservationRecommendationDetailsOperations(this);
             ReservationTransactions = new ReservationTransactionsOperations(this);
             PriceSheet = new PriceSheetOperations(this);
             Forecasts = new ForecastsOperations(this);
