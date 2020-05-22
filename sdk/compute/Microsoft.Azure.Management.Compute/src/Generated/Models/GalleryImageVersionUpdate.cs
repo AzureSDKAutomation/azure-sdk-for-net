@@ -94,6 +94,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageProfile");
             }
+            if (StorageProfile != null)
+            {
+                StorageProfile.Validate();
+            }
         }
     }
 }
