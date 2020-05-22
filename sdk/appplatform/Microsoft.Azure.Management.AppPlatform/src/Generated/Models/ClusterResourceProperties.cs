@@ -39,13 +39,15 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="version">Version of the Service</param>
         /// <param name="serviceId">ServiceInstanceEntity GUID which uniquely
         /// identifies a created resource</param>
-        public ClusterResourceProperties(string provisioningState = default(string), ConfigServerProperties configServerProperties = default(ConfigServerProperties), TraceProperties trace = default(TraceProperties), int? version = default(int?), string serviceId = default(string))
+        /// <param name="networkProfile">Network profile of the Service</param>
+        public ClusterResourceProperties(string provisioningState = default(string), ConfigServerProperties configServerProperties = default(ConfigServerProperties), TraceProperties trace = default(TraceProperties), int? version = default(int?), string serviceId = default(string), NetworkProfile networkProfile = default(NetworkProfile))
         {
             ProvisioningState = provisioningState;
             ConfigServerProperties = configServerProperties;
             Trace = trace;
             Version = version;
             ServiceId = serviceId;
+            NetworkProfile = networkProfile;
             CustomInit();
         }
 
@@ -86,6 +88,12 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "serviceId")]
         public string ServiceId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets network profile of the Service
+        /// </summary>
+        [JsonProperty(PropertyName = "networkProfile")]
+        public NetworkProfile NetworkProfile { get; set; }
 
         /// <summary>
         /// Validate the object.
