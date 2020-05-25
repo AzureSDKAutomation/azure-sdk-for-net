@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// condition.</param>
         /// <param name="sourceIpGroups">List of source IpGroups for this
         /// rule.</param>
-        public ApplicationRuleCondition(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<FirewallPolicyRuleConditionApplicationProtocol> protocols = default(IList<FirewallPolicyRuleConditionApplicationProtocol>), IList<string> targetUrls = default(IList<string>), IList<string> targetFqdns = default(IList<string>), IList<string> fqdnTags = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>))
+        /// <param name="terminateTLS">Terminate TLS connections for this
+        /// rule.</param>
+        public ApplicationRuleCondition(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<FirewallPolicyRuleConditionApplicationProtocol> protocols = default(IList<FirewallPolicyRuleConditionApplicationProtocol>), IList<string> targetUrls = default(IList<string>), IList<string> targetFqdns = default(IList<string>), IList<string> fqdnTags = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>), bool? terminateTLS = default(bool?))
             : base(name, description)
         {
             SourceAddresses = sourceAddresses;
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Management.Network.Models
             TargetFqdns = targetFqdns;
             FqdnTags = fqdnTags;
             SourceIpGroups = sourceIpGroups;
+            TerminateTLS = terminateTLS;
             CustomInit();
         }
 
@@ -107,6 +110,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "sourceIpGroups")]
         public IList<string> SourceIpGroups { get; set; }
+
+        /// <summary>
+        /// Gets or sets terminate TLS connections for this rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "terminateTLS")]
+        public bool? TerminateTLS { get; set; }
 
     }
 }

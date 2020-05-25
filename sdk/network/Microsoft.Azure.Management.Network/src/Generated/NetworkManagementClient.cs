@@ -84,6 +84,16 @@ namespace Microsoft.Azure.Management.Network
         public virtual IApplicationGatewaysOperations ApplicationGateways { get; private set; }
 
         /// <summary>
+        /// Gets the IApplicationGatewayPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationGatewayPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IApplicationGatewayPrivateEndpointConnectionsOperations ApplicationGatewayPrivateEndpointConnections { get; private set; }
+
+        /// <summary>
         /// Gets the IApplicationSecurityGroupsOperations.
         /// </summary>
         public virtual IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; private set; }
@@ -297,6 +307,16 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the INetworkVirtualAppliancesOperations.
         /// </summary>
         public virtual INetworkVirtualAppliancesOperations NetworkVirtualAppliances { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualApplianceSitesOperations.
+        /// </summary>
+        public virtual IVirtualApplianceSitesOperations VirtualApplianceSites { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualApplianceSkusOperations.
+        /// </summary>
+        public virtual IVirtualApplianceSkusOperations VirtualApplianceSkus { get; private set; }
 
         /// <summary>
         /// Gets the INetworkWatchersOperations.
@@ -537,6 +557,21 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IExpressRouteConnectionsOperations.
         /// </summary>
         public virtual IExpressRouteConnectionsOperations ExpressRouteConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualHubBgpConnectionOperations.
+        /// </summary>
+        public virtual IVirtualHubBgpConnectionOperations VirtualHubBgpConnection { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualHubBgpConnectionsOperations.
+        /// </summary>
+        public virtual IVirtualHubBgpConnectionsOperations VirtualHubBgpConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualHubIpConfigurationOperations.
+        /// </summary>
+        public virtual IVirtualHubIpConfigurationOperations VirtualHubIpConfiguration { get; private set; }
 
         /// <summary>
         /// Gets the IHubRouteTablesOperations.
@@ -790,6 +825,8 @@ namespace Microsoft.Azure.Management.Network
         private void Initialize()
         {
             ApplicationGateways = new ApplicationGatewaysOperations(this);
+            ApplicationGatewayPrivateLinkResources = new ApplicationGatewayPrivateLinkResourcesOperations(this);
+            ApplicationGatewayPrivateEndpointConnections = new ApplicationGatewayPrivateEndpointConnectionsOperations(this);
             ApplicationSecurityGroups = new ApplicationSecurityGroupsOperations(this);
             AvailableDelegations = new AvailableDelegationsOperations(this);
             AvailableResourceGroupDelegations = new AvailableResourceGroupDelegationsOperations(this);
@@ -833,6 +870,8 @@ namespace Microsoft.Azure.Management.Network
             SecurityRules = new SecurityRulesOperations(this);
             DefaultSecurityRules = new DefaultSecurityRulesOperations(this);
             NetworkVirtualAppliances = new NetworkVirtualAppliancesOperations(this);
+            VirtualApplianceSites = new VirtualApplianceSitesOperations(this);
+            VirtualApplianceSkus = new VirtualApplianceSkusOperations(this);
             NetworkWatchers = new NetworkWatchersOperations(this);
             PacketCaptures = new PacketCapturesOperations(this);
             ConnectionMonitors = new ConnectionMonitorsOperations(this);
@@ -881,6 +920,9 @@ namespace Microsoft.Azure.Management.Network
             VirtualHubRouteTableV2s = new VirtualHubRouteTableV2sOperations(this);
             ExpressRouteGateways = new ExpressRouteGatewaysOperations(this);
             ExpressRouteConnections = new ExpressRouteConnectionsOperations(this);
+            VirtualHubBgpConnection = new VirtualHubBgpConnectionOperations(this);
+            VirtualHubBgpConnections = new VirtualHubBgpConnectionsOperations(this);
+            VirtualHubIpConfiguration = new VirtualHubIpConfigurationOperations(this);
             HubRouteTables = new HubRouteTablesOperations(this);
             WebApplicationFirewallPolicies = new WebApplicationFirewallPoliciesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
@@ -1024,7 +1066,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1254,7 +1296,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "sessionIds");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1457,7 +1499,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1655,7 +1697,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualWANName");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1885,7 +1927,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2091,7 +2133,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2274,7 +2316,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2479,7 +2521,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vpnClientParams");
             }
-            string apiVersion = "2020-04-01";
+            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
