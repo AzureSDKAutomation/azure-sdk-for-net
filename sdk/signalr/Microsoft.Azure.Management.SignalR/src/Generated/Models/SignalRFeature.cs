@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// but not recommended; "PredefinedOnly": for future use.
         /// - EnableConnectivityLogs: "true"/"false", to enable/disable the
         /// connectivity log category respectively. Possible values include:
-        /// 'ServiceMode', 'EnableConnectivityLogs'</param>
+        /// 'ServiceMode', 'EnableConnectivityLogs',
+        /// 'EnableMessagingLogs'</param>
         /// <param name="value">Value of the feature flag. See Azure SignalR
         /// service document https://docs.microsoft.com/azure/azure-signalr/
         /// for allowed values.</param>
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// but not recommended; "PredefinedOnly": for future use.
         /// - EnableConnectivityLogs: "true"/"false", to enable/disable the
         /// connectivity log category respectively. Possible values include:
-        /// 'ServiceMode', 'EnableConnectivityLogs'
+        /// 'ServiceMode', 'EnableConnectivityLogs', 'EnableMessagingLogs'
         /// </summary>
         [JsonProperty(PropertyName = "flag")]
         public string Flag { get; set; }

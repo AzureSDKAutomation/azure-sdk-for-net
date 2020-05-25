@@ -12,12 +12,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
 {
 
     /// <summary>
-    /// Defines values for FeatureFlags.
+    /// Defines values for PrivateLinkServiceConnectionStatus.
     /// </summary>
-    public static class FeatureFlags
+    public static class PrivateLinkServiceConnectionStatus
     {
-        public const string ServiceMode = "ServiceMode";
-        public const string EnableConnectivityLogs = "EnableConnectivityLogs";
-        public const string EnableMessagingLogs = "EnableMessagingLogs";
+        public const string Pending = "Pending";
+        public const string Approved = "Approved";
+        public const string Rejected = "Rejected";
+        public const string Disconnected = "Disconnected";
     }
 }

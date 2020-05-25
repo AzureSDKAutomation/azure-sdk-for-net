@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.SignalR.Models
 {
 
     /// <summary>
-    /// Defines values for FeatureFlags.
+    /// Defines values for ACLAction.
     /// </summary>
-    public static class FeatureFlags
+    public static class ACLAction
     {
-        public const string ServiceMode = "ServiceMode";
-        public const string EnableConnectivityLogs = "EnableConnectivityLogs";
-        public const string EnableMessagingLogs = "EnableMessagingLogs";
+        public const string Allow = "Allow";
+        public const string Deny = "Deny";
     }
 }

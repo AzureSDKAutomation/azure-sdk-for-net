@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.SignalR.Models
 {
 
     /// <summary>
-    /// Defines values for FeatureFlags.
+    /// Defines values for SignalRRequestType.
     /// </summary>
-    public static class FeatureFlags
+    public static class SignalRRequestType
     {
-        public const string ServiceMode = "ServiceMode";
-        public const string EnableConnectivityLogs = "EnableConnectivityLogs";
-        public const string EnableMessagingLogs = "EnableMessagingLogs";
+        public const string ClientConnection = "ClientConnection";
+        public const string ServerConnection = "ServerConnection";
+        public const string RESTAPI = "RESTAPI";
     }
 }
