@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Management.OperationalInsights
                 new Tuple<string, string, string>("OperationalInsights", "Schema", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "SharedKeys", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "StorageInsightConfigs", "2020-03-01-preview"),
+                new Tuple<string, string, string>("OperationalInsights", "Tables", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "Usages", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "WorkspacePurge", "2020-03-01-preview"),
                 new Tuple<string, string, string>("OperationalInsights", "Workspaces", "2020-03-01-preview"),
