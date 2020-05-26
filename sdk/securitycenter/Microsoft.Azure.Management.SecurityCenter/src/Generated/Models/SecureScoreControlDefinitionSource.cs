@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// representing the source of the control
+    /// The type of the security control (For example, BuiltIn)
     /// </summary>
     public partial class SecureScoreControlDefinitionSource
     {
@@ -31,11 +31,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// Initializes a new instance of the
         /// SecureScoreControlDefinitionSource class.
         /// </summary>
-        /// <param name="sourceType">BuiltIn if the control is built-in from
-        /// Azure Security Center managed assessments, Custom (Future) if the
-        /// assessment based on custom Azure Policy definition, CustomerManaged
-        /// (future) for customers who build their own controls. Possible
-        /// values include: 'BuiltIn', 'Custom'</param>
+        /// <param name="sourceType">The type of security control (for example,
+        /// BuiltIn). Possible values include: 'BuiltIn', 'Custom'</param>
         public SecureScoreControlDefinitionSource(string sourceType = default(string))
         {
             SourceType = sourceType;
@@ -48,11 +45,8 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets builtIn if the control is built-in from Azure Security
-        /// Center managed assessments, Custom (Future) if the assessment based
-        /// on custom Azure Policy definition, CustomerManaged (future) for
-        /// customers who build their own controls. Possible values include:
-        /// 'BuiltIn', 'Custom'
+        /// Gets or sets the type of security control (for example, BuiltIn).
+        /// Possible values include: 'BuiltIn', 'Custom'
         /// </summary>
         [JsonProperty(PropertyName = "sourceType")]
         public string SourceType { get; set; }

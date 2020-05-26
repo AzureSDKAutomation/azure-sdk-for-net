@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ISecureScoreControlDefinitionsOperations
     {
         /// <summary>
-        /// Get definition information on all secure score controls
+        /// List the available security controls, their assessments, and the
+        /// max score
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,8 +44,8 @@ namespace Microsoft.Azure.Management.Security
         /// </exception>
         Task<AzureOperationResponse<IPage<SecureScoreControlDefinitionItem>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get definition information on all secure score controls in
-        /// subscription level
+        /// For a specified subscription, list the available security controls,
+        /// their assessments, and the max score
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,7 +64,8 @@ namespace Microsoft.Azure.Management.Security
         /// </exception>
         Task<AzureOperationResponse<IPage<SecureScoreControlDefinitionItem>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get definition information on all secure score controls
+        /// List the available security controls, their assessments, and the
+        /// max score
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -85,8 +87,8 @@ namespace Microsoft.Azure.Management.Security
         /// </exception>
         Task<AzureOperationResponse<IPage<SecureScoreControlDefinitionItem>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get definition information on all secure score controls in
-        /// subscription level
+        /// For a specified subscription, list the available security controls,
+        /// their assessments, and the max score
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

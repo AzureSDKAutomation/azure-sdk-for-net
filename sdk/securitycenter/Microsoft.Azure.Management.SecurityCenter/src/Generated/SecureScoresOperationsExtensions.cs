@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class SecureScoresOperationsExtensions
     {
             /// <summary>
-            /// Get secure scores on all your initiatives inside a scope
+            /// List secure scores for all your Security Center initiatives within your
+            /// current scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure scores on all your initiatives inside a scope
+            /// List secure scores for all your Security Center initiatives within your
+            /// current scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -50,13 +52,15 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure score for a specific initiatives inside a scope
+            /// Get secure score for a specific initiative within your current scope. For
+            /// the ASC Default initiative, use 'ascScore'.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='secureScoreName'>
-            /// The secure score initiative name
+            /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
+            /// the sample request below.
             /// </param>
             public static SecureScoreItem Get(this ISecureScoresOperations operations, string secureScoreName)
             {
@@ -64,13 +68,15 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure score for a specific initiatives inside a scope
+            /// Get secure score for a specific initiative within your current scope. For
+            /// the ASC Default initiative, use 'ascScore'.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='secureScoreName'>
-            /// The secure score initiative name
+            /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
+            /// the sample request below.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -84,7 +90,8 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure scores on all your initiatives inside a scope
+            /// List secure scores for all your Security Center initiatives within your
+            /// current scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -98,7 +105,8 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure scores on all your initiatives inside a scope
+            /// List secure scores for all your Security Center initiatives within your
+            /// current scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

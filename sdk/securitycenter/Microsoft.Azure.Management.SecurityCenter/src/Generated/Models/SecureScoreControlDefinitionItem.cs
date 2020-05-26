@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// Secure Score Control's Definition information
+    /// Information about the security control.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class SecureScoreControlDefinitionItem : Resource
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="maxScore">Maximum control score (0..10)</param>
         /// <param name="source">Source object from which the control was
         /// created</param>
-        /// <param name="assessmentDefinitions">array of assessments metadata
-        /// IDs that are included in this control</param>
+        /// <param name="assessmentDefinitions">Array of assessments metadata
+        /// IDs that are included in this security control</param>
         public SecureScoreControlDefinitionItem(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string description = default(string), int? maxScore = default(int?), SecureScoreControlDefinitionSource source = default(SecureScoreControlDefinitionSource), IList<AzureResourceLink> assessmentDefinitions = default(IList<AzureResourceLink>))
             : base(id, name, type)
         {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <summary>
         /// Gets array of assessments metadata IDs that are included in this
-        /// control
+        /// security control
         /// </summary>
         [JsonProperty(PropertyName = "properties.assessmentDefinitions")]
         public IList<AzureResourceLink> AssessmentDefinitions { get; private set; }

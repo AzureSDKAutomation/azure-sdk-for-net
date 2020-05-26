@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Get secure scores on all your initiatives inside a scope
+        /// List secure scores for all your Security Center initiatives within your
+        /// current scope.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -234,10 +235,12 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get secure score for a specific initiatives inside a scope
+        /// Get secure score for a specific initiative within your current scope. For
+        /// the ASC Default initiative, use 'ascScore'.
         /// </summary>
         /// <param name='secureScoreName'>
-        /// The secure score initiative name
+        /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
+        /// the sample request below.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -426,7 +429,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get secure scores on all your initiatives inside a scope
+        /// List secure scores for all your Security Center initiatives within your
+        /// current scope.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

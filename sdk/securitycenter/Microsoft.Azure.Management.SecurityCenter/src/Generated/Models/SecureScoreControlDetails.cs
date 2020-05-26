@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// Secure score control (calculated) object
+    /// Details of the security control, its score, and the health status of
+    /// the relevant resources.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class SecureScoreControlDetails : Resource
@@ -37,8 +38,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="type">Resource type</param>
         /// <param name="displayName">User friendly display name of the
         /// control</param>
-        /// <param name="max">Maximum score applicable</param>
-        /// <param name="current">Actual score</param>
+        /// <param name="max">Maximum score available</param>
+        /// <param name="current">Current score</param>
         /// <param name="healthyResourceCount">Number of healthy resources in
         /// the control</param>
         /// <param name="unhealthyResourceCount">Number of unhealthy resources
@@ -70,13 +71,13 @@ namespace Microsoft.Azure.Management.Security.Models
         public string DisplayName { get; private set; }
 
         /// <summary>
-        /// Gets maximum score applicable
+        /// Gets maximum score available
         /// </summary>
         [JsonProperty(PropertyName = "properties.score.max")]
         public int? Max { get; private set; }
 
         /// <summary>
-        /// Gets actual score
+        /// Gets current score
         /// </summary>
         [JsonProperty(PropertyName = "properties.score.current")]
         public double? Current { get; private set; }

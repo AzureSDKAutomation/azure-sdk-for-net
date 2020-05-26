@@ -51,10 +51,11 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Get all secure score controls on specific initiatives inside a scope
+        /// Get all security controls for a specific initiative within a scope
         /// </summary>
         /// <param name='secureScoreName'>
-        /// The secure score initiative name
+        /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
+        /// the sample request below.
         /// </param>
         /// <param name='expand'>
         /// OData expand. Optional. Possible values include: 'definition'
@@ -251,7 +252,7 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get all secure score controls on specific initiatives inside a scope
+        /// Get all security controls within a scope
         /// </summary>
         /// <param name='expand'>
         /// OData expand. Optional. Possible values include: 'definition'
@@ -442,7 +443,7 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get all secure score controls on specific initiatives inside a scope
+        /// Get all security controls for a specific initiative within a scope
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -615,7 +616,7 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get all secure score controls on specific initiatives inside a scope
+        /// Get all security controls within a scope
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -35,10 +35,9 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        /// <param name="displayName">User friendly display name of the secure
-        /// score item</param>
-        /// <param name="max">Maximum score applicable</param>
-        /// <param name="current">Actual score</param>
+        /// <param name="displayName">The initiative’s name</param>
+        /// <param name="max">Maximum score available</param>
+        /// <param name="current">Current score</param>
         public SecureScoreItem(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), int? max = default(int?), double? current = default(double?))
             : base(id, name, type)
         {
@@ -54,19 +53,19 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets user friendly display name of the secure score item
+        /// Gets the initiative’s name
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName { get; private set; }
 
         /// <summary>
-        /// Gets maximum score applicable
+        /// Gets maximum score available
         /// </summary>
         [JsonProperty(PropertyName = "properties.score.max")]
         public int? Max { get; private set; }
 
         /// <summary>
-        /// Gets actual score
+        /// Gets current score
         /// </summary>
         [JsonProperty(PropertyName = "properties.score.current")]
         public double? Current { get; private set; }

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Get definition information on all secure score controls
+        /// List the available security controls, their assessments, and the max score
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -216,8 +216,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get definition information on all secure score controls in subscription
-        /// level
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get definition information on all secure score controls
+        /// List the available security controls, their assessments, and the max score
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -573,8 +573,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get definition information on all secure score controls in subscription
-        /// level
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

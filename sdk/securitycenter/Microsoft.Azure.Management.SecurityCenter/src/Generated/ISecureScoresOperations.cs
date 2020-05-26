@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ISecureScoresOperations
     {
         /// <summary>
-        /// Get secure scores on all your initiatives inside a scope
+        /// List secure scores for all your Security Center initiatives within
+        /// your current scope.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,10 +44,12 @@ namespace Microsoft.Azure.Management.Security
         /// </exception>
         Task<AzureOperationResponse<IPage<SecureScoreItem>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get secure score for a specific initiatives inside a scope
+        /// Get secure score for a specific initiative within your current
+        /// scope. For the ASC Default initiative, use 'ascScore'.
         /// </summary>
         /// <param name='secureScoreName'>
-        /// The secure score initiative name
+        /// The initiative name. For the ASC Default initiative, use 'ascScore'
+        /// as in the sample request below.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -65,7 +68,8 @@ namespace Microsoft.Azure.Management.Security
         /// </exception>
         Task<AzureOperationResponse<SecureScoreItem>> GetWithHttpMessagesAsync(string secureScoreName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get secure scores on all your initiatives inside a scope
+        /// List secure scores for all your Security Center initiatives within
+        /// your current scope.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
