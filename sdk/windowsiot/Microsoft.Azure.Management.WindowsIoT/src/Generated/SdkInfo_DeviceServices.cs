@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Management.WindowsIoT
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("WindowsIoT", "Operations", "2019-06-01"),
-                new Tuple<string, string, string>("WindowsIoT", "Services", "2019-06-01"),
+                new Tuple<string, string, string>("WindowsIoT", "Operations", "2019-06-02"),
+                new Tuple<string, string, string>("WindowsIoT", "Services", "2019-06-02"),
               }.AsEnumerable();
           }
       }

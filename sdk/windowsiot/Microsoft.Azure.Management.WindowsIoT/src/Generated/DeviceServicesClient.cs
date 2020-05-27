@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.WindowsIoT
             Operations = new Operations(this);
             Services = new ServicesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-06-01";
+            ApiVersion = "2019-06-02";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
