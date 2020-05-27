@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// which the subscription is billed.</param>
         /// <param name="billingProfileDisplayName">The name of the billing
         /// profile to which the subscription is billed.</param>
+        /// <param name="costCenter">The cost center applied to the
+        /// subscription.</param>
         /// <param name="customerId">The ID of the customer for whom the
         /// subscription was created. The field is applicable only for
         /// Microsoft Partner Agreement billing account.</param>
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// subscription.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
         /// for the subscription.</param>
-        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
+        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
             : base(id, name, type)
         {
             DisplayName = displayName;
@@ -72,6 +74,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             MonthToDateCharges = monthToDateCharges;
             BillingProfileId = billingProfileId;
             BillingProfileDisplayName = billingProfileDisplayName;
+            CostCenter = costCenter;
             CustomerId = customerId;
             CustomerDisplayName = customerDisplayName;
             InvoiceSectionId = invoiceSectionId;
@@ -132,6 +135,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfileDisplayName")]
         public string BillingProfileDisplayName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the cost center applied to the subscription.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.costCenter")]
+        public string CostCenter { get; set; }
 
         /// <summary>
         /// Gets the ID of the customer for whom the subscription was created.

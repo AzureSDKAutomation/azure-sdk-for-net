@@ -37,28 +37,35 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// section.</param>
         /// <param name="invoiceSectionDisplayName">The name of the invoice
         /// section.</param>
+        /// <param name="invoiceSectionSystemId">The system generated unique
+        /// identifier for an invoice section.</param>
         /// <param name="billingProfileId">The ID of the billing profile for
         /// the invoice section.</param>
         /// <param name="billingProfileDisplayName">The name of the billing
         /// profile for the invoice section.</param>
         /// <param name="billingProfileStatus">The status of the billing
-        /// profile.</param>
+        /// profile. Possible values include: 'Active', 'Disabled',
+        /// 'Warned'</param>
         /// <param name="billingProfileStatusReasonCode">Reason for the
         /// specified billing profile status. Possible values include:
         /// 'PastDue', 'SpendingLimitReached', 'SpendingLimitExpired'</param>
         /// <param name="billingProfileSpendingLimit">The billing profile
         /// spending limit. Possible values include: 'Off', 'On'</param>
+        /// <param name="billingProfileSystemId">The system generated unique
+        /// identifier for a billing profile.</param>
         /// <param name="enabledAzurePlans">Enabled azure plans for the
         /// associated billing profile.</param>
-        public InvoiceSectionWithCreateSubPermission(string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), object billingProfileStatus = default(object), string billingProfileStatusReasonCode = default(string), string billingProfileSpendingLimit = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>))
+        public InvoiceSectionWithCreateSubPermission(string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string invoiceSectionSystemId = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileStatus = default(string), string billingProfileStatusReasonCode = default(string), string billingProfileSpendingLimit = default(string), string billingProfileSystemId = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>))
         {
             InvoiceSectionId = invoiceSectionId;
             InvoiceSectionDisplayName = invoiceSectionDisplayName;
+            InvoiceSectionSystemId = invoiceSectionSystemId;
             BillingProfileId = billingProfileId;
             BillingProfileDisplayName = billingProfileDisplayName;
             BillingProfileStatus = billingProfileStatus;
             BillingProfileStatusReasonCode = billingProfileStatusReasonCode;
             BillingProfileSpendingLimit = billingProfileSpendingLimit;
+            BillingProfileSystemId = billingProfileSystemId;
             EnabledAzurePlans = enabledAzurePlans;
             CustomInit();
         }
@@ -81,6 +88,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string InvoiceSectionDisplayName { get; private set; }
 
         /// <summary>
+        /// Gets the system generated unique identifier for an invoice section.
+        /// </summary>
+        [JsonProperty(PropertyName = "invoiceSectionSystemId")]
+        public string InvoiceSectionSystemId { get; private set; }
+
+        /// <summary>
         /// Gets the ID of the billing profile for the invoice section.
         /// </summary>
         [JsonProperty(PropertyName = "billingProfileId")]
@@ -93,10 +106,11 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string BillingProfileDisplayName { get; private set; }
 
         /// <summary>
-        /// Gets the status of the billing profile.
+        /// Gets the status of the billing profile. Possible values include:
+        /// 'Active', 'Disabled', 'Warned'
         /// </summary>
         [JsonProperty(PropertyName = "billingProfileStatus")]
-        public object BillingProfileStatus { get; private set; }
+        public string BillingProfileStatus { get; private set; }
 
         /// <summary>
         /// Gets reason for the specified billing profile status. Possible
@@ -112,6 +126,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "billingProfileSpendingLimit")]
         public string BillingProfileSpendingLimit { get; private set; }
+
+        /// <summary>
+        /// Gets the system generated unique identifier for a billing profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "billingProfileSystemId")]
+        public string BillingProfileSystemId { get; private set; }
 
         /// <summary>
         /// Gets or sets enabled azure plans for the associated billing

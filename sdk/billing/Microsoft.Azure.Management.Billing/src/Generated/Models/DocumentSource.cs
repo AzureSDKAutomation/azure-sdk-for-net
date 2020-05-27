@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for ProductTransferStatus.
+    /// Defines values for DocumentSource.
     /// </summary>
-    public static class ProductTransferStatus
+    public static class DocumentSource
     {
-        public const string NotStarted = "NotStarted";
-        public const string InProgress = "InProgress";
-        public const string Completed = "Completed";
-        public const string Failed = "Failed";
+        public const string DRS = "DRS";
+        public const string ENF = "ENF";
     }
 }

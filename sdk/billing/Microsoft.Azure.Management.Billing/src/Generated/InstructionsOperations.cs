@@ -240,6 +240,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <summary>
         /// Get the instruction by name. These are custom billing instructions and are
         /// only applicable for certain customers.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.

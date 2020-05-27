@@ -14,28 +14,26 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Create operation.
+    /// Defines headers for Move operation.
     /// </summary>
-    public partial class BillingProfilesCreateHeaders
+    public partial class ProductsMoveHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the BillingProfilesCreateHeaders
-        /// class.
+        /// Initializes a new instance of the ProductsMoveHeaders class.
         /// </summary>
-        public BillingProfilesCreateHeaders()
+        public ProductsMoveHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BillingProfilesCreateHeaders
-        /// class.
+        /// Initializes a new instance of the ProductsMoveHeaders class.
         /// </summary>
         /// <param name="location">Location URI to poll for result</param>
         /// <param name="retryAfter">Recommended time to wait before making
         /// another request to check the status of the operation. The time is
         /// specified in seconds.</param>
-        public BillingProfilesCreateHeaders(string location = default(string), int? retryAfter = default(int?))
+        public ProductsMoveHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;

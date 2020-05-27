@@ -14,32 +14,32 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Download operation.
+    /// Defines headers for DownloadInvoice operation.
     /// </summary>
-    public partial class PriceSheetDownloadHeaders
+    public partial class InvoicesDownloadInvoiceHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the PriceSheetDownloadHeaders class.
+        /// Initializes a new instance of the InvoicesDownloadInvoiceHeaders
+        /// class.
         /// </summary>
-        public PriceSheetDownloadHeaders()
+        public InvoicesDownloadInvoiceHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PriceSheetDownloadHeaders class.
+        /// Initializes a new instance of the InvoicesDownloadInvoiceHeaders
+        /// class.
         /// </summary>
         /// <param name="location">GET this URL to retrieve the status of the
         /// asynchronous operation.</param>
         /// <param name="retryAfter">The amount of delay to use while the
         /// status of the operation is checked. The value is expressed in
         /// seconds.</param>
-        /// <param name="oDataEntityId">The operation entity Id GUID.</param>
-        public PriceSheetDownloadHeaders(string location = default(string), string retryAfter = default(string), string oDataEntityId = default(string))
+        public InvoicesDownloadInvoiceHeaders(string location = default(string), string retryAfter = default(string))
         {
             Location = location;
             RetryAfter = retryAfter;
-            ODataEntityId = oDataEntityId;
             CustomInit();
         }
 
@@ -61,12 +61,6 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "Retry-After")]
         public string RetryAfter { get; set; }
-
-        /// <summary>
-        /// Gets or sets the operation entity Id GUID.
-        /// </summary>
-        [JsonProperty(PropertyName = "OData-EntityId")]
-        public string ODataEntityId { get; set; }
 
     }
 }

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="invoiceDate">The date when the invoice was
         /// generated.</param>
         /// <param name="status">The current status of the invoice. Possible
-        /// values include: 'Due', 'OverDue', 'Paid', 'Void'</param>
+        /// values include: 'Due', 'OverDue', 'Paid'</param>
         /// <param name="amountDue">The amount due as of now.</param>
         /// <param name="azurePrepaymentApplied">The amount of Azure prepayment
         /// applied to the charges. This field is applicable to billing
@@ -85,14 +85,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="payments">List of payments.</param>
         /// <param name="subscriptionId">The ID of the subscription for which
         /// the invoice is generated.</param>
-        /// <param name="rebillDocumentType">The type of the document generated
-        /// when an Enterprise Agreement invoice is rebilled. Possible values
-        /// include: 'Credit', 'Rebill', 'Original'</param>
-        /// <param name="rebilledInvoiceId">The ID of the invoice generated
-        /// when an Enterprise Agreement invoice is rebilled.</param>
-        /// <param name="latestInvoiceId">The ID of the latest invoice
-        /// generated when an Enterprise Agreement invoice is rebilled.</param>
-        public Invoice(string id = default(string), string name = default(string), string type = default(string), System.DateTime? dueDate = default(System.DateTime?), System.DateTime? invoiceDate = default(System.DateTime?), string status = default(string), Amount amountDue = default(Amount), Amount azurePrepaymentApplied = default(Amount), Amount billedAmount = default(Amount), Amount creditAmount = default(Amount), Amount freeAzureCreditApplied = default(Amount), Amount subTotal = default(Amount), Amount taxAmount = default(Amount), Amount totalAmount = default(Amount), System.DateTime? invoicePeriodStartDate = default(System.DateTime?), System.DateTime? invoicePeriodEndDate = default(System.DateTime?), string invoiceType = default(string), bool? isMonthlyInvoice = default(bool?), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string purchaseOrderNumber = default(string), IList<Document> documents = default(IList<Document>), IList<PaymentProperties> payments = default(IList<PaymentProperties>), string subscriptionId = default(string), string rebillDocumentType = default(string), string rebilledInvoiceId = default(string), string latestInvoiceId = default(string))
+        public Invoice(string id = default(string), string name = default(string), string type = default(string), System.DateTime? dueDate = default(System.DateTime?), System.DateTime? invoiceDate = default(System.DateTime?), string status = default(string), Amount amountDue = default(Amount), Amount azurePrepaymentApplied = default(Amount), Amount billedAmount = default(Amount), Amount creditAmount = default(Amount), Amount freeAzureCreditApplied = default(Amount), Amount subTotal = default(Amount), Amount taxAmount = default(Amount), Amount totalAmount = default(Amount), System.DateTime? invoicePeriodStartDate = default(System.DateTime?), System.DateTime? invoicePeriodEndDate = default(System.DateTime?), string invoiceType = default(string), bool? isMonthlyInvoice = default(bool?), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string purchaseOrderNumber = default(string), IList<Document> documents = default(IList<Document>), IList<PaymentProperties> payments = default(IList<PaymentProperties>), string subscriptionId = default(string))
             : base(id, name, type)
         {
             DueDate = dueDate;
@@ -116,9 +109,6 @@ namespace Microsoft.Azure.Management.Billing.Models
             Documents = documents;
             Payments = payments;
             SubscriptionId = subscriptionId;
-            RebillDocumentType = rebillDocumentType;
-            RebilledInvoiceId = rebilledInvoiceId;
-            LatestInvoiceId = latestInvoiceId;
             CustomInit();
         }
 
@@ -141,7 +131,7 @@ namespace Microsoft.Azure.Management.Billing.Models
 
         /// <summary>
         /// Gets the current status of the invoice. Possible values include:
-        /// 'Due', 'OverDue', 'Paid', 'Void'
+        /// 'Due', 'OverDue', 'Paid'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; private set; }
@@ -272,28 +262,6 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.subscriptionId")]
         public string SubscriptionId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the type of the document generated when an Enterprise
-        /// Agreement invoice is rebilled. Possible values include: 'Credit',
-        /// 'Rebill', 'Original'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.rebillDetails.rebillDocumentType")]
-        public string RebillDocumentType { get; set; }
-
-        /// <summary>
-        /// Gets the ID of the invoice generated when an Enterprise Agreement
-        /// invoice is rebilled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.rebillDetails.rebilledInvoiceId")]
-        public string RebilledInvoiceId { get; private set; }
-
-        /// <summary>
-        /// Gets the ID of the latest invoice generated when an Enterprise
-        /// Agreement invoice is rebilled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.rebillDetails.latestInvoiceId")]
-        public string LatestInvoiceId { get; private set; }
 
     }
 }

@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for RebillDocumentType.
+    /// Defines values for SpendingLimitForBillingProfile.
     /// </summary>
-    public static class RebillDocumentType
+    public static class SpendingLimitForBillingProfile
     {
-        public const string Credit = "Credit";
-        public const string Rebill = "Rebill";
-        public const string Original = "Original";
+        public const string Off = "Off";
+        public const string On = "On";
     }
 }

@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <summary>
             /// Get the instruction by name. These are custom billing instructions and are
             /// only applicable for certain customers.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <summary>
             /// Get the instruction by name. These are custom billing instructions and are
             /// only applicable for certain customers.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

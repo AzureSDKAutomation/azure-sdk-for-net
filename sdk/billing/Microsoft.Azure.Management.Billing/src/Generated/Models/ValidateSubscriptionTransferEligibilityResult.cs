@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// Initializes a new instance of the
         /// ValidateSubscriptionTransferEligibilityResult class.
         /// </summary>
-        /// <param name="isTransferEligible">Specifies whether the subscription
-        /// is eligible to be transferred.</param>
+        /// <param name="isMoveEligible">Specifies whether the subscription is
+        /// eligible to be transferred.</param>
         /// <param name="errorDetails">Validation error details.</param>
-        public ValidateSubscriptionTransferEligibilityResult(bool? isTransferEligible = default(bool?), ValidateSubscriptionTransferEligibilityError errorDetails = default(ValidateSubscriptionTransferEligibilityError))
+        public ValidateSubscriptionTransferEligibilityResult(bool? isMoveEligible = default(bool?), ValidateSubscriptionTransferEligibilityError errorDetails = default(ValidateSubscriptionTransferEligibilityError))
         {
-            IsTransferEligible = isTransferEligible;
+            IsMoveEligible = isMoveEligible;
             ErrorDetails = errorDetails;
             CustomInit();
         }
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// Gets specifies whether the subscription is eligible to be
         /// transferred.
         /// </summary>
-        [JsonProperty(PropertyName = "isTransferEligible")]
-        public bool? IsTransferEligible { get; private set; }
+        [JsonProperty(PropertyName = "isMoveEligible")]
+        public bool? IsMoveEligible { get; private set; }
 
         /// <summary>
         /// Gets or sets validation error details.

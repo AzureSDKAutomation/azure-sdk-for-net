@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Lists the billing profiles that a user has access to. The operation is
             /// supported for billing accounts with agreement type Microsoft Customer
             /// Agreement or Microsoft Partner Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <param name='expand'>
             /// May be used to expand the invoice sections.
             /// </param>
-            public static BillingProfileListResult ListByBillingAccount(this IBillingProfilesOperations operations, string billingAccountName, string expand = default(string))
+            public static IPage<BillingProfile> ListByBillingAccount(this IBillingProfilesOperations operations, string billingAccountName, string expand = default(string))
             {
                 return operations.ListByBillingAccountAsync(billingAccountName, expand).GetAwaiter().GetResult();
             }
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Lists the billing profiles that a user has access to. The operation is
             /// supported for billing accounts with agreement type Microsoft Customer
             /// Agreement or Microsoft Partner Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingProfileListResult> ListByBillingAccountAsync(this IBillingProfilesOperations operations, string billingAccountName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BillingProfile>> ListByBillingAccountAsync(this IBillingProfilesOperations operations, string billingAccountName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingAccountWithHttpMessagesAsync(billingAccountName, expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -69,6 +71,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Gets a billing profile by its ID. The operation is supported for billing
             /// accounts with agreement type Microsoft Customer Agreement or Microsoft
             /// Partner Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -91,6 +94,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Gets a billing profile by its ID. The operation is supported for billing
             /// accounts with agreement type Microsoft Customer Agreement or Microsoft
             /// Partner Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -116,9 +120,9 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Creates a billing profile. The operation is supported for billing accounts
-            /// with agreement type Microsoft Customer Agreement or Microsoft Partner
-            /// Agreement.
+            /// Creates or updates a billing profile. The operation is supported for
+            /// billing accounts with agreement type Microsoft Customer Agreement or
+            /// Microsoft Partner Agreement.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -130,18 +134,17 @@ namespace Microsoft.Azure.Management.Billing
             /// The ID that uniquely identifies a billing profile.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the create billing profile
-            /// operation.
+            /// The new or updated billing profile.
             /// </param>
-            public static BillingProfile Create(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfileCreationRequest parameters)
+            public static BillingProfile CreateOrUpdate(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters)
             {
-                return operations.CreateAsync(billingAccountName, billingProfileName, parameters).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(billingAccountName, billingProfileName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates a billing profile. The operation is supported for billing accounts
-            /// with agreement type Microsoft Customer Agreement or Microsoft Partner
-            /// Agreement.
+            /// Creates or updates a billing profile. The operation is supported for
+            /// billing accounts with agreement type Microsoft Customer Agreement or
+            /// Microsoft Partner Agreement.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -153,25 +156,23 @@ namespace Microsoft.Azure.Management.Billing
             /// The ID that uniquely identifies a billing profile.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the create billing profile
-            /// operation.
+            /// The new or updated billing profile.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingProfile> CreateAsync(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfileCreationRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingProfile> CreateOrUpdateAsync(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(billingAccountName, billingProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Updates the properties of a billing profile. Currently, displayName,
-            /// poNumber, bill-to address and invoiceEmailOptIn can be updated. The
-            /// operation is supported for billing accounts with agreement type Microsoft
-            /// Customer Agreement or Microsoft Partner Agreement.
+            /// Creates or updates a billing profile. The operation is supported for
+            /// billing accounts with agreement type Microsoft Customer Agreement or
+            /// Microsoft Partner Agreement.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -183,18 +184,17 @@ namespace Microsoft.Azure.Management.Billing
             /// The ID that uniquely identifies a billing profile.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters supplied to the update billing profile operation.
+            /// The new or updated billing profile.
             /// </param>
-            public static BillingProfile Update(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters)
+            public static BillingProfile BeginCreateOrUpdate(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters)
             {
-                return operations.UpdateAsync(billingAccountName, billingProfileName, parameters).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(billingAccountName, billingProfileName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Updates the properties of a billing profile. Currently, displayName,
-            /// poNumber, bill-to address and invoiceEmailOptIn can be updated. The
-            /// operation is supported for billing accounts with agreement type Microsoft
-            /// Customer Agreement or Microsoft Partner Agreement.
+            /// Creates or updates a billing profile. The operation is supported for
+            /// billing accounts with agreement type Microsoft Customer Agreement or
+            /// Microsoft Partner Agreement.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -206,118 +206,54 @@ namespace Microsoft.Azure.Management.Billing
             /// The ID that uniquely identifies a billing profile.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters supplied to the update billing profile operation.
+            /// The new or updated billing profile.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingProfile> UpdateAsync(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingProfile> BeginCreateOrUpdateAsync(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates a billing profile. The operation is supported for billing accounts
-            /// with agreement type Microsoft Customer Agreement or Microsoft Partner
-            /// Agreement.
+            /// Lists the billing profiles that a user has access to. The operation is
+            /// supported for billing accounts with agreement type Microsoft Customer
+            /// Agreement or Microsoft Partner Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
             /// </param>
-            /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the create billing profile
-            /// operation.
-            /// </param>
-            public static BillingProfile BeginCreate(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfileCreationRequest parameters)
+            public static IPage<BillingProfile> ListByBillingAccountNext(this IBillingProfilesOperations operations, string nextPageLink)
             {
-                return operations.BeginCreateAsync(billingAccountName, billingProfileName, parameters).GetAwaiter().GetResult();
+                return operations.ListByBillingAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates a billing profile. The operation is supported for billing accounts
-            /// with agreement type Microsoft Customer Agreement or Microsoft Partner
-            /// Agreement.
+            /// Lists the billing profiles that a user has access to. The operation is
+            /// supported for billing accounts with agreement type Microsoft Customer
+            /// Agreement or Microsoft Partner Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the create billing profile
-            /// operation.
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingProfile> BeginCreateAsync(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfileCreationRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BillingProfile>> ListByBillingAccountNextAsync(this IBillingProfilesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(billingAccountName, billingProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates the properties of a billing profile. Currently, displayName,
-            /// poNumber, bill-to address and invoiceEmailOptIn can be updated. The
-            /// operation is supported for billing accounts with agreement type Microsoft
-            /// Customer Agreement or Microsoft Partner Agreement.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters supplied to the update billing profile operation.
-            /// </param>
-            public static BillingProfile BeginUpdate(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters)
-            {
-                return operations.BeginUpdateAsync(billingAccountName, billingProfileName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates the properties of a billing profile. Currently, displayName,
-            /// poNumber, bill-to address and invoiceEmailOptIn can be updated. The
-            /// operation is supported for billing accounts with agreement type Microsoft
-            /// Customer Agreement or Microsoft Partner Agreement.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters supplied to the update billing profile operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<BillingProfile> BeginUpdateAsync(this IBillingProfilesOperations operations, string billingAccountName, string billingProfileName, BillingProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByBillingAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

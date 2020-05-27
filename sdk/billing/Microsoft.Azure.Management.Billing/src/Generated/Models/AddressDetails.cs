@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.Billing.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -29,18 +30,21 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <summary>
         /// Initializes a new instance of the AddressDetails class.
         /// </summary>
+        /// <param name="addressLine1">Address line 1.</param>
+        /// <param name="country">Country code uses ISO2, 2-digit
+        /// format.</param>
         /// <param name="firstName">First name.</param>
         /// <param name="lastName">Last name.</param>
         /// <param name="companyName">Company name.</param>
-        /// <param name="addressLine1">Address line 1.</param>
         /// <param name="addressLine2">Address line 2.</param>
         /// <param name="addressLine3">Address line 3.</param>
         /// <param name="city">Address city.</param>
+        /// <param name="district">Address district.</param>
         /// <param name="region">Address region.</param>
-        /// <param name="country">Country code uses ISO2, 2-digit
-        /// format.</param>
         /// <param name="postalCode">Postal code.</param>
-        public AddressDetails(string firstName = default(string), string lastName = default(string), string companyName = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string region = default(string), string country = default(string), string postalCode = default(string))
+        /// <param name="email">Email address.</param>
+        /// <param name="phoneNumber">Phone number.</param>
+        public AddressDetails(string addressLine1, string country, string firstName = default(string), string lastName = default(string), string companyName = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string district = default(string), string region = default(string), string postalCode = default(string), string email = default(string), string phoneNumber = default(string))
         {
             FirstName = firstName;
             LastName = lastName;
@@ -49,9 +53,12 @@ namespace Microsoft.Azure.Management.Billing.Models
             AddressLine2 = addressLine2;
             AddressLine3 = addressLine3;
             City = city;
+            District = district;
             Region = region;
             Country = country;
             PostalCode = postalCode;
+            Email = email;
+            PhoneNumber = phoneNumber;
             CustomInit();
         }
 
@@ -103,6 +110,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string City { get; set; }
 
         /// <summary>
+        /// Gets or sets address district.
+        /// </summary>
+        [JsonProperty(PropertyName = "district")]
+        public string District { get; set; }
+
+        /// <summary>
         /// Gets or sets address region.
         /// </summary>
         [JsonProperty(PropertyName = "region")]
@@ -120,5 +133,34 @@ namespace Microsoft.Azure.Management.Billing.Models
         [JsonProperty(PropertyName = "postalCode")]
         public string PostalCode { get; set; }
 
+        /// <summary>
+        /// Gets or sets email address.
+        /// </summary>
+        [JsonProperty(PropertyName = "email")]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets phone number.
+        /// </summary>
+        [JsonProperty(PropertyName = "phoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (AddressLine1 == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "AddressLine1");
+            }
+            if (Country == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Country");
+            }
+        }
     }
 }

@@ -14,28 +14,28 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Create operation.
+    /// Defines headers for CreateOrUpdate operation.
     /// </summary>
-    public partial class InvoiceSectionsCreateHeaders
+    public partial class BillingProfilesCreateOrUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the InvoiceSectionsCreateHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// BillingProfilesCreateOrUpdateHeaders class.
         /// </summary>
-        public InvoiceSectionsCreateHeaders()
+        public BillingProfilesCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the InvoiceSectionsCreateHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// BillingProfilesCreateOrUpdateHeaders class.
         /// </summary>
         /// <param name="location">Location URI to poll for result</param>
         /// <param name="retryAfter">Recommended time to wait before making
         /// another request to check the status of the operation. The time is
         /// specified in seconds.</param>
-        public InvoiceSectionsCreateHeaders(string location = default(string), int? retryAfter = default(int?))
+        public BillingProfilesCreateOrUpdateHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;

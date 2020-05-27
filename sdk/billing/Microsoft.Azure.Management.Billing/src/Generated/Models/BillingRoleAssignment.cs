@@ -41,24 +41,33 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// who created the role assignment.</param>
         /// <param name="createdByPrincipalId">The principal Id of the user who
         /// created the role assignment.</param>
-        /// <param name="billingRoleAssignmentName">The name of the role
-        /// assignment.</param>
+        /// <param name="createdByUserEmailAddress">The email address of the
+        /// user who created the role assignment.</param>
         /// <param name="principalId">The principal id of the user to whom the
         /// role was assigned.</param>
-        /// <param name="roleDefinitionName">The ID of the role
+        /// <param name="principalTenantId">The principal tenant id of the user
+        /// to whom the role was assigned.</param>
+        /// <param name="roleDefinitionId">The ID of the role
         /// definition.</param>
         /// <param name="scope">The scope at which the role was
         /// assigned.</param>
-        public BillingRoleAssignment(string id = default(string), string name = default(string), string type = default(string), string createdOn = default(string), string createdByPrincipalTenantId = default(string), string createdByPrincipalId = default(string), string billingRoleAssignmentName = default(string), string principalId = default(string), string roleDefinitionName = default(string), string scope = default(string))
+        /// <param name="userAuthenticationType">The authentication
+        /// type.</param>
+        /// <param name="userEmailAddress">The email address of the
+        /// user.</param>
+        public BillingRoleAssignment(string id = default(string), string name = default(string), string type = default(string), string createdOn = default(string), string createdByPrincipalTenantId = default(string), string createdByPrincipalId = default(string), string createdByUserEmailAddress = default(string), string principalId = default(string), string principalTenantId = default(string), string roleDefinitionId = default(string), string scope = default(string), string userAuthenticationType = default(string), string userEmailAddress = default(string))
             : base(id, name, type)
         {
             CreatedOn = createdOn;
             CreatedByPrincipalTenantId = createdByPrincipalTenantId;
             CreatedByPrincipalId = createdByPrincipalId;
-            BillingRoleAssignmentName = billingRoleAssignmentName;
+            CreatedByUserEmailAddress = createdByUserEmailAddress;
             PrincipalId = principalId;
-            RoleDefinitionName = roleDefinitionName;
+            PrincipalTenantId = principalTenantId;
+            RoleDefinitionId = roleDefinitionId;
             Scope = scope;
+            UserAuthenticationType = userAuthenticationType;
+            UserEmailAddress = userEmailAddress;
             CustomInit();
         }
 
@@ -86,10 +95,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string CreatedByPrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the name of the role assignment.
+        /// Gets the email address of the user who created the role assignment.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string BillingRoleAssignmentName { get; private set; }
+        [JsonProperty(PropertyName = "properties.createdByUserEmailAddress")]
+        public string CreatedByUserEmailAddress { get; private set; }
 
         /// <summary>
         /// Gets the principal id of the user to whom the role was assigned.
@@ -98,16 +107,35 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string PrincipalId { get; private set; }
 
         /// <summary>
+        /// Gets the principal tenant id of the user to whom the role was
+        /// assigned.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.principalTenantId")]
+        public string PrincipalTenantId { get; private set; }
+
+        /// <summary>
         /// Gets the ID of the role definition.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.roleDefinitionName")]
-        public string RoleDefinitionName { get; private set; }
+        [JsonProperty(PropertyName = "properties.roleDefinitionId")]
+        public string RoleDefinitionId { get; private set; }
 
         /// <summary>
         /// Gets the scope at which the role was assigned.
         /// </summary>
         [JsonProperty(PropertyName = "properties.scope")]
         public string Scope { get; private set; }
+
+        /// <summary>
+        /// Gets the authentication type.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.userAuthenticationType")]
+        public string UserAuthenticationType { get; private set; }
+
+        /// <summary>
+        /// Gets the email address of the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.userEmailAddress")]
+        public string UserEmailAddress { get; private set; }
 
     }
 }

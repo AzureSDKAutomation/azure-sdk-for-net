@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="accountAdminNotificationEmailAddress">The email
+        /// address on which the account admin gets all Azure
+        /// notifications.</param>
         /// <param name="billingTenantId">The Azure AD tenant ID of the billing
         /// account for the subscription.</param>
         /// <param name="billingAccountId">The ID of the billing account to
@@ -49,15 +52,18 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// profile. Possible values include: 'Active', 'Disabled',
         /// 'Warned'</param>
         /// <param name="billingProfileStatusReasonCode">Reason for the
-        /// specified billing profile status.</param>
+        /// specified billing profile status. Possible values include:
+        /// 'PastDue', 'SpendingLimitReached', 'SpendingLimitExpired'</param>
         /// <param name="billingProfileSpendingLimit">The billing profile
-        /// spending limit.</param>
+        /// spending limit. Possible values include: 'Off', 'On'</param>
         /// <param name="costCenter">The cost center applied to the
         /// subscription.</param>
         /// <param name="invoiceSectionId">The ID of the invoice section to
         /// which the subscription is billed.</param>
         /// <param name="invoiceSectionDisplayName">The name of the invoice
         /// section to which the subscription is billed.</param>
+        /// <param name="isAccountAdmin">Indicates whether user is the account
+        /// admin.</param>
         /// <param name="productId">The product ID of the Azure plan.</param>
         /// <param name="productName">The product name of the Azure
         /// plan.</param>
@@ -65,9 +71,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// subscription.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
         /// for the subscription.</param>
-        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileStatus = default(string), object billingProfileStatusReasonCode = default(object), object billingProfileSpendingLimit = default(object), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string))
+        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string accountAdminNotificationEmailAddress = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileStatus = default(string), string billingProfileStatusReasonCode = default(string), string billingProfileSpendingLimit = default(string), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), bool? isAccountAdmin = default(bool?), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string))
             : base(id, name, type)
         {
+            AccountAdminNotificationEmailAddress = accountAdminNotificationEmailAddress;
             BillingTenantId = billingTenantId;
             BillingAccountId = billingAccountId;
             BillingAccountDisplayName = billingAccountDisplayName;
@@ -79,6 +86,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             CostCenter = costCenter;
             InvoiceSectionId = invoiceSectionId;
             InvoiceSectionDisplayName = invoiceSectionDisplayName;
+            IsAccountAdmin = isAccountAdmin;
             ProductId = productId;
             ProductName = productName;
             SkuId = skuId;
@@ -90,6 +98,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets the email address on which the account admin gets all Azure
+        /// notifications.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.accountAdminNotificationEmailAddress")]
+        public string AccountAdminNotificationEmailAddress { get; private set; }
 
         /// <summary>
         /// Gets the Azure AD tenant ID of the billing account for the
@@ -134,22 +149,25 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string BillingProfileStatus { get; private set; }
 
         /// <summary>
-        /// Gets reason for the specified billing profile status.
+        /// Gets reason for the specified billing profile status. Possible
+        /// values include: 'PastDue', 'SpendingLimitReached',
+        /// 'SpendingLimitExpired'
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfileStatusReasonCode")]
-        public object BillingProfileStatusReasonCode { get; private set; }
+        public string BillingProfileStatusReasonCode { get; private set; }
 
         /// <summary>
-        /// Gets the billing profile spending limit.
+        /// Gets the billing profile spending limit. Possible values include:
+        /// 'Off', 'On'
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfileSpendingLimit")]
-        public object BillingProfileSpendingLimit { get; private set; }
+        public string BillingProfileSpendingLimit { get; private set; }
 
         /// <summary>
-        /// Gets the cost center applied to the subscription.
+        /// Gets or sets the cost center applied to the subscription.
         /// </summary>
         [JsonProperty(PropertyName = "properties.costCenter")]
-        public string CostCenter { get; private set; }
+        public string CostCenter { get; set; }
 
         /// <summary>
         /// Gets the ID of the invoice section to which the subscription is
@@ -164,6 +182,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceSectionDisplayName")]
         public string InvoiceSectionDisplayName { get; private set; }
+
+        /// <summary>
+        /// Gets indicates whether user is the account admin.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isAccountAdmin")]
+        public bool? IsAccountAdmin { get; private set; }
 
         /// <summary>
         /// Gets the product ID of the Azure plan.

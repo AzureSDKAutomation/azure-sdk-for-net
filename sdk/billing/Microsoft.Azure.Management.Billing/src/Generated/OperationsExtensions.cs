@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.Billing
     {
             /// <summary>
             /// Lists the available billing REST API operations.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Lists the available billing REST API operations.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -51,6 +53,7 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Lists the available billing REST API operations.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,6 +68,7 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Lists the available billing REST API operations.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

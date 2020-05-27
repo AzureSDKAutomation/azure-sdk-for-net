@@ -14,28 +14,28 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Transfer operation.
+    /// Defines headers for CreateOrUpdate operation.
     /// </summary>
-    public partial class BillingSubscriptionsTransferHeaders
+    public partial class InvoiceSectionsCreateOrUpdateHeaders
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// BillingSubscriptionsTransferHeaders class.
+        /// InvoiceSectionsCreateOrUpdateHeaders class.
         /// </summary>
-        public BillingSubscriptionsTransferHeaders()
+        public InvoiceSectionsCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// BillingSubscriptionsTransferHeaders class.
+        /// InvoiceSectionsCreateOrUpdateHeaders class.
         /// </summary>
-        /// <param name="location">Location URI to poll for result.</param>
+        /// <param name="location">Location URI to poll for result</param>
         /// <param name="retryAfter">Recommended time to wait before making
         /// another request to check the status of the operation. The time is
         /// specified in seconds.</param>
-        public BillingSubscriptionsTransferHeaders(string location = default(string), int? retryAfter = default(int?))
+        public InvoiceSectionsCreateOrUpdateHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets location URI to poll for result.
+        /// Gets or sets location URI to poll for result
         /// </summary>
         [JsonProperty(PropertyName = "Location")]
         public string Location { get; set; }

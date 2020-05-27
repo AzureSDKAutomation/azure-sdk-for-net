@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for ProductType.
+    /// Defines values for AutoRenew.
     /// </summary>
-    public static class ProductType
+    public static class AutoRenew
     {
-        public const string AzureSubscription = "AzureSubscription";
-        public const string AzureReservation = "AzureReservation";
+        public const string Off = "Off";
+        public const string On = "On";
     }
 }

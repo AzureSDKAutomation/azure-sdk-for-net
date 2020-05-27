@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.Billing
 
         /// <summary>
         /// Validates an address. Use the operation to validate an address before using
-        /// it as a billing account or a billing profile address.
+        /// it as soldTo or a billTo address.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='address'>
         /// </param>
@@ -86,6 +87,10 @@ namespace Microsoft.Azure.Management.Billing
             if (address == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "address");
+            }
+            if (address != null)
+            {
+                address.Validate();
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;

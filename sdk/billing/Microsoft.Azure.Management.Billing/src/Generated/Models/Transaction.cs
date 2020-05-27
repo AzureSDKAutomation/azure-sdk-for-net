@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="date">The date of transaction.</param>
         /// <param name="invoice">Invoice on which the transaction was billed
         /// or 'pending' if the transaction is not billed.</param>
+        /// <param name="invoiceId">The ID of the invoice on which the
+        /// transaction was billed. This field is only applicable for
+        /// transactions which are billed.</param>
         /// <param name="orderId">The order ID of the reservation. The field is
         /// only applicable for transaction of kind reservation.</param>
         /// <param name="orderName">The name of the reservation order. The
@@ -79,6 +82,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="subscriptionName">The name of the subscription that
         /// was used for the transaction. The field is only applicable for
         /// transaction of kind reservation.</param>
+        /// <param name="azurePlan">The type of azure plan of the subscription
+        /// that was used for the transaction.</param>
         /// <param name="azureCreditApplied">The amount of any Azure credits
         /// automatically applied to this transaction.</param>
         /// <param name="billingCurrency">The ISO 4217 code for the currency in
@@ -108,12 +113,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// product.</param>
         /// <param name="unitType">The description for the unit of measure for
         /// a given product.</param>
-        public Transaction(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? date = default(System.DateTime?), string invoice = default(string), string orderId = default(string), string orderName = default(string), string productFamily = default(string), string productTypeId = default(string), string productType = default(string), string productDescription = default(string), string transactionType = default(string), Amount transactionAmount = default(Amount), int? quantity = default(int?), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string customerId = default(string), string customerDisplayName = default(string), string subscriptionId = default(string), string subscriptionName = default(string), Amount azureCreditApplied = default(Amount), string billingCurrency = default(string), double? discount = default(double?), Amount effectivePrice = default(Amount), double? exchangeRate = default(double?), Amount marketPrice = default(Amount), string pricingCurrency = default(string), System.DateTime? servicePeriodStartDate = default(System.DateTime?), System.DateTime? servicePeriodEndDate = default(System.DateTime?), Amount subTotal = default(Amount), Amount tax = default(Amount), string unitOfMeasure = default(string), double? units = default(double?), string unitType = default(string))
+        public Transaction(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? date = default(System.DateTime?), string invoice = default(string), string invoiceId = default(string), string orderId = default(string), string orderName = default(string), string productFamily = default(string), string productTypeId = default(string), string productType = default(string), string productDescription = default(string), string transactionType = default(string), Amount transactionAmount = default(Amount), int? quantity = default(int?), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string customerId = default(string), string customerDisplayName = default(string), string subscriptionId = default(string), string subscriptionName = default(string), string azurePlan = default(string), Amount azureCreditApplied = default(Amount), string billingCurrency = default(string), double? discount = default(double?), Amount effectivePrice = default(Amount), double? exchangeRate = default(double?), Amount marketPrice = default(Amount), string pricingCurrency = default(string), System.DateTime? servicePeriodStartDate = default(System.DateTime?), System.DateTime? servicePeriodEndDate = default(System.DateTime?), Amount subTotal = default(Amount), Amount tax = default(Amount), string unitOfMeasure = default(string), double? units = default(double?), string unitType = default(string))
             : base(id, name, type)
         {
             Kind = kind;
             Date = date;
             Invoice = invoice;
+            InvoiceId = invoiceId;
             OrderId = orderId;
             OrderName = orderName;
             ProductFamily = productFamily;
@@ -131,6 +137,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             CustomerDisplayName = customerDisplayName;
             SubscriptionId = subscriptionId;
             SubscriptionName = subscriptionName;
+            AzurePlan = azurePlan;
             AzureCreditApplied = azureCreditApplied;
             BillingCurrency = billingCurrency;
             Discount = discount;
@@ -172,6 +179,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoice")]
         public string Invoice { get; private set; }
+
+        /// <summary>
+        /// Gets the ID of the invoice on which the transaction was billed.
+        /// This field is only applicable for transactions which are billed.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.invoiceId")]
+        public string InvoiceId { get; private set; }
 
         /// <summary>
         /// Gets the order ID of the reservation. The field is only applicable
@@ -291,6 +305,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.subscriptionName")]
         public string SubscriptionName { get; private set; }
+
+        /// <summary>
+        /// Gets the type of azure plan of the subscription that was used for
+        /// the transaction.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azurePlan")]
+        public string AzurePlan { get; private set; }
 
         /// <summary>
         /// Gets the amount of any Azure credits automatically applied to this

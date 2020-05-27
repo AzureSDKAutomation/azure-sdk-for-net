@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for EligibleProductType.
+    /// Defines values for StatusReasonCodeForBillingProfile.
     /// </summary>
-    public static class EligibleProductType
+    public static class StatusReasonCodeForBillingProfile
     {
-        public const string DevTestAzureSubscription = "DevTestAzureSubscription";
-        public const string StandardAzureSubscription = "StandardAzureSubscription";
-        public const string AzureReservation = "AzureReservation";
+        public const string PastDue = "PastDue";
+        public const string SpendingLimitReached = "SpendingLimitReached";
+        public const string SpendingLimitExpired = "SpendingLimitExpired";
     }
 }

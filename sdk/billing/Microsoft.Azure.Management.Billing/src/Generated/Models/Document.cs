@@ -11,8 +11,6 @@
 namespace Microsoft.Azure.Management.Billing.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,13 +32,14 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="kind">The type of the document. Possible values
         /// include: 'Invoice', 'VoidNote', 'TaxReceipt', 'CreditNote'</param>
         /// <param name="url">Document URL.</param>
-        /// <param name="documentNumbers">Document numbers for an Enterprise
-        /// Agreement invoice.</param>
-        public Document(string kind = default(string), string url = default(string), IList<string> documentNumbers = default(IList<string>))
+        /// <param name="source">The source of the document. ENF for Brazil and
+        /// DRS for rest of the world. Possible values include: 'DRS',
+        /// 'ENF'</param>
+        public Document(string kind = default(string), string url = default(string), string source = default(string))
         {
             Kind = kind;
             Url = url;
-            DocumentNumbers = documentNumbers;
+            Source = source;
             CustomInit();
         }
 
@@ -63,10 +62,11 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string Url { get; private set; }
 
         /// <summary>
-        /// Gets document numbers for an Enterprise Agreement invoice.
+        /// Gets the source of the document. ENF for Brazil and DRS for rest of
+        /// the world. Possible values include: 'DRS', 'ENF'
         /// </summary>
-        [JsonProperty(PropertyName = "documentNumbers")]
-        public IList<string> DocumentNumbers { get; private set; }
+        [JsonProperty(PropertyName = "source")]
+        public string Source { get; private set; }
 
     }
 }

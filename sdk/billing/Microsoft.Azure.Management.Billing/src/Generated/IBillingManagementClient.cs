@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Billing
 
         /// <summary>
         /// The version of the API to be used with the client request. The
-        /// current version is 2019-10-01-preview.
+        /// current version is 2020-05-01.
         /// </summary>
         string ApiVersion { get; }
 
@@ -75,11 +75,6 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IBillingAccountsOperations.
         /// </summary>
         IBillingAccountsOperations BillingAccounts { get; }
-
-        /// <summary>
-        /// Gets the IPaymentMethodsOperations.
-        /// </summary>
-        IPaymentMethodsOperations PaymentMethods { get; }
 
         /// <summary>
         /// Gets the IAddressOperations.
@@ -127,29 +122,14 @@ namespace Microsoft.Azure.Management.Billing
         IProductsOperations Products { get; }
 
         /// <summary>
-        /// Gets the ITransactionsOperations.
-        /// </summary>
-        ITransactionsOperations Transactions { get; }
-
-        /// <summary>
-        /// Gets the IDepartmentsOperations.
-        /// </summary>
-        IDepartmentsOperations Departments { get; }
-
-        /// <summary>
-        /// Gets the IEnrollmentAccountsOperations.
-        /// </summary>
-        IEnrollmentAccountsOperations EnrollmentAccounts { get; }
-
-        /// <summary>
         /// Gets the IInvoicesOperations.
         /// </summary>
         IInvoicesOperations Invoices { get; }
 
         /// <summary>
-        /// Gets the IPriceSheetOperations.
+        /// Gets the ITransactionsOperations.
         /// </summary>
-        IPriceSheetOperations PriceSheet { get; }
+        ITransactionsOperations Transactions { get; }
 
         /// <summary>
         /// Gets the IPoliciesOperations.
@@ -160,21 +140,6 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IBillingPropertyOperations.
         /// </summary>
         IBillingPropertyOperations BillingProperty { get; }
-
-        /// <summary>
-        /// Gets the ITransfersOperations.
-        /// </summary>
-        ITransfersOperations Transfers { get; }
-
-        /// <summary>
-        /// Gets the IPartnerTransfersOperations.
-        /// </summary>
-        IPartnerTransfersOperations PartnerTransfers { get; }
-
-        /// <summary>
-        /// Gets the IRecipientTransfersOperations.
-        /// </summary>
-        IRecipientTransfersOperations RecipientTransfers { get; }
 
         /// <summary>
         /// Gets the IOperations.

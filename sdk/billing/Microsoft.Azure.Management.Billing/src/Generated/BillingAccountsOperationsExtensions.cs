@@ -23,31 +23,33 @@ namespace Microsoft.Azure.Management.Billing
     {
             /// <summary>
             /// Lists the billing accounts that a user has access to.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the address, invoice sections and billing profiles.
+            /// May be used to expand the soldTo, invoice sections and billing profiles.
             /// </param>
-            public static BillingAccountListResult List(this IBillingAccountsOperations operations, string expand = default(string))
+            public static IPage<BillingAccount> List(this IBillingAccountsOperations operations, string expand = default(string))
             {
                 return operations.ListAsync(expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// Lists the billing accounts that a user has access to.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the address, invoice sections and billing profiles.
+            /// May be used to expand the soldTo, invoice sections and billing profiles.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingAccountListResult> ListAsync(this IBillingAccountsOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BillingAccount>> ListAsync(this IBillingAccountsOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Gets a billing account by its ID.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,7 +68,7 @@ namespace Microsoft.Azure.Management.Billing
             /// The ID that uniquely identifies a billing account.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the address, invoice sections and billing profiles.
+            /// May be used to expand the soldTo, invoice sections and billing profiles.
             /// </param>
             public static BillingAccount Get(this IBillingAccountsOperations operations, string billingAccountName, string expand = default(string))
             {
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Gets a billing account by its ID.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -82,7 +86,7 @@ namespace Microsoft.Azure.Management.Billing
             /// The ID that uniquely identifies a billing account.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the address, invoice sections and billing profiles.
+            /// May be used to expand the soldTo, invoice sections and billing profiles.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -145,6 +149,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Lists the invoice sections for which the user has permission to create
             /// Azure subscriptions. The operation is supported only for billing accounts
             /// with agreement type Microsoft Customer Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -161,6 +166,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Lists the invoice sections for which the user has permission to create
             /// Azure subscriptions. The operation is supported only for billing accounts
             /// with agreement type Microsoft Customer Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -226,9 +232,46 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
+            /// Lists the billing accounts that a user has access to.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<BillingAccount> ListNext(this IBillingAccountsOperations operations, string nextPageLink)
+            {
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the billing accounts that a user has access to.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingAccount>> ListNextAsync(this IBillingAccountsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists the invoice sections for which the user has permission to create
             /// Azure subscriptions. The operation is supported only for billing accounts
             /// with agreement type Microsoft Customer Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -245,6 +288,7 @@ namespace Microsoft.Azure.Management.Billing
             /// Lists the invoice sections for which the user has permission to create
             /// Azure subscriptions. The operation is supported only for billing accounts
             /// with agreement type Microsoft Customer Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
