@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// CapacityReservation sku is selected.</param>
         /// <param name="lastSkuUpdate">The last time when the sku was
         /// updated.</param>
-        public WorkspaceSku(string name, int? capacityReservationLevel = default(int?), int? maxCapacityReservationLevel = default(int?), System.DateTime? lastSkuUpdate = default(System.DateTime?))
+        public WorkspaceSku(string name, int? capacityReservationLevel = default(int?), int? maxCapacityReservationLevel = default(int?), string lastSkuUpdate = default(string))
         {
             Name = name;
             CapacityReservationLevel = capacityReservationLevel;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// Gets the last time when the sku was updated.
         /// </summary>
         [JsonProperty(PropertyName = "lastSkuUpdate")]
-        public System.DateTime? LastSkuUpdate { get; private set; }
+        public string LastSkuUpdate { get; private set; }
 
         /// <summary>
         /// Validate the object.

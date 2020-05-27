@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// this workspace. Possible values include: 'RespectQuota', 'ForceOn',
         /// 'ForceOff', 'OverQuota', 'SubscriptionSuspended',
         /// 'ApproachingQuota'</param>
-        public WorkspaceCapping(double? dailyQuotaGb = default(double?), System.DateTime? quotaNextResetTime = default(System.DateTime?), string dataIngestionStatus = default(string))
+        public WorkspaceCapping(double? dailyQuotaGb = default(double?), string quotaNextResetTime = default(string), string dataIngestionStatus = default(string))
         {
             DailyQuotaGb = dailyQuotaGb;
             QuotaNextResetTime = quotaNextResetTime;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// Gets the time when the quota will be rest.
         /// </summary>
         [JsonProperty(PropertyName = "quotaNextResetTime")]
-        public System.DateTime? QuotaNextResetTime { get; private set; }
+        public string QuotaNextResetTime { get; private set; }
 
         /// <summary>
         /// Gets the status of data ingestion for this workspace. Possible
