@@ -182,11 +182,6 @@ namespace Microsoft.Azure.Management.Security
         public virtual IRegulatoryComplianceAssessmentsOperations RegulatoryComplianceAssessments { get; private set; }
 
         /// <summary>
-        /// Gets the IServerVulnerabilityAssessmentOperations.
-        /// </summary>
-        public virtual IServerVulnerabilityAssessmentOperations ServerVulnerabilityAssessment { get; private set; }
-
-        /// <summary>
         /// Gets the ISubAssessmentsOperations.
         /// </summary>
         public virtual ISubAssessmentsOperations SubAssessments { get; private set; }
@@ -200,6 +195,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IAlertsSuppressionRulesOperations.
         /// </summary>
         public virtual IAlertsSuppressionRulesOperations AlertsSuppressionRules { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerVulnerabilityAssessmentOperations.
+        /// </summary>
+        public virtual IServerVulnerabilityAssessmentOperations ServerVulnerabilityAssessment { get; private set; }
 
         /// <summary>
         /// Gets the IAssessmentsMetadataOperations.
@@ -523,10 +523,10 @@ namespace Microsoft.Azure.Management.Security
             RegulatoryComplianceStandards = new RegulatoryComplianceStandardsOperations(this);
             RegulatoryComplianceControls = new RegulatoryComplianceControlsOperations(this);
             RegulatoryComplianceAssessments = new RegulatoryComplianceAssessmentsOperations(this);
-            ServerVulnerabilityAssessment = new ServerVulnerabilityAssessmentOperations(this);
             SubAssessments = new SubAssessmentsOperations(this);
             Automations = new AutomationsOperations(this);
             AlertsSuppressionRules = new AlertsSuppressionRulesOperations(this);
+            ServerVulnerabilityAssessment = new ServerVulnerabilityAssessmentOperations(this);
             AssessmentsMetadata = new AssessmentsMetadataOperations(this);
             Assessments = new AssessmentsOperations(this);
             AdaptiveApplicationControls = new AdaptiveApplicationControlsOperations(this);

@@ -177,11 +177,6 @@ namespace Microsoft.Azure.Management.Security
         IRegulatoryComplianceAssessmentsOperations RegulatoryComplianceAssessments { get; }
 
         /// <summary>
-        /// Gets the IServerVulnerabilityAssessmentOperations.
-        /// </summary>
-        IServerVulnerabilityAssessmentOperations ServerVulnerabilityAssessment { get; }
-
-        /// <summary>
         /// Gets the ISubAssessmentsOperations.
         /// </summary>
         ISubAssessmentsOperations SubAssessments { get; }
@@ -195,6 +190,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IAlertsSuppressionRulesOperations.
         /// </summary>
         IAlertsSuppressionRulesOperations AlertsSuppressionRules { get; }
+
+        /// <summary>
+        /// Gets the IServerVulnerabilityAssessmentOperations.
+        /// </summary>
+        IServerVulnerabilityAssessmentOperations ServerVulnerabilityAssessment { get; }
 
         /// <summary>
         /// Gets the IAssessmentsMetadataOperations.
