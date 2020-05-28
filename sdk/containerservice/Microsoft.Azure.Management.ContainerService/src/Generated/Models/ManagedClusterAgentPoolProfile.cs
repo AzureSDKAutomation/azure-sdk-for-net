@@ -34,9 +34,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterAgentPoolProfile
         /// class.
         /// </summary>
+        /// <param name="name">Unique name of the agent pool profile in the
+        /// context of the subscription and resource group.</param>
         /// <param name="count">Number of agents (VMs) to host docker
         /// containers. Allowed values must be in the range of 0 to 100
-        /// (inclusive). The default value is 1. </param>
+        /// (inclusive) for user pools and in the range of 1 to 100 (inclusive)
+        /// for system pools. The default value is 1.</param>
         /// <param name="vmSize">Size of agent VMs. Possible values include:
         /// 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
         /// 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
@@ -92,8 +95,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// 'Standard_NC6s_v2', 'Standard_NC6s_v3', 'Standard_ND12s',
         /// 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
         /// 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'</param>
-        /// <param name="name">Unique name of the agent pool profile in the
-        /// context of the subscription and resource group.</param>
         /// <param name="osDiskSizeGB">OS Disk Size in GB to be used to specify
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// across all nodes in agent pool.</param>
         /// <param name="nodeTaints">Taints added to new nodes during node pool
         /// create and scale. For example, key=value:NoSchedule.</param>
-        public ManagedClusterAgentPoolProfile(int count, string vmSize, string name, int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>))
+        public ManagedClusterAgentPoolProfile(string name, int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>))
             : base(count, vmSize, osDiskSizeGB, vnetSubnetID, maxPods, osType, maxCount, minCount, enableAutoScaling, type, mode, orchestratorVersion, nodeImageVersion, upgradeSettings, provisioningState, availabilityZones, enableNodePublicIP, scaleSetPriority, scaleSetEvictionPolicy, spotMaxPrice, tags, nodeLabels, nodeTaints)
         {
             Name = name;
@@ -168,9 +169,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");

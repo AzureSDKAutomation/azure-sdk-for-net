@@ -34,9 +34,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Initializes a new instance of the AgentPool class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">The name of the resource that is unique within a
+        /// resource group. This name can be used to access the
+        /// resource.</param>
+        /// <param name="type">Resource type</param>
         /// <param name="count">Number of agents (VMs) to host docker
         /// containers. Allowed values must be in the range of 0 to 100
-        /// (inclusive). The default value is 1. </param>
+        /// (inclusive) for user pools and in the range of 1 to 100 (inclusive)
+        /// for system pools. The default value is 1.</param>
         /// <param name="vmSize">Size of agent VMs. Possible values include:
         /// 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
         /// 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
@@ -92,11 +98,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// 'Standard_NC6s_v2', 'Standard_NC6s_v3', 'Standard_ND12s',
         /// 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
         /// 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">The name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
-        /// <param name="type">Resource type</param>
         /// <param name="osDiskSizeGB">OS Disk Size in GB to be used to specify
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// across all nodes in agent pool.</param>
         /// <param name="nodeTaints">Taints added to new nodes during node pool
         /// create and scale. For example, key=value:NoSchedule.</param>
-        public AgentPool(int count, string vmSize, string id = default(string), string name = default(string), string type = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string agentPoolType = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>))
+        public AgentPool(string id = default(string), string name = default(string), string type = default(string), int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string agentPoolType = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>))
             : base(id, name, type)
         {
             Count = count;
@@ -182,11 +183,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <summary>
         /// Gets or sets number of agents (VMs) to host docker containers.
-        /// Allowed values must be in the range of 0 to 100 (inclusive). The
-        /// default value is 1.
+        /// Allowed values must be in the range of 0 to 100 (inclusive) for
+        /// user pools and in the range of 1 to 100 (inclusive) for system
+        /// pools. The default value is 1.
         /// </summary>
         [JsonProperty(PropertyName = "properties.count")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         /// <summary>
         /// Gets or sets size of agent VMs. Possible values include:
@@ -395,26 +397,5 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         [JsonProperty(PropertyName = "properties.nodeTaints")]
         public IList<string> NodeTaints { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (VmSize == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VmSize");
-            }
-            if (Count > 100)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Count", 100);
-            }
-            if (Count < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Count", 0);
-            }
-        }
     }
 }
