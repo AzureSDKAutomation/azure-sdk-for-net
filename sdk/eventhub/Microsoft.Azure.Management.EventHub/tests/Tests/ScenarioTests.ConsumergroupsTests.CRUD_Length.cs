@@ -8,7 +8,6 @@ namespace EventHub.Tests.ScenarioTests
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using System.Threading;
     using Microsoft.Azure.Management.EventHub;
     using Microsoft.Azure.Management.EventHub.Models;
     using Microsoft.Rest.Azure;
@@ -26,7 +25,7 @@ namespace EventHub.Tests.ScenarioTests
 
                 var location = this.ResourceManagementClient.GetLocationFromProvider();
 
-                var resourceGroup = string.Empty;
+                var resourceGroup = this.ResourceManagementClient.TryGetResourceGroup(location);
                 if (string.IsNullOrWhiteSpace(resourceGroup))
                 {
                     resourceGroup = TestUtilities.GenerateName(EventHubManagementHelper.ResourceGroupPrefix);
@@ -34,10 +33,7 @@ namespace EventHub.Tests.ScenarioTests
                 }
 
                 var namespaceName = TestUtilities.GenerateName(EventHubManagementHelper.NamespacePrefix);
-
-                try
-                {
-                    var createNamespaceResponse = this.EventHubManagementClient.Namespaces.CreateOrUpdate(resourceGroup, namespaceName,
+                var createNamespaceResponse = this.EventHubManagementClient.Namespaces.CreateOrUpdate(resourceGroup, namespaceName,
                     new EHNamespace()
                     {
                         Location = location,
@@ -53,69 +49,64 @@ namespace EventHub.Tests.ScenarioTests
                         }
                     });
 
-                    Assert.NotNull(createNamespaceResponse);
-                    Assert.Equal(createNamespaceResponse.Name, namespaceName);
+                Assert.NotNull(createNamespaceResponse);
+                Assert.Equal(createNamespaceResponse.Name, namespaceName);
 
-                    TestUtilities.Wait(TimeSpan.FromSeconds(5));
+                TestUtilities.Wait(TimeSpan.FromSeconds(5));
 
-                    // Create Eventhub
-                    var eventhubName = EventHubManagementHelper.EventHubPrefix;
-                    var createEventhubResponse = this.EventHubManagementClient.EventHubs.CreateOrUpdate(resourceGroup, namespaceName, eventhubName, new Eventhub() { MessageRetentionInDays = 5 });
+                // Create Eventhub
+                var eventhubName = EventHubManagementHelper.EventHubPrefix + "thisisthenamewithmorethan53charschecktoverifytheremovlaof50charsnamelengthlimit";
 
-                    Assert.NotNull(createEventhubResponse);
-                    Assert.Equal(createEventhubResponse.Name, eventhubName);
+                var createEventhubResponse = this.EventHubManagementClient.EventHubs.CreateOrUpdate(resourceGroup, namespaceName, eventhubName,
+                new Eventhub() { MessageRetentionInDays = 5 });
 
-                    //Get the created EventHub
-                    var geteventhubResponse = EventHubManagementClient.EventHubs.Get(resourceGroup, namespaceName, eventhubName);
-                    Assert.NotNull(geteventhubResponse);
-                    Assert.Equal(EntityStatus.Active, geteventhubResponse.Status);
-                    Assert.Equal(geteventhubResponse.Name, eventhubName);
+                Assert.NotNull(createEventhubResponse);
+                Assert.Equal(createEventhubResponse.Name, eventhubName);
 
-                    // Create ConsumerGroup.
-                    var consumergroupName = EventHubManagementHelper.ConsumerGroupPrefix;
-                    string UserMetadata = "Newly Created";
-                    var createConsumergroupResponse = EventHubManagementClient.ConsumerGroups.CreateOrUpdate(resourceGroup, namespaceName, eventhubName, consumergroupName, new ConsumerGroup { UserMetadata = UserMetadata });
-                    Assert.NotNull(createConsumergroupResponse);
-                    Assert.Equal(createConsumergroupResponse.Name, consumergroupName);
+                //Get the created EventHub
+                var geteventhubResponse = EventHubManagementClient.EventHubs.Get(resourceGroup, namespaceName, eventhubName);
+                Assert.NotNull(geteventhubResponse);
+                Assert.Equal(EntityStatus.Active, geteventhubResponse.Status);
+                Assert.Equal(geteventhubResponse.Name, eventhubName);
 
-                    // Get Created ConsumerGroup
-                    var getConsumergroupGetResponse = EventHubManagementClient.ConsumerGroups.Get(resourceGroup, namespaceName, eventhubName, consumergroupName);
-                    Assert.NotNull(getConsumergroupGetResponse);
-                    Assert.Equal(getConsumergroupGetResponse.Name, consumergroupName);
+                // Create ConsumerGroup.
+                var consumergroupName = "thisisthenamewithmorethan53charschecktoverifqwert";
+                string UserMetadata = "Newly Created";
+                var createConsumergroupResponse = EventHubManagementClient.ConsumerGroups.CreateOrUpdate(resourceGroup, namespaceName, eventhubName, consumergroupName, new ConsumerGroup { UserMetadata = UserMetadata});
+                Assert.NotNull(createConsumergroupResponse);
+                Assert.Equal(createConsumergroupResponse.Name, consumergroupName);
 
-                    // Get all ConsumerGroup   
-                    var getSubscriptionsListAllResponse = EventHubManagementClient.ConsumerGroups.ListByEventHub(resourceGroup, namespaceName, eventhubName);
-                    Assert.NotNull(getSubscriptionsListAllResponse);
-                    Assert.True(getSubscriptionsListAllResponse.All(ns => ns.Id.Contains(resourceGroup)));
+                // Get Created ConsumerGroup
+                var getConsumergroupGetResponse = EventHubManagementClient.ConsumerGroups.Get(resourceGroup, namespaceName, eventhubName, consumergroupName);
+                Assert.NotNull(getConsumergroupGetResponse);
+                Assert.Equal(getConsumergroupGetResponse.Name, consumergroupName);
 
-                    //Update the Created consumergroup
-                    createConsumergroupResponse.UserMetadata = "Updated the user meta data";
-                    var updateconsumergroupResponse = EventHubManagementClient.ConsumerGroups.CreateOrUpdate(resourceGroup, namespaceName, eventhubName, consumergroupName, createConsumergroupResponse);
-                    Assert.NotNull(updateconsumergroupResponse);
-                    Assert.Equal(updateconsumergroupResponse.Name, createConsumergroupResponse.Name);
-                    Assert.Equal("Updated the user meta data", updateconsumergroupResponse.UserMetadata);
+                // Get all ConsumerGroup   
+                var getSubscriptionsListAllResponse = EventHubManagementClient.ConsumerGroups.ListByEventHub(resourceGroup, namespaceName, eventhubName);
+                Assert.NotNull(getSubscriptionsListAllResponse);
+                Assert.True(getSubscriptionsListAllResponse.All(ns => ns.Id.Contains(resourceGroup)));
 
-                    // Get Created ConsumerGroup
-                    var getConsumergroupResponse = EventHubManagementClient.ConsumerGroups.Get(resourceGroup, namespaceName, eventhubName, consumergroupName);
-                    Assert.NotNull(getConsumergroupResponse);
-                    Assert.Equal(getConsumergroupResponse.Name, consumergroupName);
-                    Assert.Equal(getConsumergroupResponse.UserMetadata, updateconsumergroupResponse.UserMetadata);
+                //Update the Created consumergroup
+                createConsumergroupResponse.UserMetadata = "Updated the user meta data";
+                var updateconsumergroupResponse = EventHubManagementClient.ConsumerGroups.CreateOrUpdate(resourceGroup, namespaceName, eventhubName, consumergroupName, createConsumergroupResponse);
+                Assert.NotNull(updateconsumergroupResponse);
+                Assert.Equal(updateconsumergroupResponse.Name, createConsumergroupResponse.Name);
+                Assert.Equal("Updated the user meta data", updateconsumergroupResponse.UserMetadata);
 
-                    // Delete Created ConsumerGroup and check for the NotFound exception 
-                    EventHubManagementClient.ConsumerGroups.Delete(resourceGroup, namespaceName, eventhubName, consumergroupName);
+                // Get Created ConsumerGroup
+                var getConsumergroupResponse = EventHubManagementClient.ConsumerGroups.Get(resourceGroup, namespaceName, eventhubName, consumergroupName);
+                Assert.NotNull(getConsumergroupResponse);
+                Assert.Equal(getConsumergroupResponse.Name, consumergroupName);
+                Assert.Equal(getConsumergroupResponse.UserMetadata, updateconsumergroupResponse.UserMetadata);
 
-                    // Delete Created EventHub  and check for the NotFound exception 
-                    EventHubManagementClient.EventHubs.Delete(resourceGroup, namespaceName, eventhubName);
+                // Delete Created ConsumerGroup and check for the NotFound exception 
+                EventHubManagementClient.ConsumerGroups.Delete(resourceGroup, namespaceName, eventhubName, consumergroupName);
 
-                    // Delete namespace                                   
-                    EventHubManagementClient.Namespaces.Delete(resourceGroup, namespaceName);
-                }
-                finally
-                {
-                    //Delete Resource Group
-                    this.ResourceManagementClient.ResourceGroups.DeleteWithHttpMessagesAsync(resourceGroup, null, default(CancellationToken)).ConfigureAwait(false);
-                }
+                // Delete Created EventHub  and check for the NotFound exception 
+                EventHubManagementClient.EventHubs.Delete(resourceGroup, namespaceName, eventhubName);
 
+                // Delete namespace                                   
+                EventHubManagementClient.Namespaces.Delete(resourceGroup, namespaceName);
 
                 //Subscription end
             }
