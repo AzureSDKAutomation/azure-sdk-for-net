@@ -1259,6 +1259,112 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Updates site's Authentication / Authorization settings for apps via the V2
+            /// format
+            /// </summary>
+            /// <remarks>
+            /// Description for Updates site's Authentication / Authorization settings for
+            /// apps via the V2 format
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of web app.
+            /// </param>
+            /// <param name='siteAuthSettingsV2'>
+            /// Auth settings associated with web app.
+            /// </param>
+            public static SiteAuthSettingsV2 UpdateAuthSettingsV2(this IWebAppsOperations operations, string resourceGroupName, string name, SiteAuthSettingsV2 siteAuthSettingsV2)
+            {
+                return operations.UpdateAuthSettingsV2Async(resourceGroupName, name, siteAuthSettingsV2).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates site's Authentication / Authorization settings for apps via the V2
+            /// format
+            /// </summary>
+            /// <remarks>
+            /// Description for Updates site's Authentication / Authorization settings for
+            /// apps via the V2 format
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of web app.
+            /// </param>
+            /// <param name='siteAuthSettingsV2'>
+            /// Auth settings associated with web app.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SiteAuthSettingsV2> UpdateAuthSettingsV2Async(this IWebAppsOperations operations, string resourceGroupName, string name, SiteAuthSettingsV2 siteAuthSettingsV2, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateAuthSettingsV2WithHttpMessagesAsync(resourceGroupName, name, siteAuthSettingsV2, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets site's Authentication / Authorization settings for apps via the V2
+            /// format
+            /// </summary>
+            /// <remarks>
+            /// Description for Gets site's Authentication / Authorization settings for
+            /// apps via the V2 format
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            public static SiteAuthSettingsV2 GetAuthSettingsV2(this IWebAppsOperations operations, string resourceGroupName, string name)
+            {
+                return operations.GetAuthSettingsV2Async(resourceGroupName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets site's Authentication / Authorization settings for apps via the V2
+            /// format
+            /// </summary>
+            /// <remarks>
+            /// Description for Gets site's Authentication / Authorization settings for
+            /// apps via the V2 format
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SiteAuthSettingsV2> GetAuthSettingsV2Async(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAuthSettingsV2WithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Updates the Azure storage account configurations of an app.
             /// </summary>
             /// <remarks>
