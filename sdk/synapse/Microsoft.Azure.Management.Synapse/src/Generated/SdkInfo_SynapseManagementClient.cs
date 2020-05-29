@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Management.Synapse
                 new Tuple<string, string, string>("Synapse", "IpFirewallRules", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "Operations", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "PrivateEndpointConnections", "2019-06-01-preview"),
+                new Tuple<string, string, string>("Synapse", "PrivateLinkHubs", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "PrivateLinkResources", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolBlobAuditingPolicies", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolConnectionPolicies", "2019-06-01-preview"),
