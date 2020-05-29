@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Resource quota properties.
+    /// Quota properties for the resource.
     /// </summary>
     public partial class QuotaProperties
     {

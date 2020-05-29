@@ -51,13 +51,9 @@ namespace Microsoft.Azure.Management.Reservations
         public AzureReservationAPIClient Client { get; private set; }
 
         /// <summary>
-        /// For the specified subscription, gets the Auto Quota Increase enrollment
-        /// status.
-        /// </summary>
-        /// <remarks>
         /// Gets the Auto Quota Increase enrollment details for the specified
         /// subscription.
-        /// </remarks>
+        /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
@@ -231,13 +227,9 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// For the specified subscription, sets the Auto Quota Increase enrollment
-        /// properties.
-        /// </summary>
-        /// <remarks>
         /// Sets the Auto Quota Increase enrollment properties for the specified
         /// subscription.
-        /// </remarks>
+        /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>

@@ -24,27 +24,23 @@ namespace Microsoft.Azure.Management.Reservations
     public partial interface IQuotaOperations
     {
         /// <summary>
-        /// Gets the current quota limit and usages for the resource provider
-        /// for the specified location for the specific resource in the
-        /// parameter.
+        /// Gets the current service limits (quotas) and usage of a resource.
+        /// The response from Get API can be leveraged to submit quota update
+        /// requests.
         /// </summary>
-        /// <remarks>
-        /// This API gets the current quota limit and usages for the specific
-        /// resource for resource provider for the specified location. This
-        /// response can be used to submit quotaRequests.
-        /// </remarks>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
         /// </param>
         /// <param name='resourceName'>
-        /// The Resource name for the specific resource provider, such as SKU
-        /// name for Microsoft.Compute, pool for Microsoft.Batch.
+        /// The resource name for a resource provider, such as SKU name for
+        /// Microsoft.Compute, Sku or TotalLowPriorityCores for
+        /// Microsoft.MachineLearningServices
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,35 +59,33 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<CurrentQuotaLimitBase,QuotaGetHeaders>> GetWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Submits a Quota Request for a resource provider at the specified
-        /// location for the specific resource in the parameter.
+        /// Create or update the service limits (quota) of a resource to
+        /// requested value.
+        /// Steps:
+        ///
+        /// 1. Make the Get request to get the quota information for specific
+        /// resource.
+        ///
+        /// 2. To increase the quota, update the limit field in the response
+        /// from Get request to new value.
+        ///
+        /// 3. Submit the JSON to the quota request API to update the quota.
+        /// The Create quota request may be constructed as follows. The PUT
+        /// operation can be used to update the quota.
         /// </summary>
-        /// <remarks>
-        /// Submits Quota change request for a resource provider for the
-        /// specified location for the specific resource in the parameter. To
-        /// use, first make a Get request to get quota information for the
-        /// specific resource. This information consists of information
-        /// regarding that specific resources. For the specific resource, if it
-        /// requires an update to the quota, update the limit field in the
-        /// response from the Get request to the new value of quota. Then,
-        /// submit this updated JSON object to this quota request API. This
-        /// will update the quota to the value specified. The location header
-        /// in the response will be used to track the status of the quota
-        /// request. Please check the provisioningState field in the response.
-        /// The Patch operation can be used also to update the quota.
-        /// </remarks>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
         /// </param>
         /// <param name='resourceName'>
-        /// The Resource name for the specific resource provider, such as SKU
-        /// name for Microsoft.Compute, pool for Microsoft.Batch.
+        /// The resource name for a resource provider, such as SKU name for
+        /// Microsoft.Compute, Sku or TotalLowPriorityCores for
+        /// Microsoft.MachineLearningServices
         /// </param>
         /// <param name='createQuotaRequest'>
         /// Quota requests payload.
@@ -113,35 +107,33 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> CreateOrUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Submits a Quota Request for a resource provider at the specified
-        /// location for the specific resource in the parameter.
+        /// Create or update the service limits (quota) of a resource to
+        /// requested value.
+        /// Steps:
+        ///
+        /// 1. Make the Get request to get the quota information for specific
+        /// resource.
+        ///
+        /// 2. To increase the quota, update the limit field in the response
+        /// from Get request to new value.
+        ///
+        /// 3. Submit the JSON to the quota request API to update the quota.
+        /// The Create quota request may be constructed as follows. The PUT
+        /// operation can be used to update the quota.
         /// </summary>
-        /// <remarks>
-        /// Submits Quota change request for a resource provider for the
-        /// specified location for the specific resource in the parameter. To
-        /// use, first make a Get request to get quota information for the
-        /// specific resource. This information consists of information
-        /// regarding that specific resources. For the specific resource, if it
-        /// requires an update to the quota, update the limit field in the
-        /// response from the Get request to the new value of quota. Then,
-        /// submit this updated JSON object to this quota request API. This
-        /// will update the quota to the value specified. The location header
-        /// in the response will be used to track the status of the quota
-        /// request. Please check the provisioningState field in the response.
-        /// The Put operation can be used also to update the quota.
-        /// </remarks>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
         /// </param>
         /// <param name='resourceName'>
-        /// The Resource name for the specific resource provider, such as SKU
-        /// name for Microsoft.Compute, pool for Microsoft.Batch.
+        /// The resource name for a resource provider, such as SKU name for
+        /// Microsoft.Compute, Sku or TotalLowPriorityCores for
+        /// Microsoft.MachineLearningServices
         /// </param>
         /// <param name='createQuotaRequest'>
         /// Quota requests payload.
@@ -163,19 +155,15 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> UpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the current quota limit and usages for all the resources by
-        /// the resource provider at the specified location.
+        /// Get a list of current service limits (quota) and usages of all the
+        /// resources. The response from List API can be leveraged to submit
+        /// quota update requests.
         /// </summary>
-        /// <remarks>
-        /// This API gets the current quota limits and usages for the resource
-        /// provider for the specified location. This response can be used to
-        /// submit quotaRequests.
-        /// </remarks>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
@@ -197,35 +185,33 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<IPage<CurrentQuotaLimitBase>,QuotaListHeaders>> ListWithHttpMessagesAsync(string subscriptionId, string providerId, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Submits a Quota Request for a resource provider at the specified
-        /// location for the specific resource in the parameter.
+        /// Create or update the service limits (quota) of a resource to
+        /// requested value.
+        /// Steps:
+        ///
+        /// 1. Make the Get request to get the quota information for specific
+        /// resource.
+        ///
+        /// 2. To increase the quota, update the limit field in the response
+        /// from Get request to new value.
+        ///
+        /// 3. Submit the JSON to the quota request API to update the quota.
+        /// The Create quota request may be constructed as follows. The PUT
+        /// operation can be used to update the quota.
         /// </summary>
-        /// <remarks>
-        /// Submits Quota change request for a resource provider for the
-        /// specified location for the specific resource in the parameter. To
-        /// use, first make a Get request to get quota information for the
-        /// specific resource. This information consists of information
-        /// regarding that specific resources. For the specific resource, if it
-        /// requires an update to the quota, update the limit field in the
-        /// response from the Get request to the new value of quota. Then,
-        /// submit this updated JSON object to this quota request API. This
-        /// will update the quota to the value specified. The location header
-        /// in the response will be used to track the status of the quota
-        /// request. Please check the provisioningState field in the response.
-        /// The Patch operation can be used also to update the quota.
-        /// </remarks>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
         /// </param>
         /// <param name='resourceName'>
-        /// The Resource name for the specific resource provider, such as SKU
-        /// name for Microsoft.Compute, pool for Microsoft.Batch.
+        /// The resource name for a resource provider, such as SKU name for
+        /// Microsoft.Compute, Sku or TotalLowPriorityCores for
+        /// Microsoft.MachineLearningServices
         /// </param>
         /// <param name='createQuotaRequest'>
         /// Quota requests payload.
@@ -247,35 +233,33 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> BeginCreateOrUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Submits a Quota Request for a resource provider at the specified
-        /// location for the specific resource in the parameter.
+        /// Create or update the service limits (quota) of a resource to
+        /// requested value.
+        /// Steps:
+        ///
+        /// 1. Make the Get request to get the quota information for specific
+        /// resource.
+        ///
+        /// 2. To increase the quota, update the limit field in the response
+        /// from Get request to new value.
+        ///
+        /// 3. Submit the JSON to the quota request API to update the quota.
+        /// The Create quota request may be constructed as follows. The PUT
+        /// operation can be used to update the quota.
         /// </summary>
-        /// <remarks>
-        /// Submits Quota change request for a resource provider for the
-        /// specified location for the specific resource in the parameter. To
-        /// use, first make a Get request to get quota information for the
-        /// specific resource. This information consists of information
-        /// regarding that specific resources. For the specific resource, if it
-        /// requires an update to the quota, update the limit field in the
-        /// response from the Get request to the new value of quota. Then,
-        /// submit this updated JSON object to this quota request API. This
-        /// will update the quota to the value specified. The location header
-        /// in the response will be used to track the status of the quota
-        /// request. Please check the provisioningState field in the response.
-        /// The Put operation can be used also to update the quota.
-        /// </remarks>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
         /// </param>
         /// <param name='resourceName'>
-        /// The Resource name for the specific resource provider, such as SKU
-        /// name for Microsoft.Compute, pool for Microsoft.Batch.
+        /// The resource name for a resource provider, such as SKU name for
+        /// Microsoft.Compute, Sku or TotalLowPriorityCores for
+        /// Microsoft.MachineLearningServices
         /// </param>
         /// <param name='createQuotaRequest'>
         /// Quota requests payload.
@@ -297,14 +281,10 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> BeginUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the current quota limit and usages for all the resources by
-        /// the resource provider at the specified location.
+        /// Get a list of current service limits (quota) and usages of all the
+        /// resources. The response from List API can be leveraged to submit
+        /// quota update requests.
         /// </summary>
-        /// <remarks>
-        /// This API gets the current quota limits and usages for the resource
-        /// provider for the specified location. This response can be used to
-        /// submit quotaRequests.
-        /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

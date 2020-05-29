@@ -22,13 +22,9 @@ namespace Microsoft.Azure.Management.Reservations
     public static partial class AutoQuotaIncreaseOperationsExtensions
     {
             /// <summary>
-            /// For the specified subscription, gets the Auto Quota Increase enrollment
-            /// status.
-            /// </summary>
-            /// <remarks>
             /// Gets the Auto Quota Increase enrollment details for the specified
             /// subscription.
-            /// </remarks>
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -41,13 +37,9 @@ namespace Microsoft.Azure.Management.Reservations
             }
 
             /// <summary>
-            /// For the specified subscription, gets the Auto Quota Increase enrollment
-            /// status.
-            /// </summary>
-            /// <remarks>
             /// Gets the Auto Quota Increase enrollment details for the specified
             /// subscription.
-            /// </remarks>
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -66,13 +58,9 @@ namespace Microsoft.Azure.Management.Reservations
             }
 
             /// <summary>
-            /// For the specified subscription, sets the Auto Quota Increase enrollment
-            /// properties.
-            /// </summary>
-            /// <remarks>
             /// Sets the Auto Quota Increase enrollment properties for the specified
             /// subscription.
-            /// </remarks>
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -88,13 +76,9 @@ namespace Microsoft.Azure.Management.Reservations
             }
 
             /// <summary>
-            /// For the specified subscription, sets the Auto Quota Increase enrollment
-            /// properties.
-            /// </summary>
-            /// <remarks>
             /// Sets the Auto Quota Increase enrollment properties for the specified
             /// subscription.
-            /// </remarks>
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

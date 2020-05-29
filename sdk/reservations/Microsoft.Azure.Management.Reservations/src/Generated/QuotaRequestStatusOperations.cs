@@ -51,19 +51,15 @@ namespace Microsoft.Azure.Management.Reservations
         public AzureReservationAPIClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the Quota request status by requestId, for the specified resource
-        /// provider at specified location.
-        /// </summary>
-        /// <remarks>
         /// Gets the QuotaRequest details and status by the quota request Id for the
         /// resources for the resource provider at a specific location. The requestId
         /// is returned as response to the Put requests for serviceLimits.
-        /// </remarks>
+        /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
@@ -259,21 +255,15 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// For the specified location and resource Provider, gets the quota requests
-        /// under the subscription over the time
-        /// period of one year ago from now to one year back, based on the filter
-        /// specified.
-        /// </summary>
-        /// <remarks>
         /// For the specified location and Resource provider gets the current quota
         /// requests under the subscription over the time period of one year ago from
         /// now to one year back. oData filter can be used to select quota requests.
-        /// </remarks>
+        /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription id.
         /// </param>
         /// <param name='providerId'>
-        /// Azure resource Provider id.
+        /// Azure resource provider id.
         /// </param>
         /// <param name='location'>
         /// Azure region.
@@ -494,16 +484,10 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// For the specified location and resource Provider, gets the quota requests
-        /// under the subscription over the time
-        /// period of one year ago from now to one year back, based on the filter
-        /// specified.
-        /// </summary>
-        /// <remarks>
         /// For the specified location and Resource provider gets the current quota
         /// requests under the subscription over the time period of one year ago from
         /// now to one year back. oData filter can be used to select quota requests.
-        /// </remarks>
+        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
