@@ -19,22 +19,14 @@ namespace Microsoft.Azure.Management.EventGrid
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("EventGrid", "DomainTopics", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "Domains", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "EventChannels", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "EventSubscriptions", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "ExtensionTopics", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "Operations", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "PartnerNamespaces", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "PartnerRegistrations", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "PartnerTopicEventSubscriptions", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "PartnerTopics", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "PrivateEndpointConnections", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "PrivateLinkResources", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "SystemTopicEventSubscriptions", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "SystemTopics", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "TopicTypes", "2020-04-01-preview"),
-                new Tuple<string, string, string>("EventGrid", "Topics", "2020-04-01-preview"),
+                new Tuple<string, string, string>("EventGrid", "DomainTopics", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "Domains", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "EventSubscriptions", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "Operations", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "PrivateEndpointConnections", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "PrivateLinkResources", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "TopicTypes", "2020-06-01"),
+                new Tuple<string, string, string>("EventGrid", "Topics", "2020-06-01"),
               }.AsEnumerable();
           }
       }
