@@ -642,10 +642,10 @@ namespace Microsoft.Azure.Management.EventHub
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<Cluster>> PutWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<Cluster> _response = await BeginPutWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<Cluster> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -668,10 +668,10 @@ namespace Microsoft.Azure.Management.EventHub
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<Cluster>> PatchWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<Cluster> _response = await BeginPatchWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<Cluster> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Management.EventHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Cluster>> BeginPutWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Management.EventHub
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "BeginPut", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
@@ -1189,7 +1189,7 @@ namespace Microsoft.Azure.Management.EventHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Cluster>> BeginPatchWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Management.EventHub
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "BeginPatch", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
