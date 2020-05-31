@@ -122,11 +122,6 @@ namespace Microsoft.Azure.Management.MariaDB
         ICheckNameAvailabilityOperations CheckNameAvailability { get; }
 
         /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }

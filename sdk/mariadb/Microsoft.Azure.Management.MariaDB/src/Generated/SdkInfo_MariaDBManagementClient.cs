@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Management.MariaDB
                 new Tuple<string, string, string>("DBforMariaDB", "QueryTexts", "2018-06-01"),
                 new Tuple<string, string, string>("DBforMariaDB", "RecommendedActions", "2018-06-01"),
                 new Tuple<string, string, string>("DBforMariaDB", "Replicas", "2018-06-01"),
-                new Tuple<string, string, string>("DBforMariaDB", "ServerSecurityAlertPolicies", "2018-06-01"),
                 new Tuple<string, string, string>("DBforMariaDB", "Servers", "2018-06-01"),
                 new Tuple<string, string, string>("DBforMariaDB", "TopQueryStatistics", "2018-06-01"),
                 new Tuple<string, string, string>("DBforMariaDB", "VirtualNetworkRules", "2018-06-01"),

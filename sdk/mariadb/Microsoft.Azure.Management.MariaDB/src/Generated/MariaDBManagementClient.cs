@@ -125,11 +125,6 @@ namespace Microsoft.Azure.Management.MariaDB
         public virtual ICheckNameAvailabilityOperations CheckNameAvailability { get; private set; }
 
         /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -429,7 +424,6 @@ namespace Microsoft.Azure.Management.MariaDB
             LogFiles = new LogFilesOperations(this);
             LocationBasedPerformanceTier = new LocationBasedPerformanceTierOperations(this);
             CheckNameAvailability = new CheckNameAvailabilityOperations(this);
-            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             Operations = new Operations(this);
             QueryTexts = new QueryTextsOperations(this);
             TopQueryStatistics = new TopQueryStatisticsOperations(this);
