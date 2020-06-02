@@ -27,8 +27,7 @@ namespace Compute.Tests
             string name = "vmssext01",
             string publisher = "Microsoft.Compute",
             string type = "VMAccessAgent",
-            string version = "2.0",
-            bool autoUpdateMinorVersion = true)
+            string version = "2.0")
         {
             var vmExtension = new VirtualMachineScaleSetExtension
             {
@@ -36,7 +35,7 @@ namespace Compute.Tests
                 Publisher = publisher,
                 Type1 = type,
                 TypeHandlerVersion = version,
-                AutoUpgradeMinorVersion = autoUpdateMinorVersion,
+                AutoUpgradeMinorVersion = true,
                 Settings = "{}",
                 ProtectedSettings = "{}"
             };
@@ -259,8 +258,7 @@ namespace Compute.Tests
             string machineSizeType = null,
             bool? enableUltraSSD = false,
             string diskEncryptionSetId = null,
-            AutomaticRepairsPolicy automaticRepairsPolicy = null,
-            bool singlePlacementGroup = true)
+            AutomaticRepairsPolicy automaticRepairsPolicy = null)
         {
             try
             {
@@ -282,8 +280,7 @@ namespace Compute.Tests
                                                                                      machineSizeType: machineSizeType,
                                                                                      enableUltraSSD: enableUltraSSD,
                                                                                      diskEncryptionSetId: diskEncryptionSetId,
-                                                                                     automaticRepairsPolicy: automaticRepairsPolicy,
-                                                                                     singlePlacementGroup: singlePlacementGroup);
+                                                                                     automaticRepairsPolicy: automaticRepairsPolicy);
 
                 var getResponse = m_CrpClient.VirtualMachineScaleSets.Get(rgName, vmssName);
 
@@ -365,8 +362,7 @@ namespace Compute.Tests
             string machineSizeType = null,
             bool? enableUltraSSD = false,
             string diskEncryptionSetId = null,
-            AutomaticRepairsPolicy automaticRepairsPolicy = null,
-            bool singlePlacementGroup = true)
+            AutomaticRepairsPolicy automaticRepairsPolicy = null)
         {
             // Create the resource Group, it might have been already created during StorageAccount creation.
             var resourceGroup = m_ResourcesClient.ResourceGroups.CreateOrUpdate(
@@ -416,8 +412,6 @@ namespace Compute.Tests
             {
                 inputVMScaleSet.ProximityPlacementGroup = new Microsoft.Azure.Management.Compute.Models.SubResource() { Id = ppgId };
             }
-
-            inputVMScaleSet.SinglePlacementGroup = singlePlacementGroup ? (bool?) null : false;
 
             VirtualMachineScaleSet createOrUpdateResponse = null;
 
