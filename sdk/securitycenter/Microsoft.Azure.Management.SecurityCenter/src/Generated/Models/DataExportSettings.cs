@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.Security.Models
     /// <summary>
     /// Represents a data export setting
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataExportSettings")]
     [Rest.Serialization.JsonTransformation]
     public partial class DataExportSettings : Setting
     {

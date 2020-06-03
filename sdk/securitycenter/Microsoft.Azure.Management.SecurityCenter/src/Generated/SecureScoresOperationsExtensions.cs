@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure score for a specific initiative within your current scope. For
-            /// the ASC Default initiative, use 'ascScore'.
+            /// Get secure score for a specific Security Center initiative within your
+            /// current scope. For the ASC Default initiative, use 'ascScore'.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Management.Security
             }
 
             /// <summary>
-            /// Get secure score for a specific initiative within your current scope. For
-            /// the ASC Default initiative, use 'ascScore'.
+            /// Get secure score for a specific Security Center initiative within your
+            /// current scope. For the ASC Default initiative, use 'ascScore'.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
