@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Update migration item provider specific input.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("UpdateMigrationItemProviderSpecificInput")]
     public partial class UpdateMigrationItemProviderSpecificInput
     {
         /// <summary>

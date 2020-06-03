@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Abstract model class for event details of a HyperVReplica E2E event.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HyperVReplicaBaseEventDetails")]
     public partial class HyperVReplicaBaseEventDetails : EventProviderSpecificDetails
     {
         /// <summary>

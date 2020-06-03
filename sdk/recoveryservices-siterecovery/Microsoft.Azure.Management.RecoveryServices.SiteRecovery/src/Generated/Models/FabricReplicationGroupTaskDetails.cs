@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// This class represents the fabric replication group task details.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("FabricReplicationGroupTaskDetails")]
     public partial class FabricReplicationGroupTaskDetails : TaskTypeDetails
     {
         /// <summary>

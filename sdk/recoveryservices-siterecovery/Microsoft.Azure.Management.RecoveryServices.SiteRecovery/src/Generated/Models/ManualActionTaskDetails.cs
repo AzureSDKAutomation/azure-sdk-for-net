@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// This class represents the manual action task details.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ManualActionTaskDetails")]
     public partial class ManualActionTaskDetails : TaskTypeDetails
     {
         /// <summary>
