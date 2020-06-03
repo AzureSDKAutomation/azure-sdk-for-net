@@ -16,7 +16,13 @@ namespace Microsoft.Azure.Management.PostgreSQL.Models
     /// </summary>
     public static class InfrastructureEncryption
     {
+        /// <summary>
+        /// Default value for single layer of encryption for data at rest.
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Additional (2nd) layer of encryption for data at rest
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }
