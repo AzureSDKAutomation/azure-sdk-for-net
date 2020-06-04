@@ -77,10 +77,6 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
             {
                 Properties.Validate();
             }
-            if (Sku != null)
-            {
-                Sku.Validate();
-            }
         }
     }
 }

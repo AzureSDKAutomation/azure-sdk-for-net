@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.AppPlatform.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="tier">Tier of the Sku</param>
         /// <param name="capacity">Current capacity of the target
         /// resource</param>
-        public Sku(string name, string tier = default(string), int? capacity = default(int?))
+        public Sku(string name = default(string), string tier = default(string), int? capacity = default(int?))
         {
             Name = name;
             Tier = tier;
@@ -65,18 +64,5 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         [JsonProperty(PropertyName = "capacity")]
         public int? Capacity { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-        }
     }
 }
