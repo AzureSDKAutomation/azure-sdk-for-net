@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// A Machine Learning compute based on Azure Virtual Machines.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("VirtualMachine")]
     public partial class VirtualMachine : Compute
     {
         /// <summary>

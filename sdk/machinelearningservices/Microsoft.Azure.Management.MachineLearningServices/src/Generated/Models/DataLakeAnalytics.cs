@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// A DataLakeAnalytics compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataLakeAnalytics")]
     public partial class DataLakeAnalytics : Compute
     {
         /// <summary>

@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.MachineLearningServices.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// A DataFactory compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataFactory")]
     public partial class DataFactory : Compute
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// Machine Learning compute object.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Compute")]
     public partial class Compute
     {
         /// <summary>
