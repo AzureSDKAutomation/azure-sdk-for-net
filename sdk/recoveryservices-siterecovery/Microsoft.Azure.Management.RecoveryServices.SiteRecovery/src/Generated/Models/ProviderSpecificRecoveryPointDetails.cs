@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Replication provider specific recovery point details.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ProviderSpecificRecoveryPointDetails")]
     public partial class ProviderSpecificRecoveryPointDetails
     {
         /// <summary>

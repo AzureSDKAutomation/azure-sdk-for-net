@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Base class for HyperVReplica policy details.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HyperVReplicaBasePolicyDetails")]
     public partial class HyperVReplicaBasePolicyDetails : PolicyProviderSpecificDetails
     {
         /// <summary>

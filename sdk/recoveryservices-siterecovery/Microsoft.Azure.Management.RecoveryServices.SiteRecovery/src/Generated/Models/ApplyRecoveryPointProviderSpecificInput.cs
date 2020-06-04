@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Provider specific input for apply recovery point.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ApplyRecoveryPointProviderSpecificInput")]
     public partial class ApplyRecoveryPointProviderSpecificInput
     {
         /// <summary>

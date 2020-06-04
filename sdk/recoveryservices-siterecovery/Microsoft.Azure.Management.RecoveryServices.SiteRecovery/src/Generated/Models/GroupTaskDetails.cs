@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// This class represents the group task details when parent child
     /// relationship exists in the drill down.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GroupTaskDetails")]
     public partial class GroupTaskDetails
     {
         /// <summary>

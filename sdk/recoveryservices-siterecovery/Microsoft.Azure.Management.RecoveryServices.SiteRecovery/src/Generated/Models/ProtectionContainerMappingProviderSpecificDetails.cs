@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Container mapping provider specific details.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ProtectionContainerMappingProviderSpecificDetails")]
     public partial class ProtectionContainerMappingProviderSpecificDetails
     {
         /// <summary>

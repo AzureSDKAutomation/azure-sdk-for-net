@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Task details based on specific task type.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("TaskTypeDetails")]
     public partial class TaskTypeDetails
     {
         /// <summary>

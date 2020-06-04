@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// This class represents job details based on specific job type.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AsrJobDetails")]
     public partial class AsrJobDetails : JobDetails
     {
         /// <summary>

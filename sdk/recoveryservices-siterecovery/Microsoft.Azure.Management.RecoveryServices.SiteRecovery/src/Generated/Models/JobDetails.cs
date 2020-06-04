@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Job details based on specific job type.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("JobDetails")]
     public partial class JobDetails
     {
         /// <summary>

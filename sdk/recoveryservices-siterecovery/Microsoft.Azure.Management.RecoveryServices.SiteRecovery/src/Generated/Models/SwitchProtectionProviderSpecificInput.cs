@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Provider specific switch protection input.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SwitchProtectionProviderSpecificInput")]
     public partial class SwitchProtectionProviderSpecificInput
     {
         /// <summary>

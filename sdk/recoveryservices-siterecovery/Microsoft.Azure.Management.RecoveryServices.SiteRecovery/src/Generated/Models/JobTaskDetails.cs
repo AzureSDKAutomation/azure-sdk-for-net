@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// This class represents a task which is actually a workflow so that one
     /// can navigate to its individual drill down.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("JobTaskDetails")]
     public partial class JobTaskDetails : TaskTypeDetails
     {
         /// <summary>
