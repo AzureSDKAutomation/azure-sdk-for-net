@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// Compute nodes information related to a Machine Learning compute. Might
     /// differ for every type of compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ComputeNodesInformation")]
     public partial class ComputeNodesInformation
     {
         /// <summary>
