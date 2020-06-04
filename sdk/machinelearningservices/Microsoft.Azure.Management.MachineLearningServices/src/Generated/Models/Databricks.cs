@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// A DataFactory compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Databricks")]
     public partial class Databricks : Compute
     {
         /// <summary>

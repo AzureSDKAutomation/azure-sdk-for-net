@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// A HDInsight compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HDInsight")]
     public partial class HDInsight : Compute
     {
         /// <summary>

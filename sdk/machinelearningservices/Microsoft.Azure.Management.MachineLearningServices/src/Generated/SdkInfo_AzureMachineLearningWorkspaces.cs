@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices
               {
                 new Tuple<string, string, string>("MachineLearningServices", "ListSkus", "2020-04-01"),
                 new Tuple<string, string, string>("MachineLearningServices", "MachineLearningCompute", "2020-04-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "Notebooks", "2020-04-01"),
                 new Tuple<string, string, string>("MachineLearningServices", "Operations", "2020-04-01"),
                 new Tuple<string, string, string>("MachineLearningServices", "PrivateEndpointConnections", "2020-04-01"),
                 new Tuple<string, string, string>("MachineLearningServices", "PrivateLinkResources", "2020-04-01"),

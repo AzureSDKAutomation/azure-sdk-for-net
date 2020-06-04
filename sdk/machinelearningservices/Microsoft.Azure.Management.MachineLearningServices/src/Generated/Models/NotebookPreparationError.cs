@@ -13,27 +13,23 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Compute nodes information related to a Machine Learning compute. Might
-    /// differ for every type of compute.
-    /// </summary>
-    public partial class ComputeNodesInformation
+    public partial class NotebookPreparationError
     {
         /// <summary>
-        /// Initializes a new instance of the ComputeNodesInformation class.
+        /// Initializes a new instance of the NotebookPreparationError class.
         /// </summary>
-        public ComputeNodesInformation()
+        public NotebookPreparationError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ComputeNodesInformation class.
+        /// Initializes a new instance of the NotebookPreparationError class.
         /// </summary>
-        /// <param name="nextLink">The continuation token.</param>
-        public ComputeNodesInformation(string nextLink = default(string))
+        public NotebookPreparationError(string errorMessage = default(string), int? statusCode = default(int?))
         {
-            NextLink = nextLink;
+            ErrorMessage = errorMessage;
+            StatusCode = statusCode;
             CustomInit();
         }
 
@@ -43,10 +39,14 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the continuation token.
         /// </summary>
-        [JsonProperty(PropertyName = "nextLink")]
-        public string NextLink { get; private set; }
+        [JsonProperty(PropertyName = "errorMessage")]
+        public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "statusCode")]
+        public int? StatusCode { get; set; }
 
     }
 }

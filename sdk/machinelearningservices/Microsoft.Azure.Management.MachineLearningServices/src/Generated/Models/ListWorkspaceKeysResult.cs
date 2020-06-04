@@ -26,12 +26,13 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <summary>
         /// Initializes a new instance of the ListWorkspaceKeysResult class.
         /// </summary>
-        public ListWorkspaceKeysResult(string userStorageKey = default(string), string userStorageResourceId = default(string), string appInsightsInstrumentationKey = default(string), RegistryListCredentialsResult containerRegistryCredentials = default(RegistryListCredentialsResult))
+        public ListWorkspaceKeysResult(string userStorageKey = default(string), string userStorageResourceId = default(string), string appInsightsInstrumentationKey = default(string), RegistryListCredentialsResult containerRegistryCredentials = default(RegistryListCredentialsResult), NotebookListCredentialsResult notebookAccessKeys = default(NotebookListCredentialsResult))
         {
             UserStorageKey = userStorageKey;
             UserStorageResourceId = userStorageResourceId;
             AppInsightsInstrumentationKey = appInsightsInstrumentationKey;
             ContainerRegistryCredentials = containerRegistryCredentials;
+            NotebookAccessKeys = notebookAccessKeys;
             CustomInit();
         }
 
@@ -59,6 +60,11 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "containerRegistryCredentials")]
         public RegistryListCredentialsResult ContainerRegistryCredentials { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "notebookAccessKeys")]
+        public NotebookListCredentialsResult NotebookAccessKeys { get; set; }
 
     }
 }

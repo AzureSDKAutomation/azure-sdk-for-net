@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Management.MachineLearningServices
         IWorkspaceFeaturesOperations WorkspaceFeatures { get; }
 
         /// <summary>
+        /// Gets the INotebooksOperations.
+        /// </summary>
+        INotebooksOperations Notebooks { get; }
+
+        /// <summary>
         /// Gets the IUsagesOperations.
         /// </summary>
         IUsagesOperations Usages { get; }

@@ -89,7 +89,9 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// endpoint connections in the workspace.</param>
         /// <param name="sharedPrivateLinkResources">The list of shared private
         /// link resources in this workspace.</param>
-        public Workspace(string id = default(string), string name = default(string), Identity identity = default(Identity), string location = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string workspaceId = default(string), string description = default(string), string friendlyName = default(string), System.DateTime? creationTime = default(System.DateTime?), string keyVault = default(string), string applicationInsights = default(string), string containerRegistry = default(string), string storageAccount = default(string), string discoveryUrl = default(string), string provisioningState = default(string), EncryptionProperty encryption = default(EncryptionProperty), bool? hbiWorkspace = default(bool?), string serviceProvisionedResourceGroup = default(string), int? privateLinkCount = default(int?), string imageBuildCompute = default(string), bool? allowPublicAccessWhenBehindVnet = default(bool?), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>))
+        /// <param name="notebookInfo">The notebook info of Azure ML
+        /// workspace.</param>
+        public Workspace(string id = default(string), string name = default(string), Identity identity = default(Identity), string location = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string workspaceId = default(string), string description = default(string), string friendlyName = default(string), System.DateTime? creationTime = default(System.DateTime?), string keyVault = default(string), string applicationInsights = default(string), string containerRegistry = default(string), string storageAccount = default(string), string discoveryUrl = default(string), string provisioningState = default(string), EncryptionProperty encryption = default(EncryptionProperty), bool? hbiWorkspace = default(bool?), string serviceProvisionedResourceGroup = default(string), int? privateLinkCount = default(int?), string imageBuildCompute = default(string), bool? allowPublicAccessWhenBehindVnet = default(bool?), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>), NotebookResourceInfo notebookInfo = default(NotebookResourceInfo))
             : base(id, name, identity, location, type, tags, sku)
         {
             WorkspaceId = workspaceId;
@@ -110,6 +112,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
             AllowPublicAccessWhenBehindVnet = allowPublicAccessWhenBehindVnet;
             PrivateEndpointConnections = privateEndpointConnections;
             SharedPrivateLinkResources = sharedPrivateLinkResources;
+            NotebookInfo = notebookInfo;
             CustomInit();
         }
 
@@ -243,6 +246,12 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.sharedPrivateLinkResources")]
         public IList<SharedPrivateLinkResource> SharedPrivateLinkResources { get; set; }
+
+        /// <summary>
+        /// Gets the notebook info of Azure ML workspace.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.notebookInfo")]
+        public NotebookResourceInfo NotebookInfo { get; private set; }
 
         /// <summary>
         /// Validate the object.
