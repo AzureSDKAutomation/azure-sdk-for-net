@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// A Machine Learning compute based on AKS.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AKS")]
     public partial class AKS : Compute
     {
         /// <summary>
