@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The location of HDFS.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HdfsLocation")]
     public partial class HdfsLocation : DatasetLocation
     {
         /// <summary>

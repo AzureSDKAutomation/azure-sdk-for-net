@@ -10,26 +10,14 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
-    using System.Linq;
 
     /// <summary>
-    /// The base definition of a secret type.
+    /// Defines values for SqlPartitionOption.
     /// </summary>
-    public partial class SecretBase
+    public static class SqlPartitionOption
     {
-        /// <summary>
-        /// Initializes a new instance of the SecretBase class.
-        /// </summary>
-        public SecretBase()
-        {
-            CustomInit();
-        }
-
-
-        /// <summary>
-        /// An initialization method that performs custom operations like setting defaults
-        /// </summary>
-        partial void CustomInit();
-
+        public const string None = "None";
+        public const string PhysicalPartitionsOfTable = "PhysicalPartitionsOfTable";
+        public const string DynamicRange = "DynamicRange";
     }
 }

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Connector read setting.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("StoreReadSettings")]
     public partial class StoreReadSettings
     {
         /// <summary>

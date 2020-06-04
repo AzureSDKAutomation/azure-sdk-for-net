@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Dynamics AX source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DynamicsAXSource")]
     public partial class DynamicsAXSource : TabularSource
     {
         /// <summary>

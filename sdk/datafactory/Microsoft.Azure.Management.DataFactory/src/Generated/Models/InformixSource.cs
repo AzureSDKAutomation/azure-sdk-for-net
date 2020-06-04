@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for Informix.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("InformixSource")]
     public partial class InformixSource : TabularSource
     {
         /// <summary>

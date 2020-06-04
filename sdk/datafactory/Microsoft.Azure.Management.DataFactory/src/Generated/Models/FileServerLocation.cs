@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The location of file server dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("FileServerLocation")]
     public partial class FileServerLocation : DatasetLocation
     {
         /// <summary>

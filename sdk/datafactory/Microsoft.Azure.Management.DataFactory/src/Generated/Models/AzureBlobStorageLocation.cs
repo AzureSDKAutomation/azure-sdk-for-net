@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The location of azure blob dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureBlobStorageLocation")]
     public partial class AzureBlobStorageLocation : DatasetLocation
     {
         /// <summary>

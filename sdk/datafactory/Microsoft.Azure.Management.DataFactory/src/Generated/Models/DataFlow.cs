@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// Azure Data Factory nested object which contains a flow with data
     /// movements and transformations.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataFlow")]
     public partial class DataFlow
     {
         /// <summary>

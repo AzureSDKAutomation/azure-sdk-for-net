@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity HDFS source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HdfsSource")]
     public partial class HdfsSource : CopySource
     {
         /// <summary>

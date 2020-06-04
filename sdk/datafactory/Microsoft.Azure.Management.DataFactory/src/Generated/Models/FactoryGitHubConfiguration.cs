@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Factory's GitHub repo information.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("FactoryGitHubConfiguration")]
     public partial class FactoryGitHubConfiguration : FactoryRepoConfiguration
     {
         /// <summary>

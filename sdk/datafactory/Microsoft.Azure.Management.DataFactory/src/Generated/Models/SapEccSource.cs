@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for SAP ECC source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SapEccSource")]
     public partial class SapEccSource : TabularSource
     {
         /// <summary>

@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Trigger that runs every time the selected Blob container changes.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BlobTrigger")]
     [Rest.Serialization.JsonTransformation]
     public partial class BlobTrigger : MultiplePipelineTrigger
     {

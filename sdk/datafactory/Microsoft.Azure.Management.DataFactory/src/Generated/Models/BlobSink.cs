@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Azure Blob sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BlobSink")]
     public partial class BlobSink : CopySink
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Netezza source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("NetezzaSource")]
     public partial class NetezzaSource : TabularSource
     {
         /// <summary>

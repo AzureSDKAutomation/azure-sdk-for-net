@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Responsys source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ResponsysSource")]
     public partial class ResponsysSource : TabularSource
     {
         /// <summary>

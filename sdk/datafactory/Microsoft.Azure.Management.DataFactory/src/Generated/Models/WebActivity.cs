@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Web activity.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("WebActivity")]
     [Rest.Serialization.JsonTransformation]
     public partial class WebActivity : ExecutionActivity
     {

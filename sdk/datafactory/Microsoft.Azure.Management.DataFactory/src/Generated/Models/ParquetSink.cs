@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Parquet sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ParquetSink")]
     public partial class ParquetSink : CopySink
     {
         /// <summary>

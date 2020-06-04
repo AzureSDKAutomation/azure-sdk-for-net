@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Google AdWords service source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GoogleAdWordsSource")]
     public partial class GoogleAdWordsSource : TabularSource
     {
         /// <summary>

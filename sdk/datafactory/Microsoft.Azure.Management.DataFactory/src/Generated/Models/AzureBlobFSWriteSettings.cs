@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Azure blobFS write settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureBlobFSWriteSettings")]
     public partial class AzureBlobFSWriteSettings : StoreWriteSettings
     {
         /// <summary>

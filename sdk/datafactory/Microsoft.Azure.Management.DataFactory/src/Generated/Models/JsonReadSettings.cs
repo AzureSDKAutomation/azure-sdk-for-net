@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Json read settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("JsonReadSettings")]
     public partial class JsonReadSettings : FormatReadSettings
     {
         /// <summary>

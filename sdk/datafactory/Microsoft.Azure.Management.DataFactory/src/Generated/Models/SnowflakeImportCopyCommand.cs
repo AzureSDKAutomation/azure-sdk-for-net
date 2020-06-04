@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Snowflake import command settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SnowflakeImportCopyCommand")]
     public partial class SnowflakeImportCopyCommand : ImportSettings
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Sftp write settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SftpWriteSettings")]
     public partial class SftpWriteSettings : StoreWriteSettings
     {
         /// <summary>

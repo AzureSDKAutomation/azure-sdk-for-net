@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Azure blob read settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureBlobStorageReadSettings")]
     public partial class AzureBlobStorageReadSettings : StoreReadSettings
     {
         /// <summary>

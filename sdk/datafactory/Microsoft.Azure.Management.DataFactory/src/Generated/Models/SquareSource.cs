@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Square Service source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SquareSource")]
     public partial class SquareSource : TabularSource
     {
         /// <summary>

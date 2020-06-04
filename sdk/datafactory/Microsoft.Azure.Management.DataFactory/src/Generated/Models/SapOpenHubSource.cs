@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// A copy activity source for SAP Business Warehouse Open Hub Destination
     /// source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SapOpenHubSource")]
     public partial class SapOpenHubSource : TabularSource
     {
         /// <summary>

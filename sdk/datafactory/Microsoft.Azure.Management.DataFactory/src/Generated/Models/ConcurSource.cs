@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Concur Service source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ConcurSource")]
     public partial class ConcurSource : TabularSource
     {
         /// <summary>

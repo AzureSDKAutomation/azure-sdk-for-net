@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for Sybase databases.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SybaseSource")]
     public partial class SybaseSource : TabularSource
     {
         /// <summary>

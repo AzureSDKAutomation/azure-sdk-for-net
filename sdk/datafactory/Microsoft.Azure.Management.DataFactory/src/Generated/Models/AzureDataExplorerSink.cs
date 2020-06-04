@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Azure Data Explorer sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureDataExplorerSink")]
     public partial class AzureDataExplorerSink : CopySink
     {
         /// <summary>

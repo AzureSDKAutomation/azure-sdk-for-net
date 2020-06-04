@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Azure SQL Managed Instance sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SqlMISink")]
     public partial class SqlMISink : CopySink
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Binary read settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BinaryReadSettings")]
     public partial class BinaryReadSettings : FormatReadSettings
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Marketo server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("MarketoSource")]
     public partial class MarketoSource : TabularSource
     {
         /// <summary>

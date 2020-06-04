@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Google Cloud Storage read settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GoogleCloudStorageReadSettings")]
     public partial class GoogleCloudStorageReadSettings : StoreReadSettings
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The compression method used on a dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DatasetCompression")]
     public partial class DatasetCompression
     {
         /// <summary>

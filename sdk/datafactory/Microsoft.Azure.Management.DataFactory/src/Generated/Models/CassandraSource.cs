@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for a Cassandra database.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("CassandraSource")]
     public partial class CassandraSource : TabularSource
     {
         /// <summary>

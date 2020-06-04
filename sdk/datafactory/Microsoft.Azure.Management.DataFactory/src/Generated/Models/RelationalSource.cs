@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for various relational databases.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("RelationalSource")]
     public partial class RelationalSource : CopySource
     {
         /// <summary>

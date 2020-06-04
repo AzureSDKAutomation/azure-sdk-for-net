@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The custom setup of running cmdkey commands.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("CmdkeySetup")]
     [Rest.Serialization.JsonTransformation]
     public partial class CmdkeySetup : CustomSetupBase
     {

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The location of Google Cloud Storage dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GoogleCloudStorageLocation")]
     public partial class GoogleCloudStorageLocation : DatasetLocation
     {
         /// <summary>

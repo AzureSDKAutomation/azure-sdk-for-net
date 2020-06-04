@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for sharePoint online list source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SharePointOnlineListSource")]
     public partial class SharePointOnlineListSource : CopySource
     {
         /// <summary>

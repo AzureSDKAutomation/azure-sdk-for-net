@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Avro sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AvroSink")]
     public partial class AvroSink : CopySink
     {
         /// <summary>

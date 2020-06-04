@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Hive Server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HiveSource")]
     public partial class HiveSource : TabularSource
     {
         /// <summary>

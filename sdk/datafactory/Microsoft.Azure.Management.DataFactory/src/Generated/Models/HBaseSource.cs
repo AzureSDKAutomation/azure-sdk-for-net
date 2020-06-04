@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity HBase server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HBaseSource")]
     public partial class HBaseSource : TabularSource
     {
         /// <summary>

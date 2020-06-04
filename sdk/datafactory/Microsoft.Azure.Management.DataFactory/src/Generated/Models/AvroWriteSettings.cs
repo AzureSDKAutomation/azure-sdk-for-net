@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Avro write settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AvroWriteSettings")]
     public partial class AvroWriteSettings : FormatWriteSettings
     {
         /// <summary>

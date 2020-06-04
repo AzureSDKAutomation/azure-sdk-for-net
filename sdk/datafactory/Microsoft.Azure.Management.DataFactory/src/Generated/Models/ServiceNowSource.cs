@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity ServiceNow server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ServiceNowSource")]
     public partial class ServiceNowSource : TabularSource
     {
         /// <summary>

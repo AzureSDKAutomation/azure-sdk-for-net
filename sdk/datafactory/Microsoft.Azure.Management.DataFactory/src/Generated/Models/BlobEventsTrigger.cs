@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Trigger that runs every time a Blob event occurs.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BlobEventsTrigger")]
     [Rest.Serialization.JsonTransformation]
     public partial class BlobEventsTrigger : MultiplePipelineTrigger
     {

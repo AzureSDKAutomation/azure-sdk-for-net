@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Azure Search Index sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureSearchIndexSink")]
     public partial class AzureSearchIndexSink : CopySink
     {
         /// <summary>

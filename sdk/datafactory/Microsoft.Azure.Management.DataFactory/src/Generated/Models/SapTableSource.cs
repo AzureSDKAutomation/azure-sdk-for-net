@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for SAP Table source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SapTableSource")]
     public partial class SapTableSource : TabularSource
     {
         /// <summary>

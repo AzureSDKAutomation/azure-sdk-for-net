@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Referenced tumbling window trigger dependency.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("TumblingWindowTriggerDependencyReference")]
     public partial class TumblingWindowTriggerDependencyReference : TriggerDependencyReference
     {
         /// <summary>

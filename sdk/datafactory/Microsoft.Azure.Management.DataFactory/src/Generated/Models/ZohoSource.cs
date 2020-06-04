@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Zoho server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ZohoSource")]
     public partial class ZohoSource : TabularSource
     {
         /// <summary>

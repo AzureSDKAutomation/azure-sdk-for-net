@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Snowflake export command settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SnowflakeExportCopyCommand")]
     public partial class SnowflakeExportCopyCommand : ExportSettings
     {
         /// <summary>

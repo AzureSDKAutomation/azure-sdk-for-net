@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// File server read settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("FileServerReadSettings")]
     public partial class FileServerReadSettings : StoreReadSettings
     {
         /// <summary>

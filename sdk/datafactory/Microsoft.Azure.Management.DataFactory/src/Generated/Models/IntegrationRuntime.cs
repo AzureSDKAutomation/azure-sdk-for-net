@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// Azure Data Factory nested object which serves as a compute resource for
     /// activities.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("IntegrationRuntime")]
     public partial class IntegrationRuntime
     {
         /// <summary>

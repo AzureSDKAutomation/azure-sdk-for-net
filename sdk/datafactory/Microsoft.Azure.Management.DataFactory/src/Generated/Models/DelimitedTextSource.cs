@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity DelimitedText source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DelimitedTextSource")]
     public partial class DelimitedTextSource : CopySource
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Impala server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ImpalaSource")]
     public partial class ImpalaSource : TabularSource
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Common Data Service for Apps sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("CommonDataServiceForAppsSink")]
     public partial class CommonDataServiceForAppsSink : CopySink
     {
         /// <summary>

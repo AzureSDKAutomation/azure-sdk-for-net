@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Trigger referenced dependency.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("TriggerDependencyReference")]
     public partial class TriggerDependencyReference : DependencyReference
     {
         /// <summary>

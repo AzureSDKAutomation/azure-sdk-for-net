@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Paypal Service source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("PaypalSource")]
     public partial class PaypalSource : TabularSource
     {
         /// <summary>

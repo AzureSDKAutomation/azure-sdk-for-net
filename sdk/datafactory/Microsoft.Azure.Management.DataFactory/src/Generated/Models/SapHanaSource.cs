@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for SAP HANA source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SapHanaSource")]
     public partial class SapHanaSource : TabularSource
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Presto server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("PrestoSource")]
     public partial class PrestoSource : TabularSource
     {
         /// <summary>

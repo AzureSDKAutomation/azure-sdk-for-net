@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The data stored in Optimized Row Columnar (ORC) format.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("OrcFormat")]
     public partial class OrcFormat : DatasetStorageFormat
     {
         /// <summary>

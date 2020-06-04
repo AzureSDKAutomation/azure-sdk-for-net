@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Google BigQuery service source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GoogleBigQuerySource")]
     public partial class GoogleBigQuerySource : TabularSource
     {
         /// <summary>

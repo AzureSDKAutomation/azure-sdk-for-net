@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Azure MySQL source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureMySqlSource")]
     public partial class AzureMySqlSource : TabularSource
     {
         /// <summary>

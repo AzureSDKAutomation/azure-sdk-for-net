@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Delimited text write settings.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DelimitedTextWriteSettings")]
     public partial class DelimitedTextWriteSettings : FormatWriteSettings
     {
         /// <summary>

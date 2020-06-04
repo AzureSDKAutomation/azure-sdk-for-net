@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Referenced dependency.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DependencyReference")]
     public partial class DependencyReference
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Phoenix server source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("PhoenixSource")]
     public partial class PhoenixSource : TabularSource
     {
         /// <summary>

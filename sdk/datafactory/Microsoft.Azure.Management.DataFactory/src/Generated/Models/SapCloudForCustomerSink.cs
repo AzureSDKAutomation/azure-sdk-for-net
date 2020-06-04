@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity SAP Cloud for Customer sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SapCloudForCustomerSink")]
     public partial class SapCloudForCustomerSink : CopySink
     {
         /// <summary>

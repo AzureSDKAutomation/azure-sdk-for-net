@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Factory's VSTS repo information.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("FactoryVSTSConfiguration")]
     public partial class FactoryVSTSConfiguration : FactoryRepoConfiguration
     {
         /// <summary>

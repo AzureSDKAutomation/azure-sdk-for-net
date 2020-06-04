@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// windows from a start time without gaps and also supports backfill
     /// scenarios (when start time is in the past).
     /// </summary>
-    [Newtonsoft.Json.JsonObject("TumblingWindowTrigger")]
     [Rest.Serialization.JsonTransformation]
     public partial class TumblingWindowTrigger : Trigger
     {

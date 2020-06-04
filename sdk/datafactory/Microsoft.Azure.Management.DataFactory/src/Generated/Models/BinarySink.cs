@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Binary sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BinarySink")]
     public partial class BinarySink : CopySink
     {
         /// <summary>

@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for Amazon Redshift Source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AmazonRedshiftSource")]
     public partial class AmazonRedshiftSource : TabularSource
     {
         /// <summary>
