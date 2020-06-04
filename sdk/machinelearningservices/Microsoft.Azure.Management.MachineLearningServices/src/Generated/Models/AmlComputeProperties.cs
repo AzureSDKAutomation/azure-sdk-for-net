@@ -31,9 +31,13 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <summary>
         /// Initializes a new instance of the AmlComputeProperties class.
         /// </summary>
+        /// <param name="osType">Compute OS Type. Possible values include:
+        /// 'Linux', 'Windows'</param>
         /// <param name="vmSize">Virtual Machine Size</param>
         /// <param name="vmPriority">Virtual Machine priority. Possible values
         /// include: 'Dedicated', 'LowPriority'</param>
+        /// <param name="virtualMachineImage">Virtual Machine image for AML
+        /// Compute - windows only</param>
         /// <param name="scaleSettings">Scale settings for AML Compute</param>
         /// <param name="userAccountCredentials">User account
         /// credentials.</param>
@@ -47,10 +51,12 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="currentNodeCount">Current node count.</param>
         /// <param name="targetNodeCount">Target node count.</param>
         /// <param name="nodeStateCounts">Node state counts.</param>
-        public AmlComputeProperties(string vmSize = default(string), string vmPriority = default(string), ScaleSettings scaleSettings = default(ScaleSettings), UserAccountCredentials userAccountCredentials = default(UserAccountCredentials), ResourceId subnet = default(ResourceId), string remoteLoginPortPublicAccess = default(string), string allocationState = default(string), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), IList<MachineLearningServiceError> errors = default(IList<MachineLearningServiceError>), int? currentNodeCount = default(int?), int? targetNodeCount = default(int?), NodeStateCounts nodeStateCounts = default(NodeStateCounts))
+        public AmlComputeProperties(string osType = default(string), string vmSize = default(string), string vmPriority = default(string), VirtualMachineImage virtualMachineImage = default(VirtualMachineImage), ScaleSettings scaleSettings = default(ScaleSettings), UserAccountCredentials userAccountCredentials = default(UserAccountCredentials), ResourceId subnet = default(ResourceId), string remoteLoginPortPublicAccess = default(string), string allocationState = default(string), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), IList<MachineLearningServiceError> errors = default(IList<MachineLearningServiceError>), int? currentNodeCount = default(int?), int? targetNodeCount = default(int?), NodeStateCounts nodeStateCounts = default(NodeStateCounts))
         {
+            OsType = osType;
             VmSize = vmSize;
             VmPriority = vmPriority;
+            VirtualMachineImage = virtualMachineImage;
             ScaleSettings = scaleSettings;
             UserAccountCredentials = userAccountCredentials;
             Subnet = subnet;
@@ -70,6 +76,13 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets compute OS Type. Possible values include: 'Linux',
+        /// 'Windows'
+        /// </summary>
+        [JsonProperty(PropertyName = "osType")]
+        public string OsType { get; set; }
+
+        /// <summary>
         /// Gets or sets virtual Machine Size
         /// </summary>
         [JsonProperty(PropertyName = "vmSize")]
@@ -81,6 +94,12 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "vmPriority")]
         public string VmPriority { get; set; }
+
+        /// <summary>
+        /// Gets or sets virtual Machine image for AML Compute - windows only
+        /// </summary>
+        [JsonProperty(PropertyName = "virtualMachineImage")]
+        public VirtualMachineImage VirtualMachineImage { get; set; }
 
         /// <summary>
         /// Gets or sets scale settings for AML Compute
@@ -198,6 +217,10 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (VirtualMachineImage != null)
+            {
+                VirtualMachineImage.Validate();
+            }
             if (ScaleSettings != null)
             {
                 ScaleSettings.Validate();

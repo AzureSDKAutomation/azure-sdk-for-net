@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     /// <summary>
     /// An Azure Machine Learning compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AmlCompute")]
     public partial class AmlCompute : Compute
     {
         /// <summary>

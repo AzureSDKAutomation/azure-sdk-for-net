@@ -10,14 +10,12 @@
 
 namespace Microsoft.Azure.Management.MachineLearningServices.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Secrets related to a Machine Learning compute. Might differ for every
     /// type of compute.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ComputeSecrets")]
     public partial class ComputeSecrets
     {
         /// <summary>
