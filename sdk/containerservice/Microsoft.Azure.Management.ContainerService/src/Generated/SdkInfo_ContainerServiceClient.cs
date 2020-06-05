@@ -19,12 +19,9 @@ namespace Microsoft.Azure.Management.ContainerService
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("ContainerService", "AgentPools", "2020-04-01"),
-                new Tuple<string, string, string>("ContainerService", "ContainerServices", "2017-07-01"),
-                new Tuple<string, string, string>("ContainerService", "ContainerServices", "2019-08-01"),
-                new Tuple<string, string, string>("ContainerService", "ManagedClusters", "2020-04-01"),
-                new Tuple<string, string, string>("ContainerService", "OpenShiftManagedClusters", "2019-04-30"),
-                new Tuple<string, string, string>("ContainerService", "Operations", "2020-04-01"),
+                new Tuple<string, string, string>("ContainerService", "AgentPools", "2020-06-01"),
+                new Tuple<string, string, string>("ContainerService", "ManagedClusters", "2020-06-01"),
+                new Tuple<string, string, string>("ContainerService", "Operations", "2020-06-01"),
               }.AsEnumerable();
           }
       }
