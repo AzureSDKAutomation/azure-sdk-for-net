@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "support/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "support/resource-manager" -AutoRestVersion "2.0.4413"
