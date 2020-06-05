@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='clusterName'>
             /// The name of the cluster.
             /// </param>
-            public static HostInfoListResult ListHosts(this IVirtualMachinesOperations operations, string resourceGroupName, string clusterName)
+            public static IList<HostInfo> ListHosts(this IVirtualMachinesOperations operations, string resourceGroupName, string clusterName)
             {
                 return operations.ListHostsAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
             }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<HostInfoListResult> ListHostsAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string clusterName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<HostInfo>> ListHostsAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string clusterName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListHostsWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
                 {

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<HostInfoListResult>> ListHostsWithHttpMessagesAsync(string resourceGroupName, string clusterName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IList<HostInfo>>> ListHostsWithHttpMessagesAsync(string resourceGroupName, string clusterName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.HDInsight
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<HostInfoListResult>();
+            var _result = new AzureOperationResponse<IList<HostInfo>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.HDInsight
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<HostInfoListResult>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IList<HostInfo>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
