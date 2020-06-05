@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the target resource group.
             /// </param>
             /// <param name='availabilitySetName'>
             /// The name of the availability set.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the target resource group.
             /// </param>
             /// <param name='availabilitySetName'>
             /// The name of the availability set.
