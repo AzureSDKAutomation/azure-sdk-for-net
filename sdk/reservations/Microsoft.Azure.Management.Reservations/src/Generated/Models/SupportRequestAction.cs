@@ -31,8 +31,6 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the SupportRequestAction class.
         /// </summary>
-        /// <param name="autoQuotaIncreaseState">Is support request action
-        /// enabled.</param>
         /// <param name="severity">The support request severity.</param>
         /// <param name="firstName">The first name of the recipient.</param>
         /// <param name="lastName">The last name of the recipient.</param>
@@ -46,9 +44,8 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// channel.</param>
         /// <param name="alternateEmailAddresses">The alternate email address
         /// of the recipient.</param>
-        public SupportRequestAction(object autoQuotaIncreaseState = default(object), object severity = default(object), string firstName = default(string), string lastName = default(string), string country = default(string), string phoneNumber = default(string), string primaryEmailAddress = default(string), string supportLanguage = default(string), object preferredContactMethod = default(object), IList<string> alternateEmailAddresses = default(IList<string>))
+        public SupportRequestAction(object severity = default(object), string firstName = default(string), string lastName = default(string), string country = default(string), string phoneNumber = default(string), string primaryEmailAddress = default(string), string supportLanguage = default(string), object preferredContactMethod = default(object), IList<string> alternateEmailAddresses = default(IList<string>))
         {
-            AutoQuotaIncreaseState = autoQuotaIncreaseState;
             Severity = severity;
             FirstName = firstName;
             LastName = lastName;
@@ -65,12 +62,6 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets is support request action enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "autoQuotaIncreaseState")]
-        public object AutoQuotaIncreaseState { get; set; }
 
         /// <summary>
         /// Gets or sets the support request severity.
