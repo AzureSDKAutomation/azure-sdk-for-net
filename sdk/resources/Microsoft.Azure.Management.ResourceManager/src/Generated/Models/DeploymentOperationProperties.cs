@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// <param name="targetResource">The target resource.</param>
         /// <param name="request">The HTTP request message.</param>
         /// <param name="response">The HTTP response message.</param>
-        public DeploymentOperationProperties(ProvisioningOperation? provisioningOperation = default(ProvisioningOperation?), string provisioningState = default(string), System.DateTime? timestamp = default(System.DateTime?), string duration = default(string), string serviceRequestId = default(string), string statusCode = default(string), object statusMessage = default(object), TargetResource targetResource = default(TargetResource), HttpMessage request = default(HttpMessage), HttpMessage response = default(HttpMessage))
+        public DeploymentOperationProperties(ProvisioningOperation? provisioningOperation = default(ProvisioningOperation?), string provisioningState = default(string), System.DateTime? timestamp = default(System.DateTime?), string duration = default(string), string serviceRequestId = default(string), string statusCode = default(string), StatusMessage statusMessage = default(StatusMessage), TargetResource targetResource = default(TargetResource), HttpMessage request = default(HttpMessage), HttpMessage response = default(HttpMessage))
         {
             ProvisioningOperation = provisioningOperation;
             ProvisioningState = provisioningState;
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// Gets operation status message.
         /// </summary>
         [JsonProperty(PropertyName = "statusMessage")]
-        public object StatusMessage { get; private set; }
+        public StatusMessage StatusMessage { get; private set; }
 
         /// <summary>
         /// Gets the target resource.
