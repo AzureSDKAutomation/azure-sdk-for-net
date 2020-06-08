@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.Consumption.Models
     /// <summary>
     /// A reservation recommendation resource.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ReservationRecommendation")]
     public partial class ReservationRecommendation
     {
         /// <summary>

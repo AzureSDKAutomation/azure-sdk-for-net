@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.Consumption.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.Consumption.Models
     /// <summary>
     /// An usage detail resource.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("UsageDetail")]
     public partial class UsageDetail : Resource
     {
         /// <summary>
