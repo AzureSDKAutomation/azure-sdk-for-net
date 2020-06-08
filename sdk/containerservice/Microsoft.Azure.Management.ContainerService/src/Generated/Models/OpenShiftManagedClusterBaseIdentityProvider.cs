@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Structure for any Identity provider.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("OpenShiftManagedClusterBaseIdentityProvider")]
     public partial class OpenShiftManagedClusterBaseIdentityProvider
     {
         /// <summary>
