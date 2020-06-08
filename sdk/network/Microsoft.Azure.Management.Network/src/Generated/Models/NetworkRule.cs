@@ -16,27 +16,25 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Rule condition of type network.
+    /// Rule of type network.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("NetworkRuleCondition")]
-    public partial class NetworkRuleCondition : FirewallPolicyRuleCondition
+    public partial class NetworkRule : FirewallPolicyRule
     {
         /// <summary>
-        /// Initializes a new instance of the NetworkRuleCondition class.
+        /// Initializes a new instance of the NetworkRule class.
         /// </summary>
-        public NetworkRuleCondition()
+        public NetworkRule()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NetworkRuleCondition class.
+        /// Initializes a new instance of the NetworkRule class.
         /// </summary>
-        /// <param name="name">Name of the rule condition.</param>
-        /// <param name="description">Description of the rule
-        /// condition.</param>
+        /// <param name="name">Name of the rule.</param>
+        /// <param name="description">Description of the rule.</param>
         /// <param name="ipProtocols">Array of
-        /// FirewallPolicyRuleConditionNetworkProtocols.</param>
+        /// FirewallPolicyRuleNetworkProtocols.</param>
         /// <param name="sourceAddresses">List of source IP addresses for this
         /// rule.</param>
         /// <param name="destinationAddresses">List of destination IP addresses
@@ -46,7 +44,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// rule.</param>
         /// <param name="destinationIpGroups">List of destination IpGroups for
         /// this rule.</param>
-        public NetworkRuleCondition(string name = default(string), string description = default(string), IList<string> ipProtocols = default(IList<string>), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>), IList<string> destinationIpGroups = default(IList<string>))
+        /// <param name="destinationFqdns">List of destination FQDNs.</param>
+        public NetworkRule(string name = default(string), string description = default(string), IList<string> ipProtocols = default(IList<string>), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>), IList<string> destinationIpGroups = default(IList<string>), IList<string> destinationFqdns = default(IList<string>))
             : base(name, description)
         {
             IpProtocols = ipProtocols;
@@ -55,6 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
             DestinationPorts = destinationPorts;
             SourceIpGroups = sourceIpGroups;
             DestinationIpGroups = destinationIpGroups;
+            DestinationFqdns = destinationFqdns;
             CustomInit();
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of FirewallPolicyRuleConditionNetworkProtocols.
+        /// Gets or sets array of FirewallPolicyRuleNetworkProtocols.
         /// </summary>
         [JsonProperty(PropertyName = "ipProtocols")]
         public IList<string> IpProtocols { get; set; }
@@ -98,6 +98,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "destinationIpGroups")]
         public IList<string> DestinationIpGroups { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of destination FQDNs.
+        /// </summary>
+        [JsonProperty(PropertyName = "destinationFqdns")]
+        public IList<string> DestinationFqdns { get; set; }
 
     }
 }
