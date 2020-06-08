@@ -16,28 +16,27 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines all possible authentication profiles for the OpenShift cluster.
+    /// A list of private endpoint connections
     /// </summary>
-    public partial class OpenShiftManagedClusterAuthProfile
+    public partial class PrivateEndpointConnectionListResult
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// OpenShiftManagedClusterAuthProfile class.
+        /// PrivateEndpointConnectionListResult class.
         /// </summary>
-        public OpenShiftManagedClusterAuthProfile()
+        public PrivateEndpointConnectionListResult()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// OpenShiftManagedClusterAuthProfile class.
+        /// PrivateEndpointConnectionListResult class.
         /// </summary>
-        /// <param name="identityProviders">Type of authentication profile to
-        /// use.</param>
-        public OpenShiftManagedClusterAuthProfile(IList<OpenShiftManagedClusterIdentityProvider> identityProviders = default(IList<OpenShiftManagedClusterIdentityProvider>))
+        /// <param name="value">The collection value.</param>
+        public PrivateEndpointConnectionListResult(IList<PrivateEndpointConnection> value = default(IList<PrivateEndpointConnection>))
         {
-            IdentityProviders = identityProviders;
+            Value = value;
             CustomInit();
         }
 
@@ -47,10 +46,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets type of authentication profile to use.
+        /// Gets or sets the collection value.
         /// </summary>
-        [JsonProperty(PropertyName = "identityProviders")]
-        public IList<OpenShiftManagedClusterIdentityProvider> IdentityProviders { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<PrivateEndpointConnection> Value { get; set; }
 
     }
 }

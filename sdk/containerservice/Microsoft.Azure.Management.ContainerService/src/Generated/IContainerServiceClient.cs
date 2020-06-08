@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Management.ContainerService
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -67,16 +72,6 @@ namespace Microsoft.Azure.Management.ContainerService
 
 
         /// <summary>
-        /// Gets the IOpenShiftManagedClustersOperations.
-        /// </summary>
-        IOpenShiftManagedClustersOperations OpenShiftManagedClusters { get; }
-
-        /// <summary>
-        /// Gets the IContainerServicesOperations.
-        /// </summary>
-        IContainerServicesOperations ContainerServices { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
@@ -90,6 +85,11 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the IAgentPoolsOperations.
         /// </summary>
         IAgentPoolsOperations AgentPools { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
 
     }
 }

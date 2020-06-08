@@ -12,11 +12,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for OpenShiftAgentPoolProfileRole.
+    /// Defines values for ConnectionStatus.
     /// </summary>
-    public static class OpenShiftAgentPoolProfileRole
+    public static class ConnectionStatus
     {
-        public const string Compute = "compute";
-        public const string Infra = "infra";
+        public const string Pending = "Pending";
+        public const string Approved = "Approved";
+        public const string Rejected = "Rejected";
+        public const string Disconnected = "Disconnected";
     }
 }
