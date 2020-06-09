@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.Consumption.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.Consumption.Models
     /// <summary>
     /// A charge summary resource.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ChargeSummary")]
     public partial class ChargeSummary : Resource
     {
         /// <summary>

@@ -57,6 +57,38 @@ namespace Microsoft.Azure.Management.Consumption
         /// scope
         /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
         /// </summary>
+        /// <param name='billingAccountId'>
+        /// BillingAccount ID
+        /// </param>
+        /// <param name='billingProfileId'>
+        /// Azure Billing Profile ID.
+        /// </param>
+        /// <param name='filter'>
+        /// Filter reservation transactions by date range. The
+        /// properties/EventDate for start date and end date. The filter
+        /// supports 'le' and  'ge'
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ModernReservationTransaction>>> ListByBillingProfileWithHttpMessagesAsync(string billingAccountId, string billingProfileId, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List of transactions for reserved instances on billing account
+        /// scope
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -76,5 +108,29 @@ namespace Microsoft.Azure.Management.Consumption
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<ReservationTransaction>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List of transactions for reserved instances on billing account
+        /// scope
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ModernReservationTransaction>>> ListByBillingProfileNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -72,6 +72,56 @@ namespace Microsoft.Azure.Management.Consumption
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='billingAccountId'>
+            /// BillingAccount ID
+            /// </param>
+            /// <param name='billingProfileId'>
+            /// Azure Billing Profile ID.
+            /// </param>
+            /// <param name='filter'>
+            /// Filter reservation transactions by date range. The properties/EventDate for
+            /// start date and end date. The filter supports 'le' and  'ge'
+            /// </param>
+            public static IPage<ModernReservationTransaction> ListByBillingProfile(this IReservationTransactionsOperations operations, string billingAccountId, string billingProfileId, string filter = default(string))
+            {
+                return operations.ListByBillingProfileAsync(billingAccountId, billingProfileId, filter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List of transactions for reserved instances on billing account scope
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountId'>
+            /// BillingAccount ID
+            /// </param>
+            /// <param name='billingProfileId'>
+            /// Azure Billing Profile ID.
+            /// </param>
+            /// <param name='filter'>
+            /// Filter reservation transactions by date range. The properties/EventDate for
+            /// start date and end date. The filter supports 'le' and  'ge'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ModernReservationTransaction>> ListByBillingProfileAsync(this IReservationTransactionsOperations operations, string billingAccountId, string billingProfileId, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByBillingProfileWithHttpMessagesAsync(billingAccountId, billingProfileId, filter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List of transactions for reserved instances on billing account scope
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
@@ -96,6 +146,42 @@ namespace Microsoft.Azure.Management.Consumption
             public static async Task<IPage<ReservationTransaction>> ListNextAsync(this IReservationTransactionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List of transactions for reserved instances on billing account scope
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ModernReservationTransaction> ListByBillingProfileNext(this IReservationTransactionsOperations operations, string nextPageLink)
+            {
+                return operations.ListByBillingProfileNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List of transactions for reserved instances on billing account scope
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ModernReservationTransaction>> ListByBillingProfileNextAsync(this IReservationTransactionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByBillingProfileNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
