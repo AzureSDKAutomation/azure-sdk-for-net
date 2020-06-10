@@ -147,7 +147,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// across all nodes in agent pool.</param>
         /// <param name="nodeTaints">Taints added to new nodes during node pool
         /// create and scale. For example, key=value:NoSchedule.</param>
-        public AgentPool(string id = default(string), string name = default(string), string type = default(string), int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string agentPoolType = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>))
+        /// <param name="proximityPlacementGroupID">The ID for Proximity
+        /// Placement Group.</param>
+        public AgentPool(string id = default(string), string name = default(string), string type = default(string), int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string agentPoolType = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string))
             : base(id, name, type)
         {
             Count = count;
@@ -173,6 +175,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             Tags = tags;
             NodeLabels = nodeLabels;
             NodeTaints = nodeTaints;
+            ProximityPlacementGroupID = proximityPlacementGroupID;
             CustomInit();
         }
 
@@ -396,6 +399,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.nodeTaints")]
         public IList<string> NodeTaints { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID for Proximity Placement Group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.proximityPlacementGroupID")]
+        public string ProximityPlacementGroupID { get; set; }
 
     }
 }

@@ -10,27 +10,42 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Structure for any Identity provider.
+    /// Private endpoint which a connection belongs to.
     /// </summary>
-    public partial class OpenShiftManagedClusterBaseIdentityProvider
+    public partial class PrivateEndpoint
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// OpenShiftManagedClusterBaseIdentityProvider class.
+        /// Initializes a new instance of the PrivateEndpoint class.
         /// </summary>
-        public OpenShiftManagedClusterBaseIdentityProvider()
+        public PrivateEndpoint()
         {
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the PrivateEndpoint class.
+        /// </summary>
+        /// <param name="id">The resource Id for private endpoint</param>
+        public PrivateEndpoint(string id = default(string))
+        {
+            Id = id;
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the resource Id for private endpoint
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
     }
 }
