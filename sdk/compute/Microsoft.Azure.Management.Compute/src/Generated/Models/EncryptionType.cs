@@ -17,19 +17,13 @@ namespace Microsoft.Azure.Management.Compute.Models
     public static class EncryptionType
     {
         /// <summary>
-        /// Disk is encrypted at rest with Platform managed key. It is the
+        /// Disk is encrypted with XStore managed key at rest. It is the
         /// default encryption type.
         /// </summary>
         public const string EncryptionAtRestWithPlatformKey = "EncryptionAtRestWithPlatformKey";
         /// <summary>
-        /// Disk is encrypted at rest with Customer managed key that can be
-        /// changed and revoked by a customer.
+        /// Disk is encrypted with Customer managed key at rest.
         /// </summary>
         public const string EncryptionAtRestWithCustomerKey = "EncryptionAtRestWithCustomerKey";
-        /// <summary>
-        /// Disk is encrypted at rest with 2 layers of encryption. One of the
-        /// keys is Customer managed and the other key is Platform managed.
-        /// </summary>
-        public const string EncryptionAtRestWithPlatformAndCustomerKeys = "EncryptionAtRestWithPlatformAndCustomerKeys";
     }
 }

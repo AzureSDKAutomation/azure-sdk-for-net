@@ -12,13 +12,12 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for PrivateEndpointConnectionProvisioningState.
+    /// Defines values for InGuestPatchMode.
     /// </summary>
-    public static class PrivateEndpointConnectionProvisioningState
+    public static class InGuestPatchMode
     {
-        public const string Succeeded = "Succeeded";
-        public const string Creating = "Creating";
-        public const string Deleting = "Deleting";
-        public const string Failed = "Failed";
+        public const string Manual = "Manual";
+        public const string AutomaticByOS = "AutomaticByOS";
+        public const string AutomaticByPlatform = "AutomaticByPlatform";
     }
 }

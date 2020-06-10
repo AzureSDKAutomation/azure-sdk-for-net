@@ -15,28 +15,26 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// A list of private link resources
-    /// </summary>
-    public partial class PrivateLinkResourceListResult
+    public partial class DedicatedHostGroupInstanceView
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResourceListResult
+        /// Initializes a new instance of the DedicatedHostGroupInstanceView
         /// class.
         /// </summary>
-        public PrivateLinkResourceListResult()
+        public DedicatedHostGroupInstanceView()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResourceListResult
+        /// Initializes a new instance of the DedicatedHostGroupInstanceView
         /// class.
         /// </summary>
-        /// <param name="value">Array of private link resources</param>
-        public PrivateLinkResourceListResult(IList<PrivateLinkResource> value = default(IList<PrivateLinkResource>))
+        /// <param name="hosts">List of instance view of the dedicated hosts
+        /// under the dedicated host group.</param>
+        public DedicatedHostGroupInstanceView(IList<DedicatedHostInstanceViewWithName> hosts = default(IList<DedicatedHostInstanceViewWithName>))
         {
-            Value = value;
+            Hosts = hosts;
             CustomInit();
         }
 
@@ -46,10 +44,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of private link resources
+        /// Gets or sets list of instance view of the dedicated hosts under the
+        /// dedicated host group.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<PrivateLinkResource> Value { get; set; }
+        [JsonProperty(PropertyName = "hosts")]
+        public IList<DedicatedHostInstanceViewWithName> Hosts { get; set; }
 
     }
 }

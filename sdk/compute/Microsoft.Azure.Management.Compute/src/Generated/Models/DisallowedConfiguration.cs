@@ -11,30 +11,29 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Used for updating a disk access resource.
+    /// Specifies the disallowed configuration for a virtual machine image.
     /// </summary>
-    public partial class DiskAccessUpdate
+    public partial class DisallowedConfiguration
     {
         /// <summary>
-        /// Initializes a new instance of the DiskAccessUpdate class.
+        /// Initializes a new instance of the DisallowedConfiguration class.
         /// </summary>
-        public DiskAccessUpdate()
+        public DisallowedConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DiskAccessUpdate class.
+        /// Initializes a new instance of the DisallowedConfiguration class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
-        public DiskAccessUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>))
+        /// <param name="vmDiskType">VM disk types which are disallowed.
+        /// Possible values include: 'None', 'Unmanaged'</param>
+        public DisallowedConfiguration(string vmDiskType = default(string))
         {
-            Tags = tags;
+            VmDiskType = vmDiskType;
             CustomInit();
         }
 
@@ -44,10 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource tags
+        /// Gets or sets VM disk types which are disallowed. Possible values
+        /// include: 'None', 'Unmanaged'
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "vmDiskType")]
+        public string VmDiskType { get; set; }
 
     }
 }

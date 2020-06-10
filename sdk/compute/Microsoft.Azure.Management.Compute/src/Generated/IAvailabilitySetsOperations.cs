@@ -130,8 +130,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Lists all availability sets in a subscription.
         /// </summary>
         /// <param name='expand'>
-        /// The expand expression to apply to the operation. Allowed values are
-        /// 'instanceView'.
+        /// The expand expression to apply to the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
