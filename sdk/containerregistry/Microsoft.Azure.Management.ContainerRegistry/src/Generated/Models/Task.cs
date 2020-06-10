@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// <param name="name">The name of the resource.</param>
         /// <param name="type">The type of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource.</param>
         /// <param name="identity">Identity for the resource.</param>
         /// <param name="provisioningState">The provisioning state of the task.
         /// Possible values include: 'Creating', 'Updating', 'Deleting',
@@ -60,8 +62,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// the task.</param>
         /// <param name="credentials">The properties that describes a set of
         /// credentials that will be used when this run is invoked.</param>
-        public Task(string location, PlatformProperties platform, TaskStepProperties step, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IdentityProperties identity = default(IdentityProperties), string provisioningState = default(string), System.DateTime? creationDate = default(System.DateTime?), string status = default(string), AgentProperties agentConfiguration = default(AgentProperties), string agentPoolName = default(string), int? timeout = default(int?), TriggerProperties trigger = default(TriggerProperties), Credentials credentials = default(Credentials))
-            : base(location, id, name, type, tags)
+        public Task(string location, PlatformProperties platform, TaskStepProperties step, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), IdentityProperties identity = default(IdentityProperties), string provisioningState = default(string), System.DateTime? creationDate = default(System.DateTime?), string status = default(string), AgentProperties agentConfiguration = default(AgentProperties), string agentPoolName = default(string), int? timeout = default(int?), TriggerProperties trigger = default(TriggerProperties), Credentials credentials = default(Credentials))
+            : base(location, id, name, type, tags, systemData)
         {
             Identity = identity;
             ProvisioningState = provisioningState;

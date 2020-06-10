@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// <param name="name">The name of the resource.</param>
         /// <param name="type">The type of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource.</param>
         /// <param name="identity">Identity for the resource.</param>
         /// <param name="provisioningState">The provisioning state of this task
         /// run. Possible values include: 'Creating', 'Updating', 'Deleting',
@@ -50,8 +52,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// <param name="runResult">The result of this task run</param>
         /// <param name="forceUpdateTag">How the run should be forced to rerun
         /// even if the run request configuration has not changed</param>
-        public TaskRun(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IdentityProperties identity = default(IdentityProperties), string provisioningState = default(string), RunRequest runRequest = default(RunRequest), Run runResult = default(Run), string forceUpdateTag = default(string))
-            : base(location, id, name, type, tags)
+        public TaskRun(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), IdentityProperties identity = default(IdentityProperties), string provisioningState = default(string), RunRequest runRequest = default(RunRequest), Run runResult = default(Run), string forceUpdateTag = default(string))
+            : base(location, id, name, type, tags, systemData)
         {
             Identity = identity;
             ProvisioningState = provisioningState;
