@@ -11,32 +11,29 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A list of private link resources
+    /// Specifies the disallowed configuration for a virtual machine image.
     /// </summary>
-    public partial class PrivateLinkResourceListResult
+    public partial class DisallowedConfiguration
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResourceListResult
-        /// class.
+        /// Initializes a new instance of the DisallowedConfiguration class.
         /// </summary>
-        public PrivateLinkResourceListResult()
+        public DisallowedConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResourceListResult
-        /// class.
+        /// Initializes a new instance of the DisallowedConfiguration class.
         /// </summary>
-        /// <param name="value">Array of private link resources</param>
-        public PrivateLinkResourceListResult(IList<PrivateLinkResource> value = default(IList<PrivateLinkResource>))
+        /// <param name="vmDiskType">VM disk types which are disallowed.
+        /// Possible values include: 'None', 'Unmanaged'</param>
+        public DisallowedConfiguration(string vmDiskType = default(string))
         {
-            Value = value;
+            VmDiskType = vmDiskType;
             CustomInit();
         }
 
@@ -46,10 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of private link resources
+        /// Gets or sets VM disk types which are disallowed. Possible values
+        /// include: 'None', 'Unmanaged'
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<PrivateLinkResource> Value { get; set; }
+        [JsonProperty(PropertyName = "vmDiskType")]
+        public string VmDiskType { get; set; }
 
     }
 }

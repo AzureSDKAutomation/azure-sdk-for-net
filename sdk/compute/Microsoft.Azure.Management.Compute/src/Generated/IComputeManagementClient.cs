@@ -187,11 +187,6 @@ namespace Microsoft.Azure.Management.Compute
         IDiskEncryptionSetsOperations DiskEncryptionSets { get; }
 
         /// <summary>
-        /// Gets the IDiskAccessesOperations.
-        /// </summary>
-        IDiskAccessesOperations DiskAccesses { get; }
-
-        /// <summary>
         /// Gets the IGalleriesOperations.
         /// </summary>
         IGalleriesOperations Galleries { get; }
