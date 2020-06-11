@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     /// <remarks>
     /// Monitor service details
     /// </remarks>
-    [Newtonsoft.Json.JsonObject("MonitorServiceList")]
     public partial class MonitorServiceList : AlertsMetaDataProperties
     {
         /// <summary>
