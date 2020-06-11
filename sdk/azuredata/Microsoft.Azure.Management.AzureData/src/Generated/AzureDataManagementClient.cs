@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Management.AzureData
         public virtual ISqlServersOperations SqlServers { get; private set; }
 
         /// <summary>
+        /// Gets the ISqlManagedInstancesOperations.
+        /// </summary>
+        public virtual ISqlManagedInstancesOperations SqlManagedInstances { get; private set; }
+
+        /// <summary>
         /// Gets the ISqlInstancesOperations.
         /// </summary>
         public virtual ISqlInstancesOperations SqlInstances { get; private set; }
@@ -114,6 +119,11 @@ namespace Microsoft.Azure.Management.AzureData
         /// Gets the IPostgresInstancesOperations.
         /// </summary>
         public virtual IPostgresInstancesOperations PostgresInstances { get; private set; }
+
+        /// <summary>
+        /// Gets the IDataControllersOperations.
+        /// </summary>
+        public virtual IDataControllersOperations DataControllers { get; private set; }
 
         /// <summary>
         /// Gets the IHybridDataManagersOperations.
@@ -364,9 +374,11 @@ namespace Microsoft.Azure.Management.AzureData
             Operations = new Operations(this);
             SqlServerRegistrations = new SqlServerRegistrationsOperations(this);
             SqlServers = new SqlServersOperations(this);
+            SqlManagedInstances = new SqlManagedInstancesOperations(this);
             SqlInstances = new SqlInstancesOperations(this);
             SqlServerInstances = new SqlServerInstancesOperations(this);
             PostgresInstances = new PostgresInstancesOperations(this);
+            DataControllers = new DataControllersOperations(this);
             HybridDataManagers = new HybridDataManagersOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2019-07-24-preview";

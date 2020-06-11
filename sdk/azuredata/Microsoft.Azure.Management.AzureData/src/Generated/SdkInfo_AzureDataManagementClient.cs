@@ -19,10 +19,12 @@ namespace Microsoft.Azure.Management.AzureData
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("AzureData", "DataControllers", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "HybridDataManagers", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "Operations", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "PostgresInstances", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlInstances", "2019-07-24-preview"),
+                new Tuple<string, string, string>("AzureData", "SqlManagedInstances", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlServerInstances", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlServerRegistrations", "2019-07-24-preview"),
                 new Tuple<string, string, string>("AzureData", "SqlServers", "2019-07-24-preview"),
