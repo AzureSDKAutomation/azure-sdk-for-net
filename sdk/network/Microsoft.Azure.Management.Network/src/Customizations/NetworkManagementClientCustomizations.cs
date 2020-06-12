@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Management.Network
         {
             // first remove the converters added by generated code for the FirewallPolicyRule and RuleCondition
             DeserializationSettings.Converters.Remove(DeserializationSettings.Converters.FirstOrDefault(c => c.GetType() == typeof(PolymorphicDeserializeJsonConverter<FirewallPolicyRule>)));
-            DeserializationSettings.Converters.Remove(DeserializationSettings.Converters.FirstOrDefault(c => c.GetType() == typeof(PolymorphicDeserializeJsonConverter<FirewallPolicyRuleCollection>)));
+            DeserializationSettings.Converters.Remove(DeserializationSettings.Converters.FirstOrDefault(c => c.GetType() == typeof(PolymorphicDeserializeJsonConverter<FirewallPolicyRuleCondition>)));
             SerializationSettings.Converters.Remove(SerializationSettings.Converters.FirstOrDefault(c => c.GetType() == typeof(PolymorphicSerializeJsonConverter<FirewallPolicyRule>)));
-            SerializationSettings.Converters.Remove(SerializationSettings.Converters.FirstOrDefault(c => c.GetType() == typeof(PolymorphicSerializeJsonConverter<FirewallPolicyRuleCollection>)));
+            SerializationSettings.Converters.Remove(SerializationSettings.Converters.FirstOrDefault(c => c.GetType() == typeof(PolymorphicSerializeJsonConverter<FirewallPolicyRuleCondition>)));
 
             // now add the correct converters
-            DeserializationSettings.Converters.Add(new PolymorphicJsonCustomConverter<FirewallPolicyRuleCollection, FirewallPolicyRule>("ruleCollectionType", "ruleType"));
-            SerializationSettings.Converters.Add(new PolymorphicJsonCustomConverter<FirewallPolicyRuleCollection, FirewallPolicyRule>("ruleCollectionType", "ruleType"));
+            DeserializationSettings.Converters.Add(new PolymorphicJsonCustomConverter<FirewallPolicyRule, FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"));
+            SerializationSettings.Converters.Add(new PolymorphicJsonCustomConverter<FirewallPolicyRule, FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"));
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="networkInterfaceIPConfiguration">Reference to IP
         /// address defined in network interfaces.</param>
         /// <param name="name">Name of the backend address.</param>
-        public LoadBalancerBackendAddress(SubResource virtualNetwork = default(SubResource), string ipAddress = default(string), SubResource networkInterfaceIPConfiguration = default(SubResource), string name = default(string))
+        public LoadBalancerBackendAddress(VirtualNetwork virtualNetwork = default(VirtualNetwork), string ipAddress = default(string), NetworkInterfaceIPConfiguration networkInterfaceIPConfiguration = default(NetworkInterfaceIPConfiguration), string name = default(string))
         {
             VirtualNetwork = virtualNetwork;
             IpAddress = ipAddress;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to an existing virtual network.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualNetwork")]
-        public SubResource VirtualNetwork { get; set; }
+        public VirtualNetwork VirtualNetwork { get; set; }
 
         /// <summary>
         /// Gets or sets IP Address belonging to the referenced virtual
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// Gets reference to IP address defined in network interfaces.
+        /// Gets or sets reference to IP address defined in network interfaces.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkInterfaceIPConfiguration")]
-        public SubResource NetworkInterfaceIPConfiguration { get; private set; }
+        public NetworkInterfaceIPConfiguration NetworkInterfaceIPConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets name of the backend address.
@@ -78,5 +78,18 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (VirtualNetwork != null)
+            {
+                VirtualNetwork.Validate();
+            }
+        }
     }
 }
