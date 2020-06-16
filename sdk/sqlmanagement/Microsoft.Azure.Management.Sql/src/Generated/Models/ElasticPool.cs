@@ -67,7 +67,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="licenseType">The license type to apply for this
         /// elastic pool. Possible values include: 'LicenseIncluded',
         /// 'BasePrice'</param>
-        public ElasticPool(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), string state = default(string), System.DateTime? creationDate = default(System.DateTime?), long? maxSizeBytes = default(long?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string))
+        /// <param name="maintenanceConfigurationId">Maintenance configuration
+        /// id assigned to the elastic pool.</param>
+        public ElasticPool(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), string state = default(string), System.DateTime? creationDate = default(System.DateTime?), long? maxSizeBytes = default(long?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string), string maintenanceConfigurationId = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -78,6 +80,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             PerDatabaseSettings = perDatabaseSettings;
             ZoneRedundant = zoneRedundant;
             LicenseType = licenseType;
+            MaintenanceConfigurationId = maintenanceConfigurationId;
             CustomInit();
         }
 
@@ -151,6 +154,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.licenseType")]
         public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets maintenance configuration id assigned to the elastic
+        /// pool.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.maintenanceConfigurationId")]
+        public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
         /// Validate the object.
