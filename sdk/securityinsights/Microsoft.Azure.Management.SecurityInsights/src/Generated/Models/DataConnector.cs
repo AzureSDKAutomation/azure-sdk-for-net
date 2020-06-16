@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// <summary>
     /// Data connector.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataConnector")]
     public partial class DataConnector
     {
         /// <summary>

@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// <summary>
     /// The Setting.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Settings")]
     public partial class Settings
     {
         /// <summary>
