@@ -52,11 +52,6 @@ namespace Microsoft.Azure.Management.ResourceManager
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The ID of the source subscription.
-        /// </summary>
-        public string SubscriptionId1 { get; set; }
-
-        /// <summary>
         /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
@@ -105,9 +100,9 @@ namespace Microsoft.Azure.Management.ResourceManager
         public virtual IResourceGroupsOperations ResourceGroups { get; private set; }
 
         /// <summary>
-        /// Gets the ITagsOperationOperations.
+        /// Gets the ITagsOperations.
         /// </summary>
-        public virtual ITagsOperationOperations TagsOperation { get; private set; }
+        public virtual ITagsOperations Tags { get; private set; }
 
         /// <summary>
         /// Gets the IDeploymentOperations.
@@ -360,7 +355,7 @@ namespace Microsoft.Azure.Management.ResourceManager
             Providers = new ProvidersOperations(this);
             Resources = new ResourcesOperations(this);
             ResourceGroups = new ResourceGroupsOperations(this);
-            TagsOperation = new TagsOperationOperations(this);
+            Tags = new TagsOperations(this);
             DeploymentOperations = new DeploymentOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-06-01";

@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.ResourceManager
                 new Tuple<string, string, string>("ResourceManagementClient", "Providers", "2020-06-01"),
                 new Tuple<string, string, string>("ResourceManagementClient", "ResourceGroups", "2020-06-01"),
                 new Tuple<string, string, string>("ResourceManagementClient", "Resources", "2020-06-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "TagsOperation", "2020-06-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "Tags", "2020-06-01"),
                 new Tuple<string, string, string>("Resources", "DeploymentOperations", "2020-06-01"),
                 new Tuple<string, string, string>("Resources", "Deployments", "2020-06-01"),
                 new Tuple<string, string, string>("Resources", "Operations", "2020-06-01"),
-                new Tuple<string, string, string>("Resources", "TagsOperation", "2020-06-01"),
+                new Tuple<string, string, string>("Resources", "Tags", "2020-06-01"),
               }.AsEnumerable();
           }
       }

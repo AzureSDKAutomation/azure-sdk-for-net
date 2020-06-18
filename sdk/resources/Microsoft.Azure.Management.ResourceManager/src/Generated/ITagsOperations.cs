@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.ResourceManager
     using System.Threading.Tasks;
 
     /// <summary>
-    /// TagsOperationOperations operations.
+    /// TagsOperations operations.
     /// </summary>
-    public partial interface ITagsOperationOperations
+    public partial interface ITagsOperations
     {
         /// <summary>
         /// Deletes a predefined tag value for a predefined tag name.

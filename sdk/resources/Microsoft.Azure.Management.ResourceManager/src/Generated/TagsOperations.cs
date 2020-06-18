@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.ResourceManager
     using System.Threading.Tasks;
 
     /// <summary>
-    /// TagsOperationOperations operations.
+    /// TagsOperations operations.
     /// </summary>
-    internal partial class TagsOperationOperations : IServiceOperations<ResourceManagementClient>, ITagsOperationOperations
+    internal partial class TagsOperations : IServiceOperations<ResourceManagementClient>, ITagsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the TagsOperationOperations class.
+        /// Initializes a new instance of the TagsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal TagsOperationOperations(ResourceManagementClient client)
+        internal TagsOperations(ResourceManagementClient client)
         {
             if (client == null)
             {

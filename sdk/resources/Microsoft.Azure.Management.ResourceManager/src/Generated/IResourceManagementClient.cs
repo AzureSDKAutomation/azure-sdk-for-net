@@ -46,11 +46,6 @@ namespace Microsoft.Azure.Management.ResourceManager
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The ID of the source subscription.
-        /// </summary>
-        string SubscriptionId1 { get; set; }
-
-        /// <summary>
         /// The API version to use for this operation.
         /// </summary>
         string ApiVersion { get; }
@@ -100,9 +95,9 @@ namespace Microsoft.Azure.Management.ResourceManager
         IResourceGroupsOperations ResourceGroups { get; }
 
         /// <summary>
-        /// Gets the ITagsOperationOperations.
+        /// Gets the ITagsOperations.
         /// </summary>
-        ITagsOperationOperations TagsOperation { get; }
+        ITagsOperations Tags { get; }
 
         /// <summary>
         /// Gets the IDeploymentOperations.
