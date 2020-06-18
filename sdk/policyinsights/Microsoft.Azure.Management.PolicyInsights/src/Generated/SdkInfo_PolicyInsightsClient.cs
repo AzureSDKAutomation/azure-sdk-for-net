@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.PolicyInsights
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("PolicyInsights", "Attestations", "2019-10-01"),
                 new Tuple<string, string, string>("PolicyInsights", "Operations", "2019-10-01"),
                 new Tuple<string, string, string>("PolicyInsights", "PolicyEvents", "2019-10-01"),
                 new Tuple<string, string, string>("PolicyInsights", "PolicyMetadata", "2019-10-01"),
