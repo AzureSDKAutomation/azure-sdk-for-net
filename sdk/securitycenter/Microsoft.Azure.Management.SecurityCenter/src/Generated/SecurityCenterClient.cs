@@ -262,6 +262,11 @@ namespace Microsoft.Azure.Management.Security
         public virtual ISecureScoreControlDefinitionsOperations SecureScoreControlDefinitions { get; private set; }
 
         /// <summary>
+        /// Gets the IConnectorsOperations.
+        /// </summary>
+        public virtual IConnectorsOperations Connectors { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -539,6 +544,7 @@ namespace Microsoft.Azure.Management.Security
             SecureScores = new SecureScoresOperations(this);
             SecureScoreControls = new SecureScoreControlsOperations(this);
             SecureScoreControlDefinitions = new SecureScoreControlDefinitionsOperations(this);
+            Connectors = new ConnectorsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -581,6 +587,8 @@ namespace Microsoft.Azure.Management.Security
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AutomationAction>("actionType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ExternalSecuritySolution>("kind"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ExternalSecuritySolution>("kind"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

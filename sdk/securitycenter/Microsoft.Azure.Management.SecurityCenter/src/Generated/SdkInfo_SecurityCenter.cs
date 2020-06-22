@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Management.Security
                 new Tuple<string, string, string>("Security", "Automations", "2019-01-01-preview"),
                 new Tuple<string, string, string>("Security", "ComplianceResults", "2017-08-01"),
                 new Tuple<string, string, string>("Security", "Compliances", "2017-08-01-preview"),
+                new Tuple<string, string, string>("Security", "Connectors", "2020-01-01-preview"),
                 new Tuple<string, string, string>("Security", "DeviceSecurityGroups", "2019-08-01"),
                 new Tuple<string, string, string>("Security", "DiscoveredSecuritySolutions", "2020-01-01"),
                 new Tuple<string, string, string>("Security", "ExternalSecuritySolutions", "2020-01-01"),

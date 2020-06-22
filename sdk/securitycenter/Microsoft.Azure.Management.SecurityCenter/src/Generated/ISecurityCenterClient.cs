@@ -256,5 +256,10 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         ISecureScoreControlDefinitionsOperations SecureScoreControlDefinitions { get; }
 
+        /// <summary>
+        /// Gets the IConnectorsOperations.
+        /// </summary>
+        IConnectorsOperations Connectors { get; }
+
     }
 }
