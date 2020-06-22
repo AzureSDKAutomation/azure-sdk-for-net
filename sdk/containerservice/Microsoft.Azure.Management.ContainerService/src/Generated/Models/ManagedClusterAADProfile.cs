@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterAADProfile class.
         /// </summary>
         /// <param name="managed">Whether to enable managed AAD.</param>
+        /// <param name="enableAzureRBAC">Whether to enable Azure RBAC for
+        /// Kubernetes authorization.</param>
         /// <param name="adminGroupObjectIDs">AAD group object IDs that will
         /// have admin role of the cluster.</param>
         /// <param name="clientAppID">The client AAD application ID.</param>
@@ -41,9 +43,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="tenantID">The AAD tenant ID to use for authentication.
         /// If not specified, will use the tenant of the deployment
         /// subscription.</param>
-        public ManagedClusterAADProfile(bool? managed = default(bool?), IList<string> adminGroupObjectIDs = default(IList<string>), string clientAppID = default(string), string serverAppID = default(string), string serverAppSecret = default(string), string tenantID = default(string))
+        public ManagedClusterAADProfile(bool? managed = default(bool?), bool? enableAzureRBAC = default(bool?), IList<string> adminGroupObjectIDs = default(IList<string>), string clientAppID = default(string), string serverAppID = default(string), string serverAppSecret = default(string), string tenantID = default(string))
         {
             Managed = managed;
+            EnableAzureRBAC = enableAzureRBAC;
             AdminGroupObjectIDs = adminGroupObjectIDs;
             ClientAppID = clientAppID;
             ServerAppID = serverAppID;
@@ -62,6 +65,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "managed")]
         public bool? Managed { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable Azure RBAC for Kubernetes
+        /// authorization.
+        /// </summary>
+        [JsonProperty(PropertyName = "enableAzureRBAC")]
+        public bool? EnableAzureRBAC { get; set; }
 
         /// <summary>
         /// Gets or sets AAD group object IDs that will have admin role of the
