@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for FirewallPolicyIntrusionSystemMode.
+    /// Defines values for FirewallPolicyIntrusionSystemStateType.
     /// </summary>
-    public static class FirewallPolicyIntrusionSystemMode
+    public static class FirewallPolicyIntrusionSystemStateType
     {
         public const string Off = "Off";
         public const string Alert = "Alert";

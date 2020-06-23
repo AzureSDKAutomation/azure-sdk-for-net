@@ -12,12 +12,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for FirewallPolicyIntrusionSystemMode.
+    /// Defines values for FirewallPolicyIntrusionSystemProtocol.
     /// </summary>
-    public static class FirewallPolicyIntrusionSystemMode
+    public static class FirewallPolicyIntrusionSystemProtocol
     {
-        public const string Off = "Off";
-        public const string Alert = "Alert";
-        public const string Deny = "Deny";
+        public const string TCP = "TCP";
+        public const string UDP = "UDP";
+        public const string ICMP = "ICMP";
+        public const string ANY = "ANY";
     }
 }
