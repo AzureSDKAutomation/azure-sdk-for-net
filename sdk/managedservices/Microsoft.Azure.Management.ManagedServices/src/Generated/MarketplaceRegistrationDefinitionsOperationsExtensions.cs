@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ManagedServices
             /// The filter query parameter. Might be used to filter marketplace
             /// registration definition by plan identifier, publisher, version etc.
             /// </param>
-            public static IPage<RegistrationDefinition> List(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string filter = default(string))
+            public static IPage<MarketplaceRegistrationDefinition> List(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string filter = default(string))
             {
                 return operations.ListAsync(scope, filter).GetAwaiter().GetResult();
             }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.ManagedServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RegistrationDefinition>> ListAsync(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<MarketplaceRegistrationDefinition>> ListAsync(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(scope, filter, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.ManagedServices
             /// {publisher}.{product[-preview]}.{planName} or
             /// {publisher}.{product[-preview]} or {publisher}).
             /// </param>
-            public static RegistrationDefinition Get(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string marketplaceIdentifier)
+            public static MarketplaceRegistrationDefinition Get(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string marketplaceIdentifier)
             {
                 return operations.GetAsync(scope, marketplaceIdentifier).GetAwaiter().GetResult();
             }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.ManagedServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RegistrationDefinition> GetAsync(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string marketplaceIdentifier, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MarketplaceRegistrationDefinition> GetAsync(this IMarketplaceRegistrationDefinitionsOperations operations, string scope, string marketplaceIdentifier, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(scope, marketplaceIdentifier, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.ManagedServices
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<RegistrationDefinition> ListNext(this IMarketplaceRegistrationDefinitionsOperations operations, string nextPageLink)
+            public static IPage<MarketplaceRegistrationDefinition> ListNext(this IMarketplaceRegistrationDefinitionsOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.ManagedServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RegistrationDefinition>> ListNextAsync(this IMarketplaceRegistrationDefinitionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<MarketplaceRegistrationDefinition>> ListNextAsync(this IMarketplaceRegistrationDefinitionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

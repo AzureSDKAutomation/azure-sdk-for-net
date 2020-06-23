@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.ManagedServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RegistrationDefinition>>> ListWithHttpMessagesAsync(string scope, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<MarketplaceRegistrationDefinition>>> ListWithHttpMessagesAsync(string scope, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the marketplace registration definition for the marketplace
         /// identifier.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ManagedServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RegistrationDefinition>> GetWithHttpMessagesAsync(string scope, string marketplaceIdentifier, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MarketplaceRegistrationDefinition>> GetWithHttpMessagesAsync(string scope, string marketplaceIdentifier, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of the marketplace registration definitions for the
         /// marketplace identifier.
@@ -101,6 +101,6 @@ namespace Microsoft.Azure.Management.ManagedServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RegistrationDefinition>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<MarketplaceRegistrationDefinition>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

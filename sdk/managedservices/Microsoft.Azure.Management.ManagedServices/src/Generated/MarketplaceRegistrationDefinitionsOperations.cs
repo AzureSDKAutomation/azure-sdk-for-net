@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.ManagedServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<RegistrationDefinition>>> ListWithHttpMessagesAsync(string scope, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<MarketplaceRegistrationDefinition>>> ListWithHttpMessagesAsync(string scope, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (scope == null)
             {
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.ManagedServices
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<RegistrationDefinition>>();
+            var _result = new AzureOperationResponse<IPage<MarketplaceRegistrationDefinition>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.ManagedServices
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<RegistrationDefinition>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MarketplaceRegistrationDefinition>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.ManagedServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<RegistrationDefinition>> GetWithHttpMessagesAsync(string scope, string marketplaceIdentifier, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MarketplaceRegistrationDefinition>> GetWithHttpMessagesAsync(string scope, string marketplaceIdentifier, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (scope == null)
             {
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Management.ManagedServices
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<RegistrationDefinition>();
+            var _result = new AzureOperationResponse<MarketplaceRegistrationDefinition>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Management.ManagedServices
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<RegistrationDefinition>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MarketplaceRegistrationDefinition>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.ManagedServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<RegistrationDefinition>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<MarketplaceRegistrationDefinition>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Management.ManagedServices
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<RegistrationDefinition>>();
+            var _result = new AzureOperationResponse<IPage<MarketplaceRegistrationDefinition>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Management.ManagedServices
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<RegistrationDefinition>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MarketplaceRegistrationDefinition>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
