@@ -10,38 +10,30 @@
 
 namespace Microsoft.Azure.Management.Consumption.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// May be used to filter budgets by resource group, resource, or meter.
+    /// The Dimensions or Tags to filter a budget by.
     /// </summary>
-    public partial class BudgetFilter
+    public partial class BudgetFilterProperties
     {
         /// <summary>
-        /// Initializes a new instance of the BudgetFilter class.
+        /// Initializes a new instance of the BudgetFilterProperties class.
         /// </summary>
-        public BudgetFilter()
+        public BudgetFilterProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BudgetFilter class.
+        /// Initializes a new instance of the BudgetFilterProperties class.
         /// </summary>
-        /// <param name="and">The logical "AND" expression. Must have at least
-        /// 2 items.</param>
-        /// <param name="not">The logical "NOT" expression.</param>
         /// <param name="dimensions">Has comparison expression for a
         /// dimension</param>
         /// <param name="tags">Has comparison expression for a tag</param>
-        public BudgetFilter(IList<BudgetFilterProperties> and = default(IList<BudgetFilterProperties>), BudgetFilterProperties not = default(BudgetFilterProperties), BudgetComparisonExpression dimensions = default(BudgetComparisonExpression), BudgetComparisonExpression tags = default(BudgetComparisonExpression))
+        public BudgetFilterProperties(BudgetComparisonExpression dimensions = default(BudgetComparisonExpression), BudgetComparisonExpression tags = default(BudgetComparisonExpression))
         {
-            And = and;
-            Not = not;
             Dimensions = dimensions;
             Tags = tags;
             CustomInit();
@@ -51,19 +43,6 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets the logical "AND" expression. Must have at least 2
-        /// items.
-        /// </summary>
-        [JsonProperty(PropertyName = "and")]
-        public IList<BudgetFilterProperties> And { get; set; }
-
-        /// <summary>
-        /// Gets or sets the logical "NOT" expression.
-        /// </summary>
-        [JsonProperty(PropertyName = "not")]
-        public BudgetFilterProperties Not { get; set; }
 
         /// <summary>
         /// Gets or sets has comparison expression for a dimension
@@ -80,29 +59,11 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (And != null)
-            {
-                if (And.Count < 2)
-                {
-                    throw new ValidationException(ValidationRules.MinItems, "And", 2);
-                }
-                foreach (var element in And)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (Not != null)
-            {
-                Not.Validate();
-            }
             if (Dimensions != null)
             {
                 Dimensions.Validate();
