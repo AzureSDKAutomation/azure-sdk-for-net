@@ -60,6 +60,50 @@ namespace Microsoft.Azure.Management.DataBox
             }
 
             /// <summary>
+            /// This method gets the unencrypted secrets related to the job.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='jobName'>
+            /// The name of the job Resource within the specified resource group. job names
+            /// must be between 3 and 24 characters in length and use any alphanumeric and
+            /// underscore only
+            /// </param>
+            public static IEnumerable<UnencryptedCredentials> ListCredentials(this IJobsOperations operations, string resourceGroupName, string jobName)
+            {
+                return operations.ListCredentialsAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method gets the unencrypted secrets related to the job.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='jobName'>
+            /// The name of the job Resource within the specified resource group. job names
+            /// must be between 3 and 24 characters in length and use any alphanumeric and
+            /// underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<UnencryptedCredentials>> ListCredentialsAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListCredentialsWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists all the jobs available under the given resource group.
             /// </summary>
             /// <param name='operations'>
@@ -401,50 +445,6 @@ namespace Microsoft.Azure.Management.DataBox
             public static async Task CancelAsync(this IJobsOperations operations, string resourceGroupName, string jobName, string reason, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.CancelWithHttpMessagesAsync(resourceGroupName, jobName, reason, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// This method gets the unencrypted secrets related to the job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The Resource Group Name
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job Resource within the specified resource group. job names
-            /// must be between 3 and 24 characters in length and use any alphanumeric and
-            /// underscore only
-            /// </param>
-            public static IEnumerable<UnencryptedCredentials> ListCredentials(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                return operations.ListCredentialsAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// This method gets the unencrypted secrets related to the job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The Resource Group Name
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job Resource within the specified resource group. job names
-            /// must be between 3 and 24 characters in length and use any alphanumeric and
-            /// underscore only
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<UnencryptedCredentials>> ListCredentialsAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListCredentialsWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>

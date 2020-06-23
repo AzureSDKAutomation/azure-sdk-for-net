@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// class.
         /// </summary>
         /// <param name="scheduleAvailabilityResponse">Schedule availability
-        /// for given sku in a region.</param>
+        /// response</param>
         /// <param name="transportAvailabilityResponse">Transport options
         /// available for given sku in a region.</param>
         public RegionConfigurationResponse(ScheduleAvailabilityResponse scheduleAvailabilityResponse = default(ScheduleAvailabilityResponse), TransportAvailabilityResponse transportAvailabilityResponse = default(TransportAvailabilityResponse))
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets schedule availability for given sku in a region.
+        /// Gets schedule availability response
         /// </summary>
         [JsonProperty(PropertyName = "scheduleAvailabilityResponse")]
         public ScheduleAvailabilityResponse ScheduleAvailabilityResponse { get; private set; }

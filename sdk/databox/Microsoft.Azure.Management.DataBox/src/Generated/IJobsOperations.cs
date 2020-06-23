@@ -47,6 +47,33 @@ namespace Microsoft.Azure.Management.DataBox
         /// </exception>
         Task<AzureOperationResponse<IPage<JobResource>>> ListWithHttpMessagesAsync(string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// This method gets the unencrypted secrets related to the job.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job Resource within the specified resource group.
+        /// job names must be between 3 and 24 characters in length and use any
+        /// alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IEnumerable<UnencryptedCredentials>>> ListCredentialsWithHttpMessagesAsync(string resourceGroupName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists all the jobs available under the given resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -250,33 +277,6 @@ namespace Microsoft.Azure.Management.DataBox
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> CancelWithHttpMessagesAsync(string resourceGroupName, string jobName, string reason, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// This method gets the unencrypted secrets related to the job.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The Resource Group Name
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job Resource within the specified resource group.
-        /// job names must be between 3 and 24 characters in length and use any
-        /// alphanumeric and underscore only
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IEnumerable<UnencryptedCredentials>>> ListCredentialsWithHttpMessagesAsync(string resourceGroupName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new job with the specified parameters. Existing job
         /// cannot be updated with this API and should instead be updated with

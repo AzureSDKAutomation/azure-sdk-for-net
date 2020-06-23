@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.DataBox.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// availability for scheduling orders.</param>
         /// <param name="transportAvailabilityRequest">Request body to get the
         /// transport availability for given sku.</param>
-        public RegionConfigurationRequest(ScheduleAvailabilityRequest scheduleAvailabilityRequest = default(ScheduleAvailabilityRequest), TransportAvailabilityRequest transportAvailabilityRequest = default(TransportAvailabilityRequest))
+        public RegionConfigurationRequest(ScheduleAvailabilityRequest scheduleAvailabilityRequest, TransportAvailabilityRequest transportAvailabilityRequest = default(TransportAvailabilityRequest))
         {
             ScheduleAvailabilityRequest = scheduleAvailabilityRequest;
             TransportAvailabilityRequest = transportAvailabilityRequest;
@@ -62,11 +63,15 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
+            if (ScheduleAvailabilityRequest == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "ScheduleAvailabilityRequest");
+            }
             if (ScheduleAvailabilityRequest != null)
             {
                 ScheduleAvailabilityRequest.Validate();

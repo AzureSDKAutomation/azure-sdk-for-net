@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.DataBox
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("DataBox", "Jobs", "2019-09-01"),
-                new Tuple<string, string, string>("DataBox", "Operations", "2019-09-01"),
-                new Tuple<string, string, string>("DataBox", "Service", "2019-09-01"),
+                new Tuple<string, string, string>("DataBox", "Jobs", "2020-04-01"),
+                new Tuple<string, string, string>("DataBox", "Operations", "2020-04-01"),
+                new Tuple<string, string, string>("DataBox", "Service", "2020-04-01"),
               }.AsEnumerable();
           }
       }

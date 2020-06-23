@@ -51,7 +51,12 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// does not have the subscription notification.
         /// </summary>
         [EnumMember(Value = "NoSubscriptionInfo")]
-        NoSubscriptionInfo
+        NoSubscriptionInfo,
+        /// <summary>
+        /// Customer unregistered from the subscription.
+        /// </summary>
+        [EnumMember(Value = "CustomerUnregistered")]
+        CustomerUnregistered
     }
     internal static class SkuDisabledReasonEnumExtension
     {
@@ -76,6 +81,8 @@ namespace Microsoft.Azure.Management.DataBox.Models
                     return "OfferType";
                 case SkuDisabledReason.NoSubscriptionInfo:
                     return "NoSubscriptionInfo";
+                case SkuDisabledReason.CustomerUnregistered:
+                    return "CustomerUnregistered";
             }
             return null;
         }
@@ -96,6 +103,8 @@ namespace Microsoft.Azure.Management.DataBox.Models
                     return SkuDisabledReason.OfferType;
                 case "NoSubscriptionInfo":
                     return SkuDisabledReason.NoSubscriptionInfo;
+                case "CustomerUnregistered":
+                    return SkuDisabledReason.CustomerUnregistered;
             }
             return null;
         }
