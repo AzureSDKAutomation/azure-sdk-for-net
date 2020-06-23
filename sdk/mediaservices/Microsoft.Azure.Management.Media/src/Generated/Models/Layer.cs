@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.Media.Models
     /// desired resolution. A layer represents the properties for the video or
     /// image at a resolution.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Layer")]
     public partial class Layer
     {
         /// <summary>

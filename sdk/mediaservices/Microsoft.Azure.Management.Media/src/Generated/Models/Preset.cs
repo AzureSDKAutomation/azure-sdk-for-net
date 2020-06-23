@@ -10,14 +10,12 @@
 
 namespace Microsoft.Azure.Management.Media.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Base type for all Presets, which define the recipe or instructions on
     /// how the input media files should be processed.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Preset")]
     public partial class Preset
     {
         /// <summary>

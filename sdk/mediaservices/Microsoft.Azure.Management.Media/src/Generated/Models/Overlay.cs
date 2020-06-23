@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.Media.Models
     /// <summary>
     /// Base type for all overlays - image, audio or video.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Overlay")]
     public partial class Overlay
     {
         /// <summary>

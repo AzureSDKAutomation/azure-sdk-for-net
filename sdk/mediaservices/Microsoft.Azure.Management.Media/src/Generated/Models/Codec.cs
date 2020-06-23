@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.Media.Models
     /// <summary>
     /// Describes the basic properties of all codecs.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Codec")]
     public partial class Codec
     {
         /// <summary>

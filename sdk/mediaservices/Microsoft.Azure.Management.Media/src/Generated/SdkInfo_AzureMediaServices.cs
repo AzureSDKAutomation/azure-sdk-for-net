@@ -19,20 +19,22 @@ namespace Microsoft.Azure.Management.Media
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Media", "AccountFilters", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "AssetFilters", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "Assets", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "ContentKeyPolicies", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "Jobs", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "LiveEvents", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "LiveOutputs", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "Locations", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "Mediaservices", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "Operations", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "StreamingEndpoints", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "StreamingLocators", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "StreamingPolicies", "2018-07-01"),
-                new Tuple<string, string, string>("Media", "Transforms", "2018-07-01"),
+                new Tuple<string, string, string>("Media", "AccountFilters", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "AssetFilters", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "Assets", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "ContentKeyPolicies", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "Jobs", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "LiveEvents", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "LiveOutputs", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "Locations", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "Mediaservices", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "Operations", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "PrivateEndpointConnections", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "PrivateLinkResources", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "StreamingEndpoints", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "StreamingLocators", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "StreamingPolicies", "2020-05-01"),
+                new Tuple<string, string, string>("Media", "Transforms", "2020-05-01"),
               }.AsEnumerable();
           }
       }

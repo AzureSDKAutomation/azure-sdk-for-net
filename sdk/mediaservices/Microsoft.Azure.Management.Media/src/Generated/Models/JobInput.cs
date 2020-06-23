@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.Media.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Base class for inputs to a Job.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("JobInput")]
     public partial class JobInput
     {
         /// <summary>
