@@ -127,6 +127,16 @@ namespace Microsoft.Azure.Management.Security
         public virtual IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; private set; }
 
         /// <summary>
+        /// Gets the IIotAlertTypesOperations.
+        /// </summary>
+        public virtual IIotAlertTypesOperations IotAlertTypes { get; private set; }
+
+        /// <summary>
+        /// Gets the IIotAlertsOperations.
+        /// </summary>
+        public virtual IIotAlertsOperations IotAlerts { get; private set; }
+
+        /// <summary>
         /// Gets the ILocationsOperations.
         /// </summary>
         public virtual ILocationsOperations Locations { get; private set; }
@@ -512,6 +522,8 @@ namespace Microsoft.Azure.Management.Security
             IotSecuritySolutionAnalytics = new IotSecuritySolutionAnalyticsOperations(this);
             IotSecuritySolutionsAnalyticsAggregatedAlert = new IotSecuritySolutionsAnalyticsAggregatedAlertOperations(this);
             IotSecuritySolutionsAnalyticsRecommendation = new IotSecuritySolutionsAnalyticsRecommendationOperations(this);
+            IotAlertTypes = new IotAlertTypesOperations(this);
+            IotAlerts = new IotAlertsOperations(this);
             Locations = new LocationsOperations(this);
             Operations = new Operations(this);
             Tasks = new TasksOperations(this);

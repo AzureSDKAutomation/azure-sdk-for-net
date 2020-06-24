@@ -122,6 +122,16 @@ namespace Microsoft.Azure.Management.Security
         IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; }
 
         /// <summary>
+        /// Gets the IIotAlertTypesOperations.
+        /// </summary>
+        IIotAlertTypesOperations IotAlertTypes { get; }
+
+        /// <summary>
+        /// Gets the IIotAlertsOperations.
+        /// </summary>
+        IIotAlertsOperations IotAlerts { get; }
+
+        /// <summary>
         /// Gets the ILocationsOperations.
         /// </summary>
         ILocationsOperations Locations { get; }
