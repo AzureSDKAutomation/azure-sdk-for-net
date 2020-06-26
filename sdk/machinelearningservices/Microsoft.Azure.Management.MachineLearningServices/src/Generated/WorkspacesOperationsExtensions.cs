@@ -396,6 +396,43 @@ namespace Microsoft.Azure.Management.MachineLearningServices
             }
 
             /// <summary>
+            /// Deletes a machine learning workspace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            public static void BeginDelete(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName)
+            {
+                operations.BeginDeleteAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a machine learning workspace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAsync(this IWorkspacesOperations operations, string resourceGroupName, string workspaceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Lists all the available machine learning workspaces under the specified
             /// resource group.
             /// </summary>
