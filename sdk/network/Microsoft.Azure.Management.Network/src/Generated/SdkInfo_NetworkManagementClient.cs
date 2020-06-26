@@ -128,7 +128,6 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "VpnSiteLinks", "2020-05-01"),
                 new Tuple<string, string, string>("Network", "VpnSites", "2020-05-01"),
                 new Tuple<string, string, string>("Network", "VpnSitesConfiguration", "2020-05-01"),
-                new Tuple<string, string, string>("Network", "WebApplicationFirewallPolicies", "2020-05-01"),
                 new Tuple<string, string, string>("Network", "generatevirtualwanvpnserverconfigurationvpnprofile", "2020-05-01"),
               }.AsEnumerable();
           }
