@@ -33,9 +33,11 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// Initializes a new instance of the ClusterUpdateParameters class.
         /// </summary>
         /// <param name="scaleSettings">Scale settings.</param>
-        public ClusterUpdateParameters(ScaleSettings scaleSettings = default(ScaleSettings))
+        /// <param name="identity">identity</param>
+        public ClusterUpdateParameters(ScaleSettings scaleSettings = default(ScaleSettings), Identity identity = default(Identity))
         {
             ScaleSettings = scaleSettings;
+            Identity = identity;
             CustomInit();
         }
 
@@ -54,6 +56,15 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         public ScaleSettings ScaleSettings { get; set; }
 
         /// <summary>
+        /// Gets or sets identity
+        /// </summary>
+        /// <remarks>
+        /// Identity of the compute
+        /// </remarks>
+        [JsonProperty(PropertyName = "identity")]
+        public Identity Identity { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -64,6 +75,10 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
             if (ScaleSettings != null)
             {
                 ScaleSettings.Validate();
+            }
+            if (Identity != null)
+            {
+                Identity.Validate();
             }
         }
     }

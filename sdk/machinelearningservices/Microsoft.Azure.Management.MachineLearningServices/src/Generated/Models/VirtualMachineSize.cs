@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="memoryGB">Memory size</param>
         /// <param name="lowPriorityCapable">Low priority capable</param>
         /// <param name="premiumIO">Premium IO supported</param>
-        public VirtualMachineSize(string name = default(string), string family = default(string), int? vCPUs = default(int?), int? gpus = default(int?), int? osVhdSizeMB = default(int?), int? maxResourceVolumeMB = default(int?), double? memoryGB = default(double?), bool? lowPriorityCapable = default(bool?), bool? premiumIO = default(bool?))
+        /// <param name="estimatedVMPrices">Estimated VM prices</param>
+        public VirtualMachineSize(string name = default(string), string family = default(string), int? vCPUs = default(int?), int? gpus = default(int?), int? osVhdSizeMB = default(int?), int? maxResourceVolumeMB = default(int?), double? memoryGB = default(double?), bool? lowPriorityCapable = default(bool?), bool? premiumIO = default(bool?), EstimatedVMPrices estimatedVMPrices = default(EstimatedVMPrices))
         {
             Name = name;
             Family = family;
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
             MemoryGB = memoryGB;
             LowPriorityCapable = lowPriorityCapable;
             PremiumIO = premiumIO;
+            EstimatedVMPrices = estimatedVMPrices;
             CustomInit();
         }
 
@@ -139,5 +141,27 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         [JsonProperty(PropertyName = "premiumIO")]
         public bool? PremiumIO { get; private set; }
 
+        /// <summary>
+        /// Gets or sets estimated VM prices
+        /// </summary>
+        /// <remarks>
+        /// The estimated price information for using a VM.
+        /// </remarks>
+        [JsonProperty(PropertyName = "estimatedVMPrices")]
+        public EstimatedVMPrices EstimatedVMPrices { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (EstimatedVMPrices != null)
+            {
+                EstimatedVMPrices.Validate();
+            }
+        }
     }
 }
