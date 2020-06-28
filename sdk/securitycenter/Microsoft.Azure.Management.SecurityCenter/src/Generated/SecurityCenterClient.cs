@@ -252,6 +252,11 @@ namespace Microsoft.Azure.Management.Security
         public virtual IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; private set; }
 
         /// <summary>
+        /// Gets the ISecuritySolutionsReferenceDataOperations.
+        /// </summary>
+        public virtual ISecuritySolutionsReferenceDataOperations SecuritySolutionsReferenceData { get; private set; }
+
+        /// <summary>
         /// Gets the IExternalSecuritySolutionsOperations.
         /// </summary>
         public virtual IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; private set; }
@@ -270,6 +275,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the ISecureScoreControlDefinitionsOperations.
         /// </summary>
         public virtual ISecureScoreControlDefinitionsOperations SecureScoreControlDefinitions { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecuritySolutionsOperations.
+        /// </summary>
+        public virtual ISecuritySolutionsOperations SecuritySolutions { get; private set; }
 
         /// <summary>
         /// Gets the IConnectorsOperations.
@@ -552,10 +562,12 @@ namespace Microsoft.Azure.Management.Security
             Topology = new TopologyOperations(this);
             JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
             DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
+            SecuritySolutionsReferenceData = new SecuritySolutionsReferenceDataOperations(this);
             ExternalSecuritySolutions = new ExternalSecuritySolutionsOperations(this);
             SecureScores = new SecureScoresOperations(this);
             SecureScoreControls = new SecureScoreControlsOperations(this);
             SecureScoreControlDefinitions = new SecureScoreControlDefinitionsOperations(this);
+            SecuritySolutions = new SecuritySolutionsOperations(this);
             Connectors = new ConnectorsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";

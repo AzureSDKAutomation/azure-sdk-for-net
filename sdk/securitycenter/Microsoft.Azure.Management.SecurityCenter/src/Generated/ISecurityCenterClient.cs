@@ -247,6 +247,11 @@ namespace Microsoft.Azure.Management.Security
         IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; }
 
         /// <summary>
+        /// Gets the ISecuritySolutionsReferenceDataOperations.
+        /// </summary>
+        ISecuritySolutionsReferenceDataOperations SecuritySolutionsReferenceData { get; }
+
+        /// <summary>
         /// Gets the IExternalSecuritySolutionsOperations.
         /// </summary>
         IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; }
@@ -265,6 +270,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the ISecureScoreControlDefinitionsOperations.
         /// </summary>
         ISecureScoreControlDefinitionsOperations SecureScoreControlDefinitions { get; }
+
+        /// <summary>
+        /// Gets the ISecuritySolutionsOperations.
+        /// </summary>
+        ISecuritySolutionsOperations SecuritySolutions { get; }
 
         /// <summary>
         /// Gets the IConnectorsOperations.

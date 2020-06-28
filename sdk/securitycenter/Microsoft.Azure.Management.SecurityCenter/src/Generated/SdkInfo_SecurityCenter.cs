@@ -53,12 +53,15 @@ namespace Microsoft.Azure.Management.Security
                 new Tuple<string, string, string>("Security", "SecureScoreControls", "2020-01-01-preview"),
                 new Tuple<string, string, string>("Security", "SecureScores", "2020-01-01-preview"),
                 new Tuple<string, string, string>("Security", "SecurityContacts", "2017-08-01-preview"),
+                new Tuple<string, string, string>("Security", "SecuritySolutions", "2020-01-01"),
+                new Tuple<string, string, string>("Security", "SecuritySolutionsReferenceData", "2020-01-01"),
                 new Tuple<string, string, string>("Security", "ServerVulnerabilityAssessment", "2020-01-01"),
                 new Tuple<string, string, string>("Security", "Settings", "2019-01-01"),
                 new Tuple<string, string, string>("Security", "SubAssessments", "2019-01-01-preview"),
                 new Tuple<string, string, string>("Security", "Tasks", "2015-06-01-preview"),
                 new Tuple<string, string, string>("Security", "Topology", "2020-01-01"),
                 new Tuple<string, string, string>("Security", "WorkspaceSettings", "2017-08-01-preview"),
+                new Tuple<string, string, string>("Security", "securitySolutionsReferenceData", "2020-01-01"),
               }.AsEnumerable();
           }
       }
