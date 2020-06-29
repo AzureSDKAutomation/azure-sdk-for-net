@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Management.Consumption
         /// <param name='scope'>
         /// The scope associated with reservation recommendations operations. This
         /// includes '/subscriptions/{subscriptionId}/' for subscription scope,
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+        /// resource group scope,
         /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for
         /// BillingAccount scope, and
         /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'

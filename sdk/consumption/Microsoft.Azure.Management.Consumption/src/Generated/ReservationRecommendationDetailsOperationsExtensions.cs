@@ -29,18 +29,38 @@ namespace Microsoft.Azure.Management.Consumption
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='scope'>
+            /// <param name='billingScope'>
             /// The scope associated with reservation recommendation details operations.
             /// This includes '/subscriptions/{subscriptionId}/' for subscription scope,
-            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}',
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+            /// resource group scope,
             /// /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for
             /// BillingAccount scope, and
             /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
             /// for billingProfile scope
             /// </param>
-            public static ReservationRecommendationDetailsModel Get(this IReservationRecommendationDetailsOperations operations, string scope)
+            /// <param name='scope'>
+            /// Scope of the reservation. Possible values include: 'Single', 'Shared'
+            /// </param>
+            /// <param name='region'>
+            /// Used to select the region the recommendation should be generated for.
+            /// </param>
+            /// <param name='term'>
+            /// Specify length of reservation recommendation term. Possible values include:
+            /// 'P1Y', 'P3Y'
+            /// </param>
+            /// <param name='lookBackPeriod'>
+            /// Filter the time period on which reservation recommendation results are
+            /// based. Possible values include: 'Last07Days', 'Last30Days', 'Last60Days'
+            /// </param>
+            /// <param name='product'>
+            /// Filter the products for which reservation recommendation results are
+            /// generated. Examples: Standard_DS1_v2 (for VM),
+            /// Premium_SSD_Managed_Disks_P30 (for Managed Disks)
+            /// </param>
+            public static ReservationRecommendationDetailsModel Get(this IReservationRecommendationDetailsOperations operations, string billingScope, string scope, string region, string term, string lookBackPeriod, string product)
             {
-                return operations.GetAsync(scope).GetAwaiter().GetResult();
+                return operations.GetAsync(billingScope, scope, region, term, lookBackPeriod, product).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -51,21 +71,41 @@ namespace Microsoft.Azure.Management.Consumption
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='scope'>
+            /// <param name='billingScope'>
             /// The scope associated with reservation recommendation details operations.
             /// This includes '/subscriptions/{subscriptionId}/' for subscription scope,
-            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}',
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+            /// resource group scope,
             /// /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for
             /// BillingAccount scope, and
             /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
             /// for billingProfile scope
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the reservation. Possible values include: 'Single', 'Shared'
+            /// </param>
+            /// <param name='region'>
+            /// Used to select the region the recommendation should be generated for.
+            /// </param>
+            /// <param name='term'>
+            /// Specify length of reservation recommendation term. Possible values include:
+            /// 'P1Y', 'P3Y'
+            /// </param>
+            /// <param name='lookBackPeriod'>
+            /// Filter the time period on which reservation recommendation results are
+            /// based. Possible values include: 'Last07Days', 'Last30Days', 'Last60Days'
+            /// </param>
+            /// <param name='product'>
+            /// Filter the products for which reservation recommendation results are
+            /// generated. Examples: Standard_DS1_v2 (for VM),
+            /// Premium_SSD_Managed_Disks_P30 (for Managed Disks)
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ReservationRecommendationDetailsModel> GetAsync(this IReservationRecommendationDetailsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ReservationRecommendationDetailsModel> GetAsync(this IReservationRecommendationDetailsOperations operations, string billingScope, string scope, string region, string term, string lookBackPeriod, string product, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(billingScope, scope, region, term, lookBackPeriod, product, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

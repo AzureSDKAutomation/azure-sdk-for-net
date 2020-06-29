@@ -55,14 +55,34 @@ namespace Microsoft.Azure.Management.Consumption
         /// instances.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
         /// </summary>
-        /// <param name='scope'>
+        /// <param name='billingScope'>
         /// The scope associated with reservation recommendation details operations.
         /// This includes '/subscriptions/{subscriptionId}/' for subscription scope,
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}',
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+        /// resource group scope,
         /// /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for
         /// BillingAccount scope, and
         /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
         /// for billingProfile scope
+        /// </param>
+        /// <param name='scope'>
+        /// Scope of the reservation. Possible values include: 'Single', 'Shared'
+        /// </param>
+        /// <param name='region'>
+        /// Used to select the region the recommendation should be generated for.
+        /// </param>
+        /// <param name='term'>
+        /// Specify length of reservation recommendation term. Possible values include:
+        /// 'P1Y', 'P3Y'
+        /// </param>
+        /// <param name='lookBackPeriod'>
+        /// Filter the time period on which reservation recommendation results are
+        /// based. Possible values include: 'Last07Days', 'Last30Days', 'Last60Days'
+        /// </param>
+        /// <param name='product'>
+        /// Filter the products for which reservation recommendation results are
+        /// generated. Examples: Standard_DS1_v2 (for VM),
+        /// Premium_SSD_Managed_Disks_P30 (for Managed Disks)
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -85,15 +105,35 @@ namespace Microsoft.Azure.Management.Consumption
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ReservationRecommendationDetailsModel>> GetWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ReservationRecommendationDetailsModel>> GetWithHttpMessagesAsync(string billingScope, string scope, string region, string term, string lookBackPeriod, string product, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+            if (billingScope == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "billingScope");
+            }
             if (scope == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scope");
+            }
+            if (region == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "region");
+            }
+            if (term == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "term");
+            }
+            if (lookBackPeriod == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "lookBackPeriod");
+            }
+            if (product == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "product");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -102,18 +142,43 @@ namespace Microsoft.Azure.Management.Consumption
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("billingScope", billingScope);
                 tracingParameters.Add("scope", scope);
+                tracingParameters.Add("region", region);
+                tracingParameters.Add("term", term);
+                tracingParameters.Add("lookBackPeriod", lookBackPeriod);
+                tracingParameters.Add("product", product);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Consumption/reservationRecommendationDetails").ToString();
-            _url = _url.Replace("{scope}", scope);
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{billingScope}/providers/Microsoft.Consumption/reservationRecommendationDetails").ToString();
+            _url = _url.Replace("{billingScope}", billingScope);
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (scope != null)
+            {
+                _queryParameters.Add(string.Format("scope={0}", System.Uri.EscapeDataString(scope)));
+            }
+            if (region != null)
+            {
+                _queryParameters.Add(string.Format("region={0}", System.Uri.EscapeDataString(region)));
+            }
+            if (term != null)
+            {
+                _queryParameters.Add(string.Format("term={0}", System.Uri.EscapeDataString(term)));
+            }
+            if (lookBackPeriod != null)
+            {
+                _queryParameters.Add(string.Format("lookBackPeriod={0}", System.Uri.EscapeDataString(lookBackPeriod)));
+            }
+            if (product != null)
+            {
+                _queryParameters.Add(string.Format("product={0}", System.Uri.EscapeDataString(product)));
             }
             if (_queryParameters.Count > 0)
             {
