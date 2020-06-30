@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Management.AppConfiguration
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("AppConfiguration", "ConfigurationStores", "2019-11-01-preview"),
-                new Tuple<string, string, string>("AppConfiguration", "Operations", "2019-11-01-preview"),
-                new Tuple<string, string, string>("AppConfiguration", "PrivateEndpointConnections", "2019-11-01-preview"),
-                new Tuple<string, string, string>("AppConfiguration", "PrivateLinkResources", "2019-11-01-preview"),
+                new Tuple<string, string, string>("AppConfiguration", "ConfigurationStores", "2020-06-01"),
+                new Tuple<string, string, string>("AppConfiguration", "Operations", "2020-06-01"),
+                new Tuple<string, string, string>("AppConfiguration", "PrivateEndpointConnections", "2020-06-01"),
+                new Tuple<string, string, string>("AppConfiguration", "PrivateLinkResources", "2020-06-01"),
               }.AsEnumerable();
           }
       }
