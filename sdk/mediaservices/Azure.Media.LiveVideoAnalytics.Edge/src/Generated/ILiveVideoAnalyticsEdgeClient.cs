@@ -21,7 +21,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
     /// <summary>
     /// Direct Methods for Live Video Analytics on IoT Edge.
     /// </summary>
-    public partial interface IDirectMethodsforLiveVideoAnalyticsonIoTEdge : System.IDisposable
+    public partial interface ILiveVideoAnalyticsEdgeClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.

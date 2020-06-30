@@ -24,7 +24,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
     /// <summary>
     /// Direct Methods for Live Video Analytics on IoT Edge.
     /// </summary>
-    public partial class DirectMethodsforLiveVideoAnalyticsonIoTEdge : ServiceClient<DirectMethodsforLiveVideoAnalyticsonIoTEdge>, IDirectMethodsforLiveVideoAnalyticsonIoTEdge
+    public partial class LiveVideoAnalyticsEdgeClient : ServiceClient<LiveVideoAnalyticsEdgeClient>, ILiveVideoAnalyticsEdgeClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -42,31 +42,31 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the DirectMethodsforLiveVideoAnalyticsonIoTEdge class.
+        /// Initializes a new instance of the LiveVideoAnalyticsEdgeClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling DirectMethodsforLiveVideoAnalyticsonIoTEdge.Dispose(). False: will not dispose provided httpClient</param>
-        public DirectMethodsforLiveVideoAnalyticsonIoTEdge(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        /// True: will dispose the provided httpClient on calling LiveVideoAnalyticsEdgeClient.Dispose(). False: will not dispose provided httpClient</param>
+        internal LiveVideoAnalyticsEdgeClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DirectMethodsforLiveVideoAnalyticsonIoTEdge class.
+        /// Initializes a new instance of the LiveVideoAnalyticsEdgeClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public DirectMethodsforLiveVideoAnalyticsonIoTEdge(params DelegatingHandler[] handlers) : base(handlers)
+        internal LiveVideoAnalyticsEdgeClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DirectMethodsforLiveVideoAnalyticsonIoTEdge class.
+        /// Initializes a new instance of the LiveVideoAnalyticsEdgeClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -74,13 +74,13 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public DirectMethodsforLiveVideoAnalyticsonIoTEdge(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        internal LiveVideoAnalyticsEdgeClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DirectMethodsforLiveVideoAnalyticsonIoTEdge class.
+        /// Initializes a new instance of the LiveVideoAnalyticsEdgeClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -91,7 +91,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public DirectMethodsforLiveVideoAnalyticsonIoTEdge(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        internal LiveVideoAnalyticsEdgeClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -101,7 +101,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
         }
 
         /// <summary>
-        /// Initializes a new instance of the DirectMethodsforLiveVideoAnalyticsonIoTEdge class.
+        /// Initializes a new instance of the LiveVideoAnalyticsEdgeClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -115,7 +115,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public DirectMethodsforLiveVideoAnalyticsonIoTEdge(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        internal LiveVideoAnalyticsEdgeClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {

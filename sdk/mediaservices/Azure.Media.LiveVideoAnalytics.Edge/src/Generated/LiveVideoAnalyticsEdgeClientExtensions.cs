@@ -15,9 +15,9 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for DirectMethodsforLiveVideoAnalyticsonIoTEdge.
+    /// Extension methods for LiveVideoAnalyticsEdgeClient.
     /// </summary>
-    public static partial class DirectMethodsforLiveVideoAnalyticsonIoTEdgeExtensions
+    public static partial class LiveVideoAnalyticsEdgeClientExtensions
     {
             /// <summary>
             /// Retrieves a list of graph topologies.
@@ -29,7 +29,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static MediaGraphTopologyCollection GraphTopologyList(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations)
+            public static MediaGraphTopologyCollection GraphTopologyList(this ILiveVideoAnalyticsEdgeClient operations)
             {
                 return operations.GraphTopologyListAsync().GetAwaiter().GetResult();
             }
@@ -47,7 +47,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaGraphTopologyCollection> GraphTopologyListAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaGraphTopologyCollection> GraphTopologyListAsync(this ILiveVideoAnalyticsEdgeClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GraphTopologyListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -68,7 +68,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// </param>
             /// <param name='topology'>
             /// </param>
-            public static MediaGraphTopology GraphTopologySet(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, MediaGraphTopology topology)
+            public static MediaGraphTopology GraphTopologySet(this ILiveVideoAnalyticsEdgeClient operations, MediaGraphTopology topology)
             {
                 return operations.GraphTopologySetAsync(topology).GetAwaiter().GetResult();
             }
@@ -89,7 +89,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaGraphTopology> GraphTopologySetAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, MediaGraphTopology topology, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaGraphTopology> GraphTopologySetAsync(this ILiveVideoAnalyticsEdgeClient operations, MediaGraphTopology topology, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GraphTopologySetWithHttpMessagesAsync(topology, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -111,7 +111,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='name'>
             /// Name of the graph topology to be retrieved.
             /// </param>
-            public static MediaGraphTopology GraphTopologyGet(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name)
+            public static MediaGraphTopology GraphTopologyGet(this ILiveVideoAnalyticsEdgeClient operations, string name)
             {
                 return operations.GraphTopologyGetAsync(name).GetAwaiter().GetResult();
             }
@@ -133,7 +133,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaGraphTopology> GraphTopologyGetAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaGraphTopology> GraphTopologyGetAsync(this ILiveVideoAnalyticsEdgeClient operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GraphTopologyGetWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -154,7 +154,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='name'>
             /// Name of the graph topology to be deleted.
             /// </param>
-            public static void GraphTopologyDelete(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name)
+            public static void GraphTopologyDelete(this ILiveVideoAnalyticsEdgeClient operations, string name)
             {
                 operations.GraphTopologyDeleteAsync(name).GetAwaiter().GetResult();
             }
@@ -175,7 +175,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task GraphTopologyDeleteAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task GraphTopologyDeleteAsync(this ILiveVideoAnalyticsEdgeClient operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.GraphTopologyDeleteWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -190,7 +190,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static MediaGraphInstanceCollection GraphInstanceList(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations)
+            public static MediaGraphInstanceCollection GraphInstanceList(this ILiveVideoAnalyticsEdgeClient operations)
             {
                 return operations.GraphInstanceListAsync().GetAwaiter().GetResult();
             }
@@ -208,7 +208,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaGraphInstanceCollection> GraphInstanceListAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaGraphInstanceCollection> GraphInstanceListAsync(this ILiveVideoAnalyticsEdgeClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GraphInstanceListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -227,7 +227,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// </param>
             /// <param name='instance'>
             /// </param>
-            public static MediaGraphInstance GraphInstanceSet(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, MediaGraphInstance instance)
+            public static MediaGraphInstance GraphInstanceSet(this ILiveVideoAnalyticsEdgeClient operations, MediaGraphInstance instance)
             {
                 return operations.GraphInstanceSetAsync(instance).GetAwaiter().GetResult();
             }
@@ -246,7 +246,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaGraphInstance> GraphInstanceSetAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, MediaGraphInstance instance, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaGraphInstance> GraphInstanceSetAsync(this ILiveVideoAnalyticsEdgeClient operations, MediaGraphInstance instance, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GraphInstanceSetWithHttpMessagesAsync(instance, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -268,7 +268,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='name'>
             /// Name of the graph instance to be retrieved.
             /// </param>
-            public static MediaGraphInstance GraphInstanceGet(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name)
+            public static MediaGraphInstance GraphInstanceGet(this ILiveVideoAnalyticsEdgeClient operations, string name)
             {
                 return operations.GraphInstanceGetAsync(name).GetAwaiter().GetResult();
             }
@@ -290,7 +290,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaGraphInstance> GraphInstanceGetAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaGraphInstance> GraphInstanceGetAsync(this ILiveVideoAnalyticsEdgeClient operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GraphInstanceGetWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -310,7 +310,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='name'>
             /// Name of the graph instance to be deleted.
             /// </param>
-            public static void GraphInstanceDelete(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name)
+            public static void GraphInstanceDelete(this ILiveVideoAnalyticsEdgeClient operations, string name)
             {
                 operations.GraphInstanceDeleteAsync(name).GetAwaiter().GetResult();
             }
@@ -330,7 +330,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task GraphInstanceDeleteAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task GraphInstanceDeleteAsync(this ILiveVideoAnalyticsEdgeClient operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.GraphInstanceDeleteWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -347,7 +347,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='name'>
             /// Name of the graph instance to be activated.
             /// </param>
-            public static void GraphInstanceActivate(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name)
+            public static void GraphInstanceActivate(this ILiveVideoAnalyticsEdgeClient operations, string name)
             {
                 operations.GraphInstanceActivateAsync(name).GetAwaiter().GetResult();
             }
@@ -367,7 +367,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task GraphInstanceActivateAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task GraphInstanceActivateAsync(this ILiveVideoAnalyticsEdgeClient operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.GraphInstanceActivateWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -384,7 +384,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='name'>
             /// Name of the graph instance to be deactivated.
             /// </param>
-            public static void GraphInstanceDeactivate(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name)
+            public static void GraphInstanceDeactivate(this ILiveVideoAnalyticsEdgeClient operations, string name)
             {
                 operations.GraphInstanceDeactivateAsync(name).GetAwaiter().GetResult();
             }
@@ -404,7 +404,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task GraphInstanceDeactivateAsync(this IDirectMethodsforLiveVideoAnalyticsonIoTEdge operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task GraphInstanceDeactivateAsync(this ILiveVideoAnalyticsEdgeClient operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.GraphInstanceDeactivateWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }

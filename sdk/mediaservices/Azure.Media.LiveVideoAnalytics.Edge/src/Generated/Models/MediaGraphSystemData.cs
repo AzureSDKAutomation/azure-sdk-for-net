@@ -33,7 +33,7 @@ namespace Azure.Media.LiveVideoAnalytics.Edge.Models
         /// (UTC).</param>
         /// <param name="lastModifiedAt">The timestamp of resource last
         /// modification (UTC).</param>
-        public MediaGraphSystemData(System.DateTime? createdAt = default(System.DateTime?), System.DateTime? lastModifiedAt = default(System.DateTime?))
+        public MediaGraphSystemData(System.DateTimeOffset? createdAt = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedAt = default(System.DateTimeOffset?))
         {
             CreatedAt = createdAt;
             LastModifiedAt = lastModifiedAt;
@@ -49,13 +49,13 @@ namespace Azure.Media.LiveVideoAnalytics.Edge.Models
         /// Gets or sets the timestamp of resource creation (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "createdAt")]
-        public System.DateTime? CreatedAt { get; set; }
+        public System.DateTimeOffset? CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or sets the timestamp of resource last modification (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "lastModifiedAt")]
-        public System.DateTime? LastModifiedAt { get; set; }
+        public System.DateTimeOffset? LastModifiedAt { get; set; }
 
     }
 }
