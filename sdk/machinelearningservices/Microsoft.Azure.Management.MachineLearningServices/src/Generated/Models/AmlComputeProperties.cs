@@ -31,9 +31,14 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <summary>
         /// Initializes a new instance of the AmlComputeProperties class.
         /// </summary>
+        /// <param name="osType">Compute OS Type. Possible values include:
+        /// 'Linux', 'Windows'</param>
         /// <param name="vmSize">Virtual Machine Size</param>
         /// <param name="vmPriority">Virtual Machine priority. Possible values
         /// include: 'Dedicated', 'LowPriority'</param>
+        /// <param name="virtualMachineImage">Virtual Machine image for AML
+        /// Compute - windows only</param>
+        /// <param name="isolatedNetwork">Network is isolated or not</param>
         /// <param name="scaleSettings">Scale settings for AML Compute</param>
         /// <param name="userAccountCredentials">User account
         /// credentials.</param>
@@ -47,10 +52,14 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="currentNodeCount">Current node count.</param>
         /// <param name="targetNodeCount">Target node count.</param>
         /// <param name="nodeStateCounts">Node state counts.</param>
-        public AmlComputeProperties(string vmSize = default(string), string vmPriority = default(string), ScaleSettings scaleSettings = default(ScaleSettings), UserAccountCredentials userAccountCredentials = default(UserAccountCredentials), ResourceId subnet = default(ResourceId), string remoteLoginPortPublicAccess = default(string), string allocationState = default(string), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), IList<MachineLearningServiceError> errors = default(IList<MachineLearningServiceError>), int? currentNodeCount = default(int?), int? targetNodeCount = default(int?), NodeStateCounts nodeStateCounts = default(NodeStateCounts))
+        /// <param name="enableNodePublicIp">Enable node public IP.</param>
+        public AmlComputeProperties(string osType = default(string), string vmSize = default(string), string vmPriority = default(string), VirtualMachineImage virtualMachineImage = default(VirtualMachineImage), bool? isolatedNetwork = default(bool?), ScaleSettings scaleSettings = default(ScaleSettings), UserAccountCredentials userAccountCredentials = default(UserAccountCredentials), ResourceId subnet = default(ResourceId), string remoteLoginPortPublicAccess = default(string), string allocationState = default(string), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), IList<MachineLearningServiceError> errors = default(IList<MachineLearningServiceError>), int? currentNodeCount = default(int?), int? targetNodeCount = default(int?), NodeStateCounts nodeStateCounts = default(NodeStateCounts), bool? enableNodePublicIp = default(bool?))
         {
+            OsType = osType;
             VmSize = vmSize;
             VmPriority = vmPriority;
+            VirtualMachineImage = virtualMachineImage;
+            IsolatedNetwork = isolatedNetwork;
             ScaleSettings = scaleSettings;
             UserAccountCredentials = userAccountCredentials;
             Subnet = subnet;
@@ -61,6 +70,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
             CurrentNodeCount = currentNodeCount;
             TargetNodeCount = targetNodeCount;
             NodeStateCounts = nodeStateCounts;
+            EnableNodePublicIp = enableNodePublicIp;
             CustomInit();
         }
 
@@ -68,6 +78,13 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets compute OS Type. Possible values include: 'Linux',
+        /// 'Windows'
+        /// </summary>
+        [JsonProperty(PropertyName = "osType")]
+        public string OsType { get; set; }
 
         /// <summary>
         /// Gets or sets virtual Machine Size
@@ -81,6 +98,18 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "vmPriority")]
         public string VmPriority { get; set; }
+
+        /// <summary>
+        /// Gets or sets virtual Machine image for AML Compute - windows only
+        /// </summary>
+        [JsonProperty(PropertyName = "virtualMachineImage")]
+        public VirtualMachineImage VirtualMachineImage { get; set; }
+
+        /// <summary>
+        /// Gets or sets network is isolated or not
+        /// </summary>
+        [JsonProperty(PropertyName = "isolatedNetwork")]
+        public bool? IsolatedNetwork { get; set; }
 
         /// <summary>
         /// Gets or sets scale settings for AML Compute
@@ -191,6 +220,18 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         public NodeStateCounts NodeStateCounts { get; private set; }
 
         /// <summary>
+        /// Gets or sets enable node public IP.
+        /// </summary>
+        /// <remarks>
+        /// Enable or disable node public IP address provisioning. Possible
+        /// values are: Possible values are: true - Indicates that the compute
+        /// nodes will have public IPs provisioned. false - Indicates that the
+        /// compute nodes will have a private endpoint and no public IPs.
+        /// </remarks>
+        [JsonProperty(PropertyName = "enableNodePublicIp")]
+        public bool? EnableNodePublicIp { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="Rest.ValidationException">
@@ -198,6 +239,10 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (VirtualMachineImage != null)
+            {
+                VirtualMachineImage.Validate();
+            }
             if (ScaleSettings != null)
             {
                 ScaleSettings.Validate();

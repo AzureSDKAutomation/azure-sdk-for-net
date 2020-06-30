@@ -93,11 +93,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices
         public virtual IWorkspaceFeaturesOperations WorkspaceFeatures { get; private set; }
 
         /// <summary>
-        /// Gets the INotebooksOperations.
-        /// </summary>
-        public virtual INotebooksOperations Notebooks { get; private set; }
-
-        /// <summary>
         /// Gets the IUsagesOperations.
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
@@ -371,7 +366,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices
             Operations = new Operations(this);
             Workspaces = new WorkspacesOperations(this);
             WorkspaceFeatures = new WorkspaceFeaturesOperations(this);
-            Notebooks = new NotebooksOperations(this);
             Usages = new UsagesOperations(this);
             VirtualMachineSizes = new VirtualMachineSizesOperations(this);
             Quotas = new QuotasOperations(this);
@@ -379,7 +373,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-04-01";
+            ApiVersion = "2020-05-15-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
