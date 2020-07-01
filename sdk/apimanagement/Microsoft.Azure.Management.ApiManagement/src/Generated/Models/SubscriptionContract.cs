@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// property will not be filled on 'GET' operations! Use '/listSecrets'
         /// POST request to get the value.</param>
         /// <param name="stateComment">Optional subscription comment added by
-        /// an administrator.</param>
+        /// an administrator when the state is changed to the
+        /// 'rejected'.</param>
         /// <param name="allowTracing">Determines whether tracing is
         /// enabled</param>
         public SubscriptionContract(string scope, SubscriptionState state, string id = default(string), string name = default(string), string type = default(string), string ownerId = default(string), string displayName = default(string), System.DateTime? createdDate = default(System.DateTime?), System.DateTime? startDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), System.DateTime? notificationDate = default(System.DateTime?), string primaryKey = default(string), string secondaryKey = default(string), string stateComment = default(string), bool? allowTracing = default(bool?))
@@ -223,7 +224,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <summary>
         /// Gets or sets optional subscription comment added by an
-        /// administrator.
+        /// administrator when the state is changed to the 'rejected'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.stateComment")]
         public string StateComment { get; set; }
