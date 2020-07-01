@@ -82,11 +82,6 @@ namespace Microsoft.Azure.Management.Security
         IPricingsOperations Pricings { get; }
 
         /// <summary>
-        /// Gets the IAlertsOperations.
-        /// </summary>
-        IAlertsOperations Alerts { get; }
-
-        /// <summary>
         /// Gets the ISettingsOperations.
         /// </summary>
         ISettingsOperations Settings { get; }
@@ -235,6 +230,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the ITopologyOperations.
         /// </summary>
         ITopologyOperations Topology { get; }
+
+        /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        IAlertsOperations Alerts { get; }
 
         /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.

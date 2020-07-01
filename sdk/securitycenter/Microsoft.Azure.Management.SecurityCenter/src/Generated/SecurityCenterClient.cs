@@ -87,11 +87,6 @@ namespace Microsoft.Azure.Management.Security
         public virtual IPricingsOperations Pricings { get; private set; }
 
         /// <summary>
-        /// Gets the IAlertsOperations.
-        /// </summary>
-        public virtual IAlertsOperations Alerts { get; private set; }
-
-        /// <summary>
         /// Gets the ISettingsOperations.
         /// </summary>
         public virtual ISettingsOperations Settings { get; private set; }
@@ -240,6 +235,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the ITopologyOperations.
         /// </summary>
         public virtual ITopologyOperations Topology { get; private set; }
+
+        /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        public virtual IAlertsOperations Alerts { get; private set; }
 
         /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.
@@ -519,7 +519,6 @@ namespace Microsoft.Azure.Management.Security
         {
             ComplianceResults = new ComplianceResultsOperations(this);
             Pricings = new PricingsOperations(this);
-            Alerts = new AlertsOperations(this);
             Settings = new SettingsOperations(this);
             AdvancedThreatProtection = new AdvancedThreatProtectionOperations(this);
             DeviceSecurityGroups = new DeviceSecurityGroupsOperations(this);
@@ -550,6 +549,7 @@ namespace Microsoft.Azure.Management.Security
             AdaptiveNetworkHardenings = new AdaptiveNetworkHardeningsOperations(this);
             AllowedConnections = new AllowedConnectionsOperations(this);
             Topology = new TopologyOperations(this);
+            Alerts = new AlertsOperations(this);
             JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
             DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
             ExternalSecuritySolutions = new ExternalSecuritySolutionsOperations(this);
@@ -597,6 +597,8 @@ namespace Microsoft.Azure.Management.Security
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AdditionalData>("assessedResourceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AutomationAction>("actionType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AutomationAction>("actionType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceIdentifier>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ResourceIdentifier>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ExternalSecuritySolution>("kind"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ExternalSecuritySolution>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
