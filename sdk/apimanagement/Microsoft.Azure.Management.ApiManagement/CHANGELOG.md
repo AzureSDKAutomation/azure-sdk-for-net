@@ -1,9 +1,5 @@
 ## Microsoft.Azure.Management.ApiManagment release notes
 
-### Changes in 6.0.0-preview
-
-- Fixed `quotas` update contract
-
 ### Changes in 5.0.0-preview
 
 - Switch the .NET client to use api-version `2019-12-01`
