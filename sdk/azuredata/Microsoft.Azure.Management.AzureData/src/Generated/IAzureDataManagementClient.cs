@@ -101,11 +101,6 @@ namespace Microsoft.Azure.Management.AzureData
         ISqlManagedInstancesOperations SqlManagedInstances { get; }
 
         /// <summary>
-        /// Gets the ISqlInstancesOperations.
-        /// </summary>
-        ISqlInstancesOperations SqlInstances { get; }
-
-        /// <summary>
         /// Gets the ISqlServerInstancesOperations.
         /// </summary>
         ISqlServerInstancesOperations SqlServerInstances { get; }
@@ -119,11 +114,6 @@ namespace Microsoft.Azure.Management.AzureData
         /// Gets the IDataControllersOperations.
         /// </summary>
         IDataControllersOperations DataControllers { get; }
-
-        /// <summary>
-        /// Gets the IHybridDataManagersOperations.
-        /// </summary>
-        IHybridDataManagersOperations HybridDataManagers { get; }
 
     }
 }
