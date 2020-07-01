@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}'
         /// specific for partners.
         /// </param>
+        /// <param name='expand'>
+        /// May be used to expand the properties within an export. Currently
+        /// only 'runHistory' is supported and will return information for the
+        /// last execution of each export.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -62,7 +67,7 @@ namespace Microsoft.Azure.Management.CostManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExportListResult>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExportListResult>> ListWithHttpMessagesAsync(string scope, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to get the export for the defined scope by export
         /// name.
@@ -91,6 +96,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// <param name='exportName'>
         /// Export Name.
         /// </param>
+        /// <param name='expand'>
+        /// May be used to expand the properties within an export. Currently
+        /// only 'runHistory' is supported and will return information for the
+        /// last 10 executions of the export.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -106,7 +116,7 @@ namespace Microsoft.Azure.Management.CostManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Export>> GetWithHttpMessagesAsync(string scope, string exportName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Export>> GetWithHttpMessagesAsync(string scope, string exportName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to create or update a export. Update operation
         /// requires latest eTag to be set in the request. You may obtain the
@@ -197,7 +207,7 @@ namespace Microsoft.Azure.Management.CostManagement
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string scope, string exportName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to execute a export.
+        /// The operation to execute an export.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
         /// </summary>
         /// <param name='scope'>
@@ -238,7 +248,7 @@ namespace Microsoft.Azure.Management.CostManagement
         Task<AzureOperationResponse> ExecuteWithHttpMessagesAsync(string scope, string exportName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to get the execution history of an export for the
-        /// defined scope by export name.
+        /// defined scope and export name.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
         /// </summary>
         /// <param name='scope'>

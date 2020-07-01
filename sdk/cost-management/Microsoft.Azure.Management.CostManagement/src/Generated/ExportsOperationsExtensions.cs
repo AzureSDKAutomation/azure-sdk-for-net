@@ -48,9 +48,14 @@ namespace Microsoft.Azure.Management.CostManagement
             /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}'
             /// specific for partners.
             /// </param>
-            public static ExportListResult List(this IExportsOperations operations, string scope)
+            /// <param name='expand'>
+            /// May be used to expand the properties within an export. Currently only
+            /// 'runHistory' is supported and will return information for the last
+            /// execution of each export.
+            /// </param>
+            public static ExportListResult List(this IExportsOperations operations, string scope, string expand = default(string))
             {
-                return operations.ListAsync(scope).GetAwaiter().GetResult();
+                return operations.ListAsync(scope, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -80,12 +85,17 @@ namespace Microsoft.Azure.Management.CostManagement
             /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}'
             /// specific for partners.
             /// </param>
+            /// <param name='expand'>
+            /// May be used to expand the properties within an export. Currently only
+            /// 'runHistory' is supported and will return information for the last
+            /// execution of each export.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExportListResult> ListAsync(this IExportsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExportListResult> ListAsync(this IExportsOperations operations, string scope, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(scope, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -121,9 +131,14 @@ namespace Microsoft.Azure.Management.CostManagement
             /// <param name='exportName'>
             /// Export Name.
             /// </param>
-            public static Export Get(this IExportsOperations operations, string scope, string exportName)
+            /// <param name='expand'>
+            /// May be used to expand the properties within an export. Currently only
+            /// 'runHistory' is supported and will return information for the last 10
+            /// executions of the export.
+            /// </param>
+            public static Export Get(this IExportsOperations operations, string scope, string exportName, string expand = default(string))
             {
-                return operations.GetAsync(scope, exportName).GetAwaiter().GetResult();
+                return operations.GetAsync(scope, exportName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -156,12 +171,17 @@ namespace Microsoft.Azure.Management.CostManagement
             /// <param name='exportName'>
             /// Export Name.
             /// </param>
+            /// <param name='expand'>
+            /// May be used to expand the properties within an export. Currently only
+            /// 'runHistory' is supported and will return information for the last 10
+            /// executions of the export.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Export> GetAsync(this IExportsOperations operations, string scope, string exportName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Export> GetAsync(this IExportsOperations operations, string scope, string exportName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(scope, exportName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(scope, exportName, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -327,7 +347,7 @@ namespace Microsoft.Azure.Management.CostManagement
             }
 
             /// <summary>
-            /// The operation to execute a export.
+            /// The operation to execute an export.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
             /// </summary>
             /// <param name='operations'>
@@ -362,7 +382,7 @@ namespace Microsoft.Azure.Management.CostManagement
             }
 
             /// <summary>
-            /// The operation to execute a export.
+            /// The operation to execute an export.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
             /// </summary>
             /// <param name='operations'>
@@ -401,7 +421,7 @@ namespace Microsoft.Azure.Management.CostManagement
 
             /// <summary>
             /// The operation to get the execution history of an export for the defined
-            /// scope by export name.
+            /// scope and export name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
             /// </summary>
             /// <param name='operations'>
@@ -437,7 +457,7 @@ namespace Microsoft.Azure.Management.CostManagement
 
             /// <summary>
             /// The operation to get the execution history of an export for the defined
-            /// scope by export name.
+            /// scope and export name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
             /// </summary>
             /// <param name='operations'>

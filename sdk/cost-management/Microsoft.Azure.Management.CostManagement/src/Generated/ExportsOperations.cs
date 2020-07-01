@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}'
         /// specific for partners.
         /// </param>
+        /// <param name='expand'>
+        /// May be used to expand the properties within an export. Currently only
+        /// 'runHistory' is supported and will return information for the last
+        /// execution of each export.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -95,7 +100,7 @@ namespace Microsoft.Azure.Management.CostManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ExportListResult>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExportListResult>> ListWithHttpMessagesAsync(string scope, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (scope == null)
             {
@@ -113,6 +118,7 @@ namespace Microsoft.Azure.Management.CostManagement
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("scope", scope);
+                tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -124,6 +130,10 @@ namespace Microsoft.Azure.Management.CostManagement
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -272,6 +282,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// <param name='exportName'>
         /// Export Name.
         /// </param>
+        /// <param name='expand'>
+        /// May be used to expand the properties within an export. Currently only
+        /// 'runHistory' is supported and will return information for the last 10
+        /// executions of the export.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -293,7 +308,7 @@ namespace Microsoft.Azure.Management.CostManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Export>> GetWithHttpMessagesAsync(string scope, string exportName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Export>> GetWithHttpMessagesAsync(string scope, string exportName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (scope == null)
             {
@@ -316,6 +331,7 @@ namespace Microsoft.Azure.Management.CostManagement
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("scope", scope);
                 tracingParameters.Add("exportName", exportName);
+                tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
@@ -328,6 +344,10 @@ namespace Microsoft.Azure.Management.CostManagement
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -875,7 +895,7 @@ namespace Microsoft.Azure.Management.CostManagement
         }
 
         /// <summary>
-        /// The operation to execute a export.
+        /// The operation to execute an export.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
         /// </summary>
         /// <param name='scope'>
@@ -1059,7 +1079,7 @@ namespace Microsoft.Azure.Management.CostManagement
 
         /// <summary>
         /// The operation to get the execution history of an export for the defined
-        /// scope by export name.
+        /// scope and export name.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/costmanagement/" />
         /// </summary>
         /// <param name='scope'>

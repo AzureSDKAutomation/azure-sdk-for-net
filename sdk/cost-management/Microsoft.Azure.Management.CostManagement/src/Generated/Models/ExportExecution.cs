@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// A export execution.
+    /// An export execution.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class ExportExecution : Resource
@@ -40,22 +40,24 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// <param name="tags">Resource tags.</param>
         /// <param name="executionType">The type of the export execution.
         /// Possible values include: 'OnDemand', 'Scheduled'</param>
-        /// <param name="status">The status of the export execution. Possible
-        /// values include: 'Queued', 'InProgress', 'Completed', 'Failed',
-        /// 'Timeout', 'NewDataNotAvailable', 'DataNotAvailable'</param>
+        /// <param name="status">The last known status of the export execution.
+        /// Possible values include: 'Queued', 'InProgress', 'Completed',
+        /// 'Failed', 'Timeout', 'NewDataNotAvailable',
+        /// 'DataNotAvailable'</param>
         /// <param name="submittedBy">The identifier for the entity that
-        /// executed the export. For OnDemand executions, it is the email id.
-        /// For Scheduled executions, it is the constant value -
-        /// System.</param>
+        /// executed the export. For OnDemand executions it is the user email.
+        /// For scheduled executions it is 'System'.</param>
         /// <param name="submittedTime">The time when export was queued to be
         /// executed.</param>
         /// <param name="processingStartTime">The time when export was picked
         /// up to be executed.</param>
-        /// <param name="processingEndTime">The time when export execution
+        /// <param name="processingEndTime">The time when the export execution
         /// finished.</param>
-        /// <param name="fileName">The name of the file export got written
-        /// to.</param>
-        public ExportExecution(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string executionType = default(string), string status = default(string), string submittedBy = default(string), System.DateTime? submittedTime = default(System.DateTime?), System.DateTime? processingStartTime = default(System.DateTime?), System.DateTime? processingEndTime = default(System.DateTime?), string fileName = default(string), CommonExportProperties runSettings = default(CommonExportProperties))
+        /// <param name="fileName">The name of the exported file.</param>
+        /// <param name="runSettings">The export settings that were in effect
+        /// for this execution.</param>
+        /// <param name="error">The details of any error.</param>
+        public ExportExecution(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string executionType = default(string), string status = default(string), string submittedBy = default(string), System.DateTime? submittedTime = default(System.DateTime?), System.DateTime? processingStartTime = default(System.DateTime?), System.DateTime? processingEndTime = default(System.DateTime?), string fileName = default(string), CommonExportProperties runSettings = default(CommonExportProperties), ErrorDetails error = default(ErrorDetails))
             : base(id, name, type, tags)
         {
             ExecutionType = executionType;
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
             ProcessingEndTime = processingEndTime;
             FileName = fileName;
             RunSettings = runSettings;
+            Error = error;
             CustomInit();
         }
 
@@ -82,17 +85,17 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         public string ExecutionType { get; set; }
 
         /// <summary>
-        /// Gets or sets the status of the export execution. Possible values
-        /// include: 'Queued', 'InProgress', 'Completed', 'Failed', 'Timeout',
-        /// 'NewDataNotAvailable', 'DataNotAvailable'
+        /// Gets or sets the last known status of the export execution.
+        /// Possible values include: 'Queued', 'InProgress', 'Completed',
+        /// 'Failed', 'Timeout', 'NewDataNotAvailable', 'DataNotAvailable'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier for the entity that executed the
-        /// export. For OnDemand executions, it is the email id. For Scheduled
-        /// executions, it is the constant value - System.
+        /// export. For OnDemand executions it is the user email. For scheduled
+        /// executions it is 'System'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.submittedBy")]
         public string SubmittedBy { get; set; }
@@ -110,21 +113,29 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         public System.DateTime? ProcessingStartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the time when export execution finished.
+        /// Gets or sets the time when the export execution finished.
         /// </summary>
         [JsonProperty(PropertyName = "properties.processingEndTime")]
         public System.DateTime? ProcessingEndTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the file export got written to.
+        /// Gets or sets the name of the exported file.
         /// </summary>
         [JsonProperty(PropertyName = "properties.fileName")]
         public string FileName { get; set; }
 
         /// <summary>
+        /// Gets or sets the export settings that were in effect for this
+        /// execution.
         /// </summary>
         [JsonProperty(PropertyName = "properties.runSettings")]
         public CommonExportProperties RunSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the details of any error.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.error")]
+        public ErrorDetails Error { get; set; }
 
         /// <summary>
         /// Validate the object.

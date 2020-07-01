@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// The schedule associated with a export.
+    /// The schedule associated with the export.
     /// </summary>
     public partial class ExportSchedule
     {
@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// </summary>
         /// <param name="recurrence">The schedule recurrence. Possible values
         /// include: 'Daily', 'Weekly', 'Monthly', 'Annually'</param>
-        /// <param name="status">The status of the schedule. Whether active or
-        /// not. If inactive, the export's scheduled execution is paused.
-        /// Possible values include: 'Active', 'Inactive'</param>
+        /// <param name="status">The status of the export's schedule. If
+        /// 'Inactive', the export's schedule is paused. Possible values
+        /// include: 'Active', 'Inactive'</param>
         /// <param name="recurrencePeriod">Has start and end date of the
         /// recurrence. The start date must be in future. If present, the end
         /// date must be greater than start date.</param>
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the status of the schedule. Whether active or not. If
-        /// inactive, the export's scheduled execution is paused. Possible
-        /// values include: 'Active', 'Inactive'
+        /// Gets or sets the status of the export's schedule. If 'Inactive',
+        /// the export's schedule is paused. Possible values include: 'Active',
+        /// 'Inactive'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }

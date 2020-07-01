@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Management.CostManagement
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("CostManagement", "Alerts", "2019-11-01"),
-                new Tuple<string, string, string>("CostManagement", "Dimensions", "2019-11-01"),
-                new Tuple<string, string, string>("CostManagement", "Exports", "2019-11-01"),
-                new Tuple<string, string, string>("CostManagement", "Forecast", "2019-11-01"),
-                new Tuple<string, string, string>("CostManagement", "Operations", "2019-11-01"),
-                new Tuple<string, string, string>("CostManagement", "Query", "2019-11-01"),
-                new Tuple<string, string, string>("CostManagement", "Views", "2019-11-01"),
+                new Tuple<string, string, string>("CostManagement", "Alerts", "2020-06-01"),
+                new Tuple<string, string, string>("CostManagement", "Dimensions", "2020-06-01"),
+                new Tuple<string, string, string>("CostManagement", "Exports", "2020-06-01"),
+                new Tuple<string, string, string>("CostManagement", "Forecast", "2020-06-01"),
+                new Tuple<string, string, string>("CostManagement", "Operations", "2020-06-01"),
+                new Tuple<string, string, string>("CostManagement", "Query", "2020-06-01"),
+                new Tuple<string, string, string>("CostManagement", "Views", "2020-06-01"),
               }.AsEnumerable();
           }
       }

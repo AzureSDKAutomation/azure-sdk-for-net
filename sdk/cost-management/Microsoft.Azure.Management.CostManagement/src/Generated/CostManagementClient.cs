@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Management.CostManagement
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Version of the API to be used with the client request. The current version
-        /// is 2019-11-01.
+        /// Version of the API to be used with the client request (e.g. '2020-06-01').
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -356,7 +355,7 @@ namespace Microsoft.Azure.Management.CostManagement
             Exports = new ExportsOperations(this);
             Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-11-01";
+            ApiVersion = "2020-06-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

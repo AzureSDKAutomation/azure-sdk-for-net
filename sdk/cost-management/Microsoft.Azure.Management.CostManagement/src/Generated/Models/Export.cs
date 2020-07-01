@@ -13,22 +13,19 @@ namespace Microsoft.Azure.Management.CostManagement.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A export resource.
+    /// An export resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Export : Resource
+    public partial class Export : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Export class.
         /// </summary>
         public Export()
         {
-            Definition = new QueryDefinition();
             CustomInit();
         }
 
@@ -37,21 +34,30 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// </summary>
         /// <param name="deliveryInfo">Has delivery information for the
         /// export.</param>
-        /// <param name="definition">Has definition for the export.</param>
+        /// <param name="definition">Has the definition for the export.</param>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="tags">Resource tags.</param>
+        /// <param name="eTag">eTag of the resource. To handle concurrent
+        /// update scenario, this field will be used to determine whether the
+        /// user is updating the latest version or not.</param>
         /// <param name="format">The format of the export being delivered.
-        /// Possible values include: 'Csv'</param>
+        /// Currently only 'Csv' is supported. Possible values include:
+        /// 'Csv'</param>
+        /// <param name="runHistory">If requested, has the most recent
+        /// execution history for the export.</param>
+        /// <param name="nextRunTimeEstimate">If the export has an active
+        /// schedule, provides an estimate of the next execution time.</param>
         /// <param name="schedule">Has schedule information for the
         /// export.</param>
-        public Export(ExportDeliveryInfo deliveryInfo, QueryDefinition definition, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string format = default(string), ExportSchedule schedule = default(ExportSchedule))
-            : base(id, name, type, tags)
+        public Export(ExportDeliveryInfo deliveryInfo, ExportDefinition definition, string id = default(string), string name = default(string), string type = default(string), string eTag = default(string), string format = default(string), ExportExecutionListResult runHistory = default(ExportExecutionListResult), System.DateTime? nextRunTimeEstimate = default(System.DateTime?), ExportSchedule schedule = default(ExportSchedule))
+            : base(id, name, type, eTag)
         {
             Format = format;
             DeliveryInfo = deliveryInfo;
             Definition = definition;
+            RunHistory = runHistory;
+            NextRunTimeEstimate = nextRunTimeEstimate;
             Schedule = schedule;
             CustomInit();
         }
@@ -62,8 +68,8 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the format of the export being delivered. Possible
-        /// values include: 'Csv'
+        /// Gets or sets the format of the export being delivered. Currently
+        /// only 'Csv' is supported. Possible values include: 'Csv'
         /// </summary>
         [JsonProperty(PropertyName = "properties.format")]
         public string Format { get; set; }
@@ -75,10 +81,24 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         public ExportDeliveryInfo DeliveryInfo { get; set; }
 
         /// <summary>
-        /// Gets or sets has definition for the export.
+        /// Gets or sets has the definition for the export.
         /// </summary>
         [JsonProperty(PropertyName = "properties.definition")]
-        public QueryDefinition Definition { get; set; }
+        public ExportDefinition Definition { get; set; }
+
+        /// <summary>
+        /// Gets or sets if requested, has the most recent execution history
+        /// for the export.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.runHistory")]
+        public ExportExecutionListResult RunHistory { get; set; }
+
+        /// <summary>
+        /// Gets if the export has an active schedule, provides an estimate of
+        /// the next execution time.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nextRunTimeEstimate")]
+        public System.DateTime? NextRunTimeEstimate { get; private set; }
 
         /// <summary>
         /// Gets or sets has schedule information for the export.

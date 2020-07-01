@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.CostManagement
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// Version of the API to be used with the client request. The current
-        /// version is 2019-11-01.
+        /// Version of the API to be used with the client request (e.g.
+        /// '2020-06-01').
         /// </summary>
         string ApiVersion { get; }
 

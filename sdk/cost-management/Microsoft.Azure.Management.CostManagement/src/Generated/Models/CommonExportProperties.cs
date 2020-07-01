@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// </summary>
         public CommonExportProperties()
         {
-            Definition = new QueryDefinition();
             CustomInit();
         }
 
@@ -33,14 +32,21 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// </summary>
         /// <param name="deliveryInfo">Has delivery information for the
         /// export.</param>
-        /// <param name="definition">Has definition for the export.</param>
+        /// <param name="definition">Has the definition for the export.</param>
         /// <param name="format">The format of the export being delivered.
-        /// Possible values include: 'Csv'</param>
-        public CommonExportProperties(ExportDeliveryInfo deliveryInfo, QueryDefinition definition, string format = default(string))
+        /// Currently only 'Csv' is supported. Possible values include:
+        /// 'Csv'</param>
+        /// <param name="runHistory">If requested, has the most recent
+        /// execution history for the export.</param>
+        /// <param name="nextRunTimeEstimate">If the export has an active
+        /// schedule, provides an estimate of the next execution time.</param>
+        public CommonExportProperties(ExportDeliveryInfo deliveryInfo, ExportDefinition definition, string format = default(string), ExportExecutionListResult runHistory = default(ExportExecutionListResult), System.DateTime? nextRunTimeEstimate = default(System.DateTime?))
         {
             Format = format;
             DeliveryInfo = deliveryInfo;
             Definition = definition;
+            RunHistory = runHistory;
+            NextRunTimeEstimate = nextRunTimeEstimate;
             CustomInit();
         }
 
@@ -50,8 +56,8 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the format of the export being delivered. Possible
-        /// values include: 'Csv'
+        /// Gets or sets the format of the export being delivered. Currently
+        /// only 'Csv' is supported. Possible values include: 'Csv'
         /// </summary>
         [JsonProperty(PropertyName = "format")]
         public string Format { get; set; }
@@ -63,10 +69,24 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         public ExportDeliveryInfo DeliveryInfo { get; set; }
 
         /// <summary>
-        /// Gets or sets has definition for the export.
+        /// Gets or sets has the definition for the export.
         /// </summary>
         [JsonProperty(PropertyName = "definition")]
-        public QueryDefinition Definition { get; set; }
+        public ExportDefinition Definition { get; set; }
+
+        /// <summary>
+        /// Gets or sets if requested, has the most recent execution history
+        /// for the export.
+        /// </summary>
+        [JsonProperty(PropertyName = "runHistory")]
+        public ExportExecutionListResult RunHistory { get; set; }
+
+        /// <summary>
+        /// Gets if the export has an active schedule, provides an estimate of
+        /// the next execution time.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextRunTimeEstimate")]
+        public System.DateTime? NextRunTimeEstimate { get; private set; }
 
         /// <summary>
         /// Validate the object.

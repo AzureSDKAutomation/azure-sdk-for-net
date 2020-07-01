@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Result of listing exports execution history of a export by name
+    /// Result of listing the execution history of an export.
     /// </summary>
     public partial class ExportExecutionListResult
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// <summary>
         /// Initializes a new instance of the ExportExecutionListResult class.
         /// </summary>
-        /// <param name="value">The list of export executions.</param>
+        /// <param name="value">A list of export executions.</param>
         public ExportExecutionListResult(IList<ExportExecution> value = default(IList<ExportExecution>))
         {
             Value = value;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the list of export executions.
+        /// Gets a list of export executions.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<ExportExecution> Value { get; private set; }
