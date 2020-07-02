@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "Databases", "2014-04-01"),
                 new Tuple<string, string, string>("Sql", "Databases", "2017-10-01-preview"),
                 new Tuple<string, string, string>("Sql", "Databases", "2018-06-01-preview"),
+                new Tuple<string, string, string>("Sql", "Databases", "2020-02-02-preview"),
                 new Tuple<string, string, string>("Sql", "ElasticPoolActivities", "2014-04-01"),
                 new Tuple<string, string, string>("Sql", "ElasticPoolDatabaseActivities", "2014-04-01"),
                 new Tuple<string, string, string>("Sql", "ElasticPoolOperations", "2017-10-01-preview"),
