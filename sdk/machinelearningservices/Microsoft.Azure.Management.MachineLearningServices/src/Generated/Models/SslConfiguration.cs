@@ -30,16 +30,21 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// Initializes a new instance of the SslConfiguration class.
         /// </summary>
         /// <param name="status">Enable or disable ssl for scoring. Possible
-        /// values include: 'Disabled', 'Enabled'</param>
+        /// values include: 'Disabled', 'Enabled', 'Auto'</param>
         /// <param name="cert">Cert data</param>
         /// <param name="key">Key data</param>
         /// <param name="cname">CNAME of the cert</param>
-        public SslConfiguration(string status = default(string), string cert = default(string), string key = default(string), string cname = default(string))
+        /// <param name="leafDomainLabel">The leaf domain label name</param>
+        /// <param name="overwriteExistingDomain">Boolean value for overwriting
+        /// the domain</param>
+        public SslConfiguration(string status = default(string), string cert = default(string), string key = default(string), string cname = default(string), string leafDomainLabel = default(string), bool? overwriteExistingDomain = default(bool?))
         {
             Status = status;
             Cert = cert;
             Key = key;
             Cname = cname;
+            LeafDomainLabel = leafDomainLabel;
+            OverwriteExistingDomain = overwriteExistingDomain;
             CustomInit();
         }
 
@@ -50,7 +55,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
 
         /// <summary>
         /// Gets or sets enable or disable ssl for scoring. Possible values
-        /// include: 'Disabled', 'Enabled'
+        /// include: 'Disabled', 'Enabled', 'Auto'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -72,6 +77,18 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "cname")]
         public string Cname { get; set; }
+
+        /// <summary>
+        /// Gets or sets the leaf domain label name
+        /// </summary>
+        [JsonProperty(PropertyName = "leafDomainLabel")]
+        public string LeafDomainLabel { get; set; }
+
+        /// <summary>
+        /// Gets or sets boolean value for overwriting the domain
+        /// </summary>
+        [JsonProperty(PropertyName = "overwriteExistingDomain")]
+        public bool? OverwriteExistingDomain { get; set; }
 
     }
 }
