@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// class.
         /// </summary>
         /// <param name="alerts">Alerts data type connection.</param>
-        public AlertsDataTypeOfDataConnector(AlertsDataTypeOfDataConnectorAlerts alerts = default(AlertsDataTypeOfDataConnectorAlerts))
+        public AlertsDataTypeOfDataConnector(DataConnectorDataTypeCommon alerts = default(DataConnectorDataTypeCommon))
         {
             Alerts = alerts;
             CustomInit();
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Gets or sets alerts data type connection.
         /// </summary>
         [JsonProperty(PropertyName = "alerts")]
-        public AlertsDataTypeOfDataConnectorAlerts Alerts { get; set; }
+        public DataConnectorDataTypeCommon Alerts { get; set; }
 
     }
 }

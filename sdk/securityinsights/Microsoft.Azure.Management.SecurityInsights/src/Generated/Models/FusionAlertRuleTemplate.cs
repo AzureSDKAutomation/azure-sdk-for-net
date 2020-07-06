@@ -35,9 +35,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the FusionAlertRuleTemplate class.
         /// </summary>
-        /// <param name="severity">The severity for alerts created by this
-        /// alert rule. Possible values include: 'High', 'Medium', 'Low',
-        /// 'Informational'</param>
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
@@ -53,9 +50,12 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// for this template</param>
         /// <param name="status">The alert rule template status. Possible
         /// values include: 'Installed', 'Available', 'NotAvailable'</param>
+        /// <param name="severity">The severity for alerts created by this
+        /// alert rule. Possible values include: 'High', 'Medium', 'Low',
+        /// 'Informational'</param>
         /// <param name="tactics">The tactics of the alert rule
         /// template</param>
-        public FusionAlertRuleTemplate(string severity, string id = default(string), string name = default(string), string type = default(string), int? alertRulesCreatedByTemplateCount = default(int?), System.DateTime? createdDateUTC = default(System.DateTime?), string description = default(string), string displayName = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), string status = default(string), IList<string> tactics = default(IList<string>))
+        public FusionAlertRuleTemplate(string id = default(string), string name = default(string), string type = default(string), int? alertRulesCreatedByTemplateCount = default(int?), System.DateTime? createdDateUTC = default(System.DateTime?), string description = default(string), string displayName = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), string status = default(string), string severity = default(string), IList<string> tactics = default(IList<string>))
             : base(id, name, type)
         {
             AlertRulesCreatedByTemplateCount = alertRulesCreatedByTemplateCount;
@@ -125,18 +125,5 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.tactics")]
         public IList<string> Tactics { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Severity == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Severity");
-            }
-        }
     }
 }

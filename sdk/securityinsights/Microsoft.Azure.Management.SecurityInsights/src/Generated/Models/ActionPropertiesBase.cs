@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Initializes a new instance of the ActionPropertiesBase class.
         /// </summary>
         /// <param name="logicAppResourceId">Logic App Resource Id,
-        /// providers/Microsoft.Logic/workflows/{WorkflowID}.</param>
+        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
         public ActionPropertiesBase(string logicAppResourceId)
         {
             LogicAppResourceId = logicAppResourceId;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 
         /// <summary>
         /// Gets or sets logic App Resource Id,
-        /// providers/Microsoft.Logic/workflows/{WorkflowID}.
+        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
         /// </summary>
         [JsonProperty(PropertyName = "logicAppResourceId")]
         public string LogicAppResourceId { get; set; }

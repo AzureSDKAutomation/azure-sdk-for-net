@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for IncidentClassificationReason.
     /// </summary>
-    public static class IncidentSeverity
+    public static class IncidentClassificationReason
     {
         /// <summary>
-        /// High severity
+        /// Classification reason was suspicious activity
         /// </summary>
-        public const string High = "High";
+        public const string SuspiciousActivity = "SuspiciousActivity";
         /// <summary>
-        /// Medium severity
+        /// Classification reason was suspicious but expected
         /// </summary>
-        public const string Medium = "Medium";
+        public const string SuspiciousButExpected = "SuspiciousButExpected";
         /// <summary>
-        /// Low severity
+        /// Classification reason was incorrect alert logic
         /// </summary>
-        public const string Low = "Low";
+        public const string IncorrectAlertLogic = "IncorrectAlertLogic";
         /// <summary>
-        /// Informational severity
+        /// Classification reason was inaccurate data
         /// </summary>
-        public const string Informational = "Informational";
+        public const string InaccurateData = "InaccurateData";
     }
 }

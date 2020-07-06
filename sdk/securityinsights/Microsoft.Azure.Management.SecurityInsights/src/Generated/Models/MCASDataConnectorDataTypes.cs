@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="alerts">Alerts data type connection.</param>
         /// <param name="discoveryLogs">Discovery log data type
         /// connection.</param>
-        public MCASDataConnectorDataTypes(AlertsDataTypeOfDataConnectorAlerts alerts = default(AlertsDataTypeOfDataConnectorAlerts), MCASDataConnectorDataTypesDiscoveryLogs discoveryLogs = default(MCASDataConnectorDataTypesDiscoveryLogs))
+        public MCASDataConnectorDataTypes(DataConnectorDataTypeCommon alerts = default(DataConnectorDataTypeCommon), DataConnectorDataTypeCommon discoveryLogs = default(DataConnectorDataTypeCommon))
             : base(alerts)
         {
             DiscoveryLogs = discoveryLogs;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Gets or sets discovery log data type connection.
         /// </summary>
         [JsonProperty(PropertyName = "discoveryLogs")]
-        public MCASDataConnectorDataTypesDiscoveryLogs DiscoveryLogs { get; set; }
+        public DataConnectorDataTypeCommon DiscoveryLogs { get; set; }
 
     }
 }

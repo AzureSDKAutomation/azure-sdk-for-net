@@ -12,25 +12,17 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for IncidentSeverity.
+    /// Defines values for IncidentLabelType.
     /// </summary>
-    public static class IncidentSeverity
+    public static class IncidentLabelType
     {
         /// <summary>
-        /// High severity
+        /// Label manually created by a user
         /// </summary>
-        public const string High = "High";
+        public const string User = "User";
         /// <summary>
-        /// Medium severity
+        /// Label automatically created by the system
         /// </summary>
-        public const string Medium = "Medium";
-        /// <summary>
-        /// Low severity
-        /// </summary>
-        public const string Low = "Low";
-        /// <summary>
-        /// Informational severity
-        /// </summary>
-        public const string Informational = "Informational";
+        public const string System = "System";
     }
 }

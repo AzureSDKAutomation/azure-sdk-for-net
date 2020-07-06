@@ -91,9 +91,29 @@ namespace Microsoft.Azure.Management.SecurityInsights
         public virtual IActionsOperations Actions { get; private set; }
 
         /// <summary>
+        /// Gets the IAlertRuleTemplatesOperations.
+        /// </summary>
+        public virtual IAlertRuleTemplatesOperations AlertRuleTemplates { get; private set; }
+
+        /// <summary>
+        /// Gets the IBookmarksOperations.
+        /// </summary>
+        public virtual IBookmarksOperations Bookmarks { get; private set; }
+
+        /// <summary>
         /// Gets the IDataConnectorsOperations.
         /// </summary>
         public virtual IDataConnectorsOperations DataConnectors { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentsOperations.
+        /// </summary>
+        public virtual IIncidentsOperations Incidents { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentCommentsOperations.
+        /// </summary>
+        public virtual IIncidentCommentsOperations IncidentComments { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SecurityInsightsClient class.
@@ -339,7 +359,11 @@ namespace Microsoft.Azure.Management.SecurityInsights
             Operations = new Operations(this);
             AlertRules = new AlertRulesOperations(this);
             Actions = new ActionsOperations(this);
+            AlertRuleTemplates = new AlertRuleTemplatesOperations(this);
+            Bookmarks = new BookmarksOperations(this);
             DataConnectors = new DataConnectorsOperations(this);
+            Incidents = new IncidentsOperations(this);
+            IncidentComments = new IncidentCommentsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-01-01";
             AcceptLanguage = "en-US";

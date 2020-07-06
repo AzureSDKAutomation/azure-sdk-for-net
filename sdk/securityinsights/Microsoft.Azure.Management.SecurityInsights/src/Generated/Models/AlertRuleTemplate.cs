@@ -10,14 +10,12 @@
 
 namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Alert rule template.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AlertRuleTemplate")]
-    public partial class AlertRuleTemplate
+    public partial class AlertRuleTemplate : Resource
     {
         /// <summary>
         /// Initializes a new instance of the AlertRuleTemplate class.
@@ -34,10 +32,8 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         public AlertRuleTemplate(string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
-            Id = id;
-            Name = name;
-            Type = type;
             CustomInit();
         }
 
@@ -45,24 +41,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets azure resource Id
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets azure resource name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets azure resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
     }
 }

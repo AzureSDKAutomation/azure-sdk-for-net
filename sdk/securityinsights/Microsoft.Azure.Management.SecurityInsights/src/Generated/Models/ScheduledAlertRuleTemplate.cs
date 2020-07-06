@@ -35,12 +35,19 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the ScheduledAlertRuleTemplate class.
         /// </summary>
+        /// <param name="id">Azure resource Id</param>
+        /// <param name="name">Azure resource name</param>
+        /// <param name="type">Azure resource type</param>
         /// <param name="alertRulesCreatedByTemplateCount">the number of alert
         /// rules that were created by this template</param>
+        /// <param name="createdDateUTC">The time that this alert rule template
+        /// has been added.</param>
         /// <param name="description">The description of the alert rule
         /// template.</param>
         /// <param name="displayName">The display name for alert rule
         /// template.</param>
+        /// <param name="requiredDataConnectors">The required data connectors
+        /// for this template</param>
         /// <param name="status">The alert rule template status. Possible
         /// values include: 'Installed', 'Available', 'NotAvailable'</param>
         /// <param name="query">The query that creates alerts for this
@@ -57,16 +64,9 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// 'LessThan', 'Equal', 'NotEqual'</param>
         /// <param name="triggerThreshold">The threshold triggers this alert
         /// rule.</param>
-        /// <param name="id">Azure resource Id</param>
-        /// <param name="name">Azure resource name</param>
-        /// <param name="type">Azure resource type</param>
-        /// <param name="createdDateUTC">The time that this alert rule template
-        /// has been added.</param>
-        /// <param name="requiredDataConnectors">The required data connectors
-        /// for this template</param>
         /// <param name="tactics">The tactics of the alert rule
         /// template</param>
-        public ScheduledAlertRuleTemplate(int alertRulesCreatedByTemplateCount, string description, string displayName, string status, string query, System.TimeSpan queryFrequency, System.TimeSpan queryPeriod, string severity, TriggerOperator triggerOperator, int triggerThreshold, string id = default(string), string name = default(string), string type = default(string), System.DateTime? createdDateUTC = default(System.DateTime?), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), IList<string> tactics = default(IList<string>))
+        public ScheduledAlertRuleTemplate(string id = default(string), string name = default(string), string type = default(string), int? alertRulesCreatedByTemplateCount = default(int?), System.DateTime? createdDateUTC = default(System.DateTime?), string description = default(string), string displayName = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), string status = default(string), string query = default(string), System.TimeSpan? queryFrequency = default(System.TimeSpan?), System.TimeSpan? queryPeriod = default(System.TimeSpan?), string severity = default(string), TriggerOperator? triggerOperator = default(TriggerOperator?), int? triggerThreshold = default(int?), IList<string> tactics = default(IList<string>))
             : base(id, name, type)
         {
             AlertRulesCreatedByTemplateCount = alertRulesCreatedByTemplateCount;
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// template
         /// </summary>
         [JsonProperty(PropertyName = "properties.alertRulesCreatedByTemplateCount")]
-        public int AlertRulesCreatedByTemplateCount { get; set; }
+        public int? AlertRulesCreatedByTemplateCount { get; set; }
 
         /// <summary>
         /// Gets the time that this alert rule template has been added.
@@ -139,14 +139,14 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// alert rule to run.
         /// </summary>
         [JsonProperty(PropertyName = "properties.queryFrequency")]
-        public System.TimeSpan QueryFrequency { get; set; }
+        public System.TimeSpan? QueryFrequency { get; set; }
 
         /// <summary>
         /// Gets or sets the period (in ISO 8601 duration format) that this
         /// alert rule looks at.
         /// </summary>
         [JsonProperty(PropertyName = "properties.queryPeriod")]
-        public System.TimeSpan QueryPeriod { get; set; }
+        public System.TimeSpan? QueryPeriod { get; set; }
 
         /// <summary>
         /// Gets or sets the severity for alerts created by this alert rule.
@@ -161,13 +161,13 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// 'Equal', 'NotEqual'
         /// </summary>
         [JsonProperty(PropertyName = "properties.triggerOperator")]
-        public TriggerOperator TriggerOperator { get; set; }
+        public TriggerOperator? TriggerOperator { get; set; }
 
         /// <summary>
         /// Gets or sets the threshold triggers this alert rule.
         /// </summary>
         [JsonProperty(PropertyName = "properties.triggerThreshold")]
-        public int TriggerThreshold { get; set; }
+        public int? TriggerThreshold { get; set; }
 
         /// <summary>
         /// Gets or sets the tactics of the alert rule template
@@ -175,34 +175,5 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.tactics")]
         public IList<string> Tactics { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Description == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Description");
-            }
-            if (DisplayName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DisplayName");
-            }
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");
-            }
-            if (Query == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Query");
-            }
-            if (Severity == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Severity");
-            }
-        }
     }
 }

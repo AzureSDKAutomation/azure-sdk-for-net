@@ -41,11 +41,14 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Security Center for IoT'</param>
         /// <param name="displayNamesFilter">the alerts' displayNames on which
         /// the cases will be generated</param>
+        /// <param name="displayNamesExcludeFilter">the alerts' displayNames on
+        /// which the cases will not be generated</param>
         /// <param name="severitiesFilter">the alerts' severities on which the
         /// cases will be generated</param>
-        public MicrosoftSecurityIncidentCreationAlertRuleCommonProperties(string productFilter, IList<string> displayNamesFilter = default(IList<string>), IList<string> severitiesFilter = default(IList<string>))
+        public MicrosoftSecurityIncidentCreationAlertRuleCommonProperties(string productFilter, IList<string> displayNamesFilter = default(IList<string>), IList<string> displayNamesExcludeFilter = default(IList<string>), IList<string> severitiesFilter = default(IList<string>))
         {
             DisplayNamesFilter = displayNamesFilter;
+            DisplayNamesExcludeFilter = displayNamesExcludeFilter;
             ProductFilter = productFilter;
             SeveritiesFilter = severitiesFilter;
             CustomInit();
@@ -62,6 +65,13 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "displayNamesFilter")]
         public IList<string> DisplayNamesFilter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alerts' displayNames on which the cases will not
+        /// be generated
+        /// </summary>
+        [JsonProperty(PropertyName = "displayNamesExcludeFilter")]
+        public IList<string> DisplayNamesExcludeFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the alerts' productName on which the cases will be

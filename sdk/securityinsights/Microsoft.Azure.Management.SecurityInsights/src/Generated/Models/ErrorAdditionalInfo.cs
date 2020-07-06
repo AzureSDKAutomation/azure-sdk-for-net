@@ -14,26 +14,27 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes an Azure resource with kind.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class SettingsKind
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the SettingsKind class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public SettingsKind()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SettingsKind class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="kind">The kind of the setting. Possible values
-        /// include: 'UebaSettings', 'ToggleSettings'</param>
-        public SettingsKind(string kind = default(string))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Kind = kind;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -43,11 +44,16 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the kind of the setting. Possible values include:
-        /// 'UebaSettings', 'ToggleSettings'
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }

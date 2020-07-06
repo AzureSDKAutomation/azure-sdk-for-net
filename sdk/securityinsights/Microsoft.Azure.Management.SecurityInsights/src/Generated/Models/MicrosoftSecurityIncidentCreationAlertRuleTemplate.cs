@@ -37,16 +37,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Initializes a new instance of the
         /// MicrosoftSecurityIncidentCreationAlertRuleTemplate class.
         /// </summary>
-        /// <param name="alertRulesCreatedByTemplateCount">the number of alert
-        /// rules that were created by this template</param>
-        /// <param name="createdDateUTC">The time that this alert rule template
-        /// has been added.</param>
-        /// <param name="description">The description of the alert rule
-        /// template.</param>
-        /// <param name="displayName">The display name for alert rule
-        /// template.</param>
-        /// <param name="status">The alert rule template status. Possible
-        /// values include: 'Installed', 'Available', 'NotAvailable'</param>
         /// <param name="productFilter">The alerts' productName on which the
         /// cases will be generated. Possible values include: 'Microsoft Cloud
         /// App Security', 'Azure Security Center', 'Azure Advanced Threat
@@ -55,13 +45,25 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
+        /// <param name="alertRulesCreatedByTemplateCount">the number of alert
+        /// rules that were created by this template</param>
+        /// <param name="createdDateUTC">The time that this alert rule template
+        /// has been added.</param>
+        /// <param name="description">The description of the alert rule
+        /// template.</param>
+        /// <param name="displayName">The display name for alert rule
+        /// template.</param>
         /// <param name="requiredDataConnectors">The required data connectors
         /// for this template</param>
+        /// <param name="status">The alert rule template status. Possible
+        /// values include: 'Installed', 'Available', 'NotAvailable'</param>
         /// <param name="displayNamesFilter">the alerts' displayNames on which
         /// the cases will be generated</param>
+        /// <param name="displayNamesExcludeFilter">the alerts' displayNames on
+        /// which the cases will not be generated</param>
         /// <param name="severitiesFilter">the alerts' severities on which the
         /// cases will be generated</param>
-        public MicrosoftSecurityIncidentCreationAlertRuleTemplate(int alertRulesCreatedByTemplateCount, System.DateTime createdDateUTC, string description, string displayName, string status, string productFilter, string id = default(string), string name = default(string), string type = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), IList<string> displayNamesFilter = default(IList<string>), IList<string> severitiesFilter = default(IList<string>))
+        public MicrosoftSecurityIncidentCreationAlertRuleTemplate(string productFilter, string id = default(string), string name = default(string), string type = default(string), int? alertRulesCreatedByTemplateCount = default(int?), System.DateTime? createdDateUTC = default(System.DateTime?), string description = default(string), string displayName = default(string), IList<AlertRuleTemplateDataSource> requiredDataConnectors = default(IList<AlertRuleTemplateDataSource>), string status = default(string), IList<string> displayNamesFilter = default(IList<string>), IList<string> displayNamesExcludeFilter = default(IList<string>), IList<string> severitiesFilter = default(IList<string>))
             : base(id, name, type)
         {
             AlertRulesCreatedByTemplateCount = alertRulesCreatedByTemplateCount;
@@ -71,6 +73,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
             RequiredDataConnectors = requiredDataConnectors;
             Status = status;
             DisplayNamesFilter = displayNamesFilter;
+            DisplayNamesExcludeFilter = displayNamesExcludeFilter;
             ProductFilter = productFilter;
             SeveritiesFilter = severitiesFilter;
             CustomInit();
@@ -86,13 +89,13 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// template
         /// </summary>
         [JsonProperty(PropertyName = "properties.alertRulesCreatedByTemplateCount")]
-        public int AlertRulesCreatedByTemplateCount { get; set; }
+        public int? AlertRulesCreatedByTemplateCount { get; set; }
 
         /// <summary>
         /// Gets the time that this alert rule template has been added.
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdDateUTC")]
-        public System.DateTime CreatedDateUTC { get; private set; }
+        public System.DateTime? CreatedDateUTC { get; private set; }
 
         /// <summary>
         /// Gets or sets the description of the alert rule template.
@@ -127,6 +130,13 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         public IList<string> DisplayNamesFilter { get; set; }
 
         /// <summary>
+        /// Gets or sets the alerts' displayNames on which the cases will not
+        /// be generated
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.displayNamesExcludeFilter")]
+        public IList<string> DisplayNamesExcludeFilter { get; set; }
+
+        /// <summary>
         /// Gets or sets the alerts' productName on which the cases will be
         /// generated. Possible values include: 'Microsoft Cloud App Security',
         /// 'Azure Security Center', 'Azure Advanced Threat Protection', 'Azure
@@ -151,18 +161,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Description == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Description");
-            }
-            if (DisplayName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DisplayName");
-            }
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");
-            }
             if (ProductFilter == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ProductFilter");

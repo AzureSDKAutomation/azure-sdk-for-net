@@ -10,14 +10,12 @@
 
 namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Data connector.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataConnector")]
-    public partial class DataConnector
+    public partial class DataConnector : ResourceWithEtag
     {
         /// <summary>
         /// Initializes a new instance of the DataConnector class.
@@ -35,11 +33,8 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
         public DataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+            : base(id, name, type, etag)
         {
-            Id = id;
-            Name = name;
-            Type = type;
-            Etag = etag;
             CustomInit();
         }
 
@@ -47,30 +42,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets azure resource Id
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets azure resource name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets azure resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets or sets etag of the azure resource
-        /// </summary>
-        [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; set; }
 
     }
 }
