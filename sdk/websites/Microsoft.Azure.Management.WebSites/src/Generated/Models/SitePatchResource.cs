@@ -86,6 +86,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// enable client certificate authentication (TLS mutual
         /// authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default
         /// is &lt;code&gt;false&lt;/code&gt;.</param>
+        /// <param name="clientCertMode">This composes with ClientCertEnabled
+        /// setting.
+        /// - ClientCertEnabled: false means ClientCert is ignored.
+        /// - ClientCertEnabled: true and ClientCertMode: Required means
+        /// ClientCert is required.
+        /// - ClientCertEnabled: true and ClientCertMode: Optional means
+        /// ClientCert is optional or accepted. Possible values include:
+        /// 'Required', 'Optional'</param>
         /// <param name="clientCertExclusionPaths">client certificate
         /// authentication comma-separated exclusion paths</param>
         /// <param name="hostNamesDisabled">&lt;code&gt;true&lt;/code&gt; to
@@ -127,7 +135,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'GeoRedundant'</param>
         /// <param name="inProgressOperationId">Specifies an operation id if
         /// this site has a pending operation.</param>
-        public SitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        public SitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
             : base(id, name, kind, type)
         {
             State = state;
@@ -150,6 +158,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             HostingEnvironmentProfile = hostingEnvironmentProfile;
             ClientAffinityEnabled = clientAffinityEnabled;
             ClientCertEnabled = clientCertEnabled;
+            ClientCertMode = clientCertMode;
             ClientCertExclusionPaths = clientCertExclusionPaths;
             HostNamesDisabled = hostNamesDisabled;
             OutboundIpAddresses = outboundIpAddresses;
@@ -321,6 +330,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.clientCertEnabled")]
         public bool? ClientCertEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets this composes with ClientCertEnabled setting.
+        /// - ClientCertEnabled: false means ClientCert is ignored.
+        /// - ClientCertEnabled: true and ClientCertMode: Required means
+        /// ClientCert is required.
+        /// - ClientCertEnabled: true and ClientCertMode: Optional means
+        /// ClientCert is optional or accepted. Possible values include:
+        /// 'Required', 'Optional'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.clientCertMode")]
+        public ClientCertMode? ClientCertMode { get; set; }
 
         /// <summary>
         /// Gets or sets client certificate authentication comma-separated

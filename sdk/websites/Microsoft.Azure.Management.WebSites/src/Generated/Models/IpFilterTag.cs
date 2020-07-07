@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [EnumMember(Value = "Default")]
         Default,
         [EnumMember(Value = "XffProxy")]
-        XffProxy
+        XffProxy,
+        [EnumMember(Value = "ServiceTag")]
+        ServiceTag
     }
     internal static class IpFilterTagEnumExtension
     {
@@ -41,6 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "Default";
                 case IpFilterTag.XffProxy:
                     return "XffProxy";
+                case IpFilterTag.ServiceTag:
+                    return "ServiceTag";
             }
             return null;
         }
@@ -53,6 +57,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return IpFilterTag.Default;
                 case "XffProxy":
                     return IpFilterTag.XffProxy;
+                case "ServiceTag":
+                    return IpFilterTag.ServiceTag;
             }
             return null;
         }
