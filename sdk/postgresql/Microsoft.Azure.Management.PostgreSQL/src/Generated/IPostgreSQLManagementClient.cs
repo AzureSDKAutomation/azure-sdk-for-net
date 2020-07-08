@@ -118,11 +118,6 @@ namespace Microsoft.Azure.Management.PostgreSQL
         ICheckNameAvailabilityOperations CheckNameAvailability { get; }
 
         /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
@@ -141,6 +136,11 @@ namespace Microsoft.Azure.Management.PostgreSQL
         /// Gets the IServerKeysOperations.
         /// </summary>
         IServerKeysOperations ServerKeys { get; }
+
+        /// <summary>
+        /// Gets the IServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; }
 
     }
 }
