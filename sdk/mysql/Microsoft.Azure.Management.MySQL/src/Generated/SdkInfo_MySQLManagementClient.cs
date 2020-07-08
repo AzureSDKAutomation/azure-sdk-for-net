@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.MySQL
                 new Tuple<string, string, string>("DBforMySQL", "Replicas", "2017-12-01"),
                 new Tuple<string, string, string>("DBforMySQL", "ServerAdministrators", "2017-12-01"),
                 new Tuple<string, string, string>("DBforMySQL", "ServerKeys", "2020-01-01"),
-                new Tuple<string, string, string>("DBforMySQL", "ServerSecurityAlertPolicies", "2017-12-01"),
+                new Tuple<string, string, string>("DBforMySQL", "ServerSecurityAlertPolicies", "2020-01-01"),
                 new Tuple<string, string, string>("DBforMySQL", "Servers", "2017-12-01"),
                 new Tuple<string, string, string>("DBforMySQL", "TopQueryStatistics", "2018-06-01"),
                 new Tuple<string, string, string>("DBforMySQL", "VirtualNetworkRules", "2017-12-01"),
