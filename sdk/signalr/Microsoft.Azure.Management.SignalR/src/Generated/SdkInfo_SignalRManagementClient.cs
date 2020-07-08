@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Management.SignalR
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("SignalRService", "Operations", "2020-05-01"),
-                new Tuple<string, string, string>("SignalRService", "SignalR", "2020-05-01"),
-                new Tuple<string, string, string>("SignalRService", "SignalRPrivateEndpointConnections", "2020-05-01"),
-                new Tuple<string, string, string>("SignalRService", "SignalRPrivateLinkResources", "2020-05-01"),
-                new Tuple<string, string, string>("SignalRService", "Usages", "2020-05-01"),
+                new Tuple<string, string, string>("SignalRService", "Operations", "2020-07-01-preview"),
+                new Tuple<string, string, string>("SignalRService", "SignalR", "2020-07-01-preview"),
+                new Tuple<string, string, string>("SignalRService", "SignalRPrivateEndpointConnections", "2020-07-01-preview"),
+                new Tuple<string, string, string>("SignalRService", "SignalRPrivateLinkResources", "2020-07-01-preview"),
+                new Tuple<string, string, string>("SignalRService", "Usages", "2020-07-01-preview"),
               }.AsEnumerable();
           }
       }
