@@ -378,6 +378,135 @@ namespace Microsoft.Azure.Management.MachineLearningServices
             }
 
             /// <summary>
+            /// Posts a start action to a compute instance
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='computeName'>
+            /// Name of the Azure Machine Learning compute.
+            /// </param>
+            public static void Start(this IMachineLearningComputeOperations operations, string resourceGroupName, string workspaceName, string computeName)
+            {
+                operations.StartAsync(resourceGroupName, workspaceName, computeName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Posts a start action to a compute instance
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='computeName'>
+            /// Name of the Azure Machine Learning compute.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task StartAsync(this IMachineLearningComputeOperations operations, string resourceGroupName, string workspaceName, string computeName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.StartWithHttpMessagesAsync(resourceGroupName, workspaceName, computeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Posts a stop action to a compute instance
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='computeName'>
+            /// Name of the Azure Machine Learning compute.
+            /// </param>
+            public static void Stop(this IMachineLearningComputeOperations operations, string resourceGroupName, string workspaceName, string computeName)
+            {
+                operations.StopAsync(resourceGroupName, workspaceName, computeName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Posts a stop action to a compute instance
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='computeName'>
+            /// Name of the Azure Machine Learning compute.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task StopAsync(this IMachineLearningComputeOperations operations, string resourceGroupName, string workspaceName, string computeName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.StopWithHttpMessagesAsync(resourceGroupName, workspaceName, computeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Posts a restart action to a compute instance
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='computeName'>
+            /// Name of the Azure Machine Learning compute.
+            /// </param>
+            public static void Restart(this IMachineLearningComputeOperations operations, string resourceGroupName, string workspaceName, string computeName)
+            {
+                operations.RestartAsync(resourceGroupName, workspaceName, computeName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Posts a restart action to a compute instance
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='computeName'>
+            /// Name of the Azure Machine Learning compute.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task RestartAsync(this IMachineLearningComputeOperations operations, string resourceGroupName, string workspaceName, string computeName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.RestartWithHttpMessagesAsync(resourceGroupName, workspaceName, computeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Creates or updates compute. This call will overwrite a compute if it
             /// exists. This is a nonrecoverable operation. If your intent is to create a
             /// new compute, do a GET first to verify that it does not exist yet.

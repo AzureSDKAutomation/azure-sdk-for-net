@@ -110,6 +110,11 @@ namespace Microsoft.Azure.Management.MachineLearningServices
         IQuotasOperations Quotas { get; }
 
         /// <summary>
+        /// Gets the IWorkspaceConnectionsOperations.
+        /// </summary>
+        IWorkspaceConnectionsOperations WorkspaceConnections { get; }
+
+        /// <summary>
         /// Gets the IMachineLearningComputeOperations.
         /// </summary>
         IMachineLearningComputeOperations MachineLearningCompute { get; }

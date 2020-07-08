@@ -113,6 +113,11 @@ namespace Microsoft.Azure.Management.MachineLearningServices
         public virtual IQuotasOperations Quotas { get; private set; }
 
         /// <summary>
+        /// Gets the IWorkspaceConnectionsOperations.
+        /// </summary>
+        public virtual IWorkspaceConnectionsOperations WorkspaceConnections { get; private set; }
+
+        /// <summary>
         /// Gets the IMachineLearningComputeOperations.
         /// </summary>
         public virtual IMachineLearningComputeOperations MachineLearningCompute { get; private set; }
@@ -375,11 +380,12 @@ namespace Microsoft.Azure.Management.MachineLearningServices
             Usages = new UsagesOperations(this);
             VirtualMachineSizes = new VirtualMachineSizesOperations(this);
             Quotas = new QuotasOperations(this);
+            WorkspaceConnections = new WorkspaceConnectionsOperations(this);
             MachineLearningCompute = new MachineLearningComputeOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-04-01";
+            ApiVersion = "2020-06-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

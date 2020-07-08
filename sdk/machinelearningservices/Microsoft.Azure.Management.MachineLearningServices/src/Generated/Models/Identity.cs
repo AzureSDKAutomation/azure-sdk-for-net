@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// Initializes a new instance of the Identity class.
         /// </summary>
         /// <param name="type">The identity type. Possible values include:
-        /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned,UserAssigned',
+        /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
         /// 'None'</param>
         /// <param name="principalId">The principal ID of resource
         /// identity.</param>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
 
         /// <summary>
         /// Gets or sets the identity type. Possible values include:
-        /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned,UserAssigned',
+        /// 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
         /// 'None'
         /// </summary>
         [JsonProperty(PropertyName = "type")]

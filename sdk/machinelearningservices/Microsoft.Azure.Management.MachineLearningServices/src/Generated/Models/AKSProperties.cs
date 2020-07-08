@@ -40,9 +40,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="sslConfiguration">SSL configuration</param>
         /// <param name="aksNetworkingConfiguration">AKS networking
         /// configuration for vnet</param>
-        /// <param name="clusterPurpose">Possible values include: 'FastProd',
-        /// 'DenseProd', 'DevTest'</param>
-        public AKSProperties(string clusterFqdn = default(string), IList<SystemService> systemServices = default(IList<SystemService>), int? agentCount = default(int?), string agentVMSize = default(string), SslConfiguration sslConfiguration = default(SslConfiguration), AksNetworkingConfiguration aksNetworkingConfiguration = default(AksNetworkingConfiguration), string clusterPurpose = default(string))
+        public AKSProperties(string clusterFqdn = default(string), IList<SystemService> systemServices = default(IList<SystemService>), int? agentCount = default(int?), string agentVMSize = default(string), SslConfiguration sslConfiguration = default(SslConfiguration), AksNetworkingConfiguration aksNetworkingConfiguration = default(AksNetworkingConfiguration))
         {
             ClusterFqdn = clusterFqdn;
             SystemServices = systemServices;
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
             AgentVMSize = agentVMSize;
             SslConfiguration = sslConfiguration;
             AksNetworkingConfiguration = aksNetworkingConfiguration;
-            ClusterPurpose = clusterPurpose;
             CustomInit();
         }
 
@@ -94,13 +91,6 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "aksNetworkingConfiguration")]
         public AksNetworkingConfiguration AksNetworkingConfiguration { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'FastProd', 'DenseProd',
-        /// 'DevTest'
-        /// </summary>
-        [JsonProperty(PropertyName = "clusterPurpose")]
-        public string ClusterPurpose { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -236,6 +236,81 @@ namespace Microsoft.Azure.Management.MachineLearningServices
         /// </exception>
         Task<AzureOperationResponse<ComputeSecrets>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string computeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Posts a start action to a compute instance
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group in which workspace is located.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// Name of Azure Machine Learning workspace.
+        /// </param>
+        /// <param name='computeName'>
+        /// Name of the Azure Machine Learning compute.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="MachineLearningServiceErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string computeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Posts a stop action to a compute instance
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group in which workspace is located.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// Name of Azure Machine Learning workspace.
+        /// </param>
+        /// <param name='computeName'>
+        /// Name of the Azure Machine Learning compute.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="MachineLearningServiceErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StopWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string computeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Posts a restart action to a compute instance
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group in which workspace is located.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// Name of Azure Machine Learning workspace.
+        /// </param>
+        /// <param name='computeName'>
+        /// Name of the Azure Machine Learning compute.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="MachineLearningServiceErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RestartWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string computeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Creates or updates compute. This call will overwrite a compute if
         /// it exists. This is a nonrecoverable operation. If your intent is to
         /// create a new compute, do a GET first to verify that it does not

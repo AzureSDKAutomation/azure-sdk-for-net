@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     {
         public const string AKS = "AKS";
         public const string AmlCompute = "AmlCompute";
+        public const string ComputeInstance = "ComputeInstance";
         public const string DataFactory = "DataFactory";
         public const string VirtualMachine = "VirtualMachine";
         public const string HDInsight = "HDInsight";

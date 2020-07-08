@@ -19,17 +19,18 @@ namespace Microsoft.Azure.Management.MachineLearningServices
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("MachineLearningServices", "ListSkus", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "MachineLearningCompute", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "Notebooks", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "Operations", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "PrivateEndpointConnections", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "PrivateLinkResources", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "Quotas", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "Usages", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "VirtualMachineSizes", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "WorkspaceFeatures", "2020-04-01"),
-                new Tuple<string, string, string>("MachineLearningServices", "Workspaces", "2020-04-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "ListSkus", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "MachineLearningCompute", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "Notebooks", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "Operations", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "PrivateEndpointConnections", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "PrivateLinkResources", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "Quotas", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "Usages", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "VirtualMachineSizes", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "WorkspaceConnections", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "WorkspaceFeatures", "2020-06-01"),
+                new Tuple<string, string, string>("MachineLearningServices", "Workspaces", "2020-06-01"),
               }.AsEnumerable();
           }
       }
