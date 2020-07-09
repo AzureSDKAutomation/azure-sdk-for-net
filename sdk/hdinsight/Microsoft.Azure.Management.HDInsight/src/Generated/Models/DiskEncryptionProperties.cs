@@ -40,16 +40,13 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// 'RSA-OAEP-256', 'RSA1_5'</param>
         /// <param name="msiResourceId">Resource ID of Managed Identity that is
         /// used to access the key vault.</param>
-        /// <param name="encryptionAtHost">Indicates whether or not resource
-        /// disk encryption is enabled.</param>
-        public DiskEncryptionProperties(string vaultUri = default(string), string keyName = default(string), string keyVersion = default(string), string encryptionAlgorithm = default(string), string msiResourceId = default(string), bool? encryptionAtHost = default(bool?))
+        public DiskEncryptionProperties(string vaultUri = default(string), string keyName = default(string), string keyVersion = default(string), string encryptionAlgorithm = default(string), string msiResourceId = default(string))
         {
             VaultUri = vaultUri;
             KeyName = keyName;
             KeyVersion = keyVersion;
             EncryptionAlgorithm = encryptionAlgorithm;
             MsiResourceId = msiResourceId;
-            EncryptionAtHost = encryptionAtHost;
             CustomInit();
         }
 
@@ -91,13 +88,6 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [JsonProperty(PropertyName = "msiResourceId")]
         public string MsiResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets indicates whether or not resource disk encryption is
-        /// enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "encryptionAtHost")]
-        public bool? EncryptionAtHost { get; set; }
 
     }
 }
