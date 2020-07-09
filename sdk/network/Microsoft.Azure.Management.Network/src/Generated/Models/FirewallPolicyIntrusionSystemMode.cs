@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.Network.Models
     /// </summary>
     public static class FirewallPolicyIntrusionSystemMode
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
+        public const string Off = "Off";
+        public const string Alert = "Alert";
+        public const string Deny = "Deny";
     }
 }
