@@ -32,8 +32,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// </summary>
         /// <param name="reservedResourceType">Possible values include:
         /// 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb',
-        /// 'RedHat', 'SqlDataWarehouse', 'VMwareCloudSimple',
-        /// 'RedHatOsa'</param>
+        /// 'RedHat', 'SqlDataWarehouse', 'VMwareCloudSimple', 'RedHatOsa',
+        /// 'Databricks', 'AppService', 'ManagedDisk', 'BlockBlob',
+        /// 'RedisCache', 'AzureDataExplorer', 'MySql', 'MariaDb',
+        /// 'PostgreSql', 'DedicatedHost', 'SapHana'</param>
         /// <param name="instanceFlexibility">Possible values include: 'On',
         /// 'Off'</param>
         /// <param name="displayName">Friendly name for user to easily identify
@@ -93,7 +95,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Gets or sets possible values include: 'VirtualMachines',
         /// 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat',
-        /// 'SqlDataWarehouse', 'VMwareCloudSimple', 'RedHatOsa'
+        /// 'SqlDataWarehouse', 'VMwareCloudSimple', 'RedHatOsa', 'Databricks',
+        /// 'AppService', 'ManagedDisk', 'BlockBlob', 'RedisCache',
+        /// 'AzureDataExplorer', 'MySql', 'MariaDb', 'PostgreSql',
+        /// 'DedicatedHost', 'SapHana'
         /// </summary>
         [JsonProperty(PropertyName = "reservedResourceType")]
         public string ReservedResourceType { get; set; }
