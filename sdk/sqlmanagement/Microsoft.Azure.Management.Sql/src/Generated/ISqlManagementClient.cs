@@ -493,16 +493,6 @@ namespace Microsoft.Azure.Management.Sql
         IWorkloadClassifiersOperations WorkloadClassifiers { get; }
 
         /// <summary>
-        /// Gets the IManagedDatabaseRestoreDetailsOperations.
-        /// </summary>
-        IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
-
-        /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        IManagedDatabasesOperations ManagedDatabases { get; }
-
-        /// <summary>
         /// Gets the IServerAzureADAdministratorsOperations.
         /// </summary>
         IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; }
@@ -521,6 +511,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the ISyncMembersOperations.
         /// </summary>
         ISyncMembersOperations SyncMembers { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseRestoreDetailsOperations.
+        /// </summary>
+        IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        IManagedDatabasesOperations ManagedDatabases { get; }
 
     }
 }
