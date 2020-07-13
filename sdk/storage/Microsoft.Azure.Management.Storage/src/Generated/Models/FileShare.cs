@@ -149,6 +149,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Gets the deleted time if the share was deleted.
         /// </summary>
+        [JsonConverter(typeof(DateTimeRfc1123JsonConverter))]
         [JsonProperty(PropertyName = "properties.deletedTime")]
         public System.DateTime? DeletedTime { get; private set; }
 
