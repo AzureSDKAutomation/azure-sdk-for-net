@@ -136,6 +136,11 @@ namespace Microsoft.Azure.Management.Network
         IDdosProtectionPlansOperations DdosProtectionPlans { get; }
 
         /// <summary>
+        /// Gets the IDscpConfigurationOperations.
+        /// </summary>
+        IDscpConfigurationOperations DscpConfiguration { get; }
+
+        /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
         /// </summary>
         IAvailableEndpointServicesOperations AvailableEndpointServices { get; }
@@ -574,6 +579,16 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IHubRouteTablesOperations.
         /// </summary>
         IHubRouteTablesOperations HubRouteTables { get; }
+
+        /// <summary>
+        /// Gets the IWebApplicationFirewallPoliciesOperations.
+        /// </summary>
+        IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; }
+
+        /// <summary>
+        /// Gets the IExpressRouteProviderPortsOperations.
+        /// </summary>
+        IExpressRouteProviderPortsOperations ExpressRouteProviderPorts { get; }
 
         /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the
