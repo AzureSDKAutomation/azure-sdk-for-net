@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.MariaDB.Models
     /// <summary>
     /// The properties used to create a new server.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ServerPropertiesForCreate")]
     public partial class ServerPropertiesForCreate
     {
         /// <summary>

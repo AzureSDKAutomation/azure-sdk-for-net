@@ -125,11 +125,6 @@ namespace Microsoft.Azure.Management.MariaDB
         public virtual ICheckNameAvailabilityOperations CheckNameAvailability { get; private set; }
 
         /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -178,6 +173,11 @@ namespace Microsoft.Azure.Management.MariaDB
         /// Gets the IPrivateLinkResourcesOperations.
         /// </summary>
         public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MariaDBManagementClient class.
@@ -429,7 +429,6 @@ namespace Microsoft.Azure.Management.MariaDB
             LogFiles = new LogFilesOperations(this);
             LocationBasedPerformanceTier = new LocationBasedPerformanceTierOperations(this);
             CheckNameAvailability = new CheckNameAvailabilityOperations(this);
-            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             Operations = new Operations(this);
             QueryTexts = new QueryTextsOperations(this);
             TopQueryStatistics = new TopQueryStatisticsOperations(this);
@@ -440,6 +439,7 @@ namespace Microsoft.Azure.Management.MariaDB
             LocationBasedRecommendedActionSessionsResult = new LocationBasedRecommendedActionSessionsResultOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2018-06-01";
             AcceptLanguage = "en-US";
