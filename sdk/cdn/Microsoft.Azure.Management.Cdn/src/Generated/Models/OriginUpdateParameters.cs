@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Management.Cdn.Models
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,7 +33,6 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Initializes a new instance of the OriginUpdateParameters class.
         /// </summary>
-        /// <param name="tags">Origin tags.</param>
         /// <param name="hostName">The address of the origin. Domain names,
         /// IPv4 addresses, and IPv6 addresses are supported.This should be
         /// unique across all origins in an endpoint.</param>
@@ -69,9 +66,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <param name="privateLinkApprovalMessage">A custom message to be
         /// included in the approval request to connect to the Private
         /// Link.</param>
-        public OriginUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), string hostName = default(string), int? httpPort = default(int?), int? httpsPort = default(int?), string originHostHeader = default(string), int? priority = default(int?), int? weight = default(int?), bool? enabled = default(bool?), string privateLinkAlias = default(string), string privateLinkResourceId = default(string), string privateLinkLocation = default(string), string privateLinkApprovalMessage = default(string))
+        public OriginUpdateParameters(string hostName = default(string), int? httpPort = default(int?), int? httpsPort = default(int?), string originHostHeader = default(string), int? priority = default(int?), int? weight = default(int?), bool? enabled = default(bool?), string privateLinkAlias = default(string), string privateLinkResourceId = default(string), string privateLinkLocation = default(string), string privateLinkApprovalMessage = default(string))
         {
-            Tags = tags;
             HostName = hostName;
             HttpPort = httpPort;
             HttpsPort = httpsPort;
@@ -90,12 +86,6 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets origin tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the address of the origin. Domain names, IPv4

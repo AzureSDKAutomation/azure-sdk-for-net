@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Cdn.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -24,7 +22,7 @@ namespace Microsoft.Azure.Management.Cdn.Models
     /// configured origins.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Origin : TrackedResource
+    public partial class Origin : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Origin class.
@@ -37,11 +35,9 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <summary>
         /// Initializes a new instance of the Origin class.
         /// </summary>
-        /// <param name="location">Resource location.</param>
         /// <param name="id">Resource ID.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="tags">Resource tags.</param>
         /// <param name="hostName">The address of the origin. Domain names,
         /// IPv4 addresses, and IPv6 addresses are supported.This should be
         /// unique across all origins in an endpoint.</param>
@@ -82,8 +78,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <param name="privateEndpointStatus">The approval status for the
         /// connection to the Private Link. Possible values include: 'Pending',
         /// 'Approved', 'Rejected', 'Disconnected', 'Timeout'</param>
-        public Origin(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string hostName = default(string), int? httpPort = default(int?), int? httpsPort = default(int?), string originHostHeader = default(string), int? priority = default(int?), int? weight = default(int?), bool? enabled = default(bool?), string privateLinkAlias = default(string), string privateLinkResourceId = default(string), string privateLinkLocation = default(string), string privateLinkApprovalMessage = default(string), string resourceState = default(string), string provisioningState = default(string), string privateEndpointStatus = default(string))
-            : base(location, id, name, type, tags)
+        public Origin(string id = default(string), string name = default(string), string type = default(string), string hostName = default(string), int? httpPort = default(int?), int? httpsPort = default(int?), string originHostHeader = default(string), int? priority = default(int?), int? weight = default(int?), bool? enabled = default(bool?), string privateLinkAlias = default(string), string privateLinkResourceId = default(string), string privateLinkLocation = default(string), string privateLinkApprovalMessage = default(string), string resourceState = default(string), string provisioningState = default(string), string privateEndpointStatus = default(string))
+            : base(id, name, type)
         {
             HostName = hostName;
             HttpPort = httpPort;
@@ -217,9 +213,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (HttpPort > 65535)
             {
                 throw new ValidationException(ValidationRules.InclusiveMaximum, "HttpPort", 65535);
