@@ -20,9 +20,11 @@ namespace Microsoft.Azure.Management.Marketplace
               return new Tuple<string, string, string>[]
               {
                 new Tuple<string, string, string>("Marketplace", "Operations", "2020-01-01"),
+                new Tuple<string, string, string>("Marketplace", "PrivateStorPrivateOffers", "2020-01-01"),
                 new Tuple<string, string, string>("Marketplace", "PrivateStore", "2020-01-01"),
                 new Tuple<string, string, string>("Marketplace", "PrivateStoreOffer", "2020-01-01"),
                 new Tuple<string, string, string>("Marketplace", "PrivateStoreOffers", "2020-01-01"),
+                new Tuple<string, string, string>("Marketplace", "PrivateStorePrivateOffer", "2020-01-01"),
               }.AsEnumerable();
           }
       }
