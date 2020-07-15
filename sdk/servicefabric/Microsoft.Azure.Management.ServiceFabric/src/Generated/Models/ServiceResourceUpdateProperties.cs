@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.ServiceFabric.Models
 {
-    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,7 +17,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     /// <summary>
     /// The service resource properties for patch operations.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ServiceResourceUpdateProperties")]
     public partial class ServiceResourceUpdateProperties : ServiceResourcePropertiesBase
     {
         /// <summary>

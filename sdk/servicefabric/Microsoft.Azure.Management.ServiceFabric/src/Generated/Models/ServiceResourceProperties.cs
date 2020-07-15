@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     /// <summary>
     /// The service resource properties.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ServiceResourceProperties")]
     public partial class ServiceResourceProperties : ServiceResourcePropertiesBase
     {
         /// <summary>

@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.ServiceFabric.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Describes how the service is partitioned.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("PartitionSchemeDescription")]
     public partial class PartitionSchemeDescription
     {
         /// <summary>
