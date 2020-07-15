@@ -50,18 +50,15 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
         /// <param name="displayName">The friendly name of the management
         /// group. If no value is passed then this  field will be set to the
         /// groupId.</param>
-        /// <param name="roles">The roles definitions associated with the
-        /// management group.</param>
         /// <param name="details">Details</param>
         /// <param name="children">The list of children.</param>
-        public CreateManagementGroupRequest(string id = default(string), string type = default(string), string name = default(string), string tenantId = default(string), string displayName = default(string), IList<string> roles = default(IList<string>), CreateManagementGroupDetails details = default(CreateManagementGroupDetails), IList<CreateManagementGroupChildInfo> children = default(IList<CreateManagementGroupChildInfo>))
+        public CreateManagementGroupRequest(string id = default(string), string type = default(string), string name = default(string), string tenantId = default(string), string displayName = default(string), CreateManagementGroupDetails details = default(CreateManagementGroupDetails), IList<CreateManagementGroupChildInfo> children = default(IList<CreateManagementGroupChildInfo>))
         {
             Id = id;
             Type = type;
             Name = name;
             TenantId = tenantId;
             DisplayName = displayName;
-            Roles = roles;
             Details = details;
             Children = children;
             CustomInit();
@@ -106,12 +103,6 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets the roles definitions associated with the management group.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.roles")]
-        public IList<string> Roles { get; private set; }
 
         /// <summary>
         /// Gets or sets details

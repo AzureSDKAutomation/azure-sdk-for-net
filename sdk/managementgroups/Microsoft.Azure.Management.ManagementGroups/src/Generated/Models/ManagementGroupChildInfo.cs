@@ -38,16 +38,13 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
         /// <param name="name">The name of the child entity.</param>
         /// <param name="displayName">The friendly name of the child
         /// resource.</param>
-        /// <param name="roles">The roles definitions associated with the
-        /// management group.</param>
         /// <param name="children">The list of children.</param>
-        public ManagementGroupChildInfo(string type = default(string), string id = default(string), string name = default(string), string displayName = default(string), IList<string> roles = default(IList<string>), IList<ManagementGroupChildInfo> children = default(IList<ManagementGroupChildInfo>))
+        public ManagementGroupChildInfo(string type = default(string), string id = default(string), string name = default(string), string displayName = default(string), IList<ManagementGroupChildInfo> children = default(IList<ManagementGroupChildInfo>))
         {
             Type = type;
             Id = id;
             Name = name;
             DisplayName = displayName;
-            Roles = roles;
             Children = children;
             CustomInit();
         }
@@ -87,13 +84,6 @@ namespace Microsoft.Azure.Management.ManagementGroups.Models
         /// </summary>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the roles definitions associated with the management
-        /// group.
-        /// </summary>
-        [JsonProperty(PropertyName = "roles")]
-        public IList<string> Roles { get; set; }
 
         /// <summary>
         /// Gets or sets the list of children.
