@@ -431,6 +431,46 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
+            /// Gets information about all public IP addresses on a cloud service level.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='cloudServiceName'>
+            /// The name of the cloud service.
+            /// </param>
+            public static IPage<PublicIPAddress> ListCloudServicePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName)
+            {
+                return operations.ListCloudServicePublicIPAddressesAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets information about all public IP addresses on a cloud service level.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='cloudServiceName'>
+            /// The name of the cloud service.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<PublicIPAddress>> ListCloudServicePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListCloudServicePublicIPAddressesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes the specified public IP address.
             /// </summary>
             /// <param name='operations'>
@@ -648,6 +688,40 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<IPage<PublicIPAddress>> ListVirtualMachineScaleSetVMPublicIPAddressesNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListVirtualMachineScaleSetVMPublicIPAddressesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets information about all public IP addresses on a cloud service level.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<PublicIPAddress> ListCloudServicePublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
+            {
+                return operations.ListCloudServicePublicIPAddressesNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets information about all public IP addresses on a cloud service level.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<PublicIPAddress>> ListCloudServicePublicIPAddressesNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListCloudServicePublicIPAddressesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
