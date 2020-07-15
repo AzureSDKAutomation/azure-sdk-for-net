@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
         /// Initializes a new instance of the UrlSigningParamIdentifier class.
         /// </summary>
         /// <param name="paramIndicator">Indicates the purpose of the
-        /// parameter. Possible values include: 'expires', 'keyId',
-        /// 'signature'</param>
+        /// parameter. Possible values include: 'Expires', 'KeyId',
+        /// 'Signature'</param>
         /// <param name="paramName">Parameter name</param>
         public UrlSigningParamIdentifier(string paramIndicator, string paramName)
         {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Cdn.Models
 
         /// <summary>
         /// Gets or sets indicates the purpose of the parameter. Possible
-        /// values include: 'expires', 'keyId', 'signature'
+        /// values include: 'Expires', 'KeyId', 'Signature'
         /// </summary>
         [JsonProperty(PropertyName = "paramIndicator")]
         public string ParamIndicator { get; set; }

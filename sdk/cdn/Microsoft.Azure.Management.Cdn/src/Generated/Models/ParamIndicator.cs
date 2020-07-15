@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Cdn.Models
     /// </summary>
     public static class ParamIndicator
     {
-        public const string Expires = "expires";
-        public const string KeyId = "keyId";
-        public const string Signature = "signature";
+        public const string Expires = "Expires";
+        public const string KeyId = "KeyId";
+        public const string Signature = "Signature";
     }
 }
