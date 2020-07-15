@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="password">User Password. If no value is provided, a
         /// default password is generated.</param>
         /// <param name="appType">Determines the type of application which send
-        /// the create user request. Default is old publisher portal. Possible
-        /// values include: 'developerPortal'</param>
+        /// the create user request. Default is legacy portal. Possible values
+        /// include: 'portal', 'developerPortal'</param>
         /// <param name="confirmation">Determines the type of confirmation
         /// e-mail that will be sent to the newly created user. Possible values
         /// include: 'signup', 'invite'</param>
@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <summary>
         /// Gets or sets determines the type of application which send the
-        /// create user request. Default is old publisher portal. Possible
-        /// values include: 'developerPortal'
+        /// create user request. Default is legacy portal. Possible values
+        /// include: 'portal', 'developerPortal'
         /// </summary>
         [JsonProperty(PropertyName = "properties.appType")]
         public string AppType { get; set; }

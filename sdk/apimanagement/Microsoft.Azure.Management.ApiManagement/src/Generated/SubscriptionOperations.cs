@@ -756,6 +756,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// ETag of the Entity. Not required when creating an entity, but required when
         /// updating an entity.
         /// </param>
+        /// <param name='appType'>
+        /// Determines the type of application which send the create user request.
+        /// Default is legacy publisher portal. Possible values include: 'portal',
+        /// 'developerPortal'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -777,7 +782,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SubscriptionContract,SubscriptionCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string sid, SubscriptionCreateParameters parameters, bool? notify = default(bool?), string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SubscriptionContract,SubscriptionCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string sid, SubscriptionCreateParameters parameters, bool? notify = default(bool?), string ifMatch = default(string), string appType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -846,6 +851,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("notify", notify);
                 tracingParameters.Add("ifMatch", ifMatch);
+                tracingParameters.Add("appType", appType);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }
@@ -864,6 +870,10 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (appType != null)
+            {
+                _queryParameters.Add(string.Format("appType={0}", System.Uri.EscapeDataString(appType)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1057,6 +1067,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// subscription
         /// - If true, send email notification of change of state of subscription
         /// </param>
+        /// <param name='appType'>
+        /// Determines the type of application which send the create user request.
+        /// Default is legacy publisher portal. Possible values include: 'portal',
+        /// 'developerPortal'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1075,7 +1090,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string sid, SubscriptionUpdateParameters parameters, string ifMatch, bool? notify = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> UpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string sid, SubscriptionUpdateParameters parameters, string ifMatch, bool? notify = default(bool?), string appType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1144,6 +1159,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("notify", notify);
                 tracingParameters.Add("ifMatch", ifMatch);
+                tracingParameters.Add("appType", appType);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
@@ -1162,6 +1178,10 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (appType != null)
+            {
+                _queryParameters.Add(string.Format("appType={0}", System.Uri.EscapeDataString(appType)));
             }
             if (_queryParameters.Count > 0)
             {

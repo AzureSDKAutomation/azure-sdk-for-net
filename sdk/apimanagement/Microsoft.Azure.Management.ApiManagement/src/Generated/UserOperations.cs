@@ -753,6 +753,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='parameters'>
         /// Create or update parameters.
         /// </param>
+        /// <param name='notify'>
+        /// Send an Email notification to the User.
+        /// </param>
         /// <param name='ifMatch'>
         /// ETag of the Entity. Not required when creating an entity, but required when
         /// updating an entity.
@@ -778,7 +781,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<UserContract,UserCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string userId, UserCreateParameters parameters, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<UserContract,UserCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string userId, UserCreateParameters parameters, bool? notify = default(bool?), string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -845,6 +848,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("userId", userId);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("notify", notify);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
@@ -857,6 +861,10 @@ namespace Microsoft.Azure.Management.ApiManagement
             _url = _url.Replace("{userId}", System.Uri.EscapeDataString(userId));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
+            if (notify != null)
+            {
+                _queryParameters.Add(string.Format("notify={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(notify, Client.SerializationSettings).Trim('"'))));
+            }
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
@@ -1288,6 +1296,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='notify'>
         /// Send an Account Closed Email notification to the User.
         /// </param>
+        /// <param name='appType'>
+        /// Determines the type of application which send the create user request.
+        /// Default is legacy publisher portal. Possible values include: 'portal',
+        /// 'developerPortal'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1306,7 +1319,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string userId, string ifMatch, bool? deleteSubscriptions = default(bool?), bool? notify = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string userId, string ifMatch, bool? deleteSubscriptions = default(bool?), bool? notify = default(bool?), string appType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1371,6 +1384,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 tracingParameters.Add("deleteSubscriptions", deleteSubscriptions);
                 tracingParameters.Add("notify", notify);
                 tracingParameters.Add("ifMatch", ifMatch);
+                tracingParameters.Add("appType", appType);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
@@ -1393,6 +1407,10 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (appType != null)
+            {
+                _queryParameters.Add(string.Format("appType={0}", System.Uri.EscapeDataString(appType)));
             }
             if (_queryParameters.Count > 0)
             {
