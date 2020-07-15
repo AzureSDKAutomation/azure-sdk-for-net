@@ -152,6 +152,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 DeleteRetentionPolicy.Validate();
             }
+            if (ChangeFeed != null)
+            {
+                ChangeFeed.Validate();
+            }
             if (RestorePolicy != null)
             {
                 RestorePolicy.Validate();
