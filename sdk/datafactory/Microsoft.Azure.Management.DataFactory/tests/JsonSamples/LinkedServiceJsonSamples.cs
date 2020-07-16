@@ -1234,43 +1234,6 @@ namespace DataFactory.Tests.JsonSamples
 }";
 
         [JsonSample]
-        public const string SalesforceMarketingCloudLinkedService = @"
-{
-    name: ""SalesforceMarketingCloudLinkedService"",
-    properties:
-    {
-        type: ""SalesforceMarketingCloud"",
-        description: ""test description"",
-        typeProperties: {
-            clientId: ""clientIdFake"",
-            clientSecret : {
-                value : ""fakepassword"",
-                type : ""SecureString""
-            }
-        }
-    }
-}";
-
-        [JsonSample]
-        public const string SalesforceMarketingCloudConnectionPropertiesLinkedService = @"
-{
-	name: ""SalesforceMarketingCloudLinkedService"",
-	properties: {
-		type: ""SalesforceMarketingCloud"",
-		description: ""test description"",
-		typeProperties: {
-			connectionProperties: {
-				clientId: ""clientIdFake"",
-				clientSecret: {
-					value: ""some secret"",
-					type: ""SecureString""
-				}
-			}
-		}
-	}
-}";
-
-        [JsonSample]
         public const string MongoDbLinkedService = @"
 {
     name: ""MongoDbLinkedService"",
@@ -2130,36 +2093,6 @@ namespace DataFactory.Tests.JsonSamples
     }
 }
 ";
-
-        [JsonSample]
-        public const string QuickBooksConnectionPropertiesLinkedService = @"
-{
-	name: ""QuickBooksLinkedService "",
-	properties: {
-		type: ""QuickBooks"",
-		typeProperties: {
-			connectionProperties: {
-				endpoint: ""quickbooks.api.intuit.com"",
-				companyId: ""fakeCompanyId"",
-				consumerKey: ""fakeConsumerKey"",
-				consumerSecret: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				accessToken: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				accessTokenSecret: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				useEncryptedEndpoints: true
-			}
-		}
-	}
-}
-";
         [JsonSample]
         public const string ServiceNowLinkedService = @"
 {
@@ -2249,30 +2182,6 @@ namespace DataFactory.Tests.JsonSamples
 }
 ";
         [JsonSample]
-        public const string SquareConnectionPropertiesLinkedService = @"
-{
-	name: ""SquareLinkedService"",
-	properties: {
-		type: ""Square"",
-		typeProperties: {
-			connectionProperties: {
-				host: ""mystore.mysquare.com"",
-				clientId: ""clientIdFake"",
-				clientSecret: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				redirectUri: ""http://localhost:2500"",
-				useEncryptedEndpoints: true,
-				useHostVerification: true,
-				usePeerVerification: true
-			}
-		}
-	}
-}
-";
-
-        [JsonSample]
         public const string XeroLinkedService = @"
 {
     name: ""XeroLinkedService"",
@@ -2295,33 +2204,6 @@ namespace DataFactory.Tests.JsonSamples
     }
 }
 ";
-
-        [JsonSample]
-        public const string XeroConnectionPropertiesLinkedService = @"
-{
-	name: ""XeroLinkedService"",
-	properties: {
-		type: ""Xero"",
-		typeProperties: {
-			connectionProperties: {
-				host: ""api.xero.com"",
-				consumerKey: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				privateKey: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				useEncryptedEndpoints: true,
-				useHostVerification: true,
-				usePeerVerification: true
-			}
-		}
-	}
-}
-";
-
         [JsonSample]
         public const string ZohoLinkedService = @"
 {
@@ -2341,29 +2223,6 @@ namespace DataFactory.Tests.JsonSamples
     }
 }
 ";
-
-        [JsonSample]
-        public const string ZohoConnectionPropertiesLinkedService = @"
-{
-	name: ""ZohoLinkedService"",
-	properties: {
-		type: ""Zoho"",
-		typeProperties: {
-			connectionProperties: {
-				endpoint: ""crm.zoho.com/crm/private"",
-				accessToken: {
-					type: ""SecureString"",
-					value: ""some secret""
-				},
-				useEncryptedEndpoints: true,
-				useHostVerification: true,
-				usePeerVerification: true
-			}
-		}
-	}
-}
-";
-
         [JsonSample]
         public const string NetezzaLinkedService = @"
 {
