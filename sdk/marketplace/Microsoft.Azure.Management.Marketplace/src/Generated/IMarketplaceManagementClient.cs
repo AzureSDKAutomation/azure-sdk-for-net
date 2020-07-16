@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Management.Marketplace
         IPrivateStoreOffersOperations PrivateStoreOffers { get; }
 
         /// <summary>
-        /// Gets the IPrivateStorPrivateOffersOperations.
+        /// Gets the IPrivateStorePrivateOffersOperations.
         /// </summary>
-        IPrivateStorPrivateOffersOperations PrivateStorPrivateOffers { get; }
+        IPrivateStorePrivateOffersOperations PrivateStorePrivateOffers { get; }
 
         /// <summary>
         /// Gets the IPrivateStoreOfferOperations.

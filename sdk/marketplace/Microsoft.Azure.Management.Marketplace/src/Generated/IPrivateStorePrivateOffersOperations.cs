@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.Marketplace
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateStorPrivateOffersOperations operations.
+    /// PrivateStorePrivateOffersOperations operations.
     /// </summary>
-    public partial interface IPrivateStorPrivateOffersOperations
+    public partial interface IPrivateStorePrivateOffersOperations
     {
         /// <summary>
         /// Get a list of all private offers in the given private store

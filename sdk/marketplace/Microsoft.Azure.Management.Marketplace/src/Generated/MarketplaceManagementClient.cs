@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.Marketplace
         public virtual IPrivateStoreOffersOperations PrivateStoreOffers { get; private set; }
 
         /// <summary>
-        /// Gets the IPrivateStorPrivateOffersOperations.
+        /// Gets the IPrivateStorePrivateOffersOperations.
         /// </summary>
-        public virtual IPrivateStorPrivateOffersOperations PrivateStorPrivateOffers { get; private set; }
+        public virtual IPrivateStorePrivateOffersOperations PrivateStorePrivateOffers { get; private set; }
 
         /// <summary>
         /// Gets the IPrivateStoreOfferOperations.
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.Marketplace
         private void Initialize()
         {
             PrivateStoreOffers = new PrivateStoreOffersOperations(this);
-            PrivateStorPrivateOffers = new PrivateStorPrivateOffersOperations(this);
+            PrivateStorePrivateOffers = new PrivateStorePrivateOffersOperations(this);
             PrivateStoreOffer = new PrivateStoreOfferOperations(this);
             PrivateStorePrivateOffer = new PrivateStorePrivateOfferOperations(this);
             PrivateStore = new PrivateStoreOperations(this);

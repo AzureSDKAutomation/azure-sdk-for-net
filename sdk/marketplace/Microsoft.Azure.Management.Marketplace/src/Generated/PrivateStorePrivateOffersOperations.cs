@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Marketplace
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateStorPrivateOffersOperations operations.
+    /// PrivateStorePrivateOffersOperations operations.
     /// </summary>
-    internal partial class PrivateStorPrivateOffersOperations : IServiceOperations<MarketplaceManagementClient>, IPrivateStorPrivateOffersOperations
+    internal partial class PrivateStorePrivateOffersOperations : IServiceOperations<MarketplaceManagementClient>, IPrivateStorePrivateOffersOperations
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateStorPrivateOffersOperations class.
+        /// Initializes a new instance of the PrivateStorePrivateOffersOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Marketplace
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal PrivateStorPrivateOffersOperations(MarketplaceManagementClient client)
+        internal PrivateStorePrivateOffersOperations(MarketplaceManagementClient client)
         {
             if (client == null)
             {
