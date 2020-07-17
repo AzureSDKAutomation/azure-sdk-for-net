@@ -16,23 +16,25 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents a list of VM/server groups and set of rules that are
-    /// Recommended by Azure Security Center to be allowed
+    /// Represents a list of machine groups and set of rules that are
+    /// recommended by Azure Security Center to be allowed
     /// </summary>
-    public partial class AppWhitelistingGroups
+    public partial class AdaptiveApplicationControlGroups
     {
         /// <summary>
-        /// Initializes a new instance of the AppWhitelistingGroups class.
+        /// Initializes a new instance of the AdaptiveApplicationControlGroups
+        /// class.
         /// </summary>
-        public AppWhitelistingGroups()
+        public AdaptiveApplicationControlGroups()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AppWhitelistingGroups class.
+        /// Initializes a new instance of the AdaptiveApplicationControlGroups
+        /// class.
         /// </summary>
-        public AppWhitelistingGroups(IList<AppWhitelistingGroup> value = default(IList<AppWhitelistingGroup>))
+        public AdaptiveApplicationControlGroups(IList<AdaptiveApplicationControlGroup> value = default(IList<AdaptiveApplicationControlGroup>))
         {
             Value = value;
             CustomInit();
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<AppWhitelistingGroup> Value { get; set; }
+        public IList<AdaptiveApplicationControlGroup> Value { get; set; }
 
     }
 }
