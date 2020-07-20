@@ -278,6 +278,80 @@ namespace Microsoft.Azure.Management.Subscription
             }
 
             /// <summary>
+            /// The operation to create a new subscription or update the display name of an
+            /// existing subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            public static PutSubscriptionResponse PutSubscription(this ISubscriptionOperations operations, string subscriptionId, PutSubscriptionRequest body)
+            {
+                return operations.PutSubscriptionAsync(subscriptionId, body).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to create a new subscription or update the display name of an
+            /// existing subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PutSubscriptionResponse> PutSubscriptionAsync(this ISubscriptionOperations operations, string subscriptionId, PutSubscriptionRequest body, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PutSubscriptionWithHttpMessagesAsync(subscriptionId, body, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get Subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            public static PutSubscriptionResponse GetSubscription(this ISubscriptionOperations operations, string subscriptionId)
+            {
+                return operations.GetSubscriptionAsync(subscriptionId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get Subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PutSubscriptionResponse> GetSubscriptionAsync(this ISubscriptionOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetSubscriptionWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Creates an Azure subscription
             /// </summary>
             /// <param name='operations'>
@@ -420,6 +494,46 @@ namespace Microsoft.Azure.Management.Subscription
             public static async Task<SubscriptionCreationResult> BeginCreateCspSubscriptionAsync(this ISubscriptionOperations operations, string billingAccountName, string customerName, ModernCspSubscriptionCreationParameters body, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateCspSubscriptionWithHttpMessagesAsync(billingAccountName, customerName, body, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to create a new subscription or update the display name of an
+            /// existing subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            public static PutSubscriptionResponse BeginPutSubscription(this ISubscriptionOperations operations, string subscriptionId, PutSubscriptionRequest body)
+            {
+                return operations.BeginPutSubscriptionAsync(subscriptionId, body).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to create a new subscription or update the display name of an
+            /// existing subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PutSubscriptionResponse> BeginPutSubscriptionAsync(this ISubscriptionOperations operations, string subscriptionId, PutSubscriptionRequest body, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginPutSubscriptionWithHttpMessagesAsync(subscriptionId, body, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

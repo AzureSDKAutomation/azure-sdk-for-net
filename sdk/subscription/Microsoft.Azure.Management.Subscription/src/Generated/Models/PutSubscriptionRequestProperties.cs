@@ -15,22 +15,22 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// The parameters required to create a new CSP subscription.
+    /// Put subscription properties.
     /// </summary>
-    public partial class ModernCspSubscriptionCreationParameters
+    public partial class PutSubscriptionRequestProperties
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// ModernCspSubscriptionCreationParameters class.
+        /// Initializes a new instance of the PutSubscriptionRequestProperties
+        /// class.
         /// </summary>
-        public ModernCspSubscriptionCreationParameters()
+        public PutSubscriptionRequestProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// ModernCspSubscriptionCreationParameters class.
+        /// Initializes a new instance of the PutSubscriptionRequestProperties
+        /// class.
         /// </summary>
         /// <param name="displayName">The friendly name of the
         /// subscription.</param>
@@ -38,12 +38,20 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// determines the pricing and service-level agreement of the
         /// subscription. Use 0001 for Microsoft Azure Plan and 0002 for
         /// Microsoft Azure Plan for DevTest.</param>
-        /// <param name="resellerId">Reseller ID, basically MPN Id.</param>
-        public ModernCspSubscriptionCreationParameters(string displayName, string skuId, string resellerId = default(string))
+        /// <param name="billingScope">Determines customerLed / fieldLed
+        /// (/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}),
+        /// partnerLed
+        /// (/billingAccounts/{billingAccountId}/customers/{customerId}).</param>
+        /// <param name="initialOwnerPrincipalId">Initial owner principal
+        /// Id.</param>
+        /// <param name="initialOwnerTenantId">Initial owner tenant Id.</param>
+        public PutSubscriptionRequestProperties(string displayName, string skuId, string billingScope, string initialOwnerPrincipalId = default(string), string initialOwnerTenantId = default(string))
         {
             DisplayName = displayName;
             SkuId = skuId;
-            ResellerId = resellerId;
+            BillingScope = billingScope;
+            InitialOwnerPrincipalId = initialOwnerPrincipalId;
+            InitialOwnerTenantId = initialOwnerTenantId;
             CustomInit();
         }
 
@@ -68,10 +76,25 @@ namespace Microsoft.Azure.Management.Subscription.Models
         public string SkuId { get; set; }
 
         /// <summary>
-        /// Gets or sets reseller ID, basically MPN Id.
+        /// Gets or sets determines customerLed / fieldLed
+        /// (/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}),
+        /// partnerLed
+        /// (/billingAccounts/{billingAccountId}/customers/{customerId}).
         /// </summary>
-        [JsonProperty(PropertyName = "resellerId")]
-        public string ResellerId { get; set; }
+        [JsonProperty(PropertyName = "billingScope")]
+        public string BillingScope { get; set; }
+
+        /// <summary>
+        /// Gets or sets initial owner principal Id.
+        /// </summary>
+        [JsonProperty(PropertyName = "initialOwnerPrincipalId")]
+        public string InitialOwnerPrincipalId { get; set; }
+
+        /// <summary>
+        /// Gets or sets initial owner tenant Id.
+        /// </summary>
+        [JsonProperty(PropertyName = "initialOwnerTenantId")]
+        public string InitialOwnerTenantId { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -88,6 +111,10 @@ namespace Microsoft.Azure.Management.Subscription.Models
             if (SkuId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SkuId");
+            }
+            if (BillingScope == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "BillingScope");
             }
         }
     }

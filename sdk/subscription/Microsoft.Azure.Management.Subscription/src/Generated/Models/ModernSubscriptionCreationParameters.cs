@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// subscription.</param>
         /// <param name="skuId">The SKU ID of the Azure plan. Azure plan
         /// determines the pricing and service-level agreement of the
-        /// subscription.  Use 001 for Microsoft Azure Plan and 002 for
+        /// subscription. Use 0001 for Microsoft Azure Plan and 0002 for
         /// Microsoft Azure Plan for DevTest.</param>
         /// <param name="costCenter">If set, the cost center will show up on
         /// the Azure usage and charges file.</param>
@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Management.Subscription.Models
 
         /// <summary>
         /// Gets or sets the SKU ID of the Azure plan. Azure plan determines
-        /// the pricing and service-level agreement of the subscription.  Use
-        /// 001 for Microsoft Azure Plan and 002 for Microsoft Azure Plan for
+        /// the pricing and service-level agreement of the subscription. Use
+        /// 0001 for Microsoft Azure Plan and 0002 for Microsoft Azure Plan for
         /// DevTest.
         /// </summary>
         [JsonProperty(PropertyName = "skuId")]
