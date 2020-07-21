@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Management.Synapse
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -73,6 +73,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
+
+        /// <summary>
+        /// Gets the ISqlV3Operations.
+        /// </summary>
+        public virtual ISqlV3Operations SqlV3Operations { get; private set; }
 
         /// <summary>
         /// Gets the ISqlPoolsV3Operations.
@@ -325,6 +330,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         private void Initialize()
         {
+            SqlV3Operations = new SqlV3Operations(this);
             SqlPoolsV3 = new SqlPoolsV3Operations(this);
             SqlDatabases = new SqlDatabasesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");

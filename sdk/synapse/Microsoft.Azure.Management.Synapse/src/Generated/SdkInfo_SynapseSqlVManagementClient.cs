@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Management.Synapse
               {
                 new Tuple<string, string, string>("Synapse", "SqlDatabases", "2020-04-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolsV3", "2020-04-01-preview"),
+                new Tuple<string, string, string>("Synapse", "SqlV3Operations", "2020-04-01-preview"),
               }.AsEnumerable();
           }
       }

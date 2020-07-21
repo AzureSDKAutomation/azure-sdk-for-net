@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Management.Synapse
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
+
+        /// <summary>
+        /// Gets the ISqlV3Operations.
+        /// </summary>
+        ISqlV3Operations SqlV3Operations { get; }
 
         /// <summary>
         /// Gets the ISqlPoolsV3Operations.
