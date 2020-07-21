@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="dataControllerId">null</param>
-        public SqlManagedInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string dataControllerId = default(string))
-            : base(location, id, name, type, tags)
+        public SqlManagedInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string dataControllerId = default(string))
+            : base(location, id, name, type, tags, systemData)
         {
             DataControllerId = dataControllerId;
             CustomInit();

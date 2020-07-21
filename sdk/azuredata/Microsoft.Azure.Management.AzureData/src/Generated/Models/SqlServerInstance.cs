@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// created.</param>
         /// <param name="updateTime">The time when the resource was last
         /// updated.</param>
-        public SqlServerInstance(string location, string version, string edition, string containerResourceId, string vCore, string status, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string createTime = default(string), string updateTime = default(string))
-            : base(location, id, name, type, tags)
+        public SqlServerInstance(string location, string version, string edition, string containerResourceId, string vCore, string status, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string createTime = default(string), string updateTime = default(string))
+            : base(location, id, name, type, tags, systemData)
         {
             Version = version;
             Edition = edition;

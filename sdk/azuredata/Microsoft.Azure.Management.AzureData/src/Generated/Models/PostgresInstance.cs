@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="hybridDataManagerId">null</param>
-        public PostgresInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string hybridDataManagerId = default(string))
-            : base(location, id, name, type, tags)
+        public PostgresInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string hybridDataManagerId = default(string))
+            : base(location, id, name, type, tags, systemData)
         {
             HybridDataManagerId = hybridDataManagerId;
             CustomInit();

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// <param name="resourceGroup">Resource Group Name</param>
         /// <param name="propertyBag">Optional Properties as JSON
         /// string</param>
-        public SqlServerRegistration(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string subscriptionId = default(string), string resourceGroup = default(string), string propertyBag = default(string))
-            : base(location, id, name, type, tags)
+        public SqlServerRegistration(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string subscriptionId = default(string), string resourceGroup = default(string), string propertyBag = default(string))
+            : base(location, id, name, type, tags, systemData)
         {
             SubscriptionId = subscriptionId;
             ResourceGroup = resourceGroup;

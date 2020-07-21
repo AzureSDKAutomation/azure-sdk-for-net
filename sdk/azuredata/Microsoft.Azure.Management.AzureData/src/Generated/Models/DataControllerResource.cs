@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// <param name="tags">Resource tags.</param>
         /// <param name="requestType">Possible values include: 'Unknown',
         /// 'Handshake', 'UsageUpload'</param>
-        public DataControllerResource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DataController dataController = default(DataController), string requestType = default(string), UsageUploadRequest uploadRequest = default(UsageUploadRequest), UsageUploadResponse uploadResponse = default(UsageUploadResponse), object handshakeRequest = default(object), HandshakeResponse handshakeResponse = default(HandshakeResponse))
-            : base(location, id, name, type, tags)
+        public DataControllerResource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), DataController dataController = default(DataController), string requestType = default(string), UsageUploadRequest uploadRequest = default(UsageUploadRequest), UsageUploadResponse uploadResponse = default(UsageUploadResponse), object handshakeRequest = default(object), HandshakeResponse handshakeResponse = default(HandshakeResponse))
+            : base(location, id, name, type, tags, systemData)
         {
             DataController = dataController;
             RequestType = requestType;
