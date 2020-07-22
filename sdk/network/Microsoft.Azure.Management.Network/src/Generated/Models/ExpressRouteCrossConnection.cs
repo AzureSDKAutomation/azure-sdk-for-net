@@ -86,16 +86,16 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the name of the primary port.
+        /// Gets or sets the name of the primary port.
         /// </summary>
         [JsonProperty(PropertyName = "properties.primaryAzurePort")]
-        public string PrimaryAzurePort { get; private set; }
+        public string PrimaryAzurePort { get; set; }
 
         /// <summary>
-        /// Gets the name of the secondary port.
+        /// Gets or sets the name of the secondary port.
         /// </summary>
         [JsonProperty(PropertyName = "properties.secondaryAzurePort")]
-        public string SecondaryAzurePort { get; private set; }
+        public string SecondaryAzurePort { get; set; }
 
         /// <summary>
         /// Gets the identifier of the circuit traffic.
@@ -104,16 +104,16 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? STag { get; private set; }
 
         /// <summary>
-        /// Gets or sets the peering location of the ExpressRoute circuit.
+        /// Gets the peering location of the ExpressRoute circuit.
         /// </summary>
         [JsonProperty(PropertyName = "properties.peeringLocation")]
-        public string PeeringLocation { get; set; }
+        public string PeeringLocation { get; private set; }
 
         /// <summary>
-        /// Gets or sets the circuit bandwidth In Mbps.
+        /// Gets the circuit bandwidth In Mbps.
         /// </summary>
         [JsonProperty(PropertyName = "properties.bandwidthInMbps")]
-        public int? BandwidthInMbps { get; set; }
+        public int? BandwidthInMbps { get; private set; }
 
         /// <summary>
         /// Gets or sets the ExpressRouteCircuit.
