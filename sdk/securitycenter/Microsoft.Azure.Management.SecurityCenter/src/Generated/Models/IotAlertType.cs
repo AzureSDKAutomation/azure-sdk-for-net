@@ -45,6 +45,10 @@ namespace Microsoft.Azure.Management.Security.Models
         /// vulnerability and meaning.</param>
         /// <param name="providerName">The name of the alert provider or
         /// internal partner</param>
+        /// <param name="productName">The name of the product which published
+        /// this alert</param>
+        /// <param name="productComponentName">The name of a component inside
+        /// the product which generated the alert</param>
         /// <param name="vendorName">The name of the vendor that raise the
         /// alert</param>
         /// <param name="intent">Kill chain related intent behind the alert.
@@ -56,13 +60,15 @@ namespace Microsoft.Azure.Management.Security.Models
         /// 'Probing', 'Exploitation'</param>
         /// <param name="remediationSteps">Manual action items to take to
         /// remediate the alert</param>
-        public IotAlertType(string id = default(string), string name = default(string), string type = default(string), string alertDisplayName = default(string), string severity = default(string), string description = default(string), string providerName = default(string), string vendorName = default(string), string intent = default(string), IList<string> remediationSteps = default(IList<string>))
+        public IotAlertType(string id = default(string), string name = default(string), string type = default(string), string alertDisplayName = default(string), string severity = default(string), string description = default(string), string providerName = default(string), string productName = default(string), string productComponentName = default(string), string vendorName = default(string), string intent = default(string), IList<string> remediationSteps = default(IList<string>))
             : base(id, name, type)
         {
             AlertDisplayName = alertDisplayName;
             Severity = severity;
             Description = description;
             ProviderName = providerName;
+            ProductName = productName;
+            ProductComponentName = productComponentName;
             VendorName = vendorName;
             Intent = intent;
             RemediationSteps = remediationSteps;
@@ -98,6 +104,19 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.providerName")]
         public string ProviderName { get; private set; }
+
+        /// <summary>
+        /// Gets the name of the product which published this alert
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.productName")]
+        public string ProductName { get; private set; }
+
+        /// <summary>
+        /// Gets the name of a component inside the product which generated the
+        /// alert
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.productComponentName")]
+        public string ProductComponentName { get; private set; }
 
         /// <summary>
         /// Gets the name of the vendor that raise the alert
