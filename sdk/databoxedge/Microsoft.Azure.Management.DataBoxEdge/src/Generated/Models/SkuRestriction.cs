@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="reasonCode">The SKU restriction reason. Possible
         /// values include: 'NotAvailableForSubscription', 'QuotaId'</param>
         /// <param name="restrictionInfo">Restriction of the SKU for the
-        /// location/zone</param>
+        /// location/zone.</param>
         public SkuRestriction(string type = default(string), IList<string> values = default(IList<string>), string reasonCode = default(string), SkuRestrictionInfo restrictionInfo = default(SkuRestrictionInfo))
         {
             Type = type;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         public string ReasonCode { get; private set; }
 
         /// <summary>
-        /// Gets restriction of the SKU for the location/zone
+        /// Gets restriction of the SKU for the location/zone.
         /// </summary>
         [JsonProperty(PropertyName = "restrictionInfo")]
         public SkuRestrictionInfo RestrictionInfo { get; private set; }

@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// groups).</param>
         /// <param name="sku">The SKU type.</param>
         /// <param name="etag">The etag for the devices.</param>
+        /// <param name="kind">The etag for the devices. Possible values
+        /// include: 'AzureDataBoxGateway', 'AzureStackEdge',
+        /// 'AzureStackHub'</param>
         /// <param name="dataBoxEdgeDeviceStatus">The status of the Data Box
         /// Edge/Gateway device. Possible values include: 'ReadyToSetup',
         /// 'Online', 'Offline', 'NeedsAttention', 'Disconnected',
@@ -78,13 +81,16 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="configuredRoleTypes">Type of compute roles
         /// configured.</param>
         /// <param name="nodeCount">The number of nodes in the cluster.</param>
-        public DataBoxEdgeDevice(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string etag = default(string), string dataBoxEdgeDeviceStatus = default(string), string serialNumber = default(string), string description = default(string), string modelDescription = default(string), string deviceType = default(string), string friendlyName = default(string), string culture = default(string), string deviceModel = default(string), string deviceSoftwareVersion = default(string), long? deviceLocalCapacity = default(long?), string timeZone = default(string), string deviceHcsVersion = default(string), IList<string> configuredRoleTypes = default(IList<string>), int? nodeCount = default(int?))
+        /// <param name="resourceMoveDetails">The details of the move operation
+        /// on this resource.</param>
+        public DataBoxEdgeDevice(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string etag = default(string), string kind = default(string), string dataBoxEdgeDeviceStatus = default(string), string serialNumber = default(string), string description = default(string), string modelDescription = default(string), string deviceType = default(string), string friendlyName = default(string), string culture = default(string), string deviceModel = default(string), string deviceSoftwareVersion = default(string), long? deviceLocalCapacity = default(long?), string timeZone = default(string), string deviceHcsVersion = default(string), IList<string> configuredRoleTypes = default(IList<string>), int? nodeCount = default(int?), ResourceMoveDetails resourceMoveDetails = default(ResourceMoveDetails))
             : base(id, name, type)
         {
             Location = location;
             Tags = tags;
             Sku = sku;
             Etag = etag;
+            Kind = kind;
             DataBoxEdgeDeviceStatus = dataBoxEdgeDeviceStatus;
             SerialNumber = serialNumber;
             Description = description;
@@ -99,6 +105,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
             DeviceHcsVersion = deviceHcsVersion;
             ConfiguredRoleTypes = configuredRoleTypes;
             NodeCount = nodeCount;
+            ResourceMoveDetails = resourceMoveDetails;
             CustomInit();
         }
 
@@ -135,6 +142,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the etag for the devices. Possible values include:
+        /// 'AzureDataBoxGateway', 'AzureStackEdge', 'AzureStackHub'
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the status of the Data Box Edge/Gateway device.
@@ -225,6 +239,12 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.nodeCount")]
         public int? NodeCount { get; private set; }
+
+        /// <summary>
+        /// Gets the details of the move operation on this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceMoveDetails")]
+        public ResourceMoveDetails ResourceMoveDetails { get; private set; }
 
         /// <summary>
         /// Validate the object.

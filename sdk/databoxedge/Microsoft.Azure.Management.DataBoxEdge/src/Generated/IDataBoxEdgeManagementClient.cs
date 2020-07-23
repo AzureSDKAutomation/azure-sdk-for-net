@@ -74,9 +74,19 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         IOperations Operations { get; }
 
         /// <summary>
+        /// Gets the IAvailableSkusOperations.
+        /// </summary>
+        IAvailableSkusOperations AvailableSkus { get; }
+
+        /// <summary>
         /// Gets the IDevicesOperations.
         /// </summary>
         IDevicesOperations Devices { get; }
+
+        /// <summary>
+        /// Gets the ISkusOperations.
+        /// </summary>
+        ISkusOperations Skus { get; }
 
         /// <summary>
         /// Gets the IAlertsOperations.
@@ -94,6 +104,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         IJobsOperations Jobs { get; }
 
         /// <summary>
+        /// Gets the IOrdersOperations.
+        /// </summary>
+        IOrdersOperations Orders { get; }
+
+        /// <summary>
         /// Gets the INodesOperations.
         /// </summary>
         INodesOperations Nodes { get; }
@@ -102,11 +117,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// Gets the IOperationsStatus.
         /// </summary>
         IOperationsStatus OperationsStatus { get; }
-
-        /// <summary>
-        /// Gets the IOrdersOperations.
-        /// </summary>
-        IOrdersOperations Orders { get; }
 
         /// <summary>
         /// Gets the IRolesOperations.
@@ -142,11 +152,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// Gets the IUsersOperations.
         /// </summary>
         IUsersOperations Users { get; }
-
-        /// <summary>
-        /// Gets the ISkusOperations.
-        /// </summary>
-        ISkusOperations Skus { get; }
 
     }
 }

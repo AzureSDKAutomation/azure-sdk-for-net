@@ -19,16 +19,34 @@ namespace Microsoft.Azure.Management.DataBoxEdge
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SkusOperations operations.
+    /// AvailableSkusOperations operations.
     /// </summary>
-    public partial interface ISkusOperations
+    public partial interface IAvailableSkusOperations
     {
         /// <summary>
         /// List all the available Skus and information related to them.
         /// </summary>
-        /// <param name='filter'>
-        /// Specify $filter='location eq &lt;location&gt;' to filter on
-        /// location.
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DataBoxEdgeSku>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List all the available Skus and information related to them.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -45,6 +63,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<DataBoxEdgeSku>>> ListWithHttpMessagesAsync(string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DataBoxEdgeSku>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

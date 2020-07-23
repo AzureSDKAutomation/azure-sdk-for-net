@@ -22,6 +22,46 @@ namespace Microsoft.Azure.Management.DataBoxEdge
     public static partial class OrdersOperationsExtensions
     {
             /// <summary>
+            /// Gets the DCAccess Code
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deviceName'>
+            /// The device name
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            public static DCAccessCode ListDCAccessCode(this IOrdersOperations operations, string deviceName, string resourceGroupName)
+            {
+                return operations.ListDCAccessCodeAsync(deviceName, resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the DCAccess Code
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deviceName'>
+            /// The device name
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DCAccessCode> ListDCAccessCodeAsync(this IOrdersOperations operations, string deviceName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListDCAccessCodeWithHttpMessagesAsync(deviceName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists all the orders related to a Data Box Edge/Data Box Gateway device.
             /// </summary>
             /// <param name='operations'>

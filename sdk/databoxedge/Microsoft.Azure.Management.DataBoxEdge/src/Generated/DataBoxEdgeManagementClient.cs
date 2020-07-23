@@ -77,9 +77,19 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
+        /// Gets the IAvailableSkusOperations.
+        /// </summary>
+        public virtual IAvailableSkusOperations AvailableSkus { get; private set; }
+
+        /// <summary>
         /// Gets the IDevicesOperations.
         /// </summary>
         public virtual IDevicesOperations Devices { get; private set; }
+
+        /// <summary>
+        /// Gets the ISkusOperations.
+        /// </summary>
+        public virtual ISkusOperations Skus { get; private set; }
 
         /// <summary>
         /// Gets the IAlertsOperations.
@@ -97,6 +107,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         public virtual IJobsOperations Jobs { get; private set; }
 
         /// <summary>
+        /// Gets the IOrdersOperations.
+        /// </summary>
+        public virtual IOrdersOperations Orders { get; private set; }
+
+        /// <summary>
         /// Gets the INodesOperations.
         /// </summary>
         public virtual INodesOperations Nodes { get; private set; }
@@ -105,11 +120,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// Gets the IOperationsStatus.
         /// </summary>
         public virtual IOperationsStatus OperationsStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IOrdersOperations.
-        /// </summary>
-        public virtual IOrdersOperations Orders { get; private set; }
 
         /// <summary>
         /// Gets the IRolesOperations.
@@ -145,11 +155,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// Gets the IUsersOperations.
         /// </summary>
         public virtual IUsersOperations Users { get; private set; }
-
-        /// <summary>
-        /// Gets the ISkusOperations.
-        /// </summary>
-        public virtual ISkusOperations Skus { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the DataBoxEdgeManagementClient class.
@@ -393,13 +398,15 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         private void Initialize()
         {
             Operations = new Operations(this);
+            AvailableSkus = new AvailableSkusOperations(this);
             Devices = new DevicesOperations(this);
+            Skus = new SkusOperations(this);
             Alerts = new AlertsOperations(this);
             BandwidthSchedules = new BandwidthSchedulesOperations(this);
             Jobs = new JobsOperations(this);
+            Orders = new OrdersOperations(this);
             Nodes = new NodesOperations(this);
             OperationsStatus = new OperationsStatus(this);
-            Orders = new OrdersOperations(this);
             Roles = new RolesOperations(this);
             Shares = new SharesOperations(this);
             StorageAccountCredentials = new StorageAccountCredentialsOperations(this);
@@ -407,9 +414,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             Containers = new ContainersOperations(this);
             Triggers = new TriggersOperations(this);
             Users = new UsersOperations(this);
-            Skus = new SkusOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-08-01";
+            ApiVersion = "2020-07-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

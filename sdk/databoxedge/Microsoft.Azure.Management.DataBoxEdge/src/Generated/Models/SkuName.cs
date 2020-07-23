@@ -25,5 +25,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         public const string TEA4NodeHeater = "TEA_4Node_Heater";
         public const string TEA4NodeUPSHeater = "TEA_4Node_UPS_Heater";
         public const string TMA = "TMA";
+        public const string TDC = "TDC";
+        public const string TCALarge = "TCA_Large";
+        public const string TCASmall = "TCA_Small";
+        public const string GPU = "GPU";
     }
 }

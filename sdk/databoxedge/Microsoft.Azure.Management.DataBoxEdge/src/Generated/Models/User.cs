@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         public AsymmetricEncryptedSecret EncryptedPassword { get; set; }
 
         /// <summary>
-        /// Gets or sets list of shares that the user has rights on. This field
-        /// should not be specified during user creation.
+        /// Gets list of shares that the user has rights on. This field should
+        /// not be specified during user creation.
         /// </summary>
         [JsonProperty(PropertyName = "properties.shareAccessRights")]
-        public IList<ShareAccessRight> ShareAccessRights { get; set; }
+        public IList<ShareAccessRight> ShareAccessRights { get; private set; }
 
         /// <summary>
         /// Gets or sets type of the user. Possible values include: 'Share',

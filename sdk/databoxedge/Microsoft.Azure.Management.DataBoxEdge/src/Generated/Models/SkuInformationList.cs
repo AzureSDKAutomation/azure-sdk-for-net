@@ -16,27 +16,27 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
     using System.Linq;
 
     /// <summary>
-    /// Resource type Sku object
+    /// List of SKU Information objects
     /// </summary>
-    public partial class ResourceTypeSku
+    public partial class SkuInformationList
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceTypeSku class.
+        /// Initializes a new instance of the SkuInformationList class.
         /// </summary>
-        public ResourceTypeSku()
+        public SkuInformationList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceTypeSku class.
+        /// Initializes a new instance of the SkuInformationList class.
         /// </summary>
-        /// <param name="resourceType">The resource type.</param>
-        /// <param name="skus">The skus.</param>
-        public ResourceTypeSku(string resourceType = default(string), IList<SkuInformation> skus = default(IList<SkuInformation>))
+        /// <param name="value">List of ResourceTypeSku objects</param>
+        /// <param name="nextLink">Links to the next set of results</param>
+        public SkuInformationList(IList<ResourceTypeSku> value = default(IList<ResourceTypeSku>), string nextLink = default(string))
         {
-            ResourceType = resourceType;
-            Skus = skus;
+            Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -46,16 +46,16 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the resource type.
+        /// Gets list of ResourceTypeSku objects
         /// </summary>
-        [JsonProperty(PropertyName = "resourceType")]
-        public string ResourceType { get; private set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<ResourceTypeSku> Value { get; private set; }
 
         /// <summary>
-        /// Gets the skus.
+        /// Gets links to the next set of results
         /// </summary>
-        [JsonProperty(PropertyName = "skus")]
-        public IList<SkuInformation> Skus { get; private set; }
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; private set; }
 
     }
 }

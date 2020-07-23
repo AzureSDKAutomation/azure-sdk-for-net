@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="error">The error details.</param>
         /// <param name="jobType">The type of the job. Possible values include:
         /// 'Invalid', 'ScanForUpdates', 'DownloadUpdates', 'InstallUpdates',
-        /// 'RefreshShare', 'RefreshContainer'</param>
+        /// 'RefreshShare', 'RefreshContainer', 'TriggerSupportPackage'</param>
         /// <param name="currentStage">Current stage of the update operation.
         /// Possible values include: 'Unknown', 'Initial', 'ScanStarted',
         /// 'ScanComplete', 'ScanFailed', 'DownloadStarted',
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <summary>
         /// Gets the type of the job. Possible values include: 'Invalid',
         /// 'ScanForUpdates', 'DownloadUpdates', 'InstallUpdates',
-        /// 'RefreshShare', 'RefreshContainer'
+        /// 'RefreshShare', 'RefreshContainer', 'TriggerSupportPackage'
         /// </summary>
         [JsonProperty(PropertyName = "properties.jobType")]
         public string JobType { get; private set; }

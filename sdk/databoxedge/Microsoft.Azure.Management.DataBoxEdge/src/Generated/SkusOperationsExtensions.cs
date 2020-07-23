@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
     public static partial class SkusOperationsExtensions
     {
             /// <summary>
-            /// List all the available Skus in the region and information related to them
+            /// List all the available Skus and information related to them.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             /// <param name='filter'>
             /// Specify $filter='location eq &lt;location&gt;' to filter on location.
             /// </param>
-            public static IEnumerable<ResourceTypeSku> List(this ISkusOperations operations, string filter = default(string))
+            public static IEnumerable<DataBoxEdgeSku> List(this ISkusOperations operations, string filter = default(string))
             {
                 return operations.ListAsync(filter).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// List all the available Skus in the region and information related to them
+            /// List all the available Skus and information related to them.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<ResourceTypeSku>> ListAsync(this ISkusOperations operations, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<DataBoxEdgeSku>> ListAsync(this ISkusOperations operations, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(filter, null, cancellationToken).ConfigureAwait(false))
                 {
