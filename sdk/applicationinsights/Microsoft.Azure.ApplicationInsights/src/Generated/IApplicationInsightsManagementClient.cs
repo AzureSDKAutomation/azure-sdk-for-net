@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
     using Microsoft.Rest.Azure;
     using Models;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Composite Swagger for Application Insights Management Client
@@ -50,11 +46,6 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -79,37 +70,89 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         IOperations Operations { get; }
 
         /// <summary>
-        /// Returns a file test result for the matching test
+        /// Gets the IAnnotationsOperations.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='webTestName'>
-        /// The name of the Application Insights webtest resource.
-        /// </param>
-        /// <param name='geoLocationId'>
-        /// The location ID where the webtest was physically run.
-        /// </param>
-        /// <param name='timeStamp'>
-        /// The posix (epoch) time stamp for the webtest result.
-        /// </param>
-        /// <param name='downloadAs'>
-        /// The format to use when returning the webtest result. Possible
-        /// values include: 'WebTestResult', 'Json'
-        /// </param>
-        /// <param name='testSuccessfulCriteria'>
-        /// The success state criteria for the webtest result.
-        /// </param>
-        /// <param name='continuationToken'>
-        /// The continuation token.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<AzureOperationResponse<TestResultFileResponse>> GetTestResultFileWithHttpMessagesAsync(string resourceGroupName, string webTestName, string geoLocationId, long timeStamp, string downloadAs, bool? testSuccessfulCriteria = default(bool?), string continuationToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        IAnnotationsOperations Annotations { get; }
+
+        /// <summary>
+        /// Gets the IAPIKeysOperations.
+        /// </summary>
+        IAPIKeysOperations APIKeys { get; }
+
+        /// <summary>
+        /// Gets the IExportConfigurationsOperations.
+        /// </summary>
+        IExportConfigurationsOperations ExportConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IComponentCurrentBillingFeaturesOperations.
+        /// </summary>
+        IComponentCurrentBillingFeaturesOperations ComponentCurrentBillingFeatures { get; }
+
+        /// <summary>
+        /// Gets the IComponentQuotaStatusOperations.
+        /// </summary>
+        IComponentQuotaStatusOperations ComponentQuotaStatus { get; }
+
+        /// <summary>
+        /// Gets the IComponentFeatureCapabilitiesOperations.
+        /// </summary>
+        IComponentFeatureCapabilitiesOperations ComponentFeatureCapabilities { get; }
+
+        /// <summary>
+        /// Gets the IComponentAvailableFeaturesOperations.
+        /// </summary>
+        IComponentAvailableFeaturesOperations ComponentAvailableFeatures { get; }
+
+        /// <summary>
+        /// Gets the IProactiveDetectionConfigurationsOperations.
+        /// </summary>
+        IProactiveDetectionConfigurationsOperations ProactiveDetectionConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IWorkItemConfigurationsOperations.
+        /// </summary>
+        IWorkItemConfigurationsOperations WorkItemConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IFavoritesOperations.
+        /// </summary>
+        IFavoritesOperations Favorites { get; }
+
+        /// <summary>
+        /// Gets the IWebTestLocationsOperations.
+        /// </summary>
+        IWebTestLocationsOperations WebTestLocations { get; }
+
+        /// <summary>
+        /// Gets the IWebTestsOperations.
+        /// </summary>
+        IWebTestsOperations WebTests { get; }
+
+        /// <summary>
+        /// Gets the IAnalyticsItemsOperations.
+        /// </summary>
+        IAnalyticsItemsOperations AnalyticsItems { get; }
+
+        /// <summary>
+        /// Gets the IWorkbooksOperations.
+        /// </summary>
+        IWorkbooksOperations Workbooks { get; }
+
+        /// <summary>
+        /// Gets the IComponentsOperations.
+        /// </summary>
+        IComponentsOperations Components { get; }
+
+        /// <summary>
+        /// Gets the IComponentLinkedStorageAccountsOperations.
+        /// </summary>
+        IComponentLinkedStorageAccountsOperations ComponentLinkedStorageAccounts { get; }
+
+        /// <summary>
+        /// Gets the ILiveTokenOperations.
+        /// </summary>
+        ILiveTokenOperations LiveToken { get; }
 
     }
 }
