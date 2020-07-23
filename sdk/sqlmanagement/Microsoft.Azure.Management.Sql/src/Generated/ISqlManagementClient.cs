@@ -493,14 +493,14 @@ namespace Microsoft.Azure.Management.Sql
         IWorkloadClassifiersOperations WorkloadClassifiers { get; }
 
         /// <summary>
-        /// Gets the IServerAzureADAdministratorsOperations.
-        /// </summary>
-        IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; }
-
-        /// <summary>
         /// Gets the IManagedInstanceOperations.
         /// </summary>
         IManagedInstanceOperations ManagedInstanceOperations { get; }
+
+        /// <summary>
+        /// Gets the IServerAzureADAdministratorsOperations.
+        /// </summary>
+        IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; }
 
         /// <summary>
         /// Gets the ISyncGroupsOperations.
@@ -521,6 +521,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedDatabasesOperations.
         /// </summary>
         IManagedDatabasesOperations ManagedDatabases { get; }
+
+        /// <summary>
+        /// Gets the IServerAzureADOnlyAuthenticationsOperations.
+        /// </summary>
+        IServerAzureADOnlyAuthenticationsOperations ServerAzureADOnlyAuthentications { get; }
 
     }
 }
