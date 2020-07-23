@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
     public static class DataIngestionStatus
     {
         /// <summary>
-        /// Ingestion enabled following daily cap quota reset, or subscription
-        /// enablement.
+        /// Renewed ingestion following daily cap quota reset, or subscription
+        /// activation.
         /// </summary>
         public const string RespectQuota = "RespectQuota";
         /// <summary>
@@ -30,15 +30,16 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// </summary>
         public const string ForceOff = "ForceOff";
         /// <summary>
-        /// Reached daily cap quota, ingestion stopped.
+        /// Stopped ingestion following daily cap quota reach.
         /// </summary>
         public const string OverQuota = "OverQuota";
         /// <summary>
-        /// Ingestion stopped following suspended subscription.
+        /// Stopped ingestion following subscription getting into suspended
+        /// state.
         /// </summary>
         public const string SubscriptionSuspended = "SubscriptionSuspended";
         /// <summary>
-        /// 80% of daily cap quota reached.
+        /// 80% of the daily cap quota reached.
         /// </summary>
         public const string ApproachingQuota = "ApproachingQuota";
     }
