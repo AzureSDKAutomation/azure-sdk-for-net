@@ -397,10 +397,7 @@ namespace NetApp.Tests.ResourceTests
                 {
                     replicationStatus = netAppMgmtClient.Volumes.ReplicationStatusMethod(ResourceUtils.remoteResourceGroup, ResourceUtils.remoteAccountName1, ResourceUtils.remotePoolName1, ResourceUtils.remoteVolumeName1);
                     attempts++;
-                    if (Environment.GetEnvironmentVariable("AZURE_TEST_MODE") == "Record")
-                    {
-                        Thread.Sleep(100);
-                    }
+                    Thread.Sleep(100);
                 } while (replicationStatus.Healthy.Value || attempts == 5);
             }
             Assert.True(replicationStatus.Healthy);
