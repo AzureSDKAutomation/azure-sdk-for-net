@@ -172,6 +172,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         ICertificateOperations Certificate { get; }
 
         /// <summary>
+        /// Gets the IContentTypeOperations.
+        /// </summary>
+        IContentTypeOperations ContentType { get; }
+
+        /// <summary>
+        /// Gets the IContentTypesOperations.
+        /// </summary>
+        IContentTypesOperations ContentTypes { get; }
+
+        /// <summary>
+        /// Gets the IContentItemOperations.
+        /// </summary>
+        IContentItemOperations ContentItem { get; }
+
+        /// <summary>
         /// Gets the IApiManagementOperations.
         /// </summary>
         IApiManagementOperations ApiManagementOperations { get; }
