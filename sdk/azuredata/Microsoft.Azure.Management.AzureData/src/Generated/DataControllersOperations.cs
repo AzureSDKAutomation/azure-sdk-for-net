@@ -421,6 +421,9 @@ namespace Microsoft.Azure.Management.AzureData
         /// <param name='resourceGroupName'>
         /// The name of the Azure resource group
         /// </param>
+        /// <param name='dataControllerResource'>
+        /// desc
+        /// </param>
         /// <param name='dataControllerName'>
         /// </param>
         /// <param name='customHeaders'>
@@ -444,7 +447,7 @@ namespace Microsoft.Azure.Management.AzureData
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DataControllerResource>> PutDataControllerWithHttpMessagesAsync(string resourceGroupName, string dataControllerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DataControllerResource>> PutDataControllerWithHttpMessagesAsync(string resourceGroupName, DataControllerResource dataControllerResource, string dataControllerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -453,6 +456,10 @@ namespace Microsoft.Azure.Management.AzureData
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (dataControllerResource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "dataControllerResource");
             }
             if (dataControllerName == null)
             {
@@ -470,6 +477,7 @@ namespace Microsoft.Azure.Management.AzureData
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("dataControllerResource", dataControllerResource);
                 tracingParameters.Add("dataControllerName", dataControllerName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "PutDataController", tracingParameters);
@@ -523,6 +531,12 @@ namespace Microsoft.Azure.Management.AzureData
 
             // Serialize Request
             string _requestContent = null;
+            if(dataControllerResource != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(dataControllerResource, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {

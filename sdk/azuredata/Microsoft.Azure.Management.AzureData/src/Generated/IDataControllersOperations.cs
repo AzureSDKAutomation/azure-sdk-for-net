@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Management.AzureData
         /// <param name='resourceGroupName'>
         /// The name of the Azure resource group
         /// </param>
+        /// <param name='dataControllerResource'>
+        /// desc
+        /// </param>
         /// <param name='dataControllerName'>
         /// </param>
         /// <param name='customHeaders'>
@@ -87,7 +90,7 @@ namespace Microsoft.Azure.Management.AzureData
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DataControllerResource>> PutDataControllerWithHttpMessagesAsync(string resourceGroupName, string dataControllerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DataControllerResource>> PutDataControllerWithHttpMessagesAsync(string resourceGroupName, DataControllerResource dataControllerResource, string dataControllerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a dataController resource
         /// </summary>

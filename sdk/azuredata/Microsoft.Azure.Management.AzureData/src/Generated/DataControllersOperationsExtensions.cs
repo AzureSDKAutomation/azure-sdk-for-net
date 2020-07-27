@@ -92,11 +92,14 @@ namespace Microsoft.Azure.Management.AzureData
             /// <param name='resourceGroupName'>
             /// The name of the Azure resource group
             /// </param>
+            /// <param name='dataControllerResource'>
+            /// desc
+            /// </param>
             /// <param name='dataControllerName'>
             /// </param>
-            public static DataControllerResource PutDataController(this IDataControllersOperations operations, string resourceGroupName, string dataControllerName)
+            public static DataControllerResource PutDataController(this IDataControllersOperations operations, string resourceGroupName, DataControllerResource dataControllerResource, string dataControllerName)
             {
-                return operations.PutDataControllerAsync(resourceGroupName, dataControllerName).GetAwaiter().GetResult();
+                return operations.PutDataControllerAsync(resourceGroupName, dataControllerResource, dataControllerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -108,14 +111,17 @@ namespace Microsoft.Azure.Management.AzureData
             /// <param name='resourceGroupName'>
             /// The name of the Azure resource group
             /// </param>
+            /// <param name='dataControllerResource'>
+            /// desc
+            /// </param>
             /// <param name='dataControllerName'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DataControllerResource> PutDataControllerAsync(this IDataControllersOperations operations, string resourceGroupName, string dataControllerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DataControllerResource> PutDataControllerAsync(this IDataControllersOperations operations, string resourceGroupName, DataControllerResource dataControllerResource, string dataControllerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PutDataControllerWithHttpMessagesAsync(resourceGroupName, dataControllerName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PutDataControllerWithHttpMessagesAsync(resourceGroupName, dataControllerResource, dataControllerName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
