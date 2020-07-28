@@ -22,6 +22,152 @@ namespace Microsoft.Azure.Management.DataShare
     public static partial class SharesOperationsExtensions
     {
             /// <summary>
+            /// List data set level details for a share synchronization
+            /// </summary>
+            /// <remarks>
+            /// List synchronization details
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the share account.
+            /// </param>
+            /// <param name='shareName'>
+            /// The name of the share.
+            /// </param>
+            /// <param name='shareSynchronization'>
+            /// Share Synchronization payload.
+            /// </param>
+            /// <param name='skipToken'>
+            /// Continuation token
+            /// </param>
+            /// <param name='filter'>
+            /// Filters the results using OData syntax.
+            /// </param>
+            /// <param name='orderby'>
+            /// Sorts the results using OData syntax.
+            /// </param>
+            public static IPage<SynchronizationDetails> ListSynchronizationDetails(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, ShareSynchronization shareSynchronization, string skipToken = default(string), string filter = default(string), string orderby = default(string))
+            {
+                return operations.ListSynchronizationDetailsAsync(resourceGroupName, accountName, shareName, shareSynchronization, skipToken, filter, orderby).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List data set level details for a share synchronization
+            /// </summary>
+            /// <remarks>
+            /// List synchronization details
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the share account.
+            /// </param>
+            /// <param name='shareName'>
+            /// The name of the share.
+            /// </param>
+            /// <param name='shareSynchronization'>
+            /// Share Synchronization payload.
+            /// </param>
+            /// <param name='skipToken'>
+            /// Continuation token
+            /// </param>
+            /// <param name='filter'>
+            /// Filters the results using OData syntax.
+            /// </param>
+            /// <param name='orderby'>
+            /// Sorts the results using OData syntax.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SynchronizationDetails>> ListSynchronizationDetailsAsync(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, ShareSynchronization shareSynchronization, string skipToken = default(string), string filter = default(string), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSynchronizationDetailsWithHttpMessagesAsync(resourceGroupName, accountName, shareName, shareSynchronization, skipToken, filter, orderby, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List Synchronizations in a share
+            /// </summary>
+            /// <remarks>
+            /// List synchronizations of a share
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the share account.
+            /// </param>
+            /// <param name='shareName'>
+            /// The name of the share.
+            /// </param>
+            /// <param name='skipToken'>
+            /// Continuation token
+            /// </param>
+            /// <param name='filter'>
+            /// Filters the results using OData syntax.
+            /// </param>
+            /// <param name='orderby'>
+            /// Sorts the results using OData syntax.
+            /// </param>
+            public static IPage<ShareSynchronization> ListSynchronizations(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, string skipToken = default(string), string filter = default(string), string orderby = default(string))
+            {
+                return operations.ListSynchronizationsAsync(resourceGroupName, accountName, shareName, skipToken, filter, orderby).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List Synchronizations in a share
+            /// </summary>
+            /// <remarks>
+            /// List synchronizations of a share
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the share account.
+            /// </param>
+            /// <param name='shareName'>
+            /// The name of the share.
+            /// </param>
+            /// <param name='skipToken'>
+            /// Continuation token
+            /// </param>
+            /// <param name='filter'>
+            /// Filters the results using OData syntax.
+            /// </param>
+            /// <param name='orderby'>
+            /// Sorts the results using OData syntax.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ShareSynchronization>> ListSynchronizationsAsync(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, string skipToken = default(string), string filter = default(string), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSynchronizationsWithHttpMessagesAsync(resourceGroupName, accountName, shareName, skipToken, filter, orderby, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get a specified share
             /// </summary>
             /// <remarks>
@@ -248,152 +394,6 @@ namespace Microsoft.Azure.Management.DataShare
             }
 
             /// <summary>
-            /// List Synchronizations in a share
-            /// </summary>
-            /// <remarks>
-            /// List synchronizations of a share
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The resource group name.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the share account.
-            /// </param>
-            /// <param name='shareName'>
-            /// The name of the share.
-            /// </param>
-            /// <param name='skipToken'>
-            /// Continuation token
-            /// </param>
-            /// <param name='filter'>
-            /// Filters the results using OData syntax.
-            /// </param>
-            /// <param name='orderby'>
-            /// Sorts the results using OData syntax.
-            /// </param>
-            public static IPage<ShareSynchronization> ListSynchronizations(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, string skipToken = default(string), string filter = default(string), string orderby = default(string))
-            {
-                return operations.ListSynchronizationsAsync(resourceGroupName, accountName, shareName, skipToken, filter, orderby).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List Synchronizations in a share
-            /// </summary>
-            /// <remarks>
-            /// List synchronizations of a share
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The resource group name.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the share account.
-            /// </param>
-            /// <param name='shareName'>
-            /// The name of the share.
-            /// </param>
-            /// <param name='skipToken'>
-            /// Continuation token
-            /// </param>
-            /// <param name='filter'>
-            /// Filters the results using OData syntax.
-            /// </param>
-            /// <param name='orderby'>
-            /// Sorts the results using OData syntax.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ShareSynchronization>> ListSynchronizationsAsync(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, string skipToken = default(string), string filter = default(string), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListSynchronizationsWithHttpMessagesAsync(resourceGroupName, accountName, shareName, skipToken, filter, orderby, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List data set level details for a share synchronization
-            /// </summary>
-            /// <remarks>
-            /// List synchronization details
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The resource group name.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the share account.
-            /// </param>
-            /// <param name='shareName'>
-            /// The name of the share.
-            /// </param>
-            /// <param name='shareSynchronization'>
-            /// Share Synchronization payload.
-            /// </param>
-            /// <param name='skipToken'>
-            /// Continuation token
-            /// </param>
-            /// <param name='filter'>
-            /// Filters the results using OData syntax.
-            /// </param>
-            /// <param name='orderby'>
-            /// Sorts the results using OData syntax.
-            /// </param>
-            public static IPage<SynchronizationDetails> ListSynchronizationDetails(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, ShareSynchronization shareSynchronization, string skipToken = default(string), string filter = default(string), string orderby = default(string))
-            {
-                return operations.ListSynchronizationDetailsAsync(resourceGroupName, accountName, shareName, shareSynchronization, skipToken, filter, orderby).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List data set level details for a share synchronization
-            /// </summary>
-            /// <remarks>
-            /// List synchronization details
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The resource group name.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the share account.
-            /// </param>
-            /// <param name='shareName'>
-            /// The name of the share.
-            /// </param>
-            /// <param name='shareSynchronization'>
-            /// Share Synchronization payload.
-            /// </param>
-            /// <param name='skipToken'>
-            /// Continuation token
-            /// </param>
-            /// <param name='filter'>
-            /// Filters the results using OData syntax.
-            /// </param>
-            /// <param name='orderby'>
-            /// Sorts the results using OData syntax.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<SynchronizationDetails>> ListSynchronizationDetailsAsync(this ISharesOperations operations, string resourceGroupName, string accountName, string shareName, ShareSynchronization shareSynchronization, string skipToken = default(string), string filter = default(string), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListSynchronizationDetailsWithHttpMessagesAsync(resourceGroupName, accountName, shareName, shareSynchronization, skipToken, filter, orderby, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Deletes a share
             /// </summary>
             /// <remarks>
@@ -446,10 +446,10 @@ namespace Microsoft.Azure.Management.DataShare
             }
 
             /// <summary>
-            /// List of available shares under an account.
+            /// List data set level details for a share synchronization
             /// </summary>
             /// <remarks>
-            /// List shares in an account
+            /// List synchronization details
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -457,16 +457,16 @@ namespace Microsoft.Azure.Management.DataShare
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<Share> ListByAccountNext(this ISharesOperations operations, string nextPageLink)
+            public static IPage<SynchronizationDetails> ListSynchronizationDetailsNext(this ISharesOperations operations, string nextPageLink)
             {
-                return operations.ListByAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListSynchronizationDetailsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// List of available shares under an account.
+            /// List data set level details for a share synchronization
             /// </summary>
             /// <remarks>
-            /// List shares in an account
+            /// List synchronization details
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -477,9 +477,9 @@ namespace Microsoft.Azure.Management.DataShare
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Share>> ListByAccountNextAsync(this ISharesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SynchronizationDetails>> ListSynchronizationDetailsNextAsync(this ISharesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListSynchronizationDetailsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -526,10 +526,10 @@ namespace Microsoft.Azure.Management.DataShare
             }
 
             /// <summary>
-            /// List data set level details for a share synchronization
+            /// List of available shares under an account.
             /// </summary>
             /// <remarks>
-            /// List synchronization details
+            /// List shares in an account
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -537,16 +537,16 @@ namespace Microsoft.Azure.Management.DataShare
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<SynchronizationDetails> ListSynchronizationDetailsNext(this ISharesOperations operations, string nextPageLink)
+            public static IPage<Share> ListByAccountNext(this ISharesOperations operations, string nextPageLink)
             {
-                return operations.ListSynchronizationDetailsNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListByAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// List data set level details for a share synchronization
+            /// List of available shares under an account.
             /// </summary>
             /// <remarks>
-            /// List synchronization details
+            /// List shares in an account
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -557,9 +557,9 @@ namespace Microsoft.Azure.Management.DataShare
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SynchronizationDetails>> ListSynchronizationDetailsNextAsync(this ISharesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Share>> ListByAccountNextAsync(this ISharesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListSynchronizationDetailsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
