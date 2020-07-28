@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Management.CostManagement
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Version of the API to be used with the client request (e.g. '2020-06-01').
+        /// Version of the API to be used with the client request (e.g.
+        /// '2020-08-01-preview').
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -100,6 +101,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// Gets the IExportsOperations.
         /// </summary>
         public virtual IExportsOperations Exports { get; private set; }
+
+        /// <summary>
+        /// Gets the IInsightsOperations.
+        /// </summary>
+        public virtual IInsightsOperations Insights { get; private set; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -353,9 +359,10 @@ namespace Microsoft.Azure.Management.CostManagement
             Dimensions = new DimensionsOperations(this);
             Query = new QueryOperations(this);
             Exports = new ExportsOperations(this);
+            Insights = new InsightsOperations(this);
             Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-06-01";
+            ApiVersion = "2020-08-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -385,6 +392,8 @@ namespace Microsoft.Azure.Management.CostManagement
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Insights>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Insights>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

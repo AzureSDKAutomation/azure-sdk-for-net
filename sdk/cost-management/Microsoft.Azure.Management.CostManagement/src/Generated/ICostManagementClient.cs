@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.CostManagement
 
         /// <summary>
         /// Version of the API to be used with the client request (e.g.
-        /// '2020-06-01').
+        /// '2020-08-01-preview').
         /// </summary>
         string ApiVersion { get; }
 
@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Management.CostManagement
         /// Gets the IExportsOperations.
         /// </summary>
         IExportsOperations Exports { get; }
+
+        /// <summary>
+        /// Gets the IInsightsOperations.
+        /// </summary>
+        IInsightsOperations Insights { get; }
 
         /// <summary>
         /// Gets the IOperations.
