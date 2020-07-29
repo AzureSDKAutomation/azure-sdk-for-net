@@ -32,19 +32,11 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <summary>
         /// Initializes a new instance of the SharedPrivateLinkResource class.
         /// </summary>
-        /// <param name="name">The name of the shared private link
-        /// resource.</param>
-        /// <param name="id">The ID of the shared private link
-        /// resource.</param>
-        /// <param name="type">The resource type.</param>
         /// <param name="properties">Describes the properties of a Shared
         /// Private Link Resource managed by the Azure Cognitive Search
         /// service.</param>
-        public SharedPrivateLinkResource(string name = default(string), string id = default(string), string type = default(string), SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties))
+        public SharedPrivateLinkResource(SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties))
         {
-            Name = name;
-            Id = id;
-            Type = type;
             Properties = properties;
             CustomInit();
         }
@@ -53,24 +45,6 @@ namespace Microsoft.Azure.Management.Search.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets the name of the shared private link resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets the ID of the shared private link resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets the resource type.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets describes the properties of a Shared Private Link
