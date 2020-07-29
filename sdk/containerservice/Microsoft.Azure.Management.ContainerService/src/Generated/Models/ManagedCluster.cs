@@ -64,8 +64,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// containing agent pool nodes.</param>
         /// <param name="enableRBAC">Whether to enable Kubernetes Role-Based
         /// Access Control.</param>
-        /// <param name="enablePodSecurityPolicy">(PREVIEW) Whether to enable
-        /// Kubernetes Pod security policy.</param>
+        /// <param name="enablePodSecurityPolicy">(DEPRECATING) Whether to
+        /// enable Kubernetes pod security policy (preview). This feature is
+        /// set for removal on October 15th, 2020. Learn more at
+        /// aka.ms/aks/azpodpolicy.</param>
         /// <param name="networkProfile">Profile of network
         /// configuration.</param>
         /// <param name="aadProfile">Profile of Azure Active Directory
@@ -201,8 +203,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public bool? EnableRBAC { get; set; }
 
         /// <summary>
-        /// Gets or sets (PREVIEW) Whether to enable Kubernetes Pod security
-        /// policy.
+        /// Gets or sets (DEPRECATING) Whether to enable Kubernetes pod
+        /// security policy (preview). This feature is set for removal on
+        /// October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enablePodSecurityPolicy")]
         public bool? EnablePodSecurityPolicy { get; set; }

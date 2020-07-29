@@ -316,10 +316,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string OrchestratorVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets version of node image
+        /// Gets version of node image
         /// </summary>
         [JsonProperty(PropertyName = "nodeImageVersion")]
-        public string NodeImageVersion { get; set; }
+        public string NodeImageVersion { get; private set; }
 
         /// <summary>
         /// Gets or sets settings for upgrading the agentpool
