@@ -498,14 +498,14 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IWorkloadClassifiersOperations WorkloadClassifiers { get; private set; }
 
         /// <summary>
-        /// Gets the IServerAzureADAdministratorsOperations.
-        /// </summary>
-        public virtual IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; private set; }
-
-        /// <summary>
         /// Gets the IManagedInstanceOperations.
         /// </summary>
         public virtual IManagedInstanceOperations ManagedInstanceOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerAzureADAdministratorsOperations.
+        /// </summary>
+        public virtual IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; private set; }
 
         /// <summary>
         /// Gets the ISyncGroupsOperations.
@@ -526,6 +526,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedDatabasesOperations.
         /// </summary>
         public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerAzureADOnlyAuthenticationsOperations.
+        /// </summary>
+        public virtual IServerAzureADOnlyAuthenticationsOperations ServerAzureADOnlyAuthentications { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -853,12 +858,13 @@ namespace Microsoft.Azure.Management.Sql
             ManagedInstanceLongTermRetentionPolicies = new ManagedInstanceLongTermRetentionPoliciesOperations(this);
             WorkloadGroups = new WorkloadGroupsOperations(this);
             WorkloadClassifiers = new WorkloadClassifiersOperations(this);
-            ServerAzureADAdministrators = new ServerAzureADAdministratorsOperations(this);
             ManagedInstanceOperations = new ManagedInstanceOperations(this);
+            ServerAzureADAdministrators = new ServerAzureADAdministratorsOperations(this);
             SyncGroups = new SyncGroupsOperations(this);
             SyncMembers = new SyncMembersOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
+            ServerAzureADOnlyAuthentications = new ServerAzureADOnlyAuthenticationsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
