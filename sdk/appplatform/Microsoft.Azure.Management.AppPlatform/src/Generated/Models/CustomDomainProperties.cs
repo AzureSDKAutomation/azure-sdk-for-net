@@ -54,10 +54,10 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public string Thumbprint { get; set; }
 
         /// <summary>
-        /// Gets or sets the app name of domain.
+        /// Gets the app name of domain.
         /// </summary>
         [JsonProperty(PropertyName = "appName")]
-        public string AppName { get; set; }
+        public string AppName { get; private set; }
 
         /// <summary>
         /// Gets or sets the bound certificate name of domain.
