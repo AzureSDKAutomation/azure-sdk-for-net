@@ -1114,6 +1114,14 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='format'>
+        /// Credential Format. Possible values: azure, exec. Possible values include:
+        /// 'azure', 'exec'
+        /// </param>
+        /// <param name='login'>
+        /// Credential Format. Possible values: devicecode, spn, msi. Possible values
+        /// include: 'devicecode', 'spn', 'msi'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1135,7 +1143,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CredentialResults>> ListClusterUserCredentialsWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CredentialResults>> ListClusterUserCredentialsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string format = default(string), string login = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1182,6 +1190,8 @@ namespace Microsoft.Azure.Management.ContainerService
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("format", format);
+                tracingParameters.Add("login", login);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListClusterUserCredentials", tracingParameters);
             }
@@ -1195,6 +1205,14 @@ namespace Microsoft.Azure.Management.ContainerService
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (format != null)
+            {
+                _queryParameters.Add(string.Format("format={0}", System.Uri.EscapeDataString(format)));
+            }
+            if (login != null)
+            {
+                _queryParameters.Add(string.Format("login={0}", System.Uri.EscapeDataString(login)));
             }
             if (_queryParameters.Count > 0)
             {

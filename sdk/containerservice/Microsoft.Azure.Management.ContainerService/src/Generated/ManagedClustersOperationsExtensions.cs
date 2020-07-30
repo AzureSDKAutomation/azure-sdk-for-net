@@ -279,9 +279,17 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static CredentialResults ListClusterUserCredentials(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            /// <param name='format'>
+            /// Credential Format. Possible values: azure, exec. Possible values include:
+            /// 'azure', 'exec'
+            /// </param>
+            /// <param name='login'>
+            /// Credential Format. Possible values: devicecode, spn, msi. Possible values
+            /// include: 'devicecode', 'spn', 'msi'
+            /// </param>
+            public static CredentialResults ListClusterUserCredentials(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string format = default(string), string login = default(string))
             {
-                return operations.ListClusterUserCredentialsAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.ListClusterUserCredentialsAsync(resourceGroupName, resourceName, format, login).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -300,12 +308,20 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
+            /// <param name='format'>
+            /// Credential Format. Possible values: azure, exec. Possible values include:
+            /// 'azure', 'exec'
+            /// </param>
+            /// <param name='login'>
+            /// Credential Format. Possible values: devicecode, spn, msi. Possible values
+            /// include: 'devicecode', 'spn', 'msi'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CredentialResults> ListClusterUserCredentialsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CredentialResults> ListClusterUserCredentialsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string format = default(string), string login = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListClusterUserCredentialsWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListClusterUserCredentialsWithHttpMessagesAsync(resourceGroupName, resourceName, format, login, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
