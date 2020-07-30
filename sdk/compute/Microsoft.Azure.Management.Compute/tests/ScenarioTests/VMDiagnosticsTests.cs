@@ -48,9 +48,6 @@ namespace Compute.Tests
                     VirtualMachine getVMWithInstanceViewResponse = m_CrpClient.VirtualMachines.Get(resourceGroupName, inputVM.Name, InstanceViewTypes.InstanceView);
                     ValidateVMInstanceView(inputVM, getVMWithInstanceViewResponse);
                     ValidateBootDiagnosticsInstanceView(getVMWithInstanceViewResponse.InstanceView.BootDiagnostics, hasError: false);
-                    RetrieveBootDiagnosticsDataResult bootDiagnosticsData =
-                        m_CrpClient.VirtualMachines.RetrieveBootDiagnosticsData(resourceGroupName, inputVM.Name);
-                    ValidateBootDiagnosticsData(bootDiagnosticsData);
 
                     // Make boot diagnostics encounter an error due to a missing boot diagnostics storage account
                     m_CrpClient.VirtualMachines.Deallocate(resourceGroupName, inputVM.Name);
@@ -59,44 +56,6 @@ namespace Compute.Tests
 
                     getVMWithInstanceViewResponse = m_CrpClient.VirtualMachines.Get(resourceGroupName, inputVM.Name, InstanceViewTypes.InstanceView);
                     ValidateBootDiagnosticsInstanceView(getVMWithInstanceViewResponse.InstanceView.BootDiagnostics, hasError: true);
-                }
-                finally
-                {
-                    m_ResourcesClient.ResourceGroups.Delete(resourceGroupName);
-                }
-            }
-        }
-
-        [Fact]
-        [Trait("Name", "TestVMManagedBootDiagnostics")]
-        public void TestVMManagedBootDiagnostics()
-        {
-            using (MockContext context = MockContext.Start(this.GetType()))
-            {
-                EnsureClientsInitialized(context);
-
-                ImageReference imageReference = GetPlatformVMImage(useWindowsImage: true);
-                string resourceGroupName = TestUtilities.GenerateName(TestPrefix);
-                string storageAccountForDisksName = TestUtilities.GenerateName(TestPrefix);
-                string availabilitySetName = TestUtilities.GenerateName(TestPrefix);
-
-                try
-                {
-                    StorageAccount storageAccountForDisks = CreateStorageAccount(resourceGroupName, storageAccountForDisksName);
-
-                    VirtualMachine inputVM;
-                    CreateVM(resourceGroupName, availabilitySetName, storageAccountForDisks, imageReference, out inputVM,
-                        (vm) =>
-                        {
-                            vm.DiagnosticsProfile = GetManagedDiagnosticsProfile();
-                        }, hasManagedDisks: true);
-
-                    VirtualMachine getVMWithInstanceViewResponse = m_CrpClient.VirtualMachines.Get(resourceGroupName, inputVM.Name, InstanceViewTypes.InstanceView);
-                    ValidateVMInstanceView(inputVM, getVMWithInstanceViewResponse, hasManagedDisks: true);
-                    ValidateBootDiagnosticsInstanceView(getVMWithInstanceViewResponse.InstanceView.BootDiagnostics, hasError: false, enabledWithManagedBootDiagnostics: true);
-                    RetrieveBootDiagnosticsDataResult bootDiagnosticsData =
-                        m_CrpClient.VirtualMachines.RetrieveBootDiagnosticsData(resourceGroupName, inputVM.Name);
-                    ValidateBootDiagnosticsData(bootDiagnosticsData);
                 }
                 finally
                 {

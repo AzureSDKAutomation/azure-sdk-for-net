@@ -87,26 +87,6 @@ namespace Compute.Tests
         }
 
         /// <summary>
-        /// To record this test case, you need to run it in region which support Encryption at host
-        /// </summary>
-        [Fact]
-        [Trait("Name", "TestVMScenarioOperations_EncryptionAtHost")]
-        public void TestVMScenarioOperations_EncryptionAtHost()
-        {
-            string originalTestLocation = Environment.GetEnvironmentVariable("AZURE_VM_TEST_LOCATION");
-            try
-            {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "northeurope");
-                TestVMScenarioOperationsInternal("TestVMScenarioOperations_EncryptionAtHost", vmSize: VirtualMachineSizeTypes.StandardDS1V2, hasManagedDisks: true,
-                    osDiskStorageAccountType: StorageAccountTypes.StandardLRS, encryptionAtHostEnabled: true);
-            }
-            finally
-            {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", originalTestLocation);
-            }
-        }
-
-        /// <summary>
         /// To record this test case, you need to run it in region which support DiskEncryptionSet resource for the Disks
         /// </summary>
         [Fact]
@@ -118,7 +98,7 @@ namespace Compute.Tests
             string diskEncryptionSetId = getDefaultDiskEncryptionSetId();
             try
             {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "eastus2");
+                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "centraluseuap");
                 TestVMScenarioOperationsInternal("TestVMScenarioOperations_ManagedDisks_DiskEncryptionSet", vmSize: VirtualMachineSizeTypes.StandardA1V2, hasManagedDisks: true,
                    osDiskStorageAccountType: StorageAccountTypes.StandardLRS, diskEncryptionSetId: diskEncryptionSetId);
             }
@@ -189,33 +169,6 @@ namespace Compute.Tests
             }
         }
 
-        [Fact]
-        [Trait("Name", "TestVMScenarioOperations_AutomaticPlacementOnDedicatedHostGroup")]
-        public void TestVMScenarioOperations_AutomaticPlacementOnDedicatedHostGroup()
-        {
-            string originalTestLocation = Environment.GetEnvironmentVariable("AZURE_VM_TEST_LOCATION");
-            try
-            {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "westus");
-                // This test was recorded in WestUSValidation, where the platform image typically used for recording is not available.
-                // Hence the following custom image was used.
-                ImageReference imageReference = new ImageReference
-                {
-                    Publisher = "AzureRT.PIRCore.TestWAStage",
-                    Offer = "TestUbuntuServer",
-                    Sku = "16.04",
-                    Version = "latest"
-                };
-                TestVMScenarioOperationsInternal("TestVMScenarioOperations_AutomaticPlacementOnDedicatedHostGroup",
-                    hasManagedDisks: true, vmSize: VirtualMachineSizeTypes.StandardD2sV3, isAutomaticPlacementOnDedicatedHostGroupScenario: true,
-                    imageReference: imageReference, validateListAvailableSize: false);
-            }
-            finally
-            {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", originalTestLocation);
-            }
-        }
-
         /// <summary>
         /// To record this test case, you need to run it in zone supported regions like eastus2euap.
         /// </summary>
@@ -237,34 +190,25 @@ namespace Compute.Tests
 
         private void TestVMScenarioOperationsInternal(string methodName, bool hasManagedDisks = false, IList<string> zones = null, string vmSize = "Standard_A0",
             string osDiskStorageAccountType = "Standard_LRS", string dataDiskStorageAccountType = "Standard_LRS", bool? writeAcceleratorEnabled = null,
-            bool hasDiffDisks = false, bool callUpdateVM = false, bool isPpgScenario = false, string diskEncryptionSetId = null, bool? encryptionAtHostEnabled = null,
-            bool isAutomaticPlacementOnDedicatedHostGroupScenario = false, ImageReference imageReference = null, bool validateListAvailableSize = true)
+            bool hasDiffDisks = false, bool callUpdateVM = false, bool isPpgScenario = false, string diskEncryptionSetId = null)
         {
             using (MockContext context = MockContext.Start(this.GetType(), methodName))
             {
                 EnsureClientsInitialized(context);
 
-                ImageReference imageRef = imageReference ?? GetPlatformVMImage(useWindowsImage: true);
+                ImageReference imageRef = GetPlatformVMImage(useWindowsImage: true);
                 const string expectedOSName = "Windows Server 2012 R2 Datacenter", expectedOSVersion = "Microsoft Windows NT 6.3.9600.0", expectedComputerName = ComputerName;
                 // Create resource group
                 var rgName = ComputeManagementTestUtilities.GenerateName(TestPrefix);
                 string storageAccountName = ComputeManagementTestUtilities.GenerateName(TestPrefix);
                 string asName = ComputeManagementTestUtilities.GenerateName("as");
-                string ppgName = null, expectedPpgReferenceId = null;
-                string dedicatedHostGroupName = null, dedicatedHostName = null, dedicatedHostGroupReferenceId = null, dedicatedHostReferenceId = null;
+                string ppgName = null;
+                string expectedPpgReferenceId = null;
 
                 if (isPpgScenario)
                 {
                     ppgName = ComputeManagementTestUtilities.GenerateName("ppgtest");
                     expectedPpgReferenceId = Helpers.GetProximityPlacementGroupRef(m_subId, rgName, ppgName);
-                }
-
-                if (isAutomaticPlacementOnDedicatedHostGroupScenario)
-                {
-                    dedicatedHostGroupName = ComputeManagementTestUtilities.GenerateName("dhgtest");
-                    dedicatedHostName = ComputeManagementTestUtilities.GenerateName("dhtest");
-                    dedicatedHostGroupReferenceId = Helpers.GetDedicatedHostGroupRef(m_subId, rgName, dedicatedHostGroupName);
-                    dedicatedHostReferenceId = Helpers.GetDedicatedHostRef(m_subId, rgName, dedicatedHostGroupName, dedicatedHostName);
                 }
 
                 VirtualMachine inputVM;
@@ -276,9 +220,7 @@ namespace Compute.Tests
                     }
 
                     CreateVM(rgName, asName, storageAccountName, imageRef, out inputVM, hasManagedDisks: hasManagedDisks,hasDiffDisks: hasDiffDisks, vmSize: vmSize, osDiskStorageAccountType: osDiskStorageAccountType,
-                        dataDiskStorageAccountType: dataDiskStorageAccountType, writeAcceleratorEnabled: writeAcceleratorEnabled, zones: zones, ppgName: ppgName, 
-                        diskEncryptionSetId: diskEncryptionSetId, encryptionAtHostEnabled: encryptionAtHostEnabled, dedicatedHostGroupReferenceId: dedicatedHostGroupReferenceId,
-                        dedicatedHostGroupName: dedicatedHostGroupName, dedicatedHostName: dedicatedHostName);
+                        dataDiskStorageAccountType: dataDiskStorageAccountType, writeAcceleratorEnabled: writeAcceleratorEnabled, zones: zones, ppgName: ppgName, diskEncryptionSetId: diskEncryptionSetId);
 
                     // Instance view is not completely populated just after VM is provisioned. So we wait here for a few minutes to 
                     // allow GA blob to populate.
@@ -300,29 +242,24 @@ namespace Compute.Tests
                             "DataDisks.ManagedDisk.DiskEncryptionSet.Id is not matching with expected DiskEncryptionSet resource");
                     }
                     
-                    ValidateVMInstanceView(inputVM, getVMWithInstanceViewResponse, hasManagedDisks, expectedComputerName, expectedOSName, expectedOSVersion, dedicatedHostReferenceId);
+                    ValidateVMInstanceView(inputVM, getVMWithInstanceViewResponse, hasManagedDisks, expectedComputerName, expectedOSName, expectedOSVersion);
 
                     var getVMInstanceViewResponse = m_CrpClient.VirtualMachines.InstanceView(rgName, inputVM.Name);
                     Assert.True(getVMInstanceViewResponse != null, "VM in InstanceView");
-                    ValidateVMInstanceView(inputVM, getVMInstanceViewResponse, hasManagedDisks, expectedComputerName, expectedOSName, expectedOSVersion, dedicatedHostReferenceId);
+                    ValidateVMInstanceView(inputVM, getVMInstanceViewResponse, hasManagedDisks, expectedComputerName, expectedOSName, expectedOSVersion);
 
-                    bool hasUserDefinedAS = inputVM.AvailabilitySet != null;
+                    bool hasUserDefinedAS = zones == null;
 
                     string expectedVMReferenceId = Helpers.GetVMReferenceId(m_subId, rgName, inputVM.Name);
                     var listResponse = m_CrpClient.VirtualMachines.List(rgName);
                     ValidateVM(inputVM, listResponse.FirstOrDefault(x => x.Name == inputVM.Name),
-                        expectedVMReferenceId, hasManagedDisks, hasUserDefinedAS, writeAcceleratorEnabled, hasDiffDisks, expectedPpgReferenceId: expectedPpgReferenceId,
-                        encryptionAtHostEnabled: encryptionAtHostEnabled, expectedDedicatedHostGroupReferenceId: dedicatedHostGroupReferenceId);
+                        expectedVMReferenceId, hasManagedDisks, hasUserDefinedAS, writeAcceleratorEnabled, hasDiffDisks, expectedPpgReferenceId: expectedPpgReferenceId);
 
-                    if (validateListAvailableSize)
-                    {
-                        var listVMSizesResponse = m_CrpClient.VirtualMachines.ListAvailableSizes(rgName, inputVM.Name);
-                        Helpers.ValidateVirtualMachineSizeListResponse(listVMSizesResponse, hasAZ: zones != null, writeAcceleratorEnabled: writeAcceleratorEnabled,
-                            hasDiffDisks: hasDiffDisks);
+                    var listVMSizesResponse = m_CrpClient.VirtualMachines.ListAvailableSizes(rgName, inputVM.Name);
+                    Helpers.ValidateVirtualMachineSizeListResponse(listVMSizesResponse, hasAZ: zones != null, writeAcceleratorEnabled: writeAcceleratorEnabled, hasDiffDisks: hasDiffDisks);
 
-                        listVMSizesResponse = m_CrpClient.AvailabilitySets.ListAvailableSizes(rgName, asName);
-                        Helpers.ValidateVirtualMachineSizeListResponse(listVMSizesResponse, hasAZ: zones != null, writeAcceleratorEnabled: writeAcceleratorEnabled, hasDiffDisks: hasDiffDisks);
-                    }
+                    listVMSizesResponse = m_CrpClient.AvailabilitySets.ListAvailableSizes(rgName, asName);
+                    Helpers.ValidateVirtualMachineSizeListResponse(listVMSizesResponse, hasAZ: zones != null, writeAcceleratorEnabled: writeAcceleratorEnabled, hasDiffDisks: hasDiffDisks);
 
                     if(isPpgScenario)
                     {

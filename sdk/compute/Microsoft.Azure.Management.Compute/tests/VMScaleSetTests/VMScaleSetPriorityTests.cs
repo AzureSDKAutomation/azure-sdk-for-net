@@ -175,7 +175,7 @@ namespace Compute.Tests
 
             try
             {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "centralus");
+                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "centraluseuap");
                 EnsureClientsInitialized(context);
                 ImageReference imageRef = GetPlatformVMImage(useWindowsImage: true);
 
