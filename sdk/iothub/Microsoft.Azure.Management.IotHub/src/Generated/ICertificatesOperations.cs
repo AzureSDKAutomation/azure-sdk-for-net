@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.IotHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CertificateDescription>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string certificateName, CertificateBodyDescription certificateDescription, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateDescription>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string certificateName, CertificateDescription certificateDescription, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete an X509 certificate.
         /// </summary>
