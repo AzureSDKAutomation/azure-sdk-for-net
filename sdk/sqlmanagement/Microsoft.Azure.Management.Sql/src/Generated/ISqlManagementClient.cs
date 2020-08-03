@@ -448,11 +448,6 @@ namespace Microsoft.Azure.Management.Sql
         IUsagesOperations Usages { get; }
 
         /// <summary>
-        /// Gets the IManagedInstancesOperations.
-        /// </summary>
-        IManagedInstancesOperations ManagedInstances { get; }
-
-        /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.
         /// </summary>
         IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
@@ -511,6 +506,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the ISyncMembersOperations.
         /// </summary>
         ISyncMembersOperations SyncMembers { get; }
+
+        /// <summary>
+        /// Gets the IManagedInstancesOperations.
+        /// </summary>
+        IManagedInstancesOperations ManagedInstances { get; }
 
         /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.

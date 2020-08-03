@@ -453,11 +453,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IUsagesOperations Usages { get; private set; }
 
         /// <summary>
-        /// Gets the IManagedInstancesOperations.
-        /// </summary>
-        public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
-
-        /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.
         /// </summary>
         public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
@@ -516,6 +511,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the ISyncMembersOperations.
         /// </summary>
         public virtual ISyncMembersOperations SyncMembers { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstancesOperations.
+        /// </summary>
+        public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
 
         /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
@@ -849,7 +849,6 @@ namespace Microsoft.Azure.Management.Sql
             ManagedDatabaseSensitivityLabels = new ManagedDatabaseSensitivityLabelsOperations(this);
             InstancePools = new InstancePoolsOperations(this);
             Usages = new UsagesOperations(this);
-            ManagedInstances = new ManagedInstancesOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             Servers = new ServersOperations(this);
@@ -862,6 +861,7 @@ namespace Microsoft.Azure.Management.Sql
             ServerAzureADAdministrators = new ServerAzureADAdministratorsOperations(this);
             SyncGroups = new SyncGroupsOperations(this);
             SyncMembers = new SyncMembersOperations(this);
+            ManagedInstances = new ManagedInstancesOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
             ServerAzureADOnlyAuthentications = new ServerAzureADOnlyAuthenticationsOperations(this);
