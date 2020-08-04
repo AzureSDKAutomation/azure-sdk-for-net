@@ -250,6 +250,10 @@ namespace Cdn.Tests.ScenarioTests
                     .GetAwaiter()
                     .GetResult();
 
+                // Delete profile in creating state should fail
+                Assert.ThrowsAny<ErrorResponseException>(() => {
+                    cdnMgmtClient.Profiles.Delete(resourceGroupName, profileName); });
+
                 // Wait for second profile to complete creation
                 CdnTestUtilities.WaitIfNotInPlaybackMode();
 
@@ -405,10 +409,6 @@ namespace Cdn.Tests.ScenarioTests
                 var existingProfile = cdnMgmtClient.Profiles.Get(resourceGroupName1, profileName);
                 VerifyProfilesEqual(profile, existingProfile);
 
-                // List profile returns the created profile
-                profiles = cdnMgmtClient.Profiles.List();
-                Assert.NotNull(profiles.FirstOrDefault(x => x.Name == profileName));
-
                 // Create another resource group
                 var resourceGroupName2 = CdnTestUtilities.CreateResourceGroup(resourcesClient);
 
@@ -430,21 +430,21 @@ namespace Cdn.Tests.ScenarioTests
 
                 // List profiles should return the new profiles
                 profiles = cdnMgmtClient.Profiles.List();
-                Assert.NotNull(profiles.FirstOrDefault(x => x.Name == profileName2));
-
+                Assert.Equal(existingProfileCount + 2, profiles.Count());
+             
                 // Delete first profile
                 cdnMgmtClient.Profiles.Delete(resourceGroupName1, profileName);
 
-                // Verify the created profile no longer is listed
+                // List profiles should return initial profile count + 1
                 profiles = cdnMgmtClient.Profiles.List();
-                Assert.Null(profiles.FirstOrDefault(x => x.Name == profileName));
+                Assert.Equal(existingProfileCount + 1, profiles.Count());
 
                 // Delete second profile
                 cdnMgmtClient.Profiles.Delete(resourceGroupName2, profileName2);
 
-                // Verify the second profile no longer is listed
+                // List profiles should return initial profile count
                 profiles = cdnMgmtClient.Profiles.List();
-                Assert.Null(profiles.FirstOrDefault(x => x.Name == profileName2));
+                Assert.Equal(existingProfileCount, profiles.Count());
 
                 // Delete resource groups
                 CdnTestUtilities.DeleteResourceGroup(resourcesClient, resourceGroupName1);
@@ -601,7 +601,7 @@ namespace Cdn.Tests.ScenarioTests
 
                 var usageAfterCreation = subscriptionLevelUsages.First();
                 Assert.Equal(existingSubscriptionUsageLimit, usageAfterCreation.Limit);
-                Assert.Equal(existingSubscriptionUsageCurrentValue, usageAfterCreation.CurrentValue);
+                Assert.Equal(existingSubscriptionUsageCurrentValue + 1, usageAfterCreation.CurrentValue);
 
                 // test Profile level usage - usage for endpoints under the profile
                 var profileLevelUsages = cdnMgmtClient.Profiles.ListResourceUsage(resourceGroupName, profileName);
