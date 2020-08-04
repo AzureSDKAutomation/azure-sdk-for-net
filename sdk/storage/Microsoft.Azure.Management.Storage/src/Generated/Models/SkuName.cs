@@ -10,19 +10,69 @@
 
 namespace Microsoft.Azure.Management.Storage.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+    using System.Runtime;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// Defines values for SkuName.
     /// </summary>
-    public static class SkuName
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SkuName
     {
-        public const string StandardLRS = "Standard_LRS";
-        public const string StandardGRS = "Standard_GRS";
-        public const string StandardRAGRS = "Standard_RAGRS";
-        public const string StandardZRS = "Standard_ZRS";
-        public const string PremiumLRS = "Premium_LRS";
-        public const string PremiumZRS = "Premium_ZRS";
-        public const string StandardGZRS = "Standard_GZRS";
-        public const string StandardRAGZRS = "Standard_RAGZRS";
+        [EnumMember(Value = "Standard_LRS")]
+        StandardLRS,
+        [EnumMember(Value = "Standard_GRS")]
+        StandardGRS,
+        [EnumMember(Value = "Standard_RAGRS")]
+        StandardRAGRS,
+        [EnumMember(Value = "Standard_ZRS")]
+        StandardZRS,
+        [EnumMember(Value = "Premium_LRS")]
+        PremiumLRS
+    }
+    internal static class SkuNameEnumExtension
+    {
+        internal static string ToSerializedValue(this SkuName? value)
+        {
+            return value == null ? null : ((SkuName)value).ToSerializedValue();
+        }
+
+        internal static string ToSerializedValue(this SkuName value)
+        {
+            switch( value )
+            {
+                case SkuName.StandardLRS:
+                    return "Standard_LRS";
+                case SkuName.StandardGRS:
+                    return "Standard_GRS";
+                case SkuName.StandardRAGRS:
+                    return "Standard_RAGRS";
+                case SkuName.StandardZRS:
+                    return "Standard_ZRS";
+                case SkuName.PremiumLRS:
+                    return "Premium_LRS";
+            }
+            return null;
+        }
+
+        internal static SkuName? ParseSkuName(this string value)
+        {
+            switch( value )
+            {
+                case "Standard_LRS":
+                    return SkuName.StandardLRS;
+                case "Standard_GRS":
+                    return SkuName.StandardGRS;
+                case "Standard_RAGRS":
+                    return SkuName.StandardRAGRS;
+                case "Standard_ZRS":
+                    return SkuName.StandardZRS;
+                case "Premium_LRS":
+                    return SkuName.PremiumLRS;
+            }
+            return null;
+        }
     }
 }

@@ -36,16 +36,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// returned when encryption is enabled. There might be some
         /// unencrypted blobs which were written after this time, as it is just
         /// a rough estimate.</param>
-        /// <param name="keyType">Encryption key type to be used for the
-        /// encryption service. 'Account' key type implies that an
-        /// account-scoped encryption key will be used. 'Service' key type
-        /// implies that a default service key is used. Possible values
-        /// include: 'Service', 'Account'</param>
-        public EncryptionService(bool? enabled = default(bool?), System.DateTime? lastEnabledTime = default(System.DateTime?), string keyType = default(string))
+        public EncryptionService(bool? enabled = default(bool?), System.DateTime? lastEnabledTime = default(System.DateTime?))
         {
             Enabled = enabled;
             LastEnabledTime = lastEnabledTime;
-            KeyType = keyType;
             CustomInit();
         }
 
@@ -69,16 +63,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "lastEnabledTime")]
         public System.DateTime? LastEnabledTime { get; private set; }
-
-        /// <summary>
-        /// Gets or sets encryption key type to be used for the encryption
-        /// service. 'Account' key type implies that an account-scoped
-        /// encryption key will be used. 'Service' key type implies that a
-        /// default service key is used. Possible values include: 'Service',
-        /// 'Account'
-        /// </summary>
-        [JsonProperty(PropertyName = "keyType")]
-        public string KeyType { get; set; }
 
     }
 }

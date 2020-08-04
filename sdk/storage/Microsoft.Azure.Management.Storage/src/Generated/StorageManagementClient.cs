@@ -47,12 +47,14 @@ namespace Microsoft.Azure.Management.Storage
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// Gets subscription credentials which uniquely identify the Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every service
+        /// call.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The API version to use for this operation.
+        /// Client Api Version.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -90,74 +92,9 @@ namespace Microsoft.Azure.Management.Storage
         public virtual IStorageAccountsOperations StorageAccounts { get; private set; }
 
         /// <summary>
-        /// Gets the IUsagesOperations.
+        /// Gets the IUsageOperations.
         /// </summary>
-        public virtual IUsagesOperations Usages { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagementPoliciesOperations.
-        /// </summary>
-        public virtual IManagementPoliciesOperations ManagementPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IObjectReplicationPoliciesOperations.
-        /// </summary>
-        public virtual IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IEncryptionScopesOperations.
-        /// </summary>
-        public virtual IEncryptionScopesOperations EncryptionScopes { get; private set; }
-
-        /// <summary>
-        /// Gets the IBlobServicesOperations.
-        /// </summary>
-        public virtual IBlobServicesOperations BlobServices { get; private set; }
-
-        /// <summary>
-        /// Gets the IBlobContainersOperations.
-        /// </summary>
-        public virtual IBlobContainersOperations BlobContainers { get; private set; }
-
-        /// <summary>
-        /// Gets the IFileServicesOperations.
-        /// </summary>
-        public virtual IFileServicesOperations FileServices { get; private set; }
-
-        /// <summary>
-        /// Gets the IFileSharesOperations.
-        /// </summary>
-        public virtual IFileSharesOperations FileShares { get; private set; }
-
-        /// <summary>
-        /// Gets the IQueueServicesOperations.
-        /// </summary>
-        public virtual IQueueServicesOperations QueueServices { get; private set; }
-
-        /// <summary>
-        /// Gets the IQueueOperations.
-        /// </summary>
-        public virtual IQueueOperations Queue { get; private set; }
-
-        /// <summary>
-        /// Gets the ITableServicesOperations.
-        /// </summary>
-        public virtual ITableServicesOperations TableServices { get; private set; }
-
-        /// <summary>
-        /// Gets the ITableOperations.
-        /// </summary>
-        public virtual ITableOperations Table { get; private set; }
+        public virtual IUsageOperations Usage { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the StorageManagementClient class.
@@ -403,22 +340,9 @@ namespace Microsoft.Azure.Management.Storage
             Operations = new Operations(this);
             Skus = new SkusOperations(this);
             StorageAccounts = new StorageAccountsOperations(this);
-            Usages = new UsagesOperations(this);
-            ManagementPolicies = new ManagementPoliciesOperations(this);
-            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            ObjectReplicationPolicies = new ObjectReplicationPoliciesOperations(this);
-            EncryptionScopes = new EncryptionScopesOperations(this);
-            BlobServices = new BlobServicesOperations(this);
-            BlobContainers = new BlobContainersOperations(this);
-            FileServices = new FileServicesOperations(this);
-            FileShares = new FileSharesOperations(this);
-            QueueServices = new QueueServicesOperations(this);
-            Queue = new QueueOperations(this);
-            TableServices = new TableServicesOperations(this);
-            Table = new TableOperations(this);
+            Usage = new UsageOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-06-01";
+            ApiVersion = "2017-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

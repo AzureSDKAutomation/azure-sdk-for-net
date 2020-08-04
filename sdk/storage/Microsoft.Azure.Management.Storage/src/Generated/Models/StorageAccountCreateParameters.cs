@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the StorageAccountCreateParameters
         /// class.
         /// </summary>
-        /// <param name="sku">Required. Gets or sets the SKU name.</param>
+        /// <param name="sku">Required. Gets or sets the sku name.</param>
         /// <param name="kind">Required. Indicates the type of storage account.
-        /// Possible values include: 'Storage', 'StorageV2', 'BlobStorage',
-        /// 'FileStorage', 'BlockBlobStorage'</param>
+        /// Possible values include: 'Storage', 'StorageV2',
+        /// 'BlobStorage'</param>
         /// <param name="location">Required. Gets or sets the location of the
         /// resource. This will be one of the supported and registered Azure
         /// Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo
@@ -58,32 +58,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// supported per storage account at this time. To clear the existing
         /// custom domain, use an empty string for the custom domain name
         /// property.</param>
-        /// <param name="encryption">Not applicable. Azure Storage encryption
-        /// is enabled for all storage accounts and cannot be disabled.</param>
+        /// <param name="encryption">Provides the encryption settings on the
+        /// account. If left unspecified the account encryption settings will
+        /// remain the same. The default setting is unencrypted.</param>
         /// <param name="networkRuleSet">Network rule set</param>
         /// <param name="accessTier">Required for storage accounts where kind =
         /// BlobStorage. The access tier used for billing. Possible values
         /// include: 'Hot', 'Cool'</param>
-        /// <param name="azureFilesIdentityBasedAuthentication">Provides the
-        /// identity based authentication settings for Azure Files.</param>
         /// <param name="enableHttpsTrafficOnly">Allows https traffic only to
-        /// storage service if sets to true. The default value is true since
-        /// API version 2019-04-01.</param>
-        /// <param name="isHnsEnabled">Account HierarchicalNamespace enabled if
-        /// sets to true.</param>
-        /// <param name="largeFileSharesState">Allow large file shares if sets
-        /// to Enabled. It cannot be disabled once it is enabled. Possible
-        /// values include: 'Disabled', 'Enabled'</param>
-        /// <param name="routingPreference">Maintains information about the
-        /// network routing choice opted by the user for data transfer</param>
-        /// <param name="allowBlobPublicAccess">Allow or disallow public access
-        /// to all blobs or containers in the storage account. The default
-        /// interpretation is true for this property.</param>
-        /// <param name="minimumTlsVersion">Set the minimum TLS version to be
-        /// permitted on requests to storage. The default interpretation is TLS
-        /// 1.0 for this property. Possible values include: 'TLS1_0', 'TLS1_1',
-        /// 'TLS1_2'</param>
-        public StorageAccountCreateParameters(Sku sku, string kind, string location, IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string))
+        /// storage service if sets to true.</param>
+        public StorageAccountCreateParameters(Sku sku, Kind kind, string location, IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?))
         {
             Sku = sku;
             Kind = kind;
@@ -94,13 +78,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             Encryption = encryption;
             NetworkRuleSet = networkRuleSet;
             AccessTier = accessTier;
-            AzureFilesIdentityBasedAuthentication = azureFilesIdentityBasedAuthentication;
             EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
-            IsHnsEnabled = isHnsEnabled;
-            LargeFileSharesState = largeFileSharesState;
-            RoutingPreference = routingPreference;
-            AllowBlobPublicAccess = allowBlobPublicAccess;
-            MinimumTlsVersion = minimumTlsVersion;
             CustomInit();
         }
 
@@ -110,18 +88,17 @@ namespace Microsoft.Azure.Management.Storage.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets required. Gets or sets the SKU name.
+        /// Gets or sets required. Gets or sets the sku name.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
 
         /// <summary>
         /// Gets or sets required. Indicates the type of storage account.
-        /// Possible values include: 'Storage', 'StorageV2', 'BlobStorage',
-        /// 'FileStorage', 'BlockBlobStorage'
+        /// Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        public Kind Kind { get; set; }
 
         /// <summary>
         /// Gets or sets required. Gets or sets the location of the resource.
@@ -160,8 +137,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         public CustomDomain CustomDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets not applicable. Azure Storage encryption is enabled
-        /// for all storage accounts and cannot be disabled.
+        /// Gets or sets provides the encryption settings on the account. If
+        /// left unspecified the account encryption settings will remain the
+        /// same. The default setting is unencrypted.
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryption")]
         public Encryption Encryption { get; set; }
@@ -181,55 +159,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         public AccessTier? AccessTier { get; set; }
 
         /// <summary>
-        /// Gets or sets provides the identity based authentication settings
-        /// for Azure Files.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.azureFilesIdentityBasedAuthentication")]
-        public AzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuthentication { get; set; }
-
-        /// <summary>
         /// Gets or sets allows https traffic only to storage service if sets
-        /// to true. The default value is true since API version 2019-04-01.
+        /// to true.
         /// </summary>
         [JsonProperty(PropertyName = "properties.supportsHttpsTrafficOnly")]
         public bool? EnableHttpsTrafficOnly { get; set; }
-
-        /// <summary>
-        /// Gets or sets account HierarchicalNamespace enabled if sets to true.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isHnsEnabled")]
-        public bool? IsHnsEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets allow large file shares if sets to Enabled. It cannot
-        /// be disabled once it is enabled. Possible values include:
-        /// 'Disabled', 'Enabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.largeFileSharesState")]
-        public string LargeFileSharesState { get; set; }
-
-        /// <summary>
-        /// Gets or sets maintains information about the network routing choice
-        /// opted by the user for data transfer
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.routingPreference")]
-        public RoutingPreference RoutingPreference { get; set; }
-
-        /// <summary>
-        /// Gets or sets allow or disallow public access to all blobs or
-        /// containers in the storage account. The default interpretation is
-        /// true for this property.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.allowBlobPublicAccess")]
-        public bool? AllowBlobPublicAccess { get; set; }
-
-        /// <summary>
-        /// Gets or sets set the minimum TLS version to be permitted on
-        /// requests to storage. The default interpretation is TLS 1.0 for this
-        /// property. Possible values include: 'TLS1_0', 'TLS1_1', 'TLS1_2'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minimumTlsVersion")]
-        public string MinimumTlsVersion { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -242,10 +176,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (Sku == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
-            }
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");
             }
             if (Location == null)
             {
@@ -266,10 +196,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (NetworkRuleSet != null)
             {
                 NetworkRuleSet.Validate();
-            }
-            if (AzureFilesIdentityBasedAuthentication != null)
-            {
-                AzureFilesIdentityBasedAuthentication.Validate();
             }
         }
     }

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
     /// <summary>
     /// The URIs that are used to perform a retrieval of a public blob, queue,
-    /// table, web or dfs object.
+    /// or table object.
     /// </summary>
     public partial class Endpoints
     {
@@ -34,22 +34,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="queue">Gets the queue endpoint.</param>
         /// <param name="table">Gets the table endpoint.</param>
         /// <param name="file">Gets the file endpoint.</param>
-        /// <param name="web">Gets the web endpoint.</param>
-        /// <param name="dfs">Gets the dfs endpoint.</param>
-        /// <param name="microsoftEndpoints">Gets the microsoft routing storage
-        /// endpoints.</param>
-        /// <param name="internetEndpoints">Gets the internet routing storage
-        /// endpoints</param>
-        public Endpoints(string blob = default(string), string queue = default(string), string table = default(string), string file = default(string), string web = default(string), string dfs = default(string), StorageAccountMicrosoftEndpoints microsoftEndpoints = default(StorageAccountMicrosoftEndpoints), StorageAccountInternetEndpoints internetEndpoints = default(StorageAccountInternetEndpoints))
+        public Endpoints(string blob = default(string), string queue = default(string), string table = default(string), string file = default(string))
         {
             Blob = blob;
             Queue = queue;
             Table = table;
             File = file;
-            Web = web;
-            Dfs = dfs;
-            MicrosoftEndpoints = microsoftEndpoints;
-            InternetEndpoints = internetEndpoints;
             CustomInit();
         }
 
@@ -81,30 +71,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "file")]
         public string File { get; private set; }
-
-        /// <summary>
-        /// Gets the web endpoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "web")]
-        public string Web { get; private set; }
-
-        /// <summary>
-        /// Gets the dfs endpoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "dfs")]
-        public string Dfs { get; private set; }
-
-        /// <summary>
-        /// Gets the microsoft routing storage endpoints.
-        /// </summary>
-        [JsonProperty(PropertyName = "microsoftEndpoints")]
-        public StorageAccountMicrosoftEndpoints MicrosoftEndpoints { get; set; }
-
-        /// <summary>
-        /// Gets the internet routing storage endpoints
-        /// </summary>
-        [JsonProperty(PropertyName = "internetEndpoints")]
-        public StorageAccountInternetEndpoints InternetEndpoints { get; set; }
 
     }
 }

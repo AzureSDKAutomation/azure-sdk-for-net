@@ -121,13 +121,6 @@ namespace Microsoft.Azure.Management.Storage
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
-        /// <param name='expand'>
-        /// May be used to expand the properties within account's properties.
-        /// By default, data is not included when fetching properties.
-        /// Currently we only support geoReplicationStats and
-        /// blobRestoreStatus. Possible values include: 'geoReplicationStats',
-        /// 'blobRestoreStatus'
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -143,7 +136,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<StorageAccount>> GetPropertiesWithHttpMessagesAsync(string resourceGroupName, string accountName, StorageAccountExpand? expand = default(StorageAccountExpand?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StorageAccount>> GetPropertiesWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The update operation can be used to update the SKU, encryption,
         /// access tier, or tags for a storage account. It can also be used to
@@ -205,7 +198,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<StorageAccount>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<StorageAccount>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all the storage accounts available under the given resource
         /// group. Note that storage keys are not returned; use the ListKeys
@@ -232,8 +225,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<StorageAccount>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists the access keys or Kerberos keys (if active directory
-        /// enabled) for the specified storage account.
+        /// Lists the access keys for the specified storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
@@ -243,10 +235,6 @@ namespace Microsoft.Azure.Management.Storage
         /// The name of the storage account within the specified resource
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='expand'>
-        /// Specifies type of the key to be listed. Possible value is kerb.
-        /// Possible values include: 'kerb'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -263,10 +251,10 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<StorageAccountListKeysResult>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, ListKeyExpand? expand = default(ListKeyExpand?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StorageAccountListKeysResult>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Regenerates one of the access keys or Kerberos keys for the
-        /// specified storage account.
+        /// Regenerates one of the access keys for the specified storage
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
@@ -279,7 +267,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='keyName'>
         /// The name of storage keys that want to be regenerated, possible
-        /// values are key1, key2, kerb1, kerb2.
+        /// values are key1, key2.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -361,93 +349,6 @@ namespace Microsoft.Azure.Management.Storage
         /// </exception>
         Task<AzureOperationResponse<ListServiceSasResponse>> ListServiceSASWithHttpMessagesAsync(string resourceGroupName, string accountName, ServiceSasParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Failover request can be triggered for a storage account in case of
-        /// availability issues. The failover occurs from the storage account's
-        /// primary cluster to secondary cluster for RA-GRS accounts. The
-        /// secondary cluster will become primary after failover.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource
-        /// group. Storage account names must be between 3 and 24 characters in
-        /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Restore blobs in the specified blob ranges
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource
-        /// group. Storage account names must be between 3 and 24 characters in
-        /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='timeToRestore'>
-        /// Restore blob to the specified time.
-        /// </param>
-        /// <param name='blobRanges'>
-        /// Blob ranges to restore.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<BlobRestoreStatus>> RestoreBlobRangesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.DateTime timeToRestore, IList<BlobRestoreRange> blobRanges, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Revoke user delegation keys.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource
-        /// group. Storage account names must be between 3 and 24 characters in
-        /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> RevokeUserDelegationKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Asynchronously creates a new storage account with the specified
         /// parameters. If an account is already created and a subsequent
         /// create request is issued with different properties, the account
@@ -483,91 +384,5 @@ namespace Microsoft.Azure.Management.Storage
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<StorageAccount>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, StorageAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Failover request can be triggered for a storage account in case of
-        /// availability issues. The failover occurs from the storage account's
-        /// primary cluster to secondary cluster for RA-GRS accounts. The
-        /// secondary cluster will become primary after failover.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource
-        /// group. Storage account names must be between 3 and 24 characters in
-        /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Restore blobs in the specified blob ranges
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource
-        /// group. Storage account names must be between 3 and 24 characters in
-        /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='timeToRestore'>
-        /// Restore blob to the specified time.
-        /// </param>
-        /// <param name='blobRanges'>
-        /// Blob ranges to restore.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<BlobRestoreStatus>> BeginRestoreBlobRangesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.DateTime timeToRestore, IList<BlobRestoreRange> blobRanges, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all the storage accounts available under the subscription.
-        /// Note that storage keys are not returned; use the ListKeys operation
-        /// for this.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<StorageAccount>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

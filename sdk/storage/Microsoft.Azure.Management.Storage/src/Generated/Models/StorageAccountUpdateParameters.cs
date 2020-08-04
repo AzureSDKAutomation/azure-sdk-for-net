@@ -38,9 +38,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// class.
         /// </summary>
         /// <param name="sku">Gets or sets the SKU name. Note that the SKU name
-        /// cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
-        /// can accounts of those SKU names be updated to any other
-        /// value.</param>
+        /// cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts
+        /// of those sku names be updated to any other value.</param>
         /// <param name="tags">Gets or sets a list of key value pairs that
         /// describe the resource. These tags can be used in viewing and
         /// grouping this resource (across resource groups). A maximum of 15
@@ -58,28 +57,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="accessTier">Required for storage accounts where kind =
         /// BlobStorage. The access tier used for billing. Possible values
         /// include: 'Hot', 'Cool'</param>
-        /// <param name="azureFilesIdentityBasedAuthentication">Provides the
-        /// identity based authentication settings for Azure Files.</param>
         /// <param name="enableHttpsTrafficOnly">Allows https traffic only to
         /// storage service if sets to true.</param>
         /// <param name="networkRuleSet">Network rule set</param>
-        /// <param name="largeFileSharesState">Allow large file shares if sets
-        /// to Enabled. It cannot be disabled once it is enabled. Possible
-        /// values include: 'Disabled', 'Enabled'</param>
-        /// <param name="routingPreference">Maintains information about the
-        /// network routing choice opted by the user for data transfer</param>
-        /// <param name="allowBlobPublicAccess">Allow or disallow public access
-        /// to all blobs or containers in the storage account. The default
-        /// interpretation is true for this property.</param>
-        /// <param name="minimumTlsVersion">Set the minimum TLS version to be
-        /// permitted on requests to storage. The default interpretation is TLS
-        /// 1.0 for this property. Possible values include: 'TLS1_0', 'TLS1_1',
-        /// 'TLS1_2'</param>
         /// <param name="kind">Optional. Indicates the type of storage account.
         /// Currently only StorageV2 value supported by server. Possible values
-        /// include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
-        /// 'BlockBlobStorage'</param>
-        public StorageAccountUpdateParameters(Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), string kind = default(string))
+        /// include: 'Storage', 'StorageV2', 'BlobStorage'</param>
+        public StorageAccountUpdateParameters(Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
         {
             Sku = sku;
             Tags = tags;
@@ -87,13 +71,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             CustomDomain = customDomain;
             Encryption = encryption;
             AccessTier = accessTier;
-            AzureFilesIdentityBasedAuthentication = azureFilesIdentityBasedAuthentication;
             EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             NetworkRuleSet = networkRuleSet;
-            LargeFileSharesState = largeFileSharesState;
-            RoutingPreference = routingPreference;
-            AllowBlobPublicAccess = allowBlobPublicAccess;
-            MinimumTlsVersion = minimumTlsVersion;
             Kind = kind;
             CustomInit();
         }
@@ -105,8 +84,8 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets the SKU name. Note that the SKU name cannot be updated
-        /// to Standard_ZRS, Premium_LRS or Premium_ZRS, nor can accounts of
-        /// those SKU names be updated to any other value.
+        /// to Standard_ZRS or Premium_LRS, nor can accounts of those sku names
+        /// be updated to any other value.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
@@ -152,13 +131,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         public AccessTier? AccessTier { get; set; }
 
         /// <summary>
-        /// Gets or sets provides the identity based authentication settings
-        /// for Azure Files.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.azureFilesIdentityBasedAuthentication")]
-        public AzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuthentication { get; set; }
-
-        /// <summary>
         /// Gets or sets allows https traffic only to storage service if sets
         /// to true.
         /// </summary>
@@ -172,44 +144,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         public NetworkRuleSet NetworkRuleSet { get; set; }
 
         /// <summary>
-        /// Gets or sets allow large file shares if sets to Enabled. It cannot
-        /// be disabled once it is enabled. Possible values include:
-        /// 'Disabled', 'Enabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.largeFileSharesState")]
-        public string LargeFileSharesState { get; set; }
-
-        /// <summary>
-        /// Gets or sets maintains information about the network routing choice
-        /// opted by the user for data transfer
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.routingPreference")]
-        public RoutingPreference RoutingPreference { get; set; }
-
-        /// <summary>
-        /// Gets or sets allow or disallow public access to all blobs or
-        /// containers in the storage account. The default interpretation is
-        /// true for this property.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.allowBlobPublicAccess")]
-        public bool? AllowBlobPublicAccess { get; set; }
-
-        /// <summary>
-        /// Gets or sets set the minimum TLS version to be permitted on
-        /// requests to storage. The default interpretation is TLS 1.0 for this
-        /// property. Possible values include: 'TLS1_0', 'TLS1_1', 'TLS1_2'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minimumTlsVersion")]
-        public string MinimumTlsVersion { get; set; }
-
-        /// <summary>
         /// Gets or sets optional. Indicates the type of storage account.
         /// Currently only StorageV2 value supported by server. Possible values
-        /// include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
-        /// 'BlockBlobStorage'
+        /// include: 'Storage', 'StorageV2', 'BlobStorage'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        public Kind? Kind { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -230,10 +170,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (Encryption != null)
             {
                 Encryption.Validate();
-            }
-            if (AzureFilesIdentityBasedAuthentication != null)
-            {
-                AzureFilesIdentityBasedAuthentication.Validate();
             }
             if (NetworkRuleSet != null)
             {

@@ -41,12 +41,14 @@ namespace Microsoft.Azure.Management.Storage
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// Gets subscription credentials which uniquely identify the Microsoft
+        /// Azure subscription. The subscription ID forms part of the URI for
+        /// every service call.
         /// </summary>
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The API version to use for this operation.
+        /// Client Api Version.
         /// </summary>
         string ApiVersion { get; }
 
@@ -85,74 +87,9 @@ namespace Microsoft.Azure.Management.Storage
         IStorageAccountsOperations StorageAccounts { get; }
 
         /// <summary>
-        /// Gets the IUsagesOperations.
+        /// Gets the IUsageOperations.
         /// </summary>
-        IUsagesOperations Usages { get; }
-
-        /// <summary>
-        /// Gets the IManagementPoliciesOperations.
-        /// </summary>
-        IManagementPoliciesOperations ManagementPolicies { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IObjectReplicationPoliciesOperations.
-        /// </summary>
-        IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; }
-
-        /// <summary>
-        /// Gets the IEncryptionScopesOperations.
-        /// </summary>
-        IEncryptionScopesOperations EncryptionScopes { get; }
-
-        /// <summary>
-        /// Gets the IBlobServicesOperations.
-        /// </summary>
-        IBlobServicesOperations BlobServices { get; }
-
-        /// <summary>
-        /// Gets the IBlobContainersOperations.
-        /// </summary>
-        IBlobContainersOperations BlobContainers { get; }
-
-        /// <summary>
-        /// Gets the IFileServicesOperations.
-        /// </summary>
-        IFileServicesOperations FileServices { get; }
-
-        /// <summary>
-        /// Gets the IFileSharesOperations.
-        /// </summary>
-        IFileSharesOperations FileShares { get; }
-
-        /// <summary>
-        /// Gets the IQueueServicesOperations.
-        /// </summary>
-        IQueueServicesOperations QueueServices { get; }
-
-        /// <summary>
-        /// Gets the IQueueOperations.
-        /// </summary>
-        IQueueOperations Queue { get; }
-
-        /// <summary>
-        /// Gets the ITableServicesOperations.
-        /// </summary>
-        ITableServicesOperations TableServices { get; }
-
-        /// <summary>
-        /// Gets the ITableOperations.
-        /// </summary>
-        ITableOperations Table { get; }
+        IUsageOperations Usage { get; }
 
     }
 }

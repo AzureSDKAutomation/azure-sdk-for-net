@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// The storage account.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageAccount : TrackedResource
+    public partial class StorageAccount : Resource
     {
         /// <summary>
         /// Initializes a new instance of the StorageAccount class.
@@ -34,19 +34,15 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Initializes a new instance of the StorageAccount class.
         /// </summary>
-        /// <param name="location">The geo-location where the resource
-        /// lives</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
-        /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
-        /// <param name="tags">Resource tags.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource name</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="location">Resource location</param>
+        /// <param name="tags">Tags assigned to a resource; can be used for
+        /// viewing and grouping a resource (across resource groups).</param>
         /// <param name="sku">Gets the SKU.</param>
         /// <param name="kind">Gets the Kind. Possible values include:
-        /// 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
-        /// 'BlockBlobStorage'</param>
+        /// 'Storage', 'StorageV2', 'BlobStorage'</param>
         /// <param name="identity">The identity of the resource.</param>
         /// <param name="provisioningState">Gets the status of the storage
         /// account at the time the operation was called. Possible values
@@ -87,33 +83,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="accessTier">Required for storage accounts where kind =
         /// BlobStorage. The access tier used for billing. Possible values
         /// include: 'Hot', 'Cool'</param>
-        /// <param name="azureFilesIdentityBasedAuthentication">Provides the
-        /// identity based authentication settings for Azure Files.</param>
         /// <param name="enableHttpsTrafficOnly">Allows https traffic only to
         /// storage service if sets to true.</param>
         /// <param name="networkRuleSet">Network rule set</param>
-        /// <param name="isHnsEnabled">Account HierarchicalNamespace enabled if
-        /// sets to true.</param>
-        /// <param name="geoReplicationStats">Geo Replication Stats</param>
-        /// <param name="failoverInProgress">If the failover is in progress,
-        /// the value will be true, otherwise, it will be null.</param>
-        /// <param name="largeFileSharesState">Allow large file shares if sets
-        /// to Enabled. It cannot be disabled once it is enabled. Possible
-        /// values include: 'Disabled', 'Enabled'</param>
-        /// <param name="privateEndpointConnections">List of private endpoint
-        /// connection associated with the specified storage account</param>
-        /// <param name="routingPreference">Maintains information about the
-        /// network routing choice opted by the user for data transfer</param>
-        /// <param name="blobRestoreStatus">Blob restore status</param>
-        /// <param name="allowBlobPublicAccess">Allow or disallow public access
-        /// to all blobs or containers in the storage account. The default
-        /// interpretation is true for this property.</param>
-        /// <param name="minimumTlsVersion">Set the minimum TLS version to be
-        /// permitted on requests to storage. The default interpretation is TLS
-        /// 1.0 for this property. Possible values include: 'TLS1_0', 'TLS1_1',
-        /// 'TLS1_2'</param>
-        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), RoutingPreference routingPreference = default(RoutingPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string))
-            : base(location, id, name, type, tags)
+        public StorageAccount(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Kind? kind = default(Kind?), Identity identity = default(Identity), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet))
+            : base(id, name, type, location, tags)
         {
             Sku = sku;
             Kind = kind;
@@ -130,18 +104,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             SecondaryEndpoints = secondaryEndpoints;
             Encryption = encryption;
             AccessTier = accessTier;
-            AzureFilesIdentityBasedAuthentication = azureFilesIdentityBasedAuthentication;
             EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             NetworkRuleSet = networkRuleSet;
-            IsHnsEnabled = isHnsEnabled;
-            GeoReplicationStats = geoReplicationStats;
-            FailoverInProgress = failoverInProgress;
-            LargeFileSharesState = largeFileSharesState;
-            PrivateEndpointConnections = privateEndpointConnections;
-            RoutingPreference = routingPreference;
-            BlobRestoreStatus = blobRestoreStatus;
-            AllowBlobPublicAccess = allowBlobPublicAccess;
-            MinimumTlsVersion = minimumTlsVersion;
             CustomInit();
         }
 
@@ -158,10 +122,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets the Kind. Possible values include: 'Storage', 'StorageV2',
-        /// 'BlobStorage', 'FileStorage', 'BlockBlobStorage'
+        /// 'BlobStorage'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; private set; }
+        public Kind? Kind { get; private set; }
 
         /// <summary>
         /// Gets or sets the identity of the resource.
@@ -263,13 +227,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         public AccessTier? AccessTier { get; private set; }
 
         /// <summary>
-        /// Gets or sets provides the identity based authentication settings
-        /// for Azure Files.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.azureFilesIdentityBasedAuthentication")]
-        public AzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuthentication { get; set; }
-
-        /// <summary>
         /// Gets or sets allows https traffic only to storage service if sets
         /// to true.
         /// </summary>
@@ -283,77 +240,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         public NetworkRuleSet NetworkRuleSet { get; private set; }
 
         /// <summary>
-        /// Gets or sets account HierarchicalNamespace enabled if sets to true.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isHnsEnabled")]
-        public bool? IsHnsEnabled { get; set; }
-
-        /// <summary>
-        /// Gets geo Replication Stats
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.geoReplicationStats")]
-        public GeoReplicationStats GeoReplicationStats { get; private set; }
-
-        /// <summary>
-        /// Gets if the failover is in progress, the value will be true,
-        /// otherwise, it will be null.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.failoverInProgress")]
-        public bool? FailoverInProgress { get; private set; }
-
-        /// <summary>
-        /// Gets or sets allow large file shares if sets to Enabled. It cannot
-        /// be disabled once it is enabled. Possible values include:
-        /// 'Disabled', 'Enabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.largeFileSharesState")]
-        public string LargeFileSharesState { get; set; }
-
-        /// <summary>
-        /// Gets list of private endpoint connection associated with the
-        /// specified storage account
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
-        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets or sets maintains information about the network routing choice
-        /// opted by the user for data transfer
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.routingPreference")]
-        public RoutingPreference RoutingPreference { get; set; }
-
-        /// <summary>
-        /// Gets blob restore status
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.blobRestoreStatus")]
-        public BlobRestoreStatus BlobRestoreStatus { get; private set; }
-
-        /// <summary>
-        /// Gets or sets allow or disallow public access to all blobs or
-        /// containers in the storage account. The default interpretation is
-        /// true for this property.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.allowBlobPublicAccess")]
-        public bool? AllowBlobPublicAccess { get; set; }
-
-        /// <summary>
-        /// Gets or sets set the minimum TLS version to be permitted on
-        /// requests to storage. The default interpretation is TLS 1.0 for this
-        /// property. Possible values include: 'TLS1_0', 'TLS1_1', 'TLS1_2'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minimumTlsVersion")]
-        public string MinimumTlsVersion { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (Sku != null)
             {
                 Sku.Validate();
@@ -366,27 +259,9 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 Encryption.Validate();
             }
-            if (AzureFilesIdentityBasedAuthentication != null)
-            {
-                AzureFilesIdentityBasedAuthentication.Validate();
-            }
             if (NetworkRuleSet != null)
             {
                 NetworkRuleSet.Validate();
-            }
-            if (PrivateEndpointConnections != null)
-            {
-                foreach (var element in PrivateEndpointConnections)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (BlobRestoreStatus != null)
-            {
-                BlobRestoreStatus.Validate();
             }
         }
     }
