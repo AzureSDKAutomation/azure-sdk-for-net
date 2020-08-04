@@ -126,6 +126,11 @@ namespace Microsoft.Azure.Management.Network
         IBastionHostsOperations BastionHosts { get; }
 
         /// <summary>
+        /// Gets the ICustomIPPrefixesOperations.
+        /// </summary>
+        ICustomIPPrefixesOperations CustomIPPrefixes { get; }
+
+        /// <summary>
         /// Gets the IDdosCustomPoliciesOperations.
         /// </summary>
         IDdosCustomPoliciesOperations DdosCustomPolicies { get; }
@@ -134,6 +139,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IDdosProtectionPlansOperations.
         /// </summary>
         IDdosProtectionPlansOperations DdosProtectionPlans { get; }
+
+        /// <summary>
+        /// Gets the IDscpConfigurationOperations.
+        /// </summary>
+        IDscpConfigurationOperations DscpConfiguration { get; }
 
         /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
@@ -254,6 +264,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the ILoadBalancerProbesOperations.
         /// </summary>
         ILoadBalancerProbesOperations LoadBalancerProbes { get; }
+
+        /// <summary>
+        /// Gets the IMasterCustomIPPrefixesOperations.
+        /// </summary>
+        IMasterCustomIPPrefixesOperations MasterCustomIPPrefixes { get; }
 
         /// <summary>
         /// Gets the INatGatewaysOperations.
@@ -574,6 +589,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IHubRouteTablesOperations.
         /// </summary>
         IHubRouteTablesOperations HubRouteTables { get; }
+
+        /// <summary>
+        /// Gets the IWebApplicationFirewallPoliciesOperations.
+        /// </summary>
+        IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; }
 
         /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the
