@@ -398,11 +398,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; private set; }
 
         /// <summary>
-        /// Gets the IBackupShortTermRetentionPoliciesOperations.
-        /// </summary>
-        public virtual IBackupShortTermRetentionPoliciesOperations BackupShortTermRetentionPolicies { get; private set; }
-
-        /// <summary>
         /// Gets the ITdeCertificatesOperations.
         /// </summary>
         public virtual ITdeCertificatesOperations TdeCertificates { get; private set; }
@@ -516,6 +511,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedInstancesOperations.
         /// </summary>
         public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupShortTermRetentionPoliciesOperations.
+        /// </summary>
+        public virtual IBackupShortTermRetentionPoliciesOperations BackupShortTermRetentionPolicies { get; private set; }
 
         /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
@@ -838,7 +838,6 @@ namespace Microsoft.Azure.Management.Sql
             ManagedDatabaseVulnerabilityAssessmentScans = new ManagedDatabaseVulnerabilityAssessmentScansOperations(this);
             ManagedDatabaseVulnerabilityAssessments = new ManagedDatabaseVulnerabilityAssessmentsOperations(this);
             InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
-            BackupShortTermRetentionPolicies = new BackupShortTermRetentionPoliciesOperations(this);
             TdeCertificates = new TdeCertificatesOperations(this);
             ManagedInstanceTdeCertificates = new ManagedInstanceTdeCertificatesOperations(this);
             ManagedInstanceKeys = new ManagedInstanceKeysOperations(this);
@@ -862,6 +861,7 @@ namespace Microsoft.Azure.Management.Sql
             SyncGroups = new SyncGroupsOperations(this);
             SyncMembers = new SyncMembersOperations(this);
             ManagedInstances = new ManagedInstancesOperations(this);
+            BackupShortTermRetentionPolicies = new BackupShortTermRetentionPoliciesOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
             ServerAzureADOnlyAuthentications = new ServerAzureADOnlyAuthenticationsOperations(this);

@@ -393,11 +393,6 @@ namespace Microsoft.Azure.Management.Sql
         IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }
 
         /// <summary>
-        /// Gets the IBackupShortTermRetentionPoliciesOperations.
-        /// </summary>
-        IBackupShortTermRetentionPoliciesOperations BackupShortTermRetentionPolicies { get; }
-
-        /// <summary>
         /// Gets the ITdeCertificatesOperations.
         /// </summary>
         ITdeCertificatesOperations TdeCertificates { get; }
@@ -511,6 +506,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedInstancesOperations.
         /// </summary>
         IManagedInstancesOperations ManagedInstances { get; }
+
+        /// <summary>
+        /// Gets the IBackupShortTermRetentionPoliciesOperations.
+        /// </summary>
+        IBackupShortTermRetentionPoliciesOperations BackupShortTermRetentionPolicies { get; }
 
         /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
