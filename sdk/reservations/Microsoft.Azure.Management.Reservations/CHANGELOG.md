@@ -1,11 +1,5 @@
 ## Microsoft.Azure.Management.Reservations release notes
 
-### Changes in 1.14.0-preview
-**Notes**
-
-* Add quota APIs.
-* Add AutoQuotaIncrease APIs.
-
 ### Changes in 1.9.0-preview
 
 **Notes**
