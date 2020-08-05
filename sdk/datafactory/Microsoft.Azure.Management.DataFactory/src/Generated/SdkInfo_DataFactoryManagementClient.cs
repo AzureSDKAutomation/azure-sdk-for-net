@@ -29,11 +29,14 @@ namespace Microsoft.Azure.Management.DataFactory
                 new Tuple<string, string, string>("DataFactory", "IntegrationRuntimeObjectMetadata", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "IntegrationRuntimes", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "LinkedServices", "2018-06-01"),
+                new Tuple<string, string, string>("DataFactory", "ManagedPrivateEndpoints", "2018-06-01"),
+                new Tuple<string, string, string>("DataFactory", "ManagedVirtualNetworks", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "Operations", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "PipelineRuns", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "Pipelines", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "TriggerRuns", "2018-06-01"),
                 new Tuple<string, string, string>("DataFactory", "Triggers", "2018-06-01"),
+                new Tuple<string, string, string>("DataFactory", "managedPrivateEndpoints", "2018-06-01"),
               }.AsEnumerable();
           }
       }
