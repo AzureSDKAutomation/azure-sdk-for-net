@@ -3815,9 +3815,7 @@ namespace DataFactory.Tests.JsonSamples
                     {
                         type: ""SapOpenHubSource"",
                         excludeLastRequest: false,
-                        baseRequestId: ""123"",
-                        customRfcReadTableFunctionModule: ""fakecustomRfcReadTableFunctionModule"",
-                        sapDataColumnDelimiter: ""|""
+                        baseRequestId: ""123""
                     },
                     sink:
                     {
@@ -5589,7 +5587,6 @@ namespace DataFactory.Tests.JsonSamples
                     {
                         type: ""SapTableSource"",
                         rowCount: 3,
-                        sapDataColumnDelimiter: ""|"",
                         partitionOption: ""PartitionOnCalendarDate"",
                         partitionSettings: 
                         {
