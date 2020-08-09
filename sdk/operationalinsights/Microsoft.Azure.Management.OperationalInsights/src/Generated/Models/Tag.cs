@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the tag name.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonProperty(PropertyName = "Name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the tag value.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonProperty(PropertyName = "Value")]
         public string Value { get; set; }
 
         /// <summary>
