@@ -297,6 +297,11 @@ namespace Microsoft.Azure.Management.Security
         public virtual IConnectorsOperations Connectors { get; private set; }
 
         /// <summary>
+        /// Gets the IIotDefenderSettingsOperations.
+        /// </summary>
+        public virtual IIotDefenderSettingsOperations IotDefenderSettings { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -581,6 +586,7 @@ namespace Microsoft.Azure.Management.Security
             SecureScoreControlDefinitions = new SecureScoreControlDefinitionsOperations(this);
             SecuritySolutions = new SecuritySolutionsOperations(this);
             Connectors = new ConnectorsOperations(this);
+            IotDefenderSettings = new IotDefenderSettingsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
