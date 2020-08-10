@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<Operation> ListMethod(this IOperations operations)
+            public static IEnumerable<Operation> List(this IOperations operations)
             {
-                return operations.ListMethodAsync().GetAwaiter().GetResult();
+                return operations.ListAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Operation>> ListMethodAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Operation>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMethodWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
