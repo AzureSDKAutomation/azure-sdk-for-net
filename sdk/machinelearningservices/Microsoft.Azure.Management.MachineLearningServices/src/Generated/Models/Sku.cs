@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     using System.Linq;
 
     /// <summary>
-    /// Sku of the resource
+    /// Sku of the resource.
     /// </summary>
     public partial class Sku
     {
