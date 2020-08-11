@@ -14,25 +14,26 @@ namespace Microsoft.Azure.Management.Maps.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource management error response.
+    /// Creator resource properties
     /// </summary>
-    public partial class ErrorResponse
+    public partial class CreatorProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the CreatorProperties class.
         /// </summary>
-        public ErrorResponse()
+        public CreatorProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the CreatorProperties class.
         /// </summary>
-        /// <param name="error">The error object.</param>
-        public ErrorResponse(ErrorResponseError error = default(ErrorResponseError))
+        /// <param name="provisioningState">The state of the resource
+        /// provisioning, terminal states: Succeeded, Failed, Canceled</param>
+        public CreatorProperties(string provisioningState = default(string))
         {
-            Error = error;
+            ProvisioningState = provisioningState;
             CustomInit();
         }
 
@@ -42,10 +43,11 @@ namespace Microsoft.Azure.Management.Maps.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error object.
+        /// Gets or sets the state of the resource provisioning, terminal
+        /// states: Succeeded, Failed, Canceled
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseError Error { get; set; }
+        [JsonProperty(PropertyName = "provisioningState")]
+        public string ProvisioningState { get; set; }
 
     }
 }

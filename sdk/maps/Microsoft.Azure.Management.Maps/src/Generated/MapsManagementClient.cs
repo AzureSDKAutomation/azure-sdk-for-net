@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Management.Maps
         public virtual IPrivateAtlasesOperations PrivateAtlases { get; private set; }
 
         /// <summary>
+        /// Gets the ICreatorsOperations.
+        /// </summary>
+        public virtual ICreatorsOperations Creators { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the MapsManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -333,6 +338,7 @@ namespace Microsoft.Azure.Management.Maps
             Accounts = new AccountsOperations(this);
             Maps = new MapsOperationsOperations(this);
             PrivateAtlases = new PrivateAtlasesOperations(this);
+            Creators = new CreatorsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-02-01-preview";
             AcceptLanguage = "en-US";

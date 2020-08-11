@@ -84,5 +84,10 @@ namespace Microsoft.Azure.Management.Maps
         /// </summary>
         IPrivateAtlasesOperations PrivateAtlases { get; }
 
+        /// <summary>
+        /// Gets the ICreatorsOperations.
+        /// </summary>
+        ICreatorsOperations Creators { get; }
+
     }
 }

@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.Maps
               return new Tuple<string, string, string>[]
               {
                 new Tuple<string, string, string>("Maps", "Accounts", "2020-02-01-preview"),
+                new Tuple<string, string, string>("Maps", "Creators", "2020-02-01-preview"),
                 new Tuple<string, string, string>("Maps", "Maps", "2020-02-01-preview"),
                 new Tuple<string, string, string>("Maps", "PrivateAtlases", "2020-02-01-preview"),
               }.AsEnumerable();
