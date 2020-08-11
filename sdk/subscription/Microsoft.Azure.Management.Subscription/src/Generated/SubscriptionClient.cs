@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Management.Subscription
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// Ignore existing resources in the subscription to be cancelled.
+        /// </summary>
+        public bool? IgnoreResourceCheck { get; set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
