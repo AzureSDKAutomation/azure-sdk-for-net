@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         AzureWatson,
         [EnumMember(Value = "Query")]
         Query,
-        [EnumMember(Value = "Ingestion")]
-        Ingestion,
         [EnumMember(Value = "Alerts")]
         Alerts
     }
@@ -49,8 +47,6 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
                     return "AzureWatson";
                 case DataSourceType.Query:
                     return "Query";
-                case DataSourceType.Ingestion:
-                    return "Ingestion";
                 case DataSourceType.Alerts:
                     return "Alerts";
             }
@@ -67,8 +63,6 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
                     return DataSourceType.AzureWatson;
                 case "Query":
                     return DataSourceType.Query;
-                case "Ingestion":
-                    return DataSourceType.Ingestion;
                 case "Alerts":
                     return DataSourceType.Alerts;
             }

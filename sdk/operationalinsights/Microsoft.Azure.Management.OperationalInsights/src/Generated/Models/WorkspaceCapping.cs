@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Initializes a new instance of the WorkspaceCapping class.
         /// </summary>
-        /// <param name="dailyQuotaGb">The workspace daily quota for ingestion.
-        /// -1 means unlimited.</param>
+        /// <param name="dailyQuotaGb">The workspace daily quota for
+        /// ingestion.</param>
         /// <param name="quotaNextResetTime">The time when the quota will be
         /// rest.</param>
         /// <param name="dataIngestionStatus">The status of data ingestion for
@@ -51,8 +51,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the workspace daily quota for ingestion. -1 means
-        /// unlimited.
+        /// Gets or sets the workspace daily quota for ingestion.
         /// </summary>
         [JsonProperty(PropertyName = "dailyQuotaGb")]
         public double? DailyQuotaGb { get; set; }

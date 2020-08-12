@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Management.OperationalInsights
             WorkspacePurge = new WorkspacePurgeOperations(this);
             Tables = new TablesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-03-01-preview";
+            ApiVersion = "2020-08-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

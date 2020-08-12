@@ -50,9 +50,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <param name="customerId">This is a read-only property. Represents
         /// the ID associated with the workspace.</param>
         /// <param name="sku">The SKU of the workspace.</param>
-        /// <param name="retentionInDays">The workspace data retention in days.
-        /// -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-        /// maximum allowed for all other Skus. </param>
+        /// <param name="retentionInDays">The workspace data retention in days,
+        /// between 30 and 730.</param>
         /// <param name="workspaceCapping">The daily volume cap for
         /// ingestion.</param>
         /// <param name="publicNetworkAccessForIngestion">The network access
@@ -106,9 +105,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         public WorkspaceSku Sku { get; set; }
 
         /// <summary>
-        /// Gets or sets the workspace data retention in days. -1 means
-        /// Unlimited retention for the Unlimited Sku. 730 days is the maximum
-        /// allowed for all other Skus.
+        /// Gets or sets the workspace data retention in days, between 30 and
+        /// 730.
         /// </summary>
         [JsonProperty(PropertyName = "properties.retentionInDays")]
         public int? RetentionInDays { get; set; }
@@ -162,9 +160,9 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
             {
                 throw new ValidationException(ValidationRules.InclusiveMaximum, "RetentionInDays", 730);
             }
-            if (RetentionInDays < -1)
+            if (RetentionInDays < 30)
             {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", -1);
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", 30);
             }
         }
     }

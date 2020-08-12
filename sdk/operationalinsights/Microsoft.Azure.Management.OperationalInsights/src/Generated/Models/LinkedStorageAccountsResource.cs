@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// Microsoft.Compute/virtualMachines or
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="dataSourceType">Linked storage accounts type. Possible
-        /// values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+        /// values include: 'CustomLogs', 'AzureWatson', 'Query',
         /// 'Alerts'</param>
         /// <param name="storageAccountIds">Linked storage accounts resources
         /// ids.</param>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
 
         /// <summary>
         /// Gets linked storage accounts type. Possible values include:
-        /// 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion', 'Alerts'
+        /// 'CustomLogs', 'AzureWatson', 'Query', 'Alerts'
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataSourceType")]
         public DataSourceType? DataSourceType { get; private set; }
