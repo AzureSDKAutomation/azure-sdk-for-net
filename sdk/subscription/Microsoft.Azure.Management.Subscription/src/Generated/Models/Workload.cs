@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Subscription.Models
 {
 
     /// <summary>
-    /// Defines values for WorkloadType.
+    /// Defines values for Workload.
     /// </summary>
-    public static class WorkloadType
+    public static class Workload
     {
         public const string Production = "Production";
         public const string DevTest = "DevTest";
