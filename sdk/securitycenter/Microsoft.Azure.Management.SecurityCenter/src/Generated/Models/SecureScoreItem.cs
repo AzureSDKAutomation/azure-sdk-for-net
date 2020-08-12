@@ -38,12 +38,15 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="displayName">The initiative’s name</param>
         /// <param name="max">Maximum score available</param>
         /// <param name="current">Current score</param>
-        public SecureScoreItem(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), int? max = default(int?), double? current = default(double?))
+        /// <param name="weight">The weight for calculation of an aggregated
+        /// score for several scopes</param>
+        public SecureScoreItem(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), int? max = default(int?), double? current = default(double?), long? weight = default(long?))
             : base(id, name, type)
         {
             DisplayName = displayName;
             Max = max;
             Current = current;
+            Weight = weight;
             CustomInit();
         }
 
@@ -71,6 +74,13 @@ namespace Microsoft.Azure.Management.Security.Models
         public double? Current { get; private set; }
 
         /// <summary>
+        /// Gets the weight for calculation of an aggregated score for several
+        /// scopes
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.weight")]
+        public long? Weight { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -85,6 +95,10 @@ namespace Microsoft.Azure.Management.Security.Models
             if (Current < 0)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "Current", 0);
+            }
+            if (Weight < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Weight", 0);
             }
         }
     }
