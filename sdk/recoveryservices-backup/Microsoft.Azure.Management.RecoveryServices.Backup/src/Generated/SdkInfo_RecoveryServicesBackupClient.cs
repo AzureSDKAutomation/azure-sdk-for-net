@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("RecoveryServices", "BMSPrepareDataMove", "2020-07-01"),
+                new Tuple<string, string, string>("RecoveryServices", "BMSPrepareDataMoveOperationResult", "2020-07-01"),
+                new Tuple<string, string, string>("RecoveryServices", "BMSTriggerDataMove", "2020-07-01"),
                 new Tuple<string, string, string>("RecoveryServices", "BackupEngines", "2016-12-01"),
                 new Tuple<string, string, string>("RecoveryServices", "BackupJobs", "2019-06-15"),
                 new Tuple<string, string, string>("RecoveryServices", "BackupOperationResults", "2016-12-01"),
@@ -37,6 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 new Tuple<string, string, string>("RecoveryServices", "ExportJobsOperationResults", "2019-06-15"),
                 new Tuple<string, string, string>("RecoveryServices", "FeatureSupport", "2017-07-01"),
                 new Tuple<string, string, string>("RecoveryServices", "GetOperationStatus", "2020-02-02"),
+                new Tuple<string, string, string>("RecoveryServices", "GetOperationStatus", "2020-07-01"),
                 new Tuple<string, string, string>("RecoveryServices", "ItemLevelRecoveryConnections", "2016-12-01"),
                 new Tuple<string, string, string>("RecoveryServices", "JobCancellations", "2019-06-15"),
                 new Tuple<string, string, string>("RecoveryServices", "JobDetails", "2019-06-15"),
