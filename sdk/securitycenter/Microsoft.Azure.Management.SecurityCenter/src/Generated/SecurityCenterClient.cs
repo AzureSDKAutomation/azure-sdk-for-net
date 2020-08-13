@@ -102,6 +102,16 @@ namespace Microsoft.Azure.Management.Security
         public virtual IAdvancedThreatProtectionOperations AdvancedThreatProtection { get; private set; }
 
         /// <summary>
+        /// Gets the IDevicesOperations.
+        /// </summary>
+        public virtual IDevicesOperations Devices { get; private set; }
+
+        /// <summary>
+        /// Gets the IDeviceOperations.
+        /// </summary>
+        public virtual IDeviceOperations Device { get; private set; }
+
+        /// <summary>
         /// Gets the IDeviceSecurityGroupsOperations.
         /// </summary>
         public virtual IDeviceSecurityGroupsOperations DeviceSecurityGroups { get; private set; }
@@ -542,6 +552,8 @@ namespace Microsoft.Azure.Management.Security
             Alerts = new AlertsOperations(this);
             Settings = new SettingsOperations(this);
             AdvancedThreatProtection = new AdvancedThreatProtectionOperations(this);
+            Devices = new DevicesOperations(this);
+            Device = new DeviceOperations(this);
             DeviceSecurityGroups = new DeviceSecurityGroupsOperations(this);
             IotSecuritySolution = new IotSecuritySolutionOperations(this);
             IotSecuritySolutionAnalytics = new IotSecuritySolutionAnalyticsOperations(this);

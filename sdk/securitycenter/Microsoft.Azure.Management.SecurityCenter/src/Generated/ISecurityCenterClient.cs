@@ -97,6 +97,16 @@ namespace Microsoft.Azure.Management.Security
         IAdvancedThreatProtectionOperations AdvancedThreatProtection { get; }
 
         /// <summary>
+        /// Gets the IDevicesOperations.
+        /// </summary>
+        IDevicesOperations Devices { get; }
+
+        /// <summary>
+        /// Gets the IDeviceOperations.
+        /// </summary>
+        IDeviceOperations Device { get; }
+
+        /// <summary>
         /// Gets the IDeviceSecurityGroupsOperations.
         /// </summary>
         IDeviceSecurityGroupsOperations DeviceSecurityGroups { get; }
