@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "HubRouteTables", "2020-06-01"),
                 new Tuple<string, string, string>("Network", "HubVirtualNetworkConnections", "2020-06-01"),
                 new Tuple<string, string, string>("Network", "InboundNatRules", "2020-06-01"),
+                new Tuple<string, string, string>("Network", "InboundSecurityRule", "2020-06-01"),
                 new Tuple<string, string, string>("Network", "IpAllocations", "2020-06-01"),
                 new Tuple<string, string, string>("Network", "IpGroups", "2020-06-01"),
                 new Tuple<string, string, string>("Network", "LoadBalancerBackendAddressPools", "2020-06-01"),
