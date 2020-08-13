@@ -32,17 +32,17 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// </summary>
         /// <param name="displayName">The friendly name of the
         /// subscription.</param>
-        /// <param name="workloadType">The workload type of the subscription.
-        /// It can be either Production or DevTest. Possible values include:
+        /// <param name="workload">The workload type of the subscription. It
+        /// can be either Production or DevTest. Possible values include:
         /// 'Production', 'DevTest'</param>
         /// <param name="billingScope">Determines whether subscription is
         /// fieldLed, partnerLed or LegacyEA</param>
         /// <param name="subscriptionId">This parameter can be used to create
         /// alias for existing subscription Id</param>
-        public PutAliasRequestProperties(string displayName, string workloadType, string billingScope, string subscriptionId = default(string))
+        public PutAliasRequestProperties(string displayName, string workload, string billingScope, string subscriptionId = default(string))
         {
             DisplayName = displayName;
-            WorkloadType = workloadType;
+            Workload = workload;
             BillingScope = billingScope;
             SubscriptionId = subscriptionId;
             CustomInit();
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// either Production or DevTest. Possible values include:
         /// 'Production', 'DevTest'
         /// </summary>
-        [JsonProperty(PropertyName = "workloadType")]
-        public string WorkloadType { get; set; }
+        [JsonProperty(PropertyName = "workload")]
+        public string Workload { get; set; }
 
         /// <summary>
         /// Gets or sets determines whether subscription is fieldLed,
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Management.Subscription.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "DisplayName");
             }
-            if (WorkloadType == null)
+            if (Workload == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "WorkloadType");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Workload");
             }
             if (BillingScope == null)
             {

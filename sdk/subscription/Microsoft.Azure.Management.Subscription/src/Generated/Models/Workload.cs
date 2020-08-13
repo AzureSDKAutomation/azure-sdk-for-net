@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.Subscription.Models
 {
 
     /// <summary>
-    /// Defines values for OfferType.
+    /// Defines values for Workload.
     /// </summary>
-    public static class OfferType
+    public static class Workload
     {
-        public const string MSAZR0017P = "MS-AZR-0017P";
-        public const string MSAZR0148P = "MS-AZR-0148P";
+        public const string Production = "Production";
+        public const string DevTest = "DevTest";
     }
 }
