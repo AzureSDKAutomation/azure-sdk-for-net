@@ -10561,6 +10561,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// will delete the source control configuration for the production
         /// slot.
         /// </param>
+        /// <param name='additionalFlags'>
+        /// Comma separated flags to be considered during delete operations.
+        /// E.g. 'ScmGitHubActionSkipWorkflowDelete' will delete the GitHub
+        /// Action workflow file from GitHub repo.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -10573,7 +10578,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string additionalFlags = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the source control configuration of an app.
         /// </summary>
@@ -11621,6 +11626,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='additionalFlags'>
+        /// Comma separated flags to be considered during delete operations.
+        /// E.g. 'ScmGitHubActionSkipWorkflowDelete' will delete the GitHub
+        /// Action workflow file from GitHub repo.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -11633,7 +11643,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, string additionalFlags = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the source control configuration of an app.
         /// </summary>

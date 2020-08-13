@@ -17888,9 +17888,14 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will
             /// delete the source control configuration for the production slot.
             /// </param>
-            public static void DeleteSourceControlSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
+            /// <param name='additionalFlags'>
+            /// Comma separated flags to be considered during delete operations. E.g.
+            /// 'ScmGitHubActionSkipWorkflowDelete' will delete the GitHub Action workflow
+            /// file from GitHub repo.
+            /// </param>
+            public static void DeleteSourceControlSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, string additionalFlags = default(string))
             {
-                operations.DeleteSourceControlSlotAsync(resourceGroupName, name, slot).GetAwaiter().GetResult();
+                operations.DeleteSourceControlSlotAsync(resourceGroupName, name, slot, additionalFlags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -17912,12 +17917,17 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will
             /// delete the source control configuration for the production slot.
             /// </param>
+            /// <param name='additionalFlags'>
+            /// Comma separated flags to be considered during delete operations. E.g.
+            /// 'ScmGitHubActionSkipWorkflowDelete' will delete the GitHub Action workflow
+            /// file from GitHub repo.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteSourceControlSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSourceControlSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, string additionalFlags = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteSourceControlSlotWithHttpMessagesAsync(resourceGroupName, name, slot, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteSourceControlSlotWithHttpMessagesAsync(resourceGroupName, name, slot, additionalFlags, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -19694,9 +19704,14 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='name'>
             /// Name of the app.
             /// </param>
-            public static void DeleteSourceControl(this IWebAppsOperations operations, string resourceGroupName, string name)
+            /// <param name='additionalFlags'>
+            /// Comma separated flags to be considered during delete operations. E.g.
+            /// 'ScmGitHubActionSkipWorkflowDelete' will delete the GitHub Action workflow
+            /// file from GitHub repo.
+            /// </param>
+            public static void DeleteSourceControl(this IWebAppsOperations operations, string resourceGroupName, string name, string additionalFlags = default(string))
             {
-                operations.DeleteSourceControlAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                operations.DeleteSourceControlAsync(resourceGroupName, name, additionalFlags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -19714,12 +19729,17 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='name'>
             /// Name of the app.
             /// </param>
+            /// <param name='additionalFlags'>
+            /// Comma separated flags to be considered during delete operations. E.g.
+            /// 'ScmGitHubActionSkipWorkflowDelete' will delete the GitHub Action workflow
+            /// file from GitHub repo.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteSourceControlAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSourceControlAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string additionalFlags = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteSourceControlWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteSourceControlWithHttpMessagesAsync(resourceGroupName, name, additionalFlags, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
