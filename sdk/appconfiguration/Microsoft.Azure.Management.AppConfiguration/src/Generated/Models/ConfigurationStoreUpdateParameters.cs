@@ -38,13 +38,17 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
         /// </summary>
         /// <param name="encryption">The encryption settings of the
         /// configuration store.</param>
+        /// <param name="publicNetworkAccess">Control permission for data plane
+        /// traffic coming from public networks while private endpoint is
+        /// enabled. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="identity">The managed identity information for the
         /// configuration store.</param>
         /// <param name="sku">The SKU of the configuration store.</param>
         /// <param name="tags">The ARM resource tags.</param>
-        public ConfigurationStoreUpdateParameters(EncryptionProperties encryption = default(EncryptionProperties), ResourceIdentity identity = default(ResourceIdentity), Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ConfigurationStoreUpdateParameters(EncryptionProperties encryption = default(EncryptionProperties), string publicNetworkAccess = default(string), ResourceIdentity identity = default(ResourceIdentity), Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Encryption = encryption;
+            PublicNetworkAccess = publicNetworkAccess;
             Identity = identity;
             Sku = sku;
             Tags = tags;
@@ -61,6 +65,14 @@ namespace Microsoft.Azure.Management.AppConfiguration.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryption")]
         public EncryptionProperties Encryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets control permission for data plane traffic coming from
+        /// public networks while private endpoint is enabled. Possible values
+        /// include: 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the managed identity information for the configuration
