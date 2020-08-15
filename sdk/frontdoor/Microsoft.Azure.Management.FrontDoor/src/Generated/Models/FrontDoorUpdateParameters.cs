@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="enabledState">Operational status of the Front Door
         /// load balancer. Permitted values are 'Enabled' or 'Disabled'.
         /// Possible values include: 'Enabled', 'Disabled'</param>
-        public FrontDoorUpdateParameters(string friendlyName = default(string), IList<RoutingRule> routingRules = default(IList<RoutingRule>), IList<LoadBalancingSettingsModel> loadBalancingSettings = default(IList<LoadBalancingSettingsModel>), IList<HealthProbeSettingsModel> healthProbeSettings = default(IList<HealthProbeSettingsModel>), IList<BackendPool> backendPools = default(IList<BackendPool>), IList<FrontendEndpoint> frontendEndpoints = default(IList<FrontendEndpoint>), BackendPoolsSettings backendPoolsSettings = default(BackendPoolsSettings), string enabledState = default(string))
+        /// <param name="webApplicationFirewallPolicyLinks">Defines the Web
+        /// Application Firewall links (if applicable)</param>
+        public FrontDoorUpdateParameters(string friendlyName = default(string), IList<RoutingRule> routingRules = default(IList<RoutingRule>), IList<LoadBalancingSettingsModel> loadBalancingSettings = default(IList<LoadBalancingSettingsModel>), IList<HealthProbeSettingsModel> healthProbeSettings = default(IList<HealthProbeSettingsModel>), IList<BackendPool> backendPools = default(IList<BackendPool>), IList<FrontendEndpoint> frontendEndpoints = default(IList<FrontendEndpoint>), BackendPoolsSettings backendPoolsSettings = default(BackendPoolsSettings), string enabledState = default(string), IList<FrontDoorUpdateParametersWebApplicationFirewallPolicyLinksItem> webApplicationFirewallPolicyLinks = default(IList<FrontDoorUpdateParametersWebApplicationFirewallPolicyLinksItem>))
         {
             FriendlyName = friendlyName;
             RoutingRules = routingRules;
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
             FrontendEndpoints = frontendEndpoints;
             BackendPoolsSettings = backendPoolsSettings;
             EnabledState = enabledState;
+            WebApplicationFirewallPolicyLinks = webApplicationFirewallPolicyLinks;
             CustomInit();
         }
 
@@ -117,6 +120,13 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// </summary>
         [JsonProperty(PropertyName = "enabledState")]
         public string EnabledState { get; set; }
+
+        /// <summary>
+        /// Gets or sets defines the Web Application Firewall links (if
+        /// applicable)
+        /// </summary>
+        [JsonProperty(PropertyName = "webApplicationFirewallPolicyLinks")]
+        public IList<FrontDoorUpdateParametersWebApplicationFirewallPolicyLinksItem> WebApplicationFirewallPolicyLinks { get; set; }
 
         /// <summary>
         /// Validate the object.

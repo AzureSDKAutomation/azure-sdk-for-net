@@ -19,18 +19,18 @@ namespace Microsoft.Azure.Management.FrontDoor
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Network", "Endpoints", "2020-05-01"),
+                new Tuple<string, string, string>("Network", "Endpoints", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "Experiments", "2019-11-01"),
-                new Tuple<string, string, string>("Network", "FrontDoorNameAvailability", "2020-05-01"),
-                new Tuple<string, string, string>("Network", "FrontDoorNameAvailabilityWithSubscription", "2020-05-01"),
-                new Tuple<string, string, string>("Network", "FrontDoors", "2020-05-01"),
-                new Tuple<string, string, string>("Network", "FrontendEndpoints", "2020-05-01"),
-                new Tuple<string, string, string>("Network", "ManagedRuleSets", "2020-04-01"),
+                new Tuple<string, string, string>("Network", "FrontDoorNameAvailability", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "FrontDoorNameAvailabilityWithSubscription", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "FrontDoors", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "FrontendEndpoints", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "ManagedRuleSets", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NetworkExperimentProfiles", "2019-11-01"),
-                new Tuple<string, string, string>("Network", "Policies", "2020-04-01"),
+                new Tuple<string, string, string>("Network", "Policies", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "PreconfiguredEndpoints", "2019-11-01"),
                 new Tuple<string, string, string>("Network", "Reports", "2019-11-01"),
-                new Tuple<string, string, string>("Network", "RulesEngines", "2020-05-01"),
+                new Tuple<string, string, string>("Network", "RulesEngines", "2020-08-01"),
               }.AsEnumerable();
           }
       }

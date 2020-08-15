@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="enabledState">Operational status of the Front Door
         /// load balancer. Permitted values are 'Enabled' or 'Disabled'.
         /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="webApplicationFirewallPolicyLinks">Defines the Web
+        /// Application Firewall links (if applicable)</param>
         /// <param name="resourceState">Resource status of the Front Door.
         /// Possible values include: 'Creating', 'Enabling', 'Enabled',
         /// 'Disabling', 'Disabled', 'Deleting'</param>
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="frontdoorId">The Id of the frontdoor.</param>
         /// <param name="rulesEngines">Rules Engine Configurations available to
         /// routing rules.</param>
-        public FrontDoorModel(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string friendlyName = default(string), IList<RoutingRule> routingRules = default(IList<RoutingRule>), IList<LoadBalancingSettingsModel> loadBalancingSettings = default(IList<LoadBalancingSettingsModel>), IList<HealthProbeSettingsModel> healthProbeSettings = default(IList<HealthProbeSettingsModel>), IList<BackendPool> backendPools = default(IList<BackendPool>), IList<FrontendEndpoint> frontendEndpoints = default(IList<FrontendEndpoint>), BackendPoolsSettings backendPoolsSettings = default(BackendPoolsSettings), string enabledState = default(string), string resourceState = default(string), string provisioningState = default(string), string cname = default(string), string frontdoorId = default(string), IList<RulesEngine> rulesEngines = default(IList<RulesEngine>))
+        public FrontDoorModel(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string friendlyName = default(string), IList<RoutingRule> routingRules = default(IList<RoutingRule>), IList<LoadBalancingSettingsModel> loadBalancingSettings = default(IList<LoadBalancingSettingsModel>), IList<HealthProbeSettingsModel> healthProbeSettings = default(IList<HealthProbeSettingsModel>), IList<BackendPool> backendPools = default(IList<BackendPool>), IList<FrontendEndpoint> frontendEndpoints = default(IList<FrontendEndpoint>), BackendPoolsSettings backendPoolsSettings = default(BackendPoolsSettings), string enabledState = default(string), IList<FrontDoorUpdateParametersWebApplicationFirewallPolicyLinksItem> webApplicationFirewallPolicyLinks = default(IList<FrontDoorUpdateParametersWebApplicationFirewallPolicyLinksItem>), string resourceState = default(string), string provisioningState = default(string), string cname = default(string), string frontdoorId = default(string), IList<RulesEngine> rulesEngines = default(IList<RulesEngine>))
             : base(id, name, type, location, tags)
         {
             FriendlyName = friendlyName;
@@ -78,6 +80,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
             FrontendEndpoints = frontendEndpoints;
             BackendPoolsSettings = backendPoolsSettings;
             EnabledState = enabledState;
+            WebApplicationFirewallPolicyLinks = webApplicationFirewallPolicyLinks;
             ResourceState = resourceState;
             ProvisioningState = provisioningState;
             Cname = cname;
@@ -142,6 +145,13 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabledState")]
         public string EnabledState { get; set; }
+
+        /// <summary>
+        /// Gets or sets defines the Web Application Firewall links (if
+        /// applicable)
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.webApplicationFirewallPolicyLinks")]
+        public IList<FrontDoorUpdateParametersWebApplicationFirewallPolicyLinksItem> WebApplicationFirewallPolicyLinks { get; set; }
 
         /// <summary>
         /// Gets or sets resource status of the Front Door. Possible values
