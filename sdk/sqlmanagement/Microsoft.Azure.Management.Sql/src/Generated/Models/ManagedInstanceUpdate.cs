@@ -101,18 +101,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// configuration id to apply to this managed instance.</param>
         /// <param name="minimalTlsVersion">Minimal TLS version. Allowed
         /// values: 'None', '1.0', '1.1', '1.2'</param>
-        /// <param name="backupStorageRedundancy">The backup storage redundancy
-        /// used to store backups for this instance. The options are LRS
+        /// <param name="storageAccountType">The storage account type used to
+        /// store backups for this instance. The options are LRS
         /// (LocallyRedundantStorage), ZRS (ZoneRedundantStorage) and GRS
         /// (GeoRedundantStorage). Possible values include: 'GRS', 'LRS',
         /// 'ZRS'</param>
-        /// <param name="currentBackupStorageRedundancy">The current backup
-        /// storage redundancy used to store backups for this instance. The
-        /// options are LRS (LocallyRedundantStorage), ZRS
-        /// (ZoneRedundantStorage) and GRS (GeoRedundantStorage). Possible
-        /// values include: 'GRS', 'LRS', 'ZRS'</param>
         /// <param name="tags">Resource tags.</param>
-        public ManagedInstanceUpdate(Sku sku = default(Sku), string provisioningState = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), int? vCores = default(int?), int? storageSizeInGB = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), string minimalTlsVersion = default(string), string backupStorageRedundancy = default(string), string currentBackupStorageRedundancy = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ManagedInstanceUpdate(Sku sku = default(Sku), string provisioningState = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), int? vCores = default(int?), int? storageSizeInGB = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), string minimalTlsVersion = default(string), string storageAccountType = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Sku = sku;
             ProvisioningState = provisioningState;
@@ -136,8 +131,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             InstancePoolId = instancePoolId;
             MaintenanceConfigurationId = maintenanceConfigurationId;
             MinimalTlsVersion = minimalTlsVersion;
-            BackupStorageRedundancy = backupStorageRedundancy;
-            CurrentBackupStorageRedundancy = currentBackupStorageRedundancy;
+            StorageAccountType = storageAccountType;
             Tags = tags;
             CustomInit();
         }
@@ -314,22 +308,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets the backup storage redundancy used to store backups
-        /// for this instance. The options are LRS (LocallyRedundantStorage),
-        /// ZRS (ZoneRedundantStorage) and GRS (GeoRedundantStorage). Possible
+        /// Gets or sets the storage account type used to store backups for
+        /// this instance. The options are LRS (LocallyRedundantStorage), ZRS
+        /// (ZoneRedundantStorage) and GRS (GeoRedundantStorage). Possible
         /// values include: 'GRS', 'LRS', 'ZRS'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.backupStorageRedundancy")]
-        public string BackupStorageRedundancy { get; set; }
-
-        /// <summary>
-        /// Gets the current backup storage redundancy used to store backups
-        /// for this instance. The options are LRS (LocallyRedundantStorage),
-        /// ZRS (ZoneRedundantStorage) and GRS (GeoRedundantStorage). Possible
-        /// values include: 'GRS', 'LRS', 'ZRS'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.currentBackupStorageRedundancy")]
-        public string CurrentBackupStorageRedundancy { get; private set; }
+        [JsonProperty(PropertyName = "properties.storageAccountType")]
+        public string StorageAccountType { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags.
