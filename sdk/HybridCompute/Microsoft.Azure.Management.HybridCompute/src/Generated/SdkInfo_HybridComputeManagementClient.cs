@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.HybridCompute
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("HybridCompute", "MachineExtensions", "2019-12-12"),
                 new Tuple<string, string, string>("HybridCompute", "Machines", "2019-12-12"),
                 new Tuple<string, string, string>("HybridCompute", "Operations", "2019-12-12"),
               }.AsEnumerable();
