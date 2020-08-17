@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <summary>
         /// Initializes a new instance of the ManagedIdentityProperties class.
         /// </summary>
-        /// <param name="type">Possible values include: 'None',
-        /// 'SystemAssigned', 'UserAssigned',
+        /// <param name="type">Type of the managed identity. Possible values
+        /// include: 'None', 'SystemAssigned', 'UserAssigned',
         /// 'SystemAssigned,UserAssigned'</param>
+        /// <param name="principalId">Principal Id</param>
+        /// <param name="tenantId">Tenant Id</param>
         public ManagedIdentityProperties(string type = default(string), string principalId = default(string), string tenantId = default(string))
         {
             Type = type;
@@ -46,18 +48,21 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets possible values include: 'None', 'SystemAssigned',
-        /// 'UserAssigned', 'SystemAssigned,UserAssigned'
+        /// Gets or sets type of the managed identity. Possible values include:
+        /// 'None', 'SystemAssigned', 'UserAssigned',
+        /// 'SystemAssigned,UserAssigned'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
+        /// Gets or sets principal Id
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; set; }
 
         /// <summary>
+        /// Gets or sets tenant Id
         /// </summary>
         [JsonProperty(PropertyName = "tenantId")]
         public string TenantId { get; set; }

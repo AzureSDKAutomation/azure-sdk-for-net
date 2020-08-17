@@ -17,25 +17,31 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for SkuOperations.
+    /// Extension methods for SkusOperations.
     /// </summary>
-    public static partial class SkuOperationsExtensions
+    public static partial class SkusOperationsExtensions
     {
+            /// <summary>
+            /// Lists all of the available skus of the Microsoft.AppPlatform provider.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<ResourceSku> List(this ISkuOperations operations)
+            public static IPage<ResourceSku> List(this ISkusOperations operations)
             {
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Lists all of the available skus of the Microsoft.AppPlatform provider.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceSku>> ListAsync(this ISkuOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceSku>> ListAsync(this ISkusOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -43,17 +49,23 @@ namespace Microsoft.Azure.Management.AppPlatform
                 }
             }
 
+            /// <summary>
+            /// Lists all of the available skus of the Microsoft.AppPlatform provider.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<ResourceSku> ListNext(this ISkuOperations operations, string nextPageLink)
+            public static IPage<ResourceSku> ListNext(this ISkusOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Lists all of the available skus of the Microsoft.AppPlatform provider.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -63,7 +75,7 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ResourceSku>> ListNextAsync(this ISkuOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ResourceSku>> ListNextAsync(this ISkusOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

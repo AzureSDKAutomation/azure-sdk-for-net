@@ -318,9 +318,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='version'>
             /// Version of the deployments to be listed
             /// </param>
-            public static IPage<DeploymentResource> ListClusterAllDeployments(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, IList<string> version = default(IList<string>))
+            public static IPage<DeploymentResource> ListForCluster(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, IList<string> version = default(IList<string>))
             {
-                return operations.ListClusterAllDeploymentsAsync(resourceGroupName, serviceName, version).GetAwaiter().GetResult();
+                return operations.ListForClusterAsync(resourceGroupName, serviceName, version).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -342,9 +342,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DeploymentResource>> ListClusterAllDeploymentsAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, IList<string> version = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DeploymentResource>> ListForClusterAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, IList<string> version = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListClusterAllDeploymentsWithHttpMessagesAsync(resourceGroupName, serviceName, version, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForClusterWithHttpMessagesAsync(resourceGroupName, serviceName, version, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -618,6 +618,57 @@ namespace Microsoft.Azure.Management.AppPlatform
             }
 
             /// <summary>
+            /// Operation to delete a Deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the Deployment resource.
+            /// </param>
+            public static void BeginDelete(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName)
+            {
+                operations.BeginDeleteAsync(resourceGroupName, serviceName, appName, deploymentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Operation to delete a Deployment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='appName'>
+            /// The name of the App resource.
+            /// </param>
+            /// <param name='deploymentName'>
+            /// The name of the Deployment resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAsync(this IDeploymentsOperations operations, string resourceGroupName, string serviceName, string appName, string deploymentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceName, appName, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Operation to update an exiting Deployment.
             /// </summary>
             /// <param name='operations'>
@@ -873,9 +924,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<DeploymentResource> ListClusterAllDeploymentsNext(this IDeploymentsOperations operations, string nextPageLink)
+            public static IPage<DeploymentResource> ListForClusterNext(this IDeploymentsOperations operations, string nextPageLink)
             {
-                return operations.ListClusterAllDeploymentsNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListForClusterNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -890,9 +941,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DeploymentResource>> ListClusterAllDeploymentsNextAsync(this IDeploymentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DeploymentResource>> ListForClusterNextAsync(this IDeploymentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListClusterAllDeploymentsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForClusterNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

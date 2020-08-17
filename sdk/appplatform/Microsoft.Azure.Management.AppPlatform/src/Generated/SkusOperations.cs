@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SkuOperations operations.
+    /// SkusOperations operations.
     /// </summary>
-    internal partial class SkuOperations : IServiceOperations<AppPlatformManagementClient>, ISkuOperations
+    internal partial class SkusOperations : IServiceOperations<AppPlatformManagementClient>, ISkusOperations
     {
         /// <summary>
-        /// Initializes a new instance of the SkuOperations class.
+        /// Initializes a new instance of the SkusOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal SkuOperations(AppPlatformManagementClient client)
+        internal SkusOperations(AppPlatformManagementClient client)
         {
             if (client == null)
             {
@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// </summary>
         public AppPlatformManagementClient Client { get; private set; }
 
+        /// <summary>
+        /// Lists all of the available skus of the Microsoft.AppPlatform provider.
+        /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -221,6 +224,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             return _result;
         }
 
+        /// <summary>
+        /// Lists all of the available skus of the Microsoft.AppPlatform provider.
+        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

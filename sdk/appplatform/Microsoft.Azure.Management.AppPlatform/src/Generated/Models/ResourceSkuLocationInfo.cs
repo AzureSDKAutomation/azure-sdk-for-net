@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Locations and availability zones where the SKU is available
+    /// </summary>
     public partial class ResourceSkuLocationInfo
     {
         /// <summary>

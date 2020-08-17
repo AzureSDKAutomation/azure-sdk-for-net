@@ -37,18 +37,15 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// should be in range (1, 2), standard tier should be in range (1,
         /// 8)</param>
         /// <param name="jvmOptions">JVM parameter</param>
-        /// <param name="instanceCount">Instance count, basic tier should be in
-        /// range (1, 25), standard tier should be in range (1, 500)</param>
         /// <param name="environmentVariables">Collection of environment
         /// variables</param>
         /// <param name="runtimeVersion">Runtime version. Possible values
         /// include: 'Java_8', 'Java_11'</param>
-        public DeploymentSettings(int? cpu = default(int?), int? memoryInGB = default(int?), string jvmOptions = default(string), int? instanceCount = default(int?), IDictionary<string, string> environmentVariables = default(IDictionary<string, string>), string runtimeVersion = default(string))
+        public DeploymentSettings(int? cpu = default(int?), int? memoryInGB = default(int?), string jvmOptions = default(string), IDictionary<string, string> environmentVariables = default(IDictionary<string, string>), string runtimeVersion = default(string))
         {
             Cpu = cpu;
             MemoryInGB = memoryInGB;
             JvmOptions = jvmOptions;
-            InstanceCount = instanceCount;
             EnvironmentVariables = environmentVariables;
             RuntimeVersion = runtimeVersion;
             CustomInit();
@@ -78,13 +75,6 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "jvmOptions")]
         public string JvmOptions { get; set; }
-
-        /// <summary>
-        /// Gets or sets instance count, basic tier should be in range (1, 25),
-        /// standard tier should be in range (1, 500)
-        /// </summary>
-        [JsonProperty(PropertyName = "instanceCount")]
-        public int? InstanceCount { get; set; }
 
         /// <summary>
         /// Gets or sets collection of environment variables

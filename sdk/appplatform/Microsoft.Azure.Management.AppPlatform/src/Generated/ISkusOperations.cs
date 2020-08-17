@@ -19,10 +19,14 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SkuOperations operations.
+    /// SkusOperations operations.
     /// </summary>
-    public partial interface ISkuOperations
+    public partial interface ISkusOperations
     {
+        /// <summary>
+        /// Lists all of the available skus of the Microsoft.AppPlatform
+        /// provider.
+        /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -39,6 +43,10 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<ResourceSku>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists all of the available skus of the Microsoft.AppPlatform
+        /// provider.
+        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

@@ -211,6 +211,105 @@ namespace Microsoft.Azure.Management.AppPlatform
             }
 
             /// <summary>
+            /// Create or update certificate resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='certificateName'>
+            /// The name of the certificate resource.
+            /// </param>
+            /// <param name='certificateResource'>
+            /// Parameters for the create or update operation
+            /// </param>
+            public static CertificateResource BeginCreateOrUpdate(this ICertificatesOperations operations, string resourceGroupName, string serviceName, string certificateName, CertificateResource certificateResource)
+            {
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, serviceName, certificateName, certificateResource).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update certificate resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='certificateName'>
+            /// The name of the certificate resource.
+            /// </param>
+            /// <param name='certificateResource'>
+            /// Parameters for the create or update operation
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CertificateResource> BeginCreateOrUpdateAsync(this ICertificatesOperations operations, string resourceGroupName, string serviceName, string certificateName, CertificateResource certificateResource, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, certificateName, certificateResource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Delete the certificate resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='certificateName'>
+            /// The name of the certificate resource.
+            /// </param>
+            public static void BeginDelete(this ICertificatesOperations operations, string resourceGroupName, string serviceName, string certificateName)
+            {
+                operations.BeginDeleteAsync(resourceGroupName, serviceName, certificateName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete the certificate resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the Service resource.
+            /// </param>
+            /// <param name='certificateName'>
+            /// The name of the certificate resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAsync(this ICertificatesOperations operations, string resourceGroupName, string serviceName, string certificateName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceName, certificateName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// List all the certificates of one user.
             /// </summary>
             /// <param name='operations'>

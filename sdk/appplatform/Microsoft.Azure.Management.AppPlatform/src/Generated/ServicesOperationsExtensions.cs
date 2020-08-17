@@ -288,6 +288,9 @@ namespace Microsoft.Azure.Management.AppPlatform
                 }
             }
 
+            /// <summary>
+            /// Disable test endpoint functionality for a Service.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -303,6 +306,9 @@ namespace Microsoft.Azure.Management.AppPlatform
                 operations.DisableTestEndpointAsync(resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Disable test endpoint functionality for a Service.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -321,6 +327,9 @@ namespace Microsoft.Azure.Management.AppPlatform
                 (await operations.DisableTestEndpointWithHttpMessagesAsync(resourceGroupName, serviceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
+            /// <summary>
+            /// Enable test endpoint functionality for a Service.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -336,6 +345,9 @@ namespace Microsoft.Azure.Management.AppPlatform
                 return operations.EnableTestEndpointAsync(resourceGroupName, serviceName).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Enable test endpoint functionality for a Service.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

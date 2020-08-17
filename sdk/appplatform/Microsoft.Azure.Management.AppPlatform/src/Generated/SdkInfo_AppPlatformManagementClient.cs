@@ -19,14 +19,16 @@ namespace Microsoft.Azure.Management.AppPlatform
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("AppPlatform", "Apps", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "Bindings", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "Certificates", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "CustomDomains", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "Deployments", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "Operations", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "Services", "2019-05-01-preview"),
-                new Tuple<string, string, string>("AppPlatform", "Sku", "2019-05-01-preview"),
+                new Tuple<string, string, string>("AppPlatform", "Apps", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "Bindings", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "Certificates", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "ConfigServers", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "CustomDomains", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "Deployments", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "MonitoringSettings", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "Operations", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "Services", "2020-07-01"),
+                new Tuple<string, string, string>("AppPlatform", "Skus", "2020-07-01"),
               }.AsEnumerable();
           }
       }

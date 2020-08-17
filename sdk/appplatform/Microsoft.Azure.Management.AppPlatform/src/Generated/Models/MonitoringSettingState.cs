@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 {
 
     /// <summary>
-    /// Defines values for TraceProxyState.
+    /// Defines values for MonitoringSettingState.
     /// </summary>
-    public static class TraceProxyState
+    public static class MonitoringSettingState
     {
         public const string NotAvailable = "NotAvailable";
         public const string Failed = "Failed";

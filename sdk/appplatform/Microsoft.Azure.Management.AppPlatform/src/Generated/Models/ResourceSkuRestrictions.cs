@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Restrictions where the SKU cannot be used
+    /// </summary>
     public partial class ResourceSkuRestrictions
     {
         /// <summary>

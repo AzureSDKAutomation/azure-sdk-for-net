@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Details of capabilities available to a SKU in specific zones
+    /// </summary>
     public partial class ResourceSkuZoneDetails
     {
         /// <summary>
