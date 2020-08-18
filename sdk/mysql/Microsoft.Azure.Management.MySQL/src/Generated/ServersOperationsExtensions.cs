@@ -370,6 +370,49 @@ namespace Microsoft.Azure.Management.MySQL
             }
 
             /// <summary>
+            /// Upgrade server version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for updating a server.
+            /// </param>
+            public static void Upgrade(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpgradeParameters parameters)
+            {
+                operations.UpgradeAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Upgrade server version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for updating a server.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task UpgradeAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpgradeParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.UpgradeWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Creates a new server or updates an existing server. The update action will
             /// overwrite the existing server.
             /// </summary>
@@ -611,6 +654,49 @@ namespace Microsoft.Azure.Management.MySQL
             public static async Task BeginStopAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Upgrade server version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for updating a server.
+            /// </param>
+            public static void BeginUpgrade(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpgradeParameters parameters)
+            {
+                operations.BeginUpgradeAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Upgrade server version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for updating a server.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginUpgradeAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpgradeParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginUpgradeWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }
