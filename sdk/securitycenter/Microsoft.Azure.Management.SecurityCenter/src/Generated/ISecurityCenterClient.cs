@@ -291,5 +291,15 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         IConnectorsOperations Connectors { get; }
 
+        /// <summary>
+        /// Gets the IIotDefenderSettingsOperations.
+        /// </summary>
+        IIotDefenderSettingsOperations IotDefenderSettings { get; }
+
+        /// <summary>
+        /// Gets the IIotSensorsOperations.
+        /// </summary>
+        IIotSensorsOperations IotSensors { get; }
+
     }
 }
