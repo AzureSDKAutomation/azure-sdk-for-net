@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// will be included</param>
         /// <param name="includeFreshPartialCost">a boolean determining if
         /// FreshPartialCost will be included</param>
-        public ForecastDefinition(string type, string timeframe, QueryTimePeriod timePeriod = default(QueryTimePeriod), QueryDataset dataset = default(QueryDataset), bool? includeActualCost = default(bool?), bool? includeFreshPartialCost = default(bool?))
+        public ForecastDefinition(string type, string timeframe, QueryTimePeriod timePeriod = default(QueryTimePeriod), ForecastDataset dataset = default(ForecastDataset), bool? includeActualCost = default(bool?), bool? includeFreshPartialCost = default(bool?))
         {
             Type = type;
             Timeframe = timeframe;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.CostManagement.Models
         /// Gets or sets has definition for data in this forecast.
         /// </summary>
         [JsonProperty(PropertyName = "dataset")]
-        public QueryDataset Dataset { get; set; }
+        public ForecastDataset Dataset { get; set; }
 
         /// <summary>
         /// Gets or sets a boolean determining if actualCost will be included
