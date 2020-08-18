@@ -75,6 +75,11 @@ namespace Microsoft.Azure.Management.AlertsManagement
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IActionRulesOperations.
+        /// </summary>
+        public virtual IActionRulesOperations ActionRules { get; private set; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -88,11 +93,6 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Gets the ISmartGroupsOperations.
         /// </summary>
         public virtual ISmartGroupsOperations SmartGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IActionRulesOperations.
-        /// </summary>
-        public virtual IActionRulesOperations ActionRules { get; private set; }
 
         /// <summary>
         /// Gets the ISmartDetectorAlertRulesOperations.
@@ -340,10 +340,10 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// </summary>
         private void Initialize()
         {
+            ActionRules = new ActionRulesOperations(this);
             Operations = new Operations(this);
             Alerts = new AlertsOperations(this);
             SmartGroups = new SmartGroupsOperations(this);
-            ActionRules = new ActionRulesOperations(this);
             SmartDetectorAlertRules = new SmartDetectorAlertRulesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";

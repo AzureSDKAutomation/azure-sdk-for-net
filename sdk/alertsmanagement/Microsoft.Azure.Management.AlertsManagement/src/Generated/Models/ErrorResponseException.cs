@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     using Microsoft.Rest;
 
     /// <summary>
-    /// Exception thrown for an invalid response with
-    /// AlertsManagementErrorResponse information.
+    /// Exception thrown for an invalid response with ErrorResponse
+    /// information.
     /// </summary>
-    public partial class AlertsManagementErrorResponseException : RestException
+    public partial class ErrorResponseException : RestException
     {
         /// <summary>
         /// Gets information about the associated HTTP request.
@@ -31,30 +31,30 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// <summary>
         /// Gets or sets the body object.
         /// </summary>
-        public AlertsManagementErrorResponse Body { get; set; }
+        public ErrorResponse Body { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the AlertsManagementErrorResponseException class.
+        /// Initializes a new instance of the ErrorResponseException class.
         /// </summary>
-        public AlertsManagementErrorResponseException()
+        public ErrorResponseException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the AlertsManagementErrorResponseException class.
+        /// Initializes a new instance of the ErrorResponseException class.
         /// </summary>
         /// <param name="message">The exception message.</param>
-        public AlertsManagementErrorResponseException(string message)
+        public ErrorResponseException(string message)
             : this(message, null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the AlertsManagementErrorResponseException class.
+        /// Initializes a new instance of the ErrorResponseException class.
         /// </summary>
         /// <param name="message">The exception message.</param>
         /// <param name="innerException">Inner exception.</param>
-        public AlertsManagementErrorResponseException(string message, System.Exception innerException)
+        public ErrorResponseException(string message, System.Exception innerException)
             : base(message, innerException)
         {
         }

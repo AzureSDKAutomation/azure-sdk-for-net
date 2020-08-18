@@ -16,22 +16,20 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     /// <summary>
     /// An error response from the service.
     /// </summary>
-    public partial class AlertsManagementErrorResponse
+    public partial class ErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the AlertsManagementErrorResponse
-        /// class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public AlertsManagementErrorResponse()
+        public ErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AlertsManagementErrorResponse
-        /// class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public AlertsManagementErrorResponse(ErrorResponseBody error = default(ErrorResponseBody))
+        public ErrorResponse(ErrorResponseBody error = default(ErrorResponseBody))
         {
             Error = error;
             CustomInit();

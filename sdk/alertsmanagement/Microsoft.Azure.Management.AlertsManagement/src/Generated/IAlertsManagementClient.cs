@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Management.AlertsManagement
 
 
         /// <summary>
+        /// Gets the IActionRulesOperations.
+        /// </summary>
+        IActionRulesOperations ActionRules { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
@@ -83,11 +88,6 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Gets the ISmartGroupsOperations.
         /// </summary>
         ISmartGroupsOperations SmartGroups { get; }
-
-        /// <summary>
-        /// Gets the IActionRulesOperations.
-        /// </summary>
-        IActionRulesOperations ActionRules { get; }
 
         /// <summary>
         /// Gets the ISmartDetectorAlertRulesOperations.
