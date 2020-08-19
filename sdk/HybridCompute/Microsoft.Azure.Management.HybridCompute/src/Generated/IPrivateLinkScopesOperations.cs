@@ -19,33 +19,21 @@ namespace Microsoft.Azure.Management.HybridCompute
     using System.Threading.Tasks;
 
     /// <summary>
-    /// MachineExtensionsOperations operations.
+    /// PrivateLinkScopesOperations operations.
     /// </summary>
-    public partial interface IMachineExtensionsOperations
+    public partial interface IPrivateLinkScopesOperations
     {
         /// <summary>
-        /// The operation to create or update the extension.
+        /// Gets a list of all Azure Arc PrivateLinkScopes within a
+        /// subscription.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the machine where the extension should be created or
-        /// updated.
-        /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
-        /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Create Machine Extension operation.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -54,22 +42,12 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MachineExtension>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, MachineExtension extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<HybridComputePrivateLinkScope>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to create or update the extension.
+        /// Gets a list of Azure Arc PrivateLinkScopes within a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the machine where the extension should be created or
-        /// updated.
-        /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
-        /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Create Machine Extension operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,7 +55,7 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -86,18 +64,15 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MachineExtension>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, MachineExtensionUpdate extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<HybridComputePrivateLinkScope>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to delete the extension.
+        /// Deletes a Azure Arc PrivateLinkScope.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='name'>
-        /// The name of the machine where the extension should be deleted.
-        /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
+        /// <param name='scopeName'>
+        /// The name of the Azure Arc PrivateLinkScope resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -105,24 +80,21 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string scopeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to get the extension.
+        /// Returns a Azure Arc PrivateLinkScope.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='name'>
-        /// The name of the machine containing the extension.
-        /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
+        /// <param name='scopeName'>
+        /// The name of the Azure Arc PrivateLinkScope resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,7 +102,7 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -139,18 +111,21 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MachineExtension>> GetWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<HybridComputePrivateLinkScope>> GetWithHttpMessagesAsync(string resourceGroupName, string scopeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to get all extensions of a non-Azure machine
+        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot
+        /// specify a different value for InstrumentationKey nor AppId in the
+        /// Put operation.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='name'>
-        /// The name of the machine containing the extension.
+        /// <param name='scopeName'>
+        /// The name of the Azure Arc PrivateLinkScope resource.
         /// </param>
-        /// <param name='expand'>
-        /// The expand expression to apply on the operation.
+        /// <param name='parameters'>
+        /// Properties that need to be specified to create or update a Azure
+        /// Arc for Servers and Clusters PrivateLinkScope.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -158,7 +133,7 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -167,22 +142,19 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<MachineExtension>>> ListWithHttpMessagesAsync(string resourceGroupName, string name, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<HybridComputePrivateLinkScope>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string scopeName, HybridComputePrivateLinkScope parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to create or update the extension.
+        /// Updates an existing PrivateLinkScope's tags. To update other fields
+        /// use the CreateOrUpdate method.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='name'>
-        /// The name of the machine where the extension should be created or
-        /// updated.
+        /// <param name='scopeName'>
+        /// The name of the Azure Arc PrivateLinkScope resource.
         /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
-        /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Create Machine Extension operation.
+        /// <param name='privateLinkScopeTags'>
+        /// Updated tag information to set into the PrivateLinkScope instance.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -190,7 +162,7 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -199,22 +171,15 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MachineExtension>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, MachineExtension extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<HybridComputePrivateLinkScope>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string scopeName, TagsResource privateLinkScopeTags, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to create or update the extension.
+        /// Deletes a Azure Arc PrivateLinkScope.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='name'>
-        /// The name of the machine where the extension should be created or
-        /// updated.
-        /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
-        /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Create Machine Extension operation.
+        /// <param name='scopeName'>
+        /// The name of the Azure Arc PrivateLinkScope resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -222,43 +187,16 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<MachineExtension>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, MachineExtensionUpdate extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to delete the extension.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the machine where the extension should be deleted.
-        /// </param>
-        /// <param name='extensionName'>
-        /// The name of the machine extension.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string scopeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The operation to get all extensions of a non-Azure machine
+        /// Gets a list of all Azure Arc PrivateLinkScopes within a
+        /// subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -269,7 +207,7 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseV2Exception">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -278,6 +216,28 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<MachineExtension>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<HybridComputePrivateLinkScope>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a list of Azure Arc PrivateLinkScopes within a resource group.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseV2Exception">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<HybridComputePrivateLinkScope>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

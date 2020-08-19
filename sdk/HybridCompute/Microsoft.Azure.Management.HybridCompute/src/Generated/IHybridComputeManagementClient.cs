@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.HybridCompute
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The Hybrid Compute Management Client.
     /// </summary>
     public partial interface IHybridComputeManagementClient : System.IDisposable
     {
@@ -75,14 +74,29 @@ namespace Microsoft.Azure.Management.HybridCompute
         IMachinesOperations Machines { get; }
 
         /// <summary>
-        /// Gets the IMachineExtensionsOperations.
-        /// </summary>
-        IMachineExtensionsOperations MachineExtensions { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkScopesOperations.
+        /// </summary>
+        IPrivateLinkScopesOperations PrivateLinkScopes { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkScopedResourcesOperations.
+        /// </summary>
+        IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; }
 
     }
 }

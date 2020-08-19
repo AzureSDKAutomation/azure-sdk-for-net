@@ -21,9 +21,6 @@ namespace Microsoft.Azure.Management.HybridCompute
     using System.Net;
     using System.Net.Http;
 
-    /// <summary>
-    /// The Hybrid Compute Management Client.
-    /// </summary>
     public partial class HybridComputeManagementClient : ServiceClient<HybridComputeManagementClient>, IHybridComputeManagementClient, IAzureClient
     {
         /// <summary>
@@ -80,14 +77,29 @@ namespace Microsoft.Azure.Management.HybridCompute
         public virtual IMachinesOperations Machines { get; private set; }
 
         /// <summary>
-        /// Gets the IMachineExtensionsOperations.
-        /// </summary>
-        public virtual IMachineExtensionsOperations MachineExtensions { get; private set; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkScopesOperations.
+        /// </summary>
+        public virtual IPrivateLinkScopesOperations PrivateLinkScopes { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkScopedResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the HybridComputeManagementClient class.
@@ -331,10 +343,13 @@ namespace Microsoft.Azure.Management.HybridCompute
         private void Initialize()
         {
             Machines = new MachinesOperations(this);
-            MachineExtensions = new MachineExtensionsOperations(this);
             Operations = new Operations(this);
+            PrivateLinkScopes = new PrivateLinkScopesOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            PrivateLinkScopedResources = new PrivateLinkScopedResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-12-12";
+            ApiVersion = "2020-08-15";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

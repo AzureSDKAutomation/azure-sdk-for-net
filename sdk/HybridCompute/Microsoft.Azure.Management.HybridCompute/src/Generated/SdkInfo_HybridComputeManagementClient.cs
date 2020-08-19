@@ -19,9 +19,12 @@ namespace Microsoft.Azure.Management.HybridCompute
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("HybridCompute", "MachineExtensions", "2019-12-12"),
-                new Tuple<string, string, string>("HybridCompute", "Machines", "2019-12-12"),
-                new Tuple<string, string, string>("HybridCompute", "Operations", "2019-12-12"),
+                new Tuple<string, string, string>("HybridCompute", "Machines", "2020-08-15"),
+                new Tuple<string, string, string>("HybridCompute", "Operations", "2020-08-15"),
+                new Tuple<string, string, string>("HybridCompute", "PrivateEndpointConnections", "2020-08-15"),
+                new Tuple<string, string, string>("HybridCompute", "PrivateLinkResources", "2020-08-15"),
+                new Tuple<string, string, string>("HybridCompute", "PrivateLinkScopedResources", "2020-08-15"),
+                new Tuple<string, string, string>("HybridCompute", "PrivateLinkScopes", "2020-08-15"),
               }.AsEnumerable();
           }
       }
