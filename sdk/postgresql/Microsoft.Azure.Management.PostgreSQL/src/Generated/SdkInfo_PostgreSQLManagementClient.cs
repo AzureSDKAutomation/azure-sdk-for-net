@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.PostgreSQL
                 new Tuple<string, string, string>("DBforPostgreSQL", "Replicas", "2017-12-01"),
                 new Tuple<string, string, string>("DBforPostgreSQL", "ServerAdministrators", "2017-12-01"),
                 new Tuple<string, string, string>("DBforPostgreSQL", "ServerKeys", "2020-01-01"),
-                new Tuple<string, string, string>("DBforPostgreSQL", "ServerSecurityAlertPolicies", "2020-01-01"),
+                new Tuple<string, string, string>("DBforPostgreSQL", "ServerSecurityAlertPolicies", "2017-12-01"),
                 new Tuple<string, string, string>("DBforPostgreSQL", "Servers", "2017-12-01"),
                 new Tuple<string, string, string>("DBforPostgreSQL", "VirtualNetworkRules", "2017-12-01"),
               }.AsEnumerable();

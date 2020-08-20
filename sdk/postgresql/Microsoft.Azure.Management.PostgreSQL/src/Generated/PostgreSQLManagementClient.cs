@@ -128,6 +128,11 @@ namespace Microsoft.Azure.Management.PostgreSQL
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
+        /// Gets the IServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
+
+        /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.
         /// </summary>
         public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
@@ -141,11 +146,6 @@ namespace Microsoft.Azure.Management.PostgreSQL
         /// Gets the IServerKeysOperations.
         /// </summary>
         public virtual IServerKeysOperations ServerKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the PostgreSQLManagementClient class.
@@ -399,10 +399,10 @@ namespace Microsoft.Azure.Management.PostgreSQL
             LocationBasedPerformanceTier = new LocationBasedPerformanceTierOperations(this);
             CheckNameAvailability = new CheckNameAvailabilityOperations(this);
             Operations = new Operations(this);
+            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             ServerKeys = new ServerKeysOperations(this);
-            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
