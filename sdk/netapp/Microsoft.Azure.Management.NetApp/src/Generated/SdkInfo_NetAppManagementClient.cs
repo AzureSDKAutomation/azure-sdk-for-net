@@ -19,12 +19,19 @@ namespace Microsoft.Azure.Management.NetApp
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("NetApp", "Accounts", "2020-02-01"),
-                new Tuple<string, string, string>("NetApp", "NetAppResource", "2020-02-01"),
-                new Tuple<string, string, string>("NetApp", "Operations", "2020-02-01"),
-                new Tuple<string, string, string>("NetApp", "Pools", "2020-02-01"),
-                new Tuple<string, string, string>("NetApp", "Snapshots", "2020-02-01"),
-                new Tuple<string, string, string>("NetApp", "Volumes", "2020-02-01"),
+                new Tuple<string, string, string>("NetApp", "AccountBackups", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Accounts", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "BackupPolicies", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Backups", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "NetAppResource", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Operations", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Pools", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "SnapshotPolicies", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Snapshots", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Vaults", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "Volumes", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "backupPolicies", "2020-06-01"),
+                new Tuple<string, string, string>("NetApp", "snapshotPolicies", "2020-06-01"),
               }.AsEnumerable();
           }
       }
