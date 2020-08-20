@@ -127,6 +127,11 @@ namespace Microsoft.Azure.Management.MySQL
         IOperations Operations { get; }
 
         /// <summary>
+        /// Gets the IServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; }
+
+        /// <summary>
         /// Gets the IQueryTextsOperations.
         /// </summary>
         IQueryTextsOperations QueryTexts { get; }
@@ -175,11 +180,6 @@ namespace Microsoft.Azure.Management.MySQL
         /// Gets the IServerKeysOperations.
         /// </summary>
         IServerKeysOperations ServerKeys { get; }
-
-        /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; }
 
         /// <summary>
         /// Create recommendation action session for the advisor.

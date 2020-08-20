@@ -130,6 +130,11 @@ namespace Microsoft.Azure.Management.MySQL
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
+        /// Gets the IServerSecurityAlertPoliciesOperations.
+        /// </summary>
+        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
+
+        /// <summary>
         /// Gets the IQueryTextsOperations.
         /// </summary>
         public virtual IQueryTextsOperations QueryTexts { get; private set; }
@@ -178,11 +183,6 @@ namespace Microsoft.Azure.Management.MySQL
         /// Gets the IServerKeysOperations.
         /// </summary>
         public virtual IServerKeysOperations ServerKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MySQLManagementClient class.
@@ -436,6 +436,7 @@ namespace Microsoft.Azure.Management.MySQL
             LocationBasedPerformanceTier = new LocationBasedPerformanceTierOperations(this);
             CheckNameAvailability = new CheckNameAvailabilityOperations(this);
             Operations = new Operations(this);
+            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             QueryTexts = new QueryTextsOperations(this);
             TopQueryStatistics = new TopQueryStatisticsOperations(this);
             WaitStatistics = new WaitStatisticsOperations(this);
@@ -446,7 +447,6 @@ namespace Microsoft.Azure.Management.MySQL
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             ServerKeys = new ServerKeysOperations(this);
-            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
