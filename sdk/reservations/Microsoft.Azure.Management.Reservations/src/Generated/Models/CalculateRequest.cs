@@ -18,18 +18,18 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     [Rest.Serialization.JsonTransformation]
-    public partial class PurchaseRequest
+    public partial class CalculateRequest
     {
         /// <summary>
-        /// Initializes a new instance of the PurchaseRequest class.
+        /// Initializes a new instance of the CalculateRequest class.
         /// </summary>
-        public PurchaseRequest()
+        public CalculateRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PurchaseRequest class.
+        /// Initializes a new instance of the CalculateRequest class.
         /// </summary>
         /// <param name="location">The Azure Region where the reserved resource
         /// lives.</param>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <param name="reservedResourceProperties">Properties specific to
         /// each reserved resource type. Not required if not
         /// applicable.</param>
-        public PurchaseRequest(SkuName sku = default(SkuName), string location = default(string), string reservedResourceType = default(string), string billingScopeId = default(string), string term = default(string), string billingPlan = default(string), string quantity = default(string), string displayName = default(string), string appliedScopeType = default(string), IList<string> appliedScopes = default(IList<string>), bool? renew = default(bool?), PurchaseRequestPropertiesReservedResourceProperties reservedResourceProperties = default(PurchaseRequestPropertiesReservedResourceProperties))
+        public CalculateRequest(SkuName sku = default(SkuName), string location = default(string), string reservedResourceType = default(string), string billingScopeId = default(string), string term = default(string), string billingPlan = default(string), int? quantity = default(int?), string displayName = default(string), string appliedScopeType = default(string), IList<string> appliedScopes = default(IList<string>), bool? renew = default(bool?), CalculateRequestPropertiesReservedResourceProperties reservedResourceProperties = default(CalculateRequestPropertiesReservedResourceProperties))
         {
             Sku = sku;
             Location = location;
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties.quantity")]
-        public string Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or sets friendly name of the Reservation
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// Not required if not applicable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.reservedResourceProperties")]
-        public PurchaseRequestPropertiesReservedResourceProperties ReservedResourceProperties { get; set; }
+        public CalculateRequestPropertiesReservedResourceProperties ReservedResourceProperties { get; set; }
 
     }
 }

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <param name="billingCurrencyTotal">Currency and amount that
         /// customer will be charged in customer's local currency for renewal
         /// purchase. Tax is not included.</param>
-        public RenewPropertiesResponse(PurchaseRequest purchaseProperties = default(PurchaseRequest), RenewPropertiesResponsePricingCurrencyTotal pricingCurrencyTotal = default(RenewPropertiesResponsePricingCurrencyTotal), RenewPropertiesResponseBillingCurrencyTotal billingCurrencyTotal = default(RenewPropertiesResponseBillingCurrencyTotal))
+        public RenewPropertiesResponse(CalculateRequest purchaseProperties = default(CalculateRequest), RenewPropertiesResponsePricingCurrencyTotal pricingCurrencyTotal = default(RenewPropertiesResponsePricingCurrencyTotal), RenewPropertiesResponseBillingCurrencyTotal billingCurrencyTotal = default(RenewPropertiesResponseBillingCurrencyTotal))
         {
             PurchaseProperties = purchaseProperties;
             PricingCurrencyTotal = pricingCurrencyTotal;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "purchaseProperties")]
-        public PurchaseRequest PurchaseProperties { get; set; }
+        public CalculateRequest PurchaseProperties { get; set; }
 
         /// <summary>
         /// Gets or sets amount that Microsoft uses for record. Used during

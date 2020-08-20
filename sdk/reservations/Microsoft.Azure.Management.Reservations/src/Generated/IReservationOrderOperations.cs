@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CalculatePriceResponse>> CalculateWithHttpMessagesAsync(PurchaseRequest body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CalculatePriceResponse>> CalculateWithHttpMessagesAsync(CalculateRequest body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all `ReservationOrder`s.
         /// </summary>
