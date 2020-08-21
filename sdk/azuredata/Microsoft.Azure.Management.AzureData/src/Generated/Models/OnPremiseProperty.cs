@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// <param name="signingCertificateThumbprint">Unique thumbprint
         /// returned to customer to verify the certificate being
         /// uploaded</param>
-        public OnPremiseProperty(System.Guid? id = default(System.Guid?), string publicSigningKey = default(string), string signingCertificateThumbprint = default(string))
+        public OnPremiseProperty(System.Guid id, string publicSigningKey, string signingCertificateThumbprint = default(string))
         {
             Id = id;
             PublicSigningKey = publicSigningKey;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// premise cluster
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public System.Guid? Id { get; set; }
+        public System.Guid Id { get; set; }
 
         /// <summary>
         /// Gets or sets certificate that contains the on premise cluster

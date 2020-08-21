@@ -11,25 +11,30 @@
 namespace Microsoft.Azure.Management.AzureData.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
-    public partial class HandshakeResponse
+    /// <summary>
+    /// Used for updating a data controller resource.
+    /// </summary>
+    public partial class DataControllerUpdate
     {
         /// <summary>
-        /// Initializes a new instance of the HandshakeResponse class.
+        /// Initializes a new instance of the DataControllerUpdate class.
         /// </summary>
-        public HandshakeResponse()
+        public DataControllerUpdate()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the HandshakeResponse class.
+        /// Initializes a new instance of the DataControllerUpdate class.
         /// </summary>
-        public HandshakeResponse(string usageUploadUrl = default(string), string usageResultUrl = default(string))
+        /// <param name="tags">Resource tags</param>
+        public DataControllerUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
-            UsageUploadUrl = usageUploadUrl;
-            UsageResultUrl = usageResultUrl;
+            Tags = tags;
             CustomInit();
         }
 
@@ -39,14 +44,10 @@ namespace Microsoft.Azure.Management.AzureData.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets resource tags
         /// </summary>
-        [JsonProperty(PropertyName = "usageUploadUrl")]
-        public string UsageUploadUrl { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "usageResultUrl")]
-        public string UsageResultUrl { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
     }
 }

@@ -43,17 +43,10 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// Microsoft.Compute/virtualMachines or
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
-        /// <param name="requestType">Possible values include: 'Unknown',
-        /// 'Handshake', 'UsageUpload'</param>
-        public DataControllerResource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), OnPremiseProperty onPremiseProperty = default(OnPremiseProperty), string requestType = default(string), UsageUploadRequest uploadRequest = default(UsageUploadRequest), UsageUploadResponse uploadResponse = default(UsageUploadResponse), object handshakeRequest = default(object), HandshakeResponse handshakeResponse = default(HandshakeResponse))
+        public DataControllerResource(string location, OnPremiseProperty onPremiseProperty, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData))
             : base(location, id, name, type, tags, systemData)
         {
             OnPremiseProperty = onPremiseProperty;
-            RequestType = requestType;
-            UploadRequest = uploadRequest;
-            UploadResponse = uploadResponse;
-            HandshakeRequest = handshakeRequest;
-            HandshakeResponse = handshakeResponse;
             CustomInit();
         }
 
@@ -66,33 +59,6 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.onPremiseProperty")]
         public OnPremiseProperty OnPremiseProperty { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'Unknown', 'Handshake',
-        /// 'UsageUpload'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.requestType")]
-        public string RequestType { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.uploadRequest")]
-        public UsageUploadRequest UploadRequest { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.uploadResponse")]
-        public UsageUploadResponse UploadResponse { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.handshakeRequest")]
-        public object HandshakeRequest { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.handshakeResponse")]
-        public HandshakeResponse HandshakeResponse { get; set; }
 
     }
 }

@@ -1019,6 +1019,9 @@ namespace Microsoft.Azure.Management.AzureData
         /// </param>
         /// <param name='dataControllerName'>
         /// </param>
+        /// <param name='tags'>
+        /// Resource tags
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1040,7 +1043,7 @@ namespace Microsoft.Azure.Management.AzureData
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DataControllerResource>> PatchDataControllerWithHttpMessagesAsync(string resourceGroupName, string dataControllerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DataControllerResource>> PatchDataControllerWithHttpMessagesAsync(string resourceGroupName, string dataControllerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1058,6 +1061,11 @@ namespace Microsoft.Azure.Management.AzureData
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+            DataControllerUpdate dataControllerResource = new DataControllerUpdate();
+            if (tags != null)
+            {
+                dataControllerResource.Tags = tags;
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1067,6 +1075,7 @@ namespace Microsoft.Azure.Management.AzureData
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("dataControllerName", dataControllerName);
+                tracingParameters.Add("dataControllerResource", dataControllerResource);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "PatchDataController", tracingParameters);
             }
@@ -1119,6 +1128,12 @@ namespace Microsoft.Azure.Management.AzureData
 
             // Serialize Request
             string _requestContent = null;
+            if(dataControllerResource != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(dataControllerResource, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {

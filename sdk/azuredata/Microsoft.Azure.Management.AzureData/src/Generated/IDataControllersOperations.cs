@@ -144,6 +144,9 @@ namespace Microsoft.Azure.Management.AzureData
         /// </param>
         /// <param name='dataControllerName'>
         /// </param>
+        /// <param name='tags'>
+        /// Resource tags
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -159,7 +162,7 @@ namespace Microsoft.Azure.Management.AzureData
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DataControllerResource>> PatchDataControllerWithHttpMessagesAsync(string resourceGroupName, string dataControllerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DataControllerResource>> PatchDataControllerWithHttpMessagesAsync(string resourceGroupName, string dataControllerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List dataController resources in the subscription
         /// </summary>

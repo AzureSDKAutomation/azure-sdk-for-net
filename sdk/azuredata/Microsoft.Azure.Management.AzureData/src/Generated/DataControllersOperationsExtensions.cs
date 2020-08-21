@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.AzureData
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -211,9 +213,12 @@ namespace Microsoft.Azure.Management.AzureData
             /// </param>
             /// <param name='dataControllerName'>
             /// </param>
-            public static DataControllerResource PatchDataController(this IDataControllersOperations operations, string resourceGroupName, string dataControllerName)
+            /// <param name='tags'>
+            /// Resource tags
+            /// </param>
+            public static DataControllerResource PatchDataController(this IDataControllersOperations operations, string resourceGroupName, string dataControllerName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
-                return operations.PatchDataControllerAsync(resourceGroupName, dataControllerName).GetAwaiter().GetResult();
+                return operations.PatchDataControllerAsync(resourceGroupName, dataControllerName, tags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -227,12 +232,15 @@ namespace Microsoft.Azure.Management.AzureData
             /// </param>
             /// <param name='dataControllerName'>
             /// </param>
+            /// <param name='tags'>
+            /// Resource tags
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DataControllerResource> PatchDataControllerAsync(this IDataControllersOperations operations, string resourceGroupName, string dataControllerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DataControllerResource> PatchDataControllerAsync(this IDataControllersOperations operations, string resourceGroupName, string dataControllerName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PatchDataControllerWithHttpMessagesAsync(resourceGroupName, dataControllerName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PatchDataControllerWithHttpMessagesAsync(resourceGroupName, dataControllerName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
