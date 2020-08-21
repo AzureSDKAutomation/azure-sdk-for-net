@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Management.DomainServices
               {
                 new Tuple<string, string, string>("AAD", "DomainServiceOperations", "2017-06-01"),
                 new Tuple<string, string, string>("AAD", "DomainServices", "2017-06-01"),
+                new Tuple<string, string, string>("Aad", "OuContainer", "2017-06-01"),
+                new Tuple<string, string, string>("Aad", "OuContainerOperations", "2017-06-01"),
               }.AsEnumerable();
           }
       }

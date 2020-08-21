@@ -87,6 +87,16 @@ namespace Microsoft.Azure.Management.DomainServices
         public virtual IDomainServicesOperations DomainServices { get; private set; }
 
         /// <summary>
+        /// Gets the IOuContainerOperations.
+        /// </summary>
+        public virtual IOuContainerOperations OuContainerOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IOuContainerOperationsOperations.
+        /// </summary>
+        public virtual IOuContainerOperationsOperations OuContainer { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the DomainServicesResourceProviderClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -329,6 +339,8 @@ namespace Microsoft.Azure.Management.DomainServices
         {
             DomainServiceOperations = new DomainServiceOperations(this);
             DomainServices = new DomainServicesOperations(this);
+            OuContainerOperations = new OuContainerOperations(this);
+            OuContainer = new OuContainerOperationsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2017-06-01";
             AcceptLanguage = "en-US";

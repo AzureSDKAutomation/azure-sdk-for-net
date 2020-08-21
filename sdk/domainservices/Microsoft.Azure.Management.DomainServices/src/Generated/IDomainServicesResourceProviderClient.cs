@@ -81,5 +81,15 @@ namespace Microsoft.Azure.Management.DomainServices
         /// </summary>
         IDomainServicesOperations DomainServices { get; }
 
+        /// <summary>
+        /// Gets the IOuContainerOperations.
+        /// </summary>
+        IOuContainerOperations OuContainerOperations { get; }
+
+        /// <summary>
+        /// Gets the IOuContainerOperationsOperations.
+        /// </summary>
+        IOuContainerOperationsOperations OuContainer { get; }
+
     }
 }
