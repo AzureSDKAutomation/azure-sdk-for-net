@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.Subscription
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("Subscription", "Alias", "2020-09-01"),
                 new Tuple<string, string, string>("Subscription", "Operations", "2020-09-01"),
                 new Tuple<string, string, string>("Subscription", "Subscription", "2020-09-01"),
                 new Tuple<string, string, string>("SubscriptionClient", "Subscriptions", "2016-06-01"),
