@@ -11,17 +11,16 @@
 namespace Microsoft.Azure.Management.MachineLearningServices.Models
 {
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The Private Endpoint Connection resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : Resource
+    public partial class PrivateEndpointConnection : IResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -37,23 +36,22 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <param name="privateLinkServiceConnectionState">A collection of
         /// information about the state of the connection between service
         /// consumer and provider.</param>
-        /// <param name="id">Specifies the resource ID.</param>
-        /// <param name="name">Specifies the name of the resource.</param>
-        /// <param name="identity">The identity of the resource.</param>
-        /// <param name="location">Specifies the location of the
-        /// resource.</param>
-        /// <param name="type">Specifies the type of the resource.</param>
-        /// <param name="tags">Contains resource tags defined as key/value
-        /// pairs.</param>
-        /// <param name="sku">The sku of the workspace.</param>
+        /// <param name="id">ResourceId of the private endpoint
+        /// connection.</param>
+        /// <param name="name">Friendly name of the private endpoint
+        /// connection.</param>
+        /// <param name="type">Resource type of private endpoint
+        /// connection.</param>
         /// <param name="privateEndpoint">The resource of private end
         /// point.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// private endpoint connection resource. Possible values include:
         /// 'Succeeded', 'Creating', 'Deleting', 'Failed'</param>
-        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), Identity identity = default(Identity), string location = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
-            : base(id, name, identity, location, type, tags, sku)
+        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
         {
+            Id = id;
+            Name = name;
+            Type = type;
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             ProvisioningState = provisioningState;
@@ -64,6 +62,24 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets resourceId of the private endpoint connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets friendly name of the private endpoint connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets resource type of private endpoint connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets the resource of private end point.
@@ -92,9 +108,8 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (PrivateLinkServiceConnectionState == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "PrivateLinkServiceConnectionState");

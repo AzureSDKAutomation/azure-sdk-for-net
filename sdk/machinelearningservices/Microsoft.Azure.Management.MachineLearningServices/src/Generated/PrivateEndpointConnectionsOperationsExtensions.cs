@@ -168,5 +168,50 @@ namespace Microsoft.Azure.Management.MachineLearningServices
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
+            /// <summary>
+            /// Deletes the specified private endpoint connection associated with the
+            /// workspace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// The name of the private endpoint connection associated with the workspace
+            /// </param>
+            public static void BeginDelete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string workspaceName, string privateEndpointConnectionName)
+            {
+                operations.BeginDeleteAsync(resourceGroupName, workspaceName, privateEndpointConnectionName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes the specified private endpoint connection associated with the
+            /// workspace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group in which workspace is located.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// Name of Azure Machine Learning workspace.
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// The name of the private endpoint connection associated with the workspace
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string workspaceName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
     }
 }

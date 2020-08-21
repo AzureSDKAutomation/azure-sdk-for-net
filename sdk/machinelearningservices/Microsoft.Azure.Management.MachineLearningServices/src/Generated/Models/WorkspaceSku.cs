@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes Workspace Sku details and features
+    /// AML workspace sku information
     /// </summary>
     public partial class WorkspaceSku
     {
@@ -31,25 +31,11 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         /// <summary>
         /// Initializes a new instance of the WorkspaceSku class.
         /// </summary>
-        /// <param name="locations">The set of locations that the SKU is
-        /// available. This will be supported and registered Azure Geo Regions
-        /// (e.g. West US, East US, Southeast Asia, etc.).</param>
-        /// <param name="locationInfo">A list of locations and availability
-        /// zones in those locations where the SKU is available.</param>
-        /// <param name="tier">Sku Tier like Basic or Enterprise</param>
-        /// <param name="capabilities">List of features/user capabilities
-        /// associated with the sku</param>
-        /// <param name="restrictions">The restrictions because of which SKU
-        /// cannot be used. This is empty if there are no restrictions.</param>
-        public WorkspaceSku(IList<string> locations = default(IList<string>), IList<ResourceSkuLocationInfo> locationInfo = default(IList<ResourceSkuLocationInfo>), string tier = default(string), string resourceType = default(string), string name = default(string), IList<SKUCapability> capabilities = default(IList<SKUCapability>), IList<Restriction> restrictions = default(IList<Restriction>))
+        /// <param name="skus">The list of workspace sku settings</param>
+        public WorkspaceSku(string resourceType = default(string), IList<SkuSettings> skus = default(IList<SkuSettings>))
         {
-            Locations = locations;
-            LocationInfo = locationInfo;
-            Tier = tier;
             ResourceType = resourceType;
-            Name = name;
-            Capabilities = capabilities;
-            Restrictions = restrictions;
+            Skus = skus;
             CustomInit();
         }
 
@@ -59,48 +45,15 @@ namespace Microsoft.Azure.Management.MachineLearningServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the set of locations that the SKU is available. This will be
-        /// supported and registered Azure Geo Regions (e.g. West US, East US,
-        /// Southeast Asia, etc.).
-        /// </summary>
-        [JsonProperty(PropertyName = "locations")]
-        public IList<string> Locations { get; private set; }
-
-        /// <summary>
-        /// Gets a list of locations and availability zones in those locations
-        /// where the SKU is available.
-        /// </summary>
-        [JsonProperty(PropertyName = "locationInfo")]
-        public IList<ResourceSkuLocationInfo> LocationInfo { get; private set; }
-
-        /// <summary>
-        /// Gets sku Tier like Basic or Enterprise
-        /// </summary>
-        [JsonProperty(PropertyName = "tier")]
-        public string Tier { get; private set; }
-
-        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "resourceType")]
         public string ResourceType { get; private set; }
 
         /// <summary>
+        /// Gets the list of workspace sku settings
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets list of features/user capabilities associated with the sku
-        /// </summary>
-        [JsonProperty(PropertyName = "capabilities")]
-        public IList<SKUCapability> Capabilities { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the restrictions because of which SKU cannot be used.
-        /// This is empty if there are no restrictions.
-        /// </summary>
-        [JsonProperty(PropertyName = "restrictions")]
-        public IList<Restriction> Restrictions { get; set; }
+        [JsonProperty(PropertyName = "skus")]
+        public IList<SkuSettings> Skus { get; private set; }
 
     }
 }
