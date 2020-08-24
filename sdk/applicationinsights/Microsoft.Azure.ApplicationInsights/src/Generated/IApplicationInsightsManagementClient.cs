@@ -140,6 +140,11 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         IWorkbooksOperations Workbooks { get; }
 
         /// <summary>
+        /// Gets the IMyWorkbooksOperations.
+        /// </summary>
+        IMyWorkbooksOperations MyWorkbooks { get; }
+
+        /// <summary>
         /// Gets the IComponentsOperations.
         /// </summary>
         IComponentsOperations Components { get; }

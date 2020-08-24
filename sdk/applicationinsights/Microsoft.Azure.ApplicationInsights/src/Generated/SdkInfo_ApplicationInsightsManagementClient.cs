@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
                 new Tuple<string, string, string>("Insights", "Components", "2018-05-01-preview"),
                 new Tuple<string, string, string>("Insights", "ExportConfigurations", "2015-05-01"),
                 new Tuple<string, string, string>("Insights", "Favorites", "2015-05-01"),
+                new Tuple<string, string, string>("Insights", "MyWorkbooks", "2015-05-01"),
                 new Tuple<string, string, string>("Insights", "Operations", "2015-05-01"),
                 new Tuple<string, string, string>("Insights", "ProactiveDetectionConfigurations", "2015-05-01"),
                 new Tuple<string, string, string>("Insights", "WebTests", "2015-05-01"),

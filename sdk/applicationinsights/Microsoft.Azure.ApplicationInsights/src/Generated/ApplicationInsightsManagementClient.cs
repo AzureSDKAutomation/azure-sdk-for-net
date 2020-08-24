@@ -145,6 +145,11 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         public virtual IWorkbooksOperations Workbooks { get; private set; }
 
         /// <summary>
+        /// Gets the IMyWorkbooksOperations.
+        /// </summary>
+        public virtual IMyWorkbooksOperations MyWorkbooks { get; private set; }
+
+        /// <summary>
         /// Gets the IComponentsOperations.
         /// </summary>
         public virtual IComponentsOperations Components { get; private set; }
@@ -415,6 +420,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             WebTests = new WebTestsOperations(this);
             AnalyticsItems = new AnalyticsItemsOperations(this);
             Workbooks = new WorkbooksOperations(this);
+            MyWorkbooks = new MyWorkbooksOperations(this);
             Components = new ComponentsOperations(this);
             ComponentLinkedStorageAccounts = new ComponentLinkedStorageAccountsOperations(this);
             LiveToken = new LiveTokenOperations(this);
