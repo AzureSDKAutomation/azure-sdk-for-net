@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Redis.Models
         /// 'P'</param>
         /// <param name="capacity">The size of the Redis cache to deploy. Valid
         /// values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P
-        /// (Premium) family (1, 2, 3, 4).</param>
+        /// (Premium) family (1, 2, 3, 4, 5).</param>
         public Sku(string name, string family, int capacity)
         {
             Name = name;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Redis.Models
         /// <summary>
         /// Gets or sets the size of the Redis cache to deploy. Valid values:
         /// for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P
-        /// (Premium) family (1, 2, 3, 4).
+        /// (Premium) family (1, 2, 3, 4, 5).
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public int Capacity { get; set; }
