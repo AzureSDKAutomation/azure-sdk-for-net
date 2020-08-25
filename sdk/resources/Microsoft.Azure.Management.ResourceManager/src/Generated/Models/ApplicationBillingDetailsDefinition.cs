@@ -14,24 +14,28 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Template Specs error response.
+    /// Managed application billing details definition.
     /// </summary>
-    public partial class TemplateSpecsError
+    public partial class ApplicationBillingDetailsDefinition
     {
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecsError class.
+        /// Initializes a new instance of the
+        /// ApplicationBillingDetailsDefinition class.
         /// </summary>
-        public TemplateSpecsError()
+        public ApplicationBillingDetailsDefinition()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecsError class.
+        /// Initializes a new instance of the
+        /// ApplicationBillingDetailsDefinition class.
         /// </summary>
-        public TemplateSpecsError(ErrorResponse error = default(ErrorResponse))
+        /// <param name="resourceUsageId">The managed application resource
+        /// usage Id.</param>
+        public ApplicationBillingDetailsDefinition(string resourceUsageId = default(string))
         {
-            Error = error;
+            ResourceUsageId = resourceUsageId;
             CustomInit();
         }
 
@@ -41,9 +45,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the managed application resource usage Id.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponse Error { get; set; }
+        [JsonProperty(PropertyName = "resourceUsageId")]
+        public string ResourceUsageId { get; set; }
 
     }
 }

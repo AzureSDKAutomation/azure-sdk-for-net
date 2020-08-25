@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
 {
 
     /// <summary>
-    /// Defines values for DeploymentMode.
+    /// Defines values for JitApproverType.
     /// </summary>
-    public static class DeploymentMode
+    public static class JitApproverType
     {
-        public const string NotSpecified = "NotSpecified";
-        public const string Incremental = "Incremental";
-        public const string Complete = "Complete";
+        public const string User = "user";
+        public const string Group = "group";
     }
 }

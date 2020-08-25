@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
 {
 
     /// <summary>
-    /// Defines values for DeploymentMode.
+    /// Defines values for ApplicationManagementMode.
     /// </summary>
-    public static class DeploymentMode
+    public static class ApplicationManagementMode
     {
         public const string NotSpecified = "NotSpecified";
-        public const string Incremental = "Incremental";
-        public const string Complete = "Complete";
+        public const string Unmanaged = "Unmanaged";
+        public const string Managed = "Managed";
     }
 }

@@ -15,26 +15,28 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents a Template Spec artifact.
+    /// Managed application notification endpoint.
     /// </summary>
-    public partial class TemplateSpecArtifact
+    public partial class ApplicationNotificationEndpoint
     {
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecArtifact class.
+        /// Initializes a new instance of the ApplicationNotificationEndpoint
+        /// class.
         /// </summary>
-        public TemplateSpecArtifact()
+        public ApplicationNotificationEndpoint()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecArtifact class.
+        /// Initializes a new instance of the ApplicationNotificationEndpoint
+        /// class.
         /// </summary>
-        /// <param name="path">A filesystem safe relative path of the
-        /// artifact.</param>
-        public TemplateSpecArtifact(string path)
+        /// <param name="uri">The managed application notification endpoint
+        /// uri.</param>
+        public ApplicationNotificationEndpoint(string uri)
         {
-            Path = path;
+            Uri = uri;
             CustomInit();
         }
 
@@ -44,10 +46,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a filesystem safe relative path of the artifact.
+        /// Gets or sets the managed application notification endpoint uri.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
-        public string Path { get; set; }
+        [JsonProperty(PropertyName = "uri")]
+        public string Uri { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -57,9 +59,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Path == null)
+            if (Uri == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Uri");
             }
         }
     }

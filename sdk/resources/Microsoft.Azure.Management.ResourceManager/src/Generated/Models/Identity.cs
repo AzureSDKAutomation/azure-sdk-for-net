@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// 'None'</param>
         /// <param name="userAssignedIdentities">The list of user identities
         /// associated with the resource. The user identity dictionary key
-        /// references will be ARM resource ids in the form:
+        /// references will be resource ids in the form:
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, IdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, IdentityUserAssignedIdentitiesValue>))
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, UserAssignedResourceIdentity> userAssignedIdentities = default(IDictionary<string, UserAssignedResourceIdentity>))
         {
             PrincipalId = principalId;
             TenantId = tenantId;
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
 
         /// <summary>
         /// Gets or sets the list of user identities associated with the
-        /// resource. The user identity dictionary key references will be ARM
+        /// resource. The user identity dictionary key references will be
         /// resource ids in the form:
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentities")]
-        public IDictionary<string, IdentityUserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
+        public IDictionary<string, UserAssignedResourceIdentity> UserAssignedIdentities { get; set; }
 
     }
 }

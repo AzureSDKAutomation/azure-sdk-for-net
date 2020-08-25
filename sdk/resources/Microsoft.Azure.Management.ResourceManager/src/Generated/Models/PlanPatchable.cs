@@ -10,32 +10,31 @@
 
 namespace Microsoft.Azure.Management.ResourceManager.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Plan for the managed application.
     /// </summary>
-    public partial class Plan
+    public partial class PlanPatchable
     {
         /// <summary>
-        /// Initializes a new instance of the Plan class.
+        /// Initializes a new instance of the PlanPatchable class.
         /// </summary>
-        public Plan()
+        public PlanPatchable()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Plan class.
+        /// Initializes a new instance of the PlanPatchable class.
         /// </summary>
         /// <param name="name">The plan name.</param>
         /// <param name="publisher">The publisher ID.</param>
         /// <param name="product">The product code.</param>
-        /// <param name="version">The plan's version.</param>
         /// <param name="promotionCode">The promotion code.</param>
-        public Plan(string name, string publisher, string product, string version, string promotionCode = default(string))
+        /// <param name="version">The plan's version.</param>
+        public PlanPatchable(string name = default(string), string publisher = default(string), string product = default(string), string promotionCode = default(string), string version = default(string))
         {
             Name = name;
             Publisher = publisher;
@@ -80,30 +79,5 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-            if (Publisher == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Publisher");
-            }
-            if (Product == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Product");
-            }
-            if (Version == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Version");
-            }
-        }
     }
 }

@@ -12,12 +12,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
 {
 
     /// <summary>
-    /// Defines values for DeploymentMode.
+    /// Defines values for JitRequestState.
     /// </summary>
-    public static class DeploymentMode
+    public static class JitRequestState
     {
         public const string NotSpecified = "NotSpecified";
-        public const string Incremental = "Incremental";
-        public const string Complete = "Complete";
+        public const string Pending = "Pending";
+        public const string Approved = "Approved";
+        public const string Denied = "Denied";
+        public const string Failed = "Failed";
+        public const string Canceled = "Canceled";
+        public const string Expired = "Expired";
+        public const string Timeout = "Timeout";
     }
 }

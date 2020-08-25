@@ -19,24 +19,18 @@ namespace Microsoft.Azure.Management.ResourceManager
     using System.Threading.Tasks;
 
     /// <summary>
-    /// TemplateSpecVersionsOperations operations.
+    /// JitRequestsOperations operations.
     /// </summary>
-    public partial interface ITemplateSpecVersionsOperations
+    public partial interface IJitRequestsOperations
     {
         /// <summary>
-        /// Creates or updates a Template Spec version.
+        /// Gets the JIT request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='templateSpecName'>
-        /// Name of the Template Spec.
-        /// </param>
-        /// <param name='templateSpecVersion'>
-        /// The version of the Template Spec.
-        /// </param>
-        /// <param name='templateSpecVersionModel'>
-        /// Template Spec Version supplied to the operation.
+        /// <param name='jitRequestName'>
+        /// The name of the JIT request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,7 +38,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="TemplateSpecsErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -53,21 +47,18 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TemplateSpecVersion>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string templateSpecName, string templateSpecVersion, TemplateSpecVersion templateSpecVersionModel, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<JitRequestDefinition>> GetWithHttpMessagesAsync(string resourceGroupName, string jitRequestName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates Template Spec Version tags with specified values.
+        /// Creates or updates the JIT request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='templateSpecName'>
-        /// Name of the Template Spec.
+        /// <param name='jitRequestName'>
+        /// The name of the JIT request.
         /// </param>
-        /// <param name='templateSpecVersion'>
-        /// The version of the Template Spec.
-        /// </param>
-        /// <param name='templateSpecVersionUpdateModel'>
-        /// Template Spec Version resource with the tags to be updated.
+        /// <param name='parameters'>
+        /// Parameters supplied to the update JIT request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,7 +66,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="TemplateSpecsErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -84,18 +75,18 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TemplateSpecVersion>> UpdateWithHttpMessagesAsync(string resourceGroupName, string templateSpecName, string templateSpecVersion, TemplateSpecVersionUpdateModel templateSpecVersionUpdateModel = default(TemplateSpecVersionUpdateModel), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<JitRequestDefinition>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string jitRequestName, JitRequestDefinition parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a Template Spec version from a specific Template Spec.
+        /// Updates the JIT request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='templateSpecName'>
-        /// Name of the Template Spec.
+        /// <param name='jitRequestName'>
+        /// The name of the JIT request.
         /// </param>
-        /// <param name='templateSpecVersion'>
-        /// The version of the Template Spec.
+        /// <param name='parameters'>
+        /// Parameters supplied to the update JIT request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -103,7 +94,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="TemplateSpecsErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -112,19 +103,15 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TemplateSpecVersion>> GetWithHttpMessagesAsync(string resourceGroupName, string templateSpecName, string templateSpecVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<JitRequestDefinition>> UpdateWithHttpMessagesAsync(string resourceGroupName, string jitRequestName, JitRequestPatchable parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a specific version from a Template Spec. When operation
-        /// completes, status code 200 returned without content.
+        /// Deletes the JIT request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='templateSpecName'>
-        /// Name of the Template Spec.
-        /// </param>
-        /// <param name='templateSpecVersion'>
-        /// The version of the Template Spec.
+        /// <param name='jitRequestName'>
+        /// The name of the JIT request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -132,30 +119,23 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="TemplateSpecsErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string templateSpecName, string templateSpecVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string jitRequestName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all the Template Spec versions in the specified Template
-        /// Spec.
+        /// Retrieves all JIT requests within the subscription.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='templateSpecName'>
-        /// Name of the Template Spec.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="TemplateSpecsErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -164,13 +144,12 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<TemplateSpecVersion>>> ListWithHttpMessagesAsync(string resourceGroupName, string templateSpecName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<JitRequestDefinitionListResult>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all the Template Spec versions in the specified Template
-        /// Spec.
+        /// Retrieves all JIT requests within the resource group.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -178,7 +157,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="TemplateSpecsErrorException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -187,6 +166,34 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<TemplateSpecVersion>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<JitRequestDefinitionListResult>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates the JIT request.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='jitRequestName'>
+        /// The name of the JIT request.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the update JIT request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<JitRequestDefinition>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string jitRequestName, JitRequestDefinition parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

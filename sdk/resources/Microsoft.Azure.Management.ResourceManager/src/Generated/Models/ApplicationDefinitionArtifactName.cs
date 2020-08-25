@@ -12,12 +12,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
 {
 
     /// <summary>
-    /// Defines values for DeploymentMode.
+    /// Defines values for ApplicationDefinitionArtifactName.
     /// </summary>
-    public static class DeploymentMode
+    public static class ApplicationDefinitionArtifactName
     {
         public const string NotSpecified = "NotSpecified";
-        public const string Incremental = "Incremental";
-        public const string Complete = "Complete";
+        public const string ApplicationResourceTemplate = "ApplicationResourceTemplate";
+        public const string CreateUiDefinition = "CreateUiDefinition";
+        public const string MainTemplateParameters = "MainTemplateParameters";
     }
 }

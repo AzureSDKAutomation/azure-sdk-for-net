@@ -30,12 +30,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
         /// <param name="provider">Service provider:
-        /// Microsoft.Resources</param>
+        /// Microsoft.Solutions</param>
         /// <param name="resource">Resource on which the operation is
-        /// performed: Profile, endpoint, etc.</param>
+        /// performed: Application, JitRequest, etc.</param>
         /// <param name="operation">Operation type: Read, write, delete,
         /// etc.</param>
-        /// <param name="description">Description of the operation.</param>
+        /// <param name="description">Localized friendly description for the
+        /// operation</param>
         public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
         {
             Provider = provider;
@@ -51,14 +52,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets service provider: Microsoft.Resources
+        /// Gets or sets service provider: Microsoft.Solutions
         /// </summary>
         [JsonProperty(PropertyName = "provider")]
         public string Provider { get; set; }
 
         /// <summary>
-        /// Gets or sets resource on which the operation is performed: Profile,
-        /// endpoint, etc.
+        /// Gets or sets resource on which the operation is performed:
+        /// Application, JitRequest, etc.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public string Resource { get; set; }
@@ -70,10 +71,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         public string Operation { get; set; }
 
         /// <summary>
-        /// Gets or sets description of the operation.
+        /// Gets localized friendly description for the operation
         /// </summary>
         [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
     }
 }

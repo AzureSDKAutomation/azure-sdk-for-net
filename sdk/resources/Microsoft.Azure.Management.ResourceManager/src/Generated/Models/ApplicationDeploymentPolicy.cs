@@ -15,32 +15,29 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents a Template Spec artifact containing an embedded Azure
-    /// Resource Manager template.
+    /// Managed application deployment policy.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("template")]
-    public partial class TemplateSpecTemplateArtifact : TemplateSpecArtifact
+    public partial class ApplicationDeploymentPolicy
     {
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecTemplateArtifact
+        /// Initializes a new instance of the ApplicationDeploymentPolicy
         /// class.
         /// </summary>
-        public TemplateSpecTemplateArtifact()
+        public ApplicationDeploymentPolicy()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecTemplateArtifact
+        /// Initializes a new instance of the ApplicationDeploymentPolicy
         /// class.
         /// </summary>
-        /// <param name="path">A filesystem safe relative path of the
-        /// artifact.</param>
-        /// <param name="template">The Azure Resource Manager template.</param>
-        public TemplateSpecTemplateArtifact(string path, object template)
-            : base(path)
+        /// <param name="deploymentMode">The managed application deployment
+        /// mode. Possible values include: 'NotSpecified', 'Incremental',
+        /// 'Complete'</param>
+        public ApplicationDeploymentPolicy(string deploymentMode)
         {
-            Template = template;
+            DeploymentMode = deploymentMode;
             CustomInit();
         }
 
@@ -50,10 +47,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the Azure Resource Manager template.
+        /// Gets or sets the managed application deployment mode. Possible
+        /// values include: 'NotSpecified', 'Incremental', 'Complete'
         /// </summary>
-        [JsonProperty(PropertyName = "template")]
-        public object Template { get; set; }
+        [JsonProperty(PropertyName = "deploymentMode")]
+        public string DeploymentMode { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -61,12 +59,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
-            if (Template == null)
+            if (DeploymentMode == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Template");
+                throw new ValidationException(ValidationRules.CannotBeNull, "DeploymentMode");
             }
         }
     }

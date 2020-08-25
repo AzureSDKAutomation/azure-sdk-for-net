@@ -16,31 +16,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Template Spec properties to be updated (only tags are currently
-    /// supported).
+    /// Information about JIT request.
     /// </summary>
-    public partial class TemplateSpecUpdateModel : AzureResourceBase
+    public partial class JitRequestPatchable
     {
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecUpdateModel class.
+        /// Initializes a new instance of the JitRequestPatchable class.
         /// </summary>
-        public TemplateSpecUpdateModel()
+        public JitRequestPatchable()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TemplateSpecUpdateModel class.
+        /// Initializes a new instance of the JitRequestPatchable class.
         /// </summary>
-        /// <param name="id">String Id used to locate any resource on
-        /// Azure.</param>
-        /// <param name="name">Name of this resource.</param>
-        /// <param name="type">Type of this resource.</param>
-        /// <param name="systemData">Azure Resource Manager metadata containing
-        /// createdBy and modifiedBy information.</param>
-        /// <param name="tags">Resource tags.</param>
-        public TemplateSpecUpdateModel(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(id, name, type, systemData)
+        /// <param name="tags">Jit request tags</param>
+        public JitRequestPatchable(IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Tags = tags;
             CustomInit();
@@ -52,7 +44,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource tags.
+        /// Gets or sets jit request tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }

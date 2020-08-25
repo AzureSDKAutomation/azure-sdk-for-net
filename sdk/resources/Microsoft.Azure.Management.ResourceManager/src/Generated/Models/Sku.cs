@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.ResourceManager.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// <param name="family">The SKU family.</param>
         /// <param name="model">The SKU model.</param>
         /// <param name="capacity">The SKU capacity.</param>
-        public Sku(string name = default(string), string tier = default(string), string size = default(string), string family = default(string), string model = default(string), int? capacity = default(int?))
+        public Sku(string name, string tier = default(string), string size = default(string), string family = default(string), string model = default(string), int? capacity = default(int?))
         {
             Name = name;
             Tier = tier;
@@ -87,5 +88,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         [JsonProperty(PropertyName = "capacity")]
         public int? Capacity { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Name == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+        }
     }
 }

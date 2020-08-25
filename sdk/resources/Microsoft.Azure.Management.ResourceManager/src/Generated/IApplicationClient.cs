@@ -14,12 +14,15 @@ namespace Microsoft.Azure.Management.ResourceManager
     using Microsoft.Rest.Azure;
     using Models;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
-    /// The APIs listed in this specification can be used to manage Template
-    /// Spec resources through the Azure Resource Manager.
+    /// ARM applications
     /// </summary>
-    public partial interface ITemplateSpecsClient : System.IDisposable
+    public partial interface IApplicationClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -42,12 +45,12 @@ namespace Microsoft.Azure.Management.ResourceManager
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// Subscription Id which forms part of the URI for every service call.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client Api version.
+        /// The API version to use for this operation.
         /// </summary>
         string ApiVersion { get; }
 
@@ -71,14 +74,44 @@ namespace Microsoft.Azure.Management.ResourceManager
 
 
         /// <summary>
-        /// Gets the ITemplateSpecsOperations.
+        /// Gets the IApplicationsOperations.
         /// </summary>
-        ITemplateSpecsOperations TemplateSpecs { get; }
+        IApplicationsOperations Applications { get; }
 
         /// <summary>
-        /// Gets the ITemplateSpecVersionsOperations.
+        /// Gets the IApplicationDefinitionsOperations.
         /// </summary>
-        ITemplateSpecVersionsOperations TemplateSpecVersions { get; }
+        IApplicationDefinitionsOperations ApplicationDefinitions { get; }
+
+        /// <summary>
+        /// Gets the IJitRequestsOperations.
+        /// </summary>
+        IJitRequestsOperations JitRequests { get; }
+
+        /// <summary>
+        /// Lists all of the available Microsoft.Solutions REST API operations.
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<Operation>>> ListOperationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Lists all of the available Microsoft.Solutions REST API operations.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<Operation>>> ListOperationsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
