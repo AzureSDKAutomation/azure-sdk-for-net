@@ -736,6 +736,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "tapConfigurationParameters");
             }
+            if (tapConfigurationParameters != null)
+            {
+                tapConfigurationParameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");

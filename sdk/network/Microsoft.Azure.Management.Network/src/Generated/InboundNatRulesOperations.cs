@@ -744,6 +744,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "inboundNatRuleParameters");
             }
+            if (inboundNatRuleParameters != null)
+            {
+                inboundNatRuleParameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
