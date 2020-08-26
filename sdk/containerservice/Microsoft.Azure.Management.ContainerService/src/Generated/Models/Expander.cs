@@ -12,11 +12,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for OpenShiftAgentPoolProfileRole.
+    /// Defines values for Expander.
     /// </summary>
-    public static class OpenShiftAgentPoolProfileRole
+    public static class Expander
     {
-        public const string Compute = "compute";
-        public const string Infra = "infra";
+        public const string LeastWaste = "least-waste";
+        public const string MostPods = "most-pods";
+        public const string Random = "random";
     }
 }
