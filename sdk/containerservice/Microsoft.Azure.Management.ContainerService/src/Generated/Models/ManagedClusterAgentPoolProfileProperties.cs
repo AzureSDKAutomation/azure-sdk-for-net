@@ -96,6 +96,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
         /// vmSize specified.</param>
+        /// <param name="osDiskType">OS disk type to be used for machines in a
+        /// given agent pool. Allowed values are 'Ephemeral' and 'Managed'.
+        /// Defaults to 'Managed'. May not be changed after creation. Possible
+        /// values include: 'Managed', 'Ephemeral'</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the VNet's
         /// subnet identifier.</param>
         /// <param name="maxPods">Maximum number of pods that can run on a
@@ -143,11 +147,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// create and scale. For example, key=value:NoSchedule.</param>
         /// <param name="proximityPlacementGroupID">The ID for Proximity
         /// Placement Group.</param>
-        public ManagedClusterAgentPoolProfileProperties(int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string))
+        public ManagedClusterAgentPoolProfileProperties(int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string osDiskType = default(string), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string))
         {
             Count = count;
             VmSize = vmSize;
             OsDiskSizeGB = osDiskSizeGB;
+            OsDiskType = osDiskType;
             VnetSubnetID = vnetSubnetID;
             MaxPods = maxPods;
             OsType = osType;
@@ -254,6 +259,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "osDiskSizeGB")]
         public int? OsDiskSizeGB { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS disk type to be used for machines in a given agent
+        /// pool. Allowed values are 'Ephemeral' and 'Managed'. Defaults to
+        /// 'Managed'. May not be changed after creation. Possible values
+        /// include: 'Managed', 'Ephemeral'
+        /// </summary>
+        [JsonProperty(PropertyName = "osDiskType")]
+        public string OsDiskType { get; set; }
 
         /// <summary>
         /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier.
