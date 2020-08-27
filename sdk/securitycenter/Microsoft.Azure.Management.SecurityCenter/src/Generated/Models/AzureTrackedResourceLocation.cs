@@ -16,22 +16,24 @@ namespace Microsoft.Azure.Management.Security.Models
     /// <summary>
     /// Describes an Azure resource with location
     /// </summary>
-    public partial class TrackedResourceLocation
+    public partial class AzureTrackedResourceLocation
     {
         /// <summary>
-        /// Initializes a new instance of the TrackedResourceLocation class.
+        /// Initializes a new instance of the AzureTrackedResourceLocation
+        /// class.
         /// </summary>
-        public TrackedResourceLocation()
+        public AzureTrackedResourceLocation()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TrackedResourceLocation class.
+        /// Initializes a new instance of the AzureTrackedResourceLocation
+        /// class.
         /// </summary>
         /// <param name="location">Location where the resource is
         /// stored</param>
-        public TrackedResourceLocation(string location = default(string))
+        public AzureTrackedResourceLocation(string location = default(string))
         {
             Location = location;
             CustomInit();
