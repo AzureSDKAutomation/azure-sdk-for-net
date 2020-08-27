@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Management.Search
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Search", "AdminKeys", "2020-03-13"),
-                new Tuple<string, string, string>("Search", "Operations", "2020-03-13"),
-                new Tuple<string, string, string>("Search", "PrivateEndpointConnections", "2020-03-13"),
-                new Tuple<string, string, string>("Search", "PrivateLinkResources", "2020-03-13"),
-                new Tuple<string, string, string>("Search", "QueryKeys", "2020-03-13"),
-                new Tuple<string, string, string>("Search", "Services", "2020-03-13"),
-                new Tuple<string, string, string>("Search", "SharedPrivateLinkResources", "2020-03-13"),
+                new Tuple<string, string, string>("Search", "AdminKeys", "2020-08-01"),
+                new Tuple<string, string, string>("Search", "Operations", "2020-08-01"),
+                new Tuple<string, string, string>("Search", "PrivateEndpointConnections", "2020-08-01"),
+                new Tuple<string, string, string>("Search", "PrivateLinkResources", "2020-08-01"),
+                new Tuple<string, string, string>("Search", "QueryKeys", "2020-08-01"),
+                new Tuple<string, string, string>("Search", "Services", "2020-08-01"),
+                new Tuple<string, string, string>("Search", "SharedPrivateLinkResources", "2020-08-01"),
               }.AsEnumerable();
           }
       }
