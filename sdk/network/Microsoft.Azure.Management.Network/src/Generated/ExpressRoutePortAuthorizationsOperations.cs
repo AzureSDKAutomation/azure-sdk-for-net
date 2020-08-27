@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Network
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateDnsZoneGroupsOperations operations.
+    /// ExpressRoutePortAuthorizationsOperations operations.
     /// </summary>
-    internal partial class PrivateDnsZoneGroupsOperations : IServiceOperations<NetworkManagementClient>, IPrivateDnsZoneGroupsOperations
+    internal partial class ExpressRoutePortAuthorizationsOperations : IServiceOperations<NetworkManagementClient>, IExpressRoutePortAuthorizationsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateDnsZoneGroupsOperations class.
+        /// Initializes a new instance of the ExpressRoutePortAuthorizationsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal PrivateDnsZoneGroupsOperations(NetworkManagementClient client)
+        internal ExpressRoutePortAuthorizationsOperations(NetworkManagementClient client)
         {
             if (client == null)
             {
@@ -51,16 +51,16 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Deletes the specified private dns zone group.
+        /// Deletes the specified authorization from the specified express route port.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
         /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -68,25 +68,24 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Gets the private dns zone group resource by specified private dns zone
-        /// group name.
+        /// Gets the specified authorization from the specified express route port.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
         /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -109,19 +108,19 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateDnsZoneGroup>> GetWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> GetWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (privateEndpointName == null)
+            if (expressRoutePortName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
             }
-            if (privateDnsZoneGroupName == null)
+            if (authorizationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateDnsZoneGroupName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "authorizationName");
             }
             if (Client.SubscriptionId == null)
             {
@@ -136,18 +135,18 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("privateEndpointName", privateEndpointName);
-                tracingParameters.Add("privateDnsZoneGroupName", privateDnsZoneGroupName);
+                tracingParameters.Add("expressRoutePortName", expressRoutePortName);
+                tracingParameters.Add("authorizationName", authorizationName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{privateEndpointName}", System.Uri.EscapeDataString(privateEndpointName));
-            _url = _url.Replace("{privateDnsZoneGroupName}", System.Uri.EscapeDataString(privateDnsZoneGroupName));
+            _url = _url.Replace("{expressRoutePortName}", System.Uri.EscapeDataString(expressRoutePortName));
+            _url = _url.Replace("{authorizationName}", System.Uri.EscapeDataString(authorizationName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
@@ -247,7 +246,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateDnsZoneGroup>();
+            var _result = new AzureOperationResponse<ExpressRoutePortAuthorization>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -260,7 +259,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateDnsZoneGroup>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ExpressRoutePortAuthorization>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -280,21 +279,20 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates a private dns zone group in the specified private
-        /// endpoint.
+        /// Creates or updates an authorization in the specified express route port.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
         /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or update private dns zone group
-        /// operation.
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -302,21 +300,21 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PrivateDnsZoneGroup>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<PrivateDnsZoneGroup> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ExpressRoutePortAuthorization> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Gets all private dns zone groups in a private endpoint.
+        /// Gets all authorizations in an express route port.
         /// </summary>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -324,7 +322,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -339,15 +337,15 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<PrivateDnsZoneGroup>>> ListWithHttpMessagesAsync(string privateEndpointName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ExpressRoutePortAuthorization>>> ListWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (privateEndpointName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointName");
-            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (expressRoutePortName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
             }
             if (Client.SubscriptionId == null)
             {
@@ -361,17 +359,17 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("privateEndpointName", privateEndpointName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("expressRoutePortName", expressRoutePortName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups").ToString();
-            _url = _url.Replace("{privateEndpointName}", System.Uri.EscapeDataString(privateEndpointName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{expressRoutePortName}", System.Uri.EscapeDataString(expressRoutePortName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
@@ -438,13 +436,14 @@ namespace Microsoft.Azure.Management.Network
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    Error _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<Error>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
+                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -454,6 +453,10 @@ namespace Microsoft.Azure.Management.Network
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -466,7 +469,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<PrivateDnsZoneGroup>>();
+            var _result = new AzureOperationResponse<IPage<ExpressRoutePortAuthorization>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -479,7 +482,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<PrivateDnsZoneGroup>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ExpressRoutePortAuthorization>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -499,16 +502,16 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Deletes the specified private dns zone group.
+        /// Deletes the specified authorization from the specified express route port.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
         /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -528,19 +531,19 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (privateEndpointName == null)
+            if (expressRoutePortName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
             }
-            if (privateDnsZoneGroupName == null)
+            if (authorizationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateDnsZoneGroupName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "authorizationName");
             }
             if (Client.SubscriptionId == null)
             {
@@ -555,18 +558,18 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("privateEndpointName", privateEndpointName);
-                tracingParameters.Add("privateDnsZoneGroupName", privateDnsZoneGroupName);
+                tracingParameters.Add("expressRoutePortName", expressRoutePortName);
+                tracingParameters.Add("authorizationName", authorizationName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{privateEndpointName}", System.Uri.EscapeDataString(privateEndpointName));
-            _url = _url.Replace("{privateDnsZoneGroupName}", System.Uri.EscapeDataString(privateDnsZoneGroupName));
+            _url = _url.Replace("{expressRoutePortName}", System.Uri.EscapeDataString(expressRoutePortName));
+            _url = _url.Replace("{authorizationName}", System.Uri.EscapeDataString(authorizationName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
@@ -681,21 +684,20 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates a private dns zone group in the specified private
-        /// endpoint.
+        /// Creates or updates an authorization in the specified express route port.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
         /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or update private dns zone group
-        /// operation.
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -718,23 +720,23 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateDnsZoneGroup>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (privateEndpointName == null)
+            if (expressRoutePortName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
             }
-            if (privateDnsZoneGroupName == null)
+            if (authorizationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateDnsZoneGroupName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "authorizationName");
             }
-            if (parameters == null)
+            if (authorizationParameters == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+                throw new ValidationException(ValidationRules.CannotBeNull, "authorizationParameters");
             }
             if (Client.SubscriptionId == null)
             {
@@ -749,19 +751,19 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("privateEndpointName", privateEndpointName);
-                tracingParameters.Add("privateDnsZoneGroupName", privateDnsZoneGroupName);
-                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("expressRoutePortName", expressRoutePortName);
+                tracingParameters.Add("authorizationName", authorizationName);
+                tracingParameters.Add("authorizationParameters", authorizationParameters);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{privateEndpointName}", System.Uri.EscapeDataString(privateEndpointName));
-            _url = _url.Replace("{privateDnsZoneGroupName}", System.Uri.EscapeDataString(privateDnsZoneGroupName));
+            _url = _url.Replace("{expressRoutePortName}", System.Uri.EscapeDataString(expressRoutePortName));
+            _url = _url.Replace("{authorizationName}", System.Uri.EscapeDataString(authorizationName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
@@ -806,9 +808,9 @@ namespace Microsoft.Azure.Management.Network
 
             // Serialize Request
             string _requestContent = null;
-            if(parameters != null)
+            if(authorizationParameters != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(authorizationParameters, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -867,7 +869,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateDnsZoneGroup>();
+            var _result = new AzureOperationResponse<ExpressRoutePortAuthorization>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -880,7 +882,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateDnsZoneGroup>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ExpressRoutePortAuthorization>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -898,7 +900,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateDnsZoneGroup>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ExpressRoutePortAuthorization>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -918,7 +920,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets all private dns zone groups in a private endpoint.
+        /// Gets all authorizations in an express route port.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -929,7 +931,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -944,7 +946,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<PrivateDnsZoneGroup>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ExpressRoutePortAuthorization>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -1025,13 +1027,14 @@ namespace Microsoft.Azure.Management.Network
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    Error _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<Error>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
+                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1041,6 +1044,10 @@ namespace Microsoft.Azure.Management.Network
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1053,7 +1060,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<PrivateDnsZoneGroup>>();
+            var _result = new AzureOperationResponse<IPage<ExpressRoutePortAuthorization>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1066,7 +1073,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<PrivateDnsZoneGroup>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ExpressRoutePortAuthorization>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
