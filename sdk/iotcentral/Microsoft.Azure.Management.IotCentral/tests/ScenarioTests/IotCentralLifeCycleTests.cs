@@ -92,9 +92,6 @@ namespace IotCentral.Tests.ScenarioTests
                 // Create App
                 var app = CreateIotCentral(resourceGroup, IotCentralTestUtilities.DefaultLocation, IotCentralTestUtilities.DefaultUpdateResourceName, IotCentralTestUtilities.DefaultUpdateSubdomain);
 
-                // Validate the default sku
-                Assert.Equal(app.Sku.Name, AppSku.ST1);
-
                 // Validate resourceName and subdomain are taken
                 this.CheckAppNameAndSubdomainTaken(app.Name, app.Subdomain);
 
@@ -112,8 +109,7 @@ namespace IotCentral.Tests.ScenarioTests
                 {
                     Tags = tags,
                     DisplayName = newDisplayName,
-                    Subdomain = newSubDomain,
-                    Sku = new AppSkuInfo(AppSku.ST2),
+                    Subdomain = newSubDomain
                 };
 
                 app = UpdateIotCentral(resourceGroup, appPatch, IotCentralTestUtilities.DefaultUpdateResourceName);
@@ -126,7 +122,6 @@ namespace IotCentral.Tests.ScenarioTests
                 Assert.Equal(newDisplayName, app.DisplayName);
                 Assert.True(app.Tags.Count().Equals(2));
                 Assert.Equal("value2", app.Tags["key2"]);
-                Assert.Equal(app.Sku.Name, AppSku.ST2);
             }
         }
 
