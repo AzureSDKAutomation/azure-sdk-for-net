@@ -21,9 +21,6 @@ namespace Microsoft.Azure.Management.HybridCompute
     using System.Net;
     using System.Net.Http;
 
-    /// <summary>
-    /// The Hybrid Compute Management Client.
-    /// </summary>
     public partial class HybridComputeManagementClient : ServiceClient<HybridComputeManagementClient>, IHybridComputeManagementClient, IAzureClient
     {
         /// <summary>
@@ -47,16 +44,14 @@ namespace Microsoft.Azure.Management.HybridCompute
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Client Api Version.
+        /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription.
+        /// </summary>
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -90,6 +85,26 @@ namespace Microsoft.Azure.Management.HybridCompute
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkScopesOperations.
+        /// </summary>
+        public virtual IPrivateLinkScopesOperations PrivateLinkScopes { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkScopedResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the HybridComputeManagementClient class.
@@ -335,8 +350,12 @@ namespace Microsoft.Azure.Management.HybridCompute
             Machines = new MachinesOperations(this);
             MachineExtensions = new MachineExtensionsOperations(this);
             Operations = new Operations(this);
+            PrivateLinkScopes = new PrivateLinkScopesOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            PrivateLinkScopedResources = new PrivateLinkScopedResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-07-30-preview";
+            ApiVersion = "2020-08-15-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

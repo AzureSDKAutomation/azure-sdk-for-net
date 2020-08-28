@@ -64,7 +64,9 @@ namespace Microsoft.Azure.Management.HybridCompute.Models
         /// name.</param>
         /// <param name="dnsFqdn">Specifies the DNS fully qualified display
         /// name.</param>
-        public MachineProperties(LocationData locationData = default(LocationData), MachinePropertiesOsProfile osProfile = default(MachinePropertiesOsProfile), string provisioningState = default(string), string status = default(string), System.DateTime? lastStatusChange = default(System.DateTime?), IList<ErrorDetail> errorDetails = default(IList<ErrorDetail>), string agentVersion = default(string), string vmId = default(string), string displayName = default(string), string machineFqdn = default(string), string clientPublicKey = default(string), string osName = default(string), string osVersion = default(string), string vmUuid = default(string), IList<MachineExtensionInstanceView> extensions = default(IList<MachineExtensionInstanceView>), string osSku = default(string), string domainName = default(string), string adFqdn = default(string), string dnsFqdn = default(string))
+        /// <param name="privateLinkScopedResources">List of private link
+        /// scoped resources associated with this machine.</param>
+        public MachineProperties(LocationData locationData = default(LocationData), MachinePropertiesOsProfile osProfile = default(MachinePropertiesOsProfile), string provisioningState = default(string), string status = default(string), System.DateTime? lastStatusChange = default(System.DateTime?), IList<ErrorDetail> errorDetails = default(IList<ErrorDetail>), string agentVersion = default(string), string vmId = default(string), string displayName = default(string), string machineFqdn = default(string), string clientPublicKey = default(string), string osName = default(string), string osVersion = default(string), string vmUuid = default(string), IList<MachineExtensionInstanceView> extensions = default(IList<MachineExtensionInstanceView>), string osSku = default(string), string domainName = default(string), string adFqdn = default(string), string dnsFqdn = default(string), IList<string> privateLinkScopedResources = default(IList<string>))
         {
             LocationData = locationData;
             OsProfile = osProfile;
@@ -85,6 +87,7 @@ namespace Microsoft.Azure.Management.HybridCompute.Models
             DomainName = domainName;
             AdFqdn = adFqdn;
             DnsFqdn = dnsFqdn;
+            PrivateLinkScopedResources = privateLinkScopedResources;
             CustomInit();
         }
 
@@ -208,6 +211,13 @@ namespace Microsoft.Azure.Management.HybridCompute.Models
         /// </summary>
         [JsonProperty(PropertyName = "dnsFqdn")]
         public string DnsFqdn { get; private set; }
+
+        /// <summary>
+        /// Gets list of private link scoped resources associated with this
+        /// machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "privateLinkScopedResources")]
+        public IList<string> PrivateLinkScopedResources { get; private set; }
 
         /// <summary>
         /// Validate the object.
