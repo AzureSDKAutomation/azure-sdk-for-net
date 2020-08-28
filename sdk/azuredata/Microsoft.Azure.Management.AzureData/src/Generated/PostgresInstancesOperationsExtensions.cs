@@ -141,9 +141,12 @@ namespace Microsoft.Azure.Management.AzureData
             /// <param name='postgresInstanceName'>
             /// Name of PostgresInstance
             /// </param>
-            public static PostgresInstance Create(this IPostgresInstancesOperations operations, string resourceGroupName, string postgresInstanceName)
+            /// <param name='resource'>
+            /// The postgres instance
+            /// </param>
+            public static PostgresInstance Create(this IPostgresInstancesOperations operations, string resourceGroupName, string postgresInstanceName, PostgresInstance resource)
             {
-                return operations.CreateAsync(resourceGroupName, postgresInstanceName).GetAwaiter().GetResult();
+                return operations.CreateAsync(resourceGroupName, postgresInstanceName, resource).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -158,12 +161,15 @@ namespace Microsoft.Azure.Management.AzureData
             /// <param name='postgresInstanceName'>
             /// Name of PostgresInstance
             /// </param>
+            /// <param name='resource'>
+            /// The postgres instance
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PostgresInstance> CreateAsync(this IPostgresInstancesOperations operations, string resourceGroupName, string postgresInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PostgresInstance> CreateAsync(this IPostgresInstancesOperations operations, string resourceGroupName, string postgresInstanceName, PostgresInstance resource, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, postgresInstanceName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, postgresInstanceName, resource, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

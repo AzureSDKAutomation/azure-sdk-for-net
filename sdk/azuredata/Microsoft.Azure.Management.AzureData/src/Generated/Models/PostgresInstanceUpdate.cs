@@ -32,11 +32,10 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// Initializes a new instance of the PostgresInstanceUpdate class.
         /// </summary>
         /// <param name="tags">Resource tags.</param>
-        /// <param name="hybridDataManagerId">null</param>
-        public PostgresInstanceUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), string hybridDataManagerId = default(string))
+        public PostgresInstanceUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), PostgresInstanceProperties properties = default(PostgresInstanceProperties))
         {
             Tags = tags;
-            HybridDataManagerId = hybridDataManagerId;
+            Properties = properties;
             CustomInit();
         }
 
@@ -52,10 +51,9 @@ namespace Microsoft.Azure.Management.AzureData.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets null
         /// </summary>
-        [JsonProperty(PropertyName = "hybridDataManagerId")]
-        public string HybridDataManagerId { get; set; }
+        [JsonProperty(PropertyName = "properties")]
+        public PostgresInstanceProperties Properties { get; set; }
 
     }
 }

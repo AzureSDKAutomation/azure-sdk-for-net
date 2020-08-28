@@ -623,6 +623,9 @@ namespace Microsoft.Azure.Management.AzureData
         /// <param name='postgresInstanceName'>
         /// Name of PostgresInstance
         /// </param>
+        /// <param name='resource'>
+        /// The postgres instance
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -644,7 +647,7 @@ namespace Microsoft.Azure.Management.AzureData
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PostgresInstance>> CreateWithHttpMessagesAsync(string resourceGroupName, string postgresInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PostgresInstance>> CreateWithHttpMessagesAsync(string resourceGroupName, string postgresInstanceName, PostgresInstance resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -662,6 +665,10 @@ namespace Microsoft.Azure.Management.AzureData
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+            if (resource == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resource");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -671,6 +678,7 @@ namespace Microsoft.Azure.Management.AzureData
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("postgresInstanceName", postgresInstanceName);
+                tracingParameters.Add("resource", resource);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
             }
@@ -723,6 +731,12 @@ namespace Microsoft.Azure.Management.AzureData
 
             // Serialize Request
             string _requestContent = null;
+            if(resource != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(resource, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {

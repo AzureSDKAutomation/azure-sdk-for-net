@@ -101,6 +101,9 @@ namespace Microsoft.Azure.Management.AzureData
         /// <param name='postgresInstanceName'>
         /// Name of PostgresInstance
         /// </param>
+        /// <param name='resource'>
+        /// The postgres instance
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.Management.AzureData
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PostgresInstance>> CreateWithHttpMessagesAsync(string resourceGroupName, string postgresInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PostgresInstance>> CreateWithHttpMessagesAsync(string resourceGroupName, string postgresInstanceName, PostgresInstance resource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a postgres Instance resource
         /// </summary>

@@ -43,11 +43,15 @@ namespace Microsoft.Azure.Management.AzureData.Models
         /// Microsoft.Compute/virtualMachines or
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="tags">Resource tags.</param>
-        /// <param name="hybridDataManagerId">null</param>
-        public PostgresInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string hybridDataManagerId = default(string))
+        /// <param name="dataControllerId">The data controller id</param>
+        /// <param name="admin">The instance admin</param>
+        /// <param name="k8sRaw">The raw kubernetes information</param>
+        public PostgresInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string dataControllerId = default(string), string admin = default(string), object k8sRaw = default(object))
             : base(location, id, name, type, tags, systemData)
         {
-            HybridDataManagerId = hybridDataManagerId;
+            DataControllerId = dataControllerId;
+            Admin = admin;
+            K8sRaw = k8sRaw;
             CustomInit();
         }
 
@@ -57,10 +61,22 @@ namespace Microsoft.Azure.Management.AzureData.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets null
+        /// Gets or sets the data controller id
         /// </summary>
-        [JsonProperty(PropertyName = "properties.hybridDataManagerId")]
-        public string HybridDataManagerId { get; set; }
+        [JsonProperty(PropertyName = "properties.dataControllerId")]
+        public string DataControllerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance admin
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.admin")]
+        public string Admin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the raw kubernetes information
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.k8sRaw")]
+        public object K8sRaw { get; set; }
 
     }
 }
