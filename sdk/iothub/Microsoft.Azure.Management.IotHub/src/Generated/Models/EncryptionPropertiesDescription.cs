@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.IotHub.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// <param name="keySource">The source of the key.</param>
         /// <param name="keyVaultProperties">The properties of the KeyVault
         /// key.</param>
-        public EncryptionPropertiesDescription(string keySource = default(string), KeyVaultKeyProperties keyVaultProperties = default(KeyVaultKeyProperties))
+        public EncryptionPropertiesDescription(string keySource = default(string), IList<KeyVaultKeyProperties> keyVaultProperties = default(IList<KeyVaultKeyProperties>))
         {
             KeySource = keySource;
             KeyVaultProperties = keyVaultProperties;
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// Gets or sets the properties of the KeyVault key.
         /// </summary>
         [JsonProperty(PropertyName = "keyVaultProperties")]
-        public KeyVaultKeyProperties KeyVaultProperties { get; set; }
+        public IList<KeyVaultKeyProperties> KeyVaultProperties { get; set; }
 
     }
 }
