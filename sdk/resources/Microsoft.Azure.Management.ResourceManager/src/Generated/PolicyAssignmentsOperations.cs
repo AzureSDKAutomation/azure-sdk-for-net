@@ -685,25 +685,38 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments associated with
         /// the given resource group in the given subscription that match the optional
-        /// given $filter. Valid values for $filter are: 'atScope()' or
-        /// 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+        /// given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()'
+        /// or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
         /// unfiltered list includes all policy assignments associated with the
         /// resource group, including those that apply directly or apply from
         /// containing scopes, as well as any applied to resources contained within the
         /// resource group. If $filter=atScope() is provided, the returned list
         /// includes all policy assignments that apply to the resource group, which is
         /// everything in the unfiltered list except those applied to resources
-        /// contained within the resource group. If $filter=policyDefinitionId eq
-        /// '{value}' is provided, the returned list includes all policy assignments of
-        /// the policy definition whose id is {value} that apply to the resource group.
+        /// contained within the resource group. If $filter=atExactScope() is provided,
+        /// the returned list only includes all policy assignments that at the resource
+        /// group. If $filter=policyDefinitionId eq '{value}' is provided, the returned
+        /// list includes all policy assignments of the policy definition whose id is
+        /// {value} that apply to the resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains policy assignments.
         /// </param>
         /// <param name='filter'>
         /// The filter to apply on the operation. Valid values for $filter are:
-        /// 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is not
-        /// provided, no filtering is performed.
+        /// 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If
+        /// $filter is not provided, no filtering is performed. If $filter=atScope() is
+        /// provided, the returned list only includes all policy assignments that apply
+        /// to the scope, which is everything in the unfiltered list except those
+        /// applied to sub scopes contained within the given scope. If
+        /// $filter=atExactScope() is provided, the returned list only includes all
+        /// policy assignments that at the given scope. If $filter=policyDefinitionId
+        /// eq '{value}' is provided, the returned list includes all policy assignments
+        /// of the policy definition whose id is {value}.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of records to return. When the $top filter is not provided,
+        /// it will return 500 records.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -726,7 +739,7 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<PolicyAssignment>>> ListForResourceGroupWithHttpMessagesAsync(string resourceGroupName, string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<PolicyAssignment>>> ListForResourceGroupWithHttpMessagesAsync(string resourceGroupName, string filter = default(string), int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -747,6 +760,14 @@ namespace Microsoft.Azure.Management.ResourceManager
                     throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
+            if (top > 1000)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "top", 1000);
+            }
+            if (top < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "top", 1);
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -764,6 +785,7 @@ namespace Microsoft.Azure.Management.ResourceManager
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("filter", filter);
+                tracingParameters.Add("top", top);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListForResourceGroup", tracingParameters);
             }
@@ -776,6 +798,10 @@ namespace Microsoft.Azure.Management.ResourceManager
             if (filter != null)
             {
                 _queryParameters.Add(string.Format("$filter={0}", filter));
+            }
+            if (top != null)
+            {
+                _queryParameters.Add(string.Format("$top={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(top, Client.SerializationSettings).Trim('"'))));
             }
             if (Client.ApiVersion != null)
             {
@@ -912,16 +938,18 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments associated with
         /// the specified resource in the given resource group and subscription that
-        /// match the optional given $filter. Valid values for $filter are: 'atScope()'
-        /// or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
-        /// unfiltered list includes all policy assignments associated with the
-        /// resource, including those that apply directly or from all containing
-        /// scopes, as well as any applied to resources contained within the resource.
-        /// If $filter=atScope() is provided, the returned list includes all policy
-        /// assignments that apply to the resource, which is everything in the
-        /// unfiltered list except those applied to resources contained within the
-        /// resource. If $filter=policyDefinitionId eq '{value}' is provided, the
-        /// returned list includes all policy assignments of the policy definition
+        /// match the optional given $filter. Valid values for $filter are:
+        /// 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If
+        /// $filter is not provided, the unfiltered list includes all policy
+        /// assignments associated with the resource, including those that apply
+        /// directly or from all containing scopes, as well as any applied to resources
+        /// contained within the resource. If $filter=atScope() is provided, the
+        /// returned list includes all policy assignments that apply to the resource,
+        /// which is everything in the unfiltered list except those applied to
+        /// resources contained within the resource. If $filter=atExactScope() is
+        /// provided, the returned list only includes all policy assignments that at
+        /// the resource level. If $filter=policyDefinitionId eq '{value}' is provided,
+        /// the returned list includes all policy assignments of the policy definition
         /// whose id is {value} that apply to the resource. Three parameters plus the
         /// resource name are used to identify a specific resource. If the resource is
         /// not part of a parent resource (the more common case), the parent resource
@@ -1043,7 +1071,7 @@ namespace Microsoft.Azure.Management.ResourceManager
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{resourceProviderNamespace}", System.Uri.EscapeDataString(resourceProviderNamespace));
             _url = _url.Replace("{parentResourcePath}", parentResourcePath);
@@ -1194,9 +1222,11 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments applicable to
         /// the management group that match the given $filter. Valid values for $filter
-        /// are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope()
-        /// is provided, the returned list includes all policy assignments that are
-        /// assigned to the management group or the management group's ancestors. If
+        /// are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If
+        /// $filter=atScope() is provided, the returned list includes all policy
+        /// assignments that are assigned to the management group or the management
+        /// group's ancestors. If $filter=atExactScope() is provided, the returned list
+        /// only includes all policy assignments that at the management group. If
         /// $filter=policyDefinitionId eq '{value}' is provided, the returned list
         /// includes all policy assignments of the policy definition whose id is
         /// {value} that apply to the management group.
@@ -1206,8 +1236,19 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// </param>
         /// <param name='filter'>
         /// The filter to apply on the operation. Valid values for $filter are:
-        /// 'atScope()' or 'policyDefinitionId eq '{value}''. A filter is required when
-        /// listing policy assignments at management group scope.
+        /// 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If
+        /// $filter is not provided, no filtering is performed. If $filter=atScope() is
+        /// provided, the returned list only includes all policy assignments that apply
+        /// to the scope, which is everything in the unfiltered list except those
+        /// applied to sub scopes contained within the given scope. If
+        /// $filter=atExactScope() is provided, the returned list only includes all
+        /// policy assignments that at the given scope. If $filter=policyDefinitionId
+        /// eq '{value}' is provided, the returned list includes all policy assignments
+        /// of the policy definition whose id is {value}.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of records to return. When the $top filter is not provided,
+        /// it will return 500 records.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1230,15 +1271,19 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<PolicyAssignment>>> ListForManagementGroupWithHttpMessagesAsync(string managementGroupId, string filter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<PolicyAssignment>>> ListForManagementGroupWithHttpMessagesAsync(string managementGroupId, string filter = default(string), int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (managementGroupId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "managementGroupId");
             }
-            if (filter == null)
+            if (top > 1000)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "filter");
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "top", 1000);
+            }
+            if (top < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "top", 1);
             }
             if (Client.ApiVersion == null)
             {
@@ -1253,17 +1298,22 @@ namespace Microsoft.Azure.Management.ResourceManager
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("managementGroupId", managementGroupId);
                 tracingParameters.Add("filter", filter);
+                tracingParameters.Add("top", top);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListForManagementGroup", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments").ToString();
             _url = _url.Replace("{managementGroupId}", System.Uri.EscapeDataString(managementGroupId));
             List<string> _queryParameters = new List<string>();
             if (filter != null)
             {
                 _queryParameters.Add(string.Format("$filter={0}", filter));
+            }
+            if (top != null)
+            {
+                _queryParameters.Add(string.Format("$top={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(top, Client.SerializationSettings).Trim('"'))));
             }
             if (Client.ApiVersion != null)
             {
@@ -1400,17 +1450,19 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments associated with
         /// the given subscription that match the optional given $filter. Valid values
-        /// for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
-        /// $filter is not provided, the unfiltered list includes all policy
-        /// assignments associated with the subscription, including those that apply
-        /// directly or from management groups that contain the given subscription, as
-        /// well as any applied to objects contained within the subscription. If
-        /// $filter=atScope() is provided, the returned list includes all policy
-        /// assignments that apply to the subscription, which is everything in the
-        /// unfiltered list except those applied to objects contained within the
-        /// subscription. If $filter=policyDefinitionId eq '{value}' is provided, the
-        /// returned list includes all policy assignments of the policy definition
-        /// whose id is {value}.
+        /// for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq
+        /// '{value}''. If $filter is not provided, the unfiltered list includes all
+        /// policy assignments associated with the subscription, including those that
+        /// apply directly or from management groups that contain the given
+        /// subscription, as well as any applied to objects contained within the
+        /// subscription. If $filter=atScope() is provided, the returned list includes
+        /// all policy assignments that apply to the subscription, which is everything
+        /// in the unfiltered list except those applied to objects contained within the
+        /// subscription. If $filter=atExactScope() is provided, the returned list only
+        /// includes all policy assignments that at the subscription. If
+        /// $filter=policyDefinitionId eq '{value}' is provided, the returned list
+        /// includes all policy assignments of the policy definition whose id is
+        /// {value}.
         /// </remarks>
         /// <param name='odataQuery'>
         /// OData parameters to apply to the operation.
@@ -2211,17 +2263,19 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments associated with
         /// the given resource group in the given subscription that match the optional
-        /// given $filter. Valid values for $filter are: 'atScope()' or
-        /// 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+        /// given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()'
+        /// or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
         /// unfiltered list includes all policy assignments associated with the
         /// resource group, including those that apply directly or apply from
         /// containing scopes, as well as any applied to resources contained within the
         /// resource group. If $filter=atScope() is provided, the returned list
         /// includes all policy assignments that apply to the resource group, which is
         /// everything in the unfiltered list except those applied to resources
-        /// contained within the resource group. If $filter=policyDefinitionId eq
-        /// '{value}' is provided, the returned list includes all policy assignments of
-        /// the policy definition whose id is {value} that apply to the resource group.
+        /// contained within the resource group. If $filter=atExactScope() is provided,
+        /// the returned list only includes all policy assignments that at the resource
+        /// group. If $filter=policyDefinitionId eq '{value}' is provided, the returned
+        /// list includes all policy assignments of the policy definition whose id is
+        /// {value} that apply to the resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -2399,16 +2453,18 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments associated with
         /// the specified resource in the given resource group and subscription that
-        /// match the optional given $filter. Valid values for $filter are: 'atScope()'
-        /// or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
-        /// unfiltered list includes all policy assignments associated with the
-        /// resource, including those that apply directly or from all containing
-        /// scopes, as well as any applied to resources contained within the resource.
-        /// If $filter=atScope() is provided, the returned list includes all policy
-        /// assignments that apply to the resource, which is everything in the
-        /// unfiltered list except those applied to resources contained within the
-        /// resource. If $filter=policyDefinitionId eq '{value}' is provided, the
-        /// returned list includes all policy assignments of the policy definition
+        /// match the optional given $filter. Valid values for $filter are:
+        /// 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If
+        /// $filter is not provided, the unfiltered list includes all policy
+        /// assignments associated with the resource, including those that apply
+        /// directly or from all containing scopes, as well as any applied to resources
+        /// contained within the resource. If $filter=atScope() is provided, the
+        /// returned list includes all policy assignments that apply to the resource,
+        /// which is everything in the unfiltered list except those applied to
+        /// resources contained within the resource. If $filter=atExactScope() is
+        /// provided, the returned list only includes all policy assignments that at
+        /// the resource level. If $filter=policyDefinitionId eq '{value}' is provided,
+        /// the returned list includes all policy assignments of the policy definition
         /// whose id is {value} that apply to the resource. Three parameters plus the
         /// resource name are used to identify a specific resource. If the resource is
         /// not part of a parent resource (the more common case), the parent resource
@@ -2601,9 +2657,11 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments applicable to
         /// the management group that match the given $filter. Valid values for $filter
-        /// are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope()
-        /// is provided, the returned list includes all policy assignments that are
-        /// assigned to the management group or the management group's ancestors. If
+        /// are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If
+        /// $filter=atScope() is provided, the returned list includes all policy
+        /// assignments that are assigned to the management group or the management
+        /// group's ancestors. If $filter=atExactScope() is provided, the returned list
+        /// only includes all policy assignments that at the management group. If
         /// $filter=policyDefinitionId eq '{value}' is provided, the returned list
         /// includes all policy assignments of the policy definition whose id is
         /// {value} that apply to the management group.
@@ -2784,17 +2842,19 @@ namespace Microsoft.Azure.Management.ResourceManager
         /// <remarks>
         /// This operation retrieves the list of all policy assignments associated with
         /// the given subscription that match the optional given $filter. Valid values
-        /// for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
-        /// $filter is not provided, the unfiltered list includes all policy
-        /// assignments associated with the subscription, including those that apply
-        /// directly or from management groups that contain the given subscription, as
-        /// well as any applied to objects contained within the subscription. If
-        /// $filter=atScope() is provided, the returned list includes all policy
-        /// assignments that apply to the subscription, which is everything in the
-        /// unfiltered list except those applied to objects contained within the
-        /// subscription. If $filter=policyDefinitionId eq '{value}' is provided, the
-        /// returned list includes all policy assignments of the policy definition
-        /// whose id is {value}.
+        /// for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq
+        /// '{value}''. If $filter is not provided, the unfiltered list includes all
+        /// policy assignments associated with the subscription, including those that
+        /// apply directly or from management groups that contain the given
+        /// subscription, as well as any applied to objects contained within the
+        /// subscription. If $filter=atScope() is provided, the returned list includes
+        /// all policy assignments that apply to the subscription, which is everything
+        /// in the unfiltered list except those applied to objects contained within the
+        /// subscription. If $filter=atExactScope() is provided, the returned list only
+        /// includes all policy assignments that at the subscription. If
+        /// $filter=policyDefinitionId eq '{value}' is provided, the returned list
+        /// includes all policy assignments of the policy definition whose id is
+        /// {value}.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
