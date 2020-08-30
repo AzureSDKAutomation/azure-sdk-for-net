@@ -49,32 +49,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// </exception>
         Task<AzureOperationResponse<IPage<ContentTypeContract>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Returns content type metadata
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceName'>
-        /// The name of the API Management service.
-        /// </param>
-        /// <param name='contentTypeId'>
-        /// Content type identifier.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationHeaderResponse<ContentTypeGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Creates new content type
+        /// Gets API Management content type details.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -100,7 +75,39 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ContentTypeContract,ContentTypeCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ContentTypeContract,ContentTypeGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates an Content Type.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the API Management service.
+        /// </param>
+        /// <param name='contentTypeId'>
+        /// Content type identifier.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the Entity. Not required when creating an entity, but
+        /// required when updating an entity.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ContentTypeContract,ContentTypeCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Removes specified content type.
         /// </summary>
@@ -112,6 +119,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// </param>
         /// <param name='contentTypeId'>
         /// Content type identifier.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the Entity. ETag should match the current entity state from
+        /// the header response of the GET request or it should be * for
+        /// unconditional update.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -125,7 +137,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns list of content types
         /// </summary>

@@ -14,24 +14,26 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Get operation.
+    /// Defines headers for Update operation.
     /// </summary>
-    public partial class ContentTypesGetHeaders
+    public partial class IdentityProviderUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ContentTypesGetHeaders class.
+        /// Initializes a new instance of the IdentityProviderUpdateHeaders
+        /// class.
         /// </summary>
-        public ContentTypesGetHeaders()
+        public IdentityProviderUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ContentTypesGetHeaders class.
+        /// Initializes a new instance of the IdentityProviderUpdateHeaders
+        /// class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public ContentTypesGetHeaders(string eTag = default(string))
+        public IdentityProviderUpdateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

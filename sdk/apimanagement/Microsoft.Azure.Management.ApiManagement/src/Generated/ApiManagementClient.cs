@@ -182,14 +182,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IContentTypeOperations ContentType { get; private set; }
 
         /// <summary>
-        /// Gets the IContentTypesOperations.
+        /// Gets the IContentTypeContentItemOperations.
         /// </summary>
-        public virtual IContentTypesOperations ContentTypes { get; private set; }
-
-        /// <summary>
-        /// Gets the IContentItemOperations.
-        /// </summary>
-        public virtual IContentItemOperations ContentItem { get; private set; }
+        public virtual IContentTypeContentItemOperations ContentTypeContentItem { get; private set; }
 
         /// <summary>
         /// Gets the IApiManagementOperations.
@@ -673,8 +668,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             Cache = new CacheOperations(this);
             Certificate = new CertificateOperations(this);
             ContentType = new ContentTypeOperations(this);
-            ContentTypes = new ContentTypesOperations(this);
-            ContentItem = new ContentItemOperations(this);
+            ContentTypeContentItem = new ContentTypeContentItemOperations(this);
             ApiManagementOperations = new ApiManagementOperations(this);
             ApiManagementServiceSkus = new ApiManagementServiceSkusOperations(this);
             ApiManagementService = new ApiManagementServiceOperations(this);
@@ -720,7 +714,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             UserConfirmationPassword = new UserConfirmationPasswordOperations(this);
             ApiExport = new ApiExportOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-12-01";
+            ApiVersion = "2020-06-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

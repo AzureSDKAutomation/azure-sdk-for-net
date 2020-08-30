@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Get operation.
+    /// Defines headers for Update operation.
     /// </summary>
-    public partial class ContentItemGetHeaders
+    public partial class ApiOperationUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ContentItemGetHeaders class.
+        /// Initializes a new instance of the ApiOperationUpdateHeaders class.
         /// </summary>
-        public ContentItemGetHeaders()
+        public ApiOperationUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ContentItemGetHeaders class.
+        /// Initializes a new instance of the ApiOperationUpdateHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public ContentItemGetHeaders(string eTag = default(string))
+        public ApiOperationUpdateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

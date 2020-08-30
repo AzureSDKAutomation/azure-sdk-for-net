@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
 
             /// <summary>
-            /// Returns content type metadata
+            /// Gets API Management content type details.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// <param name='contentTypeId'>
             /// Content type identifier.
             /// </param>
-            public static ContentTypeGetEntityTagHeaders GetEntityTag(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId)
+            public static ContentTypeContract Get(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId)
             {
-                return operations.GetEntityTagAsync(resourceGroupName, serviceName, contentTypeId).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, serviceName, contentTypeId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Returns content type metadata
+            /// Gets API Management content type details.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -99,16 +99,16 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ContentTypeGetEntityTagHeaders> GetEntityTagAsync(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ContentTypeContract> GetAsync(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetEntityTagWithHttpMessagesAsync(resourceGroupName, serviceName, contentTypeId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serviceName, contentTypeId, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Headers;
+                    return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates new content type
+            /// Creates or updates an Content Type.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -122,13 +122,17 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// <param name='contentTypeId'>
             /// Content type identifier.
             /// </param>
-            public static ContentTypeContract CreateOrUpdate(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId)
+            /// <param name='ifMatch'>
+            /// ETag of the Entity. Not required when creating an entity, but required when
+            /// updating an entity.
+            /// </param>
+            public static ContentTypeContract CreateOrUpdate(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, string ifMatch = default(string))
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, serviceName, contentTypeId).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, serviceName, contentTypeId, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates new content type
+            /// Creates or updates an Content Type.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -141,13 +145,17 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// </param>
             /// <param name='contentTypeId'>
             /// Content type identifier.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// ETag of the Entity. Not required when creating an entity, but required when
+            /// updating an entity.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ContentTypeContract> CreateOrUpdateAsync(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ContentTypeContract> CreateOrUpdateAsync(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, contentTypeId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, contentTypeId, ifMatch, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -168,9 +176,14 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// <param name='contentTypeId'>
             /// Content type identifier.
             /// </param>
-            public static void Delete(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId)
+            /// <param name='ifMatch'>
+            /// ETag of the Entity. ETag should match the current entity state from the
+            /// header response of the GET request or it should be * for unconditional
+            /// update.
+            /// </param>
+            public static void Delete(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, string ifMatch)
             {
-                operations.DeleteAsync(resourceGroupName, serviceName, contentTypeId).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, serviceName, contentTypeId, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -188,12 +201,17 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// <param name='contentTypeId'>
             /// Content type identifier.
             /// </param>
+            /// <param name='ifMatch'>
+            /// ETag of the Entity. ETag should match the current entity state from the
+            /// header response of the GET request or it should be * for unconditional
+            /// update.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IContentTypeOperations operations, string resourceGroupName, string serviceName, string contentTypeId, string ifMatch, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serviceName, contentTypeId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serviceName, contentTypeId, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

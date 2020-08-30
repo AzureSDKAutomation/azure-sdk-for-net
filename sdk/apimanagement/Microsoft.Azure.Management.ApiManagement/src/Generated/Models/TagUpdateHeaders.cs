@@ -14,26 +14,24 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for CreateOrUpdate operation.
+    /// Defines headers for Update operation.
     /// </summary>
-    public partial class ContentItemCreateOrUpdateHeaders
+    public partial class TagUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ContentItemCreateOrUpdateHeaders
-        /// class.
+        /// Initializes a new instance of the TagUpdateHeaders class.
         /// </summary>
-        public ContentItemCreateOrUpdateHeaders()
+        public TagUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ContentItemCreateOrUpdateHeaders
-        /// class.
+        /// Initializes a new instance of the TagUpdateHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public ContentItemCreateOrUpdateHeaders(string eTag = default(string))
+        public TagUpdateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

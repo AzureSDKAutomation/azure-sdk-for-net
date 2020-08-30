@@ -177,14 +177,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         IContentTypeOperations ContentType { get; }
 
         /// <summary>
-        /// Gets the IContentTypesOperations.
+        /// Gets the IContentTypeContentItemOperations.
         /// </summary>
-        IContentTypesOperations ContentTypes { get; }
-
-        /// <summary>
-        /// Gets the IContentItemOperations.
-        /// </summary>
-        IContentItemOperations ContentItem { get; }
+        IContentTypeContentItemOperations ContentTypeContentItem { get; }
 
         /// <summary>
         /// Gets the IApiManagementOperations.

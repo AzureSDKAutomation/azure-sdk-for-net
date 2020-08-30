@@ -287,9 +287,9 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// Default is legacy publisher portal. Possible values include: 'portal',
             /// 'developerPortal'
             /// </param>
-            public static void Update(this ISubscriptionOperations operations, string resourceGroupName, string serviceName, string sid, SubscriptionUpdateParameters parameters, string ifMatch, bool? notify = default(bool?), string appType = default(string))
+            public static SubscriptionContract Update(this ISubscriptionOperations operations, string resourceGroupName, string serviceName, string sid, SubscriptionUpdateParameters parameters, string ifMatch, bool? notify = default(bool?), string appType = default(string))
             {
-                operations.UpdateAsync(resourceGroupName, serviceName, sid, parameters, ifMatch, notify, appType).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, serviceName, sid, parameters, ifMatch, notify, appType).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -330,9 +330,12 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdateAsync(this ISubscriptionOperations operations, string resourceGroupName, string serviceName, string sid, SubscriptionUpdateParameters parameters, string ifMatch, bool? notify = default(bool?), string appType = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SubscriptionContract> UpdateAsync(this ISubscriptionOperations operations, string resourceGroupName, string serviceName, string sid, SubscriptionUpdateParameters parameters, string ifMatch, bool? notify = default(bool?), string appType = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceName, sid, parameters, ifMatch, notify, appType, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serviceName, sid, parameters, ifMatch, notify, appType, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -485,7 +488,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
 
             /// <summary>
-            /// Gets the subscription keys.
+            /// Gets the specified Subscription keys.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -506,7 +509,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
 
             /// <summary>
-            /// Gets the subscription keys.
+            /// Gets the specified Subscription keys.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

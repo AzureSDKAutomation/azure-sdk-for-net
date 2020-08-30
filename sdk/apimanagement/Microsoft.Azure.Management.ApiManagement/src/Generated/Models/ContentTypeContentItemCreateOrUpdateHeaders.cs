@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for GetEntityTag operation.
+    /// Defines headers for CreateOrUpdate operation.
     /// </summary>
-    public partial class ContentItemGetEntityTagHeaders
+    public partial class ContentTypeContentItemCreateOrUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ContentItemGetEntityTagHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// ContentTypeContentItemCreateOrUpdateHeaders class.
         /// </summary>
-        public ContentItemGetEntityTagHeaders()
+        public ContentTypeContentItemCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ContentItemGetEntityTagHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// ContentTypeContentItemCreateOrUpdateHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public ContentItemGetEntityTagHeaders(string eTag = default(string))
+        public ContentTypeContentItemCreateOrUpdateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();

@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.ApiManagement
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ContentItemOperations operations.
+    /// ContentTypeContentItemOperations operations.
     /// </summary>
-    internal partial class ContentItemOperations : IServiceOperations<ApiManagementClient>, IContentItemOperations
+    internal partial class ContentTypeContentItemOperations : IServiceOperations<ApiManagementClient>, IContentTypeContentItemOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ContentItemOperations class.
+        /// Initializes a new instance of the ContentTypeContentItemOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ContentItemOperations(ApiManagementClient client)
+        internal ContentTypeContentItemOperations(ApiManagementClient client)
         {
             if (client == null)
             {
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationHeaderResponse<ContentItemGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<ContentTypeContentItemGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationHeaderResponse<ContentItemGetEntityTagHeaders>();
+            var _result = new AzureOperationHeaderResponse<ContentTypeContentItemGetEntityTagHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ContentItemGetEntityTagHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ContentTypeContentItemGetEntityTagHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ContentItemContract,ContentItemGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ContentItemContract,ContentTypeContentItemGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ContentItemContract,ContentItemGetHeaders>();
+            var _result = new AzureOperationResponse<ContentItemContract,ContentTypeContentItemGetHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ContentItemGetHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ContentTypeContentItemGetHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -788,6 +788,10 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='contentItemId'>
         /// Content item identifier.
         /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the Entity. Not required when creating an entity, but required when
+        /// updating an entity.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -809,7 +813,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ContentItemContract,ContentItemCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ContentItemContract,ContentTypeContentItemCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -883,6 +887,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("contentTypeId", contentTypeId);
                 tracingParameters.Add("contentItemId", contentItemId);
+                tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }
@@ -912,6 +917,14 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
             {
                 _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
             if (Client.AcceptLanguage != null)
             {
@@ -987,7 +1000,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ContentItemContract,ContentItemCreateOrUpdateHeaders>();
+            var _result = new AzureOperationResponse<ContentItemContract,ContentTypeContentItemCreateOrUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1032,7 +1045,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ContentItemCreateOrUpdateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ContentTypeContentItemCreateOrUpdateHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -1065,6 +1078,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='contentItemId'>
         /// Content item identifier.
         /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the Entity. ETag should match the current entity state from the
+        /// header response of the GET request or it should be * for unconditional
+        /// update.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1083,7 +1101,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1138,6 +1156,10 @@ namespace Microsoft.Azure.Management.ApiManagement
                     throw new ValidationException(ValidationRules.MinLength, "contentItemId", 1);
                 }
             }
+            if (ifMatch == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "ifMatch");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -1157,6 +1179,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 tracingParameters.Add("serviceName", serviceName);
                 tracingParameters.Add("contentTypeId", contentTypeId);
                 tracingParameters.Add("contentItemId", contentItemId);
+                tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
@@ -1186,6 +1209,14 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
             {
                 _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
             if (Client.AcceptLanguage != null)
             {
@@ -1231,7 +1262,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try

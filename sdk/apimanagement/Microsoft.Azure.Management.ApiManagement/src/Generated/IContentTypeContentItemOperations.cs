@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.ApiManagement
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ContentItemOperations operations.
+    /// ContentTypeContentItemOperations operations.
     /// </summary>
-    public partial interface IContentItemOperations
+    public partial interface IContentTypeContentItemOperations
     {
         /// <summary>
         /// Returns list of content items
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationHeaderResponse<ContentItemGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<ContentTypeContentItemGetEntityTagHeaders>> GetEntityTagWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns content item details
         /// </summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ContentItemContract,ContentItemGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ContentItemContract,ContentTypeContentItemGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates new content item
         /// </summary>
@@ -124,6 +124,10 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// </param>
         /// <param name='contentItemId'>
         /// Content item identifier.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the Entity. Not required when creating an entity, but
+        /// required when updating an entity.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -140,7 +144,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ContentItemContract,ContentItemCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ContentItemContract,ContentTypeContentItemCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Removes specified content item.
         /// </summary>
@@ -156,6 +160,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='contentItemId'>
         /// Content item identifier.
         /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the Entity. ETag should match the current entity state from
+        /// the header response of the GET request or it should be * for
+        /// unconditional update.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -168,7 +177,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, string ifMatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns list of content items
         /// </summary>
