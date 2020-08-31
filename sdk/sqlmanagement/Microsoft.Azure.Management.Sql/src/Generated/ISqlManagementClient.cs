@@ -532,5 +532,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IImportExportOperations ImportExport { get; }
 
+        /// <summary>
+        /// Gets the IManagedInstanceAzureADOnlyAuthenticationsOperations.
+        /// </summary>
+        IManagedInstanceAzureADOnlyAuthenticationsOperations ManagedInstanceAzureADOnlyAuthentications { get; }
+
     }
 }

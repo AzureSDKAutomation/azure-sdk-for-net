@@ -538,6 +538,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IImportExportOperations ImportExport { get; private set; }
 
         /// <summary>
+        /// Gets the IManagedInstanceAzureADOnlyAuthenticationsOperations.
+        /// </summary>
+        public virtual IManagedInstanceAzureADOnlyAuthenticationsOperations ManagedInstanceAzureADOnlyAuthentications { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -871,6 +876,7 @@ namespace Microsoft.Azure.Management.Sql
             ManagedDatabases = new ManagedDatabasesOperations(this);
             ServerAzureADOnlyAuthentications = new ServerAzureADOnlyAuthenticationsOperations(this);
             ImportExport = new ImportExportOperations(this);
+            ManagedInstanceAzureADOnlyAuthentications = new ManagedInstanceAzureADOnlyAuthenticationsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
