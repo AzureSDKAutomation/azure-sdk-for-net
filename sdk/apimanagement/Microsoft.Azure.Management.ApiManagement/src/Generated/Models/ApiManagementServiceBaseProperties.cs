@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.ApiManagement.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -129,7 +130,10 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// values include: 'None', 'External', 'Internal'</param>
         /// <param name="apiVersionConstraint">Control Plane Apis version
         /// constraint for the API Management service.</param>
-        public ApiManagementServiceBaseProperties(string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), IList<HostnameConfiguration> hostnameConfigurations = default(IList<HostnameConfiguration>), IList<string> publicIPAddresses = default(IList<string>), IList<string> privateIPAddresses = default(IList<string>), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), IList<AdditionalLocation> additionalLocations = default(IList<AdditionalLocation>), IDictionary<string, string> customProperties = default(IDictionary<string, string>), IList<CertificateConfiguration> certificates = default(IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint))
+        /// <param name="restore">Undelete Api Management Service if it was
+        /// previously soft-deleted. If this flag is specified and set to True
+        /// all other properties will be ignored.</param>
+        public ApiManagementServiceBaseProperties(string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), IList<HostnameConfiguration> hostnameConfigurations = default(IList<HostnameConfiguration>), IList<string> publicIPAddresses = default(IList<string>), IList<string> privateIPAddresses = default(IList<string>), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), IList<AdditionalLocation> additionalLocations = default(IList<AdditionalLocation>), IDictionary<string, string> customProperties = default(IDictionary<string, string>), IList<CertificateConfiguration> certificates = default(IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), bool? restore = default(bool?))
         {
             NotificationSenderEmail = notificationSenderEmail;
             ProvisioningState = provisioningState;
@@ -152,6 +156,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             DisableGateway = disableGateway;
             VirtualNetworkType = virtualNetworkType;
             ApiVersionConstraint = apiVersionConstraint;
+            Restore = restore;
             CustomInit();
         }
 
@@ -353,5 +358,63 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         [JsonProperty(PropertyName = "apiVersionConstraint")]
         public ApiVersionConstraint ApiVersionConstraint { get; set; }
 
+        /// <summary>
+        /// Gets or sets undelete Api Management Service if it was previously
+        /// soft-deleted. If this flag is specified and set to True all other
+        /// properties will be ignored.
+        /// </summary>
+        [JsonProperty(PropertyName = "restore")]
+        public bool? Restore { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (NotificationSenderEmail != null)
+            {
+                if (NotificationSenderEmail.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "NotificationSenderEmail", 100);
+                }
+            }
+            if (HostnameConfigurations != null)
+            {
+                foreach (var element in HostnameConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (VirtualNetworkConfiguration != null)
+            {
+                VirtualNetworkConfiguration.Validate();
+            }
+            if (AdditionalLocations != null)
+            {
+                foreach (var element1 in AdditionalLocations)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
+            }
+            if (Certificates != null)
+            {
+                foreach (var element2 in Certificates)
+                {
+                    if (element2 != null)
+                    {
+                        element2.Validate();
+                    }
+                }
+            }
+        }
     }
 }
