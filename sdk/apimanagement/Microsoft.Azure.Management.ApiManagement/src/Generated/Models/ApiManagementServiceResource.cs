@@ -145,7 +145,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="identity">Managed service identity of the Api
         /// Management service.</param>
         /// <param name="etag">ETag of the resource.</param>
-        public ApiManagementServiceResource(string publisherEmail, string publisherName, ApiManagementServiceSkuProperties sku, string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), IList<HostnameConfiguration> hostnameConfigurations = default(IList<HostnameConfiguration>), IList<string> publicIPAddresses = default(IList<string>), IList<string> privateIPAddresses = default(IList<string>), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), IList<AdditionalLocation> additionalLocations = default(IList<AdditionalLocation>), IDictionary<string, string> customProperties = default(IDictionary<string, string>), IList<CertificateConfiguration> certificates = default(IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), ApiManagementServiceIdentity identity = default(ApiManagementServiceIdentity), string etag = default(string))
+        /// <param name="zones">A list of availability zones denoting where the
+        /// resource needs to come from.</param>
+        public ApiManagementServiceResource(string publisherEmail, string publisherName, ApiManagementServiceSkuProperties sku, string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), IList<HostnameConfiguration> hostnameConfigurations = default(IList<HostnameConfiguration>), IList<string> publicIPAddresses = default(IList<string>), IList<string> privateIPAddresses = default(IList<string>), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), IList<AdditionalLocation> additionalLocations = default(IList<AdditionalLocation>), IDictionary<string, string> customProperties = default(IDictionary<string, string>), IList<CertificateConfiguration> certificates = default(IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), ApiManagementServiceIdentity identity = default(ApiManagementServiceIdentity), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(id, name, type, tags)
         {
             NotificationSenderEmail = notificationSenderEmail;
@@ -175,6 +177,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             Identity = identity;
             Location = location;
             Etag = etag;
+            Zones = zones;
             CustomInit();
         }
 
@@ -414,6 +417,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public string Etag { get; private set; }
 
         /// <summary>
+        /// Gets or sets a list of availability zones denoting where the
+        /// resource needs to come from.
+        /// </summary>
+        [JsonProperty(PropertyName = "zones")]
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -437,6 +447,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
+            if (NotificationSenderEmail != null)
+            {
+                if (NotificationSenderEmail.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "NotificationSenderEmail", 100);
+                }
+            }
             if (HostnameConfigurations != null)
             {
                 foreach (var element in HostnameConfigurations)
@@ -446,6 +463,10 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
                         element.Validate();
                     }
                 }
+            }
+            if (VirtualNetworkConfiguration != null)
+            {
+                VirtualNetworkConfiguration.Validate();
             }
             if (AdditionalLocations != null)
             {
@@ -465,6 +486,20 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
                     {
                         element2.Validate();
                     }
+                }
+            }
+            if (PublisherEmail != null)
+            {
+                if (PublisherEmail.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "PublisherEmail", 100);
+                }
+            }
+            if (PublisherName != null)
+            {
+                if (PublisherName.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "PublisherName", 100);
                 }
             }
             if (Sku != null)
