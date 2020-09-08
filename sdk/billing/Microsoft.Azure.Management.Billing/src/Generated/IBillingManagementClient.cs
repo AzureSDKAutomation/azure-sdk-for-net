@@ -161,6 +161,21 @@ namespace Microsoft.Azure.Management.Billing
         IAgreementsOperations Agreements { get; }
 
         /// <summary>
+        /// Gets the ITransfersOperations.
+        /// </summary>
+        ITransfersOperations Transfers { get; }
+
+        /// <summary>
+        /// Gets the IPartnerTransfersOperations.
+        /// </summary>
+        IPartnerTransfersOperations PartnerTransfers { get; }
+
+        /// <summary>
+        /// Gets the IRecipientTransfersOperations.
+        /// </summary>
+        IRecipientTransfersOperations RecipientTransfers { get; }
+
+        /// <summary>
         /// Gets the IEnrollmentAccountsOperations.
         /// </summary>
         IEnrollmentAccountsOperations EnrollmentAccounts { get; }

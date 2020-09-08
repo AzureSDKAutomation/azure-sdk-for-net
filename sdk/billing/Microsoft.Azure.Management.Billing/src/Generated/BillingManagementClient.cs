@@ -166,6 +166,21 @@ namespace Microsoft.Azure.Management.Billing
         public virtual IAgreementsOperations Agreements { get; private set; }
 
         /// <summary>
+        /// Gets the ITransfersOperations.
+        /// </summary>
+        public virtual ITransfersOperations Transfers { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartnerTransfersOperations.
+        /// </summary>
+        public virtual IPartnerTransfersOperations PartnerTransfers { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecipientTransfersOperations.
+        /// </summary>
+        public virtual IRecipientTransfersOperations RecipientTransfers { get; private set; }
+
+        /// <summary>
         /// Gets the IEnrollmentAccountsOperations.
         /// </summary>
         public virtual IEnrollmentAccountsOperations EnrollmentAccounts { get; private set; }
@@ -434,6 +449,9 @@ namespace Microsoft.Azure.Management.Billing
             BillingRoleDefinitions = new BillingRoleDefinitionsOperations(this);
             BillingRoleAssignments = new BillingRoleAssignmentsOperations(this);
             Agreements = new AgreementsOperations(this);
+            Transfers = new TransfersOperations(this);
+            PartnerTransfers = new PartnerTransfersOperations(this);
+            RecipientTransfers = new RecipientTransfersOperations(this);
             EnrollmentAccounts = new EnrollmentAccountsOperations(this);
             BillingPeriods = new BillingPeriodsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");

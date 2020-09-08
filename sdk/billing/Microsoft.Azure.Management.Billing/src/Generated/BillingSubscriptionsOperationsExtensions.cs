@@ -386,6 +386,52 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
+            /// Moves a subscription's charges to a new invoice section. This operation is
+            /// supported for billing accounts with agreement type Microsoft Customer
+            /// Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='parameters'>
+            /// Request parameters that are provided to the move subscription operation.
+            /// </param>
+            public static BillingSubscriptionsChangeInvoiceSectionHeaders ChangeInvoiceSection(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
+            {
+                return operations.ChangeInvoiceSectionAsync(billingAccountName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Moves a subscription's charges to a new invoice section. This operation is
+            /// supported for billing accounts with agreement type Microsoft Customer
+            /// Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='parameters'>
+            /// Request parameters that are provided to the move subscription operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingSubscriptionsChangeInvoiceSectionHeaders> ChangeInvoiceSectionAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ChangeInvoiceSectionWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
             /// Moves a subscription's charges to a new invoice section. The new invoice
             /// section must belong to the same billing profile as the existing invoice
             /// section. This operation is supported for billing accounts with agreement
@@ -430,6 +476,52 @@ namespace Microsoft.Azure.Management.Billing
                 using (var _result = await operations.BeginMoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Moves a subscription's charges to a new invoice section. This operation is
+            /// supported for billing accounts with agreement type Microsoft Customer
+            /// Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='parameters'>
+            /// Request parameters that are provided to the move subscription operation.
+            /// </param>
+            public static BillingSubscriptionsChangeInvoiceSectionHeaders BeginChangeInvoiceSection(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
+            {
+                return operations.BeginChangeInvoiceSectionAsync(billingAccountName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Moves a subscription's charges to a new invoice section. This operation is
+            /// supported for billing accounts with agreement type Microsoft Customer
+            /// Agreement.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='parameters'>
+            /// Request parameters that are provided to the move subscription operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingSubscriptionsChangeInvoiceSectionHeaders> BeginChangeInvoiceSectionAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginChangeInvoiceSectionWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
                 }
             }
 

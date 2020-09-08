@@ -36,9 +36,12 @@ namespace Microsoft.Azure.Management.Billing
                 new Tuple<string, string, string>("Billing", "InvoiceSections", "2020-05-01"),
                 new Tuple<string, string, string>("Billing", "Invoices", "2020-05-01"),
                 new Tuple<string, string, string>("Billing", "Operations", "2020-05-01"),
+                new Tuple<string, string, string>("Billing", "PartnerTransfers", "2020-05-01"),
                 new Tuple<string, string, string>("Billing", "Policies", "2020-05-01"),
                 new Tuple<string, string, string>("Billing", "Products", "2020-05-01"),
+                new Tuple<string, string, string>("Billing", "RecipientTransfers", "2020-05-01"),
                 new Tuple<string, string, string>("Billing", "Transactions", "2020-05-01"),
+                new Tuple<string, string, string>("Billing", "Transfers", "2020-05-01"),
               }.AsEnumerable();
           }
       }

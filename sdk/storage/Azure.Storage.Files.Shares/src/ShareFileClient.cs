@@ -2122,6 +2122,9 @@ namespace Azure.Storage.Files.Shares
             {
                 scope.Start();
 
+                // This also makes sure that we fail fast if file doesn't exist.
+                ShareFileProperties properties = await GetPropertiesInternal(conditions: conditions, async, cancellationToken).ConfigureAwait(false);
+
                 return new LazyLoadingReadOnlyStream<ShareFileRequestConditions, ShareFileProperties>(
                     async (HttpRange range,
                     ShareFileRequestConditions conditions,
@@ -2143,6 +2146,7 @@ namespace Azure.Storage.Files.Shares
                     createRequestConditionsFunc: null,
                     async (bool async, CancellationToken cancellationToken)
                         => await GetPropertiesInternal(conditions: default, async, cancellationToken).ConfigureAwait(false),
+                    properties.ContentLength,
                     position,
                     bufferSize,
                     conditions);
@@ -3563,6 +3567,7 @@ namespace Azure.Storage.Files.Shares
                     $"{nameof(Uri)}: {Uri}");
                 try
                 {
+                    Errors.VerifyStreamPosition(content, nameof(content));
                     content = content.WithNoDispose().WithProgress(progressHandler);
                     return await FileRestClient.File.UploadRangeAsync(
                         ClientDiagnostics,
@@ -3570,7 +3575,7 @@ namespace Azure.Storage.Files.Shares
                         Uri,
                         version: Version.ToVersionString(),
                         optionalbody: content,
-                        contentLength: content.Length,
+                        contentLength: (content?.Length - content?.Position) ?? 0,
                         range: range.ToString(),
                         fileRangeWrite: ShareFileRangeWriteType.Update,
                         contentHash: transactionalContentHash,
@@ -4091,9 +4096,11 @@ namespace Azure.Storage.Files.Shares
             bool async,
             CancellationToken cancellationToken)
         {
+            Errors.VerifyStreamPosition(content, nameof(content));
+
             // Try to upload the file as a single range
             Debug.Assert(singleRangeThreshold <= Constants.File.MaxFileUpdateRange);
-            var length = content.Length;
+            var length = content?.Length - content?.Position;
             if (length <= singleRangeThreshold)
             {
                 return await UploadRangeInternal(
@@ -4110,6 +4117,9 @@ namespace Azure.Storage.Files.Shares
             // Otherwise naively split the file into ranges and upload them individually
             var response = default(Response<ShareFileUploadInfo>);
             var pool = default(MemoryPool<byte>);
+
+            long initalPosition = content.Position;
+
             try
             {
                 pool = (singleRangeThreshold < MemoryPool<byte>.Shared.MaxBufferSize) ?
@@ -4139,7 +4149,7 @@ namespace Azure.Storage.Files.Shares
                         () => buffer.Dispose(),
                         cancellationToken);
                     response = await UploadRangeInternal(
-                        new HttpRange(partition.ParentPosition, partition.Length),
+                        new HttpRange(partition.ParentPosition - initalPosition, partition.Length),
                         partition,
                         null,
                         progressHandler,
