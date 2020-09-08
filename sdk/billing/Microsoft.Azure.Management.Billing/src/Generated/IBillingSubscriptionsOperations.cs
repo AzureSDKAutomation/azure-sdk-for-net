@@ -248,6 +248,32 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<ValidateSubscriptionTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Moves a subscription's charges to a new invoice section. This
+        /// operation is supported for billing accounts with agreement type
+        /// Microsoft Customer Agreement.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move subscription
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<BillingSubscriptionsChangeInvoiceSectionHeaders>> ChangeInvoiceSectionWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Moves a subscription's charges to a new invoice section. The new
         /// invoice section must belong to the same billing profile as the
         /// existing invoice section. This operation is supported for billing
@@ -277,6 +303,32 @@ namespace Microsoft.Azure.Management.Billing
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> BeginMoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Moves a subscription's charges to a new invoice section. This
+        /// operation is supported for billing accounts with agreement type
+        /// Microsoft Customer Agreement.
+        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move subscription
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<BillingSubscriptionsChangeInvoiceSectionHeaders>> BeginChangeInvoiceSectionWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the subscriptions for a customer. The operation is supported
         /// only for billing accounts with agreement type Microsoft Partner
