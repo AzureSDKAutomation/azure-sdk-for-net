@@ -58,7 +58,11 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="restorePointInTime">Snapshot time to restore</param>
         /// <param name="createMode">What is this?</param>
         /// <param name="creationDate">Date the SQL pool was created</param>
-        public SqlPool(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), long? maxSizeBytes = default(long?), string collation = default(string), string sourceDatabaseId = default(string), string recoverableDatabaseId = default(string), string provisioningState = default(string), string status = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string createMode = default(string), System.DateTime? creationDate = default(System.DateTime?))
+        /// <param name="storageAccountType">The storage account type used to
+        /// store data and backups for this sql pool. The supported options are
+        /// GRS (Geo-Redundant Storage) and LRS (Locally Redundant Storage).
+        /// Possible values include: 'GRS', 'LRS'</param>
+        public SqlPool(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), long? maxSizeBytes = default(long?), string collation = default(string), string sourceDatabaseId = default(string), string recoverableDatabaseId = default(string), string provisioningState = default(string), string status = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string createMode = default(string), System.DateTime? creationDate = default(System.DateTime?), string storageAccountType = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -71,6 +75,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             RestorePointInTime = restorePointInTime;
             CreateMode = createMode;
             CreationDate = creationDate;
+            StorageAccountType = storageAccountType;
             CustomInit();
         }
 
@@ -138,6 +143,15 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.creationDate")]
         public System.DateTime? CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage account type used to store data and
+        /// backups for this sql pool. The supported options are GRS
+        /// (Geo-Redundant Storage) and LRS (Locally Redundant Storage).
+        /// Possible values include: 'GRS', 'LRS'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.storageAccountType")]
+        public string StorageAccountType { get; set; }
 
         /// <summary>
         /// Validate the object.

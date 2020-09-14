@@ -12,15 +12,11 @@ namespace Microsoft.Azure.Management.Synapse.Models
 {
 
     /// <summary>
-    /// Defines values for NodeSize.
+    /// Defines values for StorageAccountType.
     /// </summary>
-    public static class NodeSize
+    public static class StorageAccountType
     {
-        public const string None = "None";
-        public const string Small = "Small";
-        public const string Medium = "Medium";
-        public const string Large = "Large";
-        public const string XLarge = "XLarge";
-        public const string XXLarge = "XXLarge";
+        public const string GRS = "GRS";
+        public const string LRS = "LRS";
     }
 }
