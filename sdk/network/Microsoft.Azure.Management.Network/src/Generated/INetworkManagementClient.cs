@@ -206,6 +206,11 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteLinksOperations ExpressRouteLinks { get; }
 
         /// <summary>
+        /// Gets the IExpressRoutePortAuthorizationsOperations.
+        /// </summary>
+        IExpressRoutePortAuthorizationsOperations ExpressRoutePortAuthorizations { get; }
+
+        /// <summary>
         /// Gets the IFirewallPoliciesOperations.
         /// </summary>
         IFirewallPoliciesOperations FirewallPolicies { get; }
@@ -324,11 +329,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualApplianceSkusOperations.
         /// </summary>
         IVirtualApplianceSkusOperations VirtualApplianceSkus { get; }
-
-        /// <summary>
-        /// Gets the IInboundSecurityRuleOperations.
-        /// </summary>
-        IInboundSecurityRuleOperations InboundSecurityRule { get; }
 
         /// <summary>
         /// Gets the INetworkWatchersOperations.

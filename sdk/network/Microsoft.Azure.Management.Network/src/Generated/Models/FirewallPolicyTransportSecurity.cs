@@ -11,30 +11,31 @@
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// List of virtual router peer routes.
+    /// Configuration needed to perform TLS termination &amp; initiation.
     /// </summary>
-    public partial class PeerRouteList
+    public partial class FirewallPolicyTransportSecurity
     {
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the FirewallPolicyTransportSecurity
+        /// class.
         /// </summary>
-        public PeerRouteList()
+        public FirewallPolicyTransportSecurity()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the FirewallPolicyTransportSecurity
+        /// class.
         /// </summary>
-        /// <param name="value">List of peer routes.</param>
-        public PeerRouteList(IList<PeerRoute> value = default(IList<PeerRoute>))
+        /// <param name="certificateAuthority">The CA used for intermediate CA
+        /// generation.</param>
+        public FirewallPolicyTransportSecurity(FirewallPolicyCertificateAuthority certificateAuthority = default(FirewallPolicyCertificateAuthority))
         {
-            Value = value;
+            CertificateAuthority = certificateAuthority;
             CustomInit();
         }
 
@@ -44,10 +45,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of peer routes.
+        /// Gets or sets the CA used for intermediate CA generation.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<PeerRoute> Value { get; set; }
+        [JsonProperty(PropertyName = "certificateAuthority")]
+        public FirewallPolicyCertificateAuthority CertificateAuthority { get; set; }
 
     }
 }
