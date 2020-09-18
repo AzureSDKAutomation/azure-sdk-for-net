@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for InboundSecurityRulesProtocol.
+    /// Defines values for PublicIPAddressSkuTier.
     /// </summary>
-    public static class InboundSecurityRulesProtocol
+    public static class PublicIPAddressSkuTier
     {
-        public const string TCP = "TCP";
-        public const string UDP = "UDP";
+        public const string Regional = "Regional";
+        public const string Global = "Global";
     }
 }
