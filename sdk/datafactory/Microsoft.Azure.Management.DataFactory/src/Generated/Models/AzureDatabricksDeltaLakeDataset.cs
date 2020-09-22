@@ -18,27 +18,26 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// ORC dataset.
+    /// Azure Databricks Delta Lake dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Orc")]
     [Rest.Serialization.JsonTransformation]
-    public partial class OrcDataset : Dataset
+    public partial class AzureDatabricksDeltaLakeDataset : Dataset
     {
         /// <summary>
-        /// Initializes a new instance of the OrcDataset class.
+        /// Initializes a new instance of the AzureDatabricksDeltaLakeDataset
+        /// class.
         /// </summary>
-        public OrcDataset()
+        public AzureDatabricksDeltaLakeDataset()
         {
             LinkedServiceName = new LinkedServiceReference();
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OrcDataset class.
+        /// Initializes a new instance of the AzureDatabricksDeltaLakeDataset
+        /// class.
         /// </summary>
         /// <param name="linkedServiceName">Linked service reference.</param>
-        /// <param name="location">The location of the ORC data
-        /// storage.</param>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
         /// <param name="description">Dataset description.</param>
@@ -53,13 +52,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// describing the Dataset.</param>
         /// <param name="folder">The folder that this Dataset is in. If not
         /// specified, Dataset will appear at the root level.</param>
-        /// <param name="orcCompressionCodec">Possible values include: 'none',
-        /// 'zlib', 'snappy', 'lzo'</param>
-        public OrcDataset(LinkedServiceReference linkedServiceName, DatasetLocation location, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), DatasetFolder folder = default(DatasetFolder), string orcCompressionCodec = default(string))
+        /// <param name="table">The name of delta table. Type: string (or
+        /// Expression with resultType string).</param>
+        /// <param name="database">The database name of delta table. Type:
+        /// string (or Expression with resultType string).</param>
+        public AzureDatabricksDeltaLakeDataset(LinkedServiceReference linkedServiceName, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), DatasetFolder folder = default(DatasetFolder), object table = default(object), object database = default(object))
             : base(linkedServiceName, additionalProperties, description, structure, schema, parameters, annotations, folder)
         {
-            Location = location;
-            OrcCompressionCodec = orcCompressionCodec;
+            Table = table;
+            Database = database;
             CustomInit();
         }
 
@@ -69,17 +70,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the location of the ORC data storage.
+        /// Gets or sets the name of delta table. Type: string (or Expression
+        /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
-        public DatasetLocation Location { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.table")]
+        public object Table { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'none', 'zlib', 'snappy',
-        /// 'lzo'
+        /// Gets or sets the database name of delta table. Type: string (or
+        /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.orcCompressionCodec")]
-        public string OrcCompressionCodec { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.database")]
+        public object Database { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -90,10 +92,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
-            if (Location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
-            }
         }
     }
 }
