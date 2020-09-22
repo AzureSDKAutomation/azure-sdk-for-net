@@ -12,13 +12,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for OrcCompressionCodec.
+    /// Defines values for DynamicsSinkWriteBehavior.
     /// </summary>
-    public static class OrcCompressionCodec
+    public static class DynamicsSinkWriteBehavior
     {
-        public const string None = "none";
-        public const string Zlib = "zlib";
-        public const string Snappy = "snappy";
-        public const string Lzo = "lzo";
+        public const string Upsert = "Upsert";
     }
 }
