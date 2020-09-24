@@ -67,7 +67,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// authentication. Credentials are encrypted using the integration
         /// runtime credential manager. Type: string (or Expression with
         /// resultType string).</param>
-        public AzureDataLakeAnalyticsLinkedService(object accountName, object tenant, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object subscriptionId = default(object), object resourceGroupName = default(object), object dataLakeAnalyticsUri = default(object), object encryptedCredential = default(object))
+        /// <param name="credential">The credential reference containing
+        /// authentication information.</param>
+        public AzureDataLakeAnalyticsLinkedService(object accountName, object tenant, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object subscriptionId = default(object), object resourceGroupName = default(object), object dataLakeAnalyticsUri = default(object), object encryptedCredential = default(object), CredentialReference credential = default(CredentialReference))
             : base(additionalProperties, connectVia, description, parameters, annotations)
         {
             AccountName = accountName;
@@ -78,6 +80,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             ResourceGroupName = resourceGroupName;
             DataLakeAnalyticsUri = dataLakeAnalyticsUri;
             EncryptedCredential = encryptedCredential;
+            Credential = credential;
             CustomInit();
         }
 
@@ -148,6 +151,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object EncryptedCredential { get; set; }
 
         /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.credential")]
+        public CredentialReference Credential { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -163,6 +173,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             if (Tenant == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Tenant");
+            }
+            if (Credential != null)
+            {
+                Credential.Validate();
             }
         }
     }

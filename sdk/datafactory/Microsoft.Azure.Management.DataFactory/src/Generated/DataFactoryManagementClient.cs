@@ -161,6 +161,11 @@ namespace Microsoft.Azure.Management.DataFactory
         public virtual IManagedPrivateEndpointsOperations ManagedPrivateEndpoints { get; private set; }
 
         /// <summary>
+        /// Gets the ICredentialOperations.
+        /// </summary>
+        public virtual ICredentialOperations CredentialOperations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the DataFactoryManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -418,6 +423,7 @@ namespace Microsoft.Azure.Management.DataFactory
             DataFlowDebugSession = new DataFlowDebugSessionOperations(this);
             ManagedVirtualNetworks = new ManagedVirtualNetworksOperations(this);
             ManagedPrivateEndpoints = new ManagedPrivateEndpointsOperations(this);
+            CredentialOperations = new CredentialOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2018-06-01";
             AcceptLanguage = "en-US";
@@ -467,6 +473,8 @@ namespace Microsoft.Azure.Management.DataFactory
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Trigger>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DataFlow>("type"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DataFlow>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Credential>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Credential>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<WebLinkedServiceTypeProperties>("authenticationType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<WebLinkedServiceTypeProperties>("authenticationType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DatasetCompression>("type"));
