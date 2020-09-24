@@ -124,6 +124,11 @@ namespace Microsoft.Azure.Management.Network
         public virtual IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTags { get; private set; }
 
         /// <summary>
+        /// Gets the IAzureWebCategoriesOperations.
+        /// </summary>
+        public virtual IAzureWebCategoriesOperations AzureWebCategories { get; private set; }
+
+        /// <summary>
         /// Gets the IBastionHostsOperations.
         /// </summary>
         public virtual IBastionHostsOperations BastionHosts { get; private set; }
@@ -848,6 +853,7 @@ namespace Microsoft.Azure.Management.Network
             AvailableServiceAliases = new AvailableServiceAliasesOperations(this);
             AzureFirewalls = new AzureFirewallsOperations(this);
             AzureFirewallFqdnTags = new AzureFirewallFqdnTagsOperations(this);
+            AzureWebCategories = new AzureWebCategoriesOperations(this);
             BastionHosts = new BastionHostsOperations(this);
             CustomIPPrefixes = new CustomIPPrefixesOperations(this);
             DdosCustomPolicies = new DdosCustomPoliciesOperations(this);
