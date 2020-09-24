@@ -185,6 +185,21 @@ namespace Microsoft.Azure.Management.Synapse
         ISqlPoolVulnerabilityAssessmentRuleBaselinesOperations SqlPoolVulnerabilityAssessmentRuleBaselines { get; }
 
         /// <summary>
+        /// Gets the ISqlPoolWorkloadGroupsOperations.
+        /// </summary>
+        ISqlPoolWorkloadGroupsOperations SqlPoolWorkloadGroups { get; }
+
+        /// <summary>
+        /// Gets the IWorkloadGroupsOperations.
+        /// </summary>
+        IWorkloadGroupsOperations WorkloadGroups { get; }
+
+        /// <summary>
+        /// Gets the ISqlPoolWorkloadClassifiersOperations.
+        /// </summary>
+        ISqlPoolWorkloadClassifiersOperations SqlPoolWorkloadClassifiers { get; }
+
+        /// <summary>
         /// Gets the IWorkspacesOperations.
         /// </summary>
         IWorkspacesOperations Workspaces { get; }

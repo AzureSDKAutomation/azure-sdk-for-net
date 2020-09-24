@@ -190,6 +190,21 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual ISqlPoolVulnerabilityAssessmentRuleBaselinesOperations SqlPoolVulnerabilityAssessmentRuleBaselines { get; private set; }
 
         /// <summary>
+        /// Gets the ISqlPoolWorkloadGroupsOperations.
+        /// </summary>
+        public virtual ISqlPoolWorkloadGroupsOperations SqlPoolWorkloadGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IWorkloadGroupsOperations.
+        /// </summary>
+        public virtual IWorkloadGroupsOperations WorkloadGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the ISqlPoolWorkloadClassifiersOperations.
+        /// </summary>
+        public virtual ISqlPoolWorkloadClassifiersOperations SqlPoolWorkloadClassifiers { get; private set; }
+
+        /// <summary>
         /// Gets the IWorkspacesOperations.
         /// </summary>
         public virtual IWorkspacesOperations Workspaces { get; private set; }
@@ -528,6 +543,9 @@ namespace Microsoft.Azure.Management.Synapse
             SqlPoolVulnerabilityAssessmentScans = new SqlPoolVulnerabilityAssessmentScansOperations(this);
             SqlPoolSecurityAlertPolicies = new SqlPoolSecurityAlertPoliciesOperations(this);
             SqlPoolVulnerabilityAssessmentRuleBaselines = new SqlPoolVulnerabilityAssessmentRuleBaselinesOperations(this);
+            SqlPoolWorkloadGroups = new SqlPoolWorkloadGroupsOperations(this);
+            WorkloadGroups = new WorkloadGroupsOperations(this);
+            SqlPoolWorkloadClassifiers = new SqlPoolWorkloadClassifiersOperations(this);
             Workspaces = new WorkspacesOperations(this);
             WorkspaceAadAdmins = new WorkspaceAadAdminsOperations(this);
             WorkspaceManagedIdentitySqlControlSettings = new WorkspaceManagedIdentitySqlControlSettingsOperations(this);
