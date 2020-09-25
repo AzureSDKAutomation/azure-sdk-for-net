@@ -326,11 +326,6 @@ namespace Microsoft.Azure.Management.Network
         IVirtualApplianceSkusOperations VirtualApplianceSkus { get; }
 
         /// <summary>
-        /// Gets the IInboundSecurityRuleOperations.
-        /// </summary>
-        IInboundSecurityRuleOperations InboundSecurityRule { get; }
-
-        /// <summary>
         /// Gets the INetworkWatchersOperations.
         /// </summary>
         INetworkWatchersOperations NetworkWatchers { get; }
