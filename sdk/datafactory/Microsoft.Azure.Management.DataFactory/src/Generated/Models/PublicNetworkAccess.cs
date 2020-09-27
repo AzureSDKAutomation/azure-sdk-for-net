@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for OrcCompressionCodec.
+    /// Defines values for PublicNetworkAccess.
     /// </summary>
-    public static class OrcCompressionCodec
+    public static class PublicNetworkAccess
     {
-        public const string None = "none";
-        public const string Zlib = "zlib";
-        public const string Snappy = "snappy";
-        public const string Lzo = "lzo";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
     }
 }
