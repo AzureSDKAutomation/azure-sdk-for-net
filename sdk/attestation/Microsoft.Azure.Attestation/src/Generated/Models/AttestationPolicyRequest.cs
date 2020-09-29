@@ -13,24 +13,24 @@ namespace Microsoft.Azure.Attestation.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class AttestationPolicy
+    public partial class AttestationPolicyRequest
     {
         /// <summary>
-        /// Initializes a new instance of the AttestationPolicy class.
+        /// Initializes a new instance of the AttestationPolicyRequest class.
         /// </summary>
-        public AttestationPolicy()
+        public AttestationPolicyRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AttestationPolicy class.
+        /// Initializes a new instance of the AttestationPolicyRequest class.
         /// </summary>
-        /// <param name="policy">JSON Web Token whose body is an
-        /// AttestationPolicyRequest definition.</param>
-        public AttestationPolicy(string policy = default(string))
+        /// <param name="attestationPolicy">Base64Url encoded policy text to
+        /// set.</param>
+        public AttestationPolicyRequest(string attestationPolicy = default(string))
         {
-            Policy = policy;
+            AttestationPolicy = attestationPolicy;
             CustomInit();
         }
 
@@ -40,11 +40,10 @@ namespace Microsoft.Azure.Attestation.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets JSON Web Token whose body is an
-        /// AttestationPolicyRequest definition.
+        /// Gets or sets base64Url encoded policy text to set.
         /// </summary>
-        [JsonProperty(PropertyName = "Policy")]
-        public string Policy { get; set; }
+        [JsonProperty(PropertyName = "AttestationPolicy")]
+        public string AttestationPolicy { get; set; }
 
     }
 }
