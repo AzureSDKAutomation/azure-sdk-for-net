@@ -13,30 +13,25 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Microsoft.MarketplaceOrdering REST API operation
-    /// </summary>
-    public partial class Operation
+    public partial class AgreementDefinition
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the AgreementDefinition class.
         /// </summary>
-        public Operation()
+        public AgreementDefinition()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the AgreementDefinition class.
         /// </summary>
-        /// <param name="name">Operation name:
-        /// {provider}/{resource}/{operation}</param>
-        /// <param name="display">The object that represents the
-        /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        public AgreementDefinition(string id = default(string), string name = default(string), string type = default(string), AgreementProperties properties = default(AgreementProperties))
         {
+            Id = id;
             Name = name;
-            Display = display;
+            Type = type;
+            Properties = properties;
             CustomInit();
         }
 
@@ -46,16 +41,24 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets operation name: {provider}/{resource}/{operation}
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonProperty(PropertyName = "Id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "Name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the object that represents the operation.
         /// </summary>
-        [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
+        [JsonProperty(PropertyName = "Type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "Properties")]
+        public AgreementProperties Properties { get; set; }
 
     }
 }

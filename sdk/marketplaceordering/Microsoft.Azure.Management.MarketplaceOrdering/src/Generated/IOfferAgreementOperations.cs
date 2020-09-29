@@ -19,14 +19,23 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operations operations.
+    /// OfferAgreementOperations operations.
     /// </summary>
-    public partial interface IOperations
+    public partial interface IOfferAgreementOperations
     {
         /// <summary>
-        /// Lists all of the available Microsoft.MarketplaceOrdering REST API
-        /// operations.
+        /// Get marketplace terms.
         /// </summary>
+        /// <param name='offerType'>
+        /// </param>
+        /// <param name='subscriptionId'>
+        /// </param>
+        /// <param name='publisherId'>
+        /// </param>
+        /// <param name='offerId'>
+        /// </param>
+        /// <param name='planId'>
+        /// </param>
         /// <param name='apiVersion'>
         /// </param>
         /// <param name='customHeaders'>
@@ -44,13 +53,23 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> GetOperationsWithHttpMessagesAsync(string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> GetAgreementWithHttpMessagesAsync(int offerType, System.Guid subscriptionId, string publisherId, string offerId, string planId, string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all of the available Microsoft.MarketplaceOrdering REST API
-        /// operations.
+        /// Save marketplace terms.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='subscriptionId'>
+        /// </param>
+        /// <param name='publisherId'>
+        /// </param>
+        /// <param name='offerId'>
+        /// </param>
+        /// <param name='planId'>
+        /// </param>
+        /// <param name='terms'>
+        /// </param>
+        /// <param name='offerType'>
+        /// </param>
+        /// <param name='apiVersion'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -67,6 +86,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> GetOperationsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> SetAgreementWithHttpMessagesAsync(System.Guid subscriptionId, string publisherId, string offerId, string planId, AgreementDefinition terms, string offerType, string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

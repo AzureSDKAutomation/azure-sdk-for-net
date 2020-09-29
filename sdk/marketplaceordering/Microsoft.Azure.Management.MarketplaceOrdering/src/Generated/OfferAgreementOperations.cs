@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operations operations.
+    /// OfferAgreementOperations operations.
     /// </summary>
-    internal partial class Operations : IServiceOperations<MicrosoftMarketplaceOrderingAgreementsClient>, IOperations
+    internal partial class OfferAgreementOperations : IServiceOperations<MicrosoftMarketplaceOrderingAgreementsClient>, IOfferAgreementOperations
     {
         /// <summary>
-        /// Initializes a new instance of the Operations class.
+        /// Initializes a new instance of the OfferAgreementOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal Operations(MicrosoftMarketplaceOrderingAgreementsClient client)
+        internal OfferAgreementOperations(MicrosoftMarketplaceOrderingAgreementsClient client)
         {
             if (client == null)
             {
@@ -51,9 +51,18 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         public MicrosoftMarketplaceOrderingAgreementsClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available Microsoft.MarketplaceOrdering REST API
-        /// operations.
+        /// Get marketplace terms.
         /// </summary>
+        /// <param name='offerType'>
+        /// </param>
+        /// <param name='subscriptionId'>
+        /// </param>
+        /// <param name='publisherId'>
+        /// </param>
+        /// <param name='offerId'>
+        /// </param>
+        /// <param name='planId'>
+        /// </param>
         /// <param name='apiVersion'>
         /// </param>
         /// <param name='customHeaders'>
@@ -77,8 +86,20 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<object>> GetOperationsWithHttpMessagesAsync(string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> GetAgreementWithHttpMessagesAsync(int offerType, System.Guid subscriptionId, string publisherId, string offerId, string planId, string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (publisherId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "publisherId");
+            }
+            if (offerId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerId");
+            }
+            if (planId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "planId");
+            }
             if (apiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "apiVersion");
@@ -90,13 +111,23 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("offerType", offerType);
+                tracingParameters.Add("subscriptionId", subscriptionId);
+                tracingParameters.Add("publisherId", publisherId);
+                tracingParameters.Add("offerId", offerId);
+                tracingParameters.Add("planId", planId);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "GetOperations", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "GetAgreement", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.MarketplaceOrdering/operations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current").ToString();
+            _url = _url.Replace("{offerType}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(offerType, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(subscriptionId, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{publisherId}", System.Uri.EscapeDataString(publisherId));
+            _url = _url.Replace("{offerId}", System.Uri.EscapeDataString(offerId));
+            _url = _url.Replace("{planId}", System.Uri.EscapeDataString(planId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
             {
@@ -223,11 +254,21 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Lists all of the available Microsoft.MarketplaceOrdering REST API
-        /// operations.
+        /// Save marketplace terms.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='subscriptionId'>
+        /// </param>
+        /// <param name='publisherId'>
+        /// </param>
+        /// <param name='offerId'>
+        /// </param>
+        /// <param name='planId'>
+        /// </param>
+        /// <param name='terms'>
+        /// </param>
+        /// <param name='offerType'>
+        /// </param>
+        /// <param name='apiVersion'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -250,11 +291,31 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<object>> GetOperationsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> SetAgreementWithHttpMessagesAsync(System.Guid subscriptionId, string publisherId, string offerId, string planId, AgreementDefinition terms, string offerType, string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (nextPageLink == null)
+            if (publisherId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
+                throw new ValidationException(ValidationRules.CannotBeNull, "publisherId");
+            }
+            if (offerId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerId");
+            }
+            if (planId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "planId");
+            }
+            if (terms == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "terms");
+            }
+            if (offerType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerType");
+            }
+            if (apiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "apiVersion");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -263,14 +324,29 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
+                tracingParameters.Add("subscriptionId", subscriptionId);
+                tracingParameters.Add("publisherId", publisherId);
+                tracingParameters.Add("offerId", offerId);
+                tracingParameters.Add("planId", planId);
+                tracingParameters.Add("terms", terms);
+                tracingParameters.Add("offerType", offerType);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "GetOperationsNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "SetAgreement", tracingParameters);
             }
             // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(subscriptionId, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{publisherId}", System.Uri.EscapeDataString(publisherId));
+            _url = _url.Replace("{offerId}", System.Uri.EscapeDataString(offerId));
+            _url = _url.Replace("{planId}", System.Uri.EscapeDataString(planId));
+            _url = _url.Replace("{offerType}", System.Uri.EscapeDataString(offerType));
             List<string> _queryParameters = new List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -278,7 +354,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("PUT");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -309,6 +385,12 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
 
             // Serialize Request
             string _requestContent = null;
+            if(terms != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(terms, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {

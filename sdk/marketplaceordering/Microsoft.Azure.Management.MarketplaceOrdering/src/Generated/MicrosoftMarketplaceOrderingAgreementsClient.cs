@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
     /// <summary>
     /// REST API for MarketplaceOrdering Agreements.
     /// </summary>
-    public partial class MarketplaceOrderingAgreementsClient : ServiceClient<MarketplaceOrderingAgreementsClient>, IMarketplaceOrderingAgreementsClient, IAzureClient
+    public partial class MicrosoftMarketplaceOrderingAgreementsClient : ServiceClient<MicrosoftMarketplaceOrderingAgreementsClient>, IMicrosoftMarketplaceOrderingAgreementsClient, IAzureClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -47,16 +47,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The subscription ID that identifies an Azure subscription.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// The API version to use for the request.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -75,9 +65,14 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IMarketplaceAgreementsOperations.
+        /// Gets the IAgreementOperations.
         /// </summary>
-        public virtual IMarketplaceAgreementsOperations MarketplaceAgreements { get; private set; }
+        public virtual IAgreementOperations Agreement { get; private set; }
+
+        /// <summary>
+        /// Gets the IOfferAgreementOperations.
+        /// </summary>
+        public virtual IOfferAgreementOperations OfferAgreement { get; private set; }
 
         /// <summary>
         /// Gets the IOperations.
@@ -85,31 +80,31 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling MarketplaceOrderingAgreementsClient.Dispose(). False: will not dispose provided httpClient</param>
-        protected MarketplaceOrderingAgreementsClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        /// True: will dispose the provided httpClient on calling MicrosoftMarketplaceOrderingAgreementsClient.Dispose(). False: will not dispose provided httpClient</param>
+        protected MicrosoftMarketplaceOrderingAgreementsClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected MarketplaceOrderingAgreementsClient(params DelegatingHandler[] handlers) : base(handlers)
+        protected MicrosoftMarketplaceOrderingAgreementsClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -117,13 +112,13 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected MarketplaceOrderingAgreementsClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected MicrosoftMarketplaceOrderingAgreementsClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -134,7 +129,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected MarketplaceOrderingAgreementsClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        protected MicrosoftMarketplaceOrderingAgreementsClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -144,7 +139,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -158,7 +153,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected MarketplaceOrderingAgreementsClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected MicrosoftMarketplaceOrderingAgreementsClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -168,7 +163,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -179,7 +174,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public MarketplaceOrderingAgreementsClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public MicrosoftMarketplaceOrderingAgreementsClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -193,7 +188,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -202,11 +197,11 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling MarketplaceOrderingAgreementsClient.Dispose(). False: will not dispose provided httpClient</param>
+        /// True: will dispose the provided httpClient on calling MicrosoftMarketplaceOrderingAgreementsClient.Dispose(). False: will not dispose provided httpClient</param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public MarketplaceOrderingAgreementsClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
+        public MicrosoftMarketplaceOrderingAgreementsClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
         {
             if (credentials == null)
             {
@@ -220,7 +215,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -234,7 +229,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public MarketplaceOrderingAgreementsClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public MicrosoftMarketplaceOrderingAgreementsClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -248,7 +243,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -262,7 +257,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public MarketplaceOrderingAgreementsClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public MicrosoftMarketplaceOrderingAgreementsClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -281,7 +276,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         }
 
         /// <summary>
-        /// Initializes a new instance of the MarketplaceOrderingAgreementsClient class.
+        /// Initializes a new instance of the MicrosoftMarketplaceOrderingAgreementsClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -298,7 +293,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public MarketplaceOrderingAgreementsClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public MicrosoftMarketplaceOrderingAgreementsClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -325,10 +320,10 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// </summary>
         private void Initialize()
         {
-            MarketplaceAgreements = new MarketplaceAgreementsOperations(this);
+            Agreement = new AgreementOperations(this);
+            OfferAgreement = new OfferAgreementOperations(this);
             Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2015-06-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -345,7 +340,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -359,7 +353,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
                     }
             };
             CustomInitialize();
-            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
     }

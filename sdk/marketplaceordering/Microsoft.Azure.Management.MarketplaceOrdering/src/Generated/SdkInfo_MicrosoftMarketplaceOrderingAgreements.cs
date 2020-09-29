@@ -13,14 +13,15 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
 
   internal static partial class SdkInfo
   {
-      public static IEnumerable<Tuple<string, string, string>> ApiInfo_MarketplaceOrderingAgreements
+      public static IEnumerable<Tuple<string, string, string>> ApiInfo_MicrosoftMarketplaceOrderingAgreements
       {
           get
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("MarketplaceOrdering", "MarketplaceAgreements", "2015-06-01"),
-                new Tuple<string, string, string>("MarketplaceOrdering", "Operations", "2015-06-01"),
+                new Tuple<string, string, string>("MarketplaceOrdering", "OfferAgreement", "2015-06-01"),
+                new Tuple<string, string, string>("MarketplaceOrdering", "agreement", "2015-06-01"),
+                new Tuple<string, string, string>("MarketplaceOrdering", "operations", "2015-06-01"),
               }.AsEnumerable();
           }
       }

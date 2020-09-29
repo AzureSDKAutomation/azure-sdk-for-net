@@ -28,9 +28,11 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<Operation> List(this IOperations operations)
+            /// <param name='apiVersion'>
+            /// </param>
+            public static object GetOperations(this IOperations operations, string apiVersion)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetOperationsAsync(apiVersion).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -40,12 +42,14 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='apiVersion'>
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Operation>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> GetOperationsAsync(this IOperations operations, string apiVersion, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetOperationsWithHttpMessagesAsync(apiVersion, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -61,9 +65,9 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<Operation> ListNext(this IOperations operations, string nextPageLink)
+            public static object GetOperationsNext(this IOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.GetOperationsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -79,9 +83,9 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Operation>> ListNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> GetOperationsNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetOperationsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

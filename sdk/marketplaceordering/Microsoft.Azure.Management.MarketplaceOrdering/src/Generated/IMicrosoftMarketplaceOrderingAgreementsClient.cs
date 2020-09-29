@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
     /// <summary>
     /// REST API for MarketplaceOrdering Agreements.
     /// </summary>
-    public partial interface IMarketplaceOrderingAgreementsClient : System.IDisposable
+    public partial interface IMicrosoftMarketplaceOrderingAgreementsClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -41,16 +41,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The subscription ID that identifies an Azure subscription.
-        /// </summary>
-        string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// The API version to use for the request.
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -70,9 +60,14 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
 
 
         /// <summary>
-        /// Gets the IMarketplaceAgreementsOperations.
+        /// Gets the IAgreementOperations.
         /// </summary>
-        IMarketplaceAgreementsOperations MarketplaceAgreements { get; }
+        IAgreementOperations Agreement { get; }
+
+        /// <summary>
+        /// Gets the IOfferAgreementOperations.
+        /// </summary>
+        IOfferAgreementOperations OfferAgreement { get; }
 
         /// <summary>
         /// Gets the IOperations.
