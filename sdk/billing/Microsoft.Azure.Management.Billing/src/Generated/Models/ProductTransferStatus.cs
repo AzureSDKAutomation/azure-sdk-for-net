@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for InvoiceStatus.
+    /// Defines values for ProductTransferStatus.
     /// </summary>
-    public static class InvoiceStatus
+    public static class ProductTransferStatus
     {
-        public const string Due = "Due";
-        public const string OverDue = "OverDue";
-        public const string Paid = "Paid";
-        public const string Void = "Void";
+        public const string NotStarted = "NotStarted";
+        public const string InProgress = "InProgress";
+        public const string Completed = "Completed";
+        public const string Failed = "Failed";
     }
 }

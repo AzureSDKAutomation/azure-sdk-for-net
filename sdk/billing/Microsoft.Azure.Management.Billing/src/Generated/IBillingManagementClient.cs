@@ -47,11 +47,6 @@ namespace Microsoft.Azure.Management.Billing
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Azure Subscription ID.
-        /// </summary>
-        string SubscriptionId1 { get; set; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -139,6 +134,21 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IBillingPropertyOperations.
         /// </summary>
         IBillingPropertyOperations BillingProperty { get; }
+
+        /// <summary>
+        /// Gets the ITransfersOperations.
+        /// </summary>
+        ITransfersOperations Transfers { get; }
+
+        /// <summary>
+        /// Gets the IPartnerTransfersOperations.
+        /// </summary>
+        IPartnerTransfersOperations PartnerTransfers { get; }
+
+        /// <summary>
+        /// Gets the IRecipientTransfersOperations.
+        /// </summary>
+        IRecipientTransfersOperations RecipientTransfers { get; }
 
         /// <summary>
         /// Gets the IOperations.
