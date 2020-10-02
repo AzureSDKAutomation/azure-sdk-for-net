@@ -12,11 +12,12 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for InboundSecurityRulesProtocol.
+    /// Defines values for FirewallPolicyIntrusionDetectionStateType.
     /// </summary>
-    public static class InboundSecurityRulesProtocol
+    public static class FirewallPolicyIntrusionDetectionStateType
     {
-        public const string TCP = "TCP";
-        public const string UDP = "UDP";
+        public const string Off = "Off";
+        public const string Alert = "Alert";
+        public const string Deny = "Deny";
     }
 }
