@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Management.Peering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error detail that describes why an operation has
-        /// failed.
+        /// Gets the error detail that describes why an operation has failed.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
-        public ErrorDetail Error { get; set; }
+        public ErrorDetail Error { get; private set; }
 
     }
 }
