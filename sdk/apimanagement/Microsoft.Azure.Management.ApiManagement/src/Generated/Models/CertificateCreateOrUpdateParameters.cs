@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="data">Base 64 encoded certificate using the
         /// application/x-pkcs12 representation.</param>
         /// <param name="password">Password for the Certificate</param>
-        public CertificateCreateOrUpdateParameters(string data, string password)
+        public CertificateCreateOrUpdateParameters(string data, string password = default(string))
         {
             Data = data;
             Password = password;
@@ -73,10 +73,6 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             if (Data == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Data");
-            }
-            if (Password == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Password");
             }
         }
     }
