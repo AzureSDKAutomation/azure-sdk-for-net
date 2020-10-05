@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Azure Resource Graph API Reference
     /// </summary>
     public partial interface IResourceGraphClient : System.IDisposable
     {
@@ -45,9 +44,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// API version.
+        /// The Azure subscription Id.
         /// </summary>
-        string ApiVersion { get; }
+        string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -72,6 +71,39 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IGraphQueryOperations.
+        /// </summary>
+        IGraphQueryOperations GraphQuery { get; }
+
+        /// <summary>
+        /// List changes to a resource for a given time interval.
+        /// </summary>
+        /// <param name='parameters'>
+        /// the parameters for this request for changes.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<ResourceChangeList>> ResourceChangesWithHttpMessagesAsync(ResourceChangesRequestParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Get resource change details.
+        /// </summary>
+        /// <param name='parameters'>
+        /// The parameters for this request for resource change details.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<ResourceChangeData>> ResourceChangeDetailsWithHttpMessagesAsync(ResourceChangeDetailsRequestParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Queries the resources managed by Azure Resource Manager for all

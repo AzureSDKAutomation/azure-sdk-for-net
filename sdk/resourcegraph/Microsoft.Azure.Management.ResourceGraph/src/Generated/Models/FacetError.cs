@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// corresponding facet request.</param>
         /// <param name="errors">An array containing detected facet errors with
         /// details.</param>
-        public FacetError(string expression, IList<ErrorDetails> errors)
+        public FacetError(string expression, IList<ErrorResponse> errors)
             : base(expression)
         {
             Errors = errors;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// details.
         /// </summary>
         [JsonProperty(PropertyName = "errors")]
-        public IList<ErrorDetails> Errors { get; set; }
+        public IList<ErrorResponse> Errors { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -67,16 +67,6 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
             if (Errors == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Errors");
-            }
-            if (Errors != null)
-            {
-                foreach (var element in Errors)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }
