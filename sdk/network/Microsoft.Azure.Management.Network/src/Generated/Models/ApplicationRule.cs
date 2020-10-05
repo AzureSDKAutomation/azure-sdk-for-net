@@ -42,7 +42,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="fqdnTags">List of FQDN Tags for this rule.</param>
         /// <param name="sourceIpGroups">List of source IpGroups for this
         /// rule.</param>
-        public ApplicationRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<FirewallPolicyRuleApplicationProtocol> protocols = default(IList<FirewallPolicyRuleApplicationProtocol>), IList<string> targetFqdns = default(IList<string>), IList<string> fqdnTags = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>))
+        /// <param name="webCategories">List of destination azure web
+        /// categories.</param>
+        public ApplicationRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<FirewallPolicyRuleApplicationProtocol> protocols = default(IList<FirewallPolicyRuleApplicationProtocol>), IList<string> targetFqdns = default(IList<string>), IList<string> fqdnTags = default(IList<string>), IList<string> sourceIpGroups = default(IList<string>), IList<string> webCategories = default(IList<string>))
             : base(name, description)
         {
             SourceAddresses = sourceAddresses;
@@ -51,6 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
             TargetFqdns = targetFqdns;
             FqdnTags = fqdnTags;
             SourceIpGroups = sourceIpGroups;
+            WebCategories = webCategories;
             CustomInit();
         }
 
@@ -94,6 +97,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "sourceIpGroups")]
         public IList<string> SourceIpGroups { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of destination azure web categories.
+        /// </summary>
+        [JsonProperty(PropertyName = "webCategories")]
+        public IList<string> WebCategories { get; set; }
 
     }
 }
