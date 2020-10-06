@@ -152,11 +152,6 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IOperationOperations Operation { get; private set; }
 
         /// <summary>
-        /// Gets the IApiExportOperations.
-        /// </summary>
-        public virtual IApiExportOperations ApiExport { get; private set; }
-
-        /// <summary>
         /// Gets the IApiVersionSetOperations.
         /// </summary>
         public virtual IApiVersionSetOperations ApiVersionSet { get; private set; }
@@ -180,6 +175,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the ICertificateOperations.
         /// </summary>
         public virtual ICertificateOperations Certificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IContentTypeOperations.
+        /// </summary>
+        public virtual IContentTypeOperations ContentType { get; private set; }
+
+        /// <summary>
+        /// Gets the IContentTypeContentItemOperations.
+        /// </summary>
+        public virtual IContentTypeContentItemOperations ContentTypeContentItem { get; private set; }
+
+        /// <summary>
+        /// Gets the IDeletedServicesOperations.
+        /// </summary>
+        public virtual IDeletedServicesOperations DeletedServices { get; private set; }
 
         /// <summary>
         /// Gets the IApiManagementOperations.
@@ -347,6 +357,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IReportsOperations Reports { get; private set; }
 
         /// <summary>
+        /// Gets the ITenantSettingsOperations.
+        /// </summary>
+        public virtual ITenantSettingsOperations TenantSettings { get; private set; }
+
+        /// <summary>
         /// Gets the ISubscriptionOperations.
         /// </summary>
         public virtual ISubscriptionOperations Subscription { get; private set; }
@@ -395,6 +410,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IUserConfirmationPasswordOperations.
         /// </summary>
         public virtual IUserConfirmationPasswordOperations UserConfirmationPassword { get; private set; }
+
+        /// <summary>
+        /// Gets the IApiExportOperations.
+        /// </summary>
+        public virtual IApiExportOperations ApiExport { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ApiManagementClient class.
@@ -652,12 +672,14 @@ namespace Microsoft.Azure.Management.ApiManagement
             ApiIssueAttachment = new ApiIssueAttachmentOperations(this);
             ApiTagDescription = new ApiTagDescriptionOperations(this);
             Operation = new OperationOperations(this);
-            ApiExport = new ApiExportOperations(this);
             ApiVersionSet = new ApiVersionSetOperations(this);
             AuthorizationServer = new AuthorizationServerOperations(this);
             Backend = new BackendOperations(this);
             Cache = new CacheOperations(this);
             Certificate = new CertificateOperations(this);
+            ContentType = new ContentTypeOperations(this);
+            ContentTypeContentItem = new ContentTypeContentItemOperations(this);
+            DeletedServices = new DeletedServicesOperations(this);
             ApiManagementOperations = new ApiManagementOperations(this);
             ApiManagementServiceSkus = new ApiManagementServiceSkusOperations(this);
             ApiManagementService = new ApiManagementServiceOperations(this);
@@ -691,6 +713,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             QuotaByPeriodKeys = new QuotaByPeriodKeysOperations(this);
             Region = new RegionOperations(this);
             Reports = new ReportsOperations(this);
+            TenantSettings = new TenantSettingsOperations(this);
             Subscription = new SubscriptionOperations(this);
             TagResource = new TagResourceOperations(this);
             TenantAccess = new TenantAccessOperations(this);
@@ -701,8 +724,9 @@ namespace Microsoft.Azure.Management.ApiManagement
             UserSubscription = new UserSubscriptionOperations(this);
             UserIdentities = new UserIdentitiesOperations(this);
             UserConfirmationPassword = new UserConfirmationPasswordOperations(this);
+            ApiExport = new ApiExportOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-12-01";
+            ApiVersion = "2020-06-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
