@@ -11,30 +11,29 @@
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// List of virtual router peer routes.
+    /// SKU of Firewall policy.
     /// </summary>
-    public partial class PeerRouteList
+    public partial class FirewallPolicySku
     {
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the FirewallPolicySku class.
         /// </summary>
-        public PeerRouteList()
+        public FirewallPolicySku()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the FirewallPolicySku class.
         /// </summary>
-        /// <param name="value">List of peer routes.</param>
-        public PeerRouteList(IList<PeerRoute> value = default(IList<PeerRoute>))
+        /// <param name="tier">Tier of Firewall Policy. Possible values
+        /// include: 'Standard', 'Premium'</param>
+        public FirewallPolicySku(string tier = default(string))
         {
-            Value = value;
+            Tier = tier;
             CustomInit();
         }
 
@@ -44,10 +43,11 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of peer routes.
+        /// Gets or sets tier of Firewall Policy. Possible values include:
+        /// 'Standard', 'Premium'
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<PeerRoute> Value { get; set; }
+        [JsonProperty(PropertyName = "tier")]
+        public string Tier { get; set; }
 
     }
 }
