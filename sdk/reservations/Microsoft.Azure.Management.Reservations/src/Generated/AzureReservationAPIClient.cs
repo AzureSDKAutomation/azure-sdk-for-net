@@ -94,6 +94,11 @@ namespace Microsoft.Azure.Management.Reservations
         public virtual IOperationOperations Operation { get; private set; }
 
         /// <summary>
+        /// Gets the IOperationResultsOperations.
+        /// </summary>
+        public virtual IOperationResultsOperations OperationResults { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the AzureReservationAPIClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -340,6 +345,7 @@ namespace Microsoft.Azure.Management.Reservations
             Reservation = new ReservationOperations(this);
             ReservationOrder = new ReservationOrderOperations(this);
             Operation = new OperationOperations(this);
+            OperationResults = new OperationResultsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

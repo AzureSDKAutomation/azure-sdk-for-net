@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.Reservations
                 new Tuple<string, string, string>("Capacity", "GetAppliedReservationList", "2019-04-01"),
                 new Tuple<string, string, string>("Capacity", "GetCatalog", "2019-04-01"),
                 new Tuple<string, string, string>("Capacity", "Operation", "2019-04-01"),
+                new Tuple<string, string, string>("Capacity", "OperationResults", "2019-04-01"),
                 new Tuple<string, string, string>("Capacity", "Quota", "2019-07-19-preview"),
                 new Tuple<string, string, string>("Capacity", "QuotaRequestStatus", "2019-07-19-preview"),
                 new Tuple<string, string, string>("Capacity", "Reservation", "2019-04-01"),

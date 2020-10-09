@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Management.Reservations
         IOperationOperations Operation { get; }
 
         /// <summary>
+        /// Gets the IOperationResultsOperations.
+        /// </summary>
+        IOperationResultsOperations OperationResults { get; }
+
+        /// <summary>
         /// Get the regions and skus that are available for RI purchase for the
         /// specified Azure subscription.
         /// </summary>
