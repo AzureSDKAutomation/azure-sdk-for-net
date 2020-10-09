@@ -60,7 +60,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// enrollment.</param>
         /// <param name="hasReadAccess">Indicates whether user has read access
         /// to the billing account.</param>
-        public BillingAccountUpdateRequest(string displayName = default(string), AddressDetails soldTo = default(AddressDetails), string agreementType = default(string), string accountType = default(string), string accountStatus = default(string), BillingProfilesOnExpand billingProfiles = default(BillingProfilesOnExpand), Enrollment enrollmentDetails = default(Enrollment), IList<Department> departments = default(IList<Department>), IList<EnrollmentAccount> enrollmentAccounts = default(IList<EnrollmentAccount>), bool? hasReadAccess = default(bool?))
+        /// <param name="isTransitioned">Specifies if the billing account has
+        /// transitioned from agreement type Microsoft Online Service Program
+        /// to agreement type Microsoft Customer Agreement.</param>
+        public BillingAccountUpdateRequest(string displayName = default(string), AddressDetails soldTo = default(AddressDetails), string agreementType = default(string), string accountType = default(string), string accountStatus = default(string), BillingProfilesOnExpand billingProfiles = default(BillingProfilesOnExpand), Enrollment enrollmentDetails = default(Enrollment), IList<Department> departments = default(IList<Department>), IList<EnrollmentAccount> enrollmentAccounts = default(IList<EnrollmentAccount>), bool? hasReadAccess = default(bool?), bool? isTransitioned = default(bool?))
         {
             DisplayName = displayName;
             SoldTo = soldTo;
@@ -72,6 +75,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             Departments = departments;
             EnrollmentAccounts = enrollmentAccounts;
             HasReadAccess = hasReadAccess;
+            IsTransitioned = isTransitioned;
             CustomInit();
         }
 
@@ -148,6 +152,14 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hasReadAccess")]
         public bool? HasReadAccess { get; private set; }
+
+        /// <summary>
+        /// Gets specifies if the billing account has transitioned from
+        /// agreement type Microsoft Online Service Program to agreement type
+        /// Microsoft Customer Agreement.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isTransitioned")]
+        public bool? IsTransitioned { get; private set; }
 
         /// <summary>
         /// Validate the object.
