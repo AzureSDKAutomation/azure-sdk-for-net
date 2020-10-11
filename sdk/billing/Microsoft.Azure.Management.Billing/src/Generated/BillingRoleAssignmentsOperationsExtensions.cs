@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <summary>
             /// Gets a role assignment for the caller on a billing account. The operation
             /// is supported for billing accounts with agreement type Microsoft Partner
-            /// Agreement or Microsoft Customer Agreement.
+            /// Agreement, Microsoft Customer Agreement or Enterprise Agreement.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <summary>
             /// Gets a role assignment for the caller on a billing account. The operation
             /// is supported for billing accounts with agreement type Microsoft Partner
-            /// Agreement or Microsoft Customer Agreement.
+            /// Agreement, Microsoft Customer Agreement or Enterprise Agreement.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -328,9 +328,209 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
+            /// Gets a role assignment for the caller on a department. The operation is
+            /// supported only for billing accounts with agreement type Enterprise
+            /// Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            public static BillingRoleAssignment GetByDepartment(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string departmentName, string billingRoleAssignmentName)
+            {
+                return operations.GetByDepartmentAsync(billingAccountName, departmentName, billingRoleAssignmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a role assignment for the caller on a department. The operation is
+            /// supported only for billing accounts with agreement type Enterprise
+            /// Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingRoleAssignment> GetByDepartmentAsync(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string departmentName, string billingRoleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByDepartmentWithHttpMessagesAsync(billingAccountName, departmentName, billingRoleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a role assignment for the caller on a department. The operation is
+            /// supported only for billing accounts with agreement type Enterprise
+            /// Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            public static BillingRoleAssignment DeleteByDepartment(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string departmentName, string billingRoleAssignmentName)
+            {
+                return operations.DeleteByDepartmentAsync(billingAccountName, departmentName, billingRoleAssignmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a role assignment for the caller on a department. The operation is
+            /// supported only for billing accounts with agreement type Enterprise
+            /// Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingRoleAssignment> DeleteByDepartmentAsync(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string departmentName, string billingRoleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteByDepartmentWithHttpMessagesAsync(billingAccountName, departmentName, billingRoleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a role assignment for the caller on a enrollment Account. The
+            /// operation is supported only for billing accounts with agreement type
+            /// Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            public static BillingRoleAssignment GetByEnrollmentAccount(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string enrollmentAccountName, string billingRoleAssignmentName)
+            {
+                return operations.GetByEnrollmentAccountAsync(billingAccountName, enrollmentAccountName, billingRoleAssignmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a role assignment for the caller on a enrollment Account. The
+            /// operation is supported only for billing accounts with agreement type
+            /// Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingRoleAssignment> GetByEnrollmentAccountAsync(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string enrollmentAccountName, string billingRoleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByEnrollmentAccountWithHttpMessagesAsync(billingAccountName, enrollmentAccountName, billingRoleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a role assignment for the caller on a enrollment Account. The
+            /// operation is supported only for billing accounts with agreement type
+            /// Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            public static BillingRoleAssignment DeleteByEnrollmentAccount(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string enrollmentAccountName, string billingRoleAssignmentName)
+            {
+                return operations.DeleteByEnrollmentAccountAsync(billingAccountName, enrollmentAccountName, billingRoleAssignmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a role assignment for the caller on a enrollment Account. The
+            /// operation is supported only for billing accounts with agreement type
+            /// Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            /// <param name='billingRoleAssignmentName'>
+            /// The ID that uniquely identifies a role assignment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingRoleAssignment> DeleteByEnrollmentAccountAsync(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string enrollmentAccountName, string billingRoleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteByEnrollmentAccountWithHttpMessagesAsync(billingAccountName, enrollmentAccountName, billingRoleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists the role assignments for the caller on a billing account. The
             /// operation is supported for billing accounts with agreement type Microsoft
-            /// Partner Agreement or Microsoft Customer Agreement.
+            /// Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -347,7 +547,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <summary>
             /// Lists the role assignments for the caller on a billing account. The
             /// operation is supported for billing accounts with agreement type Microsoft
-            /// Partner Agreement or Microsoft Customer Agreement.
+            /// Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -466,9 +666,93 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            public static IPage<BillingRoleAssignment> ListByEnrollmentAccount(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string enrollmentAccountName)
+            {
+                return operations.ListByEnrollmentAccountAsync(billingAccountName, enrollmentAccountName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingRoleAssignment>> ListByEnrollmentAccountAsync(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string enrollmentAccountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByEnrollmentAccountWithHttpMessagesAsync(billingAccountName, enrollmentAccountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            public static IPage<BillingRoleAssignment> ListByDepartment(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string departmentName)
+            {
+                return operations.ListByDepartmentAsync(billingAccountName, departmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingRoleAssignment>> ListByDepartmentAsync(this IBillingRoleAssignmentsOperations operations, string billingAccountName, string departmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByDepartmentWithHttpMessagesAsync(billingAccountName, departmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists the role assignments for the caller on a billing account. The
             /// operation is supported for billing accounts with agreement type Microsoft
-            /// Partner Agreement or Microsoft Customer Agreement.
+            /// Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -485,7 +769,7 @@ namespace Microsoft.Azure.Management.Billing
             /// <summary>
             /// Lists the role assignments for the caller on a billing account. The
             /// operation is supported for billing accounts with agreement type Microsoft
-            /// Partner Agreement or Microsoft Customer Agreement.
+            /// Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -580,6 +864,78 @@ namespace Microsoft.Azure.Management.Billing
             public static async Task<IPage<BillingRoleAssignment>> ListByBillingProfileNextAsync(this IBillingRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingProfileNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<BillingRoleAssignment> ListByEnrollmentAccountNext(this IBillingRoleAssignmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListByEnrollmentAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingRoleAssignment>> ListByEnrollmentAccountNextAsync(this IBillingRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByEnrollmentAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<BillingRoleAssignment> ListByDepartmentNext(this IBillingRoleAssignmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListByDepartmentNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the role assignments for the caller on a billing profile. The
+            /// operation is supported for billing accounts of type Enterprise Agreement.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingRoleAssignment>> ListByDepartmentNextAsync(this IBillingRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByDepartmentNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

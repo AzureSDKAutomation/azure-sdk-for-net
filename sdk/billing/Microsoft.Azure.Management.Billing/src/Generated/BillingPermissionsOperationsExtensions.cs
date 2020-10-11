@@ -190,6 +190,86 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
+            /// Lists the billing permissions the caller has on a department.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            public static IPage<BillingPermissionsProperties> ListByDepartment(this IBillingPermissionsOperations operations, string billingAccountName, string departmentName)
+            {
+                return operations.ListByDepartmentAsync(billingAccountName, departmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on a department.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='departmentName'>
+            /// The ID that uniquely identifies a department.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingPermissionsProperties>> ListByDepartmentAsync(this IBillingPermissionsOperations operations, string billingAccountName, string departmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByDepartmentWithHttpMessagesAsync(billingAccountName, departmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on an enrollment account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            public static IPage<BillingPermissionsProperties> ListByEnrollmentAccount(this IBillingPermissionsOperations operations, string billingAccountName, string enrollmentAccountName)
+            {
+                return operations.ListByEnrollmentAccountAsync(billingAccountName, enrollmentAccountName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on an enrollment account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// The ID that uniquely identifies a billing account.
+            /// </param>
+            /// <param name='enrollmentAccountName'>
+            /// The ID that uniquely identifies an enrollment account.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingPermissionsProperties>> ListByEnrollmentAccountAsync(this IBillingPermissionsOperations operations, string billingAccountName, string enrollmentAccountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByEnrollmentAccountWithHttpMessagesAsync(billingAccountName, enrollmentAccountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists the billing permissions the caller has for a customer.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
@@ -328,6 +408,74 @@ namespace Microsoft.Azure.Management.Billing
             public static async Task<IPage<BillingPermissionsProperties>> ListByBillingProfileNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingProfileNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on a department.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<BillingPermissionsProperties> ListByDepartmentNext(this IBillingPermissionsOperations operations, string nextPageLink)
+            {
+                return operations.ListByDepartmentNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on a department.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingPermissionsProperties>> ListByDepartmentNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByDepartmentNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on an enrollment account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<BillingPermissionsProperties> ListByEnrollmentAccountNext(this IBillingPermissionsOperations operations, string nextPageLink)
+            {
+                return operations.ListByEnrollmentAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the billing permissions the caller has on an enrollment account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<BillingPermissionsProperties>> ListByEnrollmentAccountNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByEnrollmentAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

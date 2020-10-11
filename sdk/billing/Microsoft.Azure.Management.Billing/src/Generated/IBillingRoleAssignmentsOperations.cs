@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <summary>
         /// Gets a role assignment for the caller on a billing account. The
         /// operation is supported for billing accounts with agreement type
-        /// Microsoft Partner Agreement or Microsoft Customer Agreement.
+        /// Microsoft Partner Agreement, Microsoft Customer Agreement or
+        /// Enterprise Agreement.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
@@ -207,9 +208,130 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<BillingRoleAssignment>> DeleteByBillingProfileWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string billingRoleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets a role assignment for the caller on a department. The
+        /// operation is supported only for billing accounts with agreement
+        /// type Enterprise Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='departmentName'>
+        /// The ID that uniquely identifies a department.
+        /// </param>
+        /// <param name='billingRoleAssignmentName'>
+        /// The ID that uniquely identifies a role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BillingRoleAssignment>> GetByDepartmentWithHttpMessagesAsync(string billingAccountName, string departmentName, string billingRoleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a role assignment for the caller on a department. The
+        /// operation is supported only for billing accounts with agreement
+        /// type Enterprise Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='departmentName'>
+        /// The ID that uniquely identifies a department.
+        /// </param>
+        /// <param name='billingRoleAssignmentName'>
+        /// The ID that uniquely identifies a role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BillingRoleAssignment>> DeleteByDepartmentWithHttpMessagesAsync(string billingAccountName, string departmentName, string billingRoleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a role assignment for the caller on a enrollment Account. The
+        /// operation is supported only for billing accounts with agreement
+        /// type Enterprise Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='enrollmentAccountName'>
+        /// The ID that uniquely identifies an enrollment account.
+        /// </param>
+        /// <param name='billingRoleAssignmentName'>
+        /// The ID that uniquely identifies a role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BillingRoleAssignment>> GetByEnrollmentAccountWithHttpMessagesAsync(string billingAccountName, string enrollmentAccountName, string billingRoleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a role assignment for the caller on a enrollment Account.
+        /// The operation is supported only for billing accounts with agreement
+        /// type Enterprise Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='enrollmentAccountName'>
+        /// The ID that uniquely identifies an enrollment account.
+        /// </param>
+        /// <param name='billingRoleAssignmentName'>
+        /// The ID that uniquely identifies a role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BillingRoleAssignment>> DeleteByEnrollmentAccountWithHttpMessagesAsync(string billingAccountName, string enrollmentAccountName, string billingRoleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists the role assignments for the caller on a billing account. The
         /// operation is supported for billing accounts with agreement type
-        /// Microsoft Partner Agreement or Microsoft Customer Agreement.
+        /// Microsoft Partner Agreement, Microsoft Customer Agreement or
+        /// Enterprise Agreement.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
@@ -291,9 +413,64 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<IPage<BillingRoleAssignment>>> ListByBillingProfileWithHttpMessagesAsync(string billingAccountName, string billingProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Lists the role assignments for the caller on a billing profile. The
+        /// operation is supported for billing accounts of type Enterprise
+        /// Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='enrollmentAccountName'>
+        /// The ID that uniquely identifies an enrollment account.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<BillingRoleAssignment>>> ListByEnrollmentAccountWithHttpMessagesAsync(string billingAccountName, string enrollmentAccountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists the role assignments for the caller on a billing profile. The
+        /// operation is supported for billing accounts of type Enterprise
+        /// Agreement.
+        /// </summary>
+        /// <param name='billingAccountName'>
+        /// The ID that uniquely identifies a billing account.
+        /// </param>
+        /// <param name='departmentName'>
+        /// The ID that uniquely identifies a department.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<BillingRoleAssignment>>> ListByDepartmentWithHttpMessagesAsync(string billingAccountName, string departmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists the role assignments for the caller on a billing account. The
         /// operation is supported for billing accounts with agreement type
-        /// Microsoft Partner Agreement or Microsoft Customer Agreement.
+        /// Microsoft Partner Agreement, Microsoft Customer Agreement or
+        /// Enterprise Agreement.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='nextPageLink'>
@@ -365,5 +542,53 @@ namespace Microsoft.Azure.Management.Billing
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<BillingRoleAssignment>>> ListByBillingProfileNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists the role assignments for the caller on a billing profile. The
+        /// operation is supported for billing accounts of type Enterprise
+        /// Agreement.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<BillingRoleAssignment>>> ListByEnrollmentAccountNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists the role assignments for the caller on a billing profile. The
+        /// operation is supported for billing accounts of type Enterprise
+        /// Agreement.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<BillingRoleAssignment>>> ListByDepartmentNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

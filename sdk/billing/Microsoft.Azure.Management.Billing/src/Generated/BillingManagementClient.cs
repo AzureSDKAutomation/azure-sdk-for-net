@@ -53,11 +53,6 @@ namespace Microsoft.Azure.Management.Billing
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Azure Subscription ID.
-        /// </summary>
-        public string SubscriptionId1 { get; set; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -159,6 +154,21 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IBillingRoleAssignmentsOperations.
         /// </summary>
         public virtual IBillingRoleAssignmentsOperations BillingRoleAssignments { get; private set; }
+
+        /// <summary>
+        /// Gets the IRoleAssignmentsOperations.
+        /// </summary>
+        public virtual IRoleAssignmentsOperations RoleAssignments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEnrollmentDepartmentRoleAssignmentsOperations.
+        /// </summary>
+        public virtual IEnrollmentDepartmentRoleAssignmentsOperations EnrollmentDepartmentRoleAssignments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEnrollmentAccountRoleAssignmentsOperations.
+        /// </summary>
+        public virtual IEnrollmentAccountRoleAssignmentsOperations EnrollmentAccountRoleAssignments { get; private set; }
 
         /// <summary>
         /// Gets the IAgreementsOperations.
@@ -433,6 +443,9 @@ namespace Microsoft.Azure.Management.Billing
             Operations = new Operations(this);
             BillingRoleDefinitions = new BillingRoleDefinitionsOperations(this);
             BillingRoleAssignments = new BillingRoleAssignmentsOperations(this);
+            RoleAssignments = new RoleAssignmentsOperations(this);
+            EnrollmentDepartmentRoleAssignments = new EnrollmentDepartmentRoleAssignmentsOperations(this);
+            EnrollmentAccountRoleAssignments = new EnrollmentAccountRoleAssignmentsOperations(this);
             Agreements = new AgreementsOperations(this);
             EnrollmentAccounts = new EnrollmentAccountsOperations(this);
             BillingPeriods = new BillingPeriodsOperations(this);

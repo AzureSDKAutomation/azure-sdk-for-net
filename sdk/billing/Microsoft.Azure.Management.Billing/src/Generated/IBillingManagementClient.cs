@@ -47,11 +47,6 @@ namespace Microsoft.Azure.Management.Billing
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Azure Subscription ID.
-        /// </summary>
-        string SubscriptionId1 { get; set; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -154,6 +149,21 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IBillingRoleAssignmentsOperations.
         /// </summary>
         IBillingRoleAssignmentsOperations BillingRoleAssignments { get; }
+
+        /// <summary>
+        /// Gets the IRoleAssignmentsOperations.
+        /// </summary>
+        IRoleAssignmentsOperations RoleAssignments { get; }
+
+        /// <summary>
+        /// Gets the IEnrollmentDepartmentRoleAssignmentsOperations.
+        /// </summary>
+        IEnrollmentDepartmentRoleAssignmentsOperations EnrollmentDepartmentRoleAssignments { get; }
+
+        /// <summary>
+        /// Gets the IEnrollmentAccountRoleAssignmentsOperations.
+        /// </summary>
+        IEnrollmentAccountRoleAssignmentsOperations EnrollmentAccountRoleAssignments { get; }
 
         /// <summary>
         /// Gets the IAgreementsOperations.
