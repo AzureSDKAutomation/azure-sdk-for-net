@@ -16,25 +16,29 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents a list of VM/server groups and set of rules that are
-    /// Recommended by Azure Security Center to be allowed
+    /// Represents an IP endpoint entity
     /// </summary>
-    public partial class AppWhitelistingGroups
+    [Newtonsoft.Json.JsonObject("ip")]
+    public partial class IPEntity : AlertEntity
     {
         /// <summary>
-        /// Initializes a new instance of the AppWhitelistingGroups class.
+        /// Initializes a new instance of the IPEntity class.
         /// </summary>
-        public AppWhitelistingGroups()
+        public IPEntity()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AppWhitelistingGroups class.
+        /// Initializes a new instance of the IPEntity class.
         /// </summary>
-        public AppWhitelistingGroups(IList<AppWhitelistingGroup> value = default(IList<AppWhitelistingGroup>))
+        /// <param name="additionalProperties">Unmatched properties from the
+        /// message are deserialized this collection</param>
+        /// <param name="address">The IP address as string</param>
+        public IPEntity(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string address = default(string))
+            : base(additionalProperties)
         {
-            Value = value;
+            Address = address;
             CustomInit();
         }
 
@@ -44,9 +48,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the IP address as string
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<AppWhitelistingGroup> Value { get; set; }
+        [JsonProperty(PropertyName = "address")]
+        public string Address { get; set; }
 
     }
 }

@@ -33,11 +33,9 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
-        /// <param name="type">Type of entity</param>
-        public AlertEntity(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string type = default(string))
+        public AlertEntity(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>))
         {
             AdditionalProperties = additionalProperties;
-            Type = type;
             CustomInit();
         }
 
@@ -52,12 +50,6 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        /// <summary>
-        /// Gets type of entity
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
     }
 }
