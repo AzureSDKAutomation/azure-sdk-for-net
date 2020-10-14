@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.Logic
                 new Tuple<string, string, string>("Logic", "IntegrationAccountPartners", "2019-05-01"),
                 new Tuple<string, string, string>("Logic", "IntegrationAccountSchemas", "2019-05-01"),
                 new Tuple<string, string, string>("Logic", "IntegrationAccountSessions", "2019-05-01"),
+                new Tuple<string, string, string>("Logic", "IntegrationAccountUsageConfigurations", "2019-05-01"),
                 new Tuple<string, string, string>("Logic", "IntegrationAccounts", "2019-05-01"),
                 new Tuple<string, string, string>("Logic", "IntegrationServiceEnvironmentManagedApiOperations", "2019-05-01"),
                 new Tuple<string, string, string>("Logic", "IntegrationServiceEnvironmentManagedApis", "2019-05-01"),
@@ -49,16 +50,5 @@ namespace Microsoft.Azure.Management.Logic
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "latest";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4283";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/logic/resource-manager/readme.md --csharp --version=latest --reflect-api-versions --csharp-sdks-folder=C:\\dev\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "411d4cf447639289e4ee1efa4d066df2773ebccd";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-
