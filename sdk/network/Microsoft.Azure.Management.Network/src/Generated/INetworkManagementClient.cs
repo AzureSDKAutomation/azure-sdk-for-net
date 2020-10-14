@@ -206,6 +206,11 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteLinksOperations ExpressRouteLinks { get; }
 
         /// <summary>
+        /// Gets the IExpressRoutePortAuthorizationsOperations.
+        /// </summary>
+        IExpressRoutePortAuthorizationsOperations ExpressRoutePortAuthorizations { get; }
+
+        /// <summary>
         /// Gets the IFirewallPoliciesOperations.
         /// </summary>
         IFirewallPoliciesOperations FirewallPolicies { get; }
