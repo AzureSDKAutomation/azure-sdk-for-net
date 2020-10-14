@@ -63,6 +63,21 @@ namespace Microsoft.Azure.Management.Reservations
 
 
         /// <summary>
+        /// Gets the IReservationOrderOperations.
+        /// </summary>
+        IReservationOrderOperations ReservationOrder { get; }
+
+        /// <summary>
+        /// Gets the IReservationOperations.
+        /// </summary>
+        IReservationOperations Reservation { get; }
+
+        /// <summary>
+        /// Gets the IOperationOperations.
+        /// </summary>
+        IOperationOperations Operation { get; }
+
+        /// <summary>
         /// Gets the IQuotaOperations.
         /// </summary>
         IQuotaOperations Quota { get; }
@@ -73,38 +88,11 @@ namespace Microsoft.Azure.Management.Reservations
         IQuotaRequestStatusOperations QuotaRequestStatus { get; }
 
         /// <summary>
-        /// Gets the IAutoQuotaIncreaseOperations.
-        /// </summary>
-        IAutoQuotaIncreaseOperations AutoQuotaIncrease { get; }
-
-        /// <summary>
-        /// Gets the IReservationOperations.
-        /// </summary>
-        IReservationOperations Reservation { get; }
-
-        /// <summary>
-        /// Gets the IReservationOrderOperations.
-        /// </summary>
-        IReservationOrderOperations ReservationOrder { get; }
-
-        /// <summary>
-        /// Gets the IOperationOperations.
-        /// </summary>
-        IOperationOperations Operation { get; }
-
-        /// <summary>
         /// Get the regions and skus that are available for RI purchase for the
         /// specified Azure subscription.
         /// </summary>
         /// <param name='subscriptionId'>
         /// Id of the subscription
-        /// </param>
-        /// <param name='reservedResourceType'>
-        /// The type of the resource for which the skus should be provided.
-        /// </param>
-        /// <param name='location'>
-        /// Filters the skus based on the location specified in this parameter.
-        /// This can be an azure region or global
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -112,14 +100,14 @@ namespace Microsoft.Azure.Management.Reservations
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IList<Catalog>>> GetCatalogWithHttpMessagesAsync(string subscriptionId, string reservedResourceType, string location = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<Catalog>>> GetCatalogWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get list of applicable `Reservation`s.
         /// </summary>
         /// <remarks>
-        /// Get applicable `Reservation`s that are applied to this subscription
-        /// or a resource group under this subscription.
+        /// Get applicable `Reservation`s that are applied to this
+        /// subscription.
         /// </remarks>
         /// <param name='subscriptionId'>
         /// Id of the subscription

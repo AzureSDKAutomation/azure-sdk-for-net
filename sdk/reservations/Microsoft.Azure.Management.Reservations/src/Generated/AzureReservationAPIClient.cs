@@ -64,6 +64,21 @@ namespace Microsoft.Azure.Management.Reservations
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IReservationOrderOperations.
+        /// </summary>
+        public virtual IReservationOrderOperations ReservationOrder { get; private set; }
+
+        /// <summary>
+        /// Gets the IReservationOperations.
+        /// </summary>
+        public virtual IReservationOperations Reservation { get; private set; }
+
+        /// <summary>
+        /// Gets the IOperationOperations.
+        /// </summary>
+        public virtual IOperationOperations Operation { get; private set; }
+
+        /// <summary>
         /// Gets the IQuotaOperations.
         /// </summary>
         public virtual IQuotaOperations Quota { get; private set; }
@@ -72,26 +87,6 @@ namespace Microsoft.Azure.Management.Reservations
         /// Gets the IQuotaRequestStatusOperations.
         /// </summary>
         public virtual IQuotaRequestStatusOperations QuotaRequestStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IAutoQuotaIncreaseOperations.
-        /// </summary>
-        public virtual IAutoQuotaIncreaseOperations AutoQuotaIncrease { get; private set; }
-
-        /// <summary>
-        /// Gets the IReservationOperations.
-        /// </summary>
-        public virtual IReservationOperations Reservation { get; private set; }
-
-        /// <summary>
-        /// Gets the IReservationOrderOperations.
-        /// </summary>
-        public virtual IReservationOrderOperations ReservationOrder { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperationOperations.
-        /// </summary>
-        public virtual IOperationOperations Operation { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AzureReservationAPIClient class.
@@ -334,12 +329,11 @@ namespace Microsoft.Azure.Management.Reservations
         /// </summary>
         private void Initialize()
         {
+            ReservationOrder = new ReservationOrderOperations(this);
+            Reservation = new ReservationOperations(this);
+            Operation = new OperationOperations(this);
             Quota = new QuotaOperations(this);
             QuotaRequestStatus = new QuotaRequestStatusOperations(this);
-            AutoQuotaIncrease = new AutoQuotaIncreaseOperations(this);
-            Reservation = new ReservationOperations(this);
-            ReservationOrder = new ReservationOrderOperations(this);
-            Operation = new OperationOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -381,13 +375,6 @@ namespace Microsoft.Azure.Management.Reservations
         /// <param name='subscriptionId'>
         /// Id of the subscription
         /// </param>
-        /// <param name='reservedResourceType'>
-        /// The type of the resource for which the skus should be provided.
-        /// </param>
-        /// <param name='location'>
-        /// Filters the skus based on the location specified in this parameter. This
-        /// can be an azure region or global
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -409,17 +396,13 @@ namespace Microsoft.Azure.Management.Reservations
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IList<Catalog>>> GetCatalogWithHttpMessagesAsync(string subscriptionId, string reservedResourceType, string location = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IList<Catalog>>> GetCatalogWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (subscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "subscriptionId");
             }
-            if (reservedResourceType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "reservedResourceType");
-            }
-            string apiVersion = "2019-04-01";
+            string apiVersion = "2017-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -429,8 +412,6 @@ namespace Microsoft.Azure.Management.Reservations
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("subscriptionId", subscriptionId);
-                tracingParameters.Add("reservedResourceType", reservedResourceType);
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetCatalog", tracingParameters);
             }
@@ -442,14 +423,6 @@ namespace Microsoft.Azure.Management.Reservations
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (reservedResourceType != null)
-            {
-                _queryParameters.Add(string.Format("reservedResourceType={0}", System.Uri.EscapeDataString(reservedResourceType)));
-            }
-            if (location != null)
-            {
-                _queryParameters.Add(string.Format("location={0}", System.Uri.EscapeDataString(location)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -575,8 +548,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// Get list of applicable `Reservation`s.
         /// </summary>
         /// <remarks>
-        /// Get applicable `Reservation`s that are applied to this subscription or a
-        /// resource group under this subscription.
+        /// Get applicable `Reservation`s that are applied to this subscription.
         /// </remarks>
         /// <param name='subscriptionId'>
         /// Id of the subscription
@@ -608,7 +580,7 @@ namespace Microsoft.Azure.Management.Reservations
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "subscriptionId");
             }
-            string apiVersion = "2019-04-01";
+            string apiVersion = "2017-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
