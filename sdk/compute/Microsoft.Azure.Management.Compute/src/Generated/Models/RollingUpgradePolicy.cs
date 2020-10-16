@@ -52,12 +52,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// completing the update for all virtual machines in one batch and
         /// starting the next batch. The time duration should be specified in
         /// ISO 8601 format. The default value is 0 seconds (PT0S).</param>
-        public RollingUpgradePolicy(int? maxBatchInstancePercent = default(int?), int? maxUnhealthyInstancePercent = default(int?), int? maxUnhealthyUpgradedInstancePercent = default(int?), string pauseTimeBetweenBatches = default(string))
+        /// <param name="enableCrossZoneUpgrade">Enable rolling upgrade across
+        /// multiple zones during UD walk within the limit of
+        /// MaxBatchInstanceCount or BatchInstancePercent</param>
+        /// <param name="prioritizeUnhealthyInstances">Enable rolling upgrade
+        /// to start with the batch which has most unhealthy VMs in percentage.
+        /// If enableCrossZoneUpgrade is not enabled, the rolling upgrade will
+        /// start from the most unhealthy availability zone,and within the
+        /// zone, walk the UD that has the most unhealhty VMs first</param>
+        public RollingUpgradePolicy(int? maxBatchInstancePercent = default(int?), int? maxUnhealthyInstancePercent = default(int?), int? maxUnhealthyUpgradedInstancePercent = default(int?), string pauseTimeBetweenBatches = default(string), bool? enableCrossZoneUpgrade = default(bool?), bool? prioritizeUnhealthyInstances = default(bool?))
         {
             MaxBatchInstancePercent = maxBatchInstancePercent;
             MaxUnhealthyInstancePercent = maxUnhealthyInstancePercent;
             MaxUnhealthyUpgradedInstancePercent = maxUnhealthyUpgradedInstancePercent;
             PauseTimeBetweenBatches = pauseTimeBetweenBatches;
+            EnableCrossZoneUpgrade = enableCrossZoneUpgrade;
+            PrioritizeUnhealthyInstances = prioritizeUnhealthyInstances;
             CustomInit();
         }
 
@@ -106,6 +116,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "pauseTimeBetweenBatches")]
         public string PauseTimeBetweenBatches { get; set; }
+
+        /// <summary>
+        /// Gets or sets enable rolling upgrade across multiple zones during UD
+        /// walk within the limit of MaxBatchInstanceCount or
+        /// BatchInstancePercent
+        /// </summary>
+        [JsonProperty(PropertyName = "enableCrossZoneUpgrade")]
+        public bool? EnableCrossZoneUpgrade { get; set; }
+
+        /// <summary>
+        /// Gets or sets enable rolling upgrade to start with the batch which
+        /// has most unhealthy VMs in percentage. If enableCrossZoneUpgrade is
+        /// not enabled, the rolling upgrade will start from the most unhealthy
+        /// availability zone,and within the zone, walk the UD that has the
+        /// most unhealhty VMs first
+        /// </summary>
+        [JsonProperty(PropertyName = "prioritizeUnhealthyInstances")]
+        public bool? PrioritizeUnhealthyInstances { get; set; }
 
         /// <summary>
         /// Validate the object.
