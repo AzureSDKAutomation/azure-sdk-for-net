@@ -33,10 +33,13 @@ namespace Microsoft.Azure.Management.Support.Models
         /// {provider}/{resource}/{operation}.</param>
         /// <param name="display">The object that describes the
         /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        /// <param name="isDataAction">Indicates whether the operation applies
+        /// to data-plane.</param>
+        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), bool? isDataAction = default(bool?))
         {
             Name = name;
             Display = display;
+            IsDataAction = isDataAction;
             CustomInit();
         }
 
@@ -56,6 +59,12 @@ namespace Microsoft.Azure.Management.Support.Models
         /// </summary>
         [JsonProperty(PropertyName = "display")]
         public OperationDisplay Display { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the operation applies to data-plane.
+        /// </summary>
+        [JsonProperty(PropertyName = "isDataAction")]
+        public bool? IsDataAction { get; set; }
 
     }
 }
