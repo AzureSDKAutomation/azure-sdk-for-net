@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <summary>
         /// Initializes a new instance of the JobNavigation class.
         /// </summary>
-        /// <param name="id">Id of the job associated with the software update
-        /// configuration run</param>
+        /// <param name="id">ID of the job associated with the software update
+        /// configuration run.</param>
         public JobNavigation(string id = default(string))
         {
             Id = id;
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.Automation.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets id of the job associated with the software update
-        /// configuration run
+        /// Gets ID of the job associated with the software update
+        /// configuration run.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// class.
         /// </summary>
         /// <param name="name">Name of the software update configuration
-        /// triggered the software update configuration run</param>
+        /// triggered the software update configuration run.</param>
         public UpdateConfigurationNavigation(string name = default(string))
         {
             Name = name;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <summary>
         /// Gets name of the software update configuration triggered the
-        /// software update configuration run
+        /// software update configuration run.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }

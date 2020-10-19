@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     using System.Linq;
 
     /// <summary>
-    /// Software update configuration Run properties.
+    /// Software update configuration run properties.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class SoftwareUpdateConfigurationRun
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         /// <param name="name">Name of the software update configuration
         /// run.</param>
-        /// <param name="id">Resource Id of the software update configuration
-        /// run</param>
-        /// <param name="softwareUpdateConfiguration">software update
-        /// configuration triggered this run</param>
+        /// <param name="id">Resource ID of the software update configuration
+        /// run.</param>
+        /// <param name="softwareUpdateConfiguration">Software update
+        /// configuration triggered this run.</param>
         /// <param name="status">Status of the software update configuration
         /// run.</param>
         /// <param name="configuredDuration">Configured duration for the
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// appears in the response.</param>
         /// <param name="tasks">Software update configuration tasks triggered
         /// in this run</param>
-        public SoftwareUpdateConfigurationRun(string name = default(string), string id = default(string), UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string configuredDuration = default(string), string osType = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), int? computerCount = default(int?), int? failedCount = default(int?), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), SoftareUpdateConfigurationRunTasks tasks = default(SoftareUpdateConfigurationRunTasks))
+        public SoftwareUpdateConfigurationRun(string name = default(string), string id = default(string), UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string configuredDuration = default(string), string osType = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), int? computerCount = default(int?), int? failedCount = default(int?), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), SoftwareUpdateConfigurationRunTasks tasks = default(SoftwareUpdateConfigurationRunTasks))
         {
             Name = name;
             Id = id;
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource Id of the software update configuration run
+        /// Gets resource ID of the software update configuration run.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets or sets software update configuration triggered this run
+        /// Gets or sets software update configuration triggered this run.
         /// </summary>
         [JsonProperty(PropertyName = "properties.softwareUpdateConfiguration")]
         public UpdateConfigurationNavigation SoftwareUpdateConfiguration { get; set; }
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// run
         /// </summary>
         [JsonProperty(PropertyName = "properties.tasks")]
-        public SoftareUpdateConfigurationRunTasks Tasks { get; set; }
+        public SoftwareUpdateConfigurationRunTasks Tasks { get; set; }
 
     }
 }

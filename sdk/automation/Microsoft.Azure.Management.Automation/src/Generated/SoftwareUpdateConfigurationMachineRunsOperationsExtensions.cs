@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class SoftwareUpdateConfigurationMachineRunsOperationsExtensions
     {
             /// <summary>
-            /// Get a single software update configuration machine run by Id.
-            /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
+            /// Get a single software update configuration machine run by ID.
+            /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationmachinerunsoperationsextensions" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Automation
             /// The name of the automation account.
             /// </param>
             /// <param name='softwareUpdateConfigurationMachineRunId'>
-            /// The Id of the software update configuration machine run.
+            /// The ID of the software update configuration machine run.
             /// </param>
             /// <param name='clientRequestId'>
             /// Identifies this specific client request.
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Automation
             }
 
             /// <summary>
-            /// Get a single software update configuration machine run by Id.
-            /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
+            /// Get a single software update configuration machine run by ID.
+            /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationmachinerunsoperationsextensions" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Automation
             /// The name of the automation account.
             /// </param>
             /// <param name='softwareUpdateConfigurationMachineRunId'>
-            /// The Id of the software update configuration machine run.
+            /// The ID of the software update configuration machine run.
             /// </param>
             /// <param name='clientRequestId'>
             /// Identifies this specific client request.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Automation
 
             /// <summary>
             /// Return list of software update configuration machine runs
-            /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
+            /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationmachinerunsoperationsextensions" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -94,22 +94,22 @@ namespace Microsoft.Azure.Management.Automation
             /// <param name='filter'>
             /// The filter to apply on the operation. You can use the following filters:
             /// 'properties/osType', 'properties/status', 'properties/startTime', and
-            /// 'properties/softwareUpdateConfiguration/name'
+            /// 'properties/softwareUpdateConfiguration/name'.
             /// </param>
             /// <param name='skip'>
-            /// number of entries you skip before returning results
+            /// Number of entries you skip before returning results.
             /// </param>
             /// <param name='top'>
-            /// Maximum number of entries returned in the results collection
+            /// Maximum number of entries returned in the results collection.
             /// </param>
-            public static SoftwareUpdateConfigurationMachineRunListResult List(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string))
+            public static IPage<SoftwareUpdateConfigurationMachineRun> List(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string))
             {
                 return operations.ListAsync(resourceGroupName, automationAccountName, clientRequestId, filter, skip, top).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// Return list of software update configuration machine runs
-            /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
+            /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationmachinerunsoperationsextensions" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -126,20 +126,62 @@ namespace Microsoft.Azure.Management.Automation
             /// <param name='filter'>
             /// The filter to apply on the operation. You can use the following filters:
             /// 'properties/osType', 'properties/status', 'properties/startTime', and
-            /// 'properties/softwareUpdateConfiguration/name'
+            /// 'properties/softwareUpdateConfiguration/name'.
             /// </param>
             /// <param name='skip'>
-            /// number of entries you skip before returning results
+            /// Number of entries you skip before returning results.
             /// </param>
             /// <param name='top'>
-            /// Maximum number of entries returned in the results collection
+            /// Maximum number of entries returned in the results collection.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SoftwareUpdateConfigurationMachineRunListResult> ListAsync(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SoftwareUpdateConfigurationMachineRun>> ListAsync(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, automationAccountName, clientRequestId, filter, skip, top, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Return list of software update configuration machine runs
+            /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationmachinerunsoperationsextensions" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='clientRequestId'>
+            /// Identifies this specific client request.
+            /// </param>
+            public static IPage<SoftwareUpdateConfigurationMachineRun> ListNext(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string nextPageLink, string clientRequestId = default(string))
+            {
+                return operations.ListNextAsync(nextPageLink, clientRequestId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Return list of software update configuration machine runs
+            /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationmachinerunsoperationsextensions" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='clientRequestId'>
+            /// Identifies this specific client request.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SoftwareUpdateConfigurationMachineRun>> ListNextAsync(this ISoftwareUpdateConfigurationMachineRunsOperations operations, string nextPageLink, string clientRequestId = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, clientRequestId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

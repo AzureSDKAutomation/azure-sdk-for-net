@@ -177,21 +177,6 @@ namespace Microsoft.Azure.Management.Automation
         public virtual IWatcherOperations Watcher { get; private set; }
 
         /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationsOperations.
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; private set; }
-
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationRunsOperations.
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; private set; }
-
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations.
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; private set; }
-
-        /// <summary>
         /// Gets the ISourceControlOperations.
         /// </summary>
         public virtual ISourceControlOperations SourceControl { get; private set; }
@@ -275,6 +260,21 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IPython2PackageOperations.
         /// </summary>
         public virtual IPython2PackageOperations Python2Package { get; private set; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationsOperations.
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationRunsOperations.
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; private set; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations.
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AutomationClient class.
@@ -538,9 +538,6 @@ namespace Microsoft.Azure.Management.Automation
             Variable = new VariableOperations(this);
             Webhook = new WebhookOperations(this);
             Watcher = new WatcherOperations(this);
-            SoftwareUpdateConfigurations = new SoftwareUpdateConfigurationsOperations(this);
-            SoftwareUpdateConfigurationRuns = new SoftwareUpdateConfigurationRunsOperations(this);
-            SoftwareUpdateConfigurationMachineRuns = new SoftwareUpdateConfigurationMachineRunsOperations(this);
             SourceControl = new SourceControlOperations(this);
             SourceControlSyncJob = new SourceControlSyncJobOperations(this);
             SourceControlSyncJobStreams = new SourceControlSyncJobStreamsOperations(this);
@@ -558,6 +555,9 @@ namespace Microsoft.Azure.Management.Automation
             TestJobStreams = new TestJobStreamsOperations(this);
             TestJob = new TestJobOperations(this);
             Python2Package = new Python2PackageOperations(this);
+            SoftwareUpdateConfigurations = new SoftwareUpdateConfigurationsOperations(this);
+            SoftwareUpdateConfigurationRuns = new SoftwareUpdateConfigurationRunsOperations(this);
+            SoftwareUpdateConfigurationMachineRuns = new SoftwareUpdateConfigurationMachineRunsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

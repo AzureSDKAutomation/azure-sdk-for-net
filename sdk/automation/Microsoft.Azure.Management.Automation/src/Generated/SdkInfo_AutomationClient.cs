@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Management.Automation
                 new Tuple<string, string, string>("Automation", "Runbook", "2018-06-30"),
                 new Tuple<string, string, string>("Automation", "RunbookDraft", "2018-06-30"),
                 new Tuple<string, string, string>("Automation", "Schedule", "2015-10-31"),
-                new Tuple<string, string, string>("Automation", "SoftwareUpdateConfigurationMachineRuns", "2017-05-15-preview"),
-                new Tuple<string, string, string>("Automation", "SoftwareUpdateConfigurationRuns", "2017-05-15-preview"),
-                new Tuple<string, string, string>("Automation", "SoftwareUpdateConfigurations", "2017-05-15-preview"),
+                new Tuple<string, string, string>("Automation", "SoftwareUpdateConfigurationMachineRuns", "2019-06-01"),
+                new Tuple<string, string, string>("Automation", "SoftwareUpdateConfigurationRuns", "2019-06-01"),
+                new Tuple<string, string, string>("Automation", "SoftwareUpdateConfigurations", "2019-06-01"),
                 new Tuple<string, string, string>("Automation", "SourceControl", "2017-05-15-preview"),
                 new Tuple<string, string, string>("Automation", "SourceControlSyncJob", "2017-05-15-preview"),
                 new Tuple<string, string, string>("Automation", "SourceControlSyncJobStreams", "2017-05-15-preview"),
@@ -63,16 +63,5 @@ namespace Microsoft.Azure.Management.Automation
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "latest";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4283";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/automation/resource-manager/readme.md --csharp --version=latest --reflect-api-versions --csharp-sdks-folder=C:\\Git\\azure-sdk-for-net\\src\\SDKs";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "97aede4213f5ffb9bee11ef972a782e21bc1eb92";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-

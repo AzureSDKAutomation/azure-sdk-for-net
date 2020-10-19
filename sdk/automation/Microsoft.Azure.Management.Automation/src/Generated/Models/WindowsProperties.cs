@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the WindowsProperties class.
         /// </summary>
         /// <param name="includedUpdateClassifications">Update classification
-        /// included in the software update configuration. A comma separated
+        /// included in the software update configuration. A comma-separated
         /// string with required values. Possible values include:
         /// 'Unclassified', 'Critical', 'Security', 'UpdateRollup',
         /// 'FeaturePack', 'ServicePack', 'Definition', 'Tools',
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <summary>
         /// Gets or sets update classification included in the software update
-        /// configuration. A comma separated string with required values.
+        /// configuration. A comma-separated string with required values.
         /// Possible values include: 'Unclassified', 'Critical', 'Security',
         /// 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition',
         /// 'Tools', 'Updates'

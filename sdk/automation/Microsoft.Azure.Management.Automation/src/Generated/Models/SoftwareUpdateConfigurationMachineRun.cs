@@ -35,27 +35,27 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// SoftwareUpdateConfigurationMachineRun class.
         /// </summary>
         /// <param name="name">Name of the software update configuration
-        /// machine run</param>
-        /// <param name="id">Resource Id of the software update configuration
-        /// machine run</param>
-        /// <param name="targetComputer">name of the updated computer</param>
-        /// <param name="targetComputerType">type of the updated
+        /// machine run.</param>
+        /// <param name="id">Resource ID of the software update configuration
+        /// machine run.</param>
+        /// <param name="targetComputer">Name of the updated computer.</param>
+        /// <param name="targetComputerType">Type of the updated
         /// computer.</param>
-        /// <param name="softwareUpdateConfiguration">software update
-        /// configuration triggered this run</param>
+        /// <param name="softwareUpdateConfiguration">Software update
+        /// configuration triggered this run.</param>
         /// <param name="status">Status of the software update configuration
         /// machine run.</param>
         /// <param name="osType">Operating system target of the software update
-        /// configuration triggered this run</param>
-        /// <param name="correlationId">correlation id of the software update
+        /// configuration triggered this run.</param>
+        /// <param name="correlationId">Correlation ID of the software update
         /// configuration machine run</param>
-        /// <param name="sourceComputerId">source computer id of the software
-        /// update configuration machine run</param>
+        /// <param name="sourceComputerId">Source computer ID of the software
+        /// update configuration machine run.</param>
         /// <param name="startTime">Start time of the software update
         /// configuration machine run.</param>
         /// <param name="endTime">End time of the software update configuration
         /// machine run.</param>
-        /// <param name="configuredDuration">configured duration for the
+        /// <param name="configuredDuration">Configured duration for the
         /// software update configuration run.</param>
         /// <param name="job">Job associated with the software update
         /// configuration machine run</param>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// which only appears in the response.</param>
         /// <param name="lastModifiedBy">lastModifiedBy property, which only
         /// appears in the response.</param>
-        /// <param name="error">Details of provisioning error</param>
+        /// <param name="error">Details of provisioning error.</param>
         public SoftwareUpdateConfigurationMachineRun(string name = default(string), string id = default(string), string targetComputer = default(string), string targetComputerType = default(string), UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string osType = default(string), System.Guid? correlationId = default(System.Guid?), System.Guid? sourceComputerId = default(System.Guid?), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string configuredDuration = default(string), JobNavigation job = default(JobNavigation), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), ErrorResponse error = default(ErrorResponse))
         {
             Name = name;
@@ -97,19 +97,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets name of the software update configuration machine run
+        /// Gets name of the software update configuration machine run.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource Id of the software update configuration machine run
+        /// Gets resource ID of the software update configuration machine run.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets name of the updated computer
+        /// Gets name of the updated computer.
         /// </summary>
         [JsonProperty(PropertyName = "properties.targetComputer")]
         public string TargetComputer { get; private set; }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string TargetComputerType { get; private set; }
 
         /// <summary>
-        /// Gets or sets software update configuration triggered this run
+        /// Gets or sets software update configuration triggered this run.
         /// </summary>
         [JsonProperty(PropertyName = "properties.softwareUpdateConfiguration")]
         public UpdateConfigurationNavigation SoftwareUpdateConfiguration { get; set; }
@@ -134,21 +134,21 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <summary>
         /// Gets operating system target of the software update configuration
-        /// triggered this run
+        /// triggered this run.
         /// </summary>
         [JsonProperty(PropertyName = "properties.osType")]
         public string OsType { get; private set; }
 
         /// <summary>
-        /// Gets correlation id of the software update configuration machine
+        /// Gets correlation ID of the software update configuration machine
         /// run
         /// </summary>
         [JsonProperty(PropertyName = "properties.correlationId")]
         public System.Guid? CorrelationId { get; private set; }
 
         /// <summary>
-        /// Gets source computer id of the software update configuration
-        /// machine run
+        /// Gets source computer ID of the software update configuration
+        /// machine run.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceComputerId")]
         public System.Guid? SourceComputerId { get; private set; }
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string LastModifiedBy { get; private set; }
 
         /// <summary>
-        /// Gets or sets details of provisioning error
+        /// Gets or sets details of provisioning error.
         /// </summary>
         [JsonProperty(PropertyName = "properties.error")]
         public ErrorResponse Error { get; set; }

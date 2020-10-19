@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <summary>
         /// Initializes a new instance of the UpdateConfiguration class.
         /// </summary>
-        /// <param name="operatingSystem">operating system of target machines.
+        /// <param name="operatingSystem">Operating system of target machines.
         /// Possible values include: 'Windows', 'Linux'</param>
         /// <param name="windows">Windows specific update
         /// configuration.</param>
         /// <param name="linux">Linux specific update configuration.</param>
         /// <param name="duration">Maximum time allowed for the software update
         /// configuration run. Duration needs to be specified using the format
-        /// PT[n]H[n]M[n]S as per ISO8601</param>
-        /// <param name="azureVirtualMachines">List of azure resource Ids for
+        /// PT[n]H[n]M[n]S as per ISO8601.</param>
+        /// <param name="azureVirtualMachines">List of azure resource IDs for
         /// azure virtual machines targeted by the software update
         /// configuration.</param>
         /// <param name="nonAzureComputerNames">List of names of non-azure
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <summary>
         /// Gets or sets maximum time allowed for the software update
         /// configuration run. Duration needs to be specified using the format
-        /// PT[n]H[n]M[n]S as per ISO8601
+        /// PT[n]H[n]M[n]S as per ISO8601.
         /// </summary>
         [JsonProperty(PropertyName = "duration")]
         public System.TimeSpan? Duration { get; set; }
 
         /// <summary>
-        /// Gets or sets list of azure resource Ids for azure virtual machines
+        /// Gets or sets list of azure resource IDs for azure virtual machines
         /// targeted by the software update configuration.
         /// </summary>
         [JsonProperty(PropertyName = "azureVirtualMachines")]

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the AzureQueryProperties class.
         /// </summary>
         /// <param name="scope">List of Subscription or Resource Group ARM
-        /// Ids.</param>
+        /// IDs.</param>
         /// <param name="locations">List of locations to scope the query
         /// to.</param>
         /// <param name="tagSettings">Tag settings for the VM.</param>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of Subscription or Resource Group ARM Ids.
+        /// Gets or sets list of Subscription or Resource Group ARM IDs.
         /// </summary>
         [JsonProperty(PropertyName = "scope")]
         public IList<string> Scope { get; set; }

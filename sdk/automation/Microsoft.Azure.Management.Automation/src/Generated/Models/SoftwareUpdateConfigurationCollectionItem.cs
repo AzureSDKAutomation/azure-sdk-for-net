@@ -36,15 +36,17 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         /// <param name="name">Name of the software update
         /// configuration.</param>
-        /// <param name="id">Resource Id of the software update
-        /// configuration</param>
+        /// <param name="id">Resource ID of the software update
+        /// configuration.</param>
         /// <param name="updateConfiguration">Update specific properties of the
         /// software update configuration.</param>
-        /// <param name="frequency">execution frequency of the schedule
+        /// <param name="tasks">Tasks information for the software update
+        /// configuration.</param>
+        /// <param name="frequency">Execution frequency of the schedule
         /// associated with the software update configuration. Possible values
         /// include: 'OneTime', 'Day', 'Hour', 'Week', 'Month',
         /// 'Minute'</param>
-        /// <param name="startTime">the start time of the update.</param>
+        /// <param name="startTime">The start time of the update.</param>
         /// <param name="creationTime">Creation time of the software update
         /// configuration, which only appears in the response.</param>
         /// <param name="lastModifiedTime">Last time software update
@@ -52,12 +54,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// response.</param>
         /// <param name="provisioningState">Provisioning state for the software
         /// update configuration, which only appears in the response.</param>
-        /// <param name="nextRun">ext run time of the update.</param>
-        public SoftwareUpdateConfigurationCollectionItem(string name = default(string), string id = default(string), CollectionItemUpdateConfiguration updateConfiguration = default(CollectionItemUpdateConfiguration), string frequency = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string provisioningState = default(string), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?))
+        /// <param name="nextRun">Next run time of the update.</param>
+        public SoftwareUpdateConfigurationCollectionItem(string name = default(string), string id = default(string), UpdateConfiguration updateConfiguration = default(UpdateConfiguration), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks), string frequency = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string provisioningState = default(string), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?))
         {
             Name = name;
             Id = id;
             UpdateConfiguration = updateConfiguration;
+            Tasks = tasks;
             Frequency = frequency;
             StartTime = startTime;
             CreationTime = creationTime;
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource Id of the software update configuration
+        /// Gets resource ID of the software update configuration.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
@@ -89,7 +92,14 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.updateConfiguration")]
-        public CollectionItemUpdateConfiguration UpdateConfiguration { get; set; }
+        public UpdateConfiguration UpdateConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets tasks information for the software update
+        /// configuration.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tasks")]
+        public SoftwareUpdateConfigurationTasks Tasks { get; set; }
 
         /// <summary>
         /// Gets or sets execution frequency of the schedule associated with
@@ -127,10 +137,23 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets ext run time of the update.
+        /// Gets or sets next run time of the update.
         /// </summary>
         [JsonProperty(PropertyName = "properties.nextRun")]
         public System.DateTimeOffset? NextRun { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (UpdateConfiguration != null)
+            {
+                UpdateConfiguration.Validate();
+            }
+        }
     }
 }

@@ -35,25 +35,25 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the SoftwareUpdateConfiguration
         /// class.
         /// </summary>
-        /// <param name="updateConfiguration">update specific properties for
-        /// the Software update configuration</param>
+        /// <param name="updateConfiguration">Update specific properties for
+        /// the Software update configuration.</param>
         /// <param name="scheduleInfo">Schedule information for the Software
-        /// update configuration</param>
+        /// update configuration.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="id">Resource Id.</param>
         /// <param name="type">Resource type</param>
         /// <param name="provisioningState">Provisioning state for the software
         /// update configuration, which only appears in the response.</param>
-        /// <param name="error">Details of provisioning error</param>
+        /// <param name="error">Details of provisioning error.</param>
         /// <param name="creationTime">Creation time of the resource, which
         /// only appears in the response.</param>
         /// <param name="createdBy">CreatedBy property, which only appears in
         /// the response.</param>
-        /// <param name="lastModifiedTime">Last time resource was modified,
+        /// <param name="lastModifiedTime">Last time the resource was modified,
         /// which only appears in the response.</param>
         /// <param name="lastModifiedBy">LastModifiedBy property, which only
         /// appears in the response.</param>
-        /// <param name="tasks">Tasks information for the Software update
+        /// <param name="tasks">Tasks information for the software update
         /// configuration.</param>
         public SoftwareUpdateConfiguration(UpdateConfiguration updateConfiguration, ScheduleProperties scheduleInfo, string name = default(string), string id = default(string), string type = default(string), string provisioningState = default(string), ErrorResponse error = default(ErrorResponse), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks))
         {
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <summary>
         /// Gets or sets update specific properties for the Software update
-        /// configuration
+        /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.updateConfiguration")]
         public UpdateConfiguration UpdateConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets schedule information for the Software update
-        /// configuration
+        /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.scheduleInfo")]
         public ScheduleProperties ScheduleInfo { get; set; }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets details of provisioning error
+        /// Gets or sets details of provisioning error.
         /// </summary>
         [JsonProperty(PropertyName = "properties.error")]
         public ErrorResponse Error { get; set; }
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string CreatedBy { get; private set; }
 
         /// <summary>
-        /// Gets last time resource was modified, which only appears in the
+        /// Gets last time the resource was modified, which only appears in the
         /// response.
         /// </summary>
         [JsonProperty(PropertyName = "properties.lastModifiedTime")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string LastModifiedBy { get; private set; }
 
         /// <summary>
-        /// Gets or sets tasks information for the Software update
+        /// Gets or sets tasks information for the software update
         /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.tasks")]

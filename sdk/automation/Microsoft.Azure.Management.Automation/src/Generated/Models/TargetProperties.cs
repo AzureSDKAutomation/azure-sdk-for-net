@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         /// <param name="azureQueries">List of Azure queries in the software
         /// update configuration.</param>
-        /// <param name="nonAzureQueries">List of non Azure queries in the
+        /// <param name="nonAzureQueries">List of non-Azure queries in the
         /// software update configuration.</param>
         public TargetProperties(IList<AzureQueryProperties> azureQueries = default(IList<AzureQueryProperties>), IList<NonAzureQueryProperties> nonAzureQueries = default(IList<NonAzureQueryProperties>))
         {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public IList<AzureQueryProperties> AzureQueries { get; set; }
 
         /// <summary>
-        /// Gets or sets list of non Azure queries in the software update
+        /// Gets or sets list of non-Azure queries in the software update
         /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "nonAzureQueries")]

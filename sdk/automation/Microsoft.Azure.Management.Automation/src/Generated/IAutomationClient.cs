@@ -172,21 +172,6 @@ namespace Microsoft.Azure.Management.Automation
         IWatcherOperations Watcher { get; }
 
         /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationsOperations.
-        /// </summary>
-        ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; }
-
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationRunsOperations.
-        /// </summary>
-        ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; }
-
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations.
-        /// </summary>
-        ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; }
-
-        /// <summary>
         /// Gets the ISourceControlOperations.
         /// </summary>
         ISourceControlOperations SourceControl { get; }
@@ -270,6 +255,21 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IPython2PackageOperations.
         /// </summary>
         IPython2PackageOperations Python2Package { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationsOperations.
+        /// </summary>
+        ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationRunsOperations.
+        /// </summary>
+        ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations.
+        /// </summary>
+        ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; }
 
     }
 }

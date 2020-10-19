@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface ISoftwareUpdateConfigurationRunsOperations
     {
         /// <summary>
-        /// Get a single software update configuration Run by Id.
-        /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationrunoperations" />
+        /// Get a single software update configuration run by ID.
+        /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationrunsoperationsextensions" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure Resource group.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The name of the automation account.
         /// </param>
         /// <param name='softwareUpdateConfigurationRunId'>
-        /// The Id of the software update configuration run.
+        /// The ID of the software update configuration run.
         /// </param>
         /// <param name='clientRequestId'>
         /// Identifies this specific client request.
@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Management.Automation
         /// </exception>
         Task<AzureOperationResponse<SoftwareUpdateConfigurationRun>> GetByIdWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationRunId, string clientRequestId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Return list of software update configuration runs
-        /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
+        /// Return list of software update configuration runs.
+        /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationrunsoperationsextensions" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure Resource group.
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The filter to apply on the operation. You can use the following
         /// filters: 'properties/osType', 'properties/status',
         /// 'properties/startTime', and
-        /// 'properties/softwareUpdateConfiguration/name'
+        /// 'properties/softwareUpdateConfiguration/name'.
         /// </param>
         /// <param name='skip'>
-        /// Number of entries you skip before returning results
+        /// Number of entries you skip before returning results.
         /// </param>
         /// <param name='top'>
-        /// Maximum number of entries returned in the results collection
+        /// Maximum number of entries returned in the results collection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -95,6 +95,32 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SoftwareUpdateConfigurationRunListResult>> ListWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SoftwareUpdateConfigurationRun>>> ListWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Return list of software update configuration runs.
+        /// <see href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.automation.softwareupdateconfigurationrunsoperationsextensions" />
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// Identifies this specific client request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<SoftwareUpdateConfigurationRun>>> ListNextWithHttpMessagesAsync(string nextPageLink, string clientRequestId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

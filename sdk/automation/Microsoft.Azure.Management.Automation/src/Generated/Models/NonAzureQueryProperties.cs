@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     using System.Linq;
 
     /// <summary>
-    /// Non Azure query for the update configuration.
+    /// Non-Azure query for the update configuration.
     /// </summary>
     public partial class NonAzureQueryProperties
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         /// <param name="functionAlias">Log Analytics Saved Search
         /// name.</param>
-        /// <param name="workspaceId">Workspace Id for Log Analytics in which
+        /// <param name="workspaceId">Workspace ID for Log Analytics in which
         /// the saved Search is resided.</param>
         public NonAzureQueryProperties(string functionAlias = default(string), string workspaceId = default(string))
         {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string FunctionAlias { get; set; }
 
         /// <summary>
-        /// Gets or sets workspace Id for Log Analytics in which the saved
+        /// Gets or sets workspace ID for Log Analytics in which the saved
         /// Search is resided.
         /// </summary>
         [JsonProperty(PropertyName = "workspaceId")]

@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="includedPackageClassifications">Update classifications
         /// included in the software update configuration. Possible values
         /// include: 'Unclassified', 'Critical', 'Security', 'Other'</param>
-        /// <param name="excludedPackageNameMasks">packages excluded from the
+        /// <param name="excludedPackageNameMasks">Packages excluded from the
         /// software update configuration.</param>
-        /// <param name="includedPackageNameMasks">packages included from the
+        /// <param name="includedPackageNameMasks">Packages included from the
         /// software update configuration.</param>
         /// <param name="rebootSetting">Reboot setting for the software update
         /// configuration.</param>
