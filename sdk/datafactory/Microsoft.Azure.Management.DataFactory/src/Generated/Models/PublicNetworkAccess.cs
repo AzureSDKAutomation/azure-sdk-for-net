@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for TumblingWindowFrequency.
+    /// Defines values for PublicNetworkAccess.
     /// </summary>
-    public static class TumblingWindowFrequency
+    public static class PublicNetworkAccess
     {
-        public const string Minute = "Minute";
-        public const string Hour = "Hour";
-        public const string Month = "Month";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
     }
 }
