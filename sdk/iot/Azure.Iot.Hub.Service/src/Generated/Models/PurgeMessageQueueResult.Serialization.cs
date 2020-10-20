@@ -14,15 +14,16 @@ namespace Azure.Iot.Hub.Service.Models
     {
         internal static PurgeMessageQueueResult DeserializePurgeMessageQueueResult(JsonElement element)
         {
-            int? totalMessagesPurged = default;
-            string deviceId = default;
-            string moduleId = default;
+            Optional<int> totalMessagesPurged = default;
+            Optional<string> deviceId = default;
+            Optional<string> moduleId = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("totalMessagesPurged"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     totalMessagesPurged = property.Value.GetInt32();
@@ -30,24 +31,16 @@ namespace Azure.Iot.Hub.Service.Models
                 }
                 if (property.NameEquals("deviceId"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     deviceId = property.Value.GetString();
                     continue;
                 }
                 if (property.NameEquals("moduleId"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     moduleId = property.Value.GetString();
                     continue;
                 }
             }
-            return new PurgeMessageQueueResult(totalMessagesPurged, deviceId, moduleId);
+            return new PurgeMessageQueueResult(Optional.ToNullable(totalMessagesPurged), deviceId.Value, moduleId.Value);
         }
     }
 }

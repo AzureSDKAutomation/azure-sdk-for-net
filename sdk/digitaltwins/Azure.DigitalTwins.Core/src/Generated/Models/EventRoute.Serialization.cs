@@ -8,41 +8,29 @@
 using System.Text.Json;
 using Azure.Core;
 
-namespace Azure.DigitalTwins.Core.Models
+namespace Azure.DigitalTwins.Core
 {
     public partial class EventRoute : IUtf8JsonSerializable
     {
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
-            if (Id != null)
-            {
-                writer.WritePropertyName("id");
-                writer.WriteStringValue(Id);
-            }
             writer.WritePropertyName("endpointName");
             writer.WriteStringValue(EndpointName);
-            if (Filter != null)
-            {
-                writer.WritePropertyName("filter");
-                writer.WriteStringValue(Filter);
-            }
+            writer.WritePropertyName("filter");
+            writer.WriteStringValue(Filter);
             writer.WriteEndObject();
         }
 
         internal static EventRoute DeserializeEventRoute(JsonElement element)
         {
-            string id = default;
+            Optional<string> id = default;
             string endpointName = default;
             string filter = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("id"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     id = property.Value.GetString();
                     continue;
                 }
@@ -53,15 +41,11 @@ namespace Azure.DigitalTwins.Core.Models
                 }
                 if (property.NameEquals("filter"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     filter = property.Value.GetString();
                     continue;
                 }
             }
-            return new EventRoute(id, endpointName, filter);
+            return new EventRoute(id.Value, endpointName, filter);
         }
     }
 }

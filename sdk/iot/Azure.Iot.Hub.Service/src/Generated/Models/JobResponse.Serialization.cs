@@ -15,36 +15,28 @@ namespace Azure.Iot.Hub.Service.Models
     {
         internal static JobResponse DeserializeJobResponse(JsonElement element)
         {
-            string jobId = default;
-            string queryCondition = default;
-            DateTimeOffset? createdTime = default;
-            DateTimeOffset? startTime = default;
-            DateTimeOffset? endTime = default;
-            long? maxExecutionTimeInSeconds = default;
-            JobResponseType? type = default;
-            CloudToDeviceMethodRequest cloudToDeviceMethod = default;
-            TwinData updateTwin = default;
-            JobResponseStatus? status = default;
-            string failureReason = default;
-            string statusMessage = default;
-            DeviceJobStatistics deviceJobStatistics = default;
+            Optional<string> jobId = default;
+            Optional<string> queryCondition = default;
+            Optional<DateTimeOffset> createdTime = default;
+            Optional<DateTimeOffset> startTime = default;
+            Optional<DateTimeOffset> endTime = default;
+            Optional<long> maxExecutionTimeInSeconds = default;
+            Optional<JobResponseType> type = default;
+            Optional<CloudToDeviceMethodRequest> cloudToDeviceMethod = default;
+            Optional<TwinData> updateTwin = default;
+            Optional<JobResponseStatus> status = default;
+            Optional<string> failureReason = default;
+            Optional<string> statusMessage = default;
+            Optional<DeviceJobStatistics> deviceJobStatistics = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("jobId"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     jobId = property.Value.GetString();
                     continue;
                 }
                 if (property.NameEquals("queryCondition"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     queryCondition = property.Value.GetString();
                     continue;
                 }
@@ -52,6 +44,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     createdTime = property.Value.GetDateTimeOffset("O");
@@ -61,6 +54,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     startTime = property.Value.GetDateTimeOffset("O");
@@ -70,6 +64,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     endTime = property.Value.GetDateTimeOffset("O");
@@ -79,6 +74,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     maxExecutionTimeInSeconds = property.Value.GetInt64();
@@ -88,6 +84,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     type = new JobResponseType(property.Value.GetString());
@@ -97,6 +94,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     cloudToDeviceMethod = CloudToDeviceMethodRequest.DeserializeCloudToDeviceMethodRequest(property.Value);
@@ -106,6 +104,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     updateTwin = TwinData.DeserializeTwinData(property.Value);
@@ -115,6 +114,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     status = new JobResponseStatus(property.Value.GetString());
@@ -122,19 +122,11 @@ namespace Azure.Iot.Hub.Service.Models
                 }
                 if (property.NameEquals("failureReason"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     failureReason = property.Value.GetString();
                     continue;
                 }
                 if (property.NameEquals("statusMessage"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     statusMessage = property.Value.GetString();
                     continue;
                 }
@@ -142,13 +134,14 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     deviceJobStatistics = DeviceJobStatistics.DeserializeDeviceJobStatistics(property.Value);
                     continue;
                 }
             }
-            return new JobResponse(jobId, queryCondition, createdTime, startTime, endTime, maxExecutionTimeInSeconds, type, cloudToDeviceMethod, updateTwin, status, failureReason, statusMessage, deviceJobStatistics);
+            return new JobResponse(jobId.Value, queryCondition.Value, Optional.ToNullable(createdTime), Optional.ToNullable(startTime), Optional.ToNullable(endTime), Optional.ToNullable(maxExecutionTimeInSeconds), Optional.ToNullable(type), cloudToDeviceMethod.Value, updateTwin.Value, Optional.ToNullable(status), failureReason.Value, statusMessage.Value, deviceJobStatistics.Value);
         }
     }
 }

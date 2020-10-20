@@ -15,15 +15,16 @@ namespace Azure.Iot.Hub.Service.Models
     {
         internal static QueryResult DeserializeQueryResult(JsonElement element)
         {
-            QueryResultType? type = default;
-            IReadOnlyList<object> items = default;
-            string continuationToken = default;
+            Optional<QueryResultType> type = default;
+            Optional<IReadOnlyList<object>> items = default;
+            Optional<string> continuationToken = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("type"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     type = new QueryResultType(property.Value.GetString());
@@ -33,34 +34,24 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     List<object> array = new List<object>();
                     foreach (var item in property.Value.EnumerateArray())
                     {
-                        if (item.ValueKind == JsonValueKind.Null)
-                        {
-                            array.Add(null);
-                        }
-                        else
-                        {
-                            array.Add(item.GetObject());
-                        }
+                        array.Add(item.GetObject());
                     }
                     items = array;
                     continue;
                 }
                 if (property.NameEquals("continuationToken"))
                 {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        continue;
-                    }
                     continuationToken = property.Value.GetString();
                     continue;
                 }
             }
-            return new QueryResult(type, items, continuationToken);
+            return new QueryResult(Optional.ToNullable(type), Optional.ToList(items), continuationToken.Value);
         }
     }
 }

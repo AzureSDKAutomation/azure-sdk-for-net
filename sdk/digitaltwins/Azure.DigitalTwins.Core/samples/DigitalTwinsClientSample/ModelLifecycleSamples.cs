@@ -5,7 +5,6 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Samples;
 using static Azure.DigitalTwins.Core.Samples.SampleLogger;
 using static Azure.DigitalTwins.Core.Samples.UniqueIdHelper;
@@ -60,7 +59,7 @@ namespace Azure.DigitalTwins.Samples
             {
                 #region Snippet:DigitalTwinsSampleGetModel
 
-                Response<ModelData> sampleModelResponse = await client.GetModelAsync(sampleModelId);
+                Response<DigitalTwinsModelData> sampleModelResponse = await client.GetModelAsync(sampleModelId);
                 Console.WriteLine($"Retrieved model '{sampleModelResponse.Value.Id}'.");
 
                 #endregion Snippet:DigitalTwinsSampleGetModel

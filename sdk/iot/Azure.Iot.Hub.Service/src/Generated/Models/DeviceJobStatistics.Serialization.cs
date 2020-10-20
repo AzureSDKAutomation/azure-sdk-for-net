@@ -14,17 +14,18 @@ namespace Azure.Iot.Hub.Service.Models
     {
         internal static DeviceJobStatistics DeserializeDeviceJobStatistics(JsonElement element)
         {
-            int? deviceCount = default;
-            int? failedCount = default;
-            int? succeededCount = default;
-            int? runningCount = default;
-            int? pendingCount = default;
+            Optional<int> deviceCount = default;
+            Optional<int> failedCount = default;
+            Optional<int> succeededCount = default;
+            Optional<int> runningCount = default;
+            Optional<int> pendingCount = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("deviceCount"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     deviceCount = property.Value.GetInt32();
@@ -34,6 +35,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     failedCount = property.Value.GetInt32();
@@ -43,6 +45,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     succeededCount = property.Value.GetInt32();
@@ -52,6 +55,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     runningCount = property.Value.GetInt32();
@@ -61,13 +65,14 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     pendingCount = property.Value.GetInt32();
                     continue;
                 }
             }
-            return new DeviceJobStatistics(deviceCount, failedCount, succeededCount, runningCount, pendingCount);
+            return new DeviceJobStatistics(Optional.ToNullable(deviceCount), Optional.ToNullable(failedCount), Optional.ToNullable(succeededCount), Optional.ToNullable(runningCount), Optional.ToNullable(pendingCount));
         }
     }
 }

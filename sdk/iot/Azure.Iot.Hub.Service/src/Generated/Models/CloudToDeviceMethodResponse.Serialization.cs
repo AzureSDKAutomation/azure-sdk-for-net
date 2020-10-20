@@ -14,14 +14,15 @@ namespace Azure.Iot.Hub.Service.Models
     {
         internal static CloudToDeviceMethodResponse DeserializeCloudToDeviceMethodResponse(JsonElement element)
         {
-            int? status = default;
-            object payload = default;
+            Optional<int> status = default;
+            Optional<object> payload = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("status"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     status = property.Value.GetInt32();
@@ -31,13 +32,14 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     payload = property.Value.GetObject();
                     continue;
                 }
             }
-            return new CloudToDeviceMethodResponse(status, payload);
+            return new CloudToDeviceMethodResponse(Optional.ToNullable(status), payload.Value);
         }
     }
 }

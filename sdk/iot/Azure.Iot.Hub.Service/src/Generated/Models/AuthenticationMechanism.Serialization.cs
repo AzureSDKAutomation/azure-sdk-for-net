@@ -15,17 +15,17 @@ namespace Azure.Iot.Hub.Service.Models
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
-            if (SymmetricKey != null)
+            if (Optional.IsDefined(SymmetricKey))
             {
                 writer.WritePropertyName("symmetricKey");
                 writer.WriteObjectValue(SymmetricKey);
             }
-            if (X509Thumbprint != null)
+            if (Optional.IsDefined(X509Thumbprint))
             {
                 writer.WritePropertyName("x509Thumbprint");
                 writer.WriteObjectValue(X509Thumbprint);
             }
-            if (Type != null)
+            if (Optional.IsDefined(Type))
             {
                 writer.WritePropertyName("type");
                 writer.WriteStringValue(Type.Value.ToString());
@@ -35,15 +35,16 @@ namespace Azure.Iot.Hub.Service.Models
 
         internal static AuthenticationMechanism DeserializeAuthenticationMechanism(JsonElement element)
         {
-            SymmetricKey symmetricKey = default;
-            X509Thumbprint x509Thumbprint = default;
-            AuthenticationMechanismType? type = default;
+            Optional<SymmetricKey> symmetricKey = default;
+            Optional<X509Thumbprint> x509Thumbprint = default;
+            Optional<AuthenticationMechanismType> type = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("symmetricKey"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     symmetricKey = SymmetricKey.DeserializeSymmetricKey(property.Value);
@@ -53,6 +54,7 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     x509Thumbprint = X509Thumbprint.DeserializeX509Thumbprint(property.Value);
@@ -62,13 +64,14 @@ namespace Azure.Iot.Hub.Service.Models
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
+                        property.ThrowNonNullablePropertyIsNull();
                         continue;
                     }
                     type = new AuthenticationMechanismType(property.Value.GetString());
                     continue;
                 }
             }
-            return new AuthenticationMechanism(symmetricKey, x509Thumbprint, type);
+            return new AuthenticationMechanism(symmetricKey.Value, x509Thumbprint.Value, Optional.ToNullable(type));
         }
     }
 }

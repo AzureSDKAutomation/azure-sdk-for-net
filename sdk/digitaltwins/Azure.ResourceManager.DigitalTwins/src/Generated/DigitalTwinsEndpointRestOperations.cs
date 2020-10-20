@@ -30,7 +30,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="subscriptionId"> The subscription identifier. </param>
         /// <param name="endpoint"> server parameter. </param>
         /// <param name="apiVersion"> Api Version. </param>
-        /// <exception cref="ArgumentNullException"> This occurs when one of the required arguments is null. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> or <paramref name="apiVersion"/> is null. </exception>
         public DigitalTwinsEndpointRestOperations(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, string subscriptionId, Uri endpoint = null, string apiVersion = "2020-03-01-preview")
         {
             if (subscriptionId == null)
@@ -66,6 +66,7 @@ namespace Azure.ResourceManager.DigitalTwins
             uri.AppendPath("/endpoints", false);
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
@@ -73,6 +74,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceGroupName"> The name of the resource group that contains the DigitalTwinsInstance. </param>
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="resourceName"/> is null. </exception>
         public async Task<Response<DigitalTwinsEndpointResourceListResult>> ListAsync(string resourceGroupName, string resourceName, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -92,14 +94,7 @@ namespace Azure.ResourceManager.DigitalTwins
                     {
                         DigitalTwinsEndpointResourceListResult value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        if (document.RootElement.ValueKind == JsonValueKind.Null)
-                        {
-                            value = null;
-                        }
-                        else
-                        {
-                            value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
-                        }
+                        value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -111,6 +106,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceGroupName"> The name of the resource group that contains the DigitalTwinsInstance. </param>
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="resourceName"/> is null. </exception>
         public Response<DigitalTwinsEndpointResourceListResult> List(string resourceGroupName, string resourceName, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -130,14 +126,7 @@ namespace Azure.ResourceManager.DigitalTwins
                     {
                         DigitalTwinsEndpointResourceListResult value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        if (document.RootElement.ValueKind == JsonValueKind.Null)
-                        {
-                            value = null;
-                        }
-                        else
-                        {
-                            value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
-                        }
+                        value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -162,6 +151,7 @@ namespace Azure.ResourceManager.DigitalTwins
             uri.AppendPath(endpointName, true);
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
@@ -170,6 +160,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="endpointName"> Name of Endpoint Resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="resourceName"/>, or <paramref name="endpointName"/> is null. </exception>
         public async Task<Response<DigitalTwinsEndpointResource>> GetAsync(string resourceGroupName, string resourceName, string endpointName, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -193,14 +184,7 @@ namespace Azure.ResourceManager.DigitalTwins
                     {
                         DigitalTwinsEndpointResource value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        if (document.RootElement.ValueKind == JsonValueKind.Null)
-                        {
-                            value = null;
-                        }
-                        else
-                        {
-                            value = DigitalTwinsEndpointResource.DeserializeDigitalTwinsEndpointResource(document.RootElement);
-                        }
+                        value = DigitalTwinsEndpointResource.DeserializeDigitalTwinsEndpointResource(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -213,6 +197,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="endpointName"> Name of Endpoint Resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="resourceName"/>, or <paramref name="endpointName"/> is null. </exception>
         public Response<DigitalTwinsEndpointResource> Get(string resourceGroupName, string resourceName, string endpointName, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -236,14 +221,7 @@ namespace Azure.ResourceManager.DigitalTwins
                     {
                         DigitalTwinsEndpointResource value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        if (document.RootElement.ValueKind == JsonValueKind.Null)
-                        {
-                            value = null;
-                        }
-                        else
-                        {
-                            value = DigitalTwinsEndpointResource.DeserializeDigitalTwinsEndpointResource(document.RootElement);
-                        }
+                        value = DigitalTwinsEndpointResource.DeserializeDigitalTwinsEndpointResource(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -269,6 +247,7 @@ namespace Azure.ResourceManager.DigitalTwins
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Content-Type", "application/json");
+            request.Headers.Add("Accept", "application/json");
             var model = new DigitalTwinsEndpointResource()
             {
                 Properties = properties
@@ -285,6 +264,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="endpointName"> Name of Endpoint Resource. </param>
         /// <param name="properties"> DigitalTwinsInstance endpoint resource properties. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="resourceName"/>, or <paramref name="endpointName"/> is null. </exception>
         public async Task<Response> CreateOrUpdateAsync(string resourceGroupName, string resourceName, string endpointName, DigitalTwinsEndpointResourceProperties properties = null, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -318,6 +298,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="endpointName"> Name of Endpoint Resource. </param>
         /// <param name="properties"> DigitalTwinsInstance endpoint resource properties. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="resourceName"/>, or <paramref name="endpointName"/> is null. </exception>
         public Response CreateOrUpdate(string resourceGroupName, string resourceName, string endpointName, DigitalTwinsEndpointResourceProperties properties = null, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -362,6 +343,7 @@ namespace Azure.ResourceManager.DigitalTwins
             uri.AppendPath(endpointName, true);
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
@@ -370,6 +352,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="endpointName"> Name of Endpoint Resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="resourceName"/>, or <paramref name="endpointName"/> is null. </exception>
         public async Task<Response> DeleteAsync(string resourceGroupName, string resourceName, string endpointName, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -403,6 +386,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="endpointName"> Name of Endpoint Resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="resourceName"/>, or <paramref name="endpointName"/> is null. </exception>
         public Response Delete(string resourceGroupName, string resourceName, string endpointName, CancellationToken cancellationToken = default)
         {
             if (resourceGroupName == null)
@@ -440,6 +424,7 @@ namespace Azure.ResourceManager.DigitalTwins
             uri.Reset(endpoint);
             uri.AppendRawNextLink(nextLink, false);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
@@ -448,6 +433,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceGroupName"> The name of the resource group that contains the DigitalTwinsInstance. </param>
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/>, <paramref name="resourceGroupName"/>, or <paramref name="resourceName"/> is null. </exception>
         public async Task<Response<DigitalTwinsEndpointResourceListResult>> ListNextPageAsync(string nextLink, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default)
         {
             if (nextLink == null)
@@ -471,14 +457,7 @@ namespace Azure.ResourceManager.DigitalTwins
                     {
                         DigitalTwinsEndpointResourceListResult value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        if (document.RootElement.ValueKind == JsonValueKind.Null)
-                        {
-                            value = null;
-                        }
-                        else
-                        {
-                            value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
-                        }
+                        value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -491,6 +470,7 @@ namespace Azure.ResourceManager.DigitalTwins
         /// <param name="resourceGroupName"> The name of the resource group that contains the DigitalTwinsInstance. </param>
         /// <param name="resourceName"> The name of the DigitalTwinsInstance. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/>, <paramref name="resourceGroupName"/>, or <paramref name="resourceName"/> is null. </exception>
         public Response<DigitalTwinsEndpointResourceListResult> ListNextPage(string nextLink, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default)
         {
             if (nextLink == null)
@@ -514,14 +494,7 @@ namespace Azure.ResourceManager.DigitalTwins
                     {
                         DigitalTwinsEndpointResourceListResult value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        if (document.RootElement.ValueKind == JsonValueKind.Null)
-                        {
-                            value = null;
-                        }
-                        else
-                        {
-                            value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
-                        }
+                        value = DigitalTwinsEndpointResourceListResult.DeserializeDigitalTwinsEndpointResourceListResult(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:

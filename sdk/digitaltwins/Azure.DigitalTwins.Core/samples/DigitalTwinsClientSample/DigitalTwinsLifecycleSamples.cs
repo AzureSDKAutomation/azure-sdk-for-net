@@ -10,7 +10,6 @@ using System.Net;
 using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using static Azure.DigitalTwins.Core.Samples.SampleLogger;
 
@@ -172,8 +171,8 @@ namespace Azure.DigitalTwins.Core.Samples
 
                 #region Snippet:DigitalTwinsSampleGetModels
 
-                AsyncPageable<ModelData> allModels = client.GetModelsAsync();
-                await foreach (ModelData model in allModels)
+                AsyncPageable<DigitalTwinsModelData> allModels = client.GetModelsAsync();
+                await foreach (DigitalTwinsModelData model in allModels)
                 {
                     Console.WriteLine($"Retrieved model '{model.Id}', " +
                         $"display name '{model.DisplayName["en"]}', " +
@@ -404,10 +403,7 @@ namespace Azure.DigitalTwins.Core.Samples
                 #region Snippet:DigitalTwinsSampleCreateEventRoute
 
                 string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
-                var eventRoute = new EventRoute(eventhubEndpointName)
-                {
-                    Filter = eventFilter
-                };
+                var eventRoute = new EventRoute(eventhubEndpointName, eventFilter);
 
                 await client.CreateEventRouteAsync(_eventRouteId, eventRoute);
                 Console.WriteLine($"Created event route '{_eventRouteId}'.");

@@ -15,11 +15,25 @@ namespace Azure.Messaging.ServiceBus.Tests.Sender
     public class SenderLiveTests : ServiceBusLiveTestBase
     {
         [Test]
-        public async Task SendConnString()
+        public async Task SendConnStringWithSharedKey()
         {
             await using (var scope = await ServiceBusScope.CreateWithQueue(enablePartitioning: false, enableSession: false))
             {
                 await using var sender = new ServiceBusClient(TestEnvironment.ServiceBusConnectionString).CreateSender(scope.QueueName);
+                await sender.SendMessageAsync(GetMessage());
+            }
+        }
+
+        [Test]
+        public async Task SendConnStringWithSignature()
+        {
+            await using (var scope = await ServiceBusScope.CreateWithQueue(enablePartitioning: false, enableSession: false))
+            {
+                var options = new ServiceBusClientOptions();
+                var audience = ServiceBusConnection.BuildConnectionResource(options.TransportType, TestEnvironment.FullyQualifiedNamespace, scope.QueueName);
+                var connectionString = TestEnvironment.BuildConnectionStringWithSharedAccessSignature(scope.QueueName, audience);
+
+                await using var sender = new ServiceBusClient(connectionString, options).CreateSender(scope.QueueName);
                 await sender.SendMessageAsync(GetMessage());
             }
         }
@@ -43,7 +57,7 @@ namespace Azure.Messaging.ServiceBus.Tests.Sender
                 var options = new ServiceBusClientOptions
                 {
                     TransportType = ServiceBusTransportType.AmqpWebSockets,
-                    Proxy = WebRequest.DefaultWebProxy,
+                    WebProxy = WebRequest.DefaultWebProxy,
                     RetryOptions = new ServiceBusRetryOptions()
                     {
                         Mode = ServiceBusRetryMode.Exponential
@@ -64,7 +78,7 @@ namespace Azure.Messaging.ServiceBus.Tests.Sender
                 var options = new ServiceBusClientOptions
                 {
                     TransportType = ServiceBusTransportType.AmqpWebSockets,
-                    Proxy = WebRequest.DefaultWebProxy,
+                    WebProxy = WebRequest.DefaultWebProxy,
                     RetryOptions = new ServiceBusRetryOptions()
                     {
                         Mode = ServiceBusRetryMode.Exponential
@@ -135,7 +149,7 @@ namespace Azure.Messaging.ServiceBus.Tests.Sender
                 // Actual limit is 262144 bytes for a single message.
                 ServiceBusMessage message = new ServiceBusMessage(new byte[300000]);
 
-                Assert.That(async () => await sender.SendMessageAsync(message), Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusException.FailureReason.MessageSizeExceeded));
+                Assert.That(async () => await sender.SendMessageAsync(message), Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusFailureReason.MessageSizeExceeded));
             }
         }
 
@@ -223,10 +237,9 @@ namespace Azure.Messaging.ServiceBus.Tests.Sender
                 var sequenceNum = await sender.ScheduleMessageAsync(GetMessage(), scheduleTime);
                 await sender.DisposeAsync(); // shouldn't close connection, but should close send link
 
-                Assert.That(async () => await sender.SendMessageAsync(GetMessage()),
-                    Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusException.FailureReason.ClientClosed));
-                Assert.That(async () => await sender.ScheduleMessageAsync(GetMessage(), default), Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusException.FailureReason.ClientClosed));
-                Assert.That(async () => await sender.CancelScheduledMessageAsync(sequenceNum), Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusException.FailureReason.ClientClosed));
+                Assert.That(async () => await sender.SendMessageAsync(GetMessage()), Throws.InstanceOf<ObjectDisposedException>());
+                Assert.That(async () => await sender.ScheduleMessageAsync(GetMessage(), default), Throws.InstanceOf<ObjectDisposedException>());
+                Assert.That(async () => await sender.CancelScheduledMessageAsync(sequenceNum), Throws.InstanceOf<ObjectDisposedException>());
 
                 // receive should still work
                 await using var receiver = client.CreateReceiver(scope.QueueName);
@@ -336,7 +349,7 @@ namespace Azure.Messaging.ServiceBus.Tests.Sender
                 await using var client = new ServiceBusClient(connectionString);
 
                 ServiceBusSender sender = client.CreateSender("FakeEntity");
-                Assert.That(async () => await sender.CreateMessageBatchAsync(), Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusException.FailureReason.MessagingEntityNotFound));
+                Assert.That(async () => await sender.CreateMessageBatchAsync(), Throws.InstanceOf<ServiceBusException>().And.Property(nameof(ServiceBusException.Reason)).EqualTo(ServiceBusFailureReason.MessagingEntityNotFound));
             }
         }
     }
