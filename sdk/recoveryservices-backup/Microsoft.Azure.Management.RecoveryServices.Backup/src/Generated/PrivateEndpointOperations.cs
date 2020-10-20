@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using Newtonsoft.Json;
     using System.Collections;
@@ -24,12 +23,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     using System.Threading.Tasks;
 
     /// <summary>
-    /// JobsOperations operations.
+    /// PrivateEndpointOperations operations.
     /// </summary>
-    internal partial class JobsOperations : IServiceOperations<RecoveryServicesBackupClient>, IJobsOperations
+    internal partial class PrivateEndpointOperations : IServiceOperations<RecoveryServicesBackupClient>, IPrivateEndpointOperations
     {
         /// <summary>
-        /// Initializes a new instance of the JobsOperations class.
+        /// Initializes a new instance of the PrivateEndpointOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal JobsOperations(RecoveryServicesBackupClient client)
+        internal PrivateEndpointOperations(RecoveryServicesBackupClient client)
         {
             if (client == null)
             {
@@ -52,8 +51,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Triggers export of jobs specified by filters and returns an OperationID to
-        /// track.
+        /// Gets the operation status for a private endpoint connection.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -62,8 +60,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
+        /// <param name='privateEndpointConnectionName'>
+        /// The name of the private endpoint connection.
+        /// </param>
+        /// <param name='operationId'>
+        /// Operation id
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -71,8 +72,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="NewErrorResponseException">
         /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
@@ -83,7 +87,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> ExportWithHttpMessagesAsync(string vaultName, string resourceGroupName, ODataQuery<JobQueryObject> odataQuery = default(ODataQuery<JobQueryObject>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<OperationStatus>> GetOperationStatusWithHttpMessagesAsync(string vaultName, string resourceGroupName, string privateEndpointConnectionName, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (vaultName == null)
             {
@@ -97,6 +101,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (privateEndpointConnectionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
+            }
+            if (operationId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "operationId");
+            }
             string apiVersion = "2020-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -105,28 +117,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("odataQuery", odataQuery);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
+                tracingParameters.Add("operationId", operationId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Export", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "GetOperationStatus", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobsExport").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}/operationsStatus/{operationId}").ToString();
             _url = _url.Replace("{vaultName}", System.Uri.EscapeDataString(vaultName));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
+            _url = _url.Replace("{operationId}", System.Uri.EscapeDataString(operationId));
             List<string> _queryParameters = new List<string>();
-            if (odataQuery != null)
-            {
-                var _odataFilter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_odataFilter))
-                {
-                    _queryParameters.Add(_odataFilter);
-                }
-            }
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
@@ -138,7 +145,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -189,16 +196,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 202)
+            if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new NewErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    NewErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<NewErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -208,10 +214,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -224,12 +226,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse();
+            var _result = new AzureOperationResponse<OperationStatus>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OperationStatus>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {

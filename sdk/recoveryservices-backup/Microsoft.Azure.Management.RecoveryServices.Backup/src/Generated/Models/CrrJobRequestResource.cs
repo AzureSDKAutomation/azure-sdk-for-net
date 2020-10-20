@@ -16,22 +16,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// Backup resource vault config details.
+    /// Request object for fetching CRR jobs.
     /// </summary>
-    public partial class BackupResourceVaultConfigResource : Resource
+    public partial class CrrJobRequestResource : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the BackupResourceVaultConfigResource
-        /// class.
+        /// Initializes a new instance of the CrrJobRequestResource class.
         /// </summary>
-        public BackupResourceVaultConfigResource()
+        public CrrJobRequestResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackupResourceVaultConfigResource
-        /// class.
+        /// Initializes a new instance of the CrrJobRequestResource class.
         /// </summary>
         /// <param name="id">Resource Id represents the complete path to the
         /// resource.</param>
@@ -42,9 +40,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="eTag">Optional ETag.</param>
-        /// <param name="properties">BackupResourceVaultConfigResource
-        /// properties</param>
-        public BackupResourceVaultConfigResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string eTag = default(string), BackupResourceVaultConfig properties = default(BackupResourceVaultConfig))
+        /// <param name="properties">CrrJobRequestResource properties</param>
+        public CrrJobRequestResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string eTag = default(string), CrrJobRequest properties = default(CrrJobRequest))
             : base(id, name, type, location, tags, eTag)
         {
             Properties = properties;
@@ -57,10 +54,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets backupResourceVaultConfigResource properties
+        /// Gets or sets crrJobRequestResource properties
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public BackupResourceVaultConfig Properties { get; set; }
+        public CrrJobRequest Properties { get; set; }
 
     }
 }

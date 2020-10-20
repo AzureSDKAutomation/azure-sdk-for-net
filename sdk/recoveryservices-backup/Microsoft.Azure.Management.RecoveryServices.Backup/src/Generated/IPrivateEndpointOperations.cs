@@ -19,14 +19,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     using System.Threading.Tasks;
 
     /// <summary>
-    /// CrrOperationStatusOperations operations.
+    /// PrivateEndpointOperations operations.
     /// </summary>
-    public partial interface ICrrOperationStatusOperations
+    public partial interface IPrivateEndpointOperations
     {
-        /// <param name='azureRegion'>
-        /// Azure region to hit Api
+        /// <summary>
+        /// Gets the operation status for a private endpoint connection.
+        /// </summary>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// The name of the private endpoint connection.
         /// </param>
         /// <param name='operationId'>
+        /// Operation id
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,6 +54,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OperationStatus>> GetWithHttpMessagesAsync(string azureRegion, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OperationStatus>> GetOperationStatusWithHttpMessagesAsync(string vaultName, string resourceGroupName, string privateEndpointConnectionName, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
