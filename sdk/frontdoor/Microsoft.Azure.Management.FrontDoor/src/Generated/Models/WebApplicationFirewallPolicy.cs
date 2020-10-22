@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="sku">The pricing tier for web application firewall
+        /// policy.</param>
         /// <param name="policySettings">Describes settings for the
         /// policy.</param>
         /// <param name="customRules">Describes custom rules inside the
@@ -56,9 +58,10 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="resourceState">Resource status of the policy.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public WebApplicationFirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PolicySettings policySettings = default(PolicySettings), CustomRuleList customRules = default(CustomRuleList), ManagedRuleSetList managedRules = default(ManagedRuleSetList), IList<FrontendEndpointLink> frontendEndpointLinks = default(IList<FrontendEndpointLink>), IList<RoutingRuleLink> routingRuleLinks = default(IList<RoutingRuleLink>), string provisioningState = default(string), string resourceState = default(string), string etag = default(string))
+        public WebApplicationFirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), PolicySettings policySettings = default(PolicySettings), CustomRuleList customRules = default(CustomRuleList), ManagedRuleSetList managedRules = default(ManagedRuleSetList), IList<FrontendEndpointLink> frontendEndpointLinks = default(IList<FrontendEndpointLink>), IList<RoutingRuleLink> routingRuleLinks = default(IList<RoutingRuleLink>), string provisioningState = default(string), string resourceState = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
+            Sku = sku;
             PolicySettings = policySettings;
             CustomRules = customRules;
             ManagedRules = managedRules;
@@ -74,6 +77,12 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the pricing tier for web application firewall policy.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sku")]
+        public Sku Sku { get; set; }
 
         /// <summary>
         /// Gets or sets describes settings for the policy.
