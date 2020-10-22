@@ -16,23 +16,26 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// List of virtual router peer routes.
+    /// EffectiveRoutes List.
     /// </summary>
-    public partial class PeerRouteList
+    public partial class VirtualHubEffectiveRouteList
     {
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the VirtualHubEffectiveRouteList
+        /// class.
         /// </summary>
-        public PeerRouteList()
+        public VirtualHubEffectiveRouteList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the VirtualHubEffectiveRouteList
+        /// class.
         /// </summary>
-        /// <param name="value">List of peer routes.</param>
-        public PeerRouteList(IList<PeerRoute> value = default(IList<PeerRoute>))
+        /// <param name="value">The list of effective routes configured on the
+        /// virtual hub or the specified resource.</param>
+        public VirtualHubEffectiveRouteList(IList<VirtualHubEffectiveRoute> value = default(IList<VirtualHubEffectiveRoute>))
         {
             Value = value;
             CustomInit();
@@ -44,10 +47,11 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of peer routes.
+        /// Gets or sets the list of effective routes configured on the virtual
+        /// hub or the specified resource.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<PeerRoute> Value { get; set; }
+        public IList<VirtualHubEffectiveRoute> Value { get; set; }
 
     }
 }

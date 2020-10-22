@@ -16,28 +16,28 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// EffectiveRoutes List.
+    /// Response for ListBastionHosts API service call.
     /// </summary>
-    public partial class VirtualHubEffectiveRouteEffectiveRouteList
+    public partial class BastionHostListResult
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// VirtualHubEffectiveRouteEffectiveRouteList class.
+        /// Initializes a new instance of the BastionHostListResult class.
         /// </summary>
-        public VirtualHubEffectiveRouteEffectiveRouteList()
+        public BastionHostListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// VirtualHubEffectiveRouteEffectiveRouteList class.
+        /// Initializes a new instance of the BastionHostListResult class.
         /// </summary>
-        /// <param name="value">The list of effective routes configured on the
-        /// virtual hub or the specified resource.</param>
-        public VirtualHubEffectiveRouteEffectiveRouteList(IList<VirtualHubEffectiveRoute> value = default(IList<VirtualHubEffectiveRoute>))
+        /// <param name="value">List of Bastion Hosts in a resource
+        /// group.</param>
+        /// <param name="nextLink">URL to get the next set of results.</param>
+        public BastionHostListResult(IList<BastionHost> value = default(IList<BastionHost>), string nextLink = default(string))
         {
             Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -47,11 +47,16 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of effective routes configured on the virtual
-        /// hub or the specified resource.
+        /// Gets or sets list of Bastion Hosts in a resource group.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<VirtualHubEffectiveRoute> Value { get; set; }
+        public IList<BastionHost> Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets URL to get the next set of results.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; set; }
 
     }
 }

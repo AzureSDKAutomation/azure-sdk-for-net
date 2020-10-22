@@ -345,6 +345,46 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
+            /// Get a list of bastion hosts accessible from the given network.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkName'>
+            /// The name of the virtual network.
+            /// </param>
+            public static BastionHostListResult GetBastionHosts(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
+            {
+                return operations.GetBastionHostsAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get a list of bastion hosts accessible from the given network.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkName'>
+            /// The name of the virtual network.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BastionHostListResult> GetBastionHostsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetBastionHostsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes the specified virtual network.
             /// </summary>
             /// <param name='operations'>

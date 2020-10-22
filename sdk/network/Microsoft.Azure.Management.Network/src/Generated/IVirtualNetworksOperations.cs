@@ -226,6 +226,31 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<VirtualNetworkUsage>>> ListUsageWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get a list of bastion hosts accessible from the given network.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BastionHostListResult>> GetBastionHostsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Deletes the specified virtual network.
         /// </summary>
         /// <param name='resourceGroupName'>
