@@ -3,6 +3,7 @@
 
 using System;
 using Azure.Core;
+using Azure.Core.Serialization;
 
 namespace Azure.Messaging.EventGrid
 {
@@ -37,7 +38,7 @@ namespace Azure.Messaging.EventGrid
         internal ServiceVersion Version { get; }
 
         /// <summary>
-        /// Used to serialize the given events to UTF-8 encoded JSON.
+        /// Used to serialize the payloads of given events to UTF-8 encoded JSON.
         /// </summary>
         public ObjectSerializer Serializer { get; set; }
 
@@ -52,19 +53,6 @@ namespace Azure.Messaging.EventGrid
         public EventGridPublisherClientOptions(ServiceVersion version = LatestVersion)
         {
             Version = version;
-        }
-
-
-        internal string GetVersionString()
-        {
-            switch (Version)
-            {
-                case ServiceVersion.V2018_01_01:
-                    return "2018-01-01";
-
-                default:
-                    throw new ArgumentException($"Version {Version.ToString()} not supported.");
-            }
         }
     }
 }

@@ -58,15 +58,18 @@ namespace Azure.DigitalTwins.Core.Tests
                 getComponentResponse.GetRawResponse().Status.Should().Be((int)HttpStatusCode.OK);
 
                 // Patch component
-                Response<string> updateComponentResponse = await client
+                JsonPatchDocument componentUpdatePatchDocument = new JsonPatchDocument();
+                componentUpdatePatchDocument.AppendReplace("/Network", "New Network");
+
+                Response updateComponentResponse = await client
                     .UpdateComponentAsync(
                         roomWithWifiTwinId,
                         wifiComponentName,
-                        TestAssetsHelper.GetWifiComponentUpdatePayload())
+                        componentUpdatePatchDocument)
                     .ConfigureAwait(false);
 
                 // The response to the Patch request should be 204 (No content)
-                updateComponentResponse.GetRawResponse().Status.Should().Be((int)HttpStatusCode.NoContent);
+                updateComponentResponse.Status.Should().Be((int)HttpStatusCode.NoContent);
             }
             finally
             {

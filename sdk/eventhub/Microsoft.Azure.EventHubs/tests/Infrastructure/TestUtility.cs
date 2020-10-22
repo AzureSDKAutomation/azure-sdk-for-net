@@ -79,6 +79,18 @@ namespace Microsoft.Azure.EventHubs.Tests
         internal static string GetEntityConnectionString(string entityName) =>
             new EventHubsConnectionStringBuilder(EventHubsConnectionString) { EntityPath = entityName }.ToString();
 
+        internal static async Task SendToEventhubAsync(EventHubClient ehClient, int numberOfMessages = 1)
+        {
+            TestUtility.Log($"Starting to send {numberOfMessages} messages.");
+
+            for (int i = 0; i < numberOfMessages; i++)
+            {
+                await ehClient.SendAsync(new EventData(Encoding.UTF8.GetBytes("Hello Event Hubs!")));
+            }
+
+            TestUtility.Log("Sends done.");
+        }
+
         internal static Task SendToPartitionAsync(EventHubClient ehClient, string partitionId, string messageBody, int numberOfMessages = 1)
         {
             return SendToPartitionAsync(ehClient, partitionId, new EventData(Encoding.UTF8.GetBytes(messageBody)), numberOfMessages);
@@ -94,6 +106,14 @@ namespace Microsoft.Azure.EventHubs.Tests
                 await partitionSender.SendAsync(eventData);
             }
 
+            TestUtility.Log("Sends done.");
+        }
+
+        internal static async Task SendToPartitionAsync(EventHubClient ehClient, string partitionId, EventDataBatch batch)
+        {
+            TestUtility.Log($"Starting to send {batch.Count} messages to partition {partitionId}.");
+            var partitionSender = ehClient.CreatePartitionSender(partitionId);
+            await partitionSender.SendAsync(batch);
             TestUtility.Log("Sends done.");
         }
 

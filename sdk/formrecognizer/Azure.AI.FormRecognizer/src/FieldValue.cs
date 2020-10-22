@@ -14,18 +14,163 @@ namespace Azure.AI.FormRecognizer.Models
     {
         private readonly FieldValue_internal _fieldValue;
         private readonly IReadOnlyList<ReadResult> _readResults;
+        private readonly bool _isBusinessCard;
 
         internal FieldValue(FieldValue_internal fieldValue, IReadOnlyList<ReadResult> readResults)
+            : this(fieldValue, readResults, false) { }
+
+        internal FieldValue(FieldValue_internal fieldValue, IReadOnlyList<ReadResult> readResults, bool isBusinessCard)
+            : this()
         {
             ValueType = fieldValue.Type;
             _fieldValue = fieldValue;
             _readResults = readResults;
+            _isBusinessCard = isBusinessCard;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        /// <param name="isPhoneNumber">Whether or not this value represents a phone number.</param>
+        internal FieldValue(string value, bool isPhoneNumber = false)
+            : this()
+        {
+            ValueType = isPhoneNumber ? FieldValueType.PhoneNumber : FieldValueType.String;
+            ValueString = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(long value)
+            : this()
+        {
+            ValueType = FieldValueType.Int64;
+            ValueInteger = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(float value)
+            : this()
+        {
+            ValueType = FieldValueType.Float;
+            ValueNumber = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(DateTime value)
+            : this()
+        {
+            ValueType = FieldValueType.Date;
+            ValueDate = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(TimeSpan value)
+            : this()
+        {
+            ValueType = FieldValueType.Time;
+            ValueTime = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(IReadOnlyList<FormField> value)
+            : this()
+        {
+            ValueType = FieldValueType.List;
+            ValueList = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(IReadOnlyDictionary<string, FormField> value)
+            : this()
+        {
+            ValueType = FieldValueType.Dictionary;
+            ValueDictionary = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldValue"/> structure.
+        /// </summary>
+        /// <param name="value">The actual field value.</param>
+        internal FieldValue(SelectionMarkState value)
+            : this()
+        {
+            ValueType = FieldValueType.SelectionMark;
+            ValueSelectionMark = value;
         }
 
         /// <summary>
         /// The data type of the field value.
         /// </summary>
         public FieldValueType ValueType { get; }
+
+        /// <summary>
+        /// The <c>string</c> or phone number value of this instance. Values are usually
+        /// extracted from <see cref="_fieldValue"/>, so this property is exclusively used
+        /// for mocking.
+        /// </summary>
+        private string ValueString { get; }
+
+        /// <summary>
+        /// The <c>long</c> value of this instance. Values are usually extracted from
+        /// <see cref="_fieldValue"/>, so this property is exclusively used for mocking.
+        /// </summary>
+        private long ValueInteger { get; }
+
+        /// <summary>
+        /// The <c>float</c> value of this instance. Values are usually extracted from
+        /// <see cref="_fieldValue"/>, so this property is exclusively used for mocking.
+        /// </summary>
+        private float ValueNumber { get; }
+
+        /// <summary>
+        /// The <see cref="DateTime"/> value of this instance. Values are usually extracted from
+        /// <see cref="_fieldValue"/>, so this property is exclusively used for mocking.
+        /// </summary>
+        private DateTime ValueDate { get; }
+
+        /// <summary>
+        /// The <see cref="TimeSpan"/> value of this instance. Values are usually extracted from
+        /// <see cref="_fieldValue"/>, so this property is exclusively used for mocking.
+        /// </summary>
+        private TimeSpan ValueTime { get; }
+
+        /// <summary>
+        /// The <see cref="List{T}"/> value of this instance. Values are usually extracted
+        /// from <see cref="_fieldValue"/>, so this property is exclusively used for mocking.
+        /// </summary>
+        private IReadOnlyList<FormField> ValueList { get; }
+
+        /// <summary>
+        /// The <see cref="Dictionary{TKey, TValue}"/> value of this instance. Values are
+        /// usually extracted from <see cref="_fieldValue"/>, so this property is exclusively
+        /// used for mocking.
+        /// </summary>
+        private IReadOnlyDictionary<string, FormField> ValueDictionary { get; }
+
+        /// <summary>
+        /// The <see cref="FieldValueSelectionMark"/> value of this instance. Values are usually extracted from
+        /// <see cref="_fieldValue"/>, so this property is exclusively used for mocking.
+        /// </summary>
+        private SelectionMarkState ValueSelectionMark { get; }
 
         /// <summary>
         /// Gets the value of the field as a <see cref="string"/>.
@@ -39,7 +184,12 @@ namespace Azure.AI.FormRecognizer.Models
                 throw new InvalidOperationException($"Cannot get field as String.  Field value's type is {ValueType}.");
             }
 
-            return _fieldValue.ValueString;
+            if (_fieldValue == null)
+            {
+                return ValueString;
+            }
+
+            return _fieldValue?.ValueString;
         }
 
         /// <summary>
@@ -52,6 +202,11 @@ namespace Azure.AI.FormRecognizer.Models
             if (ValueType != FieldValueType.Int64)
             {
                 throw new InvalidOperationException($"Cannot get field as Integer.  Field value's type is {ValueType}.");
+            }
+
+            if (_fieldValue == null)
+            {
+                return ValueInteger;
             }
 
             if (!_fieldValue.ValueInteger.HasValue)
@@ -72,6 +227,11 @@ namespace Azure.AI.FormRecognizer.Models
             if (ValueType != FieldValueType.Float)
             {
                 throw new InvalidOperationException($"Cannot get field as Float.  Field value's type is {ValueType}.");
+            }
+
+            if (_fieldValue == null)
+            {
+                return ValueNumber;
             }
 
             if (!_fieldValue.ValueNumber.HasValue)
@@ -101,6 +261,11 @@ namespace Azure.AI.FormRecognizer.Models
                 throw new InvalidOperationException($"Cannot get field as Date.  Field value's type is {ValueType}.");
             }
 
+            if (_fieldValue == null)
+            {
+                return ValueDate;
+            }
+
             if (!_fieldValue.ValueDate.HasValue)
             {
                 throw new InvalidOperationException($"Field value is null.");
@@ -119,6 +284,11 @@ namespace Azure.AI.FormRecognizer.Models
             if (ValueType != FieldValueType.Time)
             {
                 throw new InvalidOperationException($"Cannot get field as Time.  Field value's type is {ValueType}.");
+            }
+
+            if (_fieldValue == null)
+            {
+                return ValueTime;
             }
 
             if (!_fieldValue.ValueTime.HasValue)
@@ -141,6 +311,11 @@ namespace Azure.AI.FormRecognizer.Models
                 throw new InvalidOperationException($"Cannot get field as PhoneNumber.  Field value's type is {ValueType}.");
             }
 
+            if (_fieldValue == null)
+            {
+                return ValueString;
+            }
+
             return _fieldValue.ValuePhoneNumber;
         }
 
@@ -156,10 +331,17 @@ namespace Azure.AI.FormRecognizer.Models
                 throw new InvalidOperationException($"Cannot get field as List.  Field value's type is {ValueType}.");
             }
 
+            if (_fieldValue == null)
+            {
+                return ValueList;
+            }
+
             List<FormField> fieldList = new List<FormField>();
             foreach (var fieldValue in _fieldValue.ValueArray)
             {
-                fieldList.Add(new FormField(null, fieldValue, _readResults));
+                // Business card has a special condition on how to calculate pages
+                // so we need to tell the FormField that it is from BusinessCards
+                fieldList.Add(new FormField(null, fieldValue, _readResults, _isBusinessCard));
             }
 
             return fieldList;
@@ -177,6 +359,11 @@ namespace Azure.AI.FormRecognizer.Models
                 throw new InvalidOperationException($"Cannot get field as Dictionary.  Field value's type is {ValueType}.");
             }
 
+            if (_fieldValue == null)
+            {
+                return ValueDictionary;
+            }
+
             Dictionary<string, FormField> fieldDictionary = new Dictionary<string, FormField>();
 
             foreach (var kvp in _fieldValue.ValueObject)
@@ -185,6 +372,31 @@ namespace Azure.AI.FormRecognizer.Models
             }
 
             return fieldDictionary;
+        }
+
+        /// <summary>
+        /// Gets the value of the field as a <see cref="SelectionMarkState"/>.
+        /// </summary>
+        /// <returns>The value of the field converted to <see cref="SelectionMarkState"/>.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when <see cref="ValueType"/> is not <see cref="FieldValueType.SelectionMark"/>.</exception>
+        public SelectionMarkState AsSelectionMarkState()
+        {
+            if (ValueType != FieldValueType.SelectionMark)
+            {
+                throw new InvalidOperationException($"Cannot get field as SelectionMark.  Field value's type is {ValueType}.");
+            }
+
+            if (_fieldValue == null)
+            {
+                return ValueSelectionMark;
+            }
+
+            if (!_fieldValue.ValueSelectionMark.HasValue)
+            {
+                throw new InvalidOperationException($"Field value is null.");
+            }
+
+            return _fieldValue.ValueSelectionMark.Value;
         }
     }
 }
