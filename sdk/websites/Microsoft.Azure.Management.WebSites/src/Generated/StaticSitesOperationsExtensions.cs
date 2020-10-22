@@ -22,6 +22,54 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class StaticSitesOperationsExtensions
     {
             /// <summary>
+            /// Generates a preview workflow file for the static site
+            /// </summary>
+            /// <remarks>
+            /// Description for Generates a preview workflow file for the static site
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location where you plan to create the static site.
+            /// </param>
+            /// <param name='staticSitesWorkflowPreviewRequest'>
+            /// A JSON representation of the StaticSitesWorkflowPreviewRequest properties.
+            /// See example.
+            /// </param>
+            public static StaticSitesWorkflowPreview PreviewWorkflow(this IStaticSitesOperations operations, string location, StaticSitesWorkflowPreviewRequest staticSitesWorkflowPreviewRequest)
+            {
+                return operations.PreviewWorkflowAsync(location, staticSitesWorkflowPreviewRequest).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Generates a preview workflow file for the static site
+            /// </summary>
+            /// <remarks>
+            /// Description for Generates a preview workflow file for the static site
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location where you plan to create the static site.
+            /// </param>
+            /// <param name='staticSitesWorkflowPreviewRequest'>
+            /// A JSON representation of the StaticSitesWorkflowPreviewRequest properties.
+            /// See example.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StaticSitesWorkflowPreview> PreviewWorkflowAsync(this IStaticSitesOperations operations, string location, StaticSitesWorkflowPreviewRequest staticSitesWorkflowPreviewRequest, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PreviewWorkflowWithHttpMessagesAsync(location, staticSitesWorkflowPreviewRequest, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get all Static Sites for a subscription.
             /// </summary>
             /// <remarks>
