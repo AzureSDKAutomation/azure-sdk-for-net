@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="securityStyle">The security style of volume. Possible
         /// values include: 'ntfs', 'unix'</param>
         /// <param name="throughputMibps">Maximum throughput in Mibps that can
-        /// be achieved by this volume</param>
+        /// be achieved by this volume, value between 1 and 4500</param>
         public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), string backupId = default(string), string baremetalTenantId = default(string), IList<MountTargetProperties> mountTargets = default(IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), double? throughputMibps = default(double?))
         {
             Location = location;
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets maximum throughput in Mibps that can be achieved by
-        /// this volume
+        /// this volume, value between 1 and 4500
         /// </summary>
         [JsonProperty(PropertyName = "properties.throughputMibps")]
         public double? ThroughputMibps { get; set; }
@@ -375,21 +375,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new ValidationException(ValidationRules.Pattern, "BackupId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}|(\\\\?([^\\/]*[\\/])*)([^\\/]+)$");
                 }
             }
-            if (BaremetalTenantId != null)
-            {
-                if (BaremetalTenantId.Length > 36)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "BaremetalTenantId", 36);
-                }
-                if (BaremetalTenantId.Length < 36)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "BaremetalTenantId", 36);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(BaremetalTenantId, "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "BaremetalTenantId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
-                }
-            }
             if (MountTargets != null)
             {
                 foreach (var element in MountTargets)
@@ -403,21 +388,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (DataProtection != null)
             {
                 DataProtection.Validate();
-            }
-            if (ThroughputMibps != null)
-            {
-                if (ThroughputMibps > 4500)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "ThroughputMibps", 4500);
-                }
-                if (ThroughputMibps < 1)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "ThroughputMibps", 1);
-                }
-                if (ThroughputMibps % 0.001 != 0)
-                {
-                    throw new ValidationException(ValidationRules.MultipleOf, "ThroughputMibps", 0.001);
-                }
             }
         }
     }

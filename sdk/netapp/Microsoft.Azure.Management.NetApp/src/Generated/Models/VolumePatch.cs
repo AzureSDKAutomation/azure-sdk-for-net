@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="usageThreshold">usageThreshold</param>
         /// <param name="exportPolicy">exportPolicy</param>
         /// <param name="throughputMibps">Maximum throughput in Mibps that can
-        /// be achieved by this volume</param>
+        /// be achieved by this volume, value between 1 and 4500</param>
         /// <param name="dataProtection">DataProtection</param>
         public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection))
         {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets maximum throughput in Mibps that can be achieved by
-        /// this volume
+        /// this volume, value between 1 and 4500
         /// </summary>
         [JsonProperty(PropertyName = "properties.throughputMibps")]
         public double? ThroughputMibps { get; set; }
@@ -158,18 +158,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (UsageThreshold < 107374182400)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "UsageThreshold", 107374182400);
-            }
-            if (ThroughputMibps > 4500)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "ThroughputMibps", 4500);
-            }
-            if (ThroughputMibps < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "ThroughputMibps", 1);
-            }
-            if (ThroughputMibps % 0.001 != 0)
-            {
-                throw new ValidationException(ValidationRules.MultipleOf, "ThroughputMibps", 0.001);
             }
         }
     }

@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// <remarks>
             /// Resync the connection on the destination volume. If the operation is ran on
             /// the source volume it will reverse-resync the connection and sync from
-            /// source to destination.
+            /// destination to source.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// <remarks>
             /// Resync the connection on the destination volume. If the operation is ran on
             /// the source volume it will reverse-resync the connection and sync from
-            /// source to destination.
+            /// destination to source.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// <remarks>
             /// Resync the connection on the destination volume. If the operation is ran on
             /// the source volume it will reverse-resync the connection and sync from
-            /// source to destination.
+            /// destination to source.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// <remarks>
             /// Resync the connection on the destination volume. If the operation is ran on
             /// the source volume it will reverse-resync the connection and sync from
-            /// source to destination.
+            /// destination to source.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
