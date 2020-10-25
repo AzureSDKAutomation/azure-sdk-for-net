@@ -11,30 +11,28 @@
 namespace Microsoft.Azure.Management.Security.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Represents a list of VM/server groups and set of rules that are
-    /// Recommended by Azure Security Center to be allowed
+    /// Site data
     /// </summary>
-    public partial class AppWhitelistingGroups
+    public partial class Site
     {
         /// <summary>
-        /// Initializes a new instance of the AppWhitelistingGroups class.
+        /// Initializes a new instance of the Site class.
         /// </summary>
-        public AppWhitelistingGroups()
+        public Site()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AppWhitelistingGroups class.
+        /// Initializes a new instance of the Site class.
         /// </summary>
-        public AppWhitelistingGroups(IList<AppWhitelistingGroup> value = default(IList<AppWhitelistingGroup>))
+        /// <param name="displayName">Site display name</param>
+        public Site(string displayName = default(string))
         {
-            Value = value;
+            DisplayName = displayName;
             CustomInit();
         }
 
@@ -44,9 +42,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets site display name
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<AppWhitelistingGroup> Value { get; set; }
+        [JsonProperty(PropertyName = "displayName")]
+        public string DisplayName { get; private set; }
 
     }
 }
