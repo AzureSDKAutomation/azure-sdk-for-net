@@ -19,24 +19,18 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SqlPoolBlobAuditingPoliciesOperations operations.
+    /// KeysOperations operations.
     /// </summary>
-    public partial interface ISqlPoolBlobAuditingPoliciesOperations
+    public partial interface IKeysOperations
     {
         /// <summary>
-        /// Get a SQL pool's blob auditing policy
+        /// Returns a list of keys in a workspace
         /// </summary>
-        /// <remarks>
-        /// Get a SQL pool's blob auditing policy.
-        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='workspaceName'>
         /// The name of the workspace
-        /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,7 +38,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorContractException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -53,24 +47,18 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SqlPoolBlobAuditingPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Key>>> ListByWorkspaceWithHttpMessagesAsync(string resourceGroupName, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a SQL pool's blob auditing policy
+        /// Gets a workspace key
         /// </summary>
-        /// <remarks>
-        /// Creates or updates a SQL pool's blob auditing policy.
-        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='workspaceName'>
         /// The name of the workspace
         /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
-        /// </param>
-        /// <param name='parameters'>
-        /// The database blob auditing policy.
+        /// <param name='keyName'>
+        /// The name of the workspace key
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,7 +66,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorContractException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -87,9 +75,9 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SqlPoolBlobAuditingPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolBlobAuditingPolicy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Key>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string keyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists auditing settings of a Sql pool.
+        /// Creates or updates a workspace key
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -97,8 +85,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='workspaceName'>
         /// The name of the workspace
         /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
+        /// <param name='keyName'>
+        /// The name of the workspace key
+        /// </param>
+        /// <param name='keyProperties'>
+        /// Key put request properties
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -106,7 +97,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorContractException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -115,9 +106,37 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SqlPoolBlobAuditingPolicy>>> ListBySqlPoolWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Key>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string keyName, Key keyProperties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists auditing settings of a Sql pool.
+        /// Deletes a workspace key
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace
+        /// </param>
+        /// <param name='keyName'>
+        /// The name of the workspace key
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorContractException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Key>> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string keyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns a list of keys in a workspace
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -128,7 +147,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorContractException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -137,6 +156,6 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SqlPoolBlobAuditingPolicy>>> ListBySqlPoolNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Key>>> ListByWorkspaceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
