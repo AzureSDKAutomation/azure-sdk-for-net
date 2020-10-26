@@ -12,14 +12,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ContainerServiceOrchestratorTypes.
+    /// Defines values for UpgradeChannel.
     /// </summary>
-    public static class ContainerServiceOrchestratorTypes
+    public static class UpgradeChannel
     {
-        public const string Kubernetes = "Kubernetes";
-        public const string Swarm = "Swarm";
-        public const string DCOS = "DCOS";
-        public const string DockerCE = "DockerCE";
-        public const string Custom = "Custom";
+        public const string Rapid = "rapid";
+        public const string Stable = "stable";
+        public const string Patch = "patch";
     }
 }
