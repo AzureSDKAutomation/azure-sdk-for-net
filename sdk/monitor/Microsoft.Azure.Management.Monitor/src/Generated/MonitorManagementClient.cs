@@ -47,7 +47,12 @@ namespace Microsoft.Azure.Management.Monitor
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The Azure subscription Id.
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
@@ -70,145 +75,9 @@ namespace Microsoft.Azure.Management.Monitor
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IAutoscaleSettingsOperations.
+        /// Gets the IActivityLogAlertRuleOperations.
         /// </summary>
-        public virtual IAutoscaleSettingsOperations AutoscaleSettings { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IAlertRuleIncidentsOperations.
-        /// </summary>
-        public virtual IAlertRuleIncidentsOperations AlertRuleIncidents { get; private set; }
-
-        /// <summary>
-        /// Gets the IAlertRulesOperations.
-        /// </summary>
-        public virtual IAlertRulesOperations AlertRules { get; private set; }
-
-        /// <summary>
-        /// Gets the ILogProfilesOperations.
-        /// </summary>
-        public virtual ILogProfilesOperations LogProfiles { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiagnosticSettingsOperations.
-        /// </summary>
-        public virtual IDiagnosticSettingsOperations DiagnosticSettings { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiagnosticSettingsCategoryOperations.
-        /// </summary>
-        public virtual IDiagnosticSettingsCategoryOperations DiagnosticSettingsCategory { get; private set; }
-
-        /// <summary>
-        /// Gets the IActionGroupsOperations.
-        /// </summary>
-        public virtual IActionGroupsOperations ActionGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IActivityLogAlertsOperations.
-        /// </summary>
-        public virtual IActivityLogAlertsOperations ActivityLogAlerts { get; private set; }
-
-        /// <summary>
-        /// Gets the IActivityLogsOperations.
-        /// </summary>
-        public virtual IActivityLogsOperations ActivityLogs { get; private set; }
-
-        /// <summary>
-        /// Gets the IEventCategoriesOperations.
-        /// </summary>
-        public virtual IEventCategoriesOperations EventCategories { get; private set; }
-
-        /// <summary>
-        /// Gets the ITenantActivityLogsOperations.
-        /// </summary>
-        public virtual ITenantActivityLogsOperations TenantActivityLogs { get; private set; }
-
-        /// <summary>
-        /// Gets the IMetricDefinitionsOperations.
-        /// </summary>
-        public virtual IMetricDefinitionsOperations MetricDefinitions { get; private set; }
-
-        /// <summary>
-        /// Gets the IMetricsOperations.
-        /// </summary>
-        public virtual IMetricsOperations Metrics { get; private set; }
-
-        /// <summary>
-        /// Gets the IMetricBaselineOperations.
-        /// </summary>
-        public virtual IMetricBaselineOperations MetricBaseline { get; private set; }
-
-        /// <summary>
-        /// Gets the IBaselinesOperations.
-        /// </summary>
-        public virtual IBaselinesOperations Baselines { get; private set; }
-
-        /// <summary>
-        /// Gets the IMetricAlertsOperations.
-        /// </summary>
-        public virtual IMetricAlertsOperations MetricAlerts { get; private set; }
-
-        /// <summary>
-        /// Gets the IMetricAlertsStatusOperations.
-        /// </summary>
-        public virtual IMetricAlertsStatusOperations MetricAlertsStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IScheduledQueryRulesOperations.
-        /// </summary>
-        public virtual IScheduledQueryRulesOperations ScheduledQueryRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IMetricNamespacesOperations.
-        /// </summary>
-        public virtual IMetricNamespacesOperations MetricNamespaces { get; private set; }
-
-        /// <summary>
-        /// Gets the IVMInsightsOperations.
-        /// </summary>
-        public virtual IVMInsightsOperations VMInsights { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopesOperations.
-        /// </summary>
-        public virtual IPrivateLinkScopesOperations PrivateLinkScopes { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopeOperationStatusOperations.
-        /// </summary>
-        public virtual IPrivateLinkScopeOperationStatusOperations PrivateLinkScopeOperationStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopedResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRules.
-        /// </summary>
-        public virtual IDataCollectionRules DataCollectionRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRuleAssociations.
-        /// </summary>
-        public virtual IDataCollectionRuleAssociations DataCollectionRuleAssociations { get; private set; }
-
+        public virtual IActivityLogAlertRuleOperations ActivityLogAlertRule { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MonitorManagementClient class.
@@ -451,35 +320,9 @@ namespace Microsoft.Azure.Management.Monitor
         /// </summary>
         private void Initialize()
         {
-            AutoscaleSettings = new AutoscaleSettingsOperations(this);
-            Operations = new Operations(this);
-            AlertRuleIncidents = new AlertRuleIncidentsOperations(this);
-            AlertRules = new AlertRulesOperations(this);
-            LogProfiles = new LogProfilesOperations(this);
-            DiagnosticSettings = new DiagnosticSettingsOperations(this);
-            DiagnosticSettingsCategory = new DiagnosticSettingsCategoryOperations(this);
-            ActionGroups = new ActionGroupsOperations(this);
-            ActivityLogAlerts = new ActivityLogAlertsOperations(this);
-            ActivityLogs = new ActivityLogsOperations(this);
-            EventCategories = new EventCategoriesOperations(this);
-            TenantActivityLogs = new TenantActivityLogsOperations(this);
-            MetricDefinitions = new MetricDefinitionsOperations(this);
-            Metrics = new MetricsOperations(this);
-            MetricBaseline = new MetricBaselineOperations(this);
-            Baselines = new BaselinesOperations(this);
-            MetricAlerts = new MetricAlertsOperations(this);
-            MetricAlertsStatus = new MetricAlertsStatusOperations(this);
-            ScheduledQueryRules = new ScheduledQueryRulesOperations(this);
-            MetricNamespaces = new MetricNamespacesOperations(this);
-            VMInsights = new VMInsightsOperations(this);
-            PrivateLinkScopes = new PrivateLinkScopesOperations(this);
-            PrivateLinkScopeOperationStatus = new PrivateLinkScopeOperationStatusOperations(this);
-            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            PrivateLinkScopedResources = new PrivateLinkScopedResourcesOperations(this);
-            DataCollectionRules = new DataCollectionRules(this);
-            DataCollectionRuleAssociations = new DataCollectionRuleAssociations(this);
+            ActivityLogAlertRule = new ActivityLogAlertRuleOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2020-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -509,18 +352,6 @@ namespace Microsoft.Azure.Management.Monitor
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RuleDataSource>("odata.type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RuleDataSource>("odata.type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RuleCondition>("odata.type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RuleCondition>("odata.type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RuleAction>("odata.type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RuleAction>("odata.type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MetricAlertCriteria>("odata.type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MetricAlertCriteria>("odata.type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MultiMetricCriteria>("criterionType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MultiMetricCriteria>("criterionType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Action>("odata.type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Action>("odata.type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
