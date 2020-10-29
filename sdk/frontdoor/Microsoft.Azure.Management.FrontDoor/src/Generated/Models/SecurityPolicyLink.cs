@@ -14,23 +14,23 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines the Resource ID for a Routing Rule.
+    /// Defines the Resource ID for a CDN Security Policy.
     /// </summary>
-    public partial class RoutingRuleLink
+    public partial class SecurityPolicyLink
     {
         /// <summary>
-        /// Initializes a new instance of the RoutingRuleLink class.
+        /// Initializes a new instance of the SecurityPolicyLink class.
         /// </summary>
-        public RoutingRuleLink()
+        public SecurityPolicyLink()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RoutingRuleLink class.
+        /// Initializes a new instance of the SecurityPolicyLink class.
         /// </summary>
         /// <param name="id">Resource ID.</param>
-        public RoutingRuleLink(string id = default(string))
+        public SecurityPolicyLink(string id = default(string))
         {
             Id = id;
             CustomInit();

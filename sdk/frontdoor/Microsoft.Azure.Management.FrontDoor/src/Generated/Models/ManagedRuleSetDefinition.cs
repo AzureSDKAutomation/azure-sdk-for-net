@@ -45,15 +45,23 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="ruleSetType">Type of the managed rule set.</param>
         /// <param name="ruleSetVersion">Version of the managed rule set
         /// type.</param>
+        /// <param name="ruleSetVersionState">State of the rule set version.
+        /// Possible values include: 'Recommended', 'Supported',
+        /// 'Deprecated'</param>
+        /// <param name="ruleSetDefaultAction">Possible values include:
+        /// 'Block', 'Log', 'Redirect'</param>
         /// <param name="ruleGroups">Rule groups of the managed rule
         /// set.</param>
-        public ManagedRuleSetDefinition(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string ruleSetId = default(string), string ruleSetType = default(string), string ruleSetVersion = default(string), IList<ManagedRuleGroupDefinition> ruleGroups = default(IList<ManagedRuleGroupDefinition>))
+        public ManagedRuleSetDefinition(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string ruleSetId = default(string), string ruleSetType = default(string), string ruleSetVersion = default(string), string ruleSetVersionState = default(string), string ruleSetDefaultAction = default(string), IList<string> ruleSetFeatures = default(IList<string>), IList<ManagedRuleGroupDefinition> ruleGroups = default(IList<ManagedRuleGroupDefinition>))
             : base(id, name, type, location, tags)
         {
             ProvisioningState = provisioningState;
             RuleSetId = ruleSetId;
             RuleSetType = ruleSetType;
             RuleSetVersion = ruleSetVersion;
+            RuleSetVersionState = ruleSetVersionState;
+            RuleSetDefaultAction = ruleSetDefaultAction;
+            RuleSetFeatures = ruleSetFeatures;
             RuleGroups = ruleGroups;
             CustomInit();
         }
@@ -86,6 +94,24 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.ruleSetVersion")]
         public string RuleSetVersion { get; private set; }
+
+        /// <summary>
+        /// Gets or sets state of the rule set version. Possible values
+        /// include: 'Recommended', 'Supported', 'Deprecated'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ruleSetVersionState")]
+        public string RuleSetVersionState { get; set; }
+
+        /// <summary>
+        /// Gets possible values include: 'Block', 'Log', 'Redirect'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ruleSetDefaultAction")]
+        public string RuleSetDefaultAction { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ruleSetFeatures")]
+        public IList<string> RuleSetFeatures { get; private set; }
 
         /// <summary>
         /// Gets rule groups of the managed rule set.
