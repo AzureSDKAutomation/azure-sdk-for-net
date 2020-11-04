@@ -90,6 +90,31 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual ISqlDatabasesOperations SqlDatabases { get; private set; }
 
         /// <summary>
+        /// Gets the IWorkspacesOperations.
+        /// </summary>
+        public virtual IWorkspacesOperations Workspaces { get; private set; }
+
+        /// <summary>
+        /// Gets the IWorkspaceAadAdminsOperations.
+        /// </summary>
+        public virtual IWorkspaceAadAdminsOperations WorkspaceAadAdmins { get; private set; }
+
+        /// <summary>
+        /// Gets the IWorkspaceSqlAadAdminsOperations.
+        /// </summary>
+        public virtual IWorkspaceSqlAadAdminsOperations WorkspaceSqlAadAdmins { get; private set; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedIdentitySqlControlSettingsOperations.
+        /// </summary>
+        public virtual IWorkspaceManagedIdentitySqlControlSettingsOperations WorkspaceManagedIdentitySqlControlSettings { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedSqlPoolsOperations.
+        /// </summary>
+        public virtual IRestorableDroppedSqlPoolsOperations RestorableDroppedSqlPools { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SynapseSqlV3ManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -333,6 +358,11 @@ namespace Microsoft.Azure.Management.Synapse
             SqlV3Operations = new SqlV3Operations(this);
             SqlPoolsV3 = new SqlPoolsV3Operations(this);
             SqlDatabases = new SqlDatabasesOperations(this);
+            Workspaces = new WorkspacesOperations(this);
+            WorkspaceAadAdmins = new WorkspaceAadAdminsOperations(this);
+            WorkspaceSqlAadAdmins = new WorkspaceSqlAadAdminsOperations(this);
+            WorkspaceManagedIdentitySqlControlSettings = new WorkspaceManagedIdentitySqlControlSettingsOperations(this);
+            RestorableDroppedSqlPools = new RestorableDroppedSqlPoolsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-04-01-preview";
             AcceptLanguage = "en-US";

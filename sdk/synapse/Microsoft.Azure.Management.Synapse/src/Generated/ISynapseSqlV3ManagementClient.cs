@@ -84,5 +84,30 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         ISqlDatabasesOperations SqlDatabases { get; }
 
+        /// <summary>
+        /// Gets the IWorkspacesOperations.
+        /// </summary>
+        IWorkspacesOperations Workspaces { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceAadAdminsOperations.
+        /// </summary>
+        IWorkspaceAadAdminsOperations WorkspaceAadAdmins { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceSqlAadAdminsOperations.
+        /// </summary>
+        IWorkspaceSqlAadAdminsOperations WorkspaceSqlAadAdmins { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedIdentitySqlControlSettingsOperations.
+        /// </summary>
+        IWorkspaceManagedIdentitySqlControlSettingsOperations WorkspaceManagedIdentitySqlControlSettings { get; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedSqlPoolsOperations.
+        /// </summary>
+        IRestorableDroppedSqlPoolsOperations RestorableDroppedSqlPools { get; }
+
     }
 }

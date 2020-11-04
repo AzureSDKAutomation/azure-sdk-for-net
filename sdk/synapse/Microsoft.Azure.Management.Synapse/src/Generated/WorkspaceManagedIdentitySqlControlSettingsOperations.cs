@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Synapse
     /// <summary>
     /// WorkspaceManagedIdentitySqlControlSettingsOperations operations.
     /// </summary>
-    internal partial class WorkspaceManagedIdentitySqlControlSettingsOperations : IServiceOperations<SynapseManagementClient>, IWorkspaceManagedIdentitySqlControlSettingsOperations
+    internal partial class WorkspaceManagedIdentitySqlControlSettingsOperations : IServiceOperations<SynapseSqlV3ManagementClient>, IWorkspaceManagedIdentitySqlControlSettingsOperations
     {
         /// <summary>
         /// Initializes a new instance of the WorkspaceManagedIdentitySqlControlSettingsOperations class.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal WorkspaceManagedIdentitySqlControlSettingsOperations(SynapseManagementClient client)
+        internal WorkspaceManagedIdentitySqlControlSettingsOperations(SynapseSqlV3ManagementClient client)
         {
             if (client == null)
             {
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.Synapse
         }
 
         /// <summary>
-        /// Gets a reference to the SynapseManagementClient
+        /// Gets a reference to the SynapseSqlV3ManagementClient
         /// </summary>
-        public SynapseManagementClient Client { get; private set; }
+        public SynapseSqlV3ManagementClient Client { get; private set; }
 
         /// <summary>
         /// Get Managed Identity Sql Control Settings

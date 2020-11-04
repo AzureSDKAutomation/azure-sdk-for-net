@@ -19,12 +19,16 @@ namespace Microsoft.Azure.Management.Synapse
           {
               return new Tuple<string, string, string>[]
               {
+                new Tuple<string, string, string>("Synapse", "RestorableDroppedSqlPools", "2020-04-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlDatabases", "2020-04-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolsV3", "2020-04-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlV3Operations", "2020-04-01-preview"),
+                new Tuple<string, string, string>("Synapse", "WorkspaceAadAdmins", "2020-04-01-preview"),
+                new Tuple<string, string, string>("Synapse", "WorkspaceManagedIdentitySqlControlSettings", "2020-04-01-preview"),
+                new Tuple<string, string, string>("Synapse", "WorkspaceSqlAadAdmins", "2020-04-01-preview"),
+                new Tuple<string, string, string>("Synapse", "Workspaces", "2020-04-01-preview"),
               }.AsEnumerable();
           }
       }
   }
 }
-
