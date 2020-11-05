@@ -26,7 +26,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         [EnumMember(Value = "Standard")]
         Standard,
         [EnumMember(Value = "Premium")]
-        Premium
+        Premium,
+        [EnumMember(Value = "Enterprise")]
+        Enterprise
     }
     internal static class SkuTierEnumExtension
     {
@@ -45,6 +47,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
                     return "Standard";
                 case SkuTier.Premium:
                     return "Premium";
+                case SkuTier.Enterprise:
+                    return "Enterprise";
             }
             return null;
         }
@@ -59,6 +63,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
                     return SkuTier.Standard;
                 case "Premium":
                     return SkuTier.Premium;
+                case "Enterprise":
+                    return SkuTier.Enterprise;
             }
             return null;
         }
