@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="publicKey">The public key for encrypting a credential
         /// when transferring the credential to the integration
         /// runtime.</param>
-        /// <param name="isIdentityCertExprired">Whether the identity
+        /// <param name="isIdentityCertExpired">Whether the identity
         /// certificate is expired.</param>
-        public IntegrationRuntimeConnectionInfo(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string serviceToken = default(string), string identityCertThumbprint = default(string), string hostServiceUri = default(string), string version = default(string), string publicKey = default(string), bool? isIdentityCertExprired = default(bool?))
+        public IntegrationRuntimeConnectionInfo(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string serviceToken = default(string), string identityCertThumbprint = default(string), string hostServiceUri = default(string), string version = default(string), string publicKey = default(string), bool? isIdentityCertExpired = default(bool?))
         {
             AdditionalProperties = additionalProperties;
             ServiceToken = serviceToken;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             HostServiceUri = hostServiceUri;
             Version = version;
             PublicKey = publicKey;
-            IsIdentityCertExprired = isIdentityCertExprired;
+            IsIdentityCertExpired = isIdentityCertExpired;
             CustomInit();
         }
 
@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <summary>
         /// Gets whether the identity certificate is expired.
         /// </summary>
-        [JsonProperty(PropertyName = "isIdentityCertExprired")]
-        public bool? IsIdentityCertExprired { get; private set; }
+        [JsonProperty(PropertyName = "isIdentityCertExpired")]
+        public bool? IsIdentityCertExpired { get; private set; }
 
     }
 }
