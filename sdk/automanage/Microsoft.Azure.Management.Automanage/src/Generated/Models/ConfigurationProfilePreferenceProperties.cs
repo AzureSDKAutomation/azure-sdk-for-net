@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Management.Automanage.Models
         /// </summary>
         /// <param name="vmBackup">The custom preferences for Azure VM
         /// Backup.</param>
-        /// <param name="antiMalware">The custom preferences for Azure
+        /// <param name="antimalware">The custom preferences for Azure
         /// Antimalware.</param>
-        public ConfigurationProfilePreferenceProperties(ConfigurationProfilePreferenceVmBackup vmBackup = default(ConfigurationProfilePreferenceVmBackup), ConfigurationProfilePreferenceAntiMalware antiMalware = default(ConfigurationProfilePreferenceAntiMalware))
+        public ConfigurationProfilePreferenceProperties(ConfigurationProfilePreferenceVmBackup vmBackup = default(ConfigurationProfilePreferenceVmBackup), ConfigurationProfilePreferenceAntimalware antimalware = default(ConfigurationProfilePreferenceAntimalware))
         {
             VmBackup = vmBackup;
-            AntiMalware = antiMalware;
+            Antimalware = antimalware;
             CustomInit();
         }
 
@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Management.Automanage.Models
         /// <summary>
         /// Gets or sets the custom preferences for Azure Antimalware.
         /// </summary>
-        [JsonProperty(PropertyName = "antiMalware")]
-        public ConfigurationProfilePreferenceAntiMalware AntiMalware { get; set; }
+        [JsonProperty(PropertyName = "antimalware")]
+        public ConfigurationProfilePreferenceAntimalware Antimalware { get; set; }
 
     }
 }

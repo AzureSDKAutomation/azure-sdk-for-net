@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Automanage.Models
 {
 
     /// <summary>
-    /// Defines values for UpdateStatus.
+    /// Defines values for ComplianceStatus.
     /// </summary>
-    public static class UpdateStatus
+    public static class ComplianceStatus
     {
         public const string Succeeded = "Succeeded";
         public const string Failed = "Failed";

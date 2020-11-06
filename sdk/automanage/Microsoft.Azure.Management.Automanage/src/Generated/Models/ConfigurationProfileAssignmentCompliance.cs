@@ -10,11 +10,14 @@
 
 namespace Microsoft.Azure.Management.Automanage.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The compliance status for the configuration profile assignment.
+    /// Data related to assignment profile compliance.
     /// </summary>
     public partial class ConfigurationProfileAssignmentCompliance
     {
@@ -31,12 +34,15 @@ namespace Microsoft.Azure.Management.Automanage.Models
         /// Initializes a new instance of the
         /// ConfigurationProfileAssignmentCompliance class.
         /// </summary>
-        /// <param name="updateStatus">The state of compliance, which only
-        /// appears in the response. Possible values include: 'Succeeded',
-        /// 'Failed', 'Created'</param>
-        public ConfigurationProfileAssignmentCompliance(string updateStatus = default(string))
+        /// <param name="status">The status of the assignment profile
+        /// compliance. Possible values include: 'Succeeded', 'Failed',
+        /// 'Created'</param>
+        /// <param name="additionalProperties">Unmatched properties from the
+        /// message are deserialized this collection</param>
+        public ConfigurationProfileAssignmentCompliance(string status, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>))
         {
-            UpdateStatus = updateStatus;
+            AdditionalProperties = additionalProperties;
+            Status = status;
             CustomInit();
         }
 
@@ -46,11 +52,31 @@ namespace Microsoft.Azure.Management.Automanage.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the state of compliance, which only appears in the response.
+        /// Gets or sets unmatched properties from the message are deserialized
+        /// this collection
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of the assignment profile compliance.
         /// Possible values include: 'Succeeded', 'Failed', 'Created'
         /// </summary>
-        [JsonProperty(PropertyName = "updateStatus")]
-        public string UpdateStatus { get; private set; }
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Status == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Status");
+            }
+        }
     }
 }

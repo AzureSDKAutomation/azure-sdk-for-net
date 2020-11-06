@@ -12,11 +12,10 @@ namespace Microsoft.Azure.Management.Automanage.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationProfile.
+    /// Defines values for ActionType.
     /// </summary>
-    public static class ConfigurationProfile
+    public static class ActionType
     {
-        public const string AzurevirtualmachinebestpracticesDevTest = "Azure virtual machine best practices – Dev/Test";
-        public const string AzurevirtualmachinebestpracticesProduction = "Azure virtual machine best practices – Production";
+        public const string Internal = "Internal";
     }
 }

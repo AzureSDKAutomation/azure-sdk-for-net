@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Automanage.Models
 {
 
     /// <summary>
-    /// Defines values for ProvisioningStatus.
+    /// Defines values for Origin.
     /// </summary>
-    public static class ProvisioningStatus
+    public static class Origin
     {
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string Created = "Created";
+        public const string User = "user";
+        public const string System = "system";
+        public const string Usersystem = "user,system";
     }
 }
