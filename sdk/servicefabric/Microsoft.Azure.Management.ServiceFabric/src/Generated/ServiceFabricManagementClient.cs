@@ -80,11 +80,6 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public virtual IClusterVersionsOperations ClusterVersions { get; private set; }
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
         /// Gets the IApplicationTypesOperations.
         /// </summary>
         public virtual IApplicationTypesOperations ApplicationTypes { get; private set; }
@@ -108,6 +103,11 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// Gets the IManagedClustersOperations.
         /// </summary>
         public virtual IManagedClustersOperations ManagedClusters { get; private set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the IManagedClusterVersionsOperations.
@@ -362,12 +362,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         {
             Clusters = new ClustersOperations(this);
             ClusterVersions = new ClusterVersionsOperations(this);
-            Operations = new Operations(this);
             ApplicationTypes = new ApplicationTypesOperations(this);
             ApplicationTypeVersions = new ApplicationTypeVersionsOperations(this);
             Applications = new ApplicationsOperations(this);
             Services = new ServicesOperations(this);
             ManagedClusters = new ManagedClustersOperations(this);
+            Operations = new Operations(this);
             ManagedClusterVersions = new ManagedClusterVersionsOperations(this);
             NodeTypes = new NodeTypesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
