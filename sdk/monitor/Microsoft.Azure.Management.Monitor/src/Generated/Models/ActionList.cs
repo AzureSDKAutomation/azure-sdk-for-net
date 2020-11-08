@@ -11,28 +11,30 @@
 namespace Microsoft.Azure.Management.Monitor.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The error response.
+    /// A list of Activity Log Alert rule actions.
     /// </summary>
-    public partial class ErrorResponse
+    public partial class ActionList
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the ActionList class.
         /// </summary>
-        public ErrorResponse()
+        public ActionList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the ActionList class.
         /// </summary>
-        /// <param name="error">The error object.</param>
-        public ErrorResponse(ErrorResponseError error = default(ErrorResponseError))
+        /// <param name="actionGroups">The list of the Action Groups.</param>
+        public ActionList(IList<ActionGroup> actionGroups = default(IList<ActionGroup>))
         {
-            Error = error;
+            ActionGroups = actionGroups;
             CustomInit();
         }
 
@@ -42,10 +44,10 @@ namespace Microsoft.Azure.Management.Monitor.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error object.
+        /// Gets or sets the list of the Action Groups.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseError Error { get; set; }
+        [JsonProperty(PropertyName = "actionGroups")]
+        public IList<ActionGroup> ActionGroups { get; set; }
 
     }
 }
