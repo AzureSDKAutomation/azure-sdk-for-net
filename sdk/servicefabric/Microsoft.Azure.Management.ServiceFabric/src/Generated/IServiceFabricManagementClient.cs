@@ -75,11 +75,6 @@ namespace Microsoft.Azure.Management.ServiceFabric
         IClusterVersionsOperations ClusterVersions { get; }
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
         /// Gets the IApplicationTypesOperations.
         /// </summary>
         IApplicationTypesOperations ApplicationTypes { get; }
@@ -103,6 +98,11 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// Gets the IManagedClustersOperations.
         /// </summary>
         IManagedClustersOperations ManagedClusters { get; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IManagedClusterVersionsOperations.
