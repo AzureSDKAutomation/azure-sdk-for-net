@@ -39,11 +39,16 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// sizes in a particular set.</param>
         /// <param name="billingResources">The billing and managed disk billing
         /// resources for a region.</param>
-        public BillingResponseListResult(IList<string> vmSizes = default(IList<string>), IList<VmSizeCompatibilityFilterV2> vmSizeFilters = default(IList<VmSizeCompatibilityFilterV2>), IList<BillingResources> billingResources = default(IList<BillingResources>))
+        /// <param name="vmSizesWithEncryptionAtHost">The vm sizes when
+        /// enabling encryption at host.</param>
+        /// <param name="vmSizeProperties">The vm size properties.</param>
+        public BillingResponseListResult(IList<string> vmSizes = default(IList<string>), IList<VmSizeCompatibilityFilterV2> vmSizeFilters = default(IList<VmSizeCompatibilityFilterV2>), IList<BillingResources> billingResources = default(IList<BillingResources>), IList<string> vmSizesWithEncryptionAtHost = default(IList<string>), IList<VmSizeProperty> vmSizeProperties = default(IList<VmSizeProperty>))
         {
             VmSizes = vmSizes;
             VmSizeFilters = vmSizeFilters;
             BillingResources = billingResources;
+            VmSizesWithEncryptionAtHost = vmSizesWithEncryptionAtHost;
+            VmSizeProperties = vmSizeProperties;
             CustomInit();
         }
 
@@ -72,6 +77,18 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [JsonProperty(PropertyName = "billingResources")]
         public IList<BillingResources> BillingResources { get; set; }
+
+        /// <summary>
+        /// Gets the vm sizes when enabling encryption at host.
+        /// </summary>
+        [JsonProperty(PropertyName = "vmSizesWithEncryptionAtHost")]
+        public IList<string> VmSizesWithEncryptionAtHost { get; private set; }
+
+        /// <summary>
+        /// Gets the vm size properties.
+        /// </summary>
+        [JsonProperty(PropertyName = "vmSizeProperties")]
+        public IList<VmSizeProperty> VmSizeProperties { get; private set; }
 
     }
 }
