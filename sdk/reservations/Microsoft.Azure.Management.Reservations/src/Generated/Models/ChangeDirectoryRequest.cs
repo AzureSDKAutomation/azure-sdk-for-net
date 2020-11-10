@@ -11,28 +11,26 @@
 namespace Microsoft.Azure.Management.Reservations.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
-    public partial class SubscriptionScopeProperties
+    public partial class ChangeDirectoryRequest
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionScopeProperties
-        /// class.
+        /// Initializes a new instance of the ChangeDirectoryRequest class.
         /// </summary>
-        public SubscriptionScopeProperties()
+        public ChangeDirectoryRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionScopeProperties
-        /// class.
+        /// Initializes a new instance of the ChangeDirectoryRequest class.
         /// </summary>
-        public SubscriptionScopeProperties(IList<ScopeProperties> scopes = default(IList<ScopeProperties>))
+        /// <param name="destinationTenantId">Tenant id GUID that reservation
+        /// order is to be transferred to</param>
+        public ChangeDirectoryRequest(string destinationTenantId = default(string))
         {
-            Scopes = scopes;
+            DestinationTenantId = destinationTenantId;
             CustomInit();
         }
 
@@ -42,9 +40,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets tenant id GUID that reservation order is to be
+        /// transferred to
         /// </summary>
-        [JsonProperty(PropertyName = "scopes")]
-        public IList<ScopeProperties> Scopes { get; set; }
+        [JsonProperty(PropertyName = "destinationTenantId")]
+        public string DestinationTenantId { get; set; }
 
     }
 }
