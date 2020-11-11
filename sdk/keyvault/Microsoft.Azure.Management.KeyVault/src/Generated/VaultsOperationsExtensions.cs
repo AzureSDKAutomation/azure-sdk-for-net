@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='parameters'>
             /// Parameters to create or update the vault
             /// </param>
-            public static Vault CreateOrUpdate(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters)
+            public static object CreateOrUpdate(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
             }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Vault> CreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> CreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='parameters'>
             /// Parameters to patch the vault
             /// </param>
-            public static Vault Update(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultPatchParameters parameters)
+            public static object Update(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultPatchParameters parameters)
             {
                 return operations.UpdateAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
             }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Vault> UpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultPatchParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> UpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultPatchParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -125,9 +125,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='vaultName'>
             /// The name of the vault to delete
             /// </param>
-            public static void Delete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
+            public static CloudError Delete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
             {
-                operations.DeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -145,9 +145,12 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CloudError> DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -162,7 +165,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='vaultName'>
             /// The name of the vault.
             /// </param>
-            public static Vault Get(this IVaultsOperations operations, string resourceGroupName, string vaultName)
+            public static object Get(this IVaultsOperations operations, string resourceGroupName, string vaultName)
             {
                 return operations.GetAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
             }
@@ -182,7 +185,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Vault> GetAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> GetAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -208,7 +211,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='parameters'>
             /// Access policy to merge into the vault
             /// </param>
-            public static VaultAccessPolicyParameters UpdateAccessPolicy(this IVaultsOperations operations, string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyParameters parameters)
+            public static object UpdateAccessPolicy(this IVaultsOperations operations, string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyParameters parameters)
             {
                 return operations.UpdateAccessPolicyAsync(resourceGroupName, vaultName, operationKind, parameters).GetAwaiter().GetResult();
             }
@@ -234,7 +237,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VaultAccessPolicyParameters> UpdateAccessPolicyAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> UpdateAccessPolicyAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateAccessPolicyWithHttpMessagesAsync(resourceGroupName, vaultName, operationKind, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -360,7 +363,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='location'>
             /// The location of the deleted vault.
             /// </param>
-            public static DeletedVault GetDeleted(this IVaultsOperations operations, string vaultName, string location)
+            public static object GetDeleted(this IVaultsOperations operations, string vaultName, string location)
             {
                 return operations.GetDeletedAsync(vaultName, location).GetAwaiter().GetResult();
             }
@@ -380,7 +383,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeletedVault> GetDeletedAsync(this IVaultsOperations operations, string vaultName, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> GetDeletedAsync(this IVaultsOperations operations, string vaultName, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -401,9 +404,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='location'>
             /// The location of the soft-deleted vault.
             /// </param>
-            public static void PurgeDeleted(this IVaultsOperations operations, string vaultName, string location)
+            public static CloudError PurgeDeleted(this IVaultsOperations operations, string vaultName, string location)
             {
-                operations.PurgeDeletedAsync(vaultName, location).GetAwaiter().GetResult();
+                return operations.PurgeDeletedAsync(vaultName, location).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -422,9 +425,12 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task PurgeDeletedAsync(this IVaultsOperations operations, string vaultName, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CloudError> PurgeDeletedAsync(this IVaultsOperations operations, string vaultName, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.PurgeDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.PurgeDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -512,7 +518,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='parameters'>
             /// Parameters to create or update the vault
             /// </param>
-            public static Vault BeginCreateOrUpdate(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters)
+            public static object BeginCreateOrUpdate(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
             }
@@ -535,7 +541,7 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Vault> BeginCreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> BeginCreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -556,9 +562,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='location'>
             /// The location of the soft-deleted vault.
             /// </param>
-            public static void BeginPurgeDeleted(this IVaultsOperations operations, string vaultName, string location)
+            public static CloudError BeginPurgeDeleted(this IVaultsOperations operations, string vaultName, string location)
             {
-                operations.BeginPurgeDeletedAsync(vaultName, location).GetAwaiter().GetResult();
+                return operations.BeginPurgeDeletedAsync(vaultName, location).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -577,9 +583,12 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginPurgeDeletedAsync(this IVaultsOperations operations, string vaultName, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CloudError> BeginPurgeDeletedAsync(this IVaultsOperations operations, string vaultName, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginPurgeDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginPurgeDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
