@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.AppPlatform.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -40,12 +41,22 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// functionality</param>
         /// <param name="appInsightsInstrumentationKey">Target application
         /// insight instrumentation key</param>
-        public MonitoringSettingProperties(string provisioningState = default(string), Error error = default(Error), bool? traceEnabled = default(bool?), string appInsightsInstrumentationKey = default(string))
+        /// <param name="appInsightsSamplingRate">Indicates the sampling rate
+        /// of application insight agent, should be in range [0.0,
+        /// 100.0]</param>
+        /// <param name="monitoringType">Type of the monitoring. Possible
+        /// values include: 'AppInsights'</param>
+        /// <param name="appInsightsAgentVersions">Indicates the versions of
+        /// application insight agent</param>
+        public MonitoringSettingProperties(string provisioningState = default(string), Error error = default(Error), bool? traceEnabled = default(bool?), string appInsightsInstrumentationKey = default(string), double? appInsightsSamplingRate = default(double?), string monitoringType = default(string), ApplicationInsightsAgentVersions appInsightsAgentVersions = default(ApplicationInsightsAgentVersions))
         {
             ProvisioningState = provisioningState;
             Error = error;
             TraceEnabled = traceEnabled;
             AppInsightsInstrumentationKey = appInsightsInstrumentationKey;
+            AppInsightsSamplingRate = appInsightsSamplingRate;
+            MonitoringType = monitoringType;
+            AppInsightsAgentVersions = appInsightsAgentVersions;
             CustomInit();
         }
 
@@ -79,5 +90,42 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         [JsonProperty(PropertyName = "appInsightsInstrumentationKey")]
         public string AppInsightsInstrumentationKey { get; set; }
 
+        /// <summary>
+        /// Gets or sets indicates the sampling rate of application insight
+        /// agent, should be in range [0.0, 100.0]
+        /// </summary>
+        [JsonProperty(PropertyName = "appInsightsSamplingRate")]
+        public double? AppInsightsSamplingRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets type of the monitoring. Possible values include:
+        /// 'AppInsights'
+        /// </summary>
+        [JsonProperty(PropertyName = "monitoringType")]
+        public string MonitoringType { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the versions of application insight agent
+        /// </summary>
+        [JsonProperty(PropertyName = "appInsightsAgentVersions")]
+        public ApplicationInsightsAgentVersions AppInsightsAgentVersions { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (AppInsightsSamplingRate > 100)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "AppInsightsSamplingRate", 100);
+            }
+            if (AppInsightsSamplingRate < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "AppInsightsSamplingRate", 0);
+            }
+        }
     }
 }
