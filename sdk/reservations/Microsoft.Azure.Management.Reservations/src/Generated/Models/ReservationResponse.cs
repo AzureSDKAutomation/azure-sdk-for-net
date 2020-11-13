@@ -28,18 +28,26 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the ReservationResponse class.
         /// </summary>
-        /// <param name="location">The Azure Region where the reserved resource
-        /// lives.</param>
+        /// <param name="location">Possible values include: 'westus', 'eastus',
+        /// 'eastus2', 'northcentralus', 'westus2', 'southcentralus',
+        /// 'centralus', 'westeurope', 'northeurope', 'eastasia',
+        /// 'southeastasia', 'japaneast', 'japanwest', 'brazilsouth',
+        /// 'australiaeast', 'australiasoutheast', 'southindia', 'westindia',
+        /// 'centralindia', 'canadacentral', 'canadaeast', 'uksouth',
+        /// 'westcentralus', 'ukwest'</param>
         /// <param name="id">Identifier of the reservation</param>
         /// <param name="name">Name of the reservation</param>
+        /// <param name="kind">Resource Provider type to be reserved. Possible
+        /// values include: 'Microsoft.Compute'</param>
         /// <param name="type">Type of resource.
         /// "Microsoft.Capacity/reservationOrders/reservations"</param>
-        public ReservationResponse(string location = default(string), int? etag = default(int?), string id = default(string), string name = default(string), SkuName sku = default(SkuName), ReservationProperties properties = default(ReservationProperties), string type = default(string))
+        public ReservationResponse(string location = default(string), int? etag = default(int?), string id = default(string), string name = default(string), Kind? kind = default(Kind?), SkuName sku = default(SkuName), ReservationProperties properties = default(ReservationProperties), string type = default(string))
         {
             Location = location;
             Etag = etag;
             Id = id;
             Name = name;
+            Kind = kind;
             Sku = sku;
             Properties = properties;
             Type = type;
@@ -52,10 +60,16 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the Azure Region where the reserved resource lives.
+        /// Gets or sets possible values include: 'westus', 'eastus',
+        /// 'eastus2', 'northcentralus', 'westus2', 'southcentralus',
+        /// 'centralus', 'westeurope', 'northeurope', 'eastasia',
+        /// 'southeastasia', 'japaneast', 'japanwest', 'brazilsouth',
+        /// 'australiaeast', 'australiasoutheast', 'southindia', 'westindia',
+        /// 'centralindia', 'canadacentral', 'canadaeast', 'uksouth',
+        /// 'westcentralus', 'ukwest'
         /// </summary>
         [JsonProperty(PropertyName = "location")]
-        public string Location { get; private set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// </summary>
@@ -73,6 +87,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets or sets resource Provider type to be reserved. Possible values
+        /// include: 'Microsoft.Compute'
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public Kind? Kind { get; set; }
 
         /// <summary>
         /// </summary>
