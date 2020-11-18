@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// An OData filter expression that describes a subset of
+        /// connectedRegistries to return. The parameters that can be filtered
+        /// are parent.id (the resource id of the connectedRegistry parent),
+        /// mode, and connectionState. The supported operator is eq.
+        /// </summary>
+        string Filter { get; set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -62,6 +70,11 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
+
+        /// <summary>
+        /// Gets the IConnectedRegistriesOperations.
+        /// </summary>
+        IConnectedRegistriesOperations ConnectedRegistries { get; }
 
         /// <summary>
         /// Gets the IExportPipelinesOperations.
@@ -99,6 +112,16 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         IReplicationsOperations Replications { get; }
 
         /// <summary>
+        /// Gets the IScopeMapsOperations.
+        /// </summary>
+        IScopeMapsOperations ScopeMaps { get; }
+
+        /// <summary>
+        /// Gets the ITokensOperations.
+        /// </summary>
+        ITokensOperations Tokens { get; }
+
+        /// <summary>
         /// Gets the IWebhooksOperations.
         /// </summary>
         IWebhooksOperations Webhooks { get; }
@@ -122,16 +145,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// Gets the ITasksOperations.
         /// </summary>
         ITasksOperations Tasks { get; }
-
-        /// <summary>
-        /// Gets the IScopeMapsOperations.
-        /// </summary>
-        IScopeMapsOperations ScopeMaps { get; }
-
-        /// <summary>
-        /// Gets the ITokensOperations.
-        /// </summary>
-        ITokensOperations Tokens { get; }
 
     }
 }
