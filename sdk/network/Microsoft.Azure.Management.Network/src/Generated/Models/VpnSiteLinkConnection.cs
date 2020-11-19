@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// link.</param>
         /// <param name="routingWeight">Routing weight for vpn
         /// connection.</param>
+        /// <param name="vpnLinkConnectionMode">Vpn link connection mode.
+        /// Possible values include: 'Default', 'ResponderOnly',
+        /// 'InitiatorOnly'</param>
         /// <param name="connectionStatus">The connection status. Possible
         /// values include: 'Unknown', 'Connecting', 'Connected',
         /// 'NotConnected'</param>
@@ -69,11 +72,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Resource type.</param>
-        public VpnSiteLinkConnection(string id = default(string), SubResource vpnSiteLink = default(SubResource), int? routingWeight = default(int?), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? useLocalAzureIpAddress = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public VpnSiteLinkConnection(string id = default(string), SubResource vpnSiteLink = default(SubResource), int? routingWeight = default(int?), string vpnLinkConnectionMode = default(string), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? useLocalAzureIpAddress = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             VpnSiteLink = vpnSiteLink;
             RoutingWeight = routingWeight;
+            VpnLinkConnectionMode = vpnLinkConnectionMode;
             ConnectionStatus = connectionStatus;
             VpnConnectionProtocolType = vpnConnectionProtocolType;
             IngressBytesTransferred = ingressBytesTransferred;
@@ -108,6 +112,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.routingWeight")]
         public int? RoutingWeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets vpn link connection mode. Possible values include:
+        /// 'Default', 'ResponderOnly', 'InitiatorOnly'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.vpnLinkConnectionMode")]
+        public string VpnLinkConnectionMode { get; set; }
 
         /// <summary>
         /// Gets or sets the connection status. Possible values include:
