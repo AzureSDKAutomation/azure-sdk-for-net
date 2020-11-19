@@ -41,15 +41,16 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// user, service principal, or security group.</param>
         /// <param name="principalType">The principal type of the assigned
         /// principal ID. Possible values include: 'User', 'Group',
-        /// 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate',
-        /// 'ForeignGroup', 'Application', 'MSI', 'DirectoryObjectOrGroup',
-        /// 'Everyone'</param>
+        /// 'ServicePrincipal'</param>
         /// <param name="canDelegate">The delegation flag used for creating a
         /// role assignment</param>
         /// <param name="description">Description of role assignment</param>
-        /// <param name="condition">The conditions on the role
-        /// assignment</param>
-        /// <param name="conditionVersion">Version of the condition</param>
+        /// <param name="condition">The conditions on the role assignment. This
+        /// limits the resources it can be assigned to. e.g.:
+        /// @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]
+        /// StringEqualsIgnoreCase 'foo_storage_container'</param>
+        /// <param name="conditionVersion">Version of the condition. Currently
+        /// accepted value is '2.0'</param>
         public RoleAssignmentCreateParameters(string roleDefinitionId, string principalId, string principalType = default(string), bool? canDelegate = default(bool?), string description = default(string), string condition = default(string), string conditionVersion = default(string))
         {
             RoleDefinitionId = roleDefinitionId;
@@ -83,9 +84,7 @@ namespace Microsoft.Azure.Management.Authorization.Models
 
         /// <summary>
         /// Gets or sets the principal type of the assigned principal ID.
-        /// Possible values include: 'User', 'Group', 'ServicePrincipal',
-        /// 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup', 'Application',
-        /// 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
+        /// Possible values include: 'User', 'Group', 'ServicePrincipal'
         /// </summary>
         [JsonProperty(PropertyName = "properties.principalType")]
         public string PrincipalType { get; set; }
@@ -104,13 +103,17 @@ namespace Microsoft.Azure.Management.Authorization.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the conditions on the role assignment
+        /// Gets or sets the conditions on the role assignment. This limits the
+        /// resources it can be assigned to. e.g.:
+        /// @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]
+        /// StringEqualsIgnoreCase 'foo_storage_container'
         /// </summary>
         [JsonProperty(PropertyName = "properties.condition")]
         public string Condition { get; set; }
 
         /// <summary>
-        /// Gets or sets version of the condition
+        /// Gets or sets version of the condition. Currently accepted value is
+        /// '2.0'
         /// </summary>
         [JsonProperty(PropertyName = "properties.conditionVersion")]
         public string ConditionVersion { get; set; }
