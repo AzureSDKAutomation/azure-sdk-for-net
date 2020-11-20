@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Billing.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,62 +37,124 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="accountAdminNotificationEmailAddress">The email
-        /// address on which the account admin gets all Azure
-        /// notifications.</param>
-        /// <param name="billingTenantId">The Azure AD tenant ID of the billing
-        /// account for the subscription.</param>
-        /// <param name="billingAccountId">The ID of the billing account to
-        /// which the subscription is billed.</param>
+        /// <param name="accountAdminNotificationEmailAddress">The notification
+        /// email address for the account admin. This property is available for
+        /// agreement type Microsoft Online Services Program.</param>
+        /// <param name="billingAccountAgreementType">The signed agreement of
+        /// the billing account. Possible values include:
+        /// 'MicrosoftCustomerAgreement', 'MicrosoftOnlineServicesProgram',
+        /// 'MicrosoftPartnerAgreement', 'EnterpriseAgreement'</param>
         /// <param name="billingAccountDisplayName">The name of the billing
         /// account to which the subscription is billed.</param>
+        /// <param name="billingAccountId">The ID of the billing account to
+        /// which the subscription is billed.</param>
+        /// <param name="billingAccountSoldToCountry">Country code for billing
+        /// account's billing address.</param>
+        /// <param name="billingAccountStatus">The current status of the
+        /// billing account. Possible values include: 'Unknown', 'Active',
+        /// 'Deleted', 'Disabled', 'Expired', 'Transferred', 'Extended',
+        /// 'Terminated', 'PendingReview', 'UnderReview'</param>
+        /// <param name="billingAccountType">The type billing account. Possible
+        /// values include: 'Enterprise', 'Individual', 'Partner', 'USDoD',
+        /// 'Reseller', 'ClassicPartner', 'Internal'</param>
         /// <param name="billingProfileId">The ID of the billing profile to
-        /// which the subscription is billed.</param>
+        /// which the subscription is billed. This property is available for
+        /// agreement type Microsoft Customer Agreement and Microsoft Partner
+        /// Agreement.</param>
         /// <param name="billingProfileDisplayName">The name of the billing
-        /// profile to which the subscription is billed.</param>
-        /// <param name="billingProfileStatus">The status of the billing
-        /// profile. Possible values include: 'Active', 'Disabled',
-        /// 'Warned'</param>
-        /// <param name="billingProfileStatusReasonCode">Reason for the
-        /// specified billing profile status. Possible values include:
-        /// 'PastDue', 'SpendingLimitReached', 'SpendingLimitExpired'</param>
+        /// profile to which the subscription is billed. This property is
+        /// available for agreement type Microsoft Customer Agreement and
+        /// Microsoft Partner Agreement.</param>
         /// <param name="billingProfileSpendingLimit">The billing profile
-        /// spending limit. Possible values include: 'Off', 'On'</param>
+        /// spending limit. This property is available for agreement type
+        /// Microsoft Customer Agreement and Microsoft Partner Agreement.
+        /// Possible values include: 'Off', 'On'</param>
+        /// <param name="billingProfileStatus">The status of the billing
+        /// profile. This property is available for agreement type Microsoft
+        /// Customer Agreement and Microsoft Partner Agreement. Possible values
+        /// include: 'Active', 'Disabled', 'Warned'</param>
+        /// <param name="billingProfileStatusReasonCode">The status reason code
+        /// when the specified billing profile is in Disabled status. This
+        /// property is for agreement type Microsoft Customer Agreement and
+        /// Microsoft Partner Agreement. Possible values include: 'PastDue',
+        /// 'SpendingLimitReached', 'SpendingLimitExpired'</param>
         /// <param name="costCenter">The cost center applied to the
-        /// subscription.</param>
+        /// subscription. This property is available for agreement type
+        /// Microsoft Customer Agreement and Microsoft Partner
+        /// Agreement.</param>
+        /// <param name="customerId">The ID of the customer to which the
+        /// subscription is billed. This property is available for agreement
+        /// type Microsoft Partner Agreement.</param>
+        /// <param name="customerDisplayName">The display name of the customer
+        /// to which the subscription is billed. This property is available for
+        /// agreement type Microsoft Partner Agreement.</param>
+        /// <param name="freeServicesBenefitEndDate">The end date of the free
+        /// service benefit for the subscription.</param>
         /// <param name="invoiceSectionId">The ID of the invoice section to
-        /// which the subscription is billed.</param>
+        /// which the subscription is billed. This property is available for
+        /// agreement type Microsoft Customer Agreement.</param>
         /// <param name="invoiceSectionDisplayName">The name of the invoice
-        /// section to which the subscription is billed.</param>
-        /// <param name="isAccountAdmin">Indicates whether user is the account
-        /// admin.</param>
-        /// <param name="productId">The product ID of the Azure plan.</param>
-        /// <param name="productName">The product name of the Azure
-        /// plan.</param>
+        /// section to which the subscription is billed. This property is
+        /// available for agreement type Microsoft Customer Agreement.</param>
+        /// <param name="isAccountAdmin">Indicates whether user is the billing
+        /// account admin for the subscription. This property is available for
+        /// agreement type Microsoft Online Services Program.</param>
         /// <param name="skuId">The sku ID of the Azure plan for the
-        /// subscription.</param>
+        /// subscription. This property is available for agreement type
+        /// Microsoft Customer Agreement and Microsoft Partner
+        /// Agreement.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
-        /// for the subscription.</param>
-        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string accountAdminNotificationEmailAddress = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileStatus = default(string), string billingProfileStatusReasonCode = default(string), string billingProfileSpendingLimit = default(string), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), bool? isAccountAdmin = default(bool?), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string))
+        /// for the subscription. This property is available for agreement type
+        /// Microsoft Customer Agreement and Microsoft Partner
+        /// Agreement.</param>
+        /// <param name="subscriptionBillingStatus">The subscription status.
+        /// Possible values include: 'Active', 'Deleted', 'Disabled',
+        /// 'PastDue'</param>
+        /// <param name="subscriptionBillingStatusDetails">The reason codes for
+        /// the subscription status.</param>
+        /// <param name="subscriptionTaxDetails">The tax details of the
+        /// subscription. This property is available for agreement type
+        /// Microsoft Online Services Program and country India.</param>
+        /// <param name="subscriptionBillingType">The type of billing
+        /// subscription. Possible values include: 'Benefit', 'Free', 'Paid',
+        /// 'PrePaid'</param>
+        /// <param name="subscriptionServiceUsageAddress">The address of the
+        /// individual or organization where service subscription is being
+        /// used. This property is available for agreement type Microsoft
+        /// Online Services Program.</param>
+        /// <param name="subscriptionWorkloadType">The Azure workload type of
+        /// the subscription. Possible values include: 'Production', 'DevTest',
+        /// 'Internal'</param>
+        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string accountAdminNotificationEmailAddress = default(string), string billingAccountAgreementType = default(string), string billingAccountDisplayName = default(string), string billingAccountId = default(string), string billingAccountSoldToCountry = default(string), string billingAccountStatus = default(string), string billingAccountType = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileSpendingLimit = default(string), string billingProfileStatus = default(string), string billingProfileStatusReasonCode = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), System.DateTime? freeServicesBenefitEndDate = default(System.DateTime?), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), bool? isAccountAdmin = default(bool?), string skuId = default(string), string skuDescription = default(string), string subscriptionBillingStatus = default(string), IList<SubscriptionBillingStatusReasonDetails> subscriptionBillingStatusDetails = default(IList<SubscriptionBillingStatusReasonDetails>), IList<SubscriptionTaxDetails> subscriptionTaxDetails = default(IList<SubscriptionTaxDetails>), string subscriptionBillingType = default(string), AddressDetails subscriptionServiceUsageAddress = default(AddressDetails), string subscriptionWorkloadType = default(string))
             : base(id, name, type)
         {
             AccountAdminNotificationEmailAddress = accountAdminNotificationEmailAddress;
-            BillingTenantId = billingTenantId;
-            BillingAccountId = billingAccountId;
+            BillingAccountAgreementType = billingAccountAgreementType;
             BillingAccountDisplayName = billingAccountDisplayName;
+            BillingAccountId = billingAccountId;
+            BillingAccountSoldToCountry = billingAccountSoldToCountry;
+            BillingAccountStatus = billingAccountStatus;
+            BillingAccountType = billingAccountType;
             BillingProfileId = billingProfileId;
             BillingProfileDisplayName = billingProfileDisplayName;
+            BillingProfileSpendingLimit = billingProfileSpendingLimit;
             BillingProfileStatus = billingProfileStatus;
             BillingProfileStatusReasonCode = billingProfileStatusReasonCode;
-            BillingProfileSpendingLimit = billingProfileSpendingLimit;
             CostCenter = costCenter;
+            CustomerId = customerId;
+            CustomerDisplayName = customerDisplayName;
+            FreeServicesBenefitEndDate = freeServicesBenefitEndDate;
             InvoiceSectionId = invoiceSectionId;
             InvoiceSectionDisplayName = invoiceSectionDisplayName;
             IsAccountAdmin = isAccountAdmin;
-            ProductId = productId;
-            ProductName = productName;
             SkuId = skuId;
             SkuDescription = skuDescription;
+            SubscriptionBillingStatus = subscriptionBillingStatus;
+            SubscriptionBillingStatusDetails = subscriptionBillingStatusDetails;
+            SubscriptionTaxDetails = subscriptionTaxDetails;
+            SubscriptionBillingType = subscriptionBillingType;
+            SubscriptionServiceUsageAddress = subscriptionServiceUsageAddress;
+            SubscriptionWorkloadType = subscriptionWorkloadType;
             CustomInit();
         }
 
@@ -100,25 +164,21 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the email address on which the account admin gets all Azure
-        /// notifications.
+        /// Gets the notification email address for the account admin. This
+        /// property is available for agreement type Microsoft Online Services
+        /// Program.
         /// </summary>
         [JsonProperty(PropertyName = "properties.accountAdminNotificationEmailAddress")]
         public string AccountAdminNotificationEmailAddress { get; private set; }
 
         /// <summary>
-        /// Gets the Azure AD tenant ID of the billing account for the
-        /// subscription.
+        /// Gets the signed agreement of the billing account. Possible values
+        /// include: 'MicrosoftCustomerAgreement',
+        /// 'MicrosoftOnlineServicesProgram', 'MicrosoftPartnerAgreement',
+        /// 'EnterpriseAgreement'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.billingTenantId")]
-        public string BillingTenantId { get; private set; }
-
-        /// <summary>
-        /// Gets the ID of the billing account to which the subscription is
-        /// billed.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.billingAccountId")]
-        public string BillingAccountId { get; private set; }
+        [JsonProperty(PropertyName = "properties.billingAccountAgreementType")]
+        public string BillingAccountAgreementType { get; private set; }
 
         /// <summary>
         /// Gets the name of the billing account to which the subscription is
@@ -128,90 +188,203 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string BillingAccountDisplayName { get; private set; }
 
         /// <summary>
-        /// Gets the ID of the billing profile to which the subscription is
+        /// Gets the ID of the billing account to which the subscription is
         /// billed.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.billingAccountId")]
+        public string BillingAccountId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets country code for billing account's billing address.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.billingAccountSoldToCountry")]
+        public string BillingAccountSoldToCountry { get; set; }
+
+        /// <summary>
+        /// Gets the current status of the billing account. Possible values
+        /// include: 'Unknown', 'Active', 'Deleted', 'Disabled', 'Expired',
+        /// 'Transferred', 'Extended', 'Terminated', 'PendingReview',
+        /// 'UnderReview'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.billingAccountStatus")]
+        public string BillingAccountStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the type billing account. Possible values include:
+        /// 'Enterprise', 'Individual', 'Partner', 'USDoD', 'Reseller',
+        /// 'ClassicPartner', 'Internal'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.billingAccountType")]
+        public string BillingAccountType { get; private set; }
+
+        /// <summary>
+        /// Gets the ID of the billing profile to which the subscription is
+        /// billed. This property is available for agreement type Microsoft
+        /// Customer Agreement and Microsoft Partner Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfileId")]
         public string BillingProfileId { get; private set; }
 
         /// <summary>
         /// Gets the name of the billing profile to which the subscription is
-        /// billed.
+        /// billed. This property is available for agreement type Microsoft
+        /// Customer Agreement and Microsoft Partner Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfileDisplayName")]
         public string BillingProfileDisplayName { get; private set; }
 
         /// <summary>
-        /// Gets the status of the billing profile. Possible values include:
-        /// 'Active', 'Disabled', 'Warned'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.billingProfileStatus")]
-        public string BillingProfileStatus { get; private set; }
-
-        /// <summary>
-        /// Gets reason for the specified billing profile status. Possible
-        /// values include: 'PastDue', 'SpendingLimitReached',
-        /// 'SpendingLimitExpired'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.billingProfileStatusReasonCode")]
-        public string BillingProfileStatusReasonCode { get; private set; }
-
-        /// <summary>
-        /// Gets the billing profile spending limit. Possible values include:
-        /// 'Off', 'On'
+        /// Gets the billing profile spending limit. This property is available
+        /// for agreement type Microsoft Customer Agreement and Microsoft
+        /// Partner Agreement. Possible values include: 'Off', 'On'
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfileSpendingLimit")]
         public string BillingProfileSpendingLimit { get; private set; }
 
         /// <summary>
-        /// Gets or sets the cost center applied to the subscription.
+        /// Gets the status of the billing profile. This property is available
+        /// for agreement type Microsoft Customer Agreement and Microsoft
+        /// Partner Agreement. Possible values include: 'Active', 'Disabled',
+        /// 'Warned'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.billingProfileStatus")]
+        public string BillingProfileStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the status reason code when the specified billing profile is
+        /// in Disabled status. This property is for agreement type Microsoft
+        /// Customer Agreement and Microsoft Partner Agreement. Possible values
+        /// include: 'PastDue', 'SpendingLimitReached', 'SpendingLimitExpired'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.billingProfileStatusReasonCode")]
+        public string BillingProfileStatusReasonCode { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the cost center applied to the subscription. This
+        /// property is available for agreement type Microsoft Customer
+        /// Agreement and Microsoft Partner Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.costCenter")]
         public string CostCenter { get; set; }
 
         /// <summary>
+        /// Gets the ID of the customer to which the subscription is billed.
+        /// This property is available for agreement type Microsoft Partner
+        /// Agreement.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.customerId")]
+        public string CustomerId { get; private set; }
+
+        /// <summary>
+        /// Gets the display name of the customer to which the subscription is
+        /// billed. This property is available for agreement type Microsoft
+        /// Partner Agreement.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.customerDisplayName")]
+        public string CustomerDisplayName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the end date of the free service benefit for the
+        /// subscription.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.freeServicesBenefitEndDate")]
+        public System.DateTime? FreeServicesBenefitEndDate { get; set; }
+
+        /// <summary>
         /// Gets the ID of the invoice section to which the subscription is
-        /// billed.
+        /// billed. This property is available for agreement type Microsoft
+        /// Customer Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceSectionId")]
         public string InvoiceSectionId { get; private set; }
 
         /// <summary>
         /// Gets the name of the invoice section to which the subscription is
-        /// billed.
+        /// billed. This property is available for agreement type Microsoft
+        /// Customer Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceSectionDisplayName")]
         public string InvoiceSectionDisplayName { get; private set; }
 
         /// <summary>
-        /// Gets indicates whether user is the account admin.
+        /// Gets indicates whether user is the billing account admin for the
+        /// subscription. This property is available for agreement type
+        /// Microsoft Online Services Program.
         /// </summary>
         [JsonProperty(PropertyName = "properties.isAccountAdmin")]
         public bool? IsAccountAdmin { get; private set; }
 
         /// <summary>
-        /// Gets the product ID of the Azure plan.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.productId")]
-        public string ProductId { get; private set; }
-
-        /// <summary>
-        /// Gets the product name of the Azure plan.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.productName")]
-        public string ProductName { get; private set; }
-
-        /// <summary>
-        /// Gets the sku ID of the Azure plan for the subscription.
+        /// Gets the sku ID of the Azure plan for the subscription. This
+        /// property is available for agreement type Microsoft Customer
+        /// Agreement and Microsoft Partner Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.skuId")]
         public string SkuId { get; private set; }
 
         /// <summary>
         /// Gets the sku description of the Azure plan for the subscription.
+        /// This property is available for agreement type Microsoft Customer
+        /// Agreement and Microsoft Partner Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.skuDescription")]
         public string SkuDescription { get; private set; }
 
+        /// <summary>
+        /// Gets the subscription status. Possible values include: 'Active',
+        /// 'Deleted', 'Disabled', 'PastDue'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionBillingStatus")]
+        public string SubscriptionBillingStatus { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the reason codes for the subscription status.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionBillingStatusDetails")]
+        public IList<SubscriptionBillingStatusReasonDetails> SubscriptionBillingStatusDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tax details of the subscription. This property is
+        /// available for agreement type Microsoft Online Services Program and
+        /// country India.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionTaxDetails")]
+        public IList<SubscriptionTaxDetails> SubscriptionTaxDetails { get; set; }
+
+        /// <summary>
+        /// Gets the type of billing subscription. Possible values include:
+        /// 'Benefit', 'Free', 'Paid', 'PrePaid'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionBillingType")]
+        public string SubscriptionBillingType { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the address of the individual or organization where
+        /// service subscription is being used. This property is available for
+        /// agreement type Microsoft Online Services Program.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionServiceUsageAddress")]
+        public AddressDetails SubscriptionServiceUsageAddress { get; set; }
+
+        /// <summary>
+        /// Gets the Azure workload type of the subscription. Possible values
+        /// include: 'Production', 'DevTest', 'Internal'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionWorkloadType")]
+        public string SubscriptionWorkloadType { get; private set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (SubscriptionServiceUsageAddress != null)
+            {
+                SubscriptionServiceUsageAddress.Validate();
+            }
+        }
     }
 }

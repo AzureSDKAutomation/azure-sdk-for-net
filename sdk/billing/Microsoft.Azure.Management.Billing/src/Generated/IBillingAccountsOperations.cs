@@ -76,8 +76,10 @@ namespace Microsoft.Azure.Management.Billing
         Task<AzureOperationResponse<BillingAccount>> GetWithHttpMessagesAsync(string billingAccountName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the properties of a billing account. Currently, displayName
-        /// and address can be updated. The operation is supported only for
-        /// billing accounts with agreement type Microsoft Customer Agreement.
+        /// and address can be updated for billing accounts with agreement type
+        /// Microsoft Customer Agreement. Currently address and notification
+        /// email address can be updated for billing accounts with agreement
+        /// type Microsoft Online Services Agreement
         /// </summary>
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
@@ -103,34 +105,11 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<BillingAccount>> UpdateWithHttpMessagesAsync(string billingAccountName, BillingAccountUpdateRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists the invoice sections for which the user has permission to
-        /// create Azure subscriptions. The operation is supported only for
-        /// billing accounts with agreement type Microsoft Customer Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-        /// </summary>
-        /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<InvoiceSectionWithCreateSubPermission>>> ListInvoiceSectionsByCreateSubscriptionPermissionWithHttpMessagesAsync(string billingAccountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Updates the properties of a billing account. Currently, displayName
-        /// and address can be updated. The operation is supported only for
-        /// billing accounts with agreement type Microsoft Customer Agreement.
+        /// and address can be updated for billing accounts with agreement type
+        /// Microsoft Customer Agreement. Currently address and notification
+        /// email address can be updated for billing accounts with agreement
+        /// type Microsoft Online Services Agreement
         /// </summary>
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
@@ -178,30 +157,5 @@ namespace Microsoft.Azure.Management.Billing
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<BillingAccount>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists the invoice sections for which the user has permission to
-        /// create Azure subscriptions. The operation is supported only for
-        /// billing accounts with agreement type Microsoft Customer Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<InvoiceSectionWithCreateSubPermission>>> ListInvoiceSectionsByCreateSubscriptionPermissionNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

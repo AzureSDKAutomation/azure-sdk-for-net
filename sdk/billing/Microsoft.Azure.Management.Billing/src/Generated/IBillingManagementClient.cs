@@ -42,14 +42,15 @@ namespace Microsoft.Azure.Management.Billing
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
+        /// The version of the API to be used with the client request. The
+        /// current version is 2020-11-01.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The ID that uniquely identifies an Azure subscription.
         /// </summary>
         string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Azure Subscription ID.
-        /// </summary>
-        string SubscriptionId1 { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -76,19 +77,9 @@ namespace Microsoft.Azure.Management.Billing
         IBillingAccountsOperations BillingAccounts { get; }
 
         /// <summary>
-        /// Gets the IAddressOperations.
+        /// Gets the IOperations.
         /// </summary>
-        IAddressOperations Address { get; }
-
-        /// <summary>
-        /// Gets the IAvailableBalancesOperations.
-        /// </summary>
-        IAvailableBalancesOperations AvailableBalances { get; }
-
-        /// <summary>
-        /// Gets the IInstructionsOperations.
-        /// </summary>
-        IInstructionsOperations Instructions { get; }
+        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IBillingProfilesOperations.
@@ -96,59 +87,9 @@ namespace Microsoft.Azure.Management.Billing
         IBillingProfilesOperations BillingProfiles { get; }
 
         /// <summary>
-        /// Gets the ICustomersOperations.
-        /// </summary>
-        ICustomersOperations Customers { get; }
-
-        /// <summary>
-        /// Gets the IInvoiceSectionsOperations.
-        /// </summary>
-        IInvoiceSectionsOperations InvoiceSections { get; }
-
-        /// <summary>
-        /// Gets the IBillingPermissionsOperations.
-        /// </summary>
-        IBillingPermissionsOperations BillingPermissions { get; }
-
-        /// <summary>
-        /// Gets the IBillingSubscriptionsOperations.
-        /// </summary>
-        IBillingSubscriptionsOperations BillingSubscriptions { get; }
-
-        /// <summary>
-        /// Gets the IProductsOperations.
-        /// </summary>
-        IProductsOperations Products { get; }
-
-        /// <summary>
-        /// Gets the IInvoicesOperations.
-        /// </summary>
-        IInvoicesOperations Invoices { get; }
-
-        /// <summary>
-        /// Gets the ITransactionsOperations.
-        /// </summary>
-        ITransactionsOperations Transactions { get; }
-
-        /// <summary>
-        /// Gets the IPoliciesOperations.
-        /// </summary>
-        IPoliciesOperations Policies { get; }
-
-        /// <summary>
         /// Gets the IBillingPropertyOperations.
         /// </summary>
         IBillingPropertyOperations BillingProperty { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IBillingRoleDefinitionsOperations.
-        /// </summary>
-        IBillingRoleDefinitionsOperations BillingRoleDefinitions { get; }
 
         /// <summary>
         /// Gets the IBillingRoleAssignmentsOperations.
@@ -156,19 +97,9 @@ namespace Microsoft.Azure.Management.Billing
         IBillingRoleAssignmentsOperations BillingRoleAssignments { get; }
 
         /// <summary>
-        /// Gets the IAgreementsOperations.
+        /// Gets the IBillingSubscriptionsOperations.
         /// </summary>
-        IAgreementsOperations Agreements { get; }
-
-        /// <summary>
-        /// Gets the IEnrollmentAccountsOperations.
-        /// </summary>
-        IEnrollmentAccountsOperations EnrollmentAccounts { get; }
-
-        /// <summary>
-        /// Gets the IBillingPeriodsOperations.
-        /// </summary>
-        IBillingPeriodsOperations BillingPeriods { get; }
+        IBillingSubscriptionsOperations BillingSubscriptions { get; }
 
     }
 }

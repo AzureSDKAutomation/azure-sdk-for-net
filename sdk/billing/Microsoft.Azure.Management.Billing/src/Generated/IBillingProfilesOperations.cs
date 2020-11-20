@@ -83,66 +83,6 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<BillingProfile>> GetWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a billing profile. The operation is supported
-        /// for billing accounts with agreement type Microsoft Customer
-        /// Agreement or Microsoft Partner Agreement.
-        /// </summary>
-        /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
-        /// </param>
-        /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
-        /// </param>
-        /// <param name='parameters'>
-        /// The new or updated billing profile.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<BillingProfile,BillingProfilesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, BillingProfile parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Creates or updates a billing profile. The operation is supported
-        /// for billing accounts with agreement type Microsoft Customer
-        /// Agreement or Microsoft Partner Agreement.
-        /// </summary>
-        /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
-        /// </param>
-        /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
-        /// </param>
-        /// <param name='parameters'>
-        /// The new or updated billing profile.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<BillingProfile,BillingProfilesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, BillingProfile parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Lists the billing profiles that a user has access to. The operation
         /// is supported for billing accounts with agreement type Microsoft
         /// Customer Agreement or Microsoft Partner Agreement.

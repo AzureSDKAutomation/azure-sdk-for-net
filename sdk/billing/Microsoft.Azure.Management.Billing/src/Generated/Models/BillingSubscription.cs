@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Billing.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -40,6 +42,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="subscriptionBillingStatus">The current billing status
         /// of the subscription. Possible values include: 'Active', 'Inactive',
         /// 'Abandoned', 'Deleted', 'Warning'</param>
+        /// <param name="suspensionReasons">The suspension reasons for current
+        /// subscription.</param>
         /// <param name="lastMonthCharges">The last month charges.</param>
         /// <param name="monthToDateCharges">The current month to date
         /// charges.</param>
@@ -64,12 +68,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// subscription.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
         /// for the subscription.</param>
-        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
+        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), IList<SubscriptionSuspensionReason1> suspensionReasons = default(IList<SubscriptionSuspensionReason1>), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
             : base(id, name, type)
         {
             DisplayName = displayName;
             SubscriptionId = subscriptionId;
             SubscriptionBillingStatus = subscriptionBillingStatus;
+            SuspensionReasons = suspensionReasons;
             LastMonthCharges = lastMonthCharges;
             MonthToDateCharges = monthToDateCharges;
             BillingProfileId = billingProfileId;
@@ -109,6 +114,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.subscriptionBillingStatus")]
         public string SubscriptionBillingStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the suspension reasons for current subscription.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.suspensionReasons")]
+        public IList<SubscriptionSuspensionReason1> SuspensionReasons { get; set; }
 
         /// <summary>
         /// Gets the last month charges.

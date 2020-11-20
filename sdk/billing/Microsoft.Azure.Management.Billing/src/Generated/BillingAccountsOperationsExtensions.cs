@@ -101,8 +101,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -121,8 +123,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -146,49 +150,11 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            public static IPage<InvoiceSectionWithCreateSubPermission> ListInvoiceSectionsByCreateSubscriptionPermission(this IBillingAccountsOperations operations, string billingAccountName)
-            {
-                return operations.ListInvoiceSectionsByCreateSubscriptionPermissionAsync(billingAccountName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<InvoiceSectionWithCreateSubPermission>> ListInvoiceSectionsByCreateSubscriptionPermissionAsync(this IBillingAccountsOperations operations, string billingAccountName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListInvoiceSectionsByCreateSubscriptionPermissionWithHttpMessagesAsync(billingAccountName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -207,8 +173,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -262,46 +230,6 @@ namespace Microsoft.Azure.Management.Billing
             public static async Task<IPage<BillingAccount>> ListNextAsync(this IBillingAccountsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<InvoiceSectionWithCreateSubPermission> ListInvoiceSectionsByCreateSubscriptionPermissionNext(this IBillingAccountsOperations operations, string nextPageLink)
-            {
-                return operations.ListInvoiceSectionsByCreateSubscriptionPermissionNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<InvoiceSectionWithCreateSubPermission>> ListInvoiceSectionsByCreateSubscriptionPermissionNextAsync(this IBillingAccountsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListInvoiceSectionsByCreateSubscriptionPermissionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
