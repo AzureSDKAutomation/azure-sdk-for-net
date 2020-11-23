@@ -15,24 +15,26 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    public partial class SubscriptionScopeProperties
+    /// <summary>
+    /// Change directory response
+    /// </summary>
+    public partial class ChangeDirectoryResponse
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionScopeProperties
-        /// class.
+        /// Initializes a new instance of the ChangeDirectoryResponse class.
         /// </summary>
-        public SubscriptionScopeProperties()
+        public ChangeDirectoryResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionScopeProperties
-        /// class.
+        /// Initializes a new instance of the ChangeDirectoryResponse class.
         /// </summary>
-        public SubscriptionScopeProperties(IList<ScopeProperties> scopes = default(IList<ScopeProperties>))
+        public ChangeDirectoryResponse(ChangeDirectoryResult reservationOrder = default(ChangeDirectoryResult), IList<ChangeDirectoryResult> reservations = default(IList<ChangeDirectoryResult>))
         {
-            Scopes = scopes;
+            ReservationOrder = reservationOrder;
+            Reservations = reservations;
             CustomInit();
         }
 
@@ -43,8 +45,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "scopes")]
-        public IList<ScopeProperties> Scopes { get; set; }
+        [JsonProperty(PropertyName = "reservationOrder")]
+        public ChangeDirectoryResult ReservationOrder { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "reservations")]
+        public IList<ChangeDirectoryResult> Reservations { get; set; }
 
     }
 }
