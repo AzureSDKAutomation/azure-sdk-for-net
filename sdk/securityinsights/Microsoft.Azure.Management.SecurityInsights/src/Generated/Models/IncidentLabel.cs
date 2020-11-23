@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         /// <param name="labelName">The name of the label</param>
         /// <param name="labelType">The type of the label. Possible values
-        /// include: 'User', 'System'</param>
+        /// include: 'User', 'AutoAssigned'</param>
         public IncidentLabel(string labelName, string labelType = default(string))
         {
             LabelName = labelName;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 
         /// <summary>
         /// Gets the type of the label. Possible values include: 'User',
-        /// 'System'
+        /// 'AutoAssigned'
         /// </summary>
         [JsonProperty(PropertyName = "labelType")]
         public string LabelType { get; private set; }
