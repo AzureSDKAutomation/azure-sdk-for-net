@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.AppPlatform.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -36,16 +37,20 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// 'Updating'</param>
         /// <param name="error">Error when apply Monitoring Setting
         /// changes.</param>
-        /// <param name="traceEnabled">Indicates whether enable the trace
-        /// functionality</param>
-        /// <param name="appInsightsInstrumentationKey">Target application
-        /// insight instrumentation key</param>
-        public MonitoringSettingProperties(string provisioningState = default(string), Error error = default(Error), bool? traceEnabled = default(bool?), string appInsightsInstrumentationKey = default(string))
+        /// <param name="applicationInsightsInstrumentationKey">Target
+        /// application insight instrumentation key</param>
+        /// <param name="applicationInsightsSamplingRate">Indicates the
+        /// sampling rate of application insight agent, should be in range
+        /// [0.0, 100.0]</param>
+        /// <param name="applicationInsightsAgentVersions">Indicates the
+        /// versions of application insight agent</param>
+        public MonitoringSettingProperties(string provisioningState = default(string), Error error = default(Error), string applicationInsightsInstrumentationKey = default(string), double? applicationInsightsSamplingRate = default(double?), ApplicationInsightsAgentVersions applicationInsightsAgentVersions = default(ApplicationInsightsAgentVersions))
         {
             ProvisioningState = provisioningState;
             Error = error;
-            TraceEnabled = traceEnabled;
-            AppInsightsInstrumentationKey = appInsightsInstrumentationKey;
+            ApplicationInsightsInstrumentationKey = applicationInsightsInstrumentationKey;
+            ApplicationInsightsSamplingRate = applicationInsightsSamplingRate;
+            ApplicationInsightsAgentVersions = applicationInsightsAgentVersions;
             CustomInit();
         }
 
@@ -68,16 +73,40 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public Error Error { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates whether enable the trace functionality
-        /// </summary>
-        [JsonProperty(PropertyName = "traceEnabled")]
-        public bool? TraceEnabled { get; set; }
-
-        /// <summary>
         /// Gets or sets target application insight instrumentation key
         /// </summary>
-        [JsonProperty(PropertyName = "appInsightsInstrumentationKey")]
-        public string AppInsightsInstrumentationKey { get; set; }
+        [JsonProperty(PropertyName = "applicationInsightsInstrumentationKey")]
+        public string ApplicationInsightsInstrumentationKey { get; set; }
 
+        /// <summary>
+        /// Gets or sets indicates the sampling rate of application insight
+        /// agent, should be in range [0.0, 100.0]
+        /// </summary>
+        [JsonProperty(PropertyName = "applicationInsightsSamplingRate")]
+        public double? ApplicationInsightsSamplingRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the versions of application insight agent
+        /// </summary>
+        [JsonProperty(PropertyName = "applicationInsightsAgentVersions")]
+        public ApplicationInsightsAgentVersions ApplicationInsightsAgentVersions { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ApplicationInsightsSamplingRate > 100)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "ApplicationInsightsSamplingRate", 100);
+            }
+            if (ApplicationInsightsSamplingRate < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "ApplicationInsightsSamplingRate", 0);
+            }
+        }
     }
 }

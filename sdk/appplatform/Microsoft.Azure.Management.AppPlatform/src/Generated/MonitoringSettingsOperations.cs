@@ -347,6 +347,10 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "monitoringSettingResource");
             }
+            if (monitoringSettingResource != null)
+            {
+                monitoringSettingResource.Validate();
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
