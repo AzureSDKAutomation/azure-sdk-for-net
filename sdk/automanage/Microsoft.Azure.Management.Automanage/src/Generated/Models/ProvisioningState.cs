@@ -12,11 +12,12 @@ namespace Microsoft.Azure.Management.Automanage.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationProfile.
+    /// Defines values for ProvisioningState.
     /// </summary>
-    public static class ConfigurationProfile
+    public static class ProvisioningState
     {
-        public const string AzurevirtualmachinebestpracticesDevTest = "Azure virtual machine best practices – Dev/Test";
-        public const string AzurevirtualmachinebestpracticesProduction = "Azure virtual machine best practices – Production";
+        public const string Succeeded = "Succeeded";
+        public const string Failed = "Failed";
+        public const string Created = "Created";
     }
 }

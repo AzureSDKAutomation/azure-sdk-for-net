@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Automanage.Models
     using System.Linq;
 
     /// <summary>
-    /// ARM proxy resource.
+    /// The resource model definition for an Azure Resource Manager proxy
+    /// resource. It will have everything other than required location and tags
     /// </summary>
     public partial class ProxyResource : Resource
     {
@@ -28,13 +29,14 @@ namespace Microsoft.Azure.Management.Automanage.Models
         /// <summary>
         /// Initializes a new instance of the ProxyResource class.
         /// </summary>
-        /// <param name="id">ARM resource id of the Automanage
-        /// assignment.</param>
-        /// <param name="name">Name of the Automanage assignment.</param>
-        /// <param name="location">Region where the VM is located.</param>
-        /// <param name="type">The type of the resource.</param>
-        public ProxyResource(string id = default(string), string name = default(string), string location = default(string), string type = default(string))
-            : base(id, name, location, type)
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
+        public ProxyResource(string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
             CustomInit();
         }
