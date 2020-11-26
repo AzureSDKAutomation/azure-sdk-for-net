@@ -180,6 +180,11 @@ namespace Microsoft.Azure.Management.Logic
         public virtual IIntegrationAccountSessionsOperations IntegrationAccountSessions { get; private set; }
 
         /// <summary>
+        /// Gets the IIntegrationAccountUsageConfigurationsOperations.
+        /// </summary>
+        public virtual IIntegrationAccountUsageConfigurationsOperations IntegrationAccountUsageConfigurations { get; private set; }
+
+        /// <summary>
         /// Gets the IIntegrationServiceEnvironmentsOperations.
         /// </summary>
         public virtual IIntegrationServiceEnvironmentsOperations IntegrationServiceEnvironments { get; private set; }
@@ -471,6 +476,7 @@ namespace Microsoft.Azure.Management.Logic
             IntegrationAccountAgreements = new IntegrationAccountAgreementsOperations(this);
             IntegrationAccountCertificates = new IntegrationAccountCertificatesOperations(this);
             IntegrationAccountSessions = new IntegrationAccountSessionsOperations(this);
+            IntegrationAccountUsageConfigurations = new IntegrationAccountUsageConfigurationsOperations(this);
             IntegrationServiceEnvironments = new IntegrationServiceEnvironmentsOperations(this);
             IntegrationServiceEnvironmentSkus = new IntegrationServiceEnvironmentSkusOperations(this);
             IntegrationServiceEnvironmentNetworkHealth = new IntegrationServiceEnvironmentNetworkHealthOperations(this);

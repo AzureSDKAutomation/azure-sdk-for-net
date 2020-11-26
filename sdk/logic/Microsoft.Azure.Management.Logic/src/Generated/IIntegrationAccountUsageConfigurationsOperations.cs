@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Logic
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,21 +19,21 @@ namespace Microsoft.Azure.Management.Logic
     using System.Threading.Tasks;
 
     /// <summary>
-    /// WorkflowTriggersOperations operations.
+    /// IntegrationAccountUsageConfigurationsOperations operations.
     /// </summary>
-    public partial interface IWorkflowTriggersOperations
+    public partial interface IIntegrationAccountUsageConfigurationsOperations
     {
         /// <summary>
-        /// Gets a list of workflow triggers.
+        /// Gets a list of integration account usage configurations.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
+        /// <param name='integrationAccountName'>
+        /// The integration account name.
         /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
+        /// <param name='top'>
+        /// The number of items to be included in the result.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,18 +50,18 @@ namespace Microsoft.Azure.Management.Logic
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<WorkflowTrigger>>> ListWithHttpMessagesAsync(string resourceGroupName, string workflowName, ODataQuery<WorkflowTriggerFilter> odataQuery = default(ODataQuery<WorkflowTriggerFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<IntegrationAccountUsageConfiguration>>> ListWithHttpMessagesAsync(string resourceGroupName, string integrationAccountName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a workflow trigger.
+        /// Gets an integration account usage configuration.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
+        /// <param name='integrationAccountName'>
+        /// The integration account name.
         /// </param>
-        /// <param name='triggerName'>
-        /// The workflow trigger name.
+        /// <param name='usageConfigurationName'>
+        /// The integration account usage configuration name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -79,68 +78,21 @@ namespace Microsoft.Azure.Management.Logic
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<WorkflowTrigger>> GetWithHttpMessagesAsync(string resourceGroupName, string workflowName, string triggerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IntegrationAccountUsageConfiguration>> GetWithHttpMessagesAsync(string resourceGroupName, string integrationAccountName, string usageConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Resets a workflow trigger.
+        /// Creates or updates an integration account usage configuration.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
+        /// <param name='integrationAccountName'>
+        /// The integration account name.
         /// </param>
-        /// <param name='triggerName'>
-        /// The workflow trigger name.
+        /// <param name='usageConfigurationName'>
+        /// The integration account usage configuration name.
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> ResetWithHttpMessagesAsync(string resourceGroupName, string workflowName, string triggerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Runs a workflow trigger.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The resource group name.
-        /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// The workflow trigger name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> RunWithHttpMessagesAsync(string resourceGroupName, string workflowName, string triggerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get the trigger schema as JSON.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The resource group name.
-        /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// The workflow trigger name.
+        /// <param name='usageConfiguration'>
+        /// The integration account usage configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,21 +109,18 @@ namespace Microsoft.Azure.Management.Logic
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<JsonSchema>> GetSchemaJsonWithHttpMessagesAsync(string resourceGroupName, string workflowName, string triggerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IntegrationAccountUsageConfiguration>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string integrationAccountName, string usageConfigurationName, IntegrationAccountUsageConfiguration usageConfiguration, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Sets the state of a workflow trigger.
+        /// Deletes an integration account usage configuration.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
+        /// <param name='integrationAccountName'>
+        /// The integration account name.
         /// </param>
-        /// <param name='triggerName'>
-        /// The workflow trigger name.
-        /// </param>
-        /// <param name='setState'>
-        /// The workflow trigger state.
+        /// <param name='usageConfigurationName'>
+        /// The integration account usage configuration name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -185,18 +134,20 @@ namespace Microsoft.Azure.Management.Logic
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> SetStateWithHttpMessagesAsync(string resourceGroupName, string workflowName, string triggerName, SetTriggerStateActionDefinition setState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string integrationAccountName, string usageConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the callback URL for a workflow trigger.
+        /// Get the callback url.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='workflowName'>
-        /// The workflow name.
+        /// <param name='integrationAccountName'>
+        /// The integration account name.
         /// </param>
-        /// <param name='triggerName'>
-        /// The workflow trigger name.
+        /// <param name='usageConfigurationName'>
+        /// The integration account usage configuration name.
+        /// </param>
+        /// <param name='listCallbackUrl'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -213,9 +164,9 @@ namespace Microsoft.Azure.Management.Logic
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<WorkflowTriggerCallbackUrl>> ListCallbackUrlWithHttpMessagesAsync(string resourceGroupName, string workflowName, string triggerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<WorkflowTriggerCallbackUrl>> ListCallbackUrlWithHttpMessagesAsync(string resourceGroupName, string integrationAccountName, string usageConfigurationName, GetCallbackUrlParameters listCallbackUrl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of workflow triggers.
+        /// Gets a list of integration account usage configurations.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -235,6 +186,6 @@ namespace Microsoft.Azure.Management.Logic
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<WorkflowTrigger>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<IntegrationAccountUsageConfiguration>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
