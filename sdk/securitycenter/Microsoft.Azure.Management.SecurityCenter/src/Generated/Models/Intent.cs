@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// access to a target system to gather information prior to
         /// exploitation. This step is usually detected as an attempt,
         /// originating from outside the network, to scan the target system and
-        /// find a way in.  Further details on the PreAttack stage can be read
+        /// find a way in. Further details on the PreAttack stage can be read
         /// in [MITRE Pre-Att&ck
         /// matrix](https://attack.mitre.org/matrices/pre/).
         /// </summary>

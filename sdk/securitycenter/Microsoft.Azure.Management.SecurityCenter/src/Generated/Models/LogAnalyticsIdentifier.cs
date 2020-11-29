@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <summary>
         /// Initializes a new instance of the LogAnalyticsIdentifier class.
         /// </summary>
-        /// <param name="workspaceId">The LogAnalytics workspace id that stores
-        /// this alert.</param>
-        /// <param name="workspaceSubscriptionId">The azure subscription id for
-        /// the LogAnalytics workspace storing this alert.</param>
-        /// <param name="workspaceResourceGroup">The azure resource group for
-        /// the LogAnalytics workspace storing this alert</param>
-        /// <param name="agentId">(optional) The LogAnalytics agent id
+        /// <param name="workspaceId">The Log Analytics workspace ID that
+        /// stores this alert.</param>
+        /// <param name="workspaceSubscriptionId">The Azure subscription ID for
+        /// the Log Analytics workspace storing this alert.</param>
+        /// <param name="workspaceResourceGroup">The Azure resource group for
+        /// the Log Analytics workspace storing this alert</param>
+        /// <param name="agentId">(optional) The Log Analytics agent ID
         /// reporting the event that this alert is based on.</param>
         public LogAnalyticsIdentifier(string workspaceId = default(string), string workspaceSubscriptionId = default(string), string workspaceResourceGroup = default(string), string agentId = default(string))
         {
@@ -54,27 +54,27 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the LogAnalytics workspace id that stores this alert.
+        /// Gets the Log Analytics workspace ID that stores this alert.
         /// </summary>
         [JsonProperty(PropertyName = "workspaceId")]
         public string WorkspaceId { get; private set; }
 
         /// <summary>
-        /// Gets the azure subscription id for the LogAnalytics workspace
+        /// Gets the Azure subscription ID for the Log Analytics workspace
         /// storing this alert.
         /// </summary>
         [JsonProperty(PropertyName = "workspaceSubscriptionId")]
         public string WorkspaceSubscriptionId { get; private set; }
 
         /// <summary>
-        /// Gets the azure resource group for the LogAnalytics workspace
+        /// Gets the Azure resource group for the Log Analytics workspace
         /// storing this alert
         /// </summary>
         [JsonProperty(PropertyName = "workspaceResourceGroup")]
         public string WorkspaceResourceGroup { get; private set; }
 
         /// <summary>
-        /// Gets (optional) The LogAnalytics agent id reporting the event that
+        /// Gets (optional) The Log Analytics agent ID reporting the event that
         /// this alert is based on.
         /// </summary>
         [JsonProperty(PropertyName = "agentId")]
