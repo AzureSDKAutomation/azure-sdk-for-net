@@ -70,20 +70,21 @@ namespace Microsoft.Azure.Management.Security.Models
         /// be used to direct the alert to the right product exposure group
         /// (tenant, workspace, subscription etc.). There can be multiple
         /// identifiers of different type per alert.</param>
-        /// <param name="remediationSteps">Manual action items to take to
-        /// remediate the alert.</param>
+        /// <param name="remediationSteps">Manual actions to take to remediate
+        /// the alert.</param>
         /// <param name="vendorName">The name of the vendor that raises the
         /// alert.</param>
-        /// <param name="status">The life cycle status of the alert. Possible
+        /// <param name="status">The lifecycle status of the alert. Possible
         /// values include: 'Active', 'Resolved', 'Dismissed'</param>
         /// <param name="extendedLinks">Links related to the alert</param>
-        /// <param name="alertUri">A direct link to the alert page in Azure
-        /// Portal.</param>
+        /// <param name="alertUri">A direct link to the alert page in the Azure
+        /// portal.</param>
         /// <param name="timeGeneratedUtc">The UTC time the alert was generated
         /// in ISO8601 format.</param>
         /// <param name="productName">The name of the product which published
-        /// this alert (Azure Security Center, Azure ATP, Microsoft Defender
-        /// ATP, O365 ATP, MCAS, and so on).</param>
+        /// this alert (Azure Security Center, Microsoft Defender for Identity,
+        /// Microsoft Defender for Endpoint, Microsoft Defender for Office 365,
+        /// MCAS, and so on).</param>
         /// <param name="processingEndTimeUtc">The UTC processing end time of
         /// the alert in ISO8601 format.</param>
         /// <param name="entities">A list of entities related to the
@@ -91,8 +92,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="isIncident">This field determines whether the alert is
         /// an incident (a compound grouping of several alerts) or a single
         /// alert.</param>
-        /// <param name="correlationKey">Key for corelating related alerts.
-        /// Alerts with the same correlation key considered to be
+        /// <param name="correlationKey">Key for correlating related alerts.
+        /// Alerts with the same correlation key are considered as
         /// related.</param>
         /// <param name="extendedProperties">Custom properties for the
         /// alert.</param>
@@ -209,7 +210,7 @@ namespace Microsoft.Azure.Management.Security.Models
         public IList<ResourceIdentifier> ResourceIdentifiers { get; private set; }
 
         /// <summary>
-        /// Gets manual action items to take to remediate the alert.
+        /// Gets manual actions to take to remediate the alert.
         /// </summary>
         [JsonProperty(PropertyName = "properties.remediationSteps")]
         public IList<string> RemediationSteps { get; private set; }
@@ -221,7 +222,7 @@ namespace Microsoft.Azure.Management.Security.Models
         public string VendorName { get; private set; }
 
         /// <summary>
-        /// Gets the life cycle status of the alert. Possible values include:
+        /// Gets the lifecycle status of the alert. Possible values include:
         /// 'Active', 'Resolved', 'Dismissed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
@@ -234,7 +235,7 @@ namespace Microsoft.Azure.Management.Security.Models
         public IList<IDictionary<string, string>> ExtendedLinks { get; private set; }
 
         /// <summary>
-        /// Gets a direct link to the alert page in Azure Portal.
+        /// Gets a direct link to the alert page in the Azure portal.
         /// </summary>
         [JsonProperty(PropertyName = "properties.alertUri")]
         public string AlertUri { get; private set; }
@@ -247,8 +248,9 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <summary>
         /// Gets the name of the product which published this alert (Azure
-        /// Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS,
-        /// and so on).
+        /// Security Center, Microsoft Defender for Identity, Microsoft
+        /// Defender for Endpoint, Microsoft Defender for Office 365, MCAS, and
+        /// so on).
         /// </summary>
         [JsonProperty(PropertyName = "properties.productName")]
         public string ProductName { get; private set; }
@@ -273,8 +275,8 @@ namespace Microsoft.Azure.Management.Security.Models
         public bool? IsIncident { get; private set; }
 
         /// <summary>
-        /// Gets key for corelating related alerts. Alerts with the same
-        /// correlation key considered to be related.
+        /// Gets key for correlating related alerts. Alerts with the same
+        /// correlation key are considered as related.
         /// </summary>
         [JsonProperty(PropertyName = "properties.correlationKey")]
         public string CorrelationKey { get; private set; }
