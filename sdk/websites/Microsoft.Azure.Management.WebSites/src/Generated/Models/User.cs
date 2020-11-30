@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="publishingPassword">Password used for
         /// publishing.</param>
         /// <param name="publishingPasswordHash">Password hash used for
@@ -45,8 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="publishingPasswordHashSalt">Password hash salt used
         /// for publishing.</param>
         /// <param name="scmUri">Url of SCM site.</param>
-        public User(string publishingUserName, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string), string scmUri = default(string))
-            : base(id, name, kind, type)
+        public User(string publishingUserName, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string), string scmUri = default(string))
+            : base(id, name, kind, type, systemData)
         {
             PublishingUserName = publishingUserName;
             PublishingPassword = publishingPassword;
