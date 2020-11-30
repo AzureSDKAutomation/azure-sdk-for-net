@@ -10,30 +10,31 @@
 
 namespace Microsoft.Azure.Management.Security.Models
 {
+    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Represents a security setting in Azure Security Center.
+    /// List of IoT sites
     /// </summary>
-    public partial class Setting : SettingResource
+    public partial class IotSitesList
     {
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the IotSitesList class.
         /// </summary>
-        public Setting()
+        public IotSitesList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the IotSitesList class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        public Setting(string id = default(string), string name = default(string), string type = default(string))
-            : base(id, name, type)
+        /// <param name="value">List data</param>
+        public IotSitesList(IList<IotSitesModel> value = default(IList<IotSitesModel>))
         {
+            Value = value;
             CustomInit();
         }
 
@@ -41,6 +42,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets list data
+        /// </summary>
+        [JsonProperty(PropertyName = "value")]
+        public IList<IotSitesModel> Value { get; private set; }
 
     }
 }

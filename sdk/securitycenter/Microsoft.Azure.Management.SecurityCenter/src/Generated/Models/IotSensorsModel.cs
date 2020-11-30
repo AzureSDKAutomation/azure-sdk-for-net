@@ -10,30 +10,36 @@
 
 namespace Microsoft.Azure.Management.Security.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Represents a security setting in Azure Security Center.
+    /// IoT sensor model
     /// </summary>
-    public partial class Setting : SettingResource
+    [Rest.Serialization.JsonTransformation]
+    public partial class IotSensorsModel : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the IotSensorsModel class.
         /// </summary>
-        public Setting()
+        public IotSensorsModel()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the IotSensorsModel class.
         /// </summary>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public Setting(string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="zone">Display name of the IoT zone</param>
+        public IotSensorsModel(string id = default(string), string name = default(string), string type = default(string), string zone = default(string))
             : base(id, name, type)
         {
+            Zone = zone;
             CustomInit();
         }
 
@@ -41,6 +47,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets display name of the IoT zone
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.zone")]
+        public string Zone { get; set; }
 
     }
 }

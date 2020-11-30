@@ -10,13 +10,11 @@
 
 namespace Microsoft.Azure.Management.Security.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The kind of the security setting
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SettingResource")]
     public partial class SettingResource : Resource
     {
         /// <summary>
