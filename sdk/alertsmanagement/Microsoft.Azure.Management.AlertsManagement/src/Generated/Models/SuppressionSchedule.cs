@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// <param name="endTime">End date for suppression</param>
         /// <param name="recurrenceValues">Specifies the values for recurrence
         /// pattern</param>
-        public SuppressionSchedule(string startDate = default(string), string endDate = default(string), string startTime = default(string), string endTime = default(string), IList<int?> recurrenceValues = default(IList<int?>))
+        public SuppressionSchedule(string startDate = default(string), string endDate = default(string), string startTime = default(string), string endTime = default(string), IList<long?> recurrenceValues = default(IList<long?>))
         {
             StartDate = startDate;
             EndDate = endDate;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// Gets or sets specifies the values for recurrence pattern
         /// </summary>
         [JsonProperty(PropertyName = "recurrenceValues")]
-        public IList<int?> RecurrenceValues { get; set; }
+        public IList<long?> RecurrenceValues { get; set; }
 
     }
 }
