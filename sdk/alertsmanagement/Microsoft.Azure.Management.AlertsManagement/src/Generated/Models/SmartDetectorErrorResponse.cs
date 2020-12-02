@@ -14,29 +14,28 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Aggregated property of each type
+    /// Describe the format of an Error response.
     /// </summary>
-    public partial class SmartGroupAggregatedProperty
+    public partial class SmartDetectorErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the SmartGroupAggregatedProperty
-        /// class.
+        /// Initializes a new instance of the SmartDetectorErrorResponse class.
         /// </summary>
-        public SmartGroupAggregatedProperty()
+        public SmartDetectorErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SmartGroupAggregatedProperty
-        /// class.
+        /// Initializes a new instance of the SmartDetectorErrorResponse class.
         /// </summary>
-        /// <param name="name">Name of the type.</param>
-        /// <param name="count">Total number of items of type.</param>
-        public SmartGroupAggregatedProperty(string name = default(string), long? count = default(long?))
+        /// <param name="code">Error code</param>
+        /// <param name="message">Error message indicating why the operation
+        /// failed.</param>
+        public SmartDetectorErrorResponse(string code = default(string), string message = default(string))
         {
-            Name = name;
-            Count = count;
+            Code = code;
+            Message = message;
             CustomInit();
         }
 
@@ -46,16 +45,16 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the type.
+        /// Gets or sets error code
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "code")]
+        public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets total number of items of type.
+        /// Gets or sets error message indicating why the operation failed.
         /// </summary>
-        [JsonProperty(PropertyName = "count")]
-        public long? Count { get; set; }
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; set; }
 
     }
 }
