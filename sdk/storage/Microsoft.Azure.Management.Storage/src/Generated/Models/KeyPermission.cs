@@ -21,10 +21,14 @@ namespace Microsoft.Azure.Management.Storage.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum KeyPermission
     {
-        [EnumMember(Value = "Read")]
-        Read,
-        [EnumMember(Value = "Full")]
-        Full
+        [EnumMember(Value = "READ")]
+        READ,
+        [EnumMember(Value = "FULL")]
+        FULL,
+        [EnumMember(Value = "NONE")]
+        NONE,
+        [EnumMember(Value = "DELETE")]
+        DELETE
     }
     internal static class KeyPermissionEnumExtension
     {
@@ -37,10 +41,14 @@ namespace Microsoft.Azure.Management.Storage.Models
         {
             switch( value )
             {
-                case KeyPermission.Read:
-                    return "Read";
-                case KeyPermission.Full:
-                    return "Full";
+                case KeyPermission.READ:
+                    return "READ";
+                case KeyPermission.FULL:
+                    return "FULL";
+                case KeyPermission.NONE:
+                    return "NONE";
+                case KeyPermission.DELETE:
+                    return "DELETE";
             }
             return null;
         }
@@ -49,10 +57,14 @@ namespace Microsoft.Azure.Management.Storage.Models
         {
             switch( value )
             {
-                case "Read":
-                    return KeyPermission.Read;
-                case "Full":
-                    return KeyPermission.Full;
+                case "READ":
+                    return KeyPermission.READ;
+                case "FULL":
+                    return KeyPermission.FULL;
+                case "NONE":
+                    return KeyPermission.NONE;
+                case "DELETE":
+                    return KeyPermission.DELETE;
             }
             return null;
         }

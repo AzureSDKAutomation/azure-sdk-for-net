@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="keyName">Name of the key.</param>
         /// <param name="value">Base 64-encoded value of the key.</param>
         /// <param name="permissions">Permissions for the key -- read-only or
-        /// full permissions. Possible values include: 'Read', 'Full'</param>
+        /// full permissions. Possible values include: 'READ', 'FULL', 'NONE',
+        /// 'DELETE'</param>
         public StorageAccountKey(string keyName = default(string), string value = default(string), KeyPermission? permissions = default(KeyPermission?))
         {
             KeyName = keyName;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets permissions for the key -- read-only or full permissions.
-        /// Possible values include: 'Read', 'Full'
+        /// Possible values include: 'READ', 'FULL', 'NONE', 'DELETE'
         /// </summary>
         [JsonProperty(PropertyName = "permissions")]
         public KeyPermission? Permissions { get; private set; }
