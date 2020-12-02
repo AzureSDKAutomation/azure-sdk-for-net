@@ -212,5 +212,50 @@ namespace Microsoft.Azure.Management.Security
                 return _result.Body;
             }
 
+            /// <summary>
+            /// Download file for reset password of the sensor
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
+            /// </param>
+            /// <param name='iotSensorName'>
+            /// Name of the IoT sensor
+            /// </param>
+            /// <param name='applianceId'>
+            /// The appliance id of the sensor.
+            /// </param>
+            public static Stream DownloadResetPassword(this IIotSensorsOperations operations, string scope, string iotSensorName, string applianceId = default(string))
+            {
+                return operations.DownloadResetPasswordAsync(scope, iotSensorName, applianceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Download file for reset password of the sensor
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
+            /// </param>
+            /// <param name='iotSensorName'>
+            /// Name of the IoT sensor
+            /// </param>
+            /// <param name='applianceId'>
+            /// The appliance id of the sensor.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Stream> DownloadResetPasswordAsync(this IIotSensorsOperations operations, string scope, string iotSensorName, string applianceId = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                var _result = await operations.DownloadResetPasswordWithHttpMessagesAsync(scope, iotSensorName, applianceId, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
+            }
+
     }
 }
