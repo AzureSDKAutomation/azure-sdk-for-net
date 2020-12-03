@@ -12,14 +12,13 @@ namespace Microsoft.Azure.Management.Security.Models
 {
 
     /// <summary>
-    /// Defines values for EventSource.
+    /// Defines values for TiStatus.
     /// </summary>
-    public static class EventSource
+    public static class TiStatus
     {
-        public const string Assessments = "Assessments";
-        public const string SubAssessments = "SubAssessments";
-        public const string Alerts = "Alerts";
-        public const string SecureScores = "SecureScores";
-        public const string SecureScoreControls = "SecureScoreControls";
+        public const string Ok = "Ok";
+        public const string Failed = "Failed";
+        public const string InProgress = "InProgress";
+        public const string UpdateAvailable = "UpdateAvailable";
     }
 }
