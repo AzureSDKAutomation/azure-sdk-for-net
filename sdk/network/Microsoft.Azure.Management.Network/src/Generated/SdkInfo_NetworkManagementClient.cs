@@ -20,9 +20,7 @@ namespace Microsoft.Azure.Management.Network
               return new Tuple<string, string, string>[]
               {
                 new Tuple<string, string, string>("Compute", "NetworkInterfaces", "2018-10-01"),
-                new Tuple<string, string, string>("Compute", "NetworkInterfaces", "2020-07-01"),
                 new Tuple<string, string, string>("Compute", "PublicIPAddresses", "2018-10-01"),
-                new Tuple<string, string, string>("Compute", "PublicIPAddresses", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "ApplicationGatewayPrivateEndpointConnections", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "ApplicationGatewayPrivateLinkResources", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "ApplicationGateways", "2020-07-01"),
