@@ -321,6 +321,11 @@ namespace Microsoft.Azure.Management.Network
         INetworkVirtualAppliancesOperations NetworkVirtualAppliances { get; }
 
         /// <summary>
+        /// Gets the INvaVirtualApplianceSitesOperations.
+        /// </summary>
+        INvaVirtualApplianceSitesOperations NvaVirtualApplianceSites { get; }
+
+        /// <summary>
         /// Gets the IVirtualApplianceSitesOperations.
         /// </summary>
         IVirtualApplianceSitesOperations VirtualApplianceSites { get; }
@@ -549,6 +554,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVpnLinkConnectionsOperations.
         /// </summary>
         IVpnLinkConnectionsOperations VpnLinkConnections { get; }
+
+        /// <summary>
+        /// Gets the INatRulesOperations.
+        /// </summary>
+        INatRulesOperations NatRules { get; }
 
         /// <summary>
         /// Gets the IP2sVpnGatewaysOperations.
