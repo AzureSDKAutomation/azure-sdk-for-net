@@ -10,30 +10,29 @@
 
 namespace Microsoft.Azure.Management.Security.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Represents a security setting in Azure Security Center.
+    /// Reset password input.
     /// </summary>
-    public partial class Setting : SettingResource
+    public partial class ResetPasswordInput
     {
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the ResetPasswordInput class.
         /// </summary>
-        public Setting()
+        public ResetPasswordInput()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the ResetPasswordInput class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        public Setting(string id = default(string), string name = default(string), string type = default(string))
-            : base(id, name, type)
+        /// <param name="applianceId">The appliance id of the sensor.</param>
+        public ResetPasswordInput(string applianceId = default(string))
         {
+            ApplianceId = applianceId;
             CustomInit();
         }
 
@@ -41,6 +40,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the appliance id of the sensor.
+        /// </summary>
+        [JsonProperty(PropertyName = "applianceId")]
+        public string ApplianceId { get; set; }
 
     }
 }
