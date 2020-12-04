@@ -61,11 +61,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// public IP prefix resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="edgeZone">The edge zone of the public IP
+        /// prefix.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public PublicIPPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPPrefixSku sku = default(PublicIPPrefixSku), string publicIPAddressVersion = default(string), IList<IpTag> ipTags = default(IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), IList<ReferencedPublicIpAddress> publicIPAddresses = default(IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIpConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public PublicIPPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPPrefixSku sku = default(PublicIPPrefixSku), string publicIPAddressVersion = default(string), IList<IpTag> ipTags = default(IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), IList<ReferencedPublicIpAddress> publicIPAddresses = default(IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIpConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string edgeZone = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
@@ -79,6 +81,7 @@ namespace Microsoft.Azure.Management.Network.Models
             CustomIPPrefix = customIPPrefix;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            EdgeZone = edgeZone;
             Etag = etag;
             Zones = zones;
             CustomInit();
@@ -159,6 +162,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the edge zone of the public IP prefix.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edgeZone")]
+        public string EdgeZone { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
