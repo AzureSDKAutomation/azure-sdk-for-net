@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="dhcpOptions">The dhcpOptions that contains an array of
         /// DNS servers available to VMs deployed in the virtual
         /// network.</param>
+        /// <param name="flowTimeoutInMinutes">The flowTimeoutInMinutes
+        /// property tells the timeout value for intra-VM connection
+        /// tracking</param>
         /// <param name="subnets">A list of subnets in a Virtual
         /// Network.</param>
         /// <param name="virtualNetworkPeerings">A list of peerings in a
@@ -67,14 +70,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// with each route corresponding to a prefix in this VNET.</param>
         /// <param name="ipAllocations">Array of IpAllocation which reference
         /// this VNET.</param>
+        /// <param name="edgeZone">The edge zone of the virtual
+        /// network.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public VirtualNetwork(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), IList<Subnet> subnets = default(IList<Subnet>), IList<VirtualNetworkPeering> virtualNetworkPeerings = default(IList<VirtualNetworkPeering>), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDdosProtection = default(bool?), bool? enableVmProtection = default(bool?), SubResource ddosProtectionPlan = default(SubResource), VirtualNetworkBgpCommunities bgpCommunities = default(VirtualNetworkBgpCommunities), IList<SubResource> ipAllocations = default(IList<SubResource>), string etag = default(string))
+        public VirtualNetwork(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), int? flowTimeoutInMinutes = default(int?), IList<Subnet> subnets = default(IList<Subnet>), IList<VirtualNetworkPeering> virtualNetworkPeerings = default(IList<VirtualNetworkPeering>), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDdosProtection = default(bool?), bool? enableVmProtection = default(bool?), SubResource ddosProtectionPlan = default(SubResource), VirtualNetworkBgpCommunities bgpCommunities = default(VirtualNetworkBgpCommunities), IList<SubResource> ipAllocations = default(IList<SubResource>), string edgeZone = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
             AddressSpace = addressSpace;
             DhcpOptions = dhcpOptions;
+            FlowTimeoutInMinutes = flowTimeoutInMinutes;
             Subnets = subnets;
             VirtualNetworkPeerings = virtualNetworkPeerings;
             ResourceGuid = resourceGuid;
@@ -84,6 +90,7 @@ namespace Microsoft.Azure.Management.Network.Models
             DdosProtectionPlan = ddosProtectionPlan;
             BgpCommunities = bgpCommunities;
             IpAllocations = ipAllocations;
+            EdgeZone = edgeZone;
             Etag = etag;
             CustomInit();
         }
@@ -112,6 +119,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dhcpOptions")]
         public DhcpOptions DhcpOptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flowTimeoutInMinutes property tells the timeout
+        /// value for intra-VM connection tracking
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.flowTimeoutInMinutes")]
+        public int? FlowTimeoutInMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets a list of subnets in a Virtual Network.
@@ -173,6 +187,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.ipAllocations")]
         public IList<SubResource> IpAllocations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edge zone of the virtual network.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edgeZone")]
+        public string EdgeZone { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
