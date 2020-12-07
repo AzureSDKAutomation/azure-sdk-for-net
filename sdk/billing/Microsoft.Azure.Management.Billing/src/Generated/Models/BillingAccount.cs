@@ -37,43 +37,57 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="displayName">The billing account name.</param>
-        /// <param name="soldTo">The address of the individual or organization
-        /// that is responsible for the billing account.</param>
+        /// <param name="accountStatus">The current status of the billing
+        /// account. Possible values include: 'Unknown', 'Active', 'Deleted',
+        /// 'Disabled', 'Expired', 'Transferred', 'Extended', 'Terminated',
+        /// 'UnderReview'</param>
+        /// <param name="accountStatusReasonCode">Reason for the specified
+        /// billing account status. Possible values include:
+        /// 'UnusualActivity'</param>
+        /// <param name="accountType">The type of customer. Possible values
+        /// include: 'Enterprise', 'Individual', 'Partner'</param>
         /// <param name="agreementType">The type of agreement. Possible values
         /// include: 'MicrosoftCustomerAgreement', 'EnterpriseAgreement',
         /// 'MicrosoftOnlineServicesProgram',
         /// 'MicrosoftPartnerAgreement'</param>
-        /// <param name="accountType">The type of customer. Possible values
-        /// include: 'Enterprise', 'Individual', 'Partner'</param>
-        /// <param name="accountStatus">The current status of the billing
-        /// account. Possible values include: 'Active', 'Deleted', 'Disabled',
-        /// 'Expired', 'Transferred', 'Extended', 'Terminated'</param>
         /// <param name="billingProfiles">The billing profiles associated with
         /// the billing account. By default this is not populated, unless it's
-        /// specified in $expand.</param>
+        /// specified in $expand. This property is available for agreement type
+        /// Microsoft Customer Agreement and Microsoft Partner
+        /// Agreement.</param>
+        /// <param name="departments">The departments associated to the
+        /// enrollment. This property is available for agreement type
+        /// Enterprise Agreement.</param>
+        /// <param name="displayName">The billing account name.</param>
+        /// <param name="enrollmentAccounts">The accounts associated to the
+        /// enrollment. This property is available for agreement type
+        /// Enterprise Agreement.</param>
         /// <param name="enrollmentDetails">The details about the associated
         /// legacy enrollment. By default this is not populated, unless it's
-        /// specified in $expand.</param>
-        /// <param name="departments">The departments associated to the
-        /// enrollment.</param>
-        /// <param name="enrollmentAccounts">The accounts associated to the
-        /// enrollment.</param>
+        /// specified in $expand. This property is available for agreement type
+        /// Enterprise Agreement.</param>
+        /// <param name="notificationEmailAddress">Notification email address
+        /// for legacy account. This property is available for agreement type
+        /// Microsoft Online Services Program.</param>
         /// <param name="hasReadAccess">Indicates whether user has read access
         /// to the billing account.</param>
-        public BillingAccount(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), AddressDetails soldTo = default(AddressDetails), string agreementType = default(string), string accountType = default(string), string accountStatus = default(string), BillingProfilesOnExpand billingProfiles = default(BillingProfilesOnExpand), Enrollment enrollmentDetails = default(Enrollment), IList<Department> departments = default(IList<Department>), IList<EnrollmentAccount> enrollmentAccounts = default(IList<EnrollmentAccount>), bool? hasReadAccess = default(bool?))
+        /// <param name="soldTo">The address of the individual or organization
+        /// that is responsible for the billing account.</param>
+        public BillingAccount(string id = default(string), string name = default(string), string type = default(string), string accountStatus = default(string), string accountStatusReasonCode = default(string), string accountType = default(string), string agreementType = default(string), BillingProfilesOnExpand billingProfiles = default(BillingProfilesOnExpand), IList<Department> departments = default(IList<Department>), string displayName = default(string), IList<EnrollmentAccount> enrollmentAccounts = default(IList<EnrollmentAccount>), Enrollment enrollmentDetails = default(Enrollment), string notificationEmailAddress = default(string), bool? hasReadAccess = default(bool?), AddressDetails soldTo = default(AddressDetails))
             : base(id, name, type)
         {
-            DisplayName = displayName;
-            SoldTo = soldTo;
-            AgreementType = agreementType;
-            AccountType = accountType;
             AccountStatus = accountStatus;
+            AccountStatusReasonCode = accountStatusReasonCode;
+            AccountType = accountType;
+            AgreementType = agreementType;
             BillingProfiles = billingProfiles;
-            EnrollmentDetails = enrollmentDetails;
             Departments = departments;
+            DisplayName = displayName;
             EnrollmentAccounts = enrollmentAccounts;
+            EnrollmentDetails = enrollmentDetails;
+            NotificationEmailAddress = notificationEmailAddress;
             HasReadAccess = hasReadAccess;
+            SoldTo = soldTo;
             CustomInit();
         }
 
@@ -83,17 +97,26 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the billing account name.
+        /// Gets the current status of the billing account. Possible values
+        /// include: 'Unknown', 'Active', 'Deleted', 'Disabled', 'Expired',
+        /// 'Transferred', 'Extended', 'Terminated', 'UnderReview'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.displayName")]
-        public string DisplayName { get; set; }
+        [JsonProperty(PropertyName = "properties.accountStatus")]
+        public string AccountStatus { get; private set; }
 
         /// <summary>
-        /// Gets or sets the address of the individual or organization that is
-        /// responsible for the billing account.
+        /// Gets reason for the specified billing account status. Possible
+        /// values include: 'UnusualActivity'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.soldTo")]
-        public AddressDetails SoldTo { get; set; }
+        [JsonProperty(PropertyName = "properties.accountStatusReasonCode")]
+        public string AccountStatusReasonCode { get; private set; }
+
+        /// <summary>
+        /// Gets the type of customer. Possible values include: 'Enterprise',
+        /// 'Individual', 'Partner'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.accountType")]
+        public string AccountType { get; private set; }
 
         /// <summary>
         /// Gets the type of agreement. Possible values include:
@@ -104,52 +127,62 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string AgreementType { get; private set; }
 
         /// <summary>
-        /// Gets the type of customer. Possible values include: 'Enterprise',
-        /// 'Individual', 'Partner'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.accountType")]
-        public string AccountType { get; private set; }
-
-        /// <summary>
-        /// Gets the current status of the billing account. Possible values
-        /// include: 'Active', 'Deleted', 'Disabled', 'Expired', 'Transferred',
-        /// 'Extended', 'Terminated'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.accountStatus")]
-        public string AccountStatus { get; private set; }
-
-        /// <summary>
         /// Gets or sets the billing profiles associated with the billing
         /// account. By default this is not populated, unless it's specified in
-        /// $expand.
+        /// $expand. This property is available for agreement type Microsoft
+        /// Customer Agreement and Microsoft Partner Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.billingProfiles")]
         public BillingProfilesOnExpand BillingProfiles { get; set; }
 
         /// <summary>
-        /// Gets the details about the associated legacy enrollment. By default
-        /// this is not populated, unless it's specified in $expand.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enrollmentDetails")]
-        public Enrollment EnrollmentDetails { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the departments associated to the enrollment.
+        /// Gets or sets the departments associated to the enrollment. This
+        /// property is available for agreement type Enterprise Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.departments")]
         public IList<Department> Departments { get; set; }
 
         /// <summary>
-        /// Gets or sets the accounts associated to the enrollment.
+        /// Gets or sets the billing account name.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.displayName")]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the accounts associated to the enrollment. This
+        /// property is available for agreement type Enterprise Agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enrollmentAccounts")]
         public IList<EnrollmentAccount> EnrollmentAccounts { get; set; }
+
+        /// <summary>
+        /// Gets the details about the associated legacy enrollment. By default
+        /// this is not populated, unless it's specified in $expand. This
+        /// property is available for agreement type Enterprise Agreement.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enrollmentDetails")]
+        public Enrollment EnrollmentDetails { get; private set; }
+
+        /// <summary>
+        /// Gets or sets notification email address for legacy account. This
+        /// property is available for agreement type Microsoft Online Services
+        /// Program.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.notificationEmailAddress")]
+        public string NotificationEmailAddress { get; set; }
 
         /// <summary>
         /// Gets indicates whether user has read access to the billing account.
         /// </summary>
         [JsonProperty(PropertyName = "properties.hasReadAccess")]
         public bool? HasReadAccess { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the address of the individual or organization that is
+        /// responsible for the billing account.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.soldTo")]
+        public AddressDetails SoldTo { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -101,8 +101,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -121,8 +123,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -187,8 +191,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -207,8 +213,10 @@ namespace Microsoft.Azure.Management.Billing
 
             /// <summary>
             /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// address can be updated for billing accounts with agreement type Microsoft
+            /// Customer Agreement. Currently address and notification email address can be
+            /// updated for billing accounts with agreement type Microsoft Online Services
+            /// Agreement
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

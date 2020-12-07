@@ -54,9 +54,12 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Updates the billing property of a subscription. Currently, cost center can
-            /// be updated. The operation is supported only for billing accounts with
-            /// agreement type Microsoft Customer Agreement.
+            /// Updates the billing property of a subscription. Currently, only cost center
+            /// can be updated for billing accounts with agreement type Microsoft Customer
+            /// Agreement. Subscription address can be updated for billing accounts with
+            /// agreement type Microsoft Online Service Program. GST ID can be updated for
+            /// billing accounts with agreement type Microsoft Online Service Program only
+            /// for country India
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -71,9 +74,12 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Updates the billing property of a subscription. Currently, cost center can
-            /// be updated. The operation is supported only for billing accounts with
-            /// agreement type Microsoft Customer Agreement.
+            /// Updates the billing property of a subscription. Currently, only cost center
+            /// can be updated for billing accounts with agreement type Microsoft Customer
+            /// Agreement. Subscription address can be updated for billing accounts with
+            /// agreement type Microsoft Online Service Program. GST ID can be updated for
+            /// billing accounts with agreement type Microsoft Online Service Program only
+            /// for country India
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
