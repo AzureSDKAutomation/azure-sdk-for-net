@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class BackupResourceVaultConfigsOperationsExtensions
     {
             /// <summary>
-            /// Fetches resource vault config.
+            /// Fetches backup resource vault config.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
 
             /// <summary>
-            /// Fetches resource vault config.
+            /// Fetches backup resource vault config.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
