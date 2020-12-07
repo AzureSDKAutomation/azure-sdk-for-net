@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for AccountStatus.
+    /// Defines values for BillingAccountStatus.
     /// </summary>
-    public static class AccountStatus
+    public static class BillingAccountStatus
     {
         public const string Unknown = "Unknown";
         public const string Active = "Active";
@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         public const string Transferred = "Transferred";
         public const string Extended = "Extended";
         public const string Terminated = "Terminated";
+        public const string PendingReview = "PendingReview";
         public const string UnderReview = "UnderReview";
     }
 }

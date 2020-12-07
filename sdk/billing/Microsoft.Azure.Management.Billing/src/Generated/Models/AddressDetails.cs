@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="postalCode">Postal code.</param>
         /// <param name="email">Email address.</param>
         /// <param name="phoneNumber">Phone number.</param>
-        public AddressDetails(string addressLine1, string country, string firstName = default(string), string lastName = default(string), string companyName = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string district = default(string), string region = default(string), string postalCode = default(string), string email = default(string), string phoneNumber = default(string))
+        /// <param name="middleName">Middle name.</param>
+        public AddressDetails(string addressLine1, string country, string firstName = default(string), string lastName = default(string), string companyName = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string district = default(string), string region = default(string), string postalCode = default(string), string email = default(string), string phoneNumber = default(string), string middleName = default(string))
         {
             FirstName = firstName;
             LastName = lastName;
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             PostalCode = postalCode;
             Email = email;
             PhoneNumber = phoneNumber;
+            MiddleName = middleName;
             CustomInit();
         }
 
@@ -144,6 +146,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "phoneNumber")]
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets middle name.
+        /// </summary>
+        [JsonProperty(PropertyName = "middleName")]
+        public string MiddleName { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -76,8 +76,10 @@ namespace Microsoft.Azure.Management.Billing
         Task<AzureOperationResponse<BillingAccount>> GetWithHttpMessagesAsync(string billingAccountName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the properties of a billing account. Currently, displayName
-        /// and address can be updated. The operation is supported only for
-        /// billing accounts with agreement type Microsoft Customer Agreement.
+        /// and address can be updated for billing accounts with agreement type
+        /// Microsoft Customer Agreement. Currently address and notification
+        /// email address can be updated for billing accounts with agreement
+        /// type Microsoft Online Services Agreement
         /// </summary>
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
@@ -129,8 +131,10 @@ namespace Microsoft.Azure.Management.Billing
         Task<AzureOperationResponse<IPage<InvoiceSectionWithCreateSubPermission>>> ListInvoiceSectionsByCreateSubscriptionPermissionWithHttpMessagesAsync(string billingAccountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the properties of a billing account. Currently, displayName
-        /// and address can be updated. The operation is supported only for
-        /// billing accounts with agreement type Microsoft Customer Agreement.
+        /// and address can be updated for billing accounts with agreement type
+        /// Microsoft Customer Agreement. Currently address and notification
+        /// email address can be updated for billing accounts with agreement
+        /// type Microsoft Online Services Agreement
         /// </summary>
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.

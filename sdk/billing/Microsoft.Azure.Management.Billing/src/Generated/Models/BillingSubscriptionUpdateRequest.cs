@@ -18,25 +18,24 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// A billing subscription.
+    /// The request properties of the billing subscription that can be updated.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BillingSubscription : Resource
+    public partial class BillingSubscriptionUpdateRequest
     {
         /// <summary>
-        /// Initializes a new instance of the BillingSubscription class.
+        /// Initializes a new instance of the BillingSubscriptionUpdateRequest
+        /// class.
         /// </summary>
-        public BillingSubscription()
+        public BillingSubscriptionUpdateRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BillingSubscription class.
+        /// Initializes a new instance of the BillingSubscriptionUpdateRequest
+        /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="displayName">The name of the subscription.</param>
         /// <param name="subscriptionId">The ID of the subscription.</param>
         /// <param name="subscriptionBillingStatus">The current billing status
@@ -68,8 +67,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// subscription.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
         /// for the subscription.</param>
-        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), IList<SubscriptionSuspensionReason1> suspensionReasons = default(IList<SubscriptionSuspensionReason1>), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
-            : base(id, name, type)
+        public BillingSubscriptionUpdateRequest(string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), IList<SubscriptionSuspensionReason1> suspensionReasons = default(IList<SubscriptionSuspensionReason1>), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
         {
             DisplayName = displayName;
             SubscriptionId = subscriptionId;
