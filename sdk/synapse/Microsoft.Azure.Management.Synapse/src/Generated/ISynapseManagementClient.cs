@@ -330,9 +330,9 @@ namespace Microsoft.Azure.Management.Synapse
         IWorkspaceManagedSqlServerUsagesOperations WorkspaceManagedSqlServerUsages { get; }
 
         /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations.
+        /// Gets the IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations.
         /// </summary>
-        IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations WorkspaceManagedSqlServerRecoverableSqlpools { get; }
+        IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations WorkspaceManagedSqlServerRecoverableSqlPools { get; }
 
         /// <summary>
         /// Gets the IKeysOperations.

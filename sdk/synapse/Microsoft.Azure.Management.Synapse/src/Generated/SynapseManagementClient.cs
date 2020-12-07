@@ -335,9 +335,9 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual IWorkspaceManagedSqlServerUsagesOperations WorkspaceManagedSqlServerUsages { get; private set; }
 
         /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations.
+        /// Gets the IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations.
         /// </summary>
-        public virtual IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations WorkspaceManagedSqlServerRecoverableSqlpools { get; private set; }
+        public virtual IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations WorkspaceManagedSqlServerRecoverableSqlPools { get; private set; }
 
         /// <summary>
         /// Gets the IKeysOperations.
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Management.Synapse
             WorkspaceManagedSqlServerSecurityAlertPolicy = new WorkspaceManagedSqlServerSecurityAlertPolicyOperations(this);
             WorkspaceManagedSqlServerVulnerabilityAssessments = new WorkspaceManagedSqlServerVulnerabilityAssessmentsOperations(this);
             WorkspaceManagedSqlServerUsages = new WorkspaceManagedSqlServerUsagesOperations(this);
-            WorkspaceManagedSqlServerRecoverableSqlpools = new WorkspaceManagedSqlServerRecoverableSqlpoolsOperations(this);
+            WorkspaceManagedSqlServerRecoverableSqlPools = new WorkspaceManagedSqlServerRecoverableSqlPoolsOperations(this);
             Keys = new KeysOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2019-06-01-preview";
