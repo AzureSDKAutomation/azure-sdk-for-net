@@ -37,14 +37,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="subnetResourceId">The Virtual Network subnet's
         /// resource ID. This is the subnet that this Web App will join. This
         /// subnet must have a delegation to Microsoft.Web/serverFarms defined
         /// first.</param>
         /// <param name="swiftSupported">A flag that specifies if the scale
         /// unit this Web App is on supports Swift integration.</param>
-        public SwiftVirtualNetwork(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string subnetResourceId = default(string), bool? swiftSupported = default(bool?))
-            : base(id, name, kind, type)
+        public SwiftVirtualNetwork(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string subnetResourceId = default(string), bool? swiftSupported = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             SubnetResourceId = subnetResourceId;
             SwiftSupported = swiftSupported;

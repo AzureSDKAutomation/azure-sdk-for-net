@@ -289,6 +289,58 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Create or update a certificate.
+            /// </summary>
+            /// <remarks>
+            /// Description for Create or update a certificate.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='certificateEnvelope'>
+            /// Details of certificate, if it exists already.
+            /// </param>
+            public static Certificate BeginCreateOrUpdate(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope)
+            {
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, name, certificateEnvelope).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update a certificate.
+            /// </summary>
+            /// <remarks>
+            /// Description for Create or update a certificate.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='certificateEnvelope'>
+            /// Details of certificate, if it exists already.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Certificate> BeginCreateOrUpdateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, certificateEnvelope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get all certificates for a subscription.
             /// </summary>
             /// <remarks>

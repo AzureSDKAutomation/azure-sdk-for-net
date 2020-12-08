@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="migrationOperationStatus">Status of the migration
         /// task. Possible values include: 'InProgress', 'Failed', 'Succeeded',
         /// 'TimedOut', 'Created'</param>
@@ -43,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// task.</param>
         /// <param name="localMySqlEnabled">True if the web app has in app
         /// MySql enabled</param>
-        public MigrateMySqlStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), OperationStatus? migrationOperationStatus = default(OperationStatus?), string operationId = default(string), bool? localMySqlEnabled = default(bool?))
-            : base(id, name, kind, type)
+        public MigrateMySqlStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), OperationStatus? migrationOperationStatus = default(OperationStatus?), string operationId = default(string), bool? localMySqlEnabled = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             MigrationOperationStatus = migrationOperationStatus;
             OperationId = operationId;

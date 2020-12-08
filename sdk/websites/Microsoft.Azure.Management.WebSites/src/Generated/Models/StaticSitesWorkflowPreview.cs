@@ -13,23 +13,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Preview for the Static Site Workflow to be generated
+    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class JwtClaimChecks : ProxyOnlyResource
+    public partial class StaticSitesWorkflowPreview : ProxyOnlyResource
     {
         /// <summary>
-        /// Initializes a new instance of the JwtClaimChecks class.
+        /// Initializes a new instance of the StaticSitesWorkflowPreview class.
         /// </summary>
-        public JwtClaimChecks()
+        public StaticSitesWorkflowPreview()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the JwtClaimChecks class.
+        /// Initializes a new instance of the StaticSitesWorkflowPreview class.
         /// </summary>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource Name.</param>
@@ -37,11 +38,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="systemData">The system metadata relating to this
         /// resource.</param>
-        public JwtClaimChecks(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> allowedGroups = default(IList<string>), IList<string> allowedClientApplications = default(IList<string>))
+        /// <param name="path">The path for the workflow file to be
+        /// generated</param>
+        /// <param name="contents">The contents for the workflow file to be
+        /// generated</param>
+        public StaticSitesWorkflowPreview(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string path = default(string), string contents = default(string))
             : base(id, name, kind, type, systemData)
         {
-            AllowedGroups = allowedGroups;
-            AllowedClientApplications = allowedClientApplications;
+            Path = path;
+            Contents = contents;
             CustomInit();
         }
 
@@ -51,14 +56,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets the path for the workflow file to be generated
         /// </summary>
-        [JsonProperty(PropertyName = "properties.allowedGroups")]
-        public IList<string> AllowedGroups { get; set; }
+        [JsonProperty(PropertyName = "properties.path")]
+        public string Path { get; private set; }
 
         /// <summary>
+        /// Gets the contents for the workflow file to be generated
         /// </summary>
-        [JsonProperty(PropertyName = "properties.allowedClientApplications")]
-        public IList<string> AllowedClientApplications { get; set; }
+        [JsonProperty(PropertyName = "properties.contents")]
+        public string Contents { get; private set; }
 
     }
 }
