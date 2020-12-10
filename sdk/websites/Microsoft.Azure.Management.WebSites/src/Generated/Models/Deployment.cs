@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="status">Deployment status.</param>
         /// <param name="message">Details about deployment status.</param>
         /// <param name="author">Who authored the deployment.</param>
@@ -46,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="active">True if deployment is currently active, false
         /// if completed and null if not started.</param>
         /// <param name="details">Details on deployment.</param>
-        public Deployment(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? status = default(int?), string message = default(string), string author = default(string), string deployer = default(string), string authorEmail = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? active = default(bool?), string details = default(string))
-            : base(id, name, kind, type)
+        public Deployment(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), int? status = default(int?), string message = default(string), string author = default(string), string deployer = default(string), string authorEmail = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? active = default(bool?), string details = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Status = status;
             Message = message;
