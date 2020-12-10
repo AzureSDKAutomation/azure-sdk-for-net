@@ -33,17 +33,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// </summary>
         /// <param name="appliedScopeType">Possible values include: 'Single',
         /// 'Shared'</param>
-        /// <param name="instanceFlexibility">Possible values include: 'On',
-        /// 'Off'</param>
-        /// <param name="name">Name of the Reservation</param>
-        public Patch(string appliedScopeType = default(string), IList<string> appliedScopes = default(IList<string>), string instanceFlexibility = default(string), string name = default(string), bool? renew = default(bool?), PatchPropertiesRenewProperties renewProperties = default(PatchPropertiesRenewProperties))
+        public Patch(string appliedScopeType = default(string), IList<string> appliedScopes = default(IList<string>))
         {
             AppliedScopeType = appliedScopeType;
             AppliedScopes = appliedScopes;
-            InstanceFlexibility = instanceFlexibility;
-            Name = name;
-            Renew = renew;
-            RenewProperties = renewProperties;
             CustomInit();
         }
 
@@ -62,28 +55,6 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.appliedScopes")]
         public IList<string> AppliedScopes { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'On', 'Off'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.instanceFlexibility")]
-        public string InstanceFlexibility { get; set; }
-
-        /// <summary>
-        /// Gets or sets name of the Reservation
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.renew")]
-        public bool? Renew { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.renewProperties")]
-        public PatchPropertiesRenewProperties RenewProperties { get; set; }
 
     }
 }

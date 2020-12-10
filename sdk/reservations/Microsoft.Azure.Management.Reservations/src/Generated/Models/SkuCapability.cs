@@ -13,30 +13,26 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Resource name provided by the resource provider. Use this property for
-    /// quotaRequest parameter.
-    /// </summary>
-    public partial class ResourceName
+    public partial class SkuCapability
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceName class.
+        /// Initializes a new instance of the SkuCapability class.
         /// </summary>
-        public ResourceName()
+        public SkuCapability()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceName class.
+        /// Initializes a new instance of the SkuCapability class.
         /// </summary>
-        /// <param name="value">Resource name.</param>
-        /// <param name="localizedValue">Resource display localized
-        /// name.</param>
-        public ResourceName(string value = default(string), string localizedValue = default(string))
+        /// <param name="name">An invariant to describe the feature.</param>
+        /// <param name="value">An invariant if the feature is measured by
+        /// quantity.</param>
+        public SkuCapability(string name = default(string), string value = default(string))
         {
+            Name = name;
             Value = value;
-            LocalizedValue = localizedValue;
             CustomInit();
         }
 
@@ -46,16 +42,16 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource name.
+        /// Gets or sets an invariant to describe the feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets an invariant if the feature is measured by quantity.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
-
-        /// <summary>
-        /// Gets resource display localized name.
-        /// </summary>
-        [JsonProperty(PropertyName = "localizedValue")]
-        public string LocalizedValue { get; private set; }
 
     }
 }
