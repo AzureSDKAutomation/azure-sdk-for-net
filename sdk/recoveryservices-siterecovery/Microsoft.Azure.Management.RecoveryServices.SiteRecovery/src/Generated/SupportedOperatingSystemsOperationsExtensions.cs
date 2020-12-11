@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     public static partial class SupportedOperatingSystemsOperationsExtensions
     {
             /// <summary>
-            /// Gets the data of supported OSes by SRS.
+            /// Gets the data of supported operating systems by SRS.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
 
             /// <summary>
-            /// Gets the data of supported OSes by SRS.
+            /// Gets the data of supported operating systems by SRS.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

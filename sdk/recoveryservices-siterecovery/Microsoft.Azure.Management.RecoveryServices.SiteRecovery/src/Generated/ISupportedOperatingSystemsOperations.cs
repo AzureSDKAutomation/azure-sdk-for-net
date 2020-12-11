@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     public partial interface ISupportedOperatingSystemsOperations
     {
         /// <summary>
-        /// Gets the data of supported OSes by SRS.
+        /// Gets the data of supported operating systems by SRS.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

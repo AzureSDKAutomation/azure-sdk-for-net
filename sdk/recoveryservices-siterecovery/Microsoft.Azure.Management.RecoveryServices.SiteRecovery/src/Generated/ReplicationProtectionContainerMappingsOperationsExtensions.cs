@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
 
             /// <summary>
-            /// Gets a protection container mapping/
+            /// Gets a protection container mapping.
             /// </summary>
             /// <remarks>
             /// Gets the details of a protection container mapping.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
 
             /// <summary>
-            /// Gets a protection container mapping/
+            /// Gets a protection container mapping.
             /// </summary>
             /// <remarks>
             /// Gets the details of a protection container mapping.
