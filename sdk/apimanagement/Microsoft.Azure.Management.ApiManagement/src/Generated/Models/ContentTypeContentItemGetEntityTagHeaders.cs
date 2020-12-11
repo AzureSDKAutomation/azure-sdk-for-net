@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for ListSecrets operation.
+    /// Defines headers for GetEntityTag operation.
     /// </summary>
-    public partial class TenantAccessGitListSecretsHeaders
+    public partial class ContentTypeContentItemGetEntityTagHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the TenantAccessGitListSecretsHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// ContentTypeContentItemGetEntityTagHeaders class.
         /// </summary>
-        public TenantAccessGitListSecretsHeaders()
+        public ContentTypeContentItemGetEntityTagHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TenantAccessGitListSecretsHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// ContentTypeContentItemGetEntityTagHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public TenantAccessGitListSecretsHeaders(string eTag = default(string))
+        public ContentTypeContentItemGetEntityTagHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();
