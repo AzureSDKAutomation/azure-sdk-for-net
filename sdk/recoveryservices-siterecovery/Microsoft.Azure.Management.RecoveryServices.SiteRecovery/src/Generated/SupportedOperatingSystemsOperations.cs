@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public SiteRecoveryManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the data of supported OSes by SRS.
+        /// Gets the data of supported operating systems by SRS.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

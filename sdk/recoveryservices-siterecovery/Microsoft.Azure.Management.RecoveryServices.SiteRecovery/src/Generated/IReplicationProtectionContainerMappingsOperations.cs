@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </exception>
         Task<AzureOperationResponse<IPage<ProtectionContainerMapping>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string fabricName, string protectionContainerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a protection container mapping/
+        /// Gets a protection container mapping.
         /// </summary>
         /// <remarks>
         /// Gets the details of a protection container mapping.
