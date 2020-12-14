@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="extendedLocation">The extended location of the custom
+        /// IP prefix.</param>
         /// <param name="cidr">The prefix range in CIDR notation. Should
         /// include the start address and the prefix length.</param>
         /// <param name="commissionedState">The commissioned state of the
@@ -52,18 +54,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// custom IP prefix resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="edgeZone">The edge zone of the custom IP
+        /// prefix.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public CustomIpPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string cidr = default(string), string commissionedState = default(string), IList<SubResource> publicIpPrefixes = default(IList<SubResource>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public CustomIpPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string cidr = default(string), string commissionedState = default(string), IList<SubResource> publicIpPrefixes = default(IList<SubResource>), string resourceGuid = default(string), string provisioningState = default(string), string edgeZone = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(id, name, type, location, tags)
         {
+            ExtendedLocation = extendedLocation;
             Cidr = cidr;
             CommissionedState = commissionedState;
             PublicIpPrefixes = publicIpPrefixes;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            EdgeZone = edgeZone;
             Etag = etag;
             Zones = zones;
             CustomInit();
@@ -73,6 +79,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the extended location of the custom IP prefix.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the prefix range in CIDR notation. Should include the
@@ -111,6 +123,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets the edge zone of the custom IP prefix.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edgeZone")]
+        public string EdgeZone { get; set; }
+
+        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
@@ -124,5 +142,18 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ExtendedLocation != null)
+            {
+                ExtendedLocation.Validate();
+            }
+        }
     }
 }
