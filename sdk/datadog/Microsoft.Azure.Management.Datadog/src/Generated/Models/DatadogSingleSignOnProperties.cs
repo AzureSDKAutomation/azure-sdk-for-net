@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Management.Datadog.Models
         public string EnterpriseAppId { get; set; }
 
         /// <summary>
-        /// Gets or sets the login URL specific to this Datadog Organization.
+        /// Gets the login URL specific to this Datadog Organization.
         /// </summary>
         [JsonProperty(PropertyName = "singleSignOnUrl")]
-        public string SingleSignOnUrl { get; set; }
+        public string SingleSignOnUrl { get; private set; }
 
     }
 }
