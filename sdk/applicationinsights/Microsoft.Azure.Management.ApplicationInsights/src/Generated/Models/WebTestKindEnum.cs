@@ -16,43 +16,55 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for WebTestKind.
+    /// Defines values for WebTestKindEnum.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum WebTestKind
+    public enum WebTestKindEnum
     {
         [EnumMember(Value = "ping")]
         Ping,
         [EnumMember(Value = "multistep")]
-        Multistep
+        Multistep,
+        [EnumMember(Value = "basic")]
+        Basic,
+        [EnumMember(Value = "standard")]
+        Standard
     }
-    internal static class WebTestKindEnumExtension
+    internal static class WebTestKindEnumEnumExtension
     {
-        internal static string ToSerializedValue(this WebTestKind? value)
+        internal static string ToSerializedValue(this WebTestKindEnum? value)
         {
-            return value == null ? null : ((WebTestKind)value).ToSerializedValue();
+            return value == null ? null : ((WebTestKindEnum)value).ToSerializedValue();
         }
 
-        internal static string ToSerializedValue(this WebTestKind value)
+        internal static string ToSerializedValue(this WebTestKindEnum value)
         {
             switch( value )
             {
-                case WebTestKind.Ping:
+                case WebTestKindEnum.Ping:
                     return "ping";
-                case WebTestKind.Multistep:
+                case WebTestKindEnum.Multistep:
                     return "multistep";
+                case WebTestKindEnum.Basic:
+                    return "basic";
+                case WebTestKindEnum.Standard:
+                    return "standard";
             }
             return null;
         }
 
-        internal static WebTestKind? ParseWebTestKind(this string value)
+        internal static WebTestKindEnum? ParseWebTestKindEnum(this string value)
         {
             switch( value )
             {
                 case "ping":
-                    return WebTestKind.Ping;
+                    return WebTestKindEnum.Ping;
                 case "multistep":
-                    return WebTestKind.Multistep;
+                    return WebTestKindEnum.Multistep;
+                case "basic":
+                    return WebTestKindEnum.Basic;
+                case "standard":
+                    return WebTestKindEnum.Standard;
             }
             return null;
         }

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management
+namespace Microsoft.Azure.Management.ApplicationInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='webTestName'>
-        /// The name of the Application Insights webtest resource.
+        /// The name of the Application Insights WebTest resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='webTestName'>
-        /// The name of the Application Insights webtest resource.
+        /// The name of the Application Insights WebTest resource.
         /// </param>
         /// <param name='webTestDefinition'>
         /// Properties that need to be specified to create or update an
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='webTestName'>
-        /// The name of the Application Insights webtest resource.
+        /// The name of the Application Insights WebTest resource.
         /// </param>
         /// <param name='tags'>
         /// Resource tags
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='webTestName'>
-        /// The name of the Application Insights webtest resource.
+        /// The name of the Application Insights WebTest resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

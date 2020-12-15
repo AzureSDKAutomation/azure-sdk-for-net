@@ -8,13 +8,13 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
+namespace Microsoft.Azure.Management.ApplicationInsights.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Geo-physical location to run a web test from. You must specify one or
+    /// Geo-physical location to run a WebTest from. You must specify one or
     /// more locations for the test to run from.
     /// </summary>
     public partial class WebTestGeolocation
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         /// <summary>
         /// Initializes a new instance of the WebTestGeolocation class.
         /// </summary>
-        /// <param name="location">Location ID for the webtest to run
+        /// <param name="location">Location ID for the WebTest to run
         /// from.</param>
         public WebTestGeolocation(string location = default(string))
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets location ID for the webtest to run from.
+        /// Gets or sets location ID for the WebTest to run from.
         /// </summary>
         [JsonProperty(PropertyName = "Id")]
         public string Location { get; set; }

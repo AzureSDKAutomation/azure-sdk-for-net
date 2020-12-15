@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
+namespace Microsoft.Azure.Management.ApplicationInsights.Models
 {
     using Newtonsoft.Json;
     using System.Collections;

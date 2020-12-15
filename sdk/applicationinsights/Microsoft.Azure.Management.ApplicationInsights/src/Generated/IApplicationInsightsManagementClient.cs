@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management
+namespace Microsoft.Azure.Management.ApplicationInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -70,84 +75,9 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IAnnotationsOperations.
-        /// </summary>
-        IAnnotationsOperations Annotations { get; }
-
-        /// <summary>
-        /// Gets the IAPIKeysOperations.
-        /// </summary>
-        IAPIKeysOperations APIKeys { get; }
-
-        /// <summary>
-        /// Gets the IExportConfigurationsOperations.
-        /// </summary>
-        IExportConfigurationsOperations ExportConfigurations { get; }
-
-        /// <summary>
-        /// Gets the IComponentCurrentBillingFeaturesOperations.
-        /// </summary>
-        IComponentCurrentBillingFeaturesOperations ComponentCurrentBillingFeatures { get; }
-
-        /// <summary>
-        /// Gets the IComponentQuotaStatusOperations.
-        /// </summary>
-        IComponentQuotaStatusOperations ComponentQuotaStatus { get; }
-
-        /// <summary>
-        /// Gets the IComponentFeatureCapabilitiesOperations.
-        /// </summary>
-        IComponentFeatureCapabilitiesOperations ComponentFeatureCapabilities { get; }
-
-        /// <summary>
-        /// Gets the IComponentAvailableFeaturesOperations.
-        /// </summary>
-        IComponentAvailableFeaturesOperations ComponentAvailableFeatures { get; }
-
-        /// <summary>
-        /// Gets the IProactiveDetectionConfigurationsOperations.
-        /// </summary>
-        IProactiveDetectionConfigurationsOperations ProactiveDetectionConfigurations { get; }
-
-        /// <summary>
-        /// Gets the IWorkItemConfigurationsOperations.
-        /// </summary>
-        IWorkItemConfigurationsOperations WorkItemConfigurations { get; }
-
-        /// <summary>
-        /// Gets the IFavoritesOperations.
-        /// </summary>
-        IFavoritesOperations Favorites { get; }
-
-        /// <summary>
-        /// Gets the IWebTestLocationsOperations.
-        /// </summary>
-        IWebTestLocationsOperations WebTestLocations { get; }
-
-        /// <summary>
         /// Gets the IWebTestsOperations.
         /// </summary>
         IWebTestsOperations WebTests { get; }
-
-        /// <summary>
-        /// Gets the IAnalyticsItemsOperations.
-        /// </summary>
-        IAnalyticsItemsOperations AnalyticsItems { get; }
-
-        /// <summary>
-        /// Gets the IWorkbooksOperations.
-        /// </summary>
-        IWorkbooksOperations Workbooks { get; }
-
-        /// <summary>
-        /// Gets the IComponentsOperations.
-        /// </summary>
-        IComponentsOperations Components { get; }
-
-        /// <summary>
-        /// Gets the IComponentLinkedStorageAccountsOperations.
-        /// </summary>
-        IComponentLinkedStorageAccountsOperations ComponentLinkedStorageAccounts { get; }
 
     }
 }

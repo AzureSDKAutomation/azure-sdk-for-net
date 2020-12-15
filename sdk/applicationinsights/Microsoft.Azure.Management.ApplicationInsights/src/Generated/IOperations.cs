@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management
+namespace Microsoft.Azure.Management.ApplicationInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -24,15 +24,19 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
     public partial interface IOperations
     {
         /// <summary>
-        /// Lists all of the available insights REST API operations.
+        /// List available operations.
         /// </summary>
+        /// <remarks>
+        /// List the available operations supported by the Microsoft.EventGrid
+        /// resource provider.
+        /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -43,8 +47,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// </exception>
         Task<AzureOperationResponse<IPage<Operation>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all of the available insights REST API operations.
+        /// List available operations.
         /// </summary>
+        /// <remarks>
+        /// List the available operations supported by the Microsoft.EventGrid
+        /// resource provider.
+        /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -54,7 +62,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

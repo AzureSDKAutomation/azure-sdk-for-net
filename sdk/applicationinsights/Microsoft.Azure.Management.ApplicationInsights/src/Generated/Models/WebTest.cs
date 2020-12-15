@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
+namespace Microsoft.Azure.Management.ApplicationInsights.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
     using System.Linq;
 
     /// <summary>
-    /// An Application Insights web test definition.
+    /// An Application Insights WebTest definition.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class WebTest : WebtestsResource
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         /// <param name="webTestName">User defined name if this
         /// WebTest.</param>
         /// <param name="webTestKind">The kind of web test this is, valid
-        /// choices are ping and multistep. Possible values include: 'ping',
-        /// 'multistep'</param>
+        /// choices are ping, multistep, basic, and standard. Possible values
+        /// include: 'ping', 'multistep', 'basic', 'standard'</param>
         /// <param name="locations">A list of where to physically run the tests
         /// from to give global coverage for accessibility of your
         /// application.</param>
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="kind">The kind of web test that this web test watches.
+        /// <param name="kind">The kind of WebTest that this web test watches.
         /// Choices are ping and multistep. Possible values include: 'ping',
         /// 'multistep'</param>
-        /// <param name="description">Purpose/user defined descriptive test for
-        /// this WebTest.</param>
+        /// <param name="description">User defined description for this
+        /// WebTest.</param>
         /// <param name="enabled">Is the test actively being monitored.</param>
         /// <param name="frequency">Interval in seconds between test runs for
         /// this WebTest. Default value is 300.</param>
@@ -68,7 +68,19 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         /// is defined. Users cannot change this value but are able to read
         /// from it. Values will include Succeeded, Deploying, Canceled, and
         /// Failed.</param>
-        public WebTest(string location, string syntheticMonitorId, string webTestName, WebTestKind webTestKind, IList<WebTestGeolocation> locations, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), WebTestKind? kind = default(WebTestKind?), string description = default(string), bool? enabled = default(bool?), int? frequency = default(int?), int? timeout = default(int?), bool? retryEnabled = default(bool?), WebTestPropertiesConfiguration configuration = default(WebTestPropertiesConfiguration), string provisioningState = default(string))
+        /// <param name="request">The collection of request properties</param>
+        /// <param name="contentValidation">The collection of content
+        /// validation properties</param>
+        /// <param name="sSLCheck">Checks to see if the SSL cert is still
+        /// valid.</param>
+        /// <param name="sSLCertRemainingLifetimeCheck">A number of days to
+        /// check still remain before the the existing SSL cert
+        /// expires.</param>
+        /// <param name="expectedHttpStatusCode">Validate that the WebTest
+        /// returns the http status code provided.</param>
+        /// <param name="ignoreHttpsStatusCode">When set, validation will
+        /// ignore the status code.</param>
+        public WebTest(string location, string syntheticMonitorId, string webTestName, WebTestKindEnum webTestKind, IList<WebTestGeolocation> locations, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), WebTestKind? kind = default(WebTestKind?), string description = default(string), bool? enabled = default(bool?), int? frequency = default(int?), int? timeout = default(int?), bool? retryEnabled = default(bool?), WebTestPropertiesConfiguration configuration = default(WebTestPropertiesConfiguration), string provisioningState = default(string), WebTestPropertiesRequest request = default(WebTestPropertiesRequest), WebTestPropertiesContentValidation contentValidation = default(WebTestPropertiesContentValidation), bool? sSLCheck = default(bool?), int? sSLCertRemainingLifetimeCheck = default(int?), int? expectedHttpStatusCode = default(int?), bool? ignoreHttpsStatusCode = default(bool?))
             : base(location, id, name, type, tags)
         {
             Kind = kind;
@@ -83,6 +95,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
             Locations = locations;
             Configuration = configuration;
             ProvisioningState = provisioningState;
+            Request = request;
+            ContentValidation = contentValidation;
+            SSLCheck = sSLCheck;
+            SSLCertRemainingLifetimeCheck = sSLCertRemainingLifetimeCheck;
+            ExpectedHttpStatusCode = expectedHttpStatusCode;
+            IgnoreHttpsStatusCode = ignoreHttpsStatusCode;
             CustomInit();
         }
 
@@ -92,7 +110,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the kind of web test that this web test watches.
+        /// Gets or sets the kind of WebTest that this web test watches.
         /// Choices are ping and multistep. Possible values include: 'ping',
         /// 'multistep'
         /// </summary>
@@ -113,8 +131,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         public string WebTestName { get; set; }
 
         /// <summary>
-        /// Gets or sets purpose/user defined descriptive test for this
-        /// WebTest.
+        /// Gets or sets user defined description for this WebTest.
         /// </summary>
         [JsonProperty(PropertyName = "properties.Description")]
         public string Description { get; set; }
@@ -140,11 +157,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         public int? Timeout { get; set; }
 
         /// <summary>
-        /// Gets or sets the kind of web test this is, valid choices are ping
-        /// and multistep. Possible values include: 'ping', 'multistep'
+        /// Gets or sets the kind of web test this is, valid choices are ping,
+        /// multistep, basic, and standard. Possible values include: 'ping',
+        /// 'multistep', 'basic', 'standard'
         /// </summary>
         [JsonProperty(PropertyName = "properties.Kind")]
-        public WebTestKind WebTestKind { get; set; }
+        public WebTestKindEnum WebTestKind { get; set; }
 
         /// <summary>
         /// Gets or sets allow for retries should this WebTest fail.
@@ -173,6 +191,44 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the collection of request properties
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.Request")]
+        public WebTestPropertiesRequest Request { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of content validation properties
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ContentValidation")]
+        public WebTestPropertiesContentValidation ContentValidation { get; set; }
+
+        /// <summary>
+        /// Gets or sets checks to see if the SSL cert is still valid.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.SSLCheck")]
+        public bool? SSLCheck { get; set; }
+
+        /// <summary>
+        /// Gets or sets a number of days to check still remain before the the
+        /// existing SSL cert expires.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.SSLCertRemainingLifetimeCheck")]
+        public int? SSLCertRemainingLifetimeCheck { get; set; }
+
+        /// <summary>
+        /// Gets or sets validate that the WebTest returns the http status code
+        /// provided.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ExpectedHttpStatusCode")]
+        public int? ExpectedHttpStatusCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets when set, validation will ignore the status code.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.IgnoreHttpsStatusCode")]
+        public bool? IgnoreHttpsStatusCode { get; set; }
 
         /// <summary>
         /// Validate the object.
