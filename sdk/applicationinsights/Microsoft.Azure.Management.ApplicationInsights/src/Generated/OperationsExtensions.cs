@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management
+namespace Microsoft.Azure.Management.ApplicationInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -22,8 +22,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
     public static partial class OperationsExtensions
     {
             /// <summary>
-            /// Lists all of the available insights REST API operations.
+            /// List available operations.
             /// </summary>
+            /// <remarks>
+            /// List the available operations supported by the Microsoft.EventGrid resource
+            /// provider.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -33,8 +37,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             }
 
             /// <summary>
-            /// Lists all of the available insights REST API operations.
+            /// List available operations.
             /// </summary>
+            /// <remarks>
+            /// List the available operations supported by the Microsoft.EventGrid resource
+            /// provider.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -50,8 +58,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             }
 
             /// <summary>
-            /// Lists all of the available insights REST API operations.
+            /// List available operations.
             /// </summary>
+            /// <remarks>
+            /// List the available operations supported by the Microsoft.EventGrid resource
+            /// provider.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -64,8 +76,12 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             }
 
             /// <summary>
-            /// Lists all of the available insights REST API operations.
+            /// List available operations.
             /// </summary>
+            /// <remarks>
+            /// List the available operations supported by the Microsoft.EventGrid resource
+            /// provider.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management
+namespace Microsoft.Azure.Management.ApplicationInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             public static WebTest Get(this IWebTestsOperations operations, string resourceGroupName, string webTestName)
             {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             /// <param name='webTestDefinition'>
             /// Properties that need to be specified to create or update an Application
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             /// <param name='webTestDefinition'>
             /// Properties that need to be specified to create or update an Application
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             /// <param name='tags'>
             /// Resource tags
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             /// <param name='tags'>
             /// Resource tags
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             public static void Delete(this IWebTestsOperations operations, string resourceGroupName, string webTestName)
             {
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
             /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='webTestName'>
-            /// The name of the Application Insights webtest resource.
+            /// The name of the Application Insights WebTest resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

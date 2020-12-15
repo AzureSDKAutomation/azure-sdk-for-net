@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management
+namespace Microsoft.Azure.Management.ApplicationInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -75,84 +80,9 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IAnnotationsOperations.
-        /// </summary>
-        public virtual IAnnotationsOperations Annotations { get; private set; }
-
-        /// <summary>
-        /// Gets the IAPIKeysOperations.
-        /// </summary>
-        public virtual IAPIKeysOperations APIKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IExportConfigurationsOperations.
-        /// </summary>
-        public virtual IExportConfigurationsOperations ExportConfigurations { get; private set; }
-
-        /// <summary>
-        /// Gets the IComponentCurrentBillingFeaturesOperations.
-        /// </summary>
-        public virtual IComponentCurrentBillingFeaturesOperations ComponentCurrentBillingFeatures { get; private set; }
-
-        /// <summary>
-        /// Gets the IComponentQuotaStatusOperations.
-        /// </summary>
-        public virtual IComponentQuotaStatusOperations ComponentQuotaStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IComponentFeatureCapabilitiesOperations.
-        /// </summary>
-        public virtual IComponentFeatureCapabilitiesOperations ComponentFeatureCapabilities { get; private set; }
-
-        /// <summary>
-        /// Gets the IComponentAvailableFeaturesOperations.
-        /// </summary>
-        public virtual IComponentAvailableFeaturesOperations ComponentAvailableFeatures { get; private set; }
-
-        /// <summary>
-        /// Gets the IProactiveDetectionConfigurationsOperations.
-        /// </summary>
-        public virtual IProactiveDetectionConfigurationsOperations ProactiveDetectionConfigurations { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkItemConfigurationsOperations.
-        /// </summary>
-        public virtual IWorkItemConfigurationsOperations WorkItemConfigurations { get; private set; }
-
-        /// <summary>
-        /// Gets the IFavoritesOperations.
-        /// </summary>
-        public virtual IFavoritesOperations Favorites { get; private set; }
-
-        /// <summary>
-        /// Gets the IWebTestLocationsOperations.
-        /// </summary>
-        public virtual IWebTestLocationsOperations WebTestLocations { get; private set; }
-
-        /// <summary>
         /// Gets the IWebTestsOperations.
         /// </summary>
         public virtual IWebTestsOperations WebTests { get; private set; }
-
-        /// <summary>
-        /// Gets the IAnalyticsItemsOperations.
-        /// </summary>
-        public virtual IAnalyticsItemsOperations AnalyticsItems { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkbooksOperations.
-        /// </summary>
-        public virtual IWorkbooksOperations Workbooks { get; private set; }
-
-        /// <summary>
-        /// Gets the IComponentsOperations.
-        /// </summary>
-        public virtual IComponentsOperations Components { get; private set; }
-
-        /// <summary>
-        /// Gets the IComponentLinkedStorageAccountsOperations.
-        /// </summary>
-        public virtual IComponentLinkedStorageAccountsOperations ComponentLinkedStorageAccounts { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ApplicationInsightsManagementClient class.
@@ -396,23 +326,9 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management
         private void Initialize()
         {
             Operations = new Operations(this);
-            Annotations = new AnnotationsOperations(this);
-            APIKeys = new APIKeysOperations(this);
-            ExportConfigurations = new ExportConfigurationsOperations(this);
-            ComponentCurrentBillingFeatures = new ComponentCurrentBillingFeaturesOperations(this);
-            ComponentQuotaStatus = new ComponentQuotaStatusOperations(this);
-            ComponentFeatureCapabilities = new ComponentFeatureCapabilitiesOperations(this);
-            ComponentAvailableFeatures = new ComponentAvailableFeaturesOperations(this);
-            ProactiveDetectionConfigurations = new ProactiveDetectionConfigurationsOperations(this);
-            WorkItemConfigurations = new WorkItemConfigurationsOperations(this);
-            Favorites = new FavoritesOperations(this);
-            WebTestLocations = new WebTestLocationsOperations(this);
             WebTests = new WebTestsOperations(this);
-            AnalyticsItems = new AnalyticsItemsOperations(this);
-            Workbooks = new WorkbooksOperations(this);
-            Components = new ComponentsOperations(this);
-            ComponentLinkedStorageAccounts = new ComponentLinkedStorageAccountsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2020-10-05-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

@@ -8,13 +8,13 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
+namespace Microsoft.Azure.Management.ApplicationInsights.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// CDN REST API operation
+    /// Represents an operation returned by the GetOperations request
     /// </summary>
     public partial class Operation
     {
@@ -29,14 +29,16 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         /// <summary>
         /// Initializes a new instance of the Operation class.
         /// </summary>
-        /// <param name="name">Operation name:
-        /// {provider}/{resource}/{operation}</param>
-        /// <param name="display">The object that represents the
-        /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        /// <param name="name">Name of the operation</param>
+        /// <param name="display">Display name of the operation</param>
+        /// <param name="origin">Origin of the operation</param>
+        /// <param name="properties">Properties of the operation</param>
+        public Operation(string name = default(string), OperationInfo display = default(OperationInfo), string origin = default(string), object properties = default(object))
         {
             Name = name;
             Display = display;
+            Origin = origin;
+            Properties = properties;
             CustomInit();
         }
 
@@ -46,16 +48,28 @@ namespace Microsoft.Azure.Management.ApplicationInsights.Management.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets operation name: {provider}/{resource}/{operation}
+        /// Gets or sets name of the operation
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the object that represents the operation.
+        /// Gets or sets display name of the operation
         /// </summary>
         [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
+        public OperationInfo Display { get; set; }
+
+        /// <summary>
+        /// Gets or sets origin of the operation
+        /// </summary>
+        [JsonProperty(PropertyName = "origin")]
+        public string Origin { get; set; }
+
+        /// <summary>
+        /// Gets or sets properties of the operation
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public object Properties { get; set; }
 
     }
 }
