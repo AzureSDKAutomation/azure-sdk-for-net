@@ -61,7 +61,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
         /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM
         /// ID.</param>
-        public InMageAzureV2EnableProtectionInput(string masterTargetId = default(string), string processServerId = default(string), string storageAccountId = default(string), string runAsAccountId = default(string), string multiVmGroupId = default(string), string multiVmGroupName = default(string), IList<InMageAzureV2DiskInputDetails> disksToInclude = default(IList<InMageAzureV2DiskInputDetails>), string targetAzureNetworkId = default(string), string targetAzureSubnetId = default(string), string enableRdpOnTargetOption = default(string), string targetAzureVmName = default(string), string logStorageAccountId = default(string), string targetAzureV1ResourceGroupId = default(string), string targetAzureV2ResourceGroupId = default(string), string diskType = default(string), string diskEncryptionSetId = default(string))
+        /// <param name="targetAvailabilityZone">The target availability
+        /// zone.</param>
+        /// <param name="targetProximityPlacementGroupId">The proximity
+        /// placement group ARM Id.</param>
+        /// <param name="targetVmTags">The target VM tags.</param>
+        /// <param name="seedManagedDiskTags">The tags for the seed managed
+        /// disks.</param>
+        /// <param name="targetManagedDiskTags">The tags for the target managed
+        /// disks.</param>
+        /// <param name="targetNicTags">The tags for the target NICs.</param>
+        public InMageAzureV2EnableProtectionInput(string masterTargetId = default(string), string processServerId = default(string), string storageAccountId = default(string), string runAsAccountId = default(string), string multiVmGroupId = default(string), string multiVmGroupName = default(string), IList<InMageAzureV2DiskInputDetails> disksToInclude = default(IList<InMageAzureV2DiskInputDetails>), string targetAzureNetworkId = default(string), string targetAzureSubnetId = default(string), string enableRdpOnTargetOption = default(string), string targetAzureVmName = default(string), string logStorageAccountId = default(string), string targetAzureV1ResourceGroupId = default(string), string targetAzureV2ResourceGroupId = default(string), string diskType = default(string), string diskEncryptionSetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), IDictionary<string, string> targetVmTags = default(IDictionary<string, string>), IDictionary<string, string> seedManagedDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetManagedDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetNicTags = default(IDictionary<string, string>))
         {
             MasterTargetId = masterTargetId;
             ProcessServerId = processServerId;
@@ -79,6 +89,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             TargetAzureV2ResourceGroupId = targetAzureV2ResourceGroupId;
             DiskType = diskType;
             DiskEncryptionSetId = diskEncryptionSetId;
+            TargetAvailabilityZone = targetAvailabilityZone;
+            TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
+            TargetVmTags = targetVmTags;
+            SeedManagedDiskTags = seedManagedDiskTags;
+            TargetManagedDiskTags = targetManagedDiskTags;
+            TargetNicTags = targetNicTags;
             CustomInit();
         }
 
@@ -188,6 +204,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target availability zone.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetAvailabilityZone")]
+        public string TargetAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the proximity placement group ARM Id.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetProximityPlacementGroupId")]
+        public string TargetProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM tags.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetVmTags")]
+        public IDictionary<string, string> TargetVmTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the seed managed disks.
+        /// </summary>
+        [JsonProperty(PropertyName = "seedManagedDiskTags")]
+        public IDictionary<string, string> SeedManagedDiskTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target managed disks.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetManagedDiskTags")]
+        public IDictionary<string, string> TargetManagedDiskTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetNicTags")]
+        public IDictionary<string, string> TargetNicTags { get; set; }
 
     }
 }
