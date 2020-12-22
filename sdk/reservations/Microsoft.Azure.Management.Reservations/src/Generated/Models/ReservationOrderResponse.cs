@@ -42,14 +42,17 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// reservation was created.</param>
         /// <param name="expiryDate">This is the date when the Reservation will
         /// expire.</param>
+        /// <param name="originalQuantity">Total Quantity of the SKUs purchased
+        /// in the Reservation.</param>
         /// <param name="term">Possible values include: 'P1Y', 'P3Y'</param>
-        /// <param name="provisioningState">Current state of the
-        /// reservation.</param>
-        /// <param name="billingPlan">Possible values include: 'Upfront',
-        /// 'Monthly'</param>
+        /// <param name="provisioningState">Possible values include:
+        /// 'Creating', 'PendingResourceHold', 'ConfirmedResourceHold',
+        /// 'PendingBilling', 'ConfirmedBilling', 'Created', 'Succeeded',
+        /// 'Cancelled', 'Expired', 'BillingFailed', 'Failed', 'Split',
+        /// 'Merged'</param>
         /// <param name="type">Type of resource.
         /// "Microsoft.Capacity/reservations"</param>
-        public ReservationOrderResponse(int? etag = default(int?), string id = default(string), string name = default(string), string displayName = default(string), System.DateTime? requestDateTime = default(System.DateTime?), System.DateTime? createdDateTime = default(System.DateTime?), System.DateTime? expiryDate = default(System.DateTime?), int? originalQuantity = default(int?), string term = default(string), string provisioningState = default(string), string billingPlan = default(string), ReservationOrderBillingPlanInformation planInformation = default(ReservationOrderBillingPlanInformation), IList<ReservationResponse> reservationsProperty = default(IList<ReservationResponse>), string type = default(string))
+        public ReservationOrderResponse(int? etag = default(int?), string id = default(string), string name = default(string), string displayName = default(string), System.DateTime? requestDateTime = default(System.DateTime?), System.DateTime? createdDateTime = default(System.DateTime?), System.DateTime? expiryDate = default(System.DateTime?), int? originalQuantity = default(int?), string term = default(string), string provisioningState = default(string), IList<ReservationResponse> reservationsProperty = default(IList<ReservationResponse>), string type = default(string))
         {
             Etag = etag;
             Id = id;
@@ -61,8 +64,6 @@ namespace Microsoft.Azure.Management.Reservations.Models
             OriginalQuantity = originalQuantity;
             Term = term;
             ProvisioningState = provisioningState;
-            BillingPlan = billingPlan;
-            PlanInformation = planInformation;
             ReservationsProperty = reservationsProperty;
             Type = type;
             CustomInit();
@@ -118,6 +119,8 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public System.DateTime? ExpiryDate { get; set; }
 
         /// <summary>
+        /// Gets or sets total Quantity of the SKUs purchased in the
+        /// Reservation.
         /// </summary>
         [JsonProperty(PropertyName = "properties.originalQuantity")]
         public int? OriginalQuantity { get; set; }
@@ -129,21 +132,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string Term { get; set; }
 
         /// <summary>
-        /// Gets or sets current state of the reservation.
+        /// Gets or sets possible values include: 'Creating',
+        /// 'PendingResourceHold', 'ConfirmedResourceHold', 'PendingBilling',
+        /// 'ConfirmedBilling', 'Created', 'Succeeded', 'Cancelled', 'Expired',
+        /// 'BillingFailed', 'Failed', 'Split', 'Merged'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'Upfront', 'Monthly'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.billingPlan")]
-        public string BillingPlan { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.planInformation")]
-        public ReservationOrderBillingPlanInformation PlanInformation { get; set; }
 
         /// <summary>
         /// </summary>
