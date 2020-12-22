@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// is set to `recover`, access policies are not required. Otherwise,
         /// access policies are required.</param>
         /// <param name="vaultUri">The URI of the vault for performing
-        /// operations on keys and secrets.</param>
+        /// operations on keys and secrets. This property is readonly</param>
         /// <param name="enabledForDeployment">Property to specify whether
         /// Azure Virtual Machines are permitted to retrieve certificates
         /// stored as secrets from the key vault.</param>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <summary>
         /// Gets or sets the URI of the vault for performing operations on keys
-        /// and secrets.
+        /// and secrets. This property is readonly
         /// </summary>
         [JsonProperty(PropertyName = "vaultUri")]
         public string VaultUri { get; set; }
