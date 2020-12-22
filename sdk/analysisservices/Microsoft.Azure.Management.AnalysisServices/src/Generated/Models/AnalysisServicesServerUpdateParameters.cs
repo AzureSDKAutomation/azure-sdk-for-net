@@ -57,7 +57,9 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity
         /// is 1 results in error. Possible values include: 'All',
         /// 'ReadOnly'</param>
-        public AnalysisServicesServerUpdateParameters(ResourceSku sku = default(ResourceSku), IDictionary<string, string> tags = default(IDictionary<string, string>), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IPv4FirewallSettings ipV4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?))
+        /// <param name="managedMode">The managed mode of the server (0 = not
+        /// managed, 1 = managed).</param>
+        public AnalysisServicesServerUpdateParameters(ResourceSku sku = default(ResourceSku), IDictionary<string, string> tags = default(IDictionary<string, string>), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IPv4FirewallSettings ipV4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), int? managedMode = default(int?))
         {
             Sku = sku;
             Tags = tags;
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
             GatewayDetails = gatewayDetails;
             IpV4FirewallSettings = ipV4FirewallSettings;
             QuerypoolConnectionMode = querypoolConnectionMode;
+            ManagedMode = managedMode;
             CustomInit();
         }
 
@@ -123,6 +126,13 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.querypoolConnectionMode")]
         public ConnectionMode? QuerypoolConnectionMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed mode of the server (0 = not managed, 1 =
+        /// managed).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.managedMode")]
+        public int? ManagedMode { get; set; }
 
         /// <summary>
         /// Validate the object.
