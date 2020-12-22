@@ -63,6 +63,8 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity
         /// is 1 results in error. Possible values include: 'All',
         /// 'ReadOnly'</param>
+        /// <param name="managedMode">The managed mode of the server (0 = not
+        /// managed, 1 = managed).</param>
         /// <param name="state">The current state of Analysis Services
         /// resource. The state is to indicate more states outside of resource
         /// provisioning. Possible values include: 'Deleting', 'Succeeded',
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// 'Preparing', 'Scaling'</param>
         /// <param name="serverFullName">The full name of the Analysis Services
         /// resource.</param>
-        public AnalysisServicesServer(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IPv4FirewallSettings ipV4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), string state = default(string), string provisioningState = default(string), string serverFullName = default(string))
+        public AnalysisServicesServer(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IPv4FirewallSettings ipV4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), int? managedMode = default(int?), string state = default(string), string provisioningState = default(string), string serverFullName = default(string))
             : base(location, sku, id, name, type, tags)
         {
             AsAdministrators = asAdministrators;
@@ -84,6 +86,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
             GatewayDetails = gatewayDetails;
             IpV4FirewallSettings = ipV4FirewallSettings;
             QuerypoolConnectionMode = querypoolConnectionMode;
+            ManagedMode = managedMode;
             State = state;
             ProvisioningState = provisioningState;
             ServerFullName = serverFullName;
@@ -132,6 +135,13 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.querypoolConnectionMode")]
         public ConnectionMode? QuerypoolConnectionMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed mode of the server (0 = not managed, 1 =
+        /// managed).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.managedMode")]
+        public int? ManagedMode { get; set; }
 
         /// <summary>
         /// Gets the current state of Analysis Services resource. The state is
