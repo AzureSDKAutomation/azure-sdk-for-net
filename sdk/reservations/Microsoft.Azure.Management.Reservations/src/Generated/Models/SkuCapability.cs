@@ -13,29 +13,26 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Currency and amount that customer will be charged in customer's local
-    /// currency for renewal purchase. Tax is not included.
-    /// </summary>
-    public partial class RenewPropertiesResponseBillingCurrencyTotal
+    public partial class SkuCapability
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// RenewPropertiesResponseBillingCurrencyTotal class.
+        /// Initializes a new instance of the SkuCapability class.
         /// </summary>
-        public RenewPropertiesResponseBillingCurrencyTotal()
+        public SkuCapability()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// RenewPropertiesResponseBillingCurrencyTotal class.
+        /// Initializes a new instance of the SkuCapability class.
         /// </summary>
-        public RenewPropertiesResponseBillingCurrencyTotal(string currencyCode = default(string), double? amount = default(double?))
+        /// <param name="name">An invariant to describe the feature.</param>
+        /// <param name="value">An invariant if the feature is measured by
+        /// quantity.</param>
+        public SkuCapability(string name = default(string), string value = default(string))
         {
-            CurrencyCode = currencyCode;
-            Amount = amount;
+            Name = name;
+            Value = value;
             CustomInit();
         }
 
@@ -45,14 +42,16 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets an invariant to describe the feature.
         /// </summary>
-        [JsonProperty(PropertyName = "currencyCode")]
-        public string CurrencyCode { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets an invariant if the feature is measured by quantity.
         /// </summary>
-        [JsonProperty(PropertyName = "amount")]
-        public double? Amount { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
 
     }
 }
