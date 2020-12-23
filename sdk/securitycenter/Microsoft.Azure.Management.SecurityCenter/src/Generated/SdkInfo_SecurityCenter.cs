@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Management.Security
                 new Tuple<string, string, string>("Security", "IotSecuritySolutionsAnalyticsAggregatedAlert", "2019-08-01"),
                 new Tuple<string, string, string>("Security", "IotSecuritySolutionsAnalyticsRecommendation", "2019-08-01"),
                 new Tuple<string, string, string>("Security", "IotSensors", "2020-08-06-preview"),
+                new Tuple<string, string, string>("Security", "IotSites", "2020-08-06-preview"),
                 new Tuple<string, string, string>("Security", "JitNetworkAccessPolicies", "2020-01-01"),
                 new Tuple<string, string, string>("Security", "Locations", "2015-06-01-preview"),
                 new Tuple<string, string, string>("Security", "OnPremiseIotSensors", "2020-08-06-preview"),
@@ -80,16 +81,5 @@ namespace Microsoft.Azure.Management.Security
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "v2";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4413";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/security/resource-manager/readme.md --csharp --version=v2 --reflect-api-versions --csharp-sdks-folder=C:\\Rome\\apiVteam\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "32b4d058d54d206bdf6b336677a3182feab7c07b";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-
