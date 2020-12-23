@@ -66,11 +66,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// public IP address resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="edgeZone">The edge zone of the public IP
+        /// address.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public PublicIPAddress(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPAddressSku sku = default(PublicIPAddressSku), string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), IPConfiguration ipConfiguration = default(IPConfiguration), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), DdosSettings ddosSettings = default(DdosSettings), IList<IpTag> ipTags = default(IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public PublicIPAddress(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPAddressSku sku = default(PublicIPAddressSku), string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), IPConfiguration ipConfiguration = default(IPConfiguration), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), DdosSettings ddosSettings = default(DdosSettings), IList<IpTag> ipTags = default(IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), string edgeZone = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
@@ -86,6 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            EdgeZone = edgeZone;
             Etag = etag;
             Zones = zones;
             CustomInit();
@@ -182,6 +185,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the edge zone of the public IP address.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edgeZone")]
+        public string EdgeZone { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
