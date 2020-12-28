@@ -105,11 +105,6 @@ namespace Microsoft.Azure.Management.Storage
         public virtual IManagementPoliciesOperations ManagementPolicies { get; private set; }
 
         /// <summary>
-        /// Gets the IBlobInventoryPoliciesOperations.
-        /// </summary>
-        public virtual IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; private set; }
-
-        /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.
         /// </summary>
         public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
@@ -416,7 +411,6 @@ namespace Microsoft.Azure.Management.Storage
             DeletedAccounts = new DeletedAccountsOperations(this);
             Usages = new UsagesOperations(this);
             ManagementPolicies = new ManagementPoliciesOperations(this);
-            BlobInventoryPolicies = new BlobInventoryPoliciesOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             ObjectReplicationPolicies = new ObjectReplicationPoliciesOperations(this);
@@ -430,7 +424,7 @@ namespace Microsoft.Azure.Management.Storage
             TableServices = new TableServicesOperations(this);
             Table = new TableOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-08-01-preview";
+            ApiVersion = "2019-06-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
