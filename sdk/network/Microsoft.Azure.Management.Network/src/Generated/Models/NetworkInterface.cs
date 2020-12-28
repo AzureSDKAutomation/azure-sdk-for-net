@@ -70,9 +70,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// network interface resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="edgeZone">The edge zone of the network
+        /// interface.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterface(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(IList<NetworkInterfaceIPConfiguration>), IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkInterface(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(IList<NetworkInterfaceIPConfiguration>), IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string edgeZone = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
@@ -90,6 +92,7 @@ namespace Microsoft.Azure.Management.Network.Models
             DscpConfiguration = dscpConfiguration;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            EdgeZone = edgeZone;
             Etag = etag;
             CustomInit();
         }
@@ -195,6 +198,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the edge zone of the network interface.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edgeZone")]
+        public string EdgeZone { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
