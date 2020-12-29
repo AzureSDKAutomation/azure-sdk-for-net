@@ -19,17 +19,16 @@ namespace Microsoft.Azure.Management.Security
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ComplianceResultsOperations operations.
+    /// IotSitesOperations operations.
     /// </summary>
-    public partial interface IComplianceResultsOperations
+    public partial interface IIotSitesOperations
     {
         /// <summary>
-        /// Security compliance results in the subscription
+        /// List IoT sites
         /// </summary>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription
-        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
-        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query (IoT Hub,
+        /// /providers/Microsoft.Devices/iotHubs/myHub)
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,15 +45,13 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ComplianceResult>>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotSitesList>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Security Compliance Result
+        /// Get IoT site
         /// </summary>
-        /// <param name='resourceId'>
-        /// The identifier of the resource.
-        /// </param>
-        /// <param name='complianceResultName'>
-        /// name of the desired assessment compliance result
+        /// <param name='scope'>
+        /// Scope of the query (IoT Hub,
+        /// /providers/Microsoft.Devices/iotHubs/myHub)
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -71,12 +68,19 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ComplianceResult>> GetWithHttpMessagesAsync(string resourceId, string complianceResultName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotSitesModel>> GetWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Security compliance results in the subscription
+        /// Create or update IoT site
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='scope'>
+        /// Scope of the query (IoT Hub,
+        /// /providers/Microsoft.Devices/iotHubs/myHub)
+        /// </param>
+        /// <param name='displayName'>
+        /// Display name of the IoT site
+        /// </param>
+        /// <param name='tags'>
+        /// Tags of the IoT site
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -93,6 +97,26 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ComplianceResult>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotSitesModel>> CreateOrUpdateWithHttpMessagesAsync(string scope, string displayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete IoT site
+        /// </summary>
+        /// <param name='scope'>
+        /// Scope of the query (IoT Hub,
+        /// /providers/Microsoft.Devices/iotHubs/myHub)
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
