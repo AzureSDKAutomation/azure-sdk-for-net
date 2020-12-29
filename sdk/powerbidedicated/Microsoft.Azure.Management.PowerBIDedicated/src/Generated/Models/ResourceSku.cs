@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// </summary>
         /// <param name="name">Name of the SKU level.</param>
         /// <param name="tier">The name of the Azure pricing tier to which the
-        /// SKU applies. Possible values include: 'PBIE_Azure'</param>
+        /// SKU applies. Possible values include: 'PBIE_Azure', 'Premium',
+        /// 'AutoPremiumHost'</param>
         public ResourceSku(string name, string tier = default(string))
         {
             Name = name;
@@ -54,7 +55,8 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
 
         /// <summary>
         /// Gets or sets the name of the Azure pricing tier to which the SKU
-        /// applies. Possible values include: 'PBIE_Azure'
+        /// applies. Possible values include: 'PBIE_Azure', 'Premium',
+        /// 'AutoPremiumHost'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }
