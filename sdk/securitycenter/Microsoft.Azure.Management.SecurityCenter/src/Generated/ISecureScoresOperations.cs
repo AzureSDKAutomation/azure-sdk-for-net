@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Management.Security
         /// List secure scores for all your Security Center initiatives within
         /// your current scope.
         /// </summary>
+        /// <param name='scope'>
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
+        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -42,11 +47,16 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SecureScoreItem>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreItem>>> ListWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get secure score for a specific Security Center initiative within
         /// your current scope. For the ASC Default initiative, use 'ascScore'.
         /// </summary>
+        /// <param name='scope'>
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
+        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// </param>
         /// <param name='secureScoreName'>
         /// The initiative name. For the ASC Default initiative, use 'ascScore'
         /// as in the sample request below.
@@ -66,7 +76,7 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SecureScoreItem>> GetWithHttpMessagesAsync(string secureScoreName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SecureScoreItem>> GetWithHttpMessagesAsync(string scope, string secureScoreName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List secure scores for all your Security Center initiatives within
         /// your current scope.

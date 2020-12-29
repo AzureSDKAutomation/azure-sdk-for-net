@@ -77,11 +77,6 @@ namespace Microsoft.Azure.Management.Security
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IComplianceResultsOperations.
-        /// </summary>
-        public virtual IComplianceResultsOperations ComplianceResults { get; private set; }
-
-        /// <summary>
         /// Gets the IPricingsOperations.
         /// </summary>
         public virtual IPricingsOperations Pricings { get; private set; }
@@ -122,49 +117,14 @@ namespace Microsoft.Azure.Management.Security
         public virtual IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; private set; }
 
         /// <summary>
-        /// Gets the IIotAlertTypesOperations.
-        /// </summary>
-        public virtual IIotAlertTypesOperations IotAlertTypes { get; private set; }
-
-        /// <summary>
-        /// Gets the IIotAlertsOperations.
-        /// </summary>
-        public virtual IIotAlertsOperations IotAlerts { get; private set; }
-
-        /// <summary>
-        /// Gets the IIotRecommendationTypesOperations.
-        /// </summary>
-        public virtual IIotRecommendationTypesOperations IotRecommendationTypes { get; private set; }
-
-        /// <summary>
-        /// Gets the IIotRecommendationsOperations.
-        /// </summary>
-        public virtual IIotRecommendationsOperations IotRecommendations { get; private set; }
-
-        /// <summary>
-        /// Gets the ILocationsOperations.
-        /// </summary>
-        public virtual ILocationsOperations Locations { get; private set; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the ITasksOperations.
-        /// </summary>
-        public virtual ITasksOperations Tasks { get; private set; }
-
-        /// <summary>
         /// Gets the IAutoProvisioningSettingsOperations.
         /// </summary>
         public virtual IAutoProvisioningSettingsOperations AutoProvisioningSettings { get; private set; }
-
-        /// <summary>
-        /// Gets the ICompliancesOperations.
-        /// </summary>
-        public virtual ICompliancesOperations Compliances { get; private set; }
 
         /// <summary>
         /// Gets the IInformationProtectionPoliciesOperations.
@@ -312,6 +272,26 @@ namespace Microsoft.Azure.Management.Security
         public virtual ISqlVulnerabilityAssessmentBaselineRulesOperations SqlVulnerabilityAssessmentBaselineRules { get; private set; }
 
         /// <summary>
+        /// Gets the IIotAlertTypesOperations.
+        /// </summary>
+        public virtual IIotAlertTypesOperations IotAlertTypes { get; private set; }
+
+        /// <summary>
+        /// Gets the IIotAlertsOperations.
+        /// </summary>
+        public virtual IIotAlertsOperations IotAlerts { get; private set; }
+
+        /// <summary>
+        /// Gets the IIotRecommendationTypesOperations.
+        /// </summary>
+        public virtual IIotRecommendationTypesOperations IotRecommendationTypes { get; private set; }
+
+        /// <summary>
+        /// Gets the IIotRecommendationsOperations.
+        /// </summary>
+        public virtual IIotRecommendationsOperations IotRecommendations { get; private set; }
+
+        /// <summary>
         /// Gets the IIotDefenderSettingsOperations.
         /// </summary>
         public virtual IIotDefenderSettingsOperations IotDefenderSettings { get; private set; }
@@ -340,6 +320,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IOnPremiseIotSensorsOperations.
         /// </summary>
         public virtual IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; private set; }
+
+        /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        public virtual IIotSitesOperations IotSites { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
@@ -582,7 +567,6 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         private void Initialize()
         {
-            ComplianceResults = new ComplianceResultsOperations(this);
             Pricings = new PricingsOperations(this);
             Settings = new SettingsOperations(this);
             AdvancedThreatProtection = new AdvancedThreatProtectionOperations(this);
@@ -591,15 +575,8 @@ namespace Microsoft.Azure.Management.Security
             IotSecuritySolutionAnalytics = new IotSecuritySolutionAnalyticsOperations(this);
             IotSecuritySolutionsAnalyticsAggregatedAlert = new IotSecuritySolutionsAnalyticsAggregatedAlertOperations(this);
             IotSecuritySolutionsAnalyticsRecommendation = new IotSecuritySolutionsAnalyticsRecommendationOperations(this);
-            IotAlertTypes = new IotAlertTypesOperations(this);
-            IotAlerts = new IotAlertsOperations(this);
-            IotRecommendationTypes = new IotRecommendationTypesOperations(this);
-            IotRecommendations = new IotRecommendationsOperations(this);
-            Locations = new LocationsOperations(this);
             Operations = new Operations(this);
-            Tasks = new TasksOperations(this);
             AutoProvisioningSettings = new AutoProvisioningSettingsOperations(this);
-            Compliances = new CompliancesOperations(this);
             InformationProtectionPolicies = new InformationProtectionPoliciesOperations(this);
             SecurityContacts = new SecurityContactsOperations(this);
             WorkspaceSettings = new WorkspaceSettingsOperations(this);
@@ -629,12 +606,17 @@ namespace Microsoft.Azure.Management.Security
             SqlVulnerabilityAssessmentScans = new SqlVulnerabilityAssessmentScansOperations(this);
             SqlVulnerabilityAssessmentScanResults = new SqlVulnerabilityAssessmentScanResultsOperations(this);
             SqlVulnerabilityAssessmentBaselineRules = new SqlVulnerabilityAssessmentBaselineRulesOperations(this);
+            IotAlertTypes = new IotAlertTypesOperations(this);
+            IotAlerts = new IotAlertsOperations(this);
+            IotRecommendationTypes = new IotRecommendationTypesOperations(this);
+            IotRecommendations = new IotRecommendationsOperations(this);
             IotDefenderSettings = new IotDefenderSettingsOperations(this);
             IotSensors = new IotSensorsOperations(this);
             DevicesForSubscription = new DevicesForSubscriptionOperations(this);
             DevicesForHub = new DevicesForHubOperations(this);
             Device = new DeviceOperations(this);
             OnPremiseIotSensors = new OnPremiseIotSensorsOperations(this);
+            IotSites = new IotSitesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -665,8 +647,8 @@ namespace Microsoft.Azure.Management.Security
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SettingResource>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SettingResource>("kind"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Setting>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Setting>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CustomAlertRule>("ruleType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CustomAlertRule>("ruleType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceDetails>("source"));

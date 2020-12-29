@@ -72,11 +72,6 @@ namespace Microsoft.Azure.Management.Security
 
 
         /// <summary>
-        /// Gets the IComplianceResultsOperations.
-        /// </summary>
-        IComplianceResultsOperations ComplianceResults { get; }
-
-        /// <summary>
         /// Gets the IPricingsOperations.
         /// </summary>
         IPricingsOperations Pricings { get; }
@@ -117,49 +112,14 @@ namespace Microsoft.Azure.Management.Security
         IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; }
 
         /// <summary>
-        /// Gets the IIotAlertTypesOperations.
-        /// </summary>
-        IIotAlertTypesOperations IotAlertTypes { get; }
-
-        /// <summary>
-        /// Gets the IIotAlertsOperations.
-        /// </summary>
-        IIotAlertsOperations IotAlerts { get; }
-
-        /// <summary>
-        /// Gets the IIotRecommendationTypesOperations.
-        /// </summary>
-        IIotRecommendationTypesOperations IotRecommendationTypes { get; }
-
-        /// <summary>
-        /// Gets the IIotRecommendationsOperations.
-        /// </summary>
-        IIotRecommendationsOperations IotRecommendations { get; }
-
-        /// <summary>
-        /// Gets the ILocationsOperations.
-        /// </summary>
-        ILocationsOperations Locations { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the ITasksOperations.
-        /// </summary>
-        ITasksOperations Tasks { get; }
-
-        /// <summary>
         /// Gets the IAutoProvisioningSettingsOperations.
         /// </summary>
         IAutoProvisioningSettingsOperations AutoProvisioningSettings { get; }
-
-        /// <summary>
-        /// Gets the ICompliancesOperations.
-        /// </summary>
-        ICompliancesOperations Compliances { get; }
 
         /// <summary>
         /// Gets the IInformationProtectionPoliciesOperations.
@@ -307,6 +267,26 @@ namespace Microsoft.Azure.Management.Security
         ISqlVulnerabilityAssessmentBaselineRulesOperations SqlVulnerabilityAssessmentBaselineRules { get; }
 
         /// <summary>
+        /// Gets the IIotAlertTypesOperations.
+        /// </summary>
+        IIotAlertTypesOperations IotAlertTypes { get; }
+
+        /// <summary>
+        /// Gets the IIotAlertsOperations.
+        /// </summary>
+        IIotAlertsOperations IotAlerts { get; }
+
+        /// <summary>
+        /// Gets the IIotRecommendationTypesOperations.
+        /// </summary>
+        IIotRecommendationTypesOperations IotRecommendationTypes { get; }
+
+        /// <summary>
+        /// Gets the IIotRecommendationsOperations.
+        /// </summary>
+        IIotRecommendationsOperations IotRecommendations { get; }
+
+        /// <summary>
         /// Gets the IIotDefenderSettingsOperations.
         /// </summary>
         IIotDefenderSettingsOperations IotDefenderSettings { get; }
@@ -335,6 +315,11 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IOnPremiseIotSensorsOperations.
         /// </summary>
         IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; }
+
+        /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        IIotSitesOperations IotSites { get; }
 
     }
 }

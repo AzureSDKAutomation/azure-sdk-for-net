@@ -51,7 +51,9 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="weight">The relative weight for this specific control
         /// in each of your subscriptions. Used when calculating an aggregated
         /// score for this control across all of your subscriptions.</param>
-        public SecureScoreControlDetails(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), int? max = default(int?), double? current = default(double?), double? percentage = default(double?), int? healthyResourceCount = default(int?), int? unhealthyResourceCount = default(int?), int? notApplicableResourceCount = default(int?), long? weight = default(long?), SecureScoreControlDefinitionItem definition = default(SecureScoreControlDefinitionItem))
+        /// <param name="definitionId">Azure Resource Id of the security
+        /// control definition.</param>
+        public SecureScoreControlDetails(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), int? max = default(int?), double? current = default(double?), double? percentage = default(double?), int? healthyResourceCount = default(int?), int? unhealthyResourceCount = default(int?), int? notApplicableResourceCount = default(int?), long? weight = default(long?), SecureScoreControlDefinitionItem definition = default(SecureScoreControlDefinitionItem), string definitionId = default(string))
             : base(id, name, type)
         {
             DisplayName = displayName;
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Management.Security.Models
             NotApplicableResourceCount = notApplicableResourceCount;
             Weight = weight;
             Definition = definition;
+            DefinitionId = definitionId;
             CustomInit();
         }
 
@@ -128,6 +131,12 @@ namespace Microsoft.Azure.Management.Security.Models
         public SecureScoreControlDefinitionItem Definition { get; set; }
 
         /// <summary>
+        /// Gets azure Resource Id of the security control definition.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.definitionId")]
+        public string DefinitionId { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -135,37 +144,25 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Max != null)
+            if (Max < 0)
             {
-                if (Max < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "Max", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Max", 0);
             }
-            if (Current != null)
+            if (Current < 0)
             {
-                if (Current < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "Current", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Current", 0);
             }
-            if (Percentage != null)
+            if (Percentage > 1)
             {
-                if (Percentage > 1)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "Percentage", 1);
-                }
-                if (Percentage < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "Percentage", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "Percentage", 1);
             }
-            if (Weight != null)
+            if (Percentage < 0)
             {
-                if (Weight < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "Weight", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Percentage", 0);
+            }
+            if (Weight < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Weight", 0);
             }
             if (Definition != null)
             {

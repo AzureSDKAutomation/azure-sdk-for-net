@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
             /// <param name='secureScoreName'>
             /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
             /// the sample request below.
@@ -34,9 +39,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='expand'>
             /// OData expand. Optional. Possible values include: 'definition'
             /// </param>
-            public static IPage<SecureScoreControlDetails> ListBySecureScore(this ISecureScoreControlsOperations operations, string secureScoreName, string expand = default(string))
+            public static IPage<SecureScoreControlDetails> ListBySecureScore(this ISecureScoreControlsOperations operations, string scope, string secureScoreName, string expand = default(string))
             {
-                return operations.ListBySecureScoreAsync(secureScoreName, expand).GetAwaiter().GetResult();
+                return operations.ListBySecureScoreAsync(scope, secureScoreName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -44,6 +49,11 @@ namespace Microsoft.Azure.Management.Security
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
             /// </param>
             /// <param name='secureScoreName'>
             /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
@@ -55,9 +65,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecureScoreControlDetails>> ListBySecureScoreAsync(this ISecureScoreControlsOperations operations, string secureScoreName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecureScoreControlDetails>> ListBySecureScoreAsync(this ISecureScoreControlsOperations operations, string scope, string secureScoreName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListBySecureScoreWithHttpMessagesAsync(secureScoreName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySecureScoreWithHttpMessagesAsync(scope, secureScoreName, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -69,12 +79,17 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
             /// <param name='expand'>
             /// OData expand. Optional. Possible values include: 'definition'
             /// </param>
-            public static IPage<SecureScoreControlDetails> List(this ISecureScoreControlsOperations operations, string expand = default(string))
+            public static IPage<SecureScoreControlDetails> List(this ISecureScoreControlsOperations operations, string scope, string expand = default(string))
             {
-                return operations.ListAsync(expand).GetAwaiter().GetResult();
+                return operations.ListAsync(scope, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -83,15 +98,20 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
             /// <param name='expand'>
             /// OData expand. Optional. Possible values include: 'definition'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecureScoreControlDetails>> ListAsync(this ISecureScoreControlsOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecureScoreControlDetails>> ListAsync(this ISecureScoreControlsOperations operations, string scope, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(scope, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

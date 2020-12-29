@@ -11,30 +11,30 @@
 namespace Microsoft.Azure.Management.Security.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// All downloads for threat intelligence
+    /// List of IoT sites
     /// </summary>
-    public partial class PackageDownloadsThreatIntelligence
+    public partial class IotSitesList
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// PackageDownloadsThreatIntelligence class.
+        /// Initializes a new instance of the IotSitesList class.
         /// </summary>
-        public PackageDownloadsThreatIntelligence()
+        public IotSitesList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// PackageDownloadsThreatIntelligence class.
+        /// Initializes a new instance of the IotSitesList class.
         /// </summary>
-        /// <param name="link">Download link</param>
-        public PackageDownloadsThreatIntelligence(string link = default(string))
+        /// <param name="value">List data</param>
+        public IotSitesList(IList<IotSitesModel> value = default(IList<IotSitesModel>))
         {
-            Link = link;
+            Value = value;
             CustomInit();
         }
 
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets download link
+        /// Gets list data
         /// </summary>
-        [JsonProperty(PropertyName = "link")]
-        public string Link { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<IotSitesModel> Value { get; private set; }
 
     }
 }

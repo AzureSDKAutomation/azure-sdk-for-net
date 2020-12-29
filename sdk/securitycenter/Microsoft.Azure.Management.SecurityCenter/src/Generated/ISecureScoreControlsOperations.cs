@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Management.Security
         /// <summary>
         /// Get all security controls for a specific initiative within a scope
         /// </summary>
+        /// <param name='scope'>
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
+        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// </param>
         /// <param name='secureScoreName'>
         /// The initiative name. For the ASC Default initiative, use 'ascScore'
         /// as in the sample request below.
@@ -48,10 +53,15 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListBySecureScoreWithHttpMessagesAsync(string secureScoreName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListBySecureScoreWithHttpMessagesAsync(string scope, string secureScoreName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all security controls within a scope
         /// </summary>
+        /// <param name='scope'>
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management
+        /// group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// </param>
         /// <param name='expand'>
         /// OData expand. Optional. Possible values include: 'definition'
         /// </param>
@@ -70,7 +80,7 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SecureScoreControlDetails>>> ListWithHttpMessagesAsync(string scope, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all security controls for a specific initiative within a scope
         /// </summary>

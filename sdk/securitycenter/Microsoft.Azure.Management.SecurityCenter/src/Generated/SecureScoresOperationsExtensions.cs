@@ -28,9 +28,14 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<SecureScoreItem> List(this ISecureScoresOperations operations)
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
+            public static IPage<SecureScoreItem> List(this ISecureScoresOperations operations, string scope)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.ListAsync(scope).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -40,12 +45,17 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SecureScoreItem>> ListAsync(this ISecureScoresOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SecureScoreItem>> ListAsync(this ISecureScoresOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -58,13 +68,18 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
             /// <param name='secureScoreName'>
             /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
             /// the sample request below.
             /// </param>
-            public static SecureScoreItem Get(this ISecureScoresOperations operations, string secureScoreName)
+            public static SecureScoreItem Get(this ISecureScoresOperations operations, string scope, string secureScoreName)
             {
-                return operations.GetAsync(secureScoreName).GetAwaiter().GetResult();
+                return operations.GetAsync(scope, secureScoreName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -74,6 +89,11 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='scope'>
+            /// Scope of the query, can be subscription
+            /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+            /// (/providers/Microsoft.Management/managementGroups/mgName).
+            /// </param>
             /// <param name='secureScoreName'>
             /// The initiative name. For the ASC Default initiative, use 'ascScore' as in
             /// the sample request below.
@@ -81,9 +101,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SecureScoreItem> GetAsync(this ISecureScoresOperations operations, string secureScoreName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SecureScoreItem> GetAsync(this ISecureScoresOperations operations, string scope, string secureScoreName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(secureScoreName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(scope, secureScoreName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
