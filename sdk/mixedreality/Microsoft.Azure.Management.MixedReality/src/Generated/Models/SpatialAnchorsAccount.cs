@@ -36,21 +36,24 @@ namespace Microsoft.Azure.Management.MixedReality.Models
         /// </summary>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="accountId">unique id of certain account.</param>
         /// <param name="accountDomain">Correspond domain name of certain
         /// Spatial Anchors Account</param>
-        public SpatialAnchorsAccount(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string accountId = default(string), string accountDomain = default(string))
+        /// <param name="identity">The identity associated with this
+        /// account</param>
+        public SpatialAnchorsAccount(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string accountId = default(string), string accountDomain = default(string), Identity identity = default(Identity))
             : base(location, id, name, type, tags)
         {
             AccountId = accountId;
             AccountDomain = accountDomain;
+            Identity = identity;
             CustomInit();
         }
 
@@ -70,6 +73,12 @@ namespace Microsoft.Azure.Management.MixedReality.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.accountDomain")]
         public string AccountDomain { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the identity associated with this account
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public Identity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.
