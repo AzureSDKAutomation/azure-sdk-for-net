@@ -72,6 +72,36 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IProtectionIntentOperations.
+        /// </summary>
+        public virtual IProtectionIntentOperations ProtectionIntent { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupStatusOperations.
+        /// </summary>
+        public virtual IBackupStatusOperations BackupStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the IFeatureSupportOperations.
+        /// </summary>
+        public virtual IFeatureSupportOperations FeatureSupport { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupProtectionIntentOperations.
+        /// </summary>
+        public virtual IBackupProtectionIntentOperations BackupProtectionIntent { get; private set; }
+
+        /// <summary>
+        /// Gets the IBackupUsageSummariesOperations.
+        /// </summary>
+        public virtual IBackupUsageSummariesOperations BackupUsageSummaries { get; private set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
         /// Gets the IBackupResourceVaultConfigsOperations.
         /// </summary>
         public virtual IBackupResourceVaultConfigsOperations BackupResourceVaultConfigs { get; private set; }
@@ -290,36 +320,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Gets the IBackupProtectedItemsCrrOperations.
         /// </summary>
         public virtual IBackupProtectedItemsCrrOperations BackupProtectedItemsCrr { get; private set; }
-
-        /// <summary>
-        /// Gets the IProtectionIntentOperations.
-        /// </summary>
-        public virtual IProtectionIntentOperations ProtectionIntent { get; private set; }
-
-        /// <summary>
-        /// Gets the IBackupStatusOperations.
-        /// </summary>
-        public virtual IBackupStatusOperations BackupStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IFeatureSupportOperations.
-        /// </summary>
-        public virtual IFeatureSupportOperations FeatureSupport { get; private set; }
-
-        /// <summary>
-        /// Gets the IBackupProtectionIntentOperations.
-        /// </summary>
-        public virtual IBackupProtectionIntentOperations BackupProtectionIntent { get; private set; }
-
-        /// <summary>
-        /// Gets the IBackupUsageSummariesOperations.
-        /// </summary>
-        public virtual IBackupUsageSummariesOperations BackupUsageSummaries { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the RecoveryServicesBackupClient class.
@@ -562,6 +562,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </summary>
         private void Initialize()
         {
+            ProtectionIntent = new ProtectionIntentOperations(this);
+            BackupStatus = new BackupStatusOperations(this);
+            FeatureSupport = new FeatureSupportOperations(this);
+            BackupProtectionIntent = new BackupProtectionIntentOperations(this);
+            BackupUsageSummaries = new BackupUsageSummariesOperations(this);
+            Operations = new Operations(this);
             BackupResourceVaultConfigs = new BackupResourceVaultConfigsOperations(this);
             BackupResourceEncryptionConfigs = new BackupResourceEncryptionConfigsOperations(this);
             PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
@@ -606,12 +612,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             BackupResourceStorageConfigs = new BackupResourceStorageConfigsOperations(this);
             RecoveryPointsCrr = new RecoveryPointsCrrOperations(this);
             BackupProtectedItemsCrr = new BackupProtectedItemsCrrOperations(this);
-            ProtectionIntent = new ProtectionIntentOperations(this);
-            BackupStatus = new BackupStatusOperations(this);
-            FeatureSupport = new FeatureSupportOperations(this);
-            BackupProtectionIntent = new BackupProtectionIntentOperations(this);
-            BackupUsageSummaries = new BackupUsageSummariesOperations(this);
-            Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -641,12 +641,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FeatureSupportRequest>("featureType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FeatureSupportRequest>("featureType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Job>("jobType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Job>("jobType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SchedulePolicy>("schedulePolicyType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SchedulePolicy>("schedulePolicyType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RetentionPolicy>("retentionPolicyType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RetentionPolicy>("retentionPolicyType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Job>("jobType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Job>("jobType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<OperationResultInfoBase>("objectType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<OperationResultInfoBase>("objectType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<VaultStorageConfigOperationResultResponse>("objectType"));
@@ -679,10 +683,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<WorkloadProtectableItem>("protectableItemType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CrrAccessToken>("objectType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CrrAccessToken>("objectType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FeatureSupportRequest>("featureType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FeatureSupportRequest>("featureType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "operationId");
             }
-            string apiVersion = "2020-10-01";
+            string apiVersion = "2020-12-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -989,7 +989,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 parameters.Validate();
             }
-            string apiVersion = "2020-10-01";
+            string apiVersion = "2020-12-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1176,7 +1176,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 parameters.Validate();
             }
-            string apiVersion = "2020-10-01";
+            string apiVersion = "2020-12-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
