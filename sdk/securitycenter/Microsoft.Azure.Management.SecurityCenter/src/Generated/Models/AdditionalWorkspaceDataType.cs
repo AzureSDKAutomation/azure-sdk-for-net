@@ -12,15 +12,11 @@ namespace Microsoft.Azure.Management.Security.Models
 {
 
     /// <summary>
-    /// Defines values for EventSource.
+    /// Defines values for AdditionalWorkspaceDataType.
     /// </summary>
-    public static class EventSource
+    public static class AdditionalWorkspaceDataType
     {
-        public const string Assessments = "Assessments";
-        public const string SubAssessments = "SubAssessments";
         public const string Alerts = "Alerts";
-        public const string SecureScores = "SecureScores";
-        public const string SecureScoreControls = "SecureScoreControls";
-        public const string RegulatoryComplianceAssessment = "RegulatoryComplianceAssessment";
+        public const string RawEvents = "RawEvents";
     }
 }
