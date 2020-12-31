@@ -13,33 +13,37 @@ namespace Microsoft.Azure.Management.Security.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Represents a data export setting
+    /// IoT site model
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DataExportSettings : Setting
+    public partial class IotSitesModel : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the DataExportSettings class.
+        /// Initializes a new instance of the IotSitesModel class.
         /// </summary>
-        public DataExportSettings()
+        public IotSitesModel()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DataExportSettings class.
+        /// Initializes a new instance of the IotSitesModel class.
         /// </summary>
-        /// <param name="enabled">Is the data export setting is enabled</param>
+        /// <param name="displayName">Display name of the IoT site</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public DataExportSettings(bool enabled, string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="tags">Tags of the IoT site</param>
+        public IotSitesModel(string displayName, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id, name, type)
         {
-            Enabled = enabled;
+            DisplayName = displayName;
+            Tags = tags;
             CustomInit();
         }
 
@@ -49,10 +53,16 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets is the data export setting is enabled
+        /// Gets or sets display name of the IoT site
         /// </summary>
-        [JsonProperty(PropertyName = "properties.enabled")]
-        public bool Enabled { get; set; }
+        [JsonProperty(PropertyName = "properties.displayName")]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or sets tags of the IoT site
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -62,7 +72,10 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (DisplayName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "DisplayName");
+            }
         }
     }
 }
