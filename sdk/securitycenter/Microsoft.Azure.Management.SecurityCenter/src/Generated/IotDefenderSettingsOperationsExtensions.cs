@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.Security
     using Models;
     using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -172,6 +173,33 @@ namespace Microsoft.Azure.Management.Security
                 {
                     return _result.Body;
                 }
+            }
+
+            /// <summary>
+            /// Download manager activation data defined for this subscription
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            public static Stream DownloadManagerActivation(this IIotDefenderSettingsOperations operations)
+            {
+                return operations.DownloadManagerActivationAsync().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Download manager activation data defined for this subscription
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Stream> DownloadManagerActivationAsync(this IIotDefenderSettingsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                var _result = await operations.DownloadManagerActivationWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
     }

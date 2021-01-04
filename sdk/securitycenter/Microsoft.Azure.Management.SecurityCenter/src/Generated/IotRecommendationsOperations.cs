@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Management.Security
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<IotRecommendationModel>>> List1WithHttpMessagesAsync(string scope, string recommendationType = default(string), string deviceId = default(string), int? limit = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<IotRecommendationModel>>> ListAtScopeWithHttpMessagesAsync(string scope, string recommendationType = default(string), string deviceId = default(string), int? limit = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (scope == null)
             {
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Management.Security
                 tracingParameters.Add("limit", limit);
                 tracingParameters.Add("skipToken", skipToken);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "List1", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListAtScope", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Management.Security
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IotRecommendationModel>> Get1WithHttpMessagesAsync(string scope, string iotRecommendationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotRecommendationModel>> GetAtScopeWithHttpMessagesAsync(string scope, string iotRecommendationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (scope == null)
             {
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Management.Security
                 tracingParameters.Add("scope", scope);
                 tracingParameters.Add("iotRecommendationId", iotRecommendationId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Get1", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "GetAtScope", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Management.Security
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<IotRecommendationModel>>> List1NextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<IotRecommendationModel>>> ListAtScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -1145,7 +1145,7 @@ namespace Microsoft.Azure.Management.Security
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "List1Next", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListAtScopeNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";

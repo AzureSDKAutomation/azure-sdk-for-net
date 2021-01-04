@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IotRecommendationTypeList List1(this IIotRecommendationTypesOperations operations)
+            public static IotRecommendationTypeList ListAtSubscriptionScope(this IIotRecommendationTypesOperations operations)
             {
-                return operations.List1Async().GetAwaiter().GetResult();
+                return operations.ListAtSubscriptionScopeAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotRecommendationTypeList> List1Async(this IIotRecommendationTypesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotRecommendationTypeList> ListAtSubscriptionScopeAsync(this IIotRecommendationTypesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.List1WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtSubscriptionScopeWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='iotRecommendationTypeName'>
             /// Name of the recommendation type
             /// </param>
-            public static IotRecommendationType Get1(this IIotRecommendationTypesOperations operations, string iotRecommendationTypeName)
+            public static IotRecommendationType GetAtSubscriptionScope(this IIotRecommendationTypesOperations operations, string iotRecommendationTypeName)
             {
-                return operations.Get1Async(iotRecommendationTypeName).GetAwaiter().GetResult();
+                return operations.GetAtSubscriptionScopeAsync(iotRecommendationTypeName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotRecommendationType> Get1Async(this IIotRecommendationTypesOperations operations, string iotRecommendationTypeName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotRecommendationType> GetAtSubscriptionScopeAsync(this IIotRecommendationTypesOperations operations, string iotRecommendationTypeName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.Get1WithHttpMessagesAsync(iotRecommendationTypeName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAtSubscriptionScopeWithHttpMessagesAsync(iotRecommendationTypeName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
