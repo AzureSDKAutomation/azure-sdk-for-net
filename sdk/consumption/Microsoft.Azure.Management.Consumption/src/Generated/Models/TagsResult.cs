@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="eTag">eTag of the resource. To handle concurrent
+        /// <param name="eTag">eTag of the resource. To handle the concurrent
         /// update scenario, this field will be used to determine whether the
         /// user is updating the latest version or not.</param>
         /// <param name="tags">A list of Tag.</param>
