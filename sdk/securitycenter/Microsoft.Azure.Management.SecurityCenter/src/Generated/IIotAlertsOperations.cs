@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<IotAlertModel>>> List1WithHttpMessagesAsync(string scope, string minStartTimeUtc = default(string), string maxStartTimeUtc = default(string), string alertType = default(string), string deviceManagementType = default(string), string compromisedEntity = default(string), int? limit = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<IotAlertModel>>> ListAtScopeWithHttpMessagesAsync(string scope, string minStartTimeUtc = default(string), string maxStartTimeUtc = default(string), string alertType = default(string), string deviceManagementType = default(string), string compromisedEntity = default(string), int? limit = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get IoT alert
         /// </summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IotAlertModel>> Get1WithHttpMessagesAsync(string scope, string iotAlertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotAlertModel>> GetAtScopeWithHttpMessagesAsync(string scope, string iotAlertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List IoT alerts
         /// </summary>
@@ -212,6 +212,6 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<IotAlertModel>>> List1NextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<IotAlertModel>>> ListAtScopeNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='skipToken'>
             /// Skip token used for pagination
             /// </param>
-            public static IPage<IotRecommendationModel> List1(this IIotRecommendationsOperations operations, string scope, string recommendationType = default(string), string deviceId = default(string), int? limit = default(int?), string skipToken = default(string))
+            public static IPage<IotRecommendationModel> ListAtScope(this IIotRecommendationsOperations operations, string scope, string recommendationType = default(string), string deviceId = default(string), int? limit = default(int?), string skipToken = default(string))
             {
-                return operations.List1Async(scope, recommendationType, deviceId, limit, skipToken).GetAwaiter().GetResult();
+                return operations.ListAtScopeAsync(scope, recommendationType, deviceId, limit, skipToken).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -189,9 +189,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<IotRecommendationModel>> List1Async(this IIotRecommendationsOperations operations, string scope, string recommendationType = default(string), string deviceId = default(string), int? limit = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<IotRecommendationModel>> ListAtScopeAsync(this IIotRecommendationsOperations operations, string scope, string recommendationType = default(string), string deviceId = default(string), int? limit = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.List1WithHttpMessagesAsync(scope, recommendationType, deviceId, limit, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtScopeWithHttpMessagesAsync(scope, recommendationType, deviceId, limit, skipToken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -211,9 +211,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='iotRecommendationId'>
             /// Id of the recommendation
             /// </param>
-            public static IotRecommendationModel Get1(this IIotRecommendationsOperations operations, string scope, string iotRecommendationId)
+            public static IotRecommendationModel GetAtScope(this IIotRecommendationsOperations operations, string scope, string iotRecommendationId)
             {
-                return operations.Get1Async(scope, iotRecommendationId).GetAwaiter().GetResult();
+                return operations.GetAtScopeAsync(scope, iotRecommendationId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -233,9 +233,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotRecommendationModel> Get1Async(this IIotRecommendationsOperations operations, string scope, string iotRecommendationId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotRecommendationModel> GetAtScopeAsync(this IIotRecommendationsOperations operations, string scope, string iotRecommendationId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.Get1WithHttpMessagesAsync(scope, iotRecommendationId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAtScopeWithHttpMessagesAsync(scope, iotRecommendationId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -284,9 +284,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<IotRecommendationModel> List1Next(this IIotRecommendationsOperations operations, string nextPageLink)
+            public static IPage<IotRecommendationModel> ListAtScopeNext(this IIotRecommendationsOperations operations, string nextPageLink)
             {
-                return operations.List1NextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListAtScopeNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -301,9 +301,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<IotRecommendationModel>> List1NextAsync(this IIotRecommendationsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<IotRecommendationModel>> ListAtScopeNextAsync(this IIotRecommendationsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.List1NextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtScopeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

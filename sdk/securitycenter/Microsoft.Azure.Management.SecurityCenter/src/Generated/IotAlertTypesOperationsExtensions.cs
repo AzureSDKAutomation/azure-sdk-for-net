@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IotAlertTypeList List1(this IIotAlertTypesOperations operations)
+            public static IotAlertTypeList ListAtSubscriptionScope(this IIotAlertTypesOperations operations)
             {
-                return operations.List1Async().GetAwaiter().GetResult();
+                return operations.ListAtSubscriptionScopeAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotAlertTypeList> List1Async(this IIotAlertTypesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotAlertTypeList> ListAtSubscriptionScopeAsync(this IIotAlertTypesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.List1WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtSubscriptionScopeWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='iotAlertTypeName'>
             /// Name of the alert type
             /// </param>
-            public static IotAlertType Get1(this IIotAlertTypesOperations operations, string iotAlertTypeName)
+            public static IotAlertType GetAtSubscriptionScope(this IIotAlertTypesOperations operations, string iotAlertTypeName)
             {
-                return operations.Get1Async(iotAlertTypeName).GetAwaiter().GetResult();
+                return operations.GetAtSubscriptionScopeAsync(iotAlertTypeName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotAlertType> Get1Async(this IIotAlertTypesOperations operations, string iotAlertTypeName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotAlertType> GetAtSubscriptionScopeAsync(this IIotAlertTypesOperations operations, string iotAlertTypeName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.Get1WithHttpMessagesAsync(iotAlertTypeName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAtSubscriptionScopeWithHttpMessagesAsync(iotAlertTypeName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

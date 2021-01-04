@@ -180,9 +180,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='skipToken'>
             /// Skip token used for pagination
             /// </param>
-            public static IPage<IotAlertModel> List1(this IIotAlertsOperations operations, string scope, string minStartTimeUtc = default(string), string maxStartTimeUtc = default(string), string alertType = default(string), string deviceManagementType = default(string), string compromisedEntity = default(string), int? limit = default(int?), string skipToken = default(string))
+            public static IPage<IotAlertModel> ListAtScope(this IIotAlertsOperations operations, string scope, string minStartTimeUtc = default(string), string maxStartTimeUtc = default(string), string alertType = default(string), string deviceManagementType = default(string), string compromisedEntity = default(string), int? limit = default(int?), string skipToken = default(string))
             {
-                return operations.List1Async(scope, minStartTimeUtc, maxStartTimeUtc, alertType, deviceManagementType, compromisedEntity, limit, skipToken).GetAwaiter().GetResult();
+                return operations.ListAtScopeAsync(scope, minStartTimeUtc, maxStartTimeUtc, alertType, deviceManagementType, compromisedEntity, limit, skipToken).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -221,9 +221,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<IotAlertModel>> List1Async(this IIotAlertsOperations operations, string scope, string minStartTimeUtc = default(string), string maxStartTimeUtc = default(string), string alertType = default(string), string deviceManagementType = default(string), string compromisedEntity = default(string), int? limit = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<IotAlertModel>> ListAtScopeAsync(this IIotAlertsOperations operations, string scope, string minStartTimeUtc = default(string), string maxStartTimeUtc = default(string), string alertType = default(string), string deviceManagementType = default(string), string compromisedEntity = default(string), int? limit = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.List1WithHttpMessagesAsync(scope, minStartTimeUtc, maxStartTimeUtc, alertType, deviceManagementType, compromisedEntity, limit, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtScopeWithHttpMessagesAsync(scope, minStartTimeUtc, maxStartTimeUtc, alertType, deviceManagementType, compromisedEntity, limit, skipToken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -243,9 +243,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='iotAlertId'>
             /// Id of the alert
             /// </param>
-            public static IotAlertModel Get1(this IIotAlertsOperations operations, string scope, string iotAlertId)
+            public static IotAlertModel GetAtScope(this IIotAlertsOperations operations, string scope, string iotAlertId)
             {
-                return operations.Get1Async(scope, iotAlertId).GetAwaiter().GetResult();
+                return operations.GetAtScopeAsync(scope, iotAlertId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -265,9 +265,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotAlertModel> Get1Async(this IIotAlertsOperations operations, string scope, string iotAlertId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotAlertModel> GetAtScopeAsync(this IIotAlertsOperations operations, string scope, string iotAlertId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.Get1WithHttpMessagesAsync(scope, iotAlertId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAtScopeWithHttpMessagesAsync(scope, iotAlertId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -316,9 +316,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<IotAlertModel> List1Next(this IIotAlertsOperations operations, string nextPageLink)
+            public static IPage<IotAlertModel> ListAtScopeNext(this IIotAlertsOperations operations, string nextPageLink)
             {
-                return operations.List1NextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListAtScopeNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -333,9 +333,9 @@ namespace Microsoft.Azure.Management.Security
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<IotAlertModel>> List1NextAsync(this IIotAlertsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<IotAlertModel>> ListAtScopeNextAsync(this IIotAlertsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.List1NextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtScopeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
