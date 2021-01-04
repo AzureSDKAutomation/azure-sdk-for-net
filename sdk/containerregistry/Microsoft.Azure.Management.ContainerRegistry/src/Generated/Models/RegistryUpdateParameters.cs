@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// <param name="publicNetworkAccess">Whether or not public network
         /// access is allowed for the container registry. Possible values
         /// include: 'Enabled', 'Disabled'</param>
-        public RegistryUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), IdentityProperties identity = default(IdentityProperties), bool? adminUserEnabled = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Policies policies = default(Policies), EncryptionProperty encryption = default(EncryptionProperty), bool? dataEndpointEnabled = default(bool?), string publicNetworkAccess = default(string))
+        /// <param name="networkRuleBypassOptions">Whether to allow trusted
+        /// Azure services to access a network restricted registry. Possible
+        /// values include: 'AzureServices', 'None'</param>
+        public RegistryUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), IdentityProperties identity = default(IdentityProperties), bool? adminUserEnabled = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Policies policies = default(Policies), EncryptionProperty encryption = default(EncryptionProperty), bool? dataEndpointEnabled = default(bool?), string publicNetworkAccess = default(string), string networkRuleBypassOptions = default(string))
         {
             Tags = tags;
             Sku = sku;
@@ -62,6 +65,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
             Encryption = encryption;
             DataEndpointEnabled = dataEndpointEnabled;
             PublicNetworkAccess = publicNetworkAccess;
+            NetworkRuleBypassOptions = networkRuleBypassOptions;
             CustomInit();
         }
 
@@ -127,6 +131,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to allow trusted Azure services to access a
+        /// network restricted registry. Possible values include:
+        /// 'AzureServices', 'None'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkRuleBypassOptions")]
+        public string NetworkRuleBypassOptions { get; set; }
 
         /// <summary>
         /// Validate the object.
