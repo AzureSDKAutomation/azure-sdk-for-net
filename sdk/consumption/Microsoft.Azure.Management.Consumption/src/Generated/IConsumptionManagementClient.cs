@@ -43,14 +43,9 @@ namespace Microsoft.Azure.Management.Consumption
 
         /// <summary>
         /// Version of the API to be used with the client request. The current
-        /// version is 2019-04-01-preview.
+        /// version is 2019-11-01.
         /// </summary>
         string ApiVersion { get; }
-
-        /// <summary>
-        /// Azure Subscription ID.
-        /// </summary>
-        string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -72,69 +67,14 @@ namespace Microsoft.Azure.Management.Consumption
 
 
         /// <summary>
-        /// Gets the IUsageDetailsOperations.
-        /// </summary>
-        IUsageDetailsOperations UsageDetails { get; }
-
-        /// <summary>
-        /// Gets the IMarketplacesOperations.
-        /// </summary>
-        IMarketplacesOperations Marketplaces { get; }
-
-        /// <summary>
-        /// Gets the IBudgetsOperations.
-        /// </summary>
-        IBudgetsOperations Budgets { get; }
-
-        /// <summary>
         /// Gets the ITagsOperations.
         /// </summary>
         ITagsOperations Tags { get; }
 
         /// <summary>
-        /// Gets the IChargesOperations.
-        /// </summary>
-        IChargesOperations Charges { get; }
-
-        /// <summary>
-        /// Gets the IBalancesOperations.
-        /// </summary>
-        IBalancesOperations Balances { get; }
-
-        /// <summary>
-        /// Gets the IReservationsSummariesOperations.
-        /// </summary>
-        IReservationsSummariesOperations ReservationsSummaries { get; }
-
-        /// <summary>
-        /// Gets the IReservationsDetailsOperations.
-        /// </summary>
-        IReservationsDetailsOperations ReservationsDetails { get; }
-
-        /// <summary>
-        /// Gets the IReservationRecommendationsOperations.
-        /// </summary>
-        IReservationRecommendationsOperations ReservationRecommendations { get; }
-
-        /// <summary>
-        /// Gets the IPriceSheetOperations.
-        /// </summary>
-        IPriceSheetOperations PriceSheet { get; }
-
-        /// <summary>
-        /// Gets the IForecastsOperations.
-        /// </summary>
-        IForecastsOperations Forecasts { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IAggregatedCostOperations.
-        /// </summary>
-        IAggregatedCostOperations AggregatedCost { get; }
 
     }
 }
