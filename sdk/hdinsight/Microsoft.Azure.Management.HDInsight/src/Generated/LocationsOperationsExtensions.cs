@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='location'>
             /// The Azure location (region) for which to make the request.
             /// </param>
-            public static UsagesListResult ListUsages(this ILocationsOperations operations, string location)
+            public static IPage<Usage> ListUsages(this ILocationsOperations operations, string location)
             {
                 return operations.ListUsagesAsync(location).GetAwaiter().GetResult();
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<UsagesListResult> ListUsagesAsync(this ILocationsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Usage>> ListUsagesAsync(this ILocationsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListUsagesWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='location'>
             /// The Azure location (region) for which to make the request.
             /// </param>
-            public static BillingResponseListResult ListBillingSpecs(this ILocationsOperations operations, string location)
+            public static IPage<string> ListBillingSpecs(this ILocationsOperations operations, string location)
             {
                 return operations.ListBillingSpecsAsync(location).GetAwaiter().GetResult();
             }
@@ -115,9 +115,77 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingResponseListResult> ListBillingSpecsAsync(this ILocationsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<string>> ListBillingSpecsAsync(this ILocationsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListBillingSpecsWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the usages for the specified location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Usage> ListUsagesNext(this ILocationsOperations operations, string nextPageLink)
+            {
+                return operations.ListUsagesNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the usages for the specified location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Usage>> ListUsagesNextAsync(this ILocationsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the billingSpecs for the specified subscription and location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<string> ListBillingSpecsNext(this ILocationsOperations operations, string nextPageLink)
+            {
+                return operations.ListBillingSpecsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the billingSpecs for the specified subscription and location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<string>> ListBillingSpecsNextAsync(this ILocationsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListBillingSpecsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

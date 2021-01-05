@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// <summary>
         /// Gets or sets the virtual machine size compatibility filters.
         /// </summary>
-        [JsonProperty(PropertyName = "vmSize_filters")]
+        [JsonProperty(PropertyName = "vmSizeFilters")]
         public IList<VmSizeCompatibilityFilter> VmSizeFilters { get; set; }
 
         /// <summary>

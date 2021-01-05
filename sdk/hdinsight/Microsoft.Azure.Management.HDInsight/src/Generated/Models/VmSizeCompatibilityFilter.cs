@@ -57,31 +57,31 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// <summary>
         /// Gets or sets the mode for the filter.
         /// </summary>
-        [JsonProperty(PropertyName = "FilterMode")]
+        [JsonProperty(PropertyName = "filterMode")]
         public string FilterMode { get; set; }
 
         /// <summary>
         /// Gets or sets the list of regions.
         /// </summary>
-        [JsonProperty(PropertyName = "Regions")]
+        [JsonProperty(PropertyName = "regions")]
         public IList<string> Regions { get; set; }
 
         /// <summary>
         /// Gets or sets the list of cluster types available.
         /// </summary>
-        [JsonProperty(PropertyName = "ClusterFlavors")]
+        [JsonProperty(PropertyName = "clusterFlavors")]
         public IList<string> ClusterFlavors { get; set; }
 
         /// <summary>
         /// Gets or sets the list of node types.
         /// </summary>
-        [JsonProperty(PropertyName = "NodeTypes")]
+        [JsonProperty(PropertyName = "nodeTypes")]
         public IList<string> NodeTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the list of cluster versions.
         /// </summary>
-        [JsonProperty(PropertyName = "ClusterVersions")]
+        [JsonProperty(PropertyName = "clusterVersions")]
         public IList<string> ClusterVersions { get; set; }
 
         /// <summary>
