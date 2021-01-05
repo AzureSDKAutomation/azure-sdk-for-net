@@ -11,31 +11,30 @@
 namespace Microsoft.Azure.Management.HDInsight.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The response for the operation to get regional usages for a
-    /// subscription.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class UsagesListResult
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the UsagesListResult class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public UsagesListResult()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UsagesListResult class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="value">The list of usages.</param>
-        public UsagesListResult(IList<Usage> value = default(IList<Usage>))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Value = value;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -45,10 +44,16 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of usages.
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<Usage> Value { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }
