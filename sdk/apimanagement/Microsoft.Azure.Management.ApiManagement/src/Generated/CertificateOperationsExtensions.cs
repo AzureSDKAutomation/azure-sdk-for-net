@@ -288,6 +288,58 @@ namespace Microsoft.Azure.Management.ApiManagement
             }
 
             /// <summary>
+            /// From KeyVault, Refresh the certificate being used for authentication with
+            /// the backend.
+            /// <see href="https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-mutual-certificates/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the API Management service.
+            /// </param>
+            /// <param name='certificateId'>
+            /// Identifier of the certificate entity. Must be unique in the current API
+            /// Management service instance.
+            /// </param>
+            public static CertificateContract RefreshSecret(this ICertificateOperations operations, string resourceGroupName, string serviceName, string certificateId)
+            {
+                return operations.RefreshSecretAsync(resourceGroupName, serviceName, certificateId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// From KeyVault, Refresh the certificate being used for authentication with
+            /// the backend.
+            /// <see href="https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-mutual-certificates/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='serviceName'>
+            /// The name of the API Management service.
+            /// </param>
+            /// <param name='certificateId'>
+            /// Identifier of the certificate entity. Must be unique in the current API
+            /// Management service instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CertificateContract> RefreshSecretAsync(this ICertificateOperations operations, string resourceGroupName, string serviceName, string certificateId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.RefreshSecretWithHttpMessagesAsync(resourceGroupName, serviceName, certificateId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists a collection of all certificates in the specified service instance.
             /// </summary>
             /// <param name='operations'>
