@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Monitor
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{resourceUri}/providers/microsoft.insights/baseline/{metricName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{resourceUri}/providers/Microsoft.Insights/baseline/{metricName}").ToString();
             _url = _url.Replace("{resourceUri}", resourceUri);
             _url = _url.Replace("{metricName}", System.Uri.EscapeDataString(metricName));
             List<string> _queryParameters = new List<string>();
