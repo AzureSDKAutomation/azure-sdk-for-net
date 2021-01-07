@@ -325,6 +325,11 @@ namespace Microsoft.Azure.Management.Synapse
         IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations WorkspaceManagedSqlServerVulnerabilityAssessments { get; }
 
         /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerEncryptionProtectorOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerEncryptionProtectorOperations WorkspaceManagedSqlServerEncryptionProtector { get; }
+
+        /// <summary>
         /// Gets the IWorkspaceManagedSqlServerUsagesOperations.
         /// </summary>
         IWorkspaceManagedSqlServerUsagesOperations WorkspaceManagedSqlServerUsages { get; }
