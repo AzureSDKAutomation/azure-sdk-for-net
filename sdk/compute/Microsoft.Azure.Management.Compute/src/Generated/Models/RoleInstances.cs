@@ -12,32 +12,32 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Contains information about SSH certificate public key data.
+    /// Specifies a list of role instances from the cloud service.
     /// </summary>
-    public partial class ContainerServiceSshPublicKey
+    public partial class RoleInstances
     {
         /// <summary>
-        /// Initializes a new instance of the ContainerServiceSshPublicKey
-        /// class.
+        /// Initializes a new instance of the RoleInstances class.
         /// </summary>
-        public ContainerServiceSshPublicKey()
+        public RoleInstances()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ContainerServiceSshPublicKey
-        /// class.
+        /// Initializes a new instance of the RoleInstances class.
         /// </summary>
-        /// <param name="keyData">Certificate public key used to authenticate
-        /// with VMs through SSH. The certificate must be in PEM format with or
-        /// without headers.</param>
-        public ContainerServiceSshPublicKey(string keyData)
+        /// <param name="roleInstancesProperty">List of cloud service role
+        /// instance names. Value of '*' will signify all role instances of the
+        /// cloud service.</param>
+        public RoleInstances(IList<string> roleInstancesProperty)
         {
-            KeyData = keyData;
+            RoleInstancesProperty = roleInstancesProperty;
             CustomInit();
         }
 
@@ -47,12 +47,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets certificate public key used to authenticate with VMs
-        /// through SSH. The certificate must be in PEM format with or without
-        /// headers.
+        /// Gets or sets list of cloud service role instance names. Value of
+        /// '*' will signify all role instances of the cloud service.
         /// </summary>
-        [JsonProperty(PropertyName = "keyData")]
-        public string KeyData { get; set; }
+        [JsonProperty(PropertyName = "roleInstances")]
+        public IList<string> RoleInstancesProperty { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -62,9 +61,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (KeyData == null)
+            if (RoleInstancesProperty == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KeyData");
+                throw new ValidationException(ValidationRules.CannotBeNull, "RoleInstancesProperty");
             }
         }
     }

@@ -222,9 +222,24 @@ namespace Microsoft.Azure.Management.Compute
         IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; }
 
         /// <summary>
-        /// Gets the IContainerServicesOperations.
+        /// Gets the ICloudServiceRoleInstancesOperations.
         /// </summary>
-        IContainerServicesOperations ContainerServices { get; }
+        ICloudServiceRoleInstancesOperations CloudServiceRoleInstances { get; }
+
+        /// <summary>
+        /// Gets the ICloudServiceRolesOperations.
+        /// </summary>
+        ICloudServiceRolesOperations CloudServiceRoles { get; }
+
+        /// <summary>
+        /// Gets the ICloudServicesOperations.
+        /// </summary>
+        ICloudServicesOperations CloudServices { get; }
+
+        /// <summary>
+        /// Gets the ICloudServicesUpdateDomainOperations.
+        /// </summary>
+        ICloudServicesUpdateDomainOperations CloudServicesUpdateDomain { get; }
 
     }
 }
