@@ -63,6 +63,8 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// pool.</param>
         /// <param name="libraryRequirements">Library version
         /// requirements</param>
+        /// <param name="customLibraries">List of custom libraries/packages
+        /// associated with the spark pool.</param>
         /// <param name="sparkConfigProperties">Spark configuration file to
         /// specify additional properties</param>
         /// <param name="sparkVersion">The Apache Spark version.</param>
@@ -74,7 +76,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="nodeSizeFamily">The kind of nodes that the Big Data
         /// pool provides. Possible values include: 'None',
         /// 'MemoryOptimized'</param>
-        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? haveLibraryRequirementsChanged = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), string sparkEventsFolder = default(string), int? nodeCount = default(int?), LibraryRequirements libraryRequirements = default(LibraryRequirements), LibraryRequirements sparkConfigProperties = default(LibraryRequirements), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSize = default(string), string nodeSizeFamily = default(string))
+        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? haveLibraryRequirementsChanged = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), string sparkEventsFolder = default(string), int? nodeCount = default(int?), LibraryRequirements libraryRequirements = default(LibraryRequirements), IList<LibraryInfo> customLibraries = default(IList<LibraryInfo>), LibraryRequirements sparkConfigProperties = default(LibraryRequirements), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSize = default(string), string nodeSizeFamily = default(string))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -87,6 +89,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             SparkEventsFolder = sparkEventsFolder;
             NodeCount = nodeCount;
             LibraryRequirements = libraryRequirements;
+            CustomLibraries = customLibraries;
             SparkConfigProperties = sparkConfigProperties;
             SparkVersion = sparkVersion;
             DefaultSparkLogFolder = defaultSparkLogFolder;
@@ -159,6 +162,13 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.libraryRequirements")]
         public LibraryRequirements LibraryRequirements { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of custom libraries/packages associated with the
+        /// spark pool.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.customLibraries")]
+        public IList<LibraryInfo> CustomLibraries { get; set; }
 
         /// <summary>
         /// Gets or sets spark configuration file to specify additional

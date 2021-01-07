@@ -42,20 +42,17 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Settings</param>
         /// <param name="workspaceRepositoryConfiguration">Git integration
         /// settings</param>
-        /// <param name="purviewConfiguration">Purview Configuration</param>
+        /// <param name="babylonConfiguration">Babylon Configuration</param>
         /// <param name="provisioningState">Resource provisioning state</param>
-        /// <param name="encryption">The encryption details of the
-        /// workspace</param>
-        public WorkspacePatchInfo(IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedIdentity identity = default(ManagedIdentity), string sqlAdministratorLoginPassword = default(string), ManagedVirtualNetworkSettings managedVirtualNetworkSettings = default(ManagedVirtualNetworkSettings), WorkspaceRepositoryConfiguration workspaceRepositoryConfiguration = default(WorkspaceRepositoryConfiguration), PurviewConfiguration purviewConfiguration = default(PurviewConfiguration), string provisioningState = default(string), EncryptionDetails encryption = default(EncryptionDetails))
+        public WorkspacePatchInfo(IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedIdentity identity = default(ManagedIdentity), string sqlAdministratorLoginPassword = default(string), ManagedVirtualNetworkSettings managedVirtualNetworkSettings = default(ManagedVirtualNetworkSettings), WorkspaceRepositoryConfiguration workspaceRepositoryConfiguration = default(WorkspaceRepositoryConfiguration), BabylonConfiguration babylonConfiguration = default(BabylonConfiguration), string provisioningState = default(string))
         {
             Tags = tags;
             Identity = identity;
             SqlAdministratorLoginPassword = sqlAdministratorLoginPassword;
             ManagedVirtualNetworkSettings = managedVirtualNetworkSettings;
             WorkspaceRepositoryConfiguration = workspaceRepositoryConfiguration;
-            PurviewConfiguration = purviewConfiguration;
+            BabylonConfiguration = babylonConfiguration;
             ProvisioningState = provisioningState;
-            Encryption = encryption;
             CustomInit();
         }
 
@@ -95,22 +92,16 @@ namespace Microsoft.Azure.Management.Synapse.Models
         public WorkspaceRepositoryConfiguration WorkspaceRepositoryConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets purview Configuration
+        /// Gets or sets babylon Configuration
         /// </summary>
-        [JsonProperty(PropertyName = "properties.purviewConfiguration")]
-        public PurviewConfiguration PurviewConfiguration { get; set; }
+        [JsonProperty(PropertyName = "properties.babylonConfiguration")]
+        public BabylonConfiguration BabylonConfiguration { get; set; }
 
         /// <summary>
         /// Gets resource provisioning state
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the encryption details of the workspace
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.encryption")]
-        public EncryptionDetails Encryption { get; set; }
 
     }
 }
