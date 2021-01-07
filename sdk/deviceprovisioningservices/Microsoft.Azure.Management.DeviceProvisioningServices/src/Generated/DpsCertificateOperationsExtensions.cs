@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='ifMatch'>
             /// ETag of the certificate.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static CertificateResponse Get(this IDpsCertificateOperations operations, string certificateName, string resourceGroupName, string provisioningServiceName, string ifMatch = default(string))
             {
                 return operations.GetAsync(certificateName, resourceGroupName, provisioningServiceName, ifMatch).GetAwaiter().GetResult();
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<CertificateResponse> GetAsync(this IDpsCertificateOperations operations, string certificateName, string resourceGroupName, string provisioningServiceName, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(certificateName, resourceGroupName, provisioningServiceName, ifMatch, null, cancellationToken).ConfigureAwait(false))
@@ -98,6 +100,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// ETag of the certificate. This is required to update an existing
             /// certificate, and ignored while creating a brand new certificate.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static CertificateResponse CreateOrUpdate(this IDpsCertificateOperations operations, string resourceGroupName, string provisioningServiceName, string certificateName, CertificateBodyDescription certificateDescription, string ifMatch = default(string))
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, provisioningServiceName, certificateName, certificateDescription, ifMatch).GetAwaiter().GetResult();
@@ -131,6 +134,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<CertificateResponse> CreateOrUpdateAsync(this IDpsCertificateOperations operations, string resourceGroupName, string provisioningServiceName, string certificateName, CertificateBodyDescription certificateDescription, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, provisioningServiceName, certificateName, certificateDescription, ifMatch, null, cancellationToken).ConfigureAwait(false))
@@ -143,7 +147,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// Delete the Provisioning Service Certificate.
             /// </summary>
             /// <remarks>
-            /// Deletes the specified certificate assosciated with the Provisioning Service
+            /// Deletes the specified certificate associated with the Provisioning Service
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -186,6 +190,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='certificatenonce'>
             /// Random number generated to indicate Proof of Possession.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static void Delete(this IDpsCertificateOperations operations, string resourceGroupName, string ifMatch, string provisioningServiceName, string certificateName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string))
             {
                 operations.DeleteAsync(resourceGroupName, ifMatch, provisioningServiceName, certificateName, certificatename, certificaterawBytes, certificateisVerified, certificatepurpose, certificatecreated, certificatelastUpdated, certificatehasPrivateKey, certificatenonce).GetAwaiter().GetResult();
@@ -195,7 +200,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// Delete the Provisioning Service Certificate.
             /// </summary>
             /// <remarks>
-            /// Deletes the specified certificate assosciated with the Provisioning Service
+            /// Deletes the specified certificate associated with the Provisioning Service
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -241,9 +246,52 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task DeleteAsync(this IDpsCertificateOperations operations, string resourceGroupName, string ifMatch, string provisioningServiceName, string certificateName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ifMatch, provisioningServiceName, certificateName, certificatename, certificaterawBytes, certificateisVerified, certificatepurpose, certificatecreated, certificatelastUpdated, certificatehasPrivateKey, certificatenonce, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Get all the certificates tied to the provisioning service.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of resource group.
+            /// </param>
+            /// <param name='provisioningServiceName'>
+            /// Name of provisioning service to retrieve certificates for.
+            /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
+            public static CertificateListDescription List(this IDpsCertificateOperations operations, string resourceGroupName, string provisioningServiceName)
+            {
+                return operations.ListAsync(resourceGroupName, provisioningServiceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get all the certificates tied to the provisioning service.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of resource group.
+            /// </param>
+            /// <param name='provisioningServiceName'>
+            /// Name of provisioning service to retrieve certificates for.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
+            public static async Task<CertificateListDescription> ListAsync(this IDpsCertificateOperations operations, string resourceGroupName, string provisioningServiceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, provisioningServiceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -291,6 +339,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='certificatenonce'>
             /// Random number generated to indicate Proof of Possession.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static VerificationCodeResponse GenerateVerificationCode(this IDpsCertificateOperations operations, string certificateName, string ifMatch, string resourceGroupName, string provisioningServiceName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string))
             {
                 return operations.GenerateVerificationCodeAsync(certificateName, ifMatch, resourceGroupName, provisioningServiceName, certificatename, certificaterawBytes, certificateisVerified, certificatepurpose, certificatecreated, certificatelastUpdated, certificatehasPrivateKey, certificatenonce).GetAwaiter().GetResult();
@@ -344,6 +393,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<VerificationCodeResponse> GenerateVerificationCodeAsync(this IDpsCertificateOperations operations, string certificateName, string ifMatch, string resourceGroupName, string provisioningServiceName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GenerateVerificationCodeWithHttpMessagesAsync(certificateName, ifMatch, resourceGroupName, provisioningServiceName, certificatename, certificaterawBytes, certificateisVerified, certificatepurpose, certificatecreated, certificatelastUpdated, certificatehasPrivateKey, certificatenonce, null, cancellationToken).ConfigureAwait(false))
@@ -403,6 +453,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='certificatenonce'>
             /// Random number generated to indicate Proof of Possession.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static CertificateResponse VerifyCertificate(this IDpsCertificateOperations operations, string certificateName, string ifMatch, VerificationCodeRequest request, string resourceGroupName, string provisioningServiceName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string))
             {
                 return operations.VerifyCertificateAsync(certificateName, ifMatch, request, resourceGroupName, provisioningServiceName, certificatename, certificaterawBytes, certificateisVerified, certificatepurpose, certificatecreated, certificatelastUpdated, certificatehasPrivateKey, certificatenonce).GetAwaiter().GetResult();
@@ -462,6 +513,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
             public static async Task<CertificateResponse> VerifyCertificateAsync(this IDpsCertificateOperations operations, string certificateName, string ifMatch, VerificationCodeRequest request, string resourceGroupName, string provisioningServiceName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.VerifyCertificateWithHttpMessagesAsync(certificateName, ifMatch, request, resourceGroupName, provisioningServiceName, certificatename, certificaterawBytes, certificateisVerified, certificatepurpose, certificatecreated, certificatelastUpdated, certificatehasPrivateKey, certificatenonce, null, cancellationToken).ConfigureAwait(false))
