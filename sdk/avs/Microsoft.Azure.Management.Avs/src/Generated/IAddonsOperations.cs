@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.Avs
     using System.Threading.Tasks;
 
     /// <summary>
-    /// HcxEnterpriseSitesOperations operations.
+    /// AddonsOperations operations.
     /// </summary>
-    public partial interface IHcxEnterpriseSitesOperations
+    public partial interface IAddonsOperations
     {
         /// <summary>
-        /// List HCX Enterprise Sites in a private cloud
+        /// List addons in a private cloud
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Management.Avs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<HcxEnterpriseSite>>> ListWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Addon>>> ListWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get an HCX Enterprise Site by name in a private cloud
+        /// Get an addon by name in a private cloud
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Management.Avs
         /// <param name='privateCloudName'>
         /// Name of the private cloud
         /// </param>
-        /// <param name='hcxEnterpriseSiteName'>
-        /// Name of the HCX Enterprise Site in the private cloud
+        /// <param name='addonName'>
+        /// Name of the addon for the private cloud
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.Avs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<HcxEnterpriseSite>> GetWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Addon>> GetWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string addonName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update an HCX Enterprise Site in a private cloud
+        /// Create or update a addon in a private cloud
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -85,8 +85,11 @@ namespace Microsoft.Azure.Management.Avs
         /// <param name='privateCloudName'>
         /// The name of the private cloud.
         /// </param>
-        /// <param name='hcxEnterpriseSiteName'>
-        /// Name of the HCX Enterprise Site in the private cloud
+        /// <param name='addonName'>
+        /// Name of the addon for the private cloud
+        /// </param>
+        /// <param name='addon'>
+        /// A addon in the private cloud
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -103,9 +106,9 @@ namespace Microsoft.Azure.Management.Avs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<HcxEnterpriseSite>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Addon>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string addonName, Addon addon, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete an HCX Enterprise Site in a private cloud
+        /// Delete a addon in a private cloud
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -113,8 +116,8 @@ namespace Microsoft.Azure.Management.Avs
         /// <param name='privateCloudName'>
         /// Name of the private cloud
         /// </param>
-        /// <param name='hcxEnterpriseSiteName'>
-        /// Name of the HCX Enterprise Site in the private cloud
+        /// <param name='addonName'>
+        /// Name of the addon for the private cloud
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -128,9 +131,65 @@ namespace Microsoft.Azure.Management.Avs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string addonName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List HCX Enterprise Sites in a private cloud
+        /// Create or update a addon in a private cloud
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateCloudName'>
+        /// The name of the private cloud.
+        /// </param>
+        /// <param name='addonName'>
+        /// Name of the addon for the private cloud
+        /// </param>
+        /// <param name='addon'>
+        /// A addon in the private cloud
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Addon>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string addonName, Addon addon, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete a addon in a private cloud
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateCloudName'>
+        /// Name of the private cloud
+        /// </param>
+        /// <param name='addonName'>
+        /// Name of the addon for the private cloud
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string addonName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List addons in a private cloud
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -150,6 +209,6 @@ namespace Microsoft.Azure.Management.Avs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<HcxEnterpriseSite>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Addon>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
