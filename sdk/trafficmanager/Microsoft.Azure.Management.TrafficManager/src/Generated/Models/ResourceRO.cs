@@ -18,29 +18,32 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     /// <summary>
     /// The core properties of ARM resources
     /// </summary>
-    public partial class Resource : IResource
+    public partial class ResourceRO : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the Resource class.
+        /// Initializes a new instance of the ResourceRO class.
         /// </summary>
-        public Resource()
+        public ResourceRO()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Resource class.
+        /// Initializes a new instance of the ResourceRO class.
         /// </summary>
         /// <param name="id">Fully qualified resource Id for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
         /// Microsoft.Network/trafficManagerProfiles.</param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
+        public ResourceRO(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
         {
             Id = id;
             Name = name;
             Type = type;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -50,24 +53,31 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets fully qualified resource Id for the resource. Ex -
+        /// Gets fully qualified resource Id for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource
+        /// Gets the name of the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or sets the type of the resource. Ex-
+        /// Gets the type of the resource. Ex-
         /// Microsoft.Network/trafficManagerProfiles.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of the
+        /// resource
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// The name of the resource group containing the Traffic Manager profiles to
             /// be listed.
             /// </param>
-            public static IEnumerable<Profile> ListByResourceGroup(this IProfilesOperations operations, string resourceGroupName)
+            public static IEnumerable<ProfileResult> ListByResourceGroup(this IProfilesOperations operations, string resourceGroupName)
             {
                 return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
             }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Profile>> ListByResourceGroupAsync(this IProfilesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<ProfileResult>> ListByResourceGroupAsync(this IProfilesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<Profile> ListBySubscription(this IProfilesOperations operations)
+            public static IEnumerable<ProfileResult> ListBySubscription(this IProfilesOperations operations)
             {
                 return operations.ListBySubscriptionAsync().GetAwaiter().GetResult();
             }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Profile>> ListBySubscriptionAsync(this IProfilesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<ProfileResult>> ListBySubscriptionAsync(this IProfilesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='profileName'>
             /// The name of the Traffic Manager profile.
             /// </param>
-            public static Profile Get(this IProfilesOperations operations, string resourceGroupName, string profileName)
+            public static ProfileResult Get(this IProfilesOperations operations, string resourceGroupName, string profileName)
             {
                 return operations.GetAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
             }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> GetAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ProfileResult> GetAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// The Traffic Manager profile parameters supplied to the CreateOrUpdate
             /// operation.
             /// </param>
-            public static Profile CreateOrUpdate(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters)
+            public static ProfileResult CreateOrUpdate(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, profileName, parameters).GetAwaiter().GetResult();
             }
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> CreateOrUpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ProfileResult> CreateOrUpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, profileName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='parameters'>
             /// The Traffic Manager profile parameters supplied to the Update operation.
             /// </param>
-            public static Profile Update(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters)
+            public static ProfileResult Update(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters)
             {
                 return operations.UpdateAsync(resourceGroupName, profileName, parameters).GetAwaiter().GetResult();
             }
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> UpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ProfileResult> UpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, profileName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

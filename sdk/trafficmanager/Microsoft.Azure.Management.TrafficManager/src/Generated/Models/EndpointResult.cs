@@ -18,27 +18,29 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing a Traffic Manager endpoint.
+    /// Class representing a Traffic Manager endpoint in a response.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Endpoint : ProxyResource
+    public partial class EndpointResult : ProxyResourceRO
     {
         /// <summary>
-        /// Initializes a new instance of the Endpoint class.
+        /// Initializes a new instance of the EndpointResult class.
         /// </summary>
-        public Endpoint()
+        public EndpointResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Endpoint class.
+        /// Initializes a new instance of the EndpointResult class.
         /// </summary>
         /// <param name="id">Fully qualified resource Id for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
         /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
         /// <param name="targetResourceId">The Azure Resource URI of the of the
         /// endpoint. Not applicable to endpoints of type
         /// 'ExternalEndpoints'.</param>
@@ -76,8 +78,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// traffic routing method. An empty list will match all ranges not
         /// covered by other endpoints.</param>
         /// <param name="customHeaders">List of custom headers.</param>
-        public Endpoint(string id = default(string), string name = default(string), string type = default(string), string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>), IList<EndpointPropertiesSubnetsItem> subnets = default(IList<EndpointPropertiesSubnetsItem>), IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(IList<EndpointPropertiesCustomHeadersItem>))
-            : base(id, name, type)
+        public EndpointResult(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>), IList<EndpointPropertiesSubnetsItem> subnets = default(IList<EndpointPropertiesSubnetsItem>), IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(IList<EndpointPropertiesCustomHeadersItem>))
+            : base(id, name, type, systemData)
         {
             TargetResourceId = targetResourceId;
             Target = target;
