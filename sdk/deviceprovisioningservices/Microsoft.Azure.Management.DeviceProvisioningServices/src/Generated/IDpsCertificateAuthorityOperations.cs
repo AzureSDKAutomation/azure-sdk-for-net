@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
     using System.Threading.Tasks;
 
     /// <summary>
-    /// DpsCertificateOperations operations.
+    /// DpsCertificateAuthorityOperations operations.
     /// </summary>
-    public partial interface IDpsCertificateOperations
+    public partial interface IDpsCertificateAuthorityOperations
     {
         /// <summary>
         /// Get the certificate from the provisioning service.
@@ -48,13 +48,12 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="ErrorDetailsException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
+        /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         Task<AzureOperationResponse<CertificateResponse>> GetWithHttpMessagesAsync(string certificateName, string resourceGroupName, string provisioningServiceName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Upload the certificate to the provisioning service.
@@ -87,13 +86,12 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="ErrorDetailsException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
+        /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         Task<AzureOperationResponse<CertificateResponse>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string provisioningServiceName, string certificateName, CertificateBodyDescription certificateDescription, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete the Provisioning Service Certificate.
@@ -151,10 +149,9 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="ErrorDetailsException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string ifMatch, string provisioningServiceName, string certificateName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all the certificates tied to the provisioning service.
@@ -174,139 +171,12 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="ErrorDetailsException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
+        /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
         Task<AzureOperationResponse<CertificateListDescription>> ListWithHttpMessagesAsync(string resourceGroupName, string provisioningServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Generate verification code for Proof of Possession.
-        /// </summary>
-        /// <param name='certificateName'>
-        /// The mandatory logical name of the certificate, that the
-        /// provisioning service uses to access.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag of the certificate. This is required to update an existing
-        /// certificate, and ignored while creating a brand new certificate.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// name of resource group.
-        /// </param>
-        /// <param name='provisioningServiceName'>
-        /// Name of provisioning service.
-        /// </param>
-        /// <param name='certificatename'>
-        /// Common Name for the certificate.
-        /// </param>
-        /// <param name='certificaterawBytes'>
-        /// Raw data of certificate.
-        /// </param>
-        /// <param name='certificateisVerified'>
-        /// Indicates if the certificate has been verified by owner of the
-        /// private key.
-        /// </param>
-        /// <param name='certificatepurpose'>
-        /// Description mentioning the purpose of the certificate. Possible
-        /// values include: 'clientAuthentication', 'serverAuthentication'
-        /// </param>
-        /// <param name='certificatecreated'>
-        /// Certificate creation time.
-        /// </param>
-        /// <param name='certificatelastUpdated'>
-        /// Certificate last updated time.
-        /// </param>
-        /// <param name='certificatehasPrivateKey'>
-        /// Indicates if the certificate contains private key.
-        /// </param>
-        /// <param name='certificatenonce'>
-        /// Random number generated to indicate Proof of Possession.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorDetailsException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
-        Task<AzureOperationResponse<VerificationCodeResponse>> GenerateVerificationCodeWithHttpMessagesAsync(string certificateName, string ifMatch, string resourceGroupName, string provisioningServiceName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Verify certificate's private key possession.
-        /// </summary>
-        /// <remarks>
-        /// Verifies the certificate's private key possession by providing the
-        /// leaf cert issued by the verifying pre uploaded certificate.
-        /// </remarks>
-        /// <param name='certificateName'>
-        /// The mandatory logical name of the certificate, that the
-        /// provisioning service uses to access.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag of the certificate.
-        /// </param>
-        /// <param name='request'>
-        /// The name of the certificate
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Resource group name.
-        /// </param>
-        /// <param name='provisioningServiceName'>
-        /// Provisioning service name.
-        /// </param>
-        /// <param name='certificatename'>
-        /// Common Name for the certificate.
-        /// </param>
-        /// <param name='certificaterawBytes'>
-        /// Raw data of certificate.
-        /// </param>
-        /// <param name='certificateisVerified'>
-        /// Indicates if the certificate has been verified by owner of the
-        /// private key.
-        /// </param>
-        /// <param name='certificatepurpose'>
-        /// Describe the purpose of the certificate. Possible values include:
-        /// 'clientAuthentication', 'serverAuthentication'
-        /// </param>
-        /// <param name='certificatecreated'>
-        /// Certificate creation time.
-        /// </param>
-        /// <param name='certificatelastUpdated'>
-        /// Certificate last updated time.
-        /// </param>
-        /// <param name='certificatehasPrivateKey'>
-        /// Indicates if the certificate contains private key.
-        /// </param>
-        /// <param name='certificatenonce'>
-        /// Random number generated to indicate Proof of Possession.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorDetailsException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
-        Task<AzureOperationResponse<CertificateResponse>> VerifyCertificateWithHttpMessagesAsync(string certificateName, string ifMatch, VerificationCodeRequest request, string resourceGroupName, string provisioningServiceName, string certificatename = default(string), byte[] certificaterawBytes = default(byte[]), bool? certificateisVerified = default(bool?), string certificatepurpose = default(string), System.DateTime? certificatecreated = default(System.DateTime?), System.DateTime? certificatelastUpdated = default(System.DateTime?), bool? certificatehasPrivateKey = default(bool?), string certificatenonce = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
