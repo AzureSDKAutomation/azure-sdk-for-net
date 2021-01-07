@@ -18,27 +18,29 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing a Traffic Manager profile.
+    /// Class representing a Traffic Manager profile in a response.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Profile : TrackedResource
+    public partial class ProfileResult : TrackedResourceRO
     {
         /// <summary>
-        /// Initializes a new instance of the Profile class.
+        /// Initializes a new instance of the ProfileResult class.
         /// </summary>
-        public Profile()
+        public ProfileResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Profile class.
+        /// Initializes a new instance of the ProfileResult class.
         /// </summary>
         /// <param name="id">Fully qualified resource Id for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
         /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="location">The Azure Region where the resource
         /// lives</param>
@@ -63,8 +65,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// endpoint record types.</param>
         /// <param name="maxReturn">Maximum number of endpoints to be returned
         /// for MultiValue routing type.</param>
-        public Profile(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), string profileStatus = default(string), string trafficRoutingMethod = default(string), DnsConfig dnsConfig = default(DnsConfig), MonitorConfig monitorConfig = default(MonitorConfig), IList<Endpoint> endpoints = default(IList<Endpoint>), string trafficViewEnrollmentStatus = default(string), IList<string> allowedEndpointRecordTypes = default(IList<string>), long? maxReturn = default(long?))
-            : base(id, name, type, tags, location)
+        public ProfileResult(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), string profileStatus = default(string), string trafficRoutingMethod = default(string), DnsConfig dnsConfig = default(DnsConfig), MonitorConfig monitorConfig = default(MonitorConfig), IList<Endpoint> endpoints = default(IList<Endpoint>), string trafficViewEnrollmentStatus = default(string), IList<string> allowedEndpointRecordTypes = default(IList<string>), long? maxReturn = default(long?))
+            : base(id, name, type, systemData, tags, location)
         {
             ProfileStatus = profileStatus;
             TrafficRoutingMethod = trafficRoutingMethod;

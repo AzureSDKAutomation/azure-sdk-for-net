@@ -12,11 +12,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 {
 
     /// <summary>
-    /// Defines values for ProfileStatus.
+    /// Defines values for IdentityType.
     /// </summary>
-    public static class ProfileStatus
+    public static class IdentityType
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }

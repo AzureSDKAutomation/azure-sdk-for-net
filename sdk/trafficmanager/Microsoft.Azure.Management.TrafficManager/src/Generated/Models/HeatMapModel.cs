@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     /// Class representing a Traffic Manager HeatMap.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class HeatMapModel : ProxyResource
+    public partial class HeatMapModel : ProxyResourceRO
     {
         /// <summary>
         /// Initializes a new instance of the HeatMapModel class.
@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Network/trafficmanagerProfiles.</param>
+        /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
         /// <param name="startTime">The beginning of the time window for this
         /// HeatMap, inclusive.</param>
         /// <param name="endTime">The ending of the time window for this
@@ -47,8 +49,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// calculation.</param>
         /// <param name="trafficFlows">The traffic flows produced in this
         /// HeatMap calculation.</param>
-        public HeatMapModel(string id = default(string), string name = default(string), string type = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<HeatMapEndpoint> endpoints = default(IList<HeatMapEndpoint>), IList<TrafficFlow> trafficFlows = default(IList<TrafficFlow>))
-            : base(id, name, type)
+        public HeatMapModel(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<HeatMapEndpoint> endpoints = default(IList<HeatMapEndpoint>), IList<TrafficFlow> trafficFlows = default(IList<TrafficFlow>))
+            : base(id, name, type, systemData)
         {
             StartTime = startTime;
             EndTime = endTime;
