@@ -14,26 +14,27 @@ namespace Microsoft.Azure.Management.Analysis.Models
     using System.Linq;
 
     /// <summary>
-    /// Detail of gateway errors.
+    /// The error object
     /// </summary>
-    public partial class GatewayError
+    public partial class ErrorResponseError
     {
         /// <summary>
-        /// Initializes a new instance of the GatewayError class.
+        /// Initializes a new instance of the ErrorResponseError class.
         /// </summary>
-        public GatewayError()
+        public ErrorResponseError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GatewayError class.
+        /// Initializes a new instance of the ErrorResponseError class.
         /// </summary>
-        /// <param name="code">Error code of list gateway.</param>
-        /// <param name="message">Error message of list gateway.</param>
+        /// <param name="code">Error code</param>
+        /// <param name="message">Error message indicating why the operation
+        /// failed.</param>
         /// <param name="subCode">The error sub code</param>
         /// <param name="httpStatusCode">The http status code</param>
-        public GatewayError(string code = default(string), string message = default(string), string subCode = default(string), string httpStatusCode = default(string))
+        public ErrorResponseError(string code = default(string), string message = default(string), string subCode = default(string), string httpStatusCode = default(string))
         {
             Code = code;
             Message = message;
@@ -48,13 +49,13 @@ namespace Microsoft.Azure.Management.Analysis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error code of list gateway.
+        /// Gets or sets error code
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets error message of list gateway.
+        /// Gets or sets error message indicating why the operation failed.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
