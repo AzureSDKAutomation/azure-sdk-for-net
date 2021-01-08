@@ -310,7 +310,47 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             }
 
             /// <summary>
-            /// Gets additional information for the specified Data Box Edge/Data Box
+            /// Generates certificate for activation key.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deviceName'>
+            /// The device name.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            public static GenerateCertResponse GenerateCertificate(this IDevicesOperations operations, string deviceName, string resourceGroupName)
+            {
+                return operations.GenerateCertificateAsync(deviceName, resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Generates certificate for activation key.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deviceName'>
+            /// The device name.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GenerateCertResponse> GenerateCertificateAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GenerateCertificateWithHttpMessagesAsync(deviceName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets additional information for the specified Azure Stack Edge/Data Box
             /// Gateway device.
             /// </summary>
             /// <param name='operations'>
@@ -328,7 +368,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             }
 
             /// <summary>
-            /// Gets additional information for the specified Data Box Edge/Data Box
+            /// Gets additional information for the specified Azure Stack Edge/Data Box
             /// Gateway device.
             /// </summary>
             /// <param name='operations'>
@@ -508,6 +548,54 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             public static async Task CreateOrUpdateSecuritySettingsAsync(this IDevicesOperations operations, string deviceName, SecuritySettings securitySettings, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, securitySettings, resourceGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets additional information for the specified Data Box Edge/Data Box
+            /// Gateway device.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deviceName'>
+            /// The device name.
+            /// </param>
+            /// <param name='parameters'>
+            /// The patch object.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            public static DataBoxEdgeDeviceExtendedInfo UpdateExtendedInformation(this IDevicesOperations operations, string deviceName, DataBoxEdgeDeviceExtendedInfoPatch parameters, string resourceGroupName)
+            {
+                return operations.UpdateExtendedInformationAsync(deviceName, parameters, resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets additional information for the specified Data Box Edge/Data Box
+            /// Gateway device.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='deviceName'>
+            /// The device name.
+            /// </param>
+            /// <param name='parameters'>
+            /// The patch object.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DataBoxEdgeDeviceExtendedInfo> UpdateExtendedInformationAsync(this IDevicesOperations operations, string deviceName, DataBoxEdgeDeviceExtendedInfoPatch parameters, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateExtendedInformationWithHttpMessagesAsync(deviceName, parameters, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>

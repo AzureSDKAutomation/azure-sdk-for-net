@@ -19,35 +19,26 @@ namespace Microsoft.Azure.Management.DataBoxEdge
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("DataBoxEdge", "Alerts", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "BandwidthSchedules", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Containers", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Devices", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Jobs", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Nodes", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Operations", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "OperationsStatus", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Orders", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Roles", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Shares", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Skus", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "StorageAccountCredentials", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "StorageAccounts", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Triggers", "2019-08-01"),
-                new Tuple<string, string, string>("DataBoxEdge", "Users", "2019-08-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Addons", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Alerts", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "AvailableSkus", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "BandwidthSchedules", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Containers", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Devices", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Jobs", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "MonitoringConfig", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Nodes", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Operations", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "OperationsStatus", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Orders", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Roles", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Shares", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "StorageAccountCredentials", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "StorageAccounts", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Triggers", "2020-09-01"),
+                new Tuple<string, string, string>("DataBoxEdge", "Users", "2020-09-01"),
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "latest";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4407";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/databoxedge/resource-manager/readme.md --csharp --version=latest --reflect-api-versions --csharp-sdks-folder=D:\\Code\\azure-sdk-for-net\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "ef354ec8d6580227707ed935684e533b898beabe";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-

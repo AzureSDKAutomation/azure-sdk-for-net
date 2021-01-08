@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -35,7 +33,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             /// <param name='resourceGroupName'>
             /// The resource group name.
             /// </param>
-            public static IEnumerable<Node> ListByDataBoxEdgeDevice(this INodesOperations operations, string deviceName, string resourceGroupName)
+            public static NodeList ListByDataBoxEdgeDevice(this INodesOperations operations, string deviceName, string resourceGroupName)
             {
                 return operations.ListByDataBoxEdgeDeviceAsync(deviceName, resourceGroupName).GetAwaiter().GetResult();
             }
@@ -55,7 +53,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Node>> ListByDataBoxEdgeDeviceAsync(this INodesOperations operations, string deviceName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NodeList> ListByDataBoxEdgeDeviceAsync(this INodesOperations operations, string deviceName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByDataBoxEdgeDeviceWithHttpMessagesAsync(deviceName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {

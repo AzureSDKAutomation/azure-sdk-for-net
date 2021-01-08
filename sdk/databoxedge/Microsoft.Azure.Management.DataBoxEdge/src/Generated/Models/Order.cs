@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// Initializes a new instance of the Order class.
         /// </summary>
         /// <param name="contactInformation">The contact details.</param>
-        /// <param name="shippingAddress">The shipping address.</param>
         /// <param name="id">The path ID that uniquely identifies the
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
+        /// <param name="shippingAddress">The shipping address.</param>
         /// <param name="currentStatus">Current status of the order.</param>
         /// <param name="orderHistory">List of status changes in the
         /// order.</param>
@@ -50,7 +50,10 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="returnTrackingInfo">Tracking information for the
         /// package returned from the customer whether it has an original or a
         /// replacement device.</param>
-        public Order(ContactDetails contactInformation, Address shippingAddress, string id = default(string), string name = default(string), string type = default(string), OrderStatus currentStatus = default(OrderStatus), IList<OrderStatus> orderHistory = default(IList<OrderStatus>), string serialNumber = default(string), IList<TrackingInfo> deliveryTrackingInfo = default(IList<TrackingInfo>), IList<TrackingInfo> returnTrackingInfo = default(IList<TrackingInfo>))
+        /// <param name="shipmentType">ShipmentType of the order. Possible
+        /// values include: 'NotApplicable', 'ShippedToCustomer',
+        /// 'SelfPickup'</param>
+        public Order(ContactDetails contactInformation, string id = default(string), string name = default(string), string type = default(string), Address shippingAddress = default(Address), OrderStatus currentStatus = default(OrderStatus), IList<OrderStatus> orderHistory = default(IList<OrderStatus>), string serialNumber = default(string), IList<TrackingInfo> deliveryTrackingInfo = default(IList<TrackingInfo>), IList<TrackingInfo> returnTrackingInfo = default(IList<TrackingInfo>), string shipmentType = default(string))
             : base(id, name, type)
         {
             ContactInformation = contactInformation;
@@ -60,6 +63,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
             SerialNumber = serialNumber;
             DeliveryTrackingInfo = deliveryTrackingInfo;
             ReturnTrackingInfo = returnTrackingInfo;
+            ShipmentType = shipmentType;
             CustomInit();
         }
 
@@ -113,6 +117,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         public IList<TrackingInfo> ReturnTrackingInfo { get; private set; }
 
         /// <summary>
+        /// Gets or sets shipmentType of the order. Possible values include:
+        /// 'NotApplicable', 'ShippedToCustomer', 'SelfPickup'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.shipmentType")]
+        public string ShipmentType { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -123,10 +134,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
             if (ContactInformation == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ContactInformation");
-            }
-            if (ShippingAddress == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ShippingAddress");
             }
             if (ContactInformation != null)
             {

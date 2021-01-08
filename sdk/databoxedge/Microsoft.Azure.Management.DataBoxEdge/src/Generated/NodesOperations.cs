@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<Node>>> ListByDataBoxEdgeDeviceWithHttpMessagesAsync(string deviceName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NodeList>> ListByDataBoxEdgeDeviceWithHttpMessagesAsync(string deviceName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (deviceName == null)
             {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IEnumerable<Node>>();
+            var _result = new AzureOperationResponse<NodeList>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Node>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<NodeList>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

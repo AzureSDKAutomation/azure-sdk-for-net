@@ -35,19 +35,21 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <summary>
         /// Initializes a new instance of the User class.
         /// </summary>
-        /// <param name="userType">Type of the user. Possible values include:
-        /// 'Share', 'LocalManagement', 'ARM'</param>
         /// <param name="id">The path ID that uniquely identifies the
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
+        /// <param name="systemData">User in DataBoxEdge Resource</param>
         /// <param name="encryptedPassword">The password details.</param>
         /// <param name="shareAccessRights">List of shares that the user has
         /// rights on. This field should not be specified during user
         /// creation.</param>
-        public User(string userType, string id = default(string), string name = default(string), string type = default(string), AsymmetricEncryptedSecret encryptedPassword = default(AsymmetricEncryptedSecret), IList<ShareAccessRight> shareAccessRights = default(IList<ShareAccessRight>))
+        /// <param name="userType">Type of the user. Possible values include:
+        /// 'Share', 'LocalManagement', 'ARM'</param>
+        public User(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), AsymmetricEncryptedSecret encryptedPassword = default(AsymmetricEncryptedSecret), IList<ShareAccessRight> shareAccessRights = default(IList<ShareAccessRight>), string userType = default(string))
             : base(id, name, type)
         {
+            SystemData = systemData;
             EncryptedPassword = encryptedPassword;
             ShareAccessRights = shareAccessRights;
             UserType = userType;
@@ -60,17 +62,23 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets user in DataBoxEdge Resource
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; set; }
+
+        /// <summary>
         /// Gets or sets the password details.
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryptedPassword")]
         public AsymmetricEncryptedSecret EncryptedPassword { get; set; }
 
         /// <summary>
-        /// Gets or sets list of shares that the user has rights on. This field
-        /// should not be specified during user creation.
+        /// Gets list of shares that the user has rights on. This field should
+        /// not be specified during user creation.
         /// </summary>
         [JsonProperty(PropertyName = "properties.shareAccessRights")]
-        public IList<ShareAccessRight> ShareAccessRights { get; set; }
+        public IList<ShareAccessRight> ShareAccessRights { get; private set; }
 
         /// <summary>
         /// Gets or sets type of the user. Possible values include: 'Share',
@@ -87,10 +95,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (UserType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "UserType");
-            }
             if (EncryptedPassword != null)
             {
                 EncryptedPassword.Validate();

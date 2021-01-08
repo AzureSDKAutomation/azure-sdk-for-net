@@ -49,6 +49,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// groups).</param>
         /// <param name="sku">The SKU type.</param>
         /// <param name="etag">The etag for the devices.</param>
+        /// <param name="identity">Msi identity of the resource</param>
+        /// <param name="kind">The etag for the devices. Possible values
+        /// include: 'AzureDataBoxGateway', 'AzureStackEdge', 'AzureStackHub',
+        /// 'AzureModularDataCentre'</param>
+        /// <param name="systemData">DataBoxEdge Resource</param>
         /// <param name="dataBoxEdgeDeviceStatus">The status of the Data Box
         /// Edge/Gateway device. Possible values include: 'ReadyToSetup',
         /// 'Online', 'Offline', 'NeedsAttention', 'Disconnected',
@@ -78,13 +83,20 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="configuredRoleTypes">Type of compute roles
         /// configured.</param>
         /// <param name="nodeCount">The number of nodes in the cluster.</param>
-        public DataBoxEdgeDevice(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string etag = default(string), string dataBoxEdgeDeviceStatus = default(string), string serialNumber = default(string), string description = default(string), string modelDescription = default(string), string deviceType = default(string), string friendlyName = default(string), string culture = default(string), string deviceModel = default(string), string deviceSoftwareVersion = default(string), long? deviceLocalCapacity = default(long?), string timeZone = default(string), string deviceHcsVersion = default(string), IList<string> configuredRoleTypes = default(IList<string>), int? nodeCount = default(int?))
+        /// <param name="resourceMoveDetails">The details of the move operation
+        /// on this resource.</param>
+        /// <param name="edgeProfile">The details of Edge Profile for this
+        /// resource</param>
+        public DataBoxEdgeDevice(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string etag = default(string), ResourceIdentity identity = default(ResourceIdentity), string kind = default(string), SystemData systemData = default(SystemData), string dataBoxEdgeDeviceStatus = default(string), string serialNumber = default(string), string description = default(string), string modelDescription = default(string), string deviceType = default(string), string friendlyName = default(string), string culture = default(string), string deviceModel = default(string), string deviceSoftwareVersion = default(string), long? deviceLocalCapacity = default(long?), string timeZone = default(string), string deviceHcsVersion = default(string), IList<string> configuredRoleTypes = default(IList<string>), int? nodeCount = default(int?), ResourceMoveDetails resourceMoveDetails = default(ResourceMoveDetails), EdgeProfile edgeProfile = default(EdgeProfile))
             : base(id, name, type)
         {
             Location = location;
             Tags = tags;
             Sku = sku;
             Etag = etag;
+            Identity = identity;
+            Kind = kind;
+            SystemData = systemData;
             DataBoxEdgeDeviceStatus = dataBoxEdgeDeviceStatus;
             SerialNumber = serialNumber;
             Description = description;
@@ -99,6 +111,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
             DeviceHcsVersion = deviceHcsVersion;
             ConfiguredRoleTypes = configuredRoleTypes;
             NodeCount = nodeCount;
+            ResourceMoveDetails = resourceMoveDetails;
+            EdgeProfile = edgeProfile;
             CustomInit();
         }
 
@@ -135,6 +149,26 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets or sets msi identity of the resource
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ResourceIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the etag for the devices. Possible values include:
+        /// 'AzureDataBoxGateway', 'AzureStackEdge', 'AzureStackHub',
+        /// 'AzureModularDataCentre'
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets or sets dataBoxEdge Resource
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Gets or sets the status of the Data Box Edge/Gateway device.
@@ -225,6 +259,18 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.nodeCount")]
         public int? NodeCount { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the details of the move operation on this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceMoveDetails")]
+        public ResourceMoveDetails ResourceMoveDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the details of Edge Profile for this resource
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edgeProfile")]
+        public EdgeProfile EdgeProfile { get; set; }
 
         /// <summary>
         /// Validate the object.
