@@ -12,14 +12,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ContainerServiceOrchestratorTypes.
+    /// Defines values for Expander.
     /// </summary>
-    public static class ContainerServiceOrchestratorTypes
+    public static class Expander
     {
-        public const string Kubernetes = "Kubernetes";
-        public const string Swarm = "Swarm";
-        public const string DCOS = "DCOS";
-        public const string DockerCE = "DockerCE";
-        public const string Custom = "Custom";
+        public const string LeastWaste = "least-waste";
+        public const string MostPods = "most-pods";
+        public const string Priority = "priority";
+        public const string Random = "random";
     }
 }
