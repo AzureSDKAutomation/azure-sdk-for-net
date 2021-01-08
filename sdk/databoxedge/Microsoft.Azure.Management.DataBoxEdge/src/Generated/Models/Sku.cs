@@ -32,7 +32,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="name">SKU name. Possible values include: 'Gateway',
         /// 'Edge', 'TEA_1Node', 'TEA_1Node_UPS', 'TEA_1Node_Heater',
         /// 'TEA_1Node_UPS_Heater', 'TEA_4Node_Heater', 'TEA_4Node_UPS_Heater',
-        /// 'TMA'</param>
+        /// 'TMA', 'TDC', 'TCA_Small', 'GPU', 'TCA_Large', 'EdgeP_Base',
+        /// 'EdgeP_High', 'EdgePR_Base', 'EdgePR_Base_UPS', 'EdgeMR_Mini',
+        /// 'RCA_Small', 'RCA_Large', 'RDC'</param>
         /// <param name="tier">The SKU tier. This is based on the SKU name.
         /// Possible values include: 'Standard'</param>
         public Sku(string name = default(string), string tier = default(string))
@@ -51,7 +53,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// Gets or sets SKU name. Possible values include: 'Gateway', 'Edge',
         /// 'TEA_1Node', 'TEA_1Node_UPS', 'TEA_1Node_Heater',
         /// 'TEA_1Node_UPS_Heater', 'TEA_4Node_Heater', 'TEA_4Node_UPS_Heater',
-        /// 'TMA'
+        /// 'TMA', 'TDC', 'TCA_Small', 'GPU', 'TCA_Large', 'EdgeP_Base',
+        /// 'EdgeP_High', 'EdgePR_Base', 'EdgePR_Base_UPS', 'EdgeMR_Mini',
+        /// 'RCA_Small', 'RCA_Large', 'RDC'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

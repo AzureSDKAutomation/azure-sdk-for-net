@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             /// <param name='resourceGroupName'>
             /// The resource group name.
             /// </param>
-            /// <param name='filter'>
-            /// Specify $filter='UserType eq &lt;type&gt;' to filter on user type property
+            /// <param name='expand'>
+            /// Specify $filter='Type eq &lt;type&gt;' to filter on user type property
             /// </param>
-            public static IPage<User> ListByDataBoxEdgeDevice(this IUsersOperations operations, string deviceName, string resourceGroupName, string filter = default(string))
+            public static IPage<User> ListByDataBoxEdgeDevice(this IUsersOperations operations, string deviceName, string resourceGroupName, string expand = default(string))
             {
-                return operations.ListByDataBoxEdgeDeviceAsync(deviceName, resourceGroupName, filter).GetAwaiter().GetResult();
+                return operations.ListByDataBoxEdgeDeviceAsync(deviceName, resourceGroupName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Management.DataBoxEdge
             /// <param name='resourceGroupName'>
             /// The resource group name.
             /// </param>
-            /// <param name='filter'>
-            /// Specify $filter='UserType eq &lt;type&gt;' to filter on user type property
+            /// <param name='expand'>
+            /// Specify $filter='Type eq &lt;type&gt;' to filter on user type property
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<User>> ListByDataBoxEdgeDeviceAsync(this IUsersOperations operations, string deviceName, string resourceGroupName, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<User>> ListByDataBoxEdgeDeviceAsync(this IUsersOperations operations, string deviceName, string resourceGroupName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDataBoxEdgeDeviceWithHttpMessagesAsync(deviceName, resourceGroupName, filter, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDataBoxEdgeDeviceWithHttpMessagesAsync(deviceName, resourceGroupName, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
