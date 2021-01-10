@@ -14,29 +14,27 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// IoT sensor
+    /// The resource management error additional info.
     /// </summary>
-    public partial class IotSensor : Resource
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public IotSensor()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="properties">IoT sensor properties</param>
-        public IotSensor(string id = default(string), string name = default(string), string type = default(string), object properties = default(object))
-            : base(id, name, type)
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Properties = properties;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -46,10 +44,16 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ioT sensor properties
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public object Properties { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }

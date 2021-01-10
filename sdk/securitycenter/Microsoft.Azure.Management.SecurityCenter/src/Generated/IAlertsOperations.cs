@@ -285,6 +285,25 @@ namespace Microsoft.Azure.Management.Security
         /// </exception>
         Task<AzureOperationResponse> UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(string alertName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Simulate security alerts
+        /// </summary>
+        /// <param name='properties'>
+        /// Alert Simulator request body data.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> SimulateAlertsWithHttpMessagesAsync(AlertSimulatorRequestProperties properties = default(AlertSimulatorRequestProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// List all the alerts that are associated with the subscription
         /// </summary>
         /// <param name='nextPageLink'>

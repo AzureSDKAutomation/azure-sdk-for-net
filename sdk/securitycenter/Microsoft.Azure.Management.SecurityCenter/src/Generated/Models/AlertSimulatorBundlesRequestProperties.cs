@@ -11,30 +11,35 @@
 namespace Microsoft.Azure.Management.Security.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// All downloads for threat intelligence
+    /// Simulate alerts according to this bundles.
     /// </summary>
-    public partial class PackageDownloadsThreatIntelligence
+    public partial class AlertSimulatorBundlesRequestProperties : AlertSimulatorRequestProperties
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// PackageDownloadsThreatIntelligence class.
+        /// AlertSimulatorBundlesRequestProperties class.
         /// </summary>
-        public PackageDownloadsThreatIntelligence()
+        public AlertSimulatorBundlesRequestProperties()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// PackageDownloadsThreatIntelligence class.
+        /// AlertSimulatorBundlesRequestProperties class.
         /// </summary>
-        /// <param name="link">Download link</param>
-        public PackageDownloadsThreatIntelligence(string link = default(string))
+        /// <param name="additionalProperties">Unmatched properties from the
+        /// message are deserialized this collection</param>
+        /// <param name="bundles">Bundles list.</param>
+        public AlertSimulatorBundlesRequestProperties(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IList<string> bundles = default(IList<string>))
+            : base(additionalProperties)
         {
-            Link = link;
+            Bundles = bundles;
             CustomInit();
         }
 
@@ -44,10 +49,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets download link
+        /// Gets or sets bundles list.
         /// </summary>
-        [JsonProperty(PropertyName = "link")]
-        public string Link { get; set; }
+        [JsonProperty(PropertyName = "bundles")]
+        public IList<string> Bundles { get; set; }
 
     }
 }
