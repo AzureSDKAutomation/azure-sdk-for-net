@@ -19,17 +19,23 @@ namespace Microsoft.Azure.Attestation
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PolicyCertificatesOperations operations.
+    /// AttestationOperations operations.
     /// </summary>
-    public partial interface IPolicyCertificatesOperations
+    public partial interface IAttestationOperations
     {
         /// <summary>
-        /// Retrieves the set of certificates used to express policy for the
-        /// current tenant.
+        /// Attest to an SGX enclave.
         /// </summary>
+        /// <remarks>
+        /// Processes an OpenEnclave report , producing an artifact. The type
+        /// of artifact produced is dependent upon attestation policy.
+        /// </remarks>
         /// <param name='instanceUrl'>
         /// The attestation instance base URI, for example
         /// https://mytenant.attest.azure.net.
+        /// </param>
+        /// <param name='request'>
+        /// Request object containing the quote
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,19 +52,20 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PolicyCertificatesResponse>> GetWithHttpMessagesAsync(string instanceUrl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AttestationResponse>> AttestOpenEnclaveWithHttpMessagesAsync(string instanceUrl, AttestOpenEnclaveRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Adds a new attestation policy certificate to the set of policy
-        /// management certificates.
+        /// Attest to an SGX enclave.
         /// </summary>
+        /// <remarks>
+        /// Processes an SGX enclave quote, producing an artifact. The type of
+        /// artifact produced is dependent upon attestation policy.
+        /// </remarks>
         /// <param name='instanceUrl'>
         /// The attestation instance base URI, for example
         /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='policyCertificateToAdd'>
-        /// An RFC7519 JSON Web Token whose body is an RFC7517 JSON Web Key
-        /// object. The RFC7519 JWT must be signed with one of the existing
-        /// signing certificates
+        /// <param name='request'>
+        /// Request object containing the quote
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,19 +82,21 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PolicyCertificatesModifyResponse>> AddWithHttpMessagesAsync(string instanceUrl, string policyCertificateToAdd, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AttestationResponse>> AttestSgxEnclaveWithHttpMessagesAsync(string instanceUrl, AttestSgxEnclaveRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Removes the specified policy management certificate. Note that the
-        /// final policy management certificate cannot be removed.
+        /// Attest a Virtualization-based Security (VBS) enclave.
         /// </summary>
+        /// <remarks>
+        /// Processes attestation evidence from a VBS enclave, producing an
+        /// attestation result. The attestation result produced is dependent
+        /// upon the attestation policy.
+        /// </remarks>
         /// <param name='instanceUrl'>
         /// The attestation instance base URI, for example
         /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='policyCertificateToRemove'>
-        /// An RFC7519 JSON Web Token whose body is an
-        /// AttestationCertificateManagementBody object. The RFC7519 JWT must
-        /// be signed with one of the existing signing certificates
+        /// <param name='request'>
+        /// Request object
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,6 +113,6 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PolicyCertificatesModifyResponse>> RemoveWithHttpMessagesAsync(string instanceUrl, string policyCertificateToRemove, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TpmAttestationResponse>> AttestTpmWithHttpMessagesAsync(string instanceUrl, TpmAttestationRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
