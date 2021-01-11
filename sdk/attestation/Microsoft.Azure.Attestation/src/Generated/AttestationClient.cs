@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Attestation
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Client API version.
+        /// Client API version. Current version is 2010-10-01
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Attestation
         /// Gets the IPolicyCertificatesOperations.
         /// </summary>
         public virtual IPolicyCertificatesOperations PolicyCertificates { get; private set; }
+
+        /// <summary>
+        /// Gets the IAttestationOperations.
+        /// </summary>
+        public virtual IAttestationOperations Attestation { get; private set; }
 
         /// <summary>
         /// Gets the ISigningCertificatesOperations.
@@ -218,10 +223,11 @@ namespace Microsoft.Azure.Attestation
         {
             Policy = new PolicyOperations(this);
             PolicyCertificates = new PolicyCertificatesOperations(this);
+            Attestation = new AttestationOperations(this);
             SigningCertificates = new SigningCertificatesOperations(this);
             MetadataConfiguration = new MetadataConfigurationOperations(this);
-            BaseUri = "{tenantBaseUrl}";
-            ApiVersion = "2018-09-01-preview";
+            BaseUri = "{instanceUrl}";
+            ApiVersion = "2020-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

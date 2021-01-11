@@ -24,19 +24,16 @@ namespace Microsoft.Azure.Attestation
     public partial interface IPolicyOperations
     {
         /// <summary>
-        /// Accepts a new policy document and returns a JWT which expresses
-        /// used in preparation to set attestation policy.
+        /// Retrieves the current policy for an attestation type.
         /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='tee'>
+        /// <param name='attestationType'>
         /// Specifies the trusted execution environment to be used to validate
         /// the evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
-        /// </param>
-        /// <param name='policyJws'>
-        /// JSON Web Signature (See RFC7515) expressing the new policy
+        /// 'Tpm'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -53,47 +50,22 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> PrepareToSetWithHttpMessagesAsync(string tenantBaseUrl, string tee, string policyJws, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PolicyResponse>> GetWithHttpMessagesAsync(string instanceUrl, string attestationType, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Retrieves the current policy for a given kind of TEE.
+        /// Sets the policy for a given attestation type.
         /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='tee'>
+        /// <param name='attestationType'>
         /// Specifies the trusted execution environment to be used to validate
         /// the evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<object>> GetWithHttpMessagesAsync(string tenantBaseUrl, string tee, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Sets the policy for a given kind of TEE.
-        /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
-        /// </param>
-        /// <param name='tee'>
-        /// Specifies the trusted execution environment to be used to validate
-        /// the evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
+        /// 'Tpm'
         /// </param>
         /// <param name='newAttestationPolicy'>
-        /// JWT Expressing the new policy
+        /// JWT Expressing the new policy whose body is a
+        /// StoredAttestationPolicy object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -110,18 +82,19 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> SetWithHttpMessagesAsync(string tenantBaseUrl, string tee, string newAttestationPolicy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PolicyResponse>> SetWithHttpMessagesAsync(string instanceUrl, string attestationType, string newAttestationPolicy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Resets the attestation policy for the specified tenant and reverts
         /// to the default policy.
         /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='tee'>
+        /// <param name='attestationType'>
         /// Specifies the trusted execution environment to be used to validate
         /// the evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
+        /// 'Tpm'
         /// </param>
         /// <param name='policyJws'>
         /// JSON Web Signature with an empty policy document
@@ -141,6 +114,6 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> ResetWithHttpMessagesAsync(string tenantBaseUrl, string tee, string policyJws, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PolicyResponse>> ResetWithHttpMessagesAsync(string instanceUrl, string attestationType, string policyJws, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

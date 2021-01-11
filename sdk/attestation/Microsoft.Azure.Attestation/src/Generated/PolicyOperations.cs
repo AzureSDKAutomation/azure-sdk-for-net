@@ -51,19 +51,15 @@ namespace Microsoft.Azure.Attestation
         public AttestationClient Client { get; private set; }
 
         /// <summary>
-        /// Accepts a new policy document and returns a JWT which expresses  used in
-        /// preparation to set attestation policy.
+        /// Retrieves the current policy for an attestation type.
         /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='tee'>
+        /// <param name='attestationType'>
         /// Specifies the trusted execution environment to be used to validate the
-        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
-        /// </param>
-        /// <param name='policyJws'>
-        /// JSON Web Signature (See RFC7515) expressing the new policy
+        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -86,19 +82,19 @@ namespace Microsoft.Azure.Attestation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<object>> PrepareToSetWithHttpMessagesAsync(string tenantBaseUrl, string tee, string policyJws, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PolicyResponse>> GetWithHttpMessagesAsync(string instanceUrl, string attestationType, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (tenantBaseUrl == null)
+            if (instanceUrl == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tenantBaseUrl");
+                throw new ValidationException(ValidationRules.CannotBeNull, "instanceUrl");
             }
-            if (tee == null)
+            if (Client.ApiVersion == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tee");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (policyJws == null)
+            if (attestationType == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "policyJws");
+                throw new ValidationException(ValidationRules.CannotBeNull, "attestationType");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -107,258 +103,20 @@ namespace Microsoft.Azure.Attestation
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("tenantBaseUrl", tenantBaseUrl);
-                tracingParameters.Add("tee", tee);
-                tracingParameters.Add("policyJws", policyJws);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "PrepareToSet", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri;
-            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "operations/policy/updatepolicy";
-            _url = _url.Replace("{tenantBaseUrl}", tenantBaseUrl);
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (tee != null)
-            {
-                _queryParameters.Add(string.Format("tee={0}", System.Uri.EscapeDataString(tee)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            if(policyJws != null)
-            {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(policyJws, Client.SerializationSettings);
-                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("text/plain");
-            }
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 400 && (int)_statusCode != 401)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<object>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<string>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 400)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 401)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<string>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Retrieves the current policy for a given kind of TEE.
-        /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
-        /// </param>
-        /// <param name='tee'>
-        /// Specifies the trusted execution environment to be used to validate the
-        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<object>> GetWithHttpMessagesAsync(string tenantBaseUrl, string tee, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (tenantBaseUrl == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tenantBaseUrl");
-            }
-            if (tee == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tee");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("tenantBaseUrl", tenantBaseUrl);
-                tracingParameters.Add("tee", tee);
+                tracingParameters.Add("instanceUrl", instanceUrl);
+                tracingParameters.Add("attestationType", attestationType);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri;
-            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "operations/policy/current";
-            _url = _url.Replace("{tenantBaseUrl}", tenantBaseUrl);
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "policies/{attestationType}";
+            _url = _url.Replace("{instanceUrl}", instanceUrl);
+            _url = _url.Replace("{attestationType}", System.Uri.EscapeDataString(attestationType));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (tee != null)
-            {
-                _queryParameters.Add(string.Format("tee={0}", System.Uri.EscapeDataString(tee)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -418,7 +176,7 @@ namespace Microsoft.Azure.Attestation
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 400 && (int)_statusCode != 401)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -453,7 +211,7 @@ namespace Microsoft.Azure.Attestation
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<object>();
+            var _result = new AzureOperationResponse<PolicyResponse>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -466,43 +224,7 @@ namespace Microsoft.Azure.Attestation
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AttestationPolicy>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 400)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 401)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<string>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PolicyResponse>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -522,18 +244,19 @@ namespace Microsoft.Azure.Attestation
         }
 
         /// <summary>
-        /// Sets the policy for a given kind of TEE.
+        /// Sets the policy for a given attestation type.
         /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='tee'>
+        /// <param name='attestationType'>
         /// Specifies the trusted execution environment to be used to validate the
-        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
+        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
         /// </param>
         /// <param name='newAttestationPolicy'>
-        /// JWT Expressing the new policy
+        /// JWT Expressing the new policy whose body is a StoredAttestationPolicy
+        /// object.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -556,19 +279,30 @@ namespace Microsoft.Azure.Attestation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<object>> SetWithHttpMessagesAsync(string tenantBaseUrl, string tee, string newAttestationPolicy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PolicyResponse>> SetWithHttpMessagesAsync(string instanceUrl, string attestationType, string newAttestationPolicy, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (tenantBaseUrl == null)
+            if (instanceUrl == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tenantBaseUrl");
+                throw new ValidationException(ValidationRules.CannotBeNull, "instanceUrl");
             }
-            if (tee == null)
+            if (Client.ApiVersion == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tee");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (attestationType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "attestationType");
             }
             if (newAttestationPolicy == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "newAttestationPolicy");
+            }
+            if (newAttestationPolicy != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(newAttestationPolicy, "[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "newAttestationPolicy", "[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]*");
+                }
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -577,24 +311,21 @@ namespace Microsoft.Azure.Attestation
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("tenantBaseUrl", tenantBaseUrl);
-                tracingParameters.Add("tee", tee);
+                tracingParameters.Add("instanceUrl", instanceUrl);
+                tracingParameters.Add("attestationType", attestationType);
                 tracingParameters.Add("newAttestationPolicy", newAttestationPolicy);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Set", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri;
-            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "operations/policy/current";
-            _url = _url.Replace("{tenantBaseUrl}", tenantBaseUrl);
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "policies/{attestationType}";
+            _url = _url.Replace("{instanceUrl}", instanceUrl);
+            _url = _url.Replace("{attestationType}", System.Uri.EscapeDataString(attestationType));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (tee != null)
-            {
-                _queryParameters.Add(string.Format("tee={0}", System.Uri.EscapeDataString(tee)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -660,7 +391,7 @@ namespace Microsoft.Azure.Attestation
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 400 && (int)_statusCode != 401)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -695,7 +426,7 @@ namespace Microsoft.Azure.Attestation
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<object>();
+            var _result = new AzureOperationResponse<PolicyResponse>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -703,30 +434,12 @@ namespace Microsoft.Azure.Attestation
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
             }
             // Deserialize Response
-            if ((int)_statusCode == 400)
+            if ((int)_statusCode == 200)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 401)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<string>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PolicyResponse>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -749,13 +462,13 @@ namespace Microsoft.Azure.Attestation
         /// Resets the attestation policy for the specified tenant and reverts to the
         /// default policy.
         /// </summary>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
-        /// <param name='tee'>
+        /// <param name='attestationType'>
         /// Specifies the trusted execution environment to be used to validate the
-        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-        /// 'CyResComponent', 'VSMEnclave'
+        /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
         /// </param>
         /// <param name='policyJws'>
         /// JSON Web Signature with an empty policy document
@@ -781,19 +494,30 @@ namespace Microsoft.Azure.Attestation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<object>> ResetWithHttpMessagesAsync(string tenantBaseUrl, string tee, string policyJws, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PolicyResponse>> ResetWithHttpMessagesAsync(string instanceUrl, string attestationType, string policyJws, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (tenantBaseUrl == null)
+            if (instanceUrl == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tenantBaseUrl");
+                throw new ValidationException(ValidationRules.CannotBeNull, "instanceUrl");
             }
-            if (tee == null)
+            if (Client.ApiVersion == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tee");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (attestationType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "attestationType");
             }
             if (policyJws == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "policyJws");
+            }
+            if (policyJws != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(policyJws, "[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]*"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "policyJws", "[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]*");
+                }
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -802,24 +526,21 @@ namespace Microsoft.Azure.Attestation
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("tenantBaseUrl", tenantBaseUrl);
-                tracingParameters.Add("tee", tee);
+                tracingParameters.Add("instanceUrl", instanceUrl);
+                tracingParameters.Add("attestationType", attestationType);
                 tracingParameters.Add("policyJws", policyJws);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Reset", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri;
-            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "operations/policy/current";
-            _url = _url.Replace("{tenantBaseUrl}", tenantBaseUrl);
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "policies/{attestationType}:reset";
+            _url = _url.Replace("{instanceUrl}", instanceUrl);
+            _url = _url.Replace("{attestationType}", System.Uri.EscapeDataString(attestationType));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (tee != null)
-            {
-                _queryParameters.Add(string.Format("tee={0}", System.Uri.EscapeDataString(tee)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -885,7 +606,7 @@ namespace Microsoft.Azure.Attestation
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 400 && (int)_statusCode != 401)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -920,7 +641,7 @@ namespace Microsoft.Azure.Attestation
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<object>();
+            var _result = new AzureOperationResponse<PolicyResponse>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -933,43 +654,7 @@ namespace Microsoft.Azure.Attestation
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<string>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 400)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 401)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<string>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PolicyResponse>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

@@ -57,8 +57,9 @@ namespace Microsoft.Azure.Attestation
         /// Retrieves metadata about the attestation signing keys in use by the
         /// attestation service
         /// </remarks>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -81,11 +82,11 @@ namespace Microsoft.Azure.Attestation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<object>> GetWithHttpMessagesAsync(string tenantBaseUrl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<object>> GetWithHttpMessagesAsync(string instanceUrl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (tenantBaseUrl == null)
+            if (instanceUrl == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "tenantBaseUrl");
+                throw new ValidationException(ValidationRules.CannotBeNull, "instanceUrl");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -94,14 +95,14 @@ namespace Microsoft.Azure.Attestation
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("tenantBaseUrl", tenantBaseUrl);
+                tracingParameters.Add("instanceUrl", instanceUrl);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri;
             var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + ".well-known/openid-configuration";
-            _url = _url.Replace("{tenantBaseUrl}", tenantBaseUrl);
+            _url = _url.Replace("{instanceUrl}", instanceUrl);
             List<string> _queryParameters = new List<string>();
             if (_queryParameters.Count > 0)
             {
@@ -161,7 +162,7 @@ namespace Microsoft.Azure.Attestation
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 400)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -210,24 +211,6 @@ namespace Microsoft.Azure.Attestation
                 try
                 {
                     _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<object>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 400)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
