@@ -126,98 +126,6 @@ namespace Microsoft.Azure.Management.SignalR
             }
 
             /// <summary>
-            /// Get the access keys of the SignalR resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the SignalR resource.
-            /// </param>
-            public static SignalRKeys ListKeys(this ISignalROperations operations, string resourceGroupName, string resourceName)
-            {
-                return operations.ListKeysAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get the access keys of the SignalR resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the SignalR resource.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SignalRKeys> ListKeysAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
-            /// be regenerated at the same time.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the SignalR resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameter that describes the Regenerate Key Operation.
-            /// </param>
-            public static SignalRKeys RegenerateKey(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters))
-            {
-                return operations.RegenerateKeyAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
-            /// be regenerated at the same time.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the SignalR resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameter that describes the Regenerate Key Operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SignalRKeys> RegenerateKeyAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.RegenerateKeyWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Get the SignalR service and its properties.
             /// </summary>
             /// <param name='operations'>
@@ -395,6 +303,98 @@ namespace Microsoft.Azure.Management.SignalR
             }
 
             /// <summary>
+            /// Get the access keys of the SignalR resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the SignalR resource.
+            /// </param>
+            public static SignalRKeys ListKeys(this ISignalROperations operations, string resourceGroupName, string resourceName)
+            {
+                return operations.ListKeysAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get the access keys of the SignalR resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the SignalR resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SignalRKeys> ListKeysAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
+            /// be regenerated at the same time.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the SignalR resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameter that describes the Regenerate Key Operation.
+            /// </param>
+            public static SignalRKeys RegenerateKey(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters))
+            {
+                return operations.RegenerateKeyAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
+            /// be regenerated at the same time.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the SignalR resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameter that describes the Regenerate Key Operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SignalRKeys> RegenerateKeyAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.RegenerateKeyWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Operation to restart a SignalR service.
             /// </summary>
             /// <param name='operations'>
@@ -431,56 +431,6 @@ namespace Microsoft.Azure.Management.SignalR
             public static async Task RestartAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.RestartWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
-            /// be regenerated at the same time.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the SignalR resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameter that describes the Regenerate Key Operation.
-            /// </param>
-            public static SignalRKeys BeginRegenerateKey(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters))
-            {
-                return operations.BeginRegenerateKeyAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
-            /// be regenerated at the same time.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the SignalR resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameter that describes the Regenerate Key Operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SignalRKeys> BeginRegenerateKeyAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>
@@ -613,6 +563,56 @@ namespace Microsoft.Azure.Management.SignalR
             public static async Task<SignalRResource> BeginUpdateAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, SignalRResource parameters = default(SignalRResource), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
+            /// be regenerated at the same time.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the SignalR resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameter that describes the Regenerate Key Operation.
+            /// </param>
+            public static SignalRKeys BeginRegenerateKey(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters))
+            {
+                return operations.BeginRegenerateKeyAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Regenerate SignalR service access key. PrimaryKey and SecondaryKey cannot
+            /// be regenerated at the same time.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the SignalR resource.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameter that describes the Regenerate Key Operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SignalRKeys> BeginRegenerateKeyAsync(this ISignalROperations operations, string resourceGroupName, string resourceName, RegenerateKeyParameters parameters = default(RegenerateKeyParameters), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
