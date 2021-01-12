@@ -37,10 +37,12 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// <param name="type">The resource type.</param>
         /// <param name="subnetId">The resource identifier for the
         /// subnet.</param>
-        public VirtualNetworkRule(string id = default(string), string name = default(string), string type = default(string), string subnetId = default(string))
+        /// <param name="state">The state for the subnet.</param>
+        public VirtualNetworkRule(string id = default(string), string name = default(string), string type = default(string), string subnetId = default(string), string state = default(string))
             : base(id, name, type)
         {
             SubnetId = subnetId;
+            State = state;
             CustomInit();
         }
 
@@ -54,6 +56,12 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnetId")]
         public string SubnetId { get; private set; }
+
+        /// <summary>
+        /// Gets the state for the subnet.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.state")]
+        public string State { get; private set; }
 
     }
 }
