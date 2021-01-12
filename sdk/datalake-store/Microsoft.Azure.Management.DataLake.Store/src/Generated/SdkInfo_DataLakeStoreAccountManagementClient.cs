@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Management.DataLake.Store
                 new Tuple<string, string, string>("DataLakeStore", "Locations", "2016-11-01"),
                 new Tuple<string, string, string>("DataLakeStore", "Operations", "2016-11-01"),
                 new Tuple<string, string, string>("DataLakeStore", "TrustedIdProviders", "2016-11-01"),
+                new Tuple<string, string, string>("DataLakeStore", "VirtualNetworkOrSubnets", "2016-11-01"),
                 new Tuple<string, string, string>("DataLakeStore", "VirtualNetworkRules", "2016-11-01"),
               }.AsEnumerable();
           }

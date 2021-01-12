@@ -34,11 +34,13 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// operation.</param>
         /// <param name="origin">The intended executor of the operation.
         /// Possible values include: 'user', 'system', 'user,system'</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string))
+        /// <param name="properties">Operation properties.</param>
+        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), OperationProperties properties = default(OperationProperties))
         {
             Name = name;
             Display = display;
             Origin = origin;
+            Properties = properties;
             CustomInit();
         }
 
@@ -65,6 +67,12 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// </summary>
         [JsonProperty(PropertyName = "origin")]
         public string Origin { get; private set; }
+
+        /// <summary>
+        /// Gets or sets operation properties.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public OperationProperties Properties { get; set; }
 
     }
 }

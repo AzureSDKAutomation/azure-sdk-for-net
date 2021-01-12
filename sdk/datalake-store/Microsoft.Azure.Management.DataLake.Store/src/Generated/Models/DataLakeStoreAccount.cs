@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// account.</param>
         /// <param name="defaultGroup">The default owner group for all new
         /// folders and files created in the Data Lake Store account.</param>
+        /// <param name="initialUser">The default user for all new folders and
+        /// files created in the Data Lake Store account.</param>
         /// <param name="encryptionConfig">The Key Vault encryption
         /// configuration.</param>
         /// <param name="encryptionState">The current state of encryption for
@@ -75,6 +77,9 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// or disallowing IPs originating within Azure through the firewall.
         /// If the firewall is disabled, this is not enforced. Possible values
         /// include: 'Enabled', 'Disabled'</param>
+        /// <param name="firewallAllowDataLakeAnalytics">The current state of
+        /// allowing datalakeanalytics through the firewall. If the firewall is
+        /// disabled, this is not enforced.</param>
         /// <param name="trustedIdProviders">The list of trusted identity
         /// providers associated with this Data Lake Store account.</param>
         /// <param name="trustedIdProviderState">The current state of the
@@ -88,7 +93,9 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// current month. Possible values include: 'Consumption',
         /// 'Commitment_1TB', 'Commitment_10TB', 'Commitment_100TB',
         /// 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'</param>
-        public DataLakeStoreAccount(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionIdentity identity = default(EncryptionIdentity), System.Guid? accountId = default(System.Guid?), DataLakeStoreAccountStatus? provisioningState = default(DataLakeStoreAccountStatus?), DataLakeStoreAccountState? state = default(DataLakeStoreAccountState?), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? lastModifiedTime = default(System.DateTime?), string endpoint = default(string), string defaultGroup = default(string), EncryptionConfig encryptionConfig = default(EncryptionConfig), EncryptionState? encryptionState = default(EncryptionState?), EncryptionProvisioningState? encryptionProvisioningState = default(EncryptionProvisioningState?), IList<FirewallRule> firewallRules = default(IList<FirewallRule>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), FirewallState? firewallState = default(FirewallState?), FirewallAllowAzureIpsState? firewallAllowAzureIps = default(FirewallAllowAzureIpsState?), IList<TrustedIdProvider> trustedIdProviders = default(IList<TrustedIdProvider>), TrustedIdProviderState? trustedIdProviderState = default(TrustedIdProviderState?), TierType? newTier = default(TierType?), TierType? currentTier = default(TierType?))
+        /// <param name="dataLakePerformanceTierState">dataLake Performance
+        /// Tier State.</param>
+        public DataLakeStoreAccount(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionIdentity identity = default(EncryptionIdentity), System.Guid? accountId = default(System.Guid?), DataLakeStoreAccountStatus? provisioningState = default(DataLakeStoreAccountStatus?), DataLakeStoreAccountState? state = default(DataLakeStoreAccountState?), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? lastModifiedTime = default(System.DateTime?), string endpoint = default(string), string defaultGroup = default(string), string initialUser = default(string), EncryptionConfig encryptionConfig = default(EncryptionConfig), EncryptionState? encryptionState = default(EncryptionState?), EncryptionProvisioningState? encryptionProvisioningState = default(EncryptionProvisioningState?), IList<FirewallRule> firewallRules = default(IList<FirewallRule>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), FirewallState? firewallState = default(FirewallState?), FirewallAllowAzureIpsState? firewallAllowAzureIps = default(FirewallAllowAzureIpsState?), string firewallAllowDataLakeAnalytics = default(string), IList<TrustedIdProvider> trustedIdProviders = default(IList<TrustedIdProvider>), TrustedIdProviderState? trustedIdProviderState = default(TrustedIdProviderState?), TierType? newTier = default(TierType?), TierType? currentTier = default(TierType?), string dataLakePerformanceTierState = default(string))
             : base(id, name, type, location, tags)
         {
             Identity = identity;
@@ -99,6 +106,7 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
             LastModifiedTime = lastModifiedTime;
             Endpoint = endpoint;
             DefaultGroup = defaultGroup;
+            InitialUser = initialUser;
             EncryptionConfig = encryptionConfig;
             EncryptionState = encryptionState;
             EncryptionProvisioningState = encryptionProvisioningState;
@@ -106,10 +114,12 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
             VirtualNetworkRules = virtualNetworkRules;
             FirewallState = firewallState;
             FirewallAllowAzureIps = firewallAllowAzureIps;
+            FirewallAllowDataLakeAnalytics = firewallAllowDataLakeAnalytics;
             TrustedIdProviders = trustedIdProviders;
             TrustedIdProviderState = trustedIdProviderState;
             NewTier = newTier;
             CurrentTier = currentTier;
+            DataLakePerformanceTierState = dataLakePerformanceTierState;
             CustomInit();
         }
 
@@ -173,6 +183,13 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         public string DefaultGroup { get; private set; }
 
         /// <summary>
+        /// Gets the default user for all new folders and files created in the
+        /// Data Lake Store account.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.initialUser")]
+        public string InitialUser { get; private set; }
+
+        /// <summary>
         /// Gets the Key Vault encryption configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryptionConfig")]
@@ -224,6 +241,13 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         public FirewallAllowAzureIpsState? FirewallAllowAzureIps { get; private set; }
 
         /// <summary>
+        /// Gets the current state of allowing datalakeanalytics through the
+        /// firewall. If the firewall is disabled, this is not enforced.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.firewallAllowDataLakeAnalytics")]
+        public string FirewallAllowDataLakeAnalytics { get; private set; }
+
+        /// <summary>
         /// Gets the list of trusted identity providers associated with this
         /// Data Lake Store account.
         /// </summary>
@@ -255,6 +279,12 @@ namespace Microsoft.Azure.Management.DataLake.Store.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.currentTier")]
         public TierType? CurrentTier { get; private set; }
+
+        /// <summary>
+        /// Gets dataLake Performance Tier State.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.dataLakePerformanceTierState")]
+        public string DataLakePerformanceTierState { get; private set; }
 
         /// <summary>
         /// Validate the object.
