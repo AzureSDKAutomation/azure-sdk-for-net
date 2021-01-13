@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// <summary>
         /// Initializes a new instance of the GatewayListStatusLive class.
         /// </summary>
-        /// <param name="status">Live message of list gateway. Possible values
-        /// include: 'Live'</param>
-        public GatewayListStatusLive(Status? status = default(Status?))
+        /// <param name="status">Live message of list gateway. Status: 0 -
+        /// Live</param>
+        public GatewayListStatusLive(int? status = default(int?))
         {
             Status = status;
             CustomInit();
@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Management.Analysis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets live message of list gateway. Possible values include:
-        /// 'Live'
+        /// Gets or sets live message of list gateway. Status: 0 - Live
         /// </summary>
         [JsonProperty(PropertyName = "status")]
-        public Status? Status { get; set; }
+        public int? Status { get; set; }
 
     }
 }
