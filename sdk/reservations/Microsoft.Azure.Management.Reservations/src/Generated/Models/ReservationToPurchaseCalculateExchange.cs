@@ -14,25 +14,27 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// The API error.
+    /// Reservation purchase details
     /// </summary>
-    public partial class ExceptionResponse
+    public partial class ReservationToPurchaseCalculateExchange
     {
         /// <summary>
-        /// Initializes a new instance of the ExceptionResponse class.
+        /// Initializes a new instance of the
+        /// ReservationToPurchaseCalculateExchange class.
         /// </summary>
-        public ExceptionResponse()
+        public ReservationToPurchaseCalculateExchange()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ExceptionResponse class.
+        /// Initializes a new instance of the
+        /// ReservationToPurchaseCalculateExchange class.
         /// </summary>
-        /// <param name="error">The API error details.</param>
-        public ExceptionResponse(ServiceError error = default(ServiceError))
+        public ReservationToPurchaseCalculateExchange(PurchaseRequest properties = default(PurchaseRequest), Price billingCurrencyTotal = default(Price))
         {
-            Error = error;
+            Properties = properties;
+            BillingCurrencyTotal = billingCurrencyTotal;
             CustomInit();
         }
 
@@ -42,10 +44,14 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the API error details.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ServiceError Error { get; set; }
+        [JsonProperty(PropertyName = "properties")]
+        public PurchaseRequest Properties { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "billingCurrencyTotal")]
+        public Price BillingCurrencyTotal { get; set; }
 
     }
 }
