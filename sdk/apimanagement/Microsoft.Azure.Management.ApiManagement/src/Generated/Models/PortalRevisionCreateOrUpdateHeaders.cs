@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for ListSecrets operation.
+    /// Defines headers for CreateOrUpdate operation.
     /// </summary>
-    public partial class TenantAccessGitListSecretsHeaders
+    public partial class PortalRevisionCreateOrUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the TenantAccessGitListSecretsHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// PortalRevisionCreateOrUpdateHeaders class.
         /// </summary>
-        public TenantAccessGitListSecretsHeaders()
+        public PortalRevisionCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TenantAccessGitListSecretsHeaders
-        /// class.
+        /// Initializes a new instance of the
+        /// PortalRevisionCreateOrUpdateHeaders class.
         /// </summary>
         /// <param name="eTag">Current entity state version. Should be treated
         /// as opaque and used to make conditional HTTP requests.</param>
-        public TenantAccessGitListSecretsHeaders(string eTag = default(string))
+        public PortalRevisionCreateOrUpdateHeaders(string eTag = default(string))
         {
             ETag = eTag;
             CustomInit();
