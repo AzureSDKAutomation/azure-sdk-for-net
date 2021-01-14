@@ -33,10 +33,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="convention">Possible values include: 'FixedTime',
         /// 'IdentityProviderDerived'</param>
-        public CookieExpiration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CookieExpirationConvention? convention = default(CookieExpirationConvention?), string timeToExpiration = default(string))
-            : base(id, name, kind, type)
+        public CookieExpiration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), CookieExpirationConvention? convention = default(CookieExpirationConvention?), string timeToExpiration = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Convention = convention;
             TimeToExpiration = timeToExpiration;

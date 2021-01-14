@@ -39,9 +39,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="vnetName">The Virtual Network name.</param>
-        public VnetGateway(string vpnPackageUri, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetName = default(string))
-            : base(id, name, kind, type)
+        public VnetGateway(string vpnPackageUri, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string vnetName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             VnetName = vnetName;
             VpnPackageUri = vpnPackageUri;

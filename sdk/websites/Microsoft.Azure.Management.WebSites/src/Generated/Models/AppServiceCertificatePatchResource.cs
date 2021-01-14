@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="keyVaultId">Key Vault resource Id.</param>
         /// <param name="keyVaultSecretName">Key Vault secret name.</param>
         /// <param name="provisioningState">Status of the Key Vault secret.
@@ -48,8 +50,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
         /// 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
         /// 'Unknown'</param>
-        public AppServiceCertificatePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
-            : base(id, name, kind, type)
+        public AppServiceCertificatePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
+            : base(id, name, kind, type, systemData)
         {
             KeyVaultId = keyVaultId;
             KeyVaultSecretName = keyVaultSecretName;

@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="runCommand">Run command.</param>
         /// <param name="url">Job URL.</param>
         /// <param name="extraInfoUrl">Extra Info URL.</param>
@@ -46,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="error">Error information.</param>
         /// <param name="usingSdk">Using SDK?</param>
         /// <param name="settings">Job settings.</param>
-        public WebJob(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string runCommand = default(string), string url = default(string), string extraInfoUrl = default(string), WebJobType? webJobType = default(WebJobType?), string error = default(string), bool? usingSdk = default(bool?), IDictionary<string, object> settings = default(IDictionary<string, object>))
-            : base(id, name, kind, type)
+        public WebJob(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string runCommand = default(string), string url = default(string), string extraInfoUrl = default(string), WebJobType? webJobType = default(WebJobType?), string error = default(string), bool? usingSdk = default(bool?), IDictionary<string, object> settings = default(IDictionary<string, object>))
+            : base(id, name, kind, type, systemData)
         {
             RunCommand = runCommand;
             Url = url;
