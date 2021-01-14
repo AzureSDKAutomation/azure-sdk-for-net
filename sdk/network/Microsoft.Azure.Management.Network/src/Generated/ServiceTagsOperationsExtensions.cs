@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network
             /// details across all regions but limited to the cloud that your subscription
             /// belongs to).
             /// </param>
-            public static ServiceTagsListResult List(this IServiceTagsOperations operations, string location)
+            public static IPage<ServiceTagInformation> List(this IServiceTagsOperations operations, string location)
             {
                 return operations.ListAsync(location).GetAwaiter().GetResult();
             }
@@ -53,9 +53,43 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceTagsListResult> ListAsync(this IServiceTagsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ServiceTagInformation>> ListAsync(this IServiceTagsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of service tag information resources.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ServiceTagInformation> ListNext(this IServiceTagsOperations operations, string nextPageLink)
+            {
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of service tag information resources.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ServiceTagInformation>> ListNextAsync(this IServiceTagsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
