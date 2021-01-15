@@ -39,7 +39,10 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="usageDate">The usage date of the forecast.</param>
-        /// <param name="grain">The granularity of forecast. Possible values
+        /// <param name="grain">The granularity of forecast. Please note that
+        /// Yearly is not currently supported in this API. The API will provide
+        /// responses in the Monthly grain if Yearly is selected. To get yearly
+        /// grain data, please use our newer Forecast API. Possible values
         /// include: 'Daily', 'Monthly', 'Yearly'</param>
         /// <param name="charge">The amount of charge</param>
         /// <param name="currency">The ISO currency in which the meter is
@@ -73,8 +76,11 @@ namespace Microsoft.Azure.Management.Consumption.Models
         public string UsageDate { get; private set; }
 
         /// <summary>
-        /// Gets or sets the granularity of forecast. Possible values include:
-        /// 'Daily', 'Monthly', 'Yearly'
+        /// Gets or sets the granularity of forecast. Please note that Yearly
+        /// is not currently supported in this API. The API will provide
+        /// responses in the Monthly grain if Yearly is selected. To get yearly
+        /// grain data, please use our newer Forecast API. Possible values
+        /// include: 'Daily', 'Monthly', 'Yearly'
         /// </summary>
         [JsonProperty(PropertyName = "properties.grain")]
         public string Grain { get; set; }
