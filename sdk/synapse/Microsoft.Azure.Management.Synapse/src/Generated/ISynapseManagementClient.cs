@@ -120,6 +120,16 @@ namespace Microsoft.Azure.Management.Synapse
         ISqlPoolReplicationLinksOperations SqlPoolReplicationLinks { get; }
 
         /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowsOperations.
+        /// </summary>
+        ISqlPoolMaintenanceWindowsOperations SqlPoolMaintenanceWindows { get; }
+
+        /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowOptionsOperations.
+        /// </summary>
+        ISqlPoolMaintenanceWindowOptionsOperations SqlPoolMaintenanceWindowOptions { get; }
+
+        /// <summary>
         /// Gets the ISqlPoolTransparentDataEncryptionsOperations.
         /// </summary>
         ISqlPoolTransparentDataEncryptionsOperations SqlPoolTransparentDataEncryptions { get; }
@@ -143,6 +153,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the ISqlPoolSensitivityLabelsOperations.
         /// </summary>
         ISqlPoolSensitivityLabelsOperations SqlPoolSensitivityLabels { get; }
+
+        /// <summary>
+        /// Gets the ISqlPoolRecommendedSensitivityLabelsOperations.
+        /// </summary>
+        ISqlPoolRecommendedSensitivityLabelsOperations SqlPoolRecommendedSensitivityLabels { get; }
 
         /// <summary>
         /// Gets the ISqlPoolSchemasOperations.
@@ -288,6 +303,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the IPrivateLinkResourcesOperations.
         /// </summary>
         IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkHubPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkHubPrivateLinkResourcesOperations PrivateLinkHubPrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.

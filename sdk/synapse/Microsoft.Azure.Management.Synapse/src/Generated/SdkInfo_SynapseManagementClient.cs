@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Management.Synapse
                 new Tuple<string, string, string>("Synapse", "Operations", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "PrivateEndpointConnections", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "PrivateEndpointConnectionsPrivateLinkHub", "2019-06-01-preview"),
+                new Tuple<string, string, string>("Synapse", "PrivateLinkHubPrivateLinkResources", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "PrivateLinkHubs", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "PrivateLinkResources", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "RestorableDroppedSqlPools", "2019-06-01-preview"),
@@ -45,9 +46,12 @@ namespace Microsoft.Azure.Management.Synapse
                 new Tuple<string, string, string>("Synapse", "SqlPoolConnectionPolicies", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolDataWarehouseUserActivities", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolGeoBackupPolicies", "2019-06-01-preview"),
+                new Tuple<string, string, string>("Synapse", "SqlPoolMaintenanceWindowOptions", "2019-06-01-preview"),
+                new Tuple<string, string, string>("Synapse", "SqlPoolMaintenanceWindows", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolMetadataSyncConfigs", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolOperationResults", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolOperations", "2019-06-01-preview"),
+                new Tuple<string, string, string>("Synapse", "SqlPoolRecommendedSensitivityLabels", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolReplicationLinks", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolRestorePoints", "2019-06-01-preview"),
                 new Tuple<string, string, string>("Synapse", "SqlPoolSchemas", "2019-06-01-preview"),
@@ -77,15 +81,5 @@ namespace Microsoft.Azure.Management.Synapse
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "v2";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4413";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/synapse/resource-manager/readme.md --csharp --version=v2 --reflect-api-versions --csharp-sdks-folder=D:\\code\\AzureSDK\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "dbb0a6fd623196f0db6b461b0f3f54e284e3a9e4";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }

@@ -19,24 +19,21 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SqlPoolGeoBackupPoliciesOperations operations.
+    /// PrivateLinkHubPrivateLinkResourcesOperations operations.
     /// </summary>
-    public partial interface ISqlPoolGeoBackupPoliciesOperations
+    public partial interface IPrivateLinkHubPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// List SQL pool geo backup policies
+        /// Private Link Resources
         /// </summary>
         /// <remarks>
-        /// Get list of SQL pool geo backup policies
+        /// Get all private link resources for a private link hub
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace
-        /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
+        /// <param name='privateLinkHubName'>
+        /// The name of the private link hub
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -53,53 +50,21 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<GeoBackupPolicy>>> ListWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<PrivateLinkResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string privateLinkHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates a SQL Pool geo backup policy.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace
-        /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
-        /// </param>
-        /// <param name='parameters'>
-        /// The required parameters for creating or updating the geo backup
-        /// policy.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorContractException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GeoBackupPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, GeoBackupPolicy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a SQL pool geo backup policy
+        /// Get Private Link Hub Private Link Resource
         /// </summary>
         /// <remarks>
-        /// Get the specified SQL pool geo backup policy
+        /// Get private link resource in private link hub
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace
+        /// <param name='privateLinkHubName'>
+        /// The name of the private link hub
         /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
+        /// <param name='privateLinkResourceName'>
+        /// The name of the private link resource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -116,6 +81,31 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GeoBackupPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateLinkResource>> GetWithHttpMessagesAsync(string resourceGroupName, string privateLinkHubName, string privateLinkResourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Private Link Resources
+        /// </summary>
+        /// <remarks>
+        /// Get all private link resources for a private link hub
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorContractException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<PrivateLinkResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

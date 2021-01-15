@@ -54,10 +54,11 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="autoPause">Auto-pausing properties</param>
         /// <param name="isComputeIsolationEnabled">Whether compute isolation
         /// is required or not.</param>
-        /// <param name="haveLibraryRequirementsChanged">Whether library
-        /// requirements changed.</param>
         /// <param name="sessionLevelPackagesEnabled">Whether session level
         /// packages enabled.</param>
+        /// <param name="cacheSize">The cache size</param>
+        /// <param name="dynamicExecutorAllocation">Dynamic Executor
+        /// Allocation</param>
         /// <param name="sparkEventsFolder">The Spark events folder</param>
         /// <param name="nodeCount">The number of nodes in the Big Data
         /// pool.</param>
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="nodeSizeFamily">The kind of nodes that the Big Data
         /// pool provides. Possible values include: 'None',
         /// 'MemoryOptimized'</param>
-        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? haveLibraryRequirementsChanged = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), string sparkEventsFolder = default(string), int? nodeCount = default(int?), LibraryRequirements libraryRequirements = default(LibraryRequirements), LibraryRequirements sparkConfigProperties = default(LibraryRequirements), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSize = default(string), string nodeSizeFamily = default(string))
+        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), int? cacheSize = default(int?), DynamicExecutorAllocation dynamicExecutorAllocation = default(DynamicExecutorAllocation), string sparkEventsFolder = default(string), int? nodeCount = default(int?), LibraryRequirements libraryRequirements = default(LibraryRequirements), LibraryRequirements sparkConfigProperties = default(LibraryRequirements), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSize = default(string), string nodeSizeFamily = default(string))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -82,8 +83,9 @@ namespace Microsoft.Azure.Management.Synapse.Models
             CreationDate = creationDate;
             AutoPause = autoPause;
             IsComputeIsolationEnabled = isComputeIsolationEnabled;
-            HaveLibraryRequirementsChanged = haveLibraryRequirementsChanged;
             SessionLevelPackagesEnabled = sessionLevelPackagesEnabled;
+            CacheSize = cacheSize;
+            DynamicExecutorAllocation = dynamicExecutorAllocation;
             SparkEventsFolder = sparkEventsFolder;
             NodeCount = nodeCount;
             LibraryRequirements = libraryRequirements;
@@ -131,16 +133,22 @@ namespace Microsoft.Azure.Management.Synapse.Models
         public bool? IsComputeIsolationEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets whether library requirements changed.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.haveLibraryRequirementsChanged")]
-        public bool? HaveLibraryRequirementsChanged { get; set; }
-
-        /// <summary>
         /// Gets or sets whether session level packages enabled.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sessionLevelPackagesEnabled")]
         public bool? SessionLevelPackagesEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cache size
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.cacheSize")]
+        public int? CacheSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets dynamic Executor Allocation
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.dynamicExecutorAllocation")]
+        public DynamicExecutorAllocation DynamicExecutorAllocation { get; set; }
 
         /// <summary>
         /// Gets or sets the Spark events folder

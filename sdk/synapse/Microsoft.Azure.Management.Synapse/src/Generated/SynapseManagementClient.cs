@@ -125,6 +125,16 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual ISqlPoolReplicationLinksOperations SqlPoolReplicationLinks { get; private set; }
 
         /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowsOperations.
+        /// </summary>
+        public virtual ISqlPoolMaintenanceWindowsOperations SqlPoolMaintenanceWindows { get; private set; }
+
+        /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowOptionsOperations.
+        /// </summary>
+        public virtual ISqlPoolMaintenanceWindowOptionsOperations SqlPoolMaintenanceWindowOptions { get; private set; }
+
+        /// <summary>
         /// Gets the ISqlPoolTransparentDataEncryptionsOperations.
         /// </summary>
         public virtual ISqlPoolTransparentDataEncryptionsOperations SqlPoolTransparentDataEncryptions { get; private set; }
@@ -148,6 +158,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the ISqlPoolSensitivityLabelsOperations.
         /// </summary>
         public virtual ISqlPoolSensitivityLabelsOperations SqlPoolSensitivityLabels { get; private set; }
+
+        /// <summary>
+        /// Gets the ISqlPoolRecommendedSensitivityLabelsOperations.
+        /// </summary>
+        public virtual ISqlPoolRecommendedSensitivityLabelsOperations SqlPoolRecommendedSensitivityLabels { get; private set; }
 
         /// <summary>
         /// Gets the ISqlPoolSchemasOperations.
@@ -293,6 +308,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the IPrivateLinkResourcesOperations.
         /// </summary>
         public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkHubPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkHubPrivateLinkResourcesOperations PrivateLinkHubPrivateLinkResources { get; private set; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.
@@ -595,11 +615,14 @@ namespace Microsoft.Azure.Management.Synapse
             SqlPoolDataWarehouseUserActivities = new SqlPoolDataWarehouseUserActivitiesOperations(this);
             SqlPoolRestorePoints = new SqlPoolRestorePointsOperations(this);
             SqlPoolReplicationLinks = new SqlPoolReplicationLinksOperations(this);
+            SqlPoolMaintenanceWindows = new SqlPoolMaintenanceWindowsOperations(this);
+            SqlPoolMaintenanceWindowOptions = new SqlPoolMaintenanceWindowOptionsOperations(this);
             SqlPoolTransparentDataEncryptions = new SqlPoolTransparentDataEncryptionsOperations(this);
             SqlPoolBlobAuditingPolicies = new SqlPoolBlobAuditingPoliciesOperations(this);
             SqlPoolOperations = new SqlPoolOperations(this);
             SqlPoolUsages = new SqlPoolUsagesOperations(this);
             SqlPoolSensitivityLabels = new SqlPoolSensitivityLabelsOperations(this);
+            SqlPoolRecommendedSensitivityLabels = new SqlPoolRecommendedSensitivityLabelsOperations(this);
             SqlPoolSchemas = new SqlPoolSchemasOperations(this);
             SqlPoolTables = new SqlPoolTablesOperations(this);
             SqlPoolTableColumns = new SqlPoolTableColumnsOperations(this);
@@ -629,6 +652,7 @@ namespace Microsoft.Azure.Management.Synapse
             IntegrationRuntimeMonitoringData = new IntegrationRuntimeMonitoringDataOperations(this);
             IntegrationRuntimeStatus = new IntegrationRuntimeStatusOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            PrivateLinkHubPrivateLinkResources = new PrivateLinkHubPrivateLinkResourcesOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkHubs = new PrivateLinkHubsOperations(this);
             PrivateEndpointConnectionsPrivateLinkHub = new PrivateEndpointConnectionsPrivateLinkHubOperations(this);

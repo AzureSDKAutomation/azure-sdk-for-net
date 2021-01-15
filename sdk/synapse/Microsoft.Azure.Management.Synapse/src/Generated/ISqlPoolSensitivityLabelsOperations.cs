@@ -59,6 +59,34 @@ namespace Microsoft.Azure.Management.Synapse
         /// </exception>
         Task<AzureOperationResponse<IPage<SensitivityLabel>>> ListCurrentWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, ODataQuery<SensitivityLabel> odataQuery = default(ODataQuery<SensitivityLabel>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Update sensitivity labels of a given SQL Pool using an operations
+        /// batch.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace
+        /// </param>
+        /// <param name='sqlPoolName'>
+        /// SQL pool name
+        /// </param>
+        /// <param name='parameters'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> UpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, SensitivityLabelUpdateList parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets sensitivity labels of a given SQL pool
         /// </summary>
         /// <remarks>

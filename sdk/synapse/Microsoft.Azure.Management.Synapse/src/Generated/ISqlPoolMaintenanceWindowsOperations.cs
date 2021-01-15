@@ -19,15 +19,15 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SqlPoolGeoBackupPoliciesOperations operations.
+    /// SqlPoolMaintenanceWindowsOperations operations.
     /// </summary>
-    public partial interface ISqlPoolGeoBackupPoliciesOperations
+    public partial interface ISqlPoolMaintenanceWindowsOperations
     {
         /// <summary>
-        /// List SQL pool geo backup policies
+        /// Get a SQL pool's Maintenance Windows.
         /// </summary>
         /// <remarks>
-        /// Get list of SQL pool geo backup policies
+        /// Get a SQL pool's Maintenance Windows.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.Synapse
         /// </param>
         /// <param name='sqlPoolName'>
         /// SQL pool name
+        /// </param>
+        /// <param name='maintenanceWindowName'>
+        /// Maintenance window name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -53,10 +56,13 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<GeoBackupPolicy>>> ListWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MaintenanceWindows>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string maintenanceWindowName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates a SQL Pool geo backup policy.
+        /// Creates or updates a Sql pool's maintenance windows settings.
         /// </summary>
+        /// <remarks>
+        /// Creates or updates a Sql pool's maintenance windows settings.
+        /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
@@ -65,10 +71,13 @@ namespace Microsoft.Azure.Management.Synapse
         /// </param>
         /// <param name='sqlPoolName'>
         /// SQL pool name
+        /// </param>
+        /// <param name='maintenanceWindowName'>
+        /// Maintenance window name.
         /// </param>
         /// <param name='parameters'>
-        /// The required parameters for creating or updating the geo backup
-        /// policy.
+        /// The required parameters for creating or updating Maintenance
+        /// Windows settings
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -76,46 +85,12 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorContractException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GeoBackupPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, GeoBackupPolicy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a SQL pool geo backup policy
-        /// </summary>
-        /// <remarks>
-        /// Get the specified SQL pool geo backup policy
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace
-        /// </param>
-        /// <param name='sqlPoolName'>
-        /// SQL pool name
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorContractException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GeoBackupPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string maintenanceWindowName, MaintenanceWindows parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
