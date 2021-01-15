@@ -54,8 +54,6 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="autoPause">Auto-pausing properties</param>
         /// <param name="isComputeIsolationEnabled">Whether compute isolation
         /// is required or not.</param>
-        /// <param name="haveLibraryRequirementsChanged">Whether library
-        /// requirements changed.</param>
         /// <param name="sessionLevelPackagesEnabled">Whether session level
         /// packages enabled.</param>
         /// <param name="sparkEventsFolder">The Spark events folder</param>
@@ -74,7 +72,9 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="nodeSizeFamily">The kind of nodes that the Big Data
         /// pool provides. Possible values include: 'None',
         /// 'MemoryOptimized'</param>
-        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? haveLibraryRequirementsChanged = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), string sparkEventsFolder = default(string), int? nodeCount = default(int?), LibraryRequirements libraryRequirements = default(LibraryRequirements), LibraryRequirements sparkConfigProperties = default(LibraryRequirements), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSize = default(string), string nodeSizeFamily = default(string))
+        /// <param name="lastSucceededTimestamp">The time when the Big Data
+        /// pool was updated successfully.</param>
+        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), string sparkEventsFolder = default(string), int? nodeCount = default(int?), LibraryRequirements libraryRequirements = default(LibraryRequirements), LibraryRequirements sparkConfigProperties = default(LibraryRequirements), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSize = default(string), string nodeSizeFamily = default(string), System.DateTime? lastSucceededTimestamp = default(System.DateTime?))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -82,7 +82,6 @@ namespace Microsoft.Azure.Management.Synapse.Models
             CreationDate = creationDate;
             AutoPause = autoPause;
             IsComputeIsolationEnabled = isComputeIsolationEnabled;
-            HaveLibraryRequirementsChanged = haveLibraryRequirementsChanged;
             SessionLevelPackagesEnabled = sessionLevelPackagesEnabled;
             SparkEventsFolder = sparkEventsFolder;
             NodeCount = nodeCount;
@@ -92,6 +91,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             DefaultSparkLogFolder = defaultSparkLogFolder;
             NodeSize = nodeSize;
             NodeSizeFamily = nodeSizeFamily;
+            LastSucceededTimestamp = lastSucceededTimestamp;
             CustomInit();
         }
 
@@ -129,12 +129,6 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.isComputeIsolationEnabled")]
         public bool? IsComputeIsolationEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether library requirements changed.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.haveLibraryRequirementsChanged")]
-        public bool? HaveLibraryRequirementsChanged { get; set; }
 
         /// <summary>
         /// Gets or sets whether session level packages enabled.
@@ -193,6 +187,13 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.nodeSizeFamily")]
         public string NodeSizeFamily { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time when the Big Data pool was updated
+        /// successfully.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.lastSucceededTimestamp")]
+        public System.DateTime? LastSucceededTimestamp { get; set; }
 
         /// <summary>
         /// Validate the object.
