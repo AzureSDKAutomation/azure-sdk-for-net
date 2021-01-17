@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The Azure subscription Id.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
@@ -173,42 +173,6 @@ namespace Microsoft.Azure.Management.Monitor
         /// Gets the IVMInsightsOperations.
         /// </summary>
         public virtual IVMInsightsOperations VMInsights { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopesOperations.
-        /// </summary>
-        public virtual IPrivateLinkScopesOperations PrivateLinkScopes { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopeOperationStatusOperations.
-        /// </summary>
-        public virtual IPrivateLinkScopeOperationStatusOperations PrivateLinkScopeOperationStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopedResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRules.
-        /// </summary>
-        public virtual IDataCollectionRules DataCollectionRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRuleAssociations.
-        /// </summary>
-        public virtual IDataCollectionRuleAssociations DataCollectionRuleAssociations { get; private set; }
-
 
         /// <summary>
         /// Initializes a new instance of the MonitorManagementClient class.
@@ -472,13 +436,6 @@ namespace Microsoft.Azure.Management.Monitor
             ScheduledQueryRules = new ScheduledQueryRulesOperations(this);
             MetricNamespaces = new MetricNamespacesOperations(this);
             VMInsights = new VMInsightsOperations(this);
-            PrivateLinkScopes = new PrivateLinkScopesOperations(this);
-            PrivateLinkScopeOperationStatus = new PrivateLinkScopeOperationStatusOperations(this);
-            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            PrivateLinkScopedResources = new PrivateLinkScopedResourcesOperations(this);
-            DataCollectionRules = new DataCollectionRules(this);
-            DataCollectionRuleAssociations = new DataCollectionRuleAssociations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
