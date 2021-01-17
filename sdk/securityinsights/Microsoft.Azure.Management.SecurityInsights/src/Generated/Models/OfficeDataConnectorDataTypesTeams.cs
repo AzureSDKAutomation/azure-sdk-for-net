@@ -13,27 +13,28 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Data connector.
+    /// Teams data type connection.
     /// </summary>
-    public partial class DataConnector : ResourceWithEtag
+    public partial class OfficeDataConnectorDataTypesTeams : DataConnectorDataTypeCommon
     {
         /// <summary>
-        /// Initializes a new instance of the DataConnector class.
+        /// Initializes a new instance of the OfficeDataConnectorDataTypesTeams
+        /// class.
         /// </summary>
-        public DataConnector()
+        public OfficeDataConnectorDataTypesTeams()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DataConnector class.
+        /// Initializes a new instance of the OfficeDataConnectorDataTypesTeams
+        /// class.
         /// </summary>
-        /// <param name="id">Azure resource Id</param>
-        /// <param name="name">Azure resource name</param>
-        /// <param name="type">Azure resource type</param>
-        /// <param name="etag">Etag of the azure resource</param>
-        public DataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
-            : base(id, name, type, etag)
+        /// <param name="state">Describe whether this data type connection is
+        /// enabled or not. Possible values include: 'Enabled',
+        /// 'Disabled'</param>
+        public OfficeDataConnectorDataTypesTeams(string state = default(string))
+            : base(state)
         {
             CustomInit();
         }
