@@ -32,6 +32,13 @@ namespace Microsoft.Azure.Management.Network
         /// with prefix details across all regions but limited to the cloud
         /// that your subscription belongs to).
         /// </param>
+        /// <param name='noaddressprefixes'>
+        /// Set to true if addressPrefixes are not required in the response.
+        /// </param>
+        /// <param name='tagname'>
+        /// Specify single tagname such that response contains data for this
+        /// tag only.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -47,6 +54,6 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServiceTagsListResult>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceTagsListResult>> ListWithHttpMessagesAsync(string location, bool? noaddressprefixes = default(bool?), string tagname = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

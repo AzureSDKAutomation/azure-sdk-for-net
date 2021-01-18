@@ -33,9 +33,15 @@ namespace Microsoft.Azure.Management.Network
             /// details across all regions but limited to the cloud that your subscription
             /// belongs to).
             /// </param>
-            public static ServiceTagsListResult List(this IServiceTagsOperations operations, string location)
+            /// <param name='noaddressprefixes'>
+            /// Set to true if addressPrefixes are not required in the response.
+            /// </param>
+            /// <param name='tagname'>
+            /// Specify single tagname such that response contains data for this tag only.
+            /// </param>
+            public static ServiceTagsListResult List(this IServiceTagsOperations operations, string location, bool? noaddressprefixes = default(bool?), string tagname = default(string))
             {
-                return operations.ListAsync(location).GetAwaiter().GetResult();
+                return operations.ListAsync(location, noaddressprefixes, tagname).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -50,12 +56,18 @@ namespace Microsoft.Azure.Management.Network
             /// details across all regions but limited to the cloud that your subscription
             /// belongs to).
             /// </param>
+            /// <param name='noaddressprefixes'>
+            /// Set to true if addressPrefixes are not required in the response.
+            /// </param>
+            /// <param name='tagname'>
+            /// Specify single tagname such that response contains data for this tag only.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceTagsListResult> ListAsync(this IServiceTagsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceTagsListResult> ListAsync(this IServiceTagsOperations operations, string location, bool? noaddressprefixes = default(bool?), string tagname = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(location, noaddressprefixes, tagname, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
