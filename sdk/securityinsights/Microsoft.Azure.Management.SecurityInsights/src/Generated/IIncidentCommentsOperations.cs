@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// </exception>
         Task<AzureOperationResponse<IncidentComment>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string incidentId, string incidentCommentId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates the incident comment.
+        /// Creates or updates the incident comment.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
@@ -114,6 +114,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// <param name='message'>
         /// The comment message
         /// </param>
+        /// <param name='etag'>
+        /// Etag of the azure resource
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -129,7 +132,36 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IncidentComment>> CreateCommentWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string incidentId, string incidentCommentId, string message, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IncidentComment>> CreateOrUpdateCommentWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string incidentId, string incidentCommentId, string message, string etag = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete the incident comment.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user's subscription. The
+        /// name is case insensitive.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace.
+        /// </param>
+        /// <param name='incidentId'>
+        /// Incident ID
+        /// </param>
+        /// <param name='incidentCommentId'>
+        /// Incident comment ID
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteCommentWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string incidentId, string incidentCommentId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all incident comments.
         /// </summary>
