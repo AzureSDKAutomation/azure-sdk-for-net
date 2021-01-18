@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// Initializes a new instance of the MetricAlertResource class.
         /// </summary>
         /// <param name="location">Resource location</param>
-        /// <param name="description">the description of the metric alert that
-        /// will be included in the alert email.</param>
         /// <param name="severity">Alert severity {0, 1, 2, 3, 4}</param>
         /// <param name="enabled">the flag that indicates whether the metric
         /// alert is enabled.</param>
+        /// <param name="scopes">the list of resource id's that this metric
+        /// alert is scoped to.</param>
         /// <param name="evaluationFrequency">how often the metric alert is
         /// evaluated represented in ISO 8601 duration format.</param>
         /// <param name="windowSize">the period of time (in ISO 8601 duration
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="scopes">the list of resource id's that this metric
-        /// alert is scoped to.</param>
+        /// <param name="description">the description of the metric alert that
+        /// will be included in the alert email.</param>
         /// <param name="targetResourceType">the resource type of the target
         /// resource(s) on which the alert is created/updated. Mandatory for
         /// MultipleResourceMultipleMetricCriteria.</param>
@@ -66,7 +66,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// resolved.</param>
         /// <param name="lastUpdatedTime">Last time the rule was updated in
         /// ISO8601 format.</param>
-        public MetricAlertResource(string location, string description, int severity, bool enabled, System.TimeSpan evaluationFrequency, System.TimeSpan windowSize, MetricAlertCriteria criteria, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> scopes = default(IList<string>), string targetResourceType = default(string), string targetResourceRegion = default(string), bool? autoMitigate = default(bool?), IList<MetricAlertAction> actions = default(IList<MetricAlertAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
+        /// <param name="isMigrated">the value indicating whether this alert
+        /// rule is migrated.</param>
+        public MetricAlertResource(string location, int severity, bool enabled, IList<string> scopes, System.TimeSpan evaluationFrequency, System.TimeSpan windowSize, MetricAlertCriteria criteria, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string targetResourceType = default(string), string targetResourceRegion = default(string), bool? autoMitigate = default(bool?), IList<MetricAlertAction> actions = default(IList<MetricAlertAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?), string isMigrated = default(string))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -81,6 +83,7 @@ namespace Microsoft.Azure.Management.Monitor.Models
             AutoMitigate = autoMitigate;
             Actions = actions;
             LastUpdatedTime = lastUpdatedTime;
+            IsMigrated = isMigrated;
             CustomInit();
         }
 
@@ -173,6 +176,12 @@ namespace Microsoft.Azure.Management.Monitor.Models
         public System.DateTime? LastUpdatedTime { get; private set; }
 
         /// <summary>
+        /// Gets the value indicating whether this alert rule is migrated.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isMigrated")]
+        public string IsMigrated { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -181,9 +190,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         public override void Validate()
         {
             base.Validate();
-            if (Description == null)
+            if (Scopes == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Description");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Scopes");
             }
             if (Criteria == null)
             {
