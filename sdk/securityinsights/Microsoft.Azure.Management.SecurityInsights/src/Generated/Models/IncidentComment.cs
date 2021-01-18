@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// Represents an incident comment
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class IncidentComment : Resource
+    public partial class IncidentComment : ResourceWithEtag
     {
         /// <summary>
         /// Initializes a new instance of the IncidentComment class.
@@ -36,14 +36,18 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
+        /// <param name="etag">Etag of the azure resource</param>
         /// <param name="createdTimeUtc">The time the comment was
         /// created</param>
+        /// <param name="lastModifiedTimeUtc">The time the comment was
+        /// updated</param>
         /// <param name="author">Describes the client that created the
         /// comment</param>
-        public IncidentComment(string message, string id = default(string), string name = default(string), string type = default(string), System.DateTime? createdTimeUtc = default(System.DateTime?), ClientInfo author = default(ClientInfo))
-            : base(id, name, type)
+        public IncidentComment(string message, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? createdTimeUtc = default(System.DateTime?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), ClientInfo author = default(ClientInfo))
+            : base(id, name, type, etag)
         {
             CreatedTimeUtc = createdTimeUtc;
+            LastModifiedTimeUtc = lastModifiedTimeUtc;
             Message = message;
             Author = author;
             CustomInit();
@@ -59,6 +63,12 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdTimeUtc")]
         public System.DateTime? CreatedTimeUtc { get; private set; }
+
+        /// <summary>
+        /// Gets the time the comment was updated
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.lastModifiedTimeUtc")]
+        public System.DateTime? LastModifiedTimeUtc { get; private set; }
 
         /// <summary>
         /// Gets or sets the comment message
