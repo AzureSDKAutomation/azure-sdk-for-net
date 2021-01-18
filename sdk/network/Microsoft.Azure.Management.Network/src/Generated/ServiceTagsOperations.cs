@@ -59,6 +59,12 @@ namespace Microsoft.Azure.Management.Network
         /// details across all regions but limited to the cloud that your subscription
         /// belongs to).
         /// </param>
+        /// <param name='noaddressprefixes'>
+        /// Set to true if addressPrefixes are not required in the response.
+        /// </param>
+        /// <param name='tagname'>
+        /// Specify single tagname such that response contains data for this tag only.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -80,7 +86,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ServiceTagsListResult>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ServiceTagsListResult>> ListWithHttpMessagesAsync(string location, bool? noaddressprefixes = default(bool?), string tagname = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (location == null)
             {
@@ -99,6 +105,8 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
+                tracingParameters.Add("noaddressprefixes", noaddressprefixes);
+                tracingParameters.Add("tagname", tagname);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
@@ -109,6 +117,14 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
+            if (noaddressprefixes != null)
+            {
+                _queryParameters.Add(string.Format("noaddressprefixes={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(noaddressprefixes, Client.SerializationSettings).Trim('"'))));
+            }
+            if (tagname != null)
+            {
+                _queryParameters.Add(string.Format("tagname={0}", System.Uri.EscapeDataString(tagname)));
+            }
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
