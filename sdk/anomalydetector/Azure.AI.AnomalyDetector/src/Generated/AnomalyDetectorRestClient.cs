@@ -39,7 +39,7 @@ namespace Azure.AI.AnomalyDetector
             _pipeline = pipeline;
         }
 
-        internal HttpMessage CreateDetectEntireSeriesRequest(DetectRequest body)
+        internal HttpMessage CreateBreakingChangeDetectEntireSeriesRequest(DetectRequest body)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -61,14 +61,14 @@ namespace Azure.AI.AnomalyDetector
         /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="body"/> is null. </exception>
-        public async Task<Response<EntireDetectResponse>> DetectEntireSeriesAsync(DetectRequest body, CancellationToken cancellationToken = default)
+        public async Task<Response<EntireDetectResponse>> BreakingChangeDetectEntireSeriesAsync(DetectRequest body, CancellationToken cancellationToken = default)
         {
             if (body == null)
             {
                 throw new ArgumentNullException(nameof(body));
             }
 
-            using var message = CreateDetectEntireSeriesRequest(body);
+            using var message = CreateBreakingChangeDetectEntireSeriesRequest(body);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
@@ -88,14 +88,14 @@ namespace Azure.AI.AnomalyDetector
         /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="body"/> is null. </exception>
-        public Response<EntireDetectResponse> DetectEntireSeries(DetectRequest body, CancellationToken cancellationToken = default)
+        public Response<EntireDetectResponse> BreakingChangeDetectEntireSeries(DetectRequest body, CancellationToken cancellationToken = default)
         {
             if (body == null)
             {
                 throw new ArgumentNullException(nameof(body));
             }
 
-            using var message = CreateDetectEntireSeriesRequest(body);
+            using var message = CreateBreakingChangeDetectEntireSeriesRequest(body);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {

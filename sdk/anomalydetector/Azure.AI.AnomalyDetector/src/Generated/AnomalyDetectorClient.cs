@@ -38,13 +38,13 @@ namespace Azure.AI.AnomalyDetector
         /// <summary> This operation generates a model using an entire series, each point is detected with the same model. With this method, points before and after a certain point are used to determine whether it is an anomaly. The entire detection can give user an overall status of the time series. </summary>
         /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<EntireDetectResponse>> DetectEntireSeriesAsync(DetectRequest body, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<EntireDetectResponse>> BreakingChangeDetectEntireSeriesAsync(DetectRequest body, CancellationToken cancellationToken = default)
         {
-            using var scope = _clientDiagnostics.CreateScope("AnomalyDetectorClient.DetectEntireSeries");
+            using var scope = _clientDiagnostics.CreateScope("AnomalyDetectorClient.BreakingChangeDetectEntireSeries");
             scope.Start();
             try
             {
-                return await RestClient.DetectEntireSeriesAsync(body, cancellationToken).ConfigureAwait(false);
+                return await RestClient.BreakingChangeDetectEntireSeriesAsync(body, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -56,13 +56,13 @@ namespace Azure.AI.AnomalyDetector
         /// <summary> This operation generates a model using an entire series, each point is detected with the same model. With this method, points before and after a certain point are used to determine whether it is an anomaly. The entire detection can give user an overall status of the time series. </summary>
         /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<EntireDetectResponse> DetectEntireSeries(DetectRequest body, CancellationToken cancellationToken = default)
+        public virtual Response<EntireDetectResponse> BreakingChangeDetectEntireSeries(DetectRequest body, CancellationToken cancellationToken = default)
         {
-            using var scope = _clientDiagnostics.CreateScope("AnomalyDetectorClient.DetectEntireSeries");
+            using var scope = _clientDiagnostics.CreateScope("AnomalyDetectorClient.BreakingChangeDetectEntireSeries");
             scope.Start();
             try
             {
-                return RestClient.DetectEntireSeries(body, cancellationToken);
+                return RestClient.BreakingChangeDetectEntireSeries(body, cancellationToken);
             }
             catch (Exception e)
             {
