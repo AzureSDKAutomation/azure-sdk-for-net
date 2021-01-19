@@ -125,6 +125,16 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual ISqlPoolReplicationLinksOperations SqlPoolReplicationLinks { get; private set; }
 
         /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowsOperations.
+        /// </summary>
+        public virtual ISqlPoolMaintenanceWindowsOperations SqlPoolMaintenanceWindows { get; private set; }
+
+        /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowOptionsOperations.
+        /// </summary>
+        public virtual ISqlPoolMaintenanceWindowOptionsOperations SqlPoolMaintenanceWindowOptions { get; private set; }
+
+        /// <summary>
         /// Gets the ISqlPoolTransparentDataEncryptionsOperations.
         /// </summary>
         public virtual ISqlPoolTransparentDataEncryptionsOperations SqlPoolTransparentDataEncryptions { get; private set; }
@@ -328,6 +338,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations.
         /// </summary>
         public virtual IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations WorkspaceManagedSqlServerVulnerabilityAssessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerEncryptionProtectorOperations.
+        /// </summary>
+        public virtual IWorkspaceManagedSqlServerEncryptionProtectorOperations WorkspaceManagedSqlServerEncryptionProtector { get; private set; }
 
         /// <summary>
         /// Gets the IWorkspaceManagedSqlServerUsagesOperations.
@@ -595,6 +610,8 @@ namespace Microsoft.Azure.Management.Synapse
             SqlPoolDataWarehouseUserActivities = new SqlPoolDataWarehouseUserActivitiesOperations(this);
             SqlPoolRestorePoints = new SqlPoolRestorePointsOperations(this);
             SqlPoolReplicationLinks = new SqlPoolReplicationLinksOperations(this);
+            SqlPoolMaintenanceWindows = new SqlPoolMaintenanceWindowsOperations(this);
+            SqlPoolMaintenanceWindowOptions = new SqlPoolMaintenanceWindowOptionsOperations(this);
             SqlPoolTransparentDataEncryptions = new SqlPoolTransparentDataEncryptionsOperations(this);
             SqlPoolBlobAuditingPolicies = new SqlPoolBlobAuditingPoliciesOperations(this);
             SqlPoolOperations = new SqlPoolOperations(this);
@@ -636,11 +653,12 @@ namespace Microsoft.Azure.Management.Synapse
             WorkspaceManagedSqlServerExtendedBlobAuditingPolicies = new WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations(this);
             WorkspaceManagedSqlServerSecurityAlertPolicy = new WorkspaceManagedSqlServerSecurityAlertPolicyOperations(this);
             WorkspaceManagedSqlServerVulnerabilityAssessments = new WorkspaceManagedSqlServerVulnerabilityAssessmentsOperations(this);
+            WorkspaceManagedSqlServerEncryptionProtector = new WorkspaceManagedSqlServerEncryptionProtectorOperations(this);
             WorkspaceManagedSqlServerUsages = new WorkspaceManagedSqlServerUsagesOperations(this);
             WorkspaceManagedSqlServerRecoverableSqlpools = new WorkspaceManagedSqlServerRecoverableSqlpoolsOperations(this);
             Keys = new KeysOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-06-01-preview";
+            ApiVersion = "2020-12-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
