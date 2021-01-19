@@ -38,11 +38,14 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// baseline.</param>
         /// <param name="highThresholds">The high thresholds of the
         /// baseline.</param>
-        public Baseline(Sensitivity sensitivity, IList<double?> lowThresholds, IList<double?> highThresholds)
+        /// <param name="timestamps">the array of timestamps of the
+        /// baselines.</param>
+        public Baseline(Sensitivity sensitivity, IList<double?> lowThresholds, IList<double?> highThresholds, IList<System.DateTime?> timestamps = default(IList<System.DateTime?>))
         {
             Sensitivity = sensitivity;
             LowThresholds = lowThresholds;
             HighThresholds = highThresholds;
+            Timestamps = timestamps;
             CustomInit();
         }
 
@@ -69,6 +72,12 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// </summary>
         [JsonProperty(PropertyName = "highThresholds")]
         public IList<double?> HighThresholds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the array of timestamps of the baselines.
+        /// </summary>
+        [JsonProperty(PropertyName = "timestamps")]
+        public IList<System.DateTime?> Timestamps { get; set; }
 
         /// <summary>
         /// Validate the object.
