@@ -50,7 +50,9 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// Insights App Id</param>
         /// <param name="luisAppIds">Collection of LUIS App Ids</param>
         /// <param name="luisKey">The LUIS Key</param>
-        public BotProperties(string displayName, string endpoint, string msaAppId, string description = default(string), string iconUrl = default(string), string endpointVersion = default(string), IList<string> configuredChannels = default(IList<string>), IList<string> enabledChannels = default(IList<string>), string developerAppInsightKey = default(string), string developerAppInsightsApiKey = default(string), string developerAppInsightsApplicationId = default(string), IList<string> luisAppIds = default(IList<string>), string luisKey = default(string))
+        /// <param name="isCmekEnabled">Whether Cmek is enabled</param>
+        /// <param name="cmekKeyVaultUrl">The CMK Url</param>
+        public BotProperties(string displayName, string endpoint, string msaAppId, string description = default(string), string iconUrl = default(string), string endpointVersion = default(string), IList<string> configuredChannels = default(IList<string>), IList<string> enabledChannels = default(IList<string>), string developerAppInsightKey = default(string), string developerAppInsightsApiKey = default(string), string developerAppInsightsApplicationId = default(string), IList<string> luisAppIds = default(IList<string>), string luisKey = default(string), bool? isCmekEnabled = default(bool?), string cmekKeyVaultUrl = default(string))
         {
             DisplayName = displayName;
             Description = description;
@@ -65,6 +67,8 @@ namespace Microsoft.Azure.Management.BotService.Models
             DeveloperAppInsightsApplicationId = developerAppInsightsApplicationId;
             LuisAppIds = luisAppIds;
             LuisKey = luisKey;
+            IsCmekEnabled = isCmekEnabled;
+            CmekKeyVaultUrl = cmekKeyVaultUrl;
             CustomInit();
         }
 
@@ -150,6 +154,18 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// </summary>
         [JsonProperty(PropertyName = "luisKey")]
         public string LuisKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether Cmek is enabled
+        /// </summary>
+        [JsonProperty(PropertyName = "isCmekEnabled")]
+        public bool? IsCmekEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CMK Url
+        /// </summary>
+        [JsonProperty(PropertyName = "cmekKeyVaultUrl")]
+        public string CmekKeyVaultUrl { get; set; }
 
         /// <summary>
         /// Validate the object.
