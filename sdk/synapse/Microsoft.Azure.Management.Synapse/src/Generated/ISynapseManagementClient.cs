@@ -120,6 +120,16 @@ namespace Microsoft.Azure.Management.Synapse
         ISqlPoolReplicationLinksOperations SqlPoolReplicationLinks { get; }
 
         /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowsOperations.
+        /// </summary>
+        ISqlPoolMaintenanceWindowsOperations SqlPoolMaintenanceWindows { get; }
+
+        /// <summary>
+        /// Gets the ISqlPoolMaintenanceWindowOptionsOperations.
+        /// </summary>
+        ISqlPoolMaintenanceWindowOptionsOperations SqlPoolMaintenanceWindowOptions { get; }
+
+        /// <summary>
         /// Gets the ISqlPoolTransparentDataEncryptionsOperations.
         /// </summary>
         ISqlPoolTransparentDataEncryptionsOperations SqlPoolTransparentDataEncryptions { get; }
@@ -323,6 +333,11 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations.
         /// </summary>
         IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations WorkspaceManagedSqlServerVulnerabilityAssessments { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerEncryptionProtectorOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerEncryptionProtectorOperations WorkspaceManagedSqlServerEncryptionProtector { get; }
 
         /// <summary>
         /// Gets the IWorkspaceManagedSqlServerUsagesOperations.
