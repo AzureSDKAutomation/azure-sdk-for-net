@@ -49,13 +49,12 @@ namespace Microsoft.Azure.Management.PowerBIDedicated
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// A unique identifier for a Microsoft Azure subscription. The subscription ID
-        /// forms part of the URI for every service call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The client API version.
+        /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -86,6 +85,19 @@ namespace Microsoft.Azure.Management.PowerBIDedicated
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the PowerBIDedicatedManagementClient class.
+        /// </summary>
+        /// <param name='httpClient'>
+        /// HttpClient to be used
+        /// </param>
+        /// <param name='disposeHttpClient'>
+        /// True: will dispose the provided httpClient on calling PowerBIDedicatedManagementClient.Dispose(). False: will not dispose provided httpClient</param>
+        protected PowerBIDedicatedManagementClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        {
+            Initialize();
+        }
 
         /// <summary>
         /// Initializes a new instance of the PowerBIDedicatedManagementClient class.
@@ -170,6 +182,33 @@ namespace Microsoft.Azure.Management.PowerBIDedicated
         /// Thrown when a required parameter is null
         /// </exception>
         public PowerBIDedicatedManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        {
+            if (credentials == null)
+            {
+                throw new System.ArgumentNullException("credentials");
+            }
+            Credentials = credentials;
+            if (Credentials != null)
+            {
+                Credentials.InitializeServiceClient(this);
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the PowerBIDedicatedManagementClient class.
+        /// </summary>
+        /// <param name='credentials'>
+        /// Required. Credentials needed for the client to connect to Azure.
+        /// </param>
+        /// <param name='httpClient'>
+        /// HttpClient to be used
+        /// </param>
+        /// <param name='disposeHttpClient'>
+        /// True: will dispose the provided httpClient on calling PowerBIDedicatedManagementClient.Dispose(). False: will not dispose provided httpClient</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        public PowerBIDedicatedManagementClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
         {
             if (credentials == null)
             {
@@ -291,7 +330,7 @@ namespace Microsoft.Azure.Management.PowerBIDedicated
             Capacities = new CapacitiesOperations(this);
             Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2017-10-01";
+            ApiVersion = "2021-01-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
