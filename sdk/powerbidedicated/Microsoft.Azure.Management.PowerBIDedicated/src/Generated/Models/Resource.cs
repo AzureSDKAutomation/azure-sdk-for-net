@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// resource.</param>
         /// <param name="tags">Key-value pairs of additional resource
         /// provisioning properties.</param>
-        public Resource(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource.</param>
+        public Resource(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData))
         {
             Id = id;
             Name = name;
@@ -53,6 +55,7 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
             Location = location;
             Sku = sku;
             Tags = tags;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -97,6 +100,13 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets metadata pertaining to creation and last modification
+        /// of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Validate the object.

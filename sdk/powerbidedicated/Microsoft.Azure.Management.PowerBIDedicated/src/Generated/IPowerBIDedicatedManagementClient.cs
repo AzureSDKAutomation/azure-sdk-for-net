@@ -43,13 +43,12 @@ namespace Microsoft.Azure.Management.PowerBIDedicated
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// A unique identifier for a Microsoft Azure subscription. The
-        /// subscription ID forms part of the URI for every service call.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The client API version.
+        /// The API version to use for this operation.
         /// </summary>
         string ApiVersion { get; }
 
