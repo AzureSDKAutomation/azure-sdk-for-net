@@ -336,5 +336,15 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; }
 
+        /// <summary>
+        /// Gets the IInsightsOperations.
+        /// </summary>
+        IInsightsOperations Insights { get; }
+
+        /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        IIotSitesOperations IotSites { get; }
+
     }
 }
