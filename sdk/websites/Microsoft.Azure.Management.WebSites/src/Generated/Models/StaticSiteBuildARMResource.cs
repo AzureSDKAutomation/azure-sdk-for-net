@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -36,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="buildId">An identifier for the static site
         /// build.</param>
         /// <param name="sourceBranch">The source branch.</param>
@@ -48,8 +52,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="status">The status of the static site build. Possible
         /// values include: 'WaitingForDeployment', 'Uploading', 'Deploying',
         /// 'Ready', 'Failed', 'Deleting', 'Detached'</param>
-        public StaticSiteBuildARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string buildId = default(string), string sourceBranch = default(string), string pullRequestTitle = default(string), string hostname = default(string), System.DateTime? createdTimeUtc = default(System.DateTime?), System.DateTime? lastUpdatedOn = default(System.DateTime?), string status = default(string))
-            : base(id, name, kind, type)
+        /// <param name="userProvidedFunctionApps">User provided function apps
+        /// registered with the static site build</param>
+        public StaticSiteBuildARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string buildId = default(string), string sourceBranch = default(string), string pullRequestTitle = default(string), string hostname = default(string), System.DateTime? createdTimeUtc = default(System.DateTime?), System.DateTime? lastUpdatedOn = default(System.DateTime?), string status = default(string), IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(IList<StaticSiteUserProvidedFunctionApp>))
+            : base(id, name, kind, type, systemData)
         {
             BuildId = buildId;
             SourceBranch = sourceBranch;
@@ -58,6 +64,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             CreatedTimeUtc = createdTimeUtc;
             LastUpdatedOn = lastUpdatedOn;
             Status = status;
+            UserProvidedFunctionApps = userProvidedFunctionApps;
             CustomInit();
         }
 
@@ -110,6 +117,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; private set; }
+
+        /// <summary>
+        /// Gets user provided function apps registered with the static site
+        /// build
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.userProvidedFunctionApps")]
+        public IList<StaticSiteUserProvidedFunctionApp> UserProvidedFunctionApps { get; private set; }
 
     }
 }

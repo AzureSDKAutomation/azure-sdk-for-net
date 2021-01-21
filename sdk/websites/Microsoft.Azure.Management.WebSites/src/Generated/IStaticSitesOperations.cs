@@ -24,6 +24,36 @@ namespace Microsoft.Azure.Management.WebSites
     public partial interface IStaticSitesOperations
     {
         /// <summary>
+        /// Generates a preview workflow file for the static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Generates a preview workflow file for the static
+        /// site
+        /// </remarks>
+        /// <param name='location'>
+        /// Location where you plan to create the static site.
+        /// </param>
+        /// <param name='staticSitesWorkflowPreviewRequest'>
+        /// A JSON representation of the StaticSitesWorkflowPreviewRequest
+        /// properties. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StaticSitesWorkflowPreview>> PreviewWorkflowWithHttpMessagesAsync(string location, StaticSitesWorkflowPreviewRequest staticSitesWorkflowPreviewRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get all Static Sites for a subscription.
         /// </summary>
         /// <remarks>
@@ -320,6 +350,106 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<StaticSiteBuildARMResource>>> GetStaticSiteBuildsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Creates or updates the app settings of a static site build.
+        /// </summary>
+        /// <remarks>
+        /// Description for Creates or updates the app settings of a static
+        /// site build.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='appSettings'>
+        /// The dictionary containing the static site app settings to update.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StringDictionary>> CreateOrUpdateStaticSiteBuildAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StringDictionary appSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the application settings of a static site build.
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the application settings of a static site
+        /// build.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StringDictionary>> ListStaticSiteBuildAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys zipped content to a specific environment of a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deploys zipped content to a specific environment of
+        /// a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// Name of the environment.
+        /// </param>
+        /// <param name='staticSiteZipDeploymentEnvelope'>
+        /// A JSON representation of the StaticSiteZipDeployment properties.
+        /// See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets the details of a static site build.
         /// </summary>
         /// <remarks>
@@ -396,6 +526,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='appSettings'>
+        /// The dictionary containing the static site function app settings to
+        /// update.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -446,10 +578,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteBuildFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, string prId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the application settings of a static site.
+        /// Gets the application settings of a static site build.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the application settings of a static site.
+        /// Description for Gets the application settings of a static site
+        /// build.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -477,6 +610,184 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<StringDictionary>> ListStaticSiteBuildFunctionAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, string prId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the details of the user provided function apps registered with
+        /// a static site build
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the details of the user provided function apps
+        /// registered with a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<StaticSiteUserProvidedFunctionAppARMResource>>> GetUserProvidedFunctionAppsForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the details of the user provided function app registered with
+        /// a static site build
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the details of the user provided function app
+        /// registered with a static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='functionAppName'>
+        /// Name of the function app registered with the static site build.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> GetUserProvidedFunctionAppForStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Register a user provided function app with a static site build
+        /// </summary>
+        /// <remarks>
+        /// Description for Register a user provided function app with a static
+        /// site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='functionAppName'>
+        /// Name of the function app to register with the static site build.
+        /// </param>
+        /// <param name='staticSiteUserProvidedFunctionEnvelope'>
+        /// A JSON representation of the user provided function app properties.
+        /// See example.
+        /// </param>
+        /// <param name='isForced'>
+        /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the
+        /// auth configuration on the function app even if an
+        /// AzureStaticWebApps provider is already configured on the function
+        /// app. The default is &lt;code&gt;false&lt;/code&gt;.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> RegisterUserProvidedFunctionAppWithStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Detach the user provided function app from the static site build
+        /// </summary>
+        /// <remarks>
+        /// Description for Detach the user provided function app from the
+        /// static site build
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='functionAppName'>
+        /// Name of the function app registered with the static site build.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DetachUserProvidedFunctionAppFromStaticSiteBuildWithHttpMessagesAsync(string resourceGroupName, string name, string environmentName, string functionAppName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates the app settings of a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Creates or updates the app settings of a static
+        /// site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='appSettings'>
+        /// The dictionary containing the static site app settings to update.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StringDictionary>> CreateOrUpdateStaticSiteAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, StringDictionary appSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Creates or updates the function app settings of a static site.
         /// </summary>
         /// <remarks>
@@ -490,6 +801,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Name of the static site.
         /// </param>
         /// <param name='appSettings'>
+        /// The dictionary containing the static site function app settings to
+        /// update.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -736,6 +1049,62 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
+        Task<AzureOperationResponse<StringDictionary>> ListStaticSiteAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists the roles configured for the static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Lists the roles configured for the static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StringList>> ListStaticSiteConfiguredRolesWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the application settings of a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the application settings of a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
         Task<AzureOperationResponse<StringDictionary>> ListStaticSiteFunctionAppSettingsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the secrets for an existing static site.
@@ -766,6 +1135,160 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<StringDictionary>> ListStaticSiteSecretsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the list of private endpoint connections associated with a
+        /// static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the list of private endpoint connections
+        /// associated with a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<RemotePrivateEndpointConnectionARMResource>>> GetPrivateEndpointConnectionListWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a private endpoint connection
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets a private endpoint connection
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateEndpointConnectionResource>> GetPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Approves or rejects a private endpoint connection
+        /// </summary>
+        /// <remarks>
+        /// Description for Approves or rejects a private endpoint connection
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
+        /// </param>
+        /// <param name='privateEndpointWrapper'>
+        /// Request body.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateEndpointConnectionResource>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a private endpoint connection
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a private endpoint connection
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<object>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the private link resources
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the private link resources
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateLinkResourcesWrapper>> GetPrivateLinkResourcesWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Resets the api key for an existing static site.
         /// </summary>
         /// <remarks>
@@ -792,6 +1315,234 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> ResetStaticSiteApiKeyWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteResetPropertiesARMResource resetPropertiesEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the details of the user provided function apps registered with
+        /// a static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the details of the user provided function apps
+        /// registered with a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<StaticSiteUserProvidedFunctionAppARMResource>>> GetUserProvidedFunctionAppsForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the details of the user provided function app registered with
+        /// a static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the details of the user provided function app
+        /// registered with a static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='functionAppName'>
+        /// Name of the function app registered with the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> GetUserProvidedFunctionAppForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Register a user provided function app with a static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Register a user provided function app with a static
+        /// site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='functionAppName'>
+        /// Name of the function app to register with the static site.
+        /// </param>
+        /// <param name='staticSiteUserProvidedFunctionEnvelope'>
+        /// A JSON representation of the user provided function app properties.
+        /// See example.
+        /// </param>
+        /// <param name='isForced'>
+        /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the
+        /// auth configuration on the function app even if an
+        /// AzureStaticWebApps provider is already configured on the function
+        /// app. The default is &lt;code&gt;false&lt;/code&gt;.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StaticSiteUserProvidedFunctionAppARMResource>> RegisterUserProvidedFunctionAppWithStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, StaticSiteUserProvidedFunctionAppARMResource staticSiteUserProvidedFunctionEnvelope, bool? isForced = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Detach the user provided function app from the static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Detach the user provided function app from the
+        /// static site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='functionAppName'>
+        /// Name of the function app registered with the static site.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DetachUserProvidedFunctionAppFromStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, string functionAppName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deploys zipped content to a static site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deploys zipped content to a static site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='staticSiteZipDeploymentEnvelope'>
+        /// A JSON representation of the StaticSiteZipDeployment properties.
+        /// See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CreateZipDeploymentForStaticSiteWithHttpMessagesAsync(string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Approves or rejects a private endpoint connection
+        /// </summary>
+        /// <remarks>
+        /// Description for Approves or rejects a private endpoint connection
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
+        /// </param>
+        /// <param name='privateEndpointWrapper'>
+        /// Request body.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateEndpointConnectionResource>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a private endpoint connection
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a private endpoint connection
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<object>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get all Static Sites for a subscription.
         /// </summary>
@@ -921,6 +1672,33 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteBuildFunctionsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the details of the user provided function apps registered with
+        /// a static site build
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the details of the user provided function apps
+        /// registered with a static site build
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<StaticSiteUserProvidedFunctionAppARMResource>>> GetUserProvidedFunctionAppsForStaticSiteBuildNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets all static site custom domains for a particular static site.
         /// </summary>
         /// <remarks>
@@ -971,5 +1749,59 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<StaticSiteFunctionOverviewARMResource>>> ListStaticSiteFunctionsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the list of private endpoint connections associated with a
+        /// static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the list of private endpoint connections
+        /// associated with a static site
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<RemotePrivateEndpointConnectionARMResource>>> GetPrivateEndpointConnectionListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the details of the user provided function apps registered with
+        /// a static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets the details of the user provided function apps
+        /// registered with a static site
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<StaticSiteUserProvidedFunctionAppARMResource>>> GetUserProvidedFunctionAppsForStaticSiteNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

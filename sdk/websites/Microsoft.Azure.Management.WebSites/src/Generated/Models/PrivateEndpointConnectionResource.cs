@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -38,14 +40,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="privateEndpoint">PrivateEndpoint of a remote private
         /// endpoint connection</param>
-        public PrivateEndpointConnectionResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string provisioningState = default(string), ArmIdWrapper privateEndpoint = default(ArmIdWrapper), PrivateLinkConnectionState privateLinkServiceConnectionState = default(PrivateLinkConnectionState))
-            : base(id, name, kind, type)
+        /// <param name="ipAddresses">Private IPAddresses mapped to the remote
+        /// private endpoint</param>
+        public PrivateEndpointConnectionResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), ArmIdWrapper privateEndpoint = default(ArmIdWrapper), PrivateLinkConnectionState privateLinkServiceConnectionState = default(PrivateLinkConnectionState), IList<string> ipAddresses = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             ProvisioningState = provisioningState;
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
+            IpAddresses = ipAddresses;
             CustomInit();
         }
 
@@ -70,6 +77,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
         public PrivateLinkConnectionState PrivateLinkServiceConnectionState { get; set; }
+
+        /// <summary>
+        /// Gets or sets private IPAddresses mapped to the remote private
+        /// endpoint
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ipAddresses")]
+        public IList<string> IpAddresses { get; set; }
 
     }
 }
