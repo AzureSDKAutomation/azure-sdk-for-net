@@ -38,13 +38,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="keySize">Certificate Key Size.</param>
         /// <param name="csr">Csr to be used for re-key operation.</param>
         /// <param name="isPrivateKeyExternal">Should we change the ASC type
         /// (from managed private key to external private key and vice
         /// versa).</param>
-        public RenewCertificateOrderRequest(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? keySize = default(int?), string csr = default(string), bool? isPrivateKeyExternal = default(bool?))
-            : base(id, name, kind, type)
+        public RenewCertificateOrderRequest(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), int? keySize = default(int?), string csr = default(string), bool? isPrivateKeyExternal = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             KeySize = keySize;
             Csr = csr;

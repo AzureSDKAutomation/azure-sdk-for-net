@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="certificates">State of the Key Vault secret.</param>
         /// <param name="distinguishedName">Certificate distinguished
         /// name.</param>
@@ -78,8 +80,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// moment.</param>
         /// <param name="nextAutoRenewalTimeStamp">Time stamp when the
         /// certificate would be auto renewed next</param>
-        public AppServiceCertificateOrderPatchResource(CertificateProductType productType, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, AppServiceCertificate> certificates = default(IDictionary<string, AppServiceCertificate>), string distinguishedName = default(string), string domainVerificationToken = default(string), int? validityInYears = default(int?), int? keySize = default(int?), bool? autoRenew = default(bool?), ProvisioningState? provisioningState = default(ProvisioningState?), CertificateOrderStatus? status = default(CertificateOrderStatus?), CertificateDetails signedCertificate = default(CertificateDetails), string csr = default(string), CertificateDetails intermediate = default(CertificateDetails), CertificateDetails root = default(CertificateDetails), string serialNumber = default(string), System.DateTime? lastCertificateIssuanceTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), bool? isPrivateKeyExternal = default(bool?), IList<string> appServiceCertificateNotRenewableReasons = default(IList<string>), System.DateTime? nextAutoRenewalTimeStamp = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public AppServiceCertificateOrderPatchResource(CertificateProductType productType, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, AppServiceCertificate> certificates = default(IDictionary<string, AppServiceCertificate>), string distinguishedName = default(string), string domainVerificationToken = default(string), int? validityInYears = default(int?), int? keySize = default(int?), bool? autoRenew = default(bool?), ProvisioningState? provisioningState = default(ProvisioningState?), CertificateOrderStatus? status = default(CertificateOrderStatus?), CertificateDetails signedCertificate = default(CertificateDetails), string csr = default(string), CertificateDetails intermediate = default(CertificateDetails), CertificateDetails root = default(CertificateDetails), string serialNumber = default(string), System.DateTime? lastCertificateIssuanceTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), bool? isPrivateKeyExternal = default(bool?), IList<string> appServiceCertificateNotRenewableReasons = default(IList<string>), System.DateTime? nextAutoRenewalTimeStamp = default(System.DateTime?))
+            : base(id, name, kind, type, systemData)
         {
             Certificates = certificates;
             DistinguishedName = distinguishedName;

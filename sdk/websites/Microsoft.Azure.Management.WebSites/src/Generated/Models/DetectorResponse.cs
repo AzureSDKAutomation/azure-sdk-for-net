@@ -38,10 +38,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="metadata">metadata for the detector</param>
         /// <param name="dataset">Data Set</param>
-        public DetectorResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), DetectorInfo metadata = default(DetectorInfo), IList<DiagnosticData> dataset = default(IList<DiagnosticData>))
-            : base(id, name, kind, type)
+        public DetectorResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), DetectorInfo metadata = default(DetectorInfo), IList<DiagnosticData> dataset = default(IList<DiagnosticData>))
+            : base(id, name, kind, type, systemData)
         {
             Metadata = metadata;
             Dataset = dataset;
