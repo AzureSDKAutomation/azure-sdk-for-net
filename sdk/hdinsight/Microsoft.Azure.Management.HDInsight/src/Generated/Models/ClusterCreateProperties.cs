@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// <param name="networkProperties">The network properties.</param>
         /// <param name="computeIsolationProperties">The compute isolation
         /// properties.</param>
-        public ClusterCreateProperties(string clusterVersion = default(string), OSType? osType = default(OSType?), Tier? tier = default(Tier?), ClusterDefinition clusterDefinition = default(ClusterDefinition), KafkaRestProperties kafkaRestProperties = default(KafkaRestProperties), SecurityProfile securityProfile = default(SecurityProfile), ComputeProfile computeProfile = default(ComputeProfile), StorageProfile storageProfile = default(StorageProfile), DiskEncryptionProperties diskEncryptionProperties = default(DiskEncryptionProperties), EncryptionInTransitProperties encryptionInTransitProperties = default(EncryptionInTransitProperties), string minSupportedTlsVersion = default(string), NetworkProperties networkProperties = default(NetworkProperties), ComputeIsolationProperties computeIsolationProperties = default(ComputeIsolationProperties))
+        public ClusterCreateProperties(string clusterVersion = default(string), string osType = default(string), string tier = default(string), ClusterDefinition clusterDefinition = default(ClusterDefinition), KafkaRestProperties kafkaRestProperties = default(KafkaRestProperties), SecurityProfile securityProfile = default(SecurityProfile), ComputeProfile computeProfile = default(ComputeProfile), StorageProfile storageProfile = default(StorageProfile), DiskEncryptionProperties diskEncryptionProperties = default(DiskEncryptionProperties), EncryptionInTransitProperties encryptionInTransitProperties = default(EncryptionInTransitProperties), string minSupportedTlsVersion = default(string), NetworkProperties networkProperties = default(NetworkProperties), ComputeIsolationProperties computeIsolationProperties = default(ComputeIsolationProperties))
         {
             ClusterVersion = clusterVersion;
             OsType = osType;
@@ -83,14 +83,14 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
-        public OSType? OsType { get; set; }
+        public string OsType { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster tier. Possible values include: 'Standard',
         /// 'Premium'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
-        public Tier? Tier { get; set; }
+        public string Tier { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster definition.
