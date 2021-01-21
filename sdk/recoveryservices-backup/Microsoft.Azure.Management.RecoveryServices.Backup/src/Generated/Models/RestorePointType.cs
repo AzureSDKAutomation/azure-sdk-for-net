@@ -21,5 +21,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public const string Log = "Log";
         public const string Differential = "Differential";
         public const string Incremental = "Incremental";
+        public const string SnapshotFull = "SnapshotFull";
     }
 }

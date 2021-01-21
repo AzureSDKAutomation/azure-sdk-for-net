@@ -42,14 +42,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="targetInfo">Details of target database</param>
         /// <param name="recoveryMode">Defines whether the current recovery
         /// mode is file restore or database restore. Possible values include:
-        /// 'Invalid', 'FileRecovery', 'WorkloadRecovery'</param>
-        public AzureWorkloadRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string))
+        /// 'Invalid', 'FileRecovery', 'WorkloadRecovery', 'SnapshotAttach',
+        /// 'RecoveryUsingSnapshot'</param>
+        /// <param name="targetResourceGroupName">Defines the Resource group of
+        /// the Target VM</param>
+        public AzureWorkloadRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string))
         {
             RecoveryType = recoveryType;
             SourceResourceId = sourceResourceId;
             PropertyBag = propertyBag;
             TargetInfo = targetInfo;
             RecoveryMode = recoveryMode;
+            TargetResourceGroupName = targetResourceGroupName;
             CustomInit();
         }
 
@@ -88,10 +92,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <summary>
         /// Gets or sets defines whether the current recovery mode is file
         /// restore or database restore. Possible values include: 'Invalid',
-        /// 'FileRecovery', 'WorkloadRecovery'
+        /// 'FileRecovery', 'WorkloadRecovery', 'SnapshotAttach',
+        /// 'RecoveryUsingSnapshot'
         /// </summary>
         [JsonProperty(PropertyName = "recoveryMode")]
         public string RecoveryMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets defines the Resource group of the Target VM
+        /// </summary>
+        [JsonProperty(PropertyName = "targetResourceGroupName")]
+        public string TargetResourceGroupName { get; set; }
 
     }
 }

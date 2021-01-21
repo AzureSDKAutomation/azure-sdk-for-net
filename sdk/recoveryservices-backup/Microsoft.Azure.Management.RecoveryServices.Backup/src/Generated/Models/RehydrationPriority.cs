@@ -12,14 +12,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 {
 
     /// <summary>
-    /// Defines values for RecoveryMode.
+    /// Defines values for RehydrationPriority.
     /// </summary>
-    public static class RecoveryMode
+    public static class RehydrationPriority
     {
-        public const string Invalid = "Invalid";
-        public const string FileRecovery = "FileRecovery";
-        public const string WorkloadRecovery = "WorkloadRecovery";
-        public const string SnapshotAttach = "SnapshotAttach";
-        public const string RecoveryUsingSnapshot = "RecoveryUsingSnapshot";
+        public const string Standard = "Standard";
+        public const string High = "High";
     }
 }

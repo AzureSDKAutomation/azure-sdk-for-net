@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "operationId");
             }
-            string apiVersion = "2018-12-20";
+            string apiVersion = "2021-01-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -215,9 +215,5 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             return _result;
         }
 
-        public Task<AzureOperationResponse> GetWithHttpMessagesAsync(string azureRegion, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -36,13 +38,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// which Target DataBase resides</param>
         /// <param name="databaseName">Database name InstanceName/DataBaseName
         /// for SQL or System/DbName for SAP Hana</param>
+        /// <param name="targetDirectoryMapping">This will contain the target
+        /// folder mapping for the Full/Diff/Log/Incremental pits.</param>
         /// <param name="targetDirectoryForFileRestore">Target directory
         /// location for restore as files.</param>
-        public TargetRestoreInfo(string overwriteOption = default(string), string containerId = default(string), string databaseName = default(string), string targetDirectoryForFileRestore = default(string))
+        public TargetRestoreInfo(string overwriteOption = default(string), string containerId = default(string), string databaseName = default(string), IDictionary<string, string> targetDirectoryMapping = default(IDictionary<string, string>), string targetDirectoryForFileRestore = default(string))
         {
             OverwriteOption = overwriteOption;
             ContainerId = containerId;
             DatabaseName = databaseName;
+            TargetDirectoryMapping = targetDirectoryMapping;
             TargetDirectoryForFileRestore = targetDirectoryForFileRestore;
             CustomInit();
         }
@@ -72,6 +77,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [JsonProperty(PropertyName = "databaseName")]
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets this will contain the target folder mapping for the
+        /// Full/Diff/Log/Incremental pits.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetDirectoryMapping")]
+        public IDictionary<string, string> TargetDirectoryMapping { get; set; }
 
         /// <summary>
         /// Gets or sets target directory location for restore as files.
