@@ -37,14 +37,17 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="eTag">eTag of the resource. To handle concurrent
-        /// update scenario, this field will be used to determine whether the
-        /// user is updating the latest version or not.</param>
         /// <param name="tags">A list of Tag.</param>
-        public TagsResult(string id = default(string), string name = default(string), string type = default(string), string eTag = default(string), IList<Tag> tags = default(IList<Tag>))
-            : base(id, name, type, eTag)
+        /// <param name="nextLink">The link (url) to the next page of
+        /// results.</param>
+        /// <param name="previousLink">The link (url) to the previous page of
+        /// results.</param>
+        public TagsResult(string id = default(string), string name = default(string), string type = default(string), IList<Tag> tags = default(IList<Tag>), string nextLink = default(string), string previousLink = default(string))
+            : base(id, name, type)
         {
             Tags = tags;
+            NextLink = nextLink;
+            PreviousLink = previousLink;
             CustomInit();
         }
 
@@ -58,6 +61,18 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.tags")]
         public IList<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Gets the link (url) to the next page of results.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nextLink")]
+        public string NextLink { get; private set; }
+
+        /// <summary>
+        /// Gets the link (url) to the previous page of results.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.previousLink")]
+        public string PreviousLink { get; private set; }
 
     }
 }
