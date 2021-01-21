@@ -16,23 +16,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// AzureWorkload SAP Hana -specific restore. Specifically for
-    /// PointInTime/Log restore
+    /// AzureWorkload SAP Hana-specific restore with integrated rehydration of
+    /// recovery point.
     /// </summary>
-    public partial class AzureWorkloadSAPHanaPointInTimeRestoreRequest : AzureWorkloadSAPHanaRestoreRequest
+    public partial class AzureWorkloadSAPHanaRestoreWithRehydrateRequest : AzureWorkloadSAPHanaRestoreRequest
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// AzureWorkloadSAPHanaPointInTimeRestoreRequest class.
+        /// AzureWorkloadSAPHanaRestoreWithRehydrateRequest class.
         /// </summary>
-        public AzureWorkloadSAPHanaPointInTimeRestoreRequest()
+        public AzureWorkloadSAPHanaRestoreWithRehydrateRequest()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// AzureWorkloadSAPHanaPointInTimeRestoreRequest class.
+        /// AzureWorkloadSAPHanaRestoreWithRehydrateRequest class.
         /// </summary>
         /// <param name="recoveryType">Type of this recovery. Possible values
         /// include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
@@ -47,11 +47,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// 'RecoveryUsingSnapshot'</param>
         /// <param name="targetResourceGroupName">Defines the Resource group of
         /// the Target VM</param>
-        /// <param name="pointInTime">PointInTime value</param>
-        public AzureWorkloadSAPHanaPointInTimeRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), System.DateTime? pointInTime = default(System.DateTime?))
+        /// <param name="recoveryPointRehydrationInfo">RP Rehydration
+        /// Info</param>
+        public AzureWorkloadSAPHanaRestoreWithRehydrateRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), RecoveryPointRehydrationInfo recoveryPointRehydrationInfo = default(RecoveryPointRehydrationInfo))
             : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName)
         {
-            PointInTime = pointInTime;
+            RecoveryPointRehydrationInfo = recoveryPointRehydrationInfo;
             CustomInit();
         }
 
@@ -61,10 +62,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets pointInTime value
+        /// Gets or sets RP Rehydration Info
         /// </summary>
-        [JsonProperty(PropertyName = "pointInTime")]
-        public System.DateTime? PointInTime { get; set; }
+        [JsonProperty(PropertyName = "recoveryPointRehydrationInfo")]
+        public RecoveryPointRehydrationInfo RecoveryPointRehydrationInfo { get; set; }
 
     }
 }

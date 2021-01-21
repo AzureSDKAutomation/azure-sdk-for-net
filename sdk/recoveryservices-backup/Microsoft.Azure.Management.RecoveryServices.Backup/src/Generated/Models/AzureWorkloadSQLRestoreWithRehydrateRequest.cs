@@ -16,22 +16,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// AzureWorkload SQL -specific restore. Specifically for full/diff restore
+    /// AzureWorkload SQL-specific restore with integrated rehydration of
+    /// recovery point
     /// </summary>
-    public partial class AzureWorkloadSQLRestoreRequest : AzureWorkloadRestoreRequest
+    public partial class AzureWorkloadSQLRestoreWithRehydrateRequest : AzureWorkloadSQLRestoreRequest
     {
         /// <summary>
-        /// Initializes a new instance of the AzureWorkloadSQLRestoreRequest
-        /// class.
+        /// Initializes a new instance of the
+        /// AzureWorkloadSQLRestoreWithRehydrateRequest class.
         /// </summary>
-        public AzureWorkloadSQLRestoreRequest()
+        public AzureWorkloadSQLRestoreWithRehydrateRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureWorkloadSQLRestoreRequest
-        /// class.
+        /// Initializes a new instance of the
+        /// AzureWorkloadSQLRestoreWithRehydrateRequest class.
         /// </summary>
         /// <param name="recoveryType">Type of this recovery. Possible values
         /// include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
@@ -53,12 +54,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// chose to set no-recovery when restore operation is tried</param>
         /// <param name="alternateDirectoryPaths">Data directory
         /// details</param>
-        public AzureWorkloadSQLRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), bool? shouldUseAlternateTargetLocation = default(bool?), bool? isNonRecoverable = default(bool?), IList<SQLDataDirectoryMapping> alternateDirectoryPaths = default(IList<SQLDataDirectoryMapping>))
-            : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName)
+        /// <param name="recoveryPointRehydrationInfo">RP Rehydration
+        /// Info</param>
+        public AzureWorkloadSQLRestoreWithRehydrateRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), bool? shouldUseAlternateTargetLocation = default(bool?), bool? isNonRecoverable = default(bool?), IList<SQLDataDirectoryMapping> alternateDirectoryPaths = default(IList<SQLDataDirectoryMapping>), RecoveryPointRehydrationInfo recoveryPointRehydrationInfo = default(RecoveryPointRehydrationInfo))
+            : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, shouldUseAlternateTargetLocation, isNonRecoverable, alternateDirectoryPaths)
         {
-            ShouldUseAlternateTargetLocation = shouldUseAlternateTargetLocation;
-            IsNonRecoverable = isNonRecoverable;
-            AlternateDirectoryPaths = alternateDirectoryPaths;
+            RecoveryPointRehydrationInfo = recoveryPointRehydrationInfo;
             CustomInit();
         }
 
@@ -68,24 +69,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets default option set to true. If this is set to false,
-        /// alternate data directory must be provided
+        /// Gets or sets RP Rehydration Info
         /// </summary>
-        [JsonProperty(PropertyName = "shouldUseAlternateTargetLocation")]
-        public bool? ShouldUseAlternateTargetLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets SQL specific property where user can chose to set
-        /// no-recovery when restore operation is tried
-        /// </summary>
-        [JsonProperty(PropertyName = "isNonRecoverable")]
-        public bool? IsNonRecoverable { get; set; }
-
-        /// <summary>
-        /// Gets or sets data directory details
-        /// </summary>
-        [JsonProperty(PropertyName = "alternateDirectoryPaths")]
-        public IList<SQLDataDirectoryMapping> AlternateDirectoryPaths { get; set; }
+        [JsonProperty(PropertyName = "recoveryPointRehydrationInfo")]
+        public RecoveryPointRehydrationInfo RecoveryPointRehydrationInfo { get; set; }
 
     }
 }

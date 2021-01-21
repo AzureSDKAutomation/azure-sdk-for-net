@@ -36,10 +36,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="recoveryPointTimeInUTC">UTC time at which recovery
         /// point was created</param>
         /// <param name="type">Type of restore point. Possible values include:
-        /// 'Invalid', 'Full', 'Log', 'Differential', 'Incremental'</param>
+        /// 'Invalid', 'Full', 'Log', 'Differential', 'Incremental',
+        /// 'SnapshotFull'</param>
+        /// <param name="recoveryPointTierDetails">Recovery point tier
+        /// information.</param>
+        /// <param name="recoveryPointMoveReadinessInfo">Archive v1 related
+        /// info</param>
         /// <param name="timeRanges">List of log ranges</param>
-        public AzureWorkloadPointInTimeRecoveryPoint(System.DateTime? recoveryPointTimeInUTC = default(System.DateTime?), string type = default(string), IList<PointInTimeRange> timeRanges = default(IList<PointInTimeRange>))
-            : base(recoveryPointTimeInUTC, type)
+        public AzureWorkloadPointInTimeRecoveryPoint(System.DateTime? recoveryPointTimeInUTC = default(System.DateTime?), string type = default(string), IList<RecoveryPointTierInformation> recoveryPointTierDetails = default(IList<RecoveryPointTierInformation>), IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(IDictionary<string, RecoveryPointMoveReadinessInfo>), IList<PointInTimeRange> timeRanges = default(IList<PointInTimeRange>))
+            : base(recoveryPointTimeInUTC, type, recoveryPointTierDetails, recoveryPointMoveReadinessInfo)
         {
             TimeRanges = timeRanges;
             CustomInit();

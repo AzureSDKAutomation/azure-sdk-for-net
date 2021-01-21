@@ -43,10 +43,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="targetInfo">Details of target database</param>
         /// <param name="recoveryMode">Defines whether the current recovery
         /// mode is file restore or database restore. Possible values include:
-        /// 'Invalid', 'FileRecovery', 'WorkloadRecovery'</param>
+        /// 'Invalid', 'FileRecovery', 'WorkloadRecovery', 'SnapshotAttach',
+        /// 'RecoveryUsingSnapshot'</param>
+        /// <param name="targetResourceGroupName">Defines the Resource group of
+        /// the Target VM</param>
         /// <param name="pointInTime">PointInTime value</param>
-        public AzureWorkloadPointInTimeRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), System.DateTime? pointInTime = default(System.DateTime?))
-            : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode)
+        public AzureWorkloadPointInTimeRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), IDictionary<string, string> propertyBag = default(IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), System.DateTime? pointInTime = default(System.DateTime?))
+            : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName)
         {
             PointInTime = pointInTime;
             CustomInit();
