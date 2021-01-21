@@ -14,25 +14,26 @@ namespace Microsoft.Azure.Management.Analysis.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the format of Error response.
+    /// Additional properties to expose performance metrics to shoebox.
     /// </summary>
-    public partial class ErrorResponse
+    public partial class OperationProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the OperationProperties class.
         /// </summary>
-        public ErrorResponse()
+        public OperationProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the OperationProperties class.
         /// </summary>
-        /// <param name="error">The error object</param>
-        public ErrorResponse(ErrorResponseError error = default(ErrorResponseError))
+        /// <param name="serviceSpecification">Performance metrics to
+        /// shoebox.</param>
+        public OperationProperties(OperationPropertiesServiceSpecification serviceSpecification = default(OperationPropertiesServiceSpecification))
         {
-            Error = error;
+            ServiceSpecification = serviceSpecification;
             CustomInit();
         }
 
@@ -42,10 +43,10 @@ namespace Microsoft.Azure.Management.Analysis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error object
+        /// Gets or sets performance metrics to shoebox.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseError Error { get; set; }
+        [JsonProperty(PropertyName = "serviceSpecification")]
+        public OperationPropertiesServiceSpecification ServiceSpecification { get; set; }
 
     }
 }

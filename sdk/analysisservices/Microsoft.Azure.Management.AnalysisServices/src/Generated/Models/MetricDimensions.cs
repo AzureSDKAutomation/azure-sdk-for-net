@@ -14,25 +14,27 @@ namespace Microsoft.Azure.Management.Analysis.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the format of Error response.
+    /// Metric dimension.
     /// </summary>
-    public partial class ErrorResponse
+    public partial class MetricDimensions
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the MetricDimensions class.
         /// </summary>
-        public ErrorResponse()
+        public MetricDimensions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the MetricDimensions class.
         /// </summary>
-        /// <param name="error">The error object</param>
-        public ErrorResponse(ErrorResponseError error = default(ErrorResponseError))
+        /// <param name="name">Dimension name.</param>
+        /// <param name="displayName">Dimension display name.</param>
+        public MetricDimensions(string name = default(string), string displayName = default(string))
         {
-            Error = error;
+            Name = name;
+            DisplayName = displayName;
             CustomInit();
         }
 
@@ -42,10 +44,16 @@ namespace Microsoft.Azure.Management.Analysis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error object
+        /// Gets dimension name.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseError Error { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets dimension display name.
+        /// </summary>
+        [JsonProperty(PropertyName = "displayName")]
+        public string DisplayName { get; private set; }
 
     }
 }
