@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.Monitor
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -65,41 +70,6 @@ namespace Microsoft.Azure.Management.Monitor
 
 
         /// <summary>
-        /// Gets the IAutoscaleSettingsOperations.
-        /// </summary>
-        IAutoscaleSettingsOperations AutoscaleSettings { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IAlertRuleIncidentsOperations.
-        /// </summary>
-        IAlertRuleIncidentsOperations AlertRuleIncidents { get; }
-
-        /// <summary>
-        /// Gets the IAlertRulesOperations.
-        /// </summary>
-        IAlertRulesOperations AlertRules { get; }
-
-        /// <summary>
-        /// Gets the ILogProfilesOperations.
-        /// </summary>
-        ILogProfilesOperations LogProfiles { get; }
-
-        /// <summary>
-        /// Gets the IDiagnosticSettingsOperations.
-        /// </summary>
-        IDiagnosticSettingsOperations DiagnosticSettings { get; }
-
-        /// <summary>
-        /// Gets the IDiagnosticSettingsCategoryOperations.
-        /// </summary>
-        IDiagnosticSettingsCategoryOperations DiagnosticSettingsCategory { get; }
-
-        /// <summary>
         /// Gets the IActionGroupsOperations.
         /// </summary>
         IActionGroupsOperations ActionGroups { get; }
@@ -109,99 +79,5 @@ namespace Microsoft.Azure.Management.Monitor
         /// </summary>
         IActivityLogAlertsOperations ActivityLogAlerts { get; }
 
-        /// <summary>
-        /// Gets the IActivityLogsOperations.
-        /// </summary>
-        IActivityLogsOperations ActivityLogs { get; }
-
-        /// <summary>
-        /// Gets the IEventCategoriesOperations.
-        /// </summary>
-        IEventCategoriesOperations EventCategories { get; }
-
-        /// <summary>
-        /// Gets the ITenantActivityLogsOperations.
-        /// </summary>
-        ITenantActivityLogsOperations TenantActivityLogs { get; }
-
-        /// <summary>
-        /// Gets the IMetricDefinitionsOperations.
-        /// </summary>
-        IMetricDefinitionsOperations MetricDefinitions { get; }
-
-        /// <summary>
-        /// Gets the IMetricsOperations.
-        /// </summary>
-        IMetricsOperations Metrics { get; }
-
-        /// <summary>
-        /// Gets the IMetricBaselineOperations.
-        /// </summary>
-        IMetricBaselineOperations MetricBaseline { get; }
-
-        /// <summary>
-        /// Gets the IBaselinesOperations.
-        /// </summary>
-        IBaselinesOperations Baselines { get; }
-
-        /// <summary>
-        /// Gets the IMetricAlertsOperations.
-        /// </summary>
-        IMetricAlertsOperations MetricAlerts { get; }
-
-        /// <summary>
-        /// Gets the IMetricAlertsStatusOperations.
-        /// </summary>
-        IMetricAlertsStatusOperations MetricAlertsStatus { get; }
-
-        /// <summary>
-        /// Gets the IScheduledQueryRulesOperations.
-        /// </summary>
-        IScheduledQueryRulesOperations ScheduledQueryRules { get; }
-
-        /// <summary>
-        /// Gets the IMetricNamespacesOperations.
-        /// </summary>
-        IMetricNamespacesOperations MetricNamespaces { get; }
-
-        /// <summary>
-        /// Gets the IVMInsightsOperations.
-        /// </summary>
-        IVMInsightsOperations VMInsights { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopesOperations.
-        /// </summary>
-        IPrivateLinkScopesOperations PrivateLinkScopes { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopeOperationStatusOperations.
-        /// </summary>
-        IPrivateLinkScopeOperationStatusOperations PrivateLinkScopeOperationStatus { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopedResourcesOperations.
-        /// </summary>
-        IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRules.
-        /// </summary>
-        IDataCollectionRules DataCollectionRules { get; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRuleAssociations.
-        /// </summary>
-        IDataCollectionRuleAssociations DataCollectionRuleAssociations { get; }
     }
 }
