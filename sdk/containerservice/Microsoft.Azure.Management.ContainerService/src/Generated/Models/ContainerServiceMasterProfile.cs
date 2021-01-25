@@ -93,9 +93,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// service cluster. Allowed values are 1, 3, and 5. The default value
         /// is 1.</param>
         /// <param name="osDiskSizeGB">OS Disk Size in GB to be used to specify
-        /// the disk size for every machine in this master/agent pool. If you
-        /// specify 0, it will apply the default osDisk size according to the
-        /// vmSize specified.</param>
+        /// the disk size for every machine in this master/agent pool. Defaults
+        /// to 128 if unspecified, zero, or negative.</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the VNet's
         /// subnet identifier.</param>
         /// <param name="firstConsecutiveStaticIP">FirstConsecutiveStaticIP
@@ -199,9 +198,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <summary>
         /// Gets or sets OS Disk Size in GB to be used to specify the disk size
-        /// for every machine in this master/agent pool. If you specify 0, it
-        /// will apply the default osDisk size according to the vmSize
-        /// specified.
+        /// for every machine in this master/agent pool. Defaults to 128 if
+        /// unspecified, zero, or negative.
         /// </summary>
         [JsonProperty(PropertyName = "osDiskSizeGB")]
         public int? OsDiskSizeGB { get; set; }
