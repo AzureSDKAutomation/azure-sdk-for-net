@@ -14,23 +14,23 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// The parameters required to create a new subscription.
+    /// The parameters required to redeem a new subscription.
     /// </summary>
-    public partial class PutAliasRequest
+    public partial class RedeemSubscriptionRequest
     {
         /// <summary>
-        /// Initializes a new instance of the PutAliasRequest class.
+        /// Initializes a new instance of the RedeemSubscriptionRequest class.
         /// </summary>
-        public PutAliasRequest()
+        public RedeemSubscriptionRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PutAliasRequest class.
+        /// Initializes a new instance of the RedeemSubscriptionRequest class.
         /// </summary>
         /// <param name="properties">Put alias request properties.</param>
-        public PutAliasRequest(PutAliasRequestProperties properties = default(PutAliasRequestProperties))
+        public RedeemSubscriptionRequest(RedeemSubscriptionRequestProperties properties = default(RedeemSubscriptionRequestProperties))
         {
             Properties = properties;
             CustomInit();
@@ -45,20 +45,7 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// Gets or sets put alias request properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public PutAliasRequestProperties Properties { get; set; }
+        public RedeemSubscriptionRequestProperties Properties { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Properties != null)
-            {
-                Properties.Validate();
-            }
-        }
     }
 }

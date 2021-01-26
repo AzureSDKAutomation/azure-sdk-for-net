@@ -10,29 +10,31 @@
 
 namespace Microsoft.Azure.Management.Subscription.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// The parameters required to create a new subscription.
+    /// Active Directory Principal who’ll get owner access on the new
+    /// subscription.
     /// </summary>
-    public partial class PutAliasRequest
+    public partial class AdPrincipal
     {
         /// <summary>
-        /// Initializes a new instance of the PutAliasRequest class.
+        /// Initializes a new instance of the AdPrincipal class.
         /// </summary>
-        public PutAliasRequest()
+        public AdPrincipal()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PutAliasRequest class.
+        /// Initializes a new instance of the AdPrincipal class.
         /// </summary>
-        /// <param name="properties">Put alias request properties.</param>
-        public PutAliasRequest(PutAliasRequestProperties properties = default(PutAliasRequestProperties))
+        /// <param name="objectId">Object id of the Principal</param>
+        public AdPrincipal(string objectId)
         {
-            Properties = properties;
+            ObjectId = objectId;
             CustomInit();
         }
 
@@ -42,22 +44,22 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets put alias request properties.
+        /// Gets or sets object id of the Principal
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public PutAliasRequestProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "objectId")]
+        public string ObjectId { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Properties != null)
+            if (ObjectId == null)
             {
-                Properties.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "ObjectId");
             }
         }
     }

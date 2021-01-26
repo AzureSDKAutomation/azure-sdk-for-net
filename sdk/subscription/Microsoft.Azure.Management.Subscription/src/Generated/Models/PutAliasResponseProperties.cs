@@ -33,10 +33,15 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Accepted', 'Succeeded',
         /// 'Failed'</param>
-        public PutAliasResponseProperties(string subscriptionId = default(string), string provisioningState = default(string))
+        /// <param name="redeemUrl">Redeem url.</param>
+        /// <param name="redeemState">The redeem state of the resource.
+        /// Possible values include: 'Pending', 'Completed'</param>
+        public PutAliasResponseProperties(string subscriptionId = default(string), string provisioningState = default(string), string redeemUrl = default(string), string redeemState = default(string))
         {
             SubscriptionId = subscriptionId;
             ProvisioningState = provisioningState;
+            RedeemUrl = redeemUrl;
+            RedeemState = redeemState;
             CustomInit();
         }
 
@@ -57,6 +62,19 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets redeem url.
+        /// </summary>
+        [JsonProperty(PropertyName = "redeemUrl")]
+        public string RedeemUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the redeem state of the resource. Possible values
+        /// include: 'Pending', 'Completed'
+        /// </summary>
+        [JsonProperty(PropertyName = "redeemState")]
+        public string RedeemState { get; set; }
 
     }
 }
