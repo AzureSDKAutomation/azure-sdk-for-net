@@ -11,29 +11,29 @@
 namespace Microsoft.Azure.Management.Consumption.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Result of listing charge summary.
+    /// The Sku property
     /// </summary>
-    public partial class ChargesListResult
+    public partial class SkuProperty
     {
         /// <summary>
-        /// Initializes a new instance of the ChargesListResult class.
+        /// Initializes a new instance of the SkuProperty class.
         /// </summary>
-        public ChargesListResult()
+        public SkuProperty()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ChargesListResult class.
+        /// Initializes a new instance of the SkuProperty class.
         /// </summary>
-        /// <param name="value">The list of charge summary</param>
-        public ChargesListResult(IList<ChargeSummary> value = default(IList<ChargeSummary>))
+        /// <param name="name">The name of sku property.</param>
+        /// <param name="value">The value of sku property.</param>
+        public SkuProperty(string name = default(string), string value = default(string))
         {
+            Name = name;
             Value = value;
             CustomInit();
         }
@@ -44,10 +44,16 @@ namespace Microsoft.Azure.Management.Consumption.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the list of charge summary
+        /// Gets the name of sku property.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the value of sku property.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<ChargeSummary> Value { get; private set; }
+        public string Value { get; private set; }
 
     }
 }

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Consumption
 
         /// <summary>
         /// Version of the API to be used with the client request. The current version
-        /// is 2019-04-01-preview.
+        /// is 2019-11-01.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -82,64 +82,14 @@ namespace Microsoft.Azure.Management.Consumption
         public virtual IUsageDetailsOperations UsageDetails { get; private set; }
 
         /// <summary>
-        /// Gets the IMarketplacesOperations.
-        /// </summary>
-        public virtual IMarketplacesOperations Marketplaces { get; private set; }
-
-        /// <summary>
-        /// Gets the IBudgetsOperations.
-        /// </summary>
-        public virtual IBudgetsOperations Budgets { get; private set; }
-
-        /// <summary>
         /// Gets the ITagsOperations.
         /// </summary>
         public virtual ITagsOperations Tags { get; private set; }
 
         /// <summary>
-        /// Gets the IChargesOperations.
-        /// </summary>
-        public virtual IChargesOperations Charges { get; private set; }
-
-        /// <summary>
-        /// Gets the IBalancesOperations.
-        /// </summary>
-        public virtual IBalancesOperations Balances { get; private set; }
-
-        /// <summary>
-        /// Gets the IReservationsSummariesOperations.
-        /// </summary>
-        public virtual IReservationsSummariesOperations ReservationsSummaries { get; private set; }
-
-        /// <summary>
-        /// Gets the IReservationsDetailsOperations.
-        /// </summary>
-        public virtual IReservationsDetailsOperations ReservationsDetails { get; private set; }
-
-        /// <summary>
-        /// Gets the IReservationRecommendationsOperations.
-        /// </summary>
-        public virtual IReservationRecommendationsOperations ReservationRecommendations { get; private set; }
-
-        /// <summary>
-        /// Gets the IPriceSheetOperations.
-        /// </summary>
-        public virtual IPriceSheetOperations PriceSheet { get; private set; }
-
-        /// <summary>
-        /// Gets the IForecastsOperations.
-        /// </summary>
-        public virtual IForecastsOperations Forecasts { get; private set; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IAggregatedCostOperations.
-        /// </summary>
-        public virtual IAggregatedCostOperations AggregatedCost { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ConsumptionManagementClient class.
@@ -383,20 +333,10 @@ namespace Microsoft.Azure.Management.Consumption
         private void Initialize()
         {
             UsageDetails = new UsageDetailsOperations(this);
-            Marketplaces = new MarketplacesOperations(this);
-            Budgets = new BudgetsOperations(this);
             Tags = new TagsOperations(this);
-            Charges = new ChargesOperations(this);
-            Balances = new BalancesOperations(this);
-            ReservationsSummaries = new ReservationsSummariesOperations(this);
-            ReservationsDetails = new ReservationsDetailsOperations(this);
-            ReservationRecommendations = new ReservationRecommendationsOperations(this);
-            PriceSheet = new PriceSheetOperations(this);
-            Forecasts = new ForecastsOperations(this);
             Operations = new Operations(this);
-            AggregatedCost = new AggregatedCostOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-04-01-preview";
+            ApiVersion = "2019-11-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -426,6 +366,8 @@ namespace Microsoft.Azure.Management.Consumption
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<UsageDetail>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<UsageDetail>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

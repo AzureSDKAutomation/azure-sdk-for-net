@@ -12,17 +12,11 @@ namespace Microsoft.Azure.Management.Consumption.Models
 {
 
     /// <summary>
-    /// Defines values for Datagrain.
+    /// Defines values for Scope2.
     /// </summary>
-    public static class Datagrain
+    public static class Scope2
     {
-        /// <summary>
-        /// Daily grain of data
-        /// </summary>
-        public const string DailyGrain = "daily";
-        /// <summary>
-        /// Monthly grain of data
-        /// </summary>
-        public const string MonthlyGrain = "monthly";
+        public const string Single = "Single";
+        public const string Shared = "Shared";
     }
 }
