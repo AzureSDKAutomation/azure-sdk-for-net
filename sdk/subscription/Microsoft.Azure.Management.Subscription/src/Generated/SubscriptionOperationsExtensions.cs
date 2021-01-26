@@ -22,41 +22,45 @@ namespace Microsoft.Azure.Management.Subscription
     public static partial class SubscriptionOperationsExtensions
     {
             /// <summary>
-            /// The operation to cancel a subscription
+            /// Create Alias Subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Subscription Id.
+            /// <param name='aliasName'>
+            /// Alias Name
             /// </param>
-            public static CanceledSubscriptionId Cancel(this ISubscriptionOperations operations, string subscriptionId)
+            /// <param name='body'>
+            /// </param>
+            public static PutAliasResponse CreateAlias(this ISubscriptionOperations operations, string aliasName, PutAliasRequest body)
             {
-                return operations.CancelAsync(subscriptionId).GetAwaiter().GetResult();
+                return operations.CreateAliasAsync(aliasName, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// The operation to cancel a subscription
+            /// Create Alias Subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Subscription Id.
+            /// <param name='aliasName'>
+            /// Alias Name
+            /// </param>
+            /// <param name='body'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CanceledSubscriptionId> CancelAsync(this ISubscriptionOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PutAliasResponse> CreateAliasAsync(this ISubscriptionOperations operations, string aliasName, PutAliasRequest body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CancelWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateAliasWithHttpMessagesAsync(aliasName, body, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// The operation to rename a subscription
+            /// Redeem subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,15 +69,14 @@ namespace Microsoft.Azure.Management.Subscription
             /// Subscription Id.
             /// </param>
             /// <param name='body'>
-            /// Subscription Name
             /// </param>
-            public static RenamedSubscriptionId Rename(this ISubscriptionOperations operations, string subscriptionId, SubscriptionName body)
+            public static PutAliasResponse Redeem(this ISubscriptionOperations operations, string subscriptionId, RedeemSubscriptionRequest body)
             {
-                return operations.RenameAsync(subscriptionId, body).GetAwaiter().GetResult();
+                return operations.RedeemAsync(subscriptionId, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// The operation to rename a subscription
+            /// Redeem subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -82,48 +85,89 @@ namespace Microsoft.Azure.Management.Subscription
             /// Subscription Id.
             /// </param>
             /// <param name='body'>
-            /// Subscription Name
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RenamedSubscriptionId> RenameAsync(this ISubscriptionOperations operations, string subscriptionId, SubscriptionName body, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PutAliasResponse> RedeemAsync(this ISubscriptionOperations operations, string subscriptionId, RedeemSubscriptionRequest body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.RenameWithHttpMessagesAsync(subscriptionId, body, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.RedeemWithHttpMessagesAsync(subscriptionId, body, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// The operation to enable a subscription
+            /// Create Alias Subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Subscription Id.
+            /// <param name='aliasName'>
+            /// Alias Name
             /// </param>
-            public static EnabledSubscriptionId Enable(this ISubscriptionOperations operations, string subscriptionId)
+            /// <param name='body'>
+            /// </param>
+            public static PutAliasResponse BeginCreateAlias(this ISubscriptionOperations operations, string aliasName, PutAliasRequest body)
             {
-                return operations.EnableAsync(subscriptionId).GetAwaiter().GetResult();
+                return operations.BeginCreateAliasAsync(aliasName, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// The operation to enable a subscription
+            /// Create Alias Subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Subscription Id.
+            /// <param name='aliasName'>
+            /// Alias Name
+            /// </param>
+            /// <param name='body'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EnabledSubscriptionId> EnableAsync(this ISubscriptionOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PutAliasResponse> BeginCreateAliasAsync(this ISubscriptionOperations operations, string aliasName, PutAliasRequest body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.EnableWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateAliasWithHttpMessagesAsync(aliasName, body, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Redeem subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            public static PutAliasResponse BeginRedeem(this ISubscriptionOperations operations, string subscriptionId, RedeemSubscriptionRequest body)
+            {
+                return operations.BeginRedeemAsync(subscriptionId, body).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Redeem subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PutAliasResponse> BeginRedeemAsync(this ISubscriptionOperations operations, string subscriptionId, RedeemSubscriptionRequest body, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRedeemWithHttpMessagesAsync(subscriptionId, body, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -75,14 +75,14 @@ namespace Microsoft.Azure.Management.Subscription
         ISubscriptionOperations Subscription { get; }
 
         /// <summary>
+        /// Gets the IBillingAccountOperations.
+        /// </summary>
+        IBillingAccountOperations BillingAccount { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IAliasOperations.
-        /// </summary>
-        IAliasOperations Alias { get; }
 
     }
 }
