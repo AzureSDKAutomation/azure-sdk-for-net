@@ -18,25 +18,25 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents an instance of a Dedicated Capacity resource.
+    /// Represents an instance of an auto scale v-core resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DedicatedCapacity : Resource
+    public partial class AutoScaleVCore : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the DedicatedCapacity class.
+        /// Initializes a new instance of the AutoScaleVCore class.
         /// </summary>
-        public DedicatedCapacity()
+        public AutoScaleVCore()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DedicatedCapacity class.
+        /// Initializes a new instance of the AutoScaleVCore class.
         /// </summary>
         /// <param name="location">Location of the PowerBI Dedicated
         /// resource.</param>
-        /// <param name="sku">The SKU of the PowerBI Dedicated capacity
+        /// <param name="sku">The SKU of the auto scale v-core
         /// resource.</param>
         /// <param name="id">An identifier that represents the PowerBI
         /// Dedicated resource.</param>
@@ -48,25 +48,20 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// provisioning properties.</param>
         /// <param name="systemData">Metadata pertaining to creation and last
         /// modification of the resource.</param>
-        /// <param name="administration">A collection of Dedicated capacity
-        /// administrators</param>
-        /// <param name="state">The current state of PowerBI Dedicated
-        /// resource. The state is to indicate more states outside of resource
-        /// provisioning. Possible values include: 'Deleting', 'Succeeded',
-        /// 'Failed', 'Paused', 'Suspended', 'Provisioning', 'Updating',
-        /// 'Suspending', 'Pausing', 'Resuming', 'Preparing', 'Scaling'</param>
-        /// <param name="provisioningState">The current deployment state of
-        /// PowerBI Dedicated resource. The provisioningState is to indicate
+        /// <param name="capacityLimit">The maximum capacity of an auto scale
+        /// v-core resource.</param>
+        /// <param name="capacityObjectId">The object ID of the capacity
+        /// resource associated with the auto scale v-core resource.</param>
+        /// <param name="provisioningState">The current deployment state of an
+        /// auto scale v-core resource. The provisioningState is to indicate
         /// states for resource provisioning. Possible values include:
-        /// 'Deleting', 'Succeeded', 'Failed', 'Paused', 'Suspended',
-        /// 'Provisioning', 'Updating', 'Suspending', 'Pausing', 'Resuming',
-        /// 'Preparing', 'Scaling'</param>
-        public DedicatedCapacity(string location, CapacitySku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), DedicatedCapacityAdministrators administration = default(DedicatedCapacityAdministrators), string state = default(string), string provisioningState = default(string))
+        /// 'Succeeded'</param>
+        public AutoScaleVCore(string location, AutoScaleVCoreSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), int? capacityLimit = default(int?), string capacityObjectId = default(string), string provisioningState = default(string))
             : base(location, id, name, type, tags, systemData)
         {
             Sku = sku;
-            Administration = administration;
-            State = state;
+            CapacityLimit = capacityLimit;
+            CapacityObjectId = capacityObjectId;
             ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -77,33 +72,28 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the SKU of the PowerBI Dedicated capacity resource.
+        /// Gets or sets the SKU of the auto scale v-core resource.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public CapacitySku Sku { get; set; }
+        public AutoScaleVCoreSku Sku { get; set; }
 
         /// <summary>
-        /// Gets or sets a collection of Dedicated capacity administrators
+        /// Gets or sets the maximum capacity of an auto scale v-core resource.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.administration")]
-        public DedicatedCapacityAdministrators Administration { get; set; }
+        [JsonProperty(PropertyName = "properties.capacityLimit")]
+        public int? CapacityLimit { get; set; }
 
         /// <summary>
-        /// Gets the current state of PowerBI Dedicated resource. The state is
-        /// to indicate more states outside of resource provisioning. Possible
-        /// values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
-        /// 'Suspended', 'Provisioning', 'Updating', 'Suspending', 'Pausing',
-        /// 'Resuming', 'Preparing', 'Scaling'
+        /// Gets or sets the object ID of the capacity resource associated with
+        /// the auto scale v-core resource.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
+        [JsonProperty(PropertyName = "properties.capacityObjectId")]
+        public string CapacityObjectId { get; set; }
 
         /// <summary>
-        /// Gets the current deployment state of PowerBI Dedicated resource.
+        /// Gets the current deployment state of an auto scale v-core resource.
         /// The provisioningState is to indicate states for resource
-        /// provisioning. Possible values include: 'Deleting', 'Succeeded',
-        /// 'Failed', 'Paused', 'Suspended', 'Provisioning', 'Updating',
-        /// 'Suspending', 'Pausing', 'Resuming', 'Preparing', 'Scaling'
+        /// provisioning. Possible values include: 'Succeeded'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
