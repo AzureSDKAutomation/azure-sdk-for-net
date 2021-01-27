@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
 
     /// <summary>
-    /// Defines values for LongTermRetentionDatabaseState.
+    /// Defines values for DatabaseState.
     /// </summary>
-    public static class LongTermRetentionDatabaseState
+    public static class DatabaseState
     {
         public const string All = "All";
         public const string Live = "Live";
