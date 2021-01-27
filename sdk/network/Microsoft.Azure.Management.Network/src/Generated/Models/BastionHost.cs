@@ -43,16 +43,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource.</param>
         /// <param name="dnsName">FQDN for the endpoint on which bastion host
         /// is accessible.</param>
+        /// <param name="sku">The sku of this Bastion Host. Possible values
+        /// include: 'Basic', 'Standard'</param>
         /// <param name="provisioningState">The provisioning state of the
         /// bastion host resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<BastionHostIPConfiguration> ipConfigurations = default(IList<BastionHostIPConfiguration>), string dnsName = default(string), string provisioningState = default(string), string etag = default(string))
+        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<BastionHostIPConfiguration> ipConfigurations = default(IList<BastionHostIPConfiguration>), string dnsName = default(string), string sku = default(string), string provisioningState = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             IpConfigurations = ipConfigurations;
             DnsName = dnsName;
+            Sku = sku;
             ProvisioningState = provisioningState;
             Etag = etag;
             CustomInit();
@@ -75,6 +78,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsName")]
         public string DnsName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sku of this Bastion Host. Possible values include:
+        /// 'Basic', 'Standard'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sku")]
+        public string Sku { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the bastion host resource. Possible
