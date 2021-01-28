@@ -47,13 +47,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="supportedMinCapacities">List of supported min
         /// capacities</param>
         /// <param name="computeModel">The compute model</param>
-        /// <param name="supportedMaintenanceConfigurations">List of supported
-        /// maintenance configurations</param>
         /// <param name="status">The status of the capability. Possible values
         /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
         /// <param name="reason">The reason for the capability not being
         /// available.</param>
-        public ServiceObjectiveCapability(System.Guid? id = default(System.Guid?), string name = default(string), IList<MaxSizeRangeCapability> supportedMaxSizes = default(IList<MaxSizeRangeCapability>), PerformanceLevelCapability performanceLevel = default(PerformanceLevelCapability), Sku sku = default(Sku), IList<LicenseTypeCapability> supportedLicenseTypes = default(IList<LicenseTypeCapability>), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), bool? zoneRedundant = default(bool?), AutoPauseDelayTimeRange supportedAutoPauseDelay = default(AutoPauseDelayTimeRange), IList<MinCapacityCapability> supportedMinCapacities = default(IList<MinCapacityCapability>), string computeModel = default(string), IList<MaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(IList<MaintenanceConfigurationCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ServiceObjectiveCapability(System.Guid? id = default(System.Guid?), string name = default(string), IList<MaxSizeRangeCapability> supportedMaxSizes = default(IList<MaxSizeRangeCapability>), PerformanceLevelCapability performanceLevel = default(PerformanceLevelCapability), Sku sku = default(Sku), IList<LicenseTypeCapability> supportedLicenseTypes = default(IList<LicenseTypeCapability>), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), bool? zoneRedundant = default(bool?), AutoPauseDelayTimeRange supportedAutoPauseDelay = default(AutoPauseDelayTimeRange), IList<MinCapacityCapability> supportedMinCapacities = default(IList<MinCapacityCapability>), string computeModel = default(string), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
         {
             Id = id;
             Name = name;
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             SupportedAutoPauseDelay = supportedAutoPauseDelay;
             SupportedMinCapacities = supportedMinCapacities;
             ComputeModel = computeModel;
-            SupportedMaintenanceConfigurations = supportedMaintenanceConfigurations;
             Status = status;
             Reason = reason;
             CustomInit();
@@ -143,12 +140,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "computeModel")]
         public string ComputeModel { get; private set; }
-
-        /// <summary>
-        /// Gets list of supported maintenance configurations
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedMaintenanceConfigurations")]
-        public IList<MaintenanceConfigurationCapability> SupportedMaintenanceConfigurations { get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include:
