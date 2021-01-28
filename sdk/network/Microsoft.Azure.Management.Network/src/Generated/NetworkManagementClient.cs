@@ -539,6 +539,11 @@ namespace Microsoft.Azure.Management.Network
         public virtual IVpnGatewaysOperations VpnGateways { get; private set; }
 
         /// <summary>
+        /// Gets the IVpnLinkConnectionsOperations.
+        /// </summary>
+        public virtual IVpnLinkConnectionsOperations VpnLinkConnections { get; private set; }
+
+        /// <summary>
         /// Gets the IVpnConnectionsOperations.
         /// </summary>
         public virtual IVpnConnectionsOperations VpnConnections { get; private set; }
@@ -547,11 +552,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVpnSiteLinkConnectionsOperations.
         /// </summary>
         public virtual IVpnSiteLinkConnectionsOperations VpnSiteLinkConnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IVpnLinkConnectionsOperations.
-        /// </summary>
-        public virtual IVpnLinkConnectionsOperations VpnLinkConnections { get; private set; }
 
         /// <summary>
         /// Gets the INatRulesOperations.
@@ -941,9 +941,9 @@ namespace Microsoft.Azure.Management.Network
             VirtualHubs = new VirtualHubsOperations(this);
             HubVirtualNetworkConnections = new HubVirtualNetworkConnectionsOperations(this);
             VpnGateways = new VpnGatewaysOperations(this);
+            VpnLinkConnections = new VpnLinkConnectionsOperations(this);
             VpnConnections = new VpnConnectionsOperations(this);
             VpnSiteLinkConnections = new VpnSiteLinkConnectionsOperations(this);
-            VpnLinkConnections = new VpnLinkConnectionsOperations(this);
             NatRules = new NatRulesOperations(this);
             P2sVpnGateways = new P2sVpnGatewaysOperations(this);
             VpnServerConfigurationsAssociatedWithVirtualWan = new VpnServerConfigurationsAssociatedWithVirtualWanOperations(this);
