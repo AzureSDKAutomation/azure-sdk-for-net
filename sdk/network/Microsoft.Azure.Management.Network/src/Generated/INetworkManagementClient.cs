@@ -536,6 +536,11 @@ namespace Microsoft.Azure.Management.Network
         IVpnGatewaysOperations VpnGateways { get; }
 
         /// <summary>
+        /// Gets the IVpnLinkConnectionsOperations.
+        /// </summary>
+        IVpnLinkConnectionsOperations VpnLinkConnections { get; }
+
+        /// <summary>
         /// Gets the IVpnConnectionsOperations.
         /// </summary>
         IVpnConnectionsOperations VpnConnections { get; }
@@ -544,11 +549,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVpnSiteLinkConnectionsOperations.
         /// </summary>
         IVpnSiteLinkConnectionsOperations VpnSiteLinkConnections { get; }
-
-        /// <summary>
-        /// Gets the IVpnLinkConnectionsOperations.
-        /// </summary>
-        IVpnLinkConnectionsOperations VpnLinkConnections { get; }
 
         /// <summary>
         /// Gets the INatRulesOperations.
