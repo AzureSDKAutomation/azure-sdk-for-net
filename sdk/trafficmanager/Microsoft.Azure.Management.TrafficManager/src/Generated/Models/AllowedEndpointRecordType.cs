@@ -12,11 +12,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 {
 
     /// <summary>
-    /// Defines values for ProfileStatus.
+    /// Defines values for AllowedEndpointRecordType.
     /// </summary>
-    public static class ProfileStatus
+    public static class AllowedEndpointRecordType
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
+        public const string DomainName = "DomainName";
+        public const string IPv4Address = "IPv4Address";
+        public const string IPv6Address = "IPv6Address";
+        public const string Any = "Any";
     }
 }
