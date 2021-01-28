@@ -11,29 +11,26 @@
 namespace Microsoft.Azure.Management.Attestation.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Resource
+    /// The Private Endpoint Connection resource.
     /// </summary>
-    /// <remarks>
-    /// Common fields that are returned in the response for all Azure Resource
-    /// Manager resources
-    /// </remarks>
-    public partial class Resource : IResource
+    [Rest.Serialization.JsonTransformation]
+    public partial class PrivateEndpointConnection : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the Resource class.
+        /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
-        public Resource()
+        public PrivateEndpointConnection()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Resource class.
+        /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
         /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
@@ -41,11 +38,13 @@ namespace Microsoft.Azure.Management.Attestation.Models
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="provisioningState">Provisioning state of the private
+        /// endpoint connection. Possible values include: 'Succeeded',
+        /// 'Creating', 'Deleting', 'Failed'</param>
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string))
+            : base(id, name, type)
         {
-            Id = id;
-            Name = name;
-            Type = type;
+            ProvisioningState = provisioningState;
             CustomInit();
         }
 
@@ -55,25 +54,12 @@ namespace Microsoft.Azure.Management.Attestation.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Gets or sets provisioning state of the private endpoint connection.
+        /// Possible values include: 'Succeeded', 'Creating', 'Deleting',
+        /// 'Failed'
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets the name of the resource
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets the type of the resource. E.g.
-        /// "Microsoft.Compute/virtualMachines" or
-        /// "Microsoft.Storage/storageAccounts"
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
 
     }
 }
