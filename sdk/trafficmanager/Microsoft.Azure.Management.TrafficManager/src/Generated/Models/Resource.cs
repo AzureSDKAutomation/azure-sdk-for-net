@@ -35,12 +35,15 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Network/trafficmanagerProfiles.</param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string))
+        /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
+        public Resource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
         {
             Id = id;
             Name = name;
             Type = type;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -64,10 +67,17 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <summary>
         /// Gets or sets the type of the resource. Ex-
-        /// Microsoft.Network/trafficmanagerProfiles.
+        /// Microsoft.Network/trafficManagerProfiles.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of the
+        /// resource
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

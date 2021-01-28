@@ -36,11 +36,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Network/trafficmanagerProfiles.</param>
+        /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
         /// <param name="key">The key returned by the User Metrics
         /// operation.</param>
-        public UserMetricsModel(string id = default(string), string name = default(string), string type = default(string), string key = default(string))
-            : base(id, name, type)
+        public UserMetricsModel(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string key = default(string))
+            : base(id, name, type, systemData)
         {
             Key = key;
             CustomInit();

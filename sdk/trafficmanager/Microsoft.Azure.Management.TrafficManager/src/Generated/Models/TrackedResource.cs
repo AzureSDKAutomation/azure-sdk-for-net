@@ -35,12 +35,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Network/trafficmanagerProfiles.</param>
+        /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="location">The Azure Region where the resource
         /// lives</param>
-        public TrackedResource(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string))
-            : base(id, name, type)
+        public TrackedResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string))
+            : base(id, name, type, systemData)
         {
             Tags = tags;
             Location = location;

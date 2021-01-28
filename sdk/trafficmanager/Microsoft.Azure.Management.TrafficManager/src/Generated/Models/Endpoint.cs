@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Network/trafficmanagerProfiles.</param>
+        /// Microsoft.Network/trafficManagerProfiles.</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of the resource</param>
         /// <param name="targetResourceId">The Azure Resource URI of the of the
         /// endpoint. Not applicable to endpoints of type
         /// 'ExternalEndpoints'.</param>
@@ -67,6 +69,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// that must be available in the child profile in order for the parent
         /// profile to be considered available. Only applicable to endpoint of
         /// type 'NestedEndpoints'.</param>
+        /// <param name="minChildEndpointsIPv4">The minimum number of endpoints
+        /// that must be available in the child profile in order for the parent
+        /// profile to be considered available. Only applicable to endpoint of
+        /// type 'NestedEndpoints'.</param>
+        /// <param name="minChildEndpointsIPv6">The minimum number of endpoints
+        /// that must be available in the child profile in order for the parent
+        /// profile to be considered available. Only applicable to endpoint of
+        /// type 'NestedEndpoints'.</param>
         /// <param name="geoMapping">The list of countries/regions mapped to
         /// this endpoint when using the 'Geographic' traffic routing method.
         /// Please consult Traffic Manager Geographic documentation for a full
@@ -76,8 +86,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// traffic routing method. An empty list will match all ranges not
         /// covered by other endpoints.</param>
         /// <param name="customHeaders">List of custom headers.</param>
-        public Endpoint(string id = default(string), string name = default(string), string type = default(string), string targetResourceId = default(string), string target = default(string), EndpointStatus? endpointStatus = default(EndpointStatus?), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), EndpointMonitorStatus? endpointMonitorStatus = default(EndpointMonitorStatus?), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>), IList<EndpointPropertiesSubnetsItem> subnets = default(IList<EndpointPropertiesSubnetsItem>), IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(IList<EndpointPropertiesCustomHeadersItem>))
-            : base(id, name, type)
+        public Endpoint(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), long? minChildEndpointsIPv4 = default(long?), long? minChildEndpointsIPv6 = default(long?), IList<string> geoMapping = default(IList<string>), IList<EndpointPropertiesSubnetsItem> subnets = default(IList<EndpointPropertiesSubnetsItem>), IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(IList<EndpointPropertiesCustomHeadersItem>))
+            : base(id, name, type, systemData)
         {
             TargetResourceId = targetResourceId;
             Target = target;
@@ -87,6 +97,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
             EndpointLocation = endpointLocation;
             EndpointMonitorStatus = endpointMonitorStatus;
             MinChildEndpoints = minChildEndpoints;
+            MinChildEndpointsIPv4 = minChildEndpointsIPv4;
+            MinChildEndpointsIPv6 = minChildEndpointsIPv6;
             GeoMapping = geoMapping;
             Subnets = subnets;
             CustomHeaders = customHeaders;
@@ -120,7 +132,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.endpointStatus")]
-        public EndpointStatus? EndpointStatus { get; set; }
+        public string EndpointStatus { get; set; }
 
         /// <summary>
         /// Gets or sets the weight of this endpoint when using the 'Weighted'
@@ -152,7 +164,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// 'Inactive', 'Stopped'
         /// </summary>
         [JsonProperty(PropertyName = "properties.endpointMonitorStatus")]
-        public EndpointMonitorStatus? EndpointMonitorStatus { get; set; }
+        public string EndpointMonitorStatus { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum number of endpoints that must be available
@@ -162,6 +174,24 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.minChildEndpoints")]
         public long? MinChildEndpoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum number of endpoints that must be available
+        /// in the child profile in order for the parent profile to be
+        /// considered available. Only applicable to endpoint of type
+        /// 'NestedEndpoints'.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.minChildEndpointsIPv4")]
+        public long? MinChildEndpointsIPv4 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum number of endpoints that must be available
+        /// in the child profile in order for the parent profile to be
+        /// considered available. Only applicable to endpoint of type
+        /// 'NestedEndpoints'.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.minChildEndpointsIPv6")]
+        public long? MinChildEndpointsIPv6 { get; set; }
 
         /// <summary>
         /// Gets or sets the list of countries/regions mapped to this endpoint
