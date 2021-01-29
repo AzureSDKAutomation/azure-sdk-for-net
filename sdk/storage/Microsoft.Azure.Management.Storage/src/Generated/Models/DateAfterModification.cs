@@ -15,7 +15,9 @@ namespace Microsoft.Azure.Management.Storage.Models
     using System.Linq;
 
     /// <summary>
-    /// Object to define the number of days after last modification.
+    /// Object to define the number of days after object last modification Or
+    /// last access. Properties daysAfterModificationGreaterThan and
+    /// daysAfterLastAccessTimeGreaterThan are mutually exclusive.
     /// </summary>
     public partial class DateAfterModification
     {
@@ -70,27 +72,21 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (DaysAfterModificationGreaterThan != null)
+            if (DaysAfterModificationGreaterThan < 0)
             {
-                if (DaysAfterModificationGreaterThan < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterModificationGreaterThan", 0);
-                }
-                if (DaysAfterModificationGreaterThan % 1 != 0)
-                {
-                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterModificationGreaterThan", 1);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterModificationGreaterThan", 0);
             }
-            if (DaysAfterLastAccessTimeGreaterThan != null)
+            if (DaysAfterModificationGreaterThan % 1 != 0)
             {
-                if (DaysAfterLastAccessTimeGreaterThan < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastAccessTimeGreaterThan", 0);
-                }
-                if (DaysAfterLastAccessTimeGreaterThan % 1 != 0)
-                {
-                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastAccessTimeGreaterThan", 1);
-                }
+                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterModificationGreaterThan", 1);
+            }
+            if (DaysAfterLastAccessTimeGreaterThan < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastAccessTimeGreaterThan", 0);
+            }
+            if (DaysAfterLastAccessTimeGreaterThan % 1 != 0)
+            {
+                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastAccessTimeGreaterThan", 1);
             }
         }
     }
