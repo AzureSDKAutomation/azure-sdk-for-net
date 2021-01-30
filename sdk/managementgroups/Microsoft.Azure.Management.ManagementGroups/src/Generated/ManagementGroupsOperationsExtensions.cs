@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
     {
             /// <summary>
             /// List management groups for the authenticated user.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -32,9 +33,10 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// </param>
             /// <param name='skiptoken'>
             /// Page continuation token is only used if a previous operation returned a
-            /// partial result. If a previous response contains a nextLink element, the
-            /// value of the nextLink element will include a token parameter that specifies
-            /// a starting point to use for subsequent calls.
+            /// partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a token parameter that specifies a starting
+            /// point to use for subsequent calls.
             /// </param>
             public static IPage<ManagementGroupInfo> List(this IManagementGroupsOperations operations, string cacheControl = "no-cache", string skiptoken = default(string))
             {
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// List management groups for the authenticated user.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -52,9 +55,10 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// </param>
             /// <param name='skiptoken'>
             /// Page continuation token is only used if a previous operation returned a
-            /// partial result. If a previous response contains a nextLink element, the
-            /// value of the nextLink element will include a token parameter that specifies
-            /// a starting point to use for subsequent calls.
+            /// partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a token parameter that specifies a starting
+            /// point to use for subsequent calls.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -69,6 +73,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// Get the details of the management group.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -78,8 +83,9 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// </param>
             /// <param name='expand'>
             /// The $expand=children query string parameter allows clients to request
-            /// inclusion of children in the response payload. Possible values include:
-            /// 'children'
+            /// inclusion of children in the response payload.  $expand=path includes the
+            /// path from the root group to the current group. Possible values include:
+            /// 'children', 'path'
             /// </param>
             /// <param name='recurse'>
             /// The $recurse=true query string parameter allows clients to request
@@ -100,6 +106,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// Get the details of the management group.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -109,8 +116,9 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// </param>
             /// <param name='expand'>
             /// The $expand=children query string parameter allows clients to request
-            /// inclusion of children in the response payload. Possible values include:
-            /// 'children'
+            /// inclusion of children in the response payload.  $expand=path includes the
+            /// path from the root group to the current group. Possible values include:
+            /// 'children', 'path'
             /// </param>
             /// <param name='recurse'>
             /// The $recurse=true query string parameter allows clients to request
@@ -136,9 +144,11 @@ namespace Microsoft.Azure.Management.ManagementGroups
             }
 
             /// <summary>
-            /// Create or update a management group. If a management group is already
-            /// created and a subsequent create request is issued with different
-            /// properties, the management group properties will be updated.
+            /// Create or update a management group.
+            /// If a management group is already created and a subsequent create request is
+            /// issued with different properties, the management group properties will be
+            /// updated.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -158,9 +168,11 @@ namespace Microsoft.Azure.Management.ManagementGroups
             }
 
             /// <summary>
-            /// Create or update a management group. If a management group is already
-            /// created and a subsequent create request is issued with different
-            /// properties, the management group properties will be updated.
+            /// Create or update a management group.
+            /// If a management group is already created and a subsequent create request is
+            /// issued with different properties, the management group properties will be
+            /// updated.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -187,6 +199,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// Update a management group.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -207,6 +220,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// Update a management group.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -232,8 +246,9 @@ namespace Microsoft.Azure.Management.ManagementGroups
             }
 
             /// <summary>
-            /// Delete management group. If a management group contains child resources,
-            /// the request will fail.
+            /// Delete management group.
+            /// If a management group contains child resources, the request will fail.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -244,14 +259,15 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// <param name='cacheControl'>
             /// Indicates that the request shouldn't utilize any caches.
             /// </param>
-            public static OperationResults Delete(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache")
+            public static AzureAsyncOperationResults Delete(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache")
             {
                 return operations.DeleteAsync(groupId, cacheControl).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete management group. If a management group contains child resources,
-            /// the request will fail.
+            /// Delete management group.
+            /// If a management group contains child resources, the request will fail.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -265,7 +281,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationResults> DeleteAsync(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache", CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AzureAsyncOperationResults> DeleteAsync(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.DeleteWithHttpMessagesAsync(groupId, cacheControl, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -274,9 +290,69 @@ namespace Microsoft.Azure.Management.ManagementGroups
             }
 
             /// <summary>
-            /// Create or update a management group. If a management group is already
-            /// created and a subsequent create request is issued with different
-            /// properties, the management group properties will be updated.
+            /// List all entities that descend from a management group.
+            ///
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// Management Group ID.
+            /// </param>
+            /// <param name='skiptoken'>
+            /// Page continuation token is only used if a previous operation returned a
+            /// partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a token parameter that specifies a starting
+            /// point to use for subsequent calls.
+            /// </param>
+            /// <param name='top'>
+            /// Number of elements to return when retrieving results. Passing this in will
+            /// override $skipToken.
+            /// </param>
+            public static IPage<DescendantInfo> GetDescendants(this IManagementGroupsOperations operations, string groupId, string skiptoken = default(string), int? top = default(int?))
+            {
+                return operations.GetDescendantsAsync(groupId, skiptoken, top).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List all entities that descend from a management group.
+            ///
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupId'>
+            /// Management Group ID.
+            /// </param>
+            /// <param name='skiptoken'>
+            /// Page continuation token is only used if a previous operation returned a
+            /// partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a token parameter that specifies a starting
+            /// point to use for subsequent calls.
+            /// </param>
+            /// <param name='top'>
+            /// Number of elements to return when retrieving results. Passing this in will
+            /// override $skipToken.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DescendantInfo>> GetDescendantsAsync(this IManagementGroupsOperations operations, string groupId, string skiptoken = default(string), int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetDescendantsWithHttpMessagesAsync(groupId, skiptoken, top, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update a management group.
+            /// If a management group is already created and a subsequent create request is
+            /// issued with different properties, the management group properties will be
+            /// updated.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -296,9 +372,11 @@ namespace Microsoft.Azure.Management.ManagementGroups
             }
 
             /// <summary>
-            /// Create or update a management group. If a management group is already
-            /// created and a subsequent create request is issued with different
-            /// properties, the management group properties will be updated.
+            /// Create or update a management group.
+            /// If a management group is already created and a subsequent create request is
+            /// issued with different properties, the management group properties will be
+            /// updated.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -324,8 +402,9 @@ namespace Microsoft.Azure.Management.ManagementGroups
             }
 
             /// <summary>
-            /// Delete management group. If a management group contains child resources,
-            /// the request will fail.
+            /// Delete management group.
+            /// If a management group contains child resources, the request will fail.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -336,14 +415,15 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// <param name='cacheControl'>
             /// Indicates that the request shouldn't utilize any caches.
             /// </param>
-            public static OperationResults BeginDelete(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache")
+            public static AzureAsyncOperationResults BeginDelete(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache")
             {
                 return operations.BeginDeleteAsync(groupId, cacheControl).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete management group. If a management group contains child resources,
-            /// the request will fail.
+            /// Delete management group.
+            /// If a management group contains child resources, the request will fail.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -357,7 +437,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationResults> BeginDeleteAsync(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache", CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AzureAsyncOperationResults> BeginDeleteAsync(this IManagementGroupsOperations operations, string groupId, string cacheControl = "no-cache", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(groupId, cacheControl, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -367,6 +447,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// List management groups for the authenticated user.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -384,6 +465,7 @@ namespace Microsoft.Azure.Management.ManagementGroups
 
             /// <summary>
             /// List management groups for the authenticated user.
+            ///
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -400,6 +482,42 @@ namespace Microsoft.Azure.Management.ManagementGroups
             public static async Task<IPage<ManagementGroupInfo>> ListNextAsync(this IManagementGroupsOperations operations, string nextPageLink, string cacheControl = "no-cache", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, cacheControl, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List all entities that descend from a management group.
+            ///
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<DescendantInfo> GetDescendantsNext(this IManagementGroupsOperations operations, string nextPageLink)
+            {
+                return operations.GetDescendantsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List all entities that descend from a management group.
+            ///
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DescendantInfo>> GetDescendantsNextAsync(this IManagementGroupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetDescendantsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
