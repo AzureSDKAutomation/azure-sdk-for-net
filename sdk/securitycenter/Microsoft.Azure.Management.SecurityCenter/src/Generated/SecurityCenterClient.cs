@@ -342,6 +342,11 @@ namespace Microsoft.Azure.Management.Security
         public virtual IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; private set; }
 
         /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        public virtual IIotSitesOperations IotSites { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -635,6 +640,7 @@ namespace Microsoft.Azure.Management.Security
             DevicesForHub = new DevicesForHubOperations(this);
             Device = new DeviceOperations(this);
             OnPremiseIotSensors = new OnPremiseIotSensorsOperations(this);
+            IotSites = new IotSitesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -665,8 +671,8 @@ namespace Microsoft.Azure.Management.Security
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SettingResource>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SettingResource>("kind"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Setting>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Setting>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CustomAlertRule>("ruleType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CustomAlertRule>("ruleType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceDetails>("source"));
