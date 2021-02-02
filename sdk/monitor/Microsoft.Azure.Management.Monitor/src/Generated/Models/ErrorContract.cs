@@ -14,27 +14,25 @@ namespace Microsoft.Azure.Management.Monitor.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource management error additional info.
+    /// Describes the format of Error response.
     /// </summary>
-    public partial class ErrorAdditionalInfo
+    public partial class ErrorContract
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorAdditionalInfo class.
+        /// Initializes a new instance of the ErrorContract class.
         /// </summary>
-        public ErrorAdditionalInfo()
+        public ErrorContract()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorAdditionalInfo class.
+        /// Initializes a new instance of the ErrorContract class.
         /// </summary>
-        /// <param name="type">The additional info type.</param>
-        /// <param name="info">The additional info.</param>
-        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
+        /// <param name="error">The error details.</param>
+        public ErrorContract(ErrorResponse error = default(ErrorResponse))
         {
-            Type = type;
-            Info = info;
+            Error = error;
             CustomInit();
         }
 
@@ -44,16 +42,10 @@ namespace Microsoft.Azure.Management.Monitor.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the additional info type.
+        /// Gets or sets the error details.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets the additional info.
-        /// </summary>
-        [JsonProperty(PropertyName = "info")]
-        public object Info { get; private set; }
+        [JsonProperty(PropertyName = "error")]
+        public ErrorResponse Error { get; set; }
 
     }
 }
