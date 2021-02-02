@@ -19,15 +19,15 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// WorkspaceManagedSqlServerRecoverableSqlpoolsOperations operations.
+    /// SqlPoolMaintenanceWindowsOperations operations.
     /// </summary>
-    public partial interface IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations
+    public partial interface ISqlPoolMaintenanceWindowsOperations
     {
         /// <summary>
-        /// Get list of recoverable sql pools for the server.
+        /// Get a SQL pool's Maintenance Windows.
         /// </summary>
         /// <remarks>
-        /// Get list of recoverable sql pools for workspace managed sql server.
+        /// Get a SQL pool's Maintenance Windows.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -35,13 +35,19 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='workspaceName'>
         /// The name of the workspace
         /// </param>
+        /// <param name='sqlPoolName'>
+        /// SQL pool name
+        /// </param>
+        /// <param name='maintenanceWindowName'>
+        /// Maintenance window name.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -50,12 +56,12 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RecoverableSqlPool>>> ListWithHttpMessagesAsync(string resourceGroupName, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MaintenanceWindows>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string maintenanceWindowName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get recoverable sql pools for the server.
+        /// Creates or updates a Sql pool's maintenance windows settings.
         /// </summary>
         /// <remarks>
-        /// Get recoverable sql pools for workspace managed sql server.
+        /// Creates or updates a Sql pool's maintenance windows settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -63,8 +69,15 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='workspaceName'>
         /// The name of the workspace
         /// </param>
-        /// <param name='sqlComputeName'>
-        /// The name of the sql compute
+        /// <param name='sqlPoolName'>
+        /// SQL pool name
+        /// </param>
+        /// <param name='maintenanceWindowName'>
+        /// Maintenance window name.
+        /// </param>
+        /// <param name='parameters'>
+        /// The required parameters for creating or updating Maintenance
+        /// Windows settings
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,37 +88,9 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RecoverableSqlPool>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlComputeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get list of recoverable sql pools for the server.
-        /// </summary>
-        /// <remarks>
-        /// Get list of recoverable sql pools for workspace managed sql server.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<RecoverableSqlPool>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string maintenanceWindowName, MaintenanceWindows parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
