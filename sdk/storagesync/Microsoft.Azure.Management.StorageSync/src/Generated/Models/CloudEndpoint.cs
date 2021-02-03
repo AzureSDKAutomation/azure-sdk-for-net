@@ -51,7 +51,9 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="lastWorkflowId">CloudEndpoint lastWorkflowId</param>
         /// <param name="lastOperationName">Resource Last Operation
         /// Name</param>
-        public CloudEndpoint(string id = default(string), string name = default(string), string type = default(string), string storageAccountResourceId = default(string), string azureFileShareName = default(string), string storageAccountTenantId = default(string), string partnershipId = default(string), string friendlyName = default(string), string backupEnabled = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string))
+        /// <param name="changeEnumerationStatus">Cloud endpoint change
+        /// enumeration status</param>
+        public CloudEndpoint(string id = default(string), string name = default(string), string type = default(string), string storageAccountResourceId = default(string), string azureFileShareName = default(string), string storageAccountTenantId = default(string), string partnershipId = default(string), string friendlyName = default(string), string backupEnabled = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), CloudEndpointChangeEnumerationStatus changeEnumerationStatus = default(CloudEndpointChangeEnumerationStatus))
             : base(id, name, type)
         {
             StorageAccountResourceId = storageAccountResourceId;
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             ProvisioningState = provisioningState;
             LastWorkflowId = lastWorkflowId;
             LastOperationName = lastOperationName;
+            ChangeEnumerationStatus = changeEnumerationStatus;
             CustomInit();
         }
 
@@ -125,5 +128,24 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         [JsonProperty(PropertyName = "properties.lastOperationName")]
         public string LastOperationName { get; set; }
 
+        /// <summary>
+        /// Gets cloud endpoint change enumeration status
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.changeEnumerationStatus")]
+        public CloudEndpointChangeEnumerationStatus ChangeEnumerationStatus { get; private set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ChangeEnumerationStatus != null)
+            {
+                ChangeEnumerationStatus.Validate();
+            }
+        }
     }
 }
