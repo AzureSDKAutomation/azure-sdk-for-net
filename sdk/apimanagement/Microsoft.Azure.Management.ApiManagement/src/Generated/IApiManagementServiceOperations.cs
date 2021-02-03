@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -284,6 +284,26 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<ApiManagementServiceNameAvailabilityResult>> CheckNameAvailabilityWithHttpMessagesAsync(ApiManagementServiceCheckNameAvailabilityParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get the custom domain ownership identifier for an API Management
+        /// service.
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ApiManagementServiceGetDomainOwnershipIdentifierResult>> GetDomainOwnershipIdentifierWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the Microsoft.ApiManagement resource running in the Virtual
         /// network to pick the updated network settings.
@@ -528,7 +548,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
