@@ -11,36 +11,41 @@
 namespace Microsoft.Azure.Management.Analysis.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Detail of gateway errors.
+    /// The error object
     /// </summary>
-    public partial class GatewayError
+    public partial class ErrorObject
     {
         /// <summary>
-        /// Initializes a new instance of the GatewayError class.
+        /// Initializes a new instance of the ErrorObject class.
         /// </summary>
-        public GatewayError()
+        public ErrorObject()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GatewayError class.
+        /// Initializes a new instance of the ErrorObject class.
         /// </summary>
-        /// <param name="code">Error code of list gateway.</param>
-        /// <param name="message">Error message of list gateway.</param>
+        /// <param name="code">Error code</param>
+        /// <param name="message">Error message indicating why the operation
+        /// failed.</param>
         /// <param name="subCode">The error sub code</param>
         /// <param name="httpStatusCode">The http status code</param>
         /// <param name="timeStamp">the timestamp for the error.</param>
-        public GatewayError(string code = default(string), string message = default(string), int? subCode = default(int?), int? httpStatusCode = default(int?), string timeStamp = default(string))
+        /// <param name="details">The error details.</param>
+        public ErrorObject(string code = default(string), string message = default(string), int? subCode = default(int?), int? httpStatusCode = default(int?), string timeStamp = default(string), IList<ErrorDetail> details = default(IList<ErrorDetail>))
         {
             Code = code;
             Message = message;
             SubCode = subCode;
             HttpStatusCode = httpStatusCode;
             TimeStamp = timeStamp;
+            Details = details;
             CustomInit();
         }
 
@@ -50,13 +55,13 @@ namespace Microsoft.Azure.Management.Analysis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error code of list gateway.
+        /// Gets or sets error code
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets error message of list gateway.
+        /// Gets or sets error message indicating why the operation failed.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
@@ -78,6 +83,12 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// </summary>
         [JsonProperty(PropertyName = "timeStamp")]
         public string TimeStamp { get; private set; }
+
+        /// <summary>
+        /// Gets the error details.
+        /// </summary>
+        [JsonProperty(PropertyName = "details")]
+        public IList<ErrorDetail> Details { get; private set; }
 
     }
 }
