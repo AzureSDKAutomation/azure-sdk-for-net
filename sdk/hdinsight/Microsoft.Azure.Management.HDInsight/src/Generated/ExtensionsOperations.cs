@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Extension>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ClusterMonitoringResponse>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Management.HDInsight
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Extension>();
+            var _result = new AzureOperationResponse<ClusterMonitoringResponse>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Management.HDInsight
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Extension>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ClusterMonitoringResponse>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

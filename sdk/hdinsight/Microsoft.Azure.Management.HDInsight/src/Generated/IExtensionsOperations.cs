@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Extension>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ClusterMonitoringResponse>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string extensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified extension for HDInsight cluster.
         /// </summary>
