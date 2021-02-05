@@ -14,25 +14,25 @@ namespace Microsoft.Azure.Management.Avs.Models
     using System.Linq;
 
     /// <summary>
-    /// The properties of a cluster that may be updated
+    /// The properties of an SRM addon that may be updated
     /// </summary>
-    public partial class ClusterUpdateProperties
+    public partial class AddonSrmProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ClusterUpdateProperties class.
+        /// Initializes a new instance of the AddonSrmProperties class.
         /// </summary>
-        public ClusterUpdateProperties()
+        public AddonSrmProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ClusterUpdateProperties class.
+        /// Initializes a new instance of the AddonSrmProperties class.
         /// </summary>
-        /// <param name="clusterSize">The cluster size</param>
-        public ClusterUpdateProperties(int? clusterSize = default(int?))
+        /// <param name="licenseKey">The SRM license</param>
+        public AddonSrmProperties(string licenseKey = default(string))
         {
-            ClusterSize = clusterSize;
+            LicenseKey = licenseKey;
             CustomInit();
         }
 
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Management.Avs.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the cluster size
+        /// Gets or sets the SRM license
         /// </summary>
-        [JsonProperty(PropertyName = "clusterSize")]
-        public int? ClusterSize { get; set; }
+        [JsonProperty(PropertyName = "licenseKey")]
+        public string LicenseKey { get; set; }
 
     }
 }
