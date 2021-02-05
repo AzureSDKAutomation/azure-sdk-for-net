@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.Subscription.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -38,14 +39,17 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// fieldLed, partnerLed or LegacyEA</param>
         /// <param name="subscriptionId">This parameter can be used to create
         /// alias for existing subscription Id</param>
-        /// <param name="resellerId">Reseller ID, basically MPN Id</param>
-        public PutAliasRequestProperties(string displayName = default(string), string workload = default(string), string billingScope = default(string), string subscriptionId = default(string), string resellerId = default(string))
+        /// <param name="resellerId">Reseller Id</param>
+        /// <param name="additionalProperties">Put alias request additional
+        /// properties.</param>
+        public PutAliasRequestProperties(string displayName, string workload, string billingScope, string subscriptionId = default(string), string resellerId = default(string), PutAliasRequestAdditionalProperties additionalProperties = default(PutAliasRequestAdditionalProperties))
         {
             DisplayName = displayName;
             Workload = workload;
             BillingScope = billingScope;
             SubscriptionId = subscriptionId;
             ResellerId = resellerId;
+            AdditionalProperties = additionalProperties;
             CustomInit();
         }
 
@@ -83,10 +87,37 @@ namespace Microsoft.Azure.Management.Subscription.Models
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets reseller ID, basically MPN Id
+        /// Gets or sets reseller Id
         /// </summary>
         [JsonProperty(PropertyName = "resellerId")]
         public string ResellerId { get; set; }
 
+        /// <summary>
+        /// Gets or sets put alias request additional properties.
+        /// </summary>
+        [JsonProperty(PropertyName = "additionalProperties")]
+        public PutAliasRequestAdditionalProperties AdditionalProperties { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (DisplayName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "DisplayName");
+            }
+            if (Workload == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Workload");
+            }
+            if (BillingScope == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "BillingScope");
+            }
+        }
     }
 }

@@ -14,29 +14,34 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// Put subscription creation result properties.
+    /// Put subscription redeem result.
     /// </summary>
-    public partial class PutAliasResponseProperties
+    public partial class SubscriptionAliasRedeemResponse
     {
         /// <summary>
-        /// Initializes a new instance of the PutAliasResponseProperties class.
+        /// Initializes a new instance of the SubscriptionAliasRedeemResponse
+        /// class.
         /// </summary>
-        public PutAliasResponseProperties()
+        public SubscriptionAliasRedeemResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PutAliasResponseProperties class.
+        /// Initializes a new instance of the SubscriptionAliasRedeemResponse
+        /// class.
         /// </summary>
         /// <param name="subscriptionId">Newly created subscription Id.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Accepted', 'Succeeded',
         /// 'Failed'</param>
-        public PutAliasResponseProperties(string subscriptionId = default(string), string provisioningState = default(string))
+        /// <param name="redeemState">The redeem state of the resource.
+        /// Possible values include: 'Pending', 'Completed'</param>
+        public SubscriptionAliasRedeemResponse(string subscriptionId = default(string), string provisioningState = default(string), string redeemState = default(string))
         {
             SubscriptionId = subscriptionId;
             ProvisioningState = provisioningState;
+            RedeemState = redeemState;
             CustomInit();
         }
 
@@ -57,6 +62,13 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets the redeem state of the resource. Possible values include:
+        /// 'Pending', 'Completed'
+        /// </summary>
+        [JsonProperty(PropertyName = "redeemState")]
+        public string RedeemState { get; private set; }
 
     }
 }
