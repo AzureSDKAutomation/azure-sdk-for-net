@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Management.Avs
         IClustersOperations Clusters { get; }
 
         /// <summary>
+        /// Gets the IDatastoresOperations.
+        /// </summary>
+        IDatastoresOperations Datastores { get; }
+
+        /// <summary>
         /// Gets the IHcxEnterpriseSitesOperations.
         /// </summary>
         IHcxEnterpriseSitesOperations HcxEnterpriseSites { get; }
@@ -98,6 +103,21 @@ namespace Microsoft.Azure.Management.Avs
         /// Gets the IAuthorizationsOperations.
         /// </summary>
         IAuthorizationsOperations Authorizations { get; }
+
+        /// <summary>
+        /// Gets the IGlobalReachConnectionsOperations.
+        /// </summary>
+        IGlobalReachConnectionsOperations GlobalReachConnections { get; }
+
+        /// <summary>
+        /// Gets the IWorkloadNetworksOperations.
+        /// </summary>
+        IWorkloadNetworksOperations WorkloadNetworks { get; }
+
+        /// <summary>
+        /// Gets the IAddonsOperations.
+        /// </summary>
+        IAddonsOperations Addons { get; }
 
     }
 }
