@@ -42,11 +42,13 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// properties.</param>
         /// <param name="administration">A collection of Dedicated capacity
         /// administrators</param>
-        public DedicatedCapacityUpdateParameters(ResourceSku sku = default(ResourceSku), IDictionary<string, string> tags = default(IDictionary<string, string>), DedicatedCapacityAdministrators administration = default(DedicatedCapacityAdministrators))
+        /// <param name="mode">The capacity mode.</param>
+        public DedicatedCapacityUpdateParameters(ResourceSku sku = default(ResourceSku), IDictionary<string, string> tags = default(IDictionary<string, string>), DedicatedCapacityAdministrators administration = default(DedicatedCapacityAdministrators), string mode = default(string))
         {
             Sku = sku;
             Tags = tags;
             Administration = administration;
+            Mode = mode;
             CustomInit();
         }
 
@@ -72,6 +74,12 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.administration")]
         public DedicatedCapacityAdministrators Administration { get; set; }
+
+        /// <summary>
+        /// Gets the capacity mode.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.mode")]
+        public string Mode { get; private set; }
 
         /// <summary>
         /// Validate the object.

@@ -48,21 +48,23 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         /// provisioning properties.</param>
         /// <param name="administration">A collection of Dedicated capacity
         /// administrators</param>
+        /// <param name="mode">The capacity mode.</param>
         /// <param name="state">The current state of PowerBI Dedicated
         /// resource. The state is to indicate more states outside of resource
         /// provisioning. Possible values include: 'Deleting', 'Succeeded',
         /// 'Failed', 'Paused', 'Suspended', 'Provisioning', 'Updating',
         /// 'Suspending', 'Pausing', 'Resuming', 'Preparing', 'Scaling'</param>
         /// <param name="provisioningState">The current deployment state of
-        /// PowerBI Dedicatedresource. The provisioningState is to indicate
+        /// PowerBI Dedicated resource. The provisioningState is to indicate
         /// states for resource provisioning. Possible values include:
         /// 'Deleting', 'Succeeded', 'Failed', 'Paused', 'Suspended',
         /// 'Provisioning', 'Updating', 'Suspending', 'Pausing', 'Resuming',
         /// 'Preparing', 'Scaling'</param>
-        public DedicatedCapacity(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DedicatedCapacityAdministrators administration = default(DedicatedCapacityAdministrators), string state = default(string), string provisioningState = default(string))
+        public DedicatedCapacity(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DedicatedCapacityAdministrators administration = default(DedicatedCapacityAdministrators), string mode = default(string), string state = default(string), string provisioningState = default(string))
             : base(location, sku, id, name, type, tags)
         {
             Administration = administration;
+            Mode = mode;
             State = state;
             ProvisioningState = provisioningState;
             CustomInit();
@@ -80,6 +82,12 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         public DedicatedCapacityAdministrators Administration { get; set; }
 
         /// <summary>
+        /// Gets the capacity mode.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.mode")]
+        public string Mode { get; private set; }
+
+        /// <summary>
         /// Gets the current state of PowerBI Dedicated resource. The state is
         /// to indicate more states outside of resource provisioning. Possible
         /// values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
@@ -90,11 +98,11 @@ namespace Microsoft.Azure.Management.PowerBIDedicated.Models
         public string State { get; private set; }
 
         /// <summary>
-        /// Gets the current deployment state of PowerBI Dedicatedresource. The
-        /// provisioningState is to indicate states for resource provisioning.
-        /// Possible values include: 'Deleting', 'Succeeded', 'Failed',
-        /// 'Paused', 'Suspended', 'Provisioning', 'Updating', 'Suspending',
-        /// 'Pausing', 'Resuming', 'Preparing', 'Scaling'
+        /// Gets the current deployment state of PowerBI Dedicated resource.
+        /// The provisioningState is to indicate states for resource
+        /// provisioning. Possible values include: 'Deleting', 'Succeeded',
+        /// 'Failed', 'Paused', 'Suspended', 'Provisioning', 'Updating',
+        /// 'Suspending', 'Pausing', 'Resuming', 'Preparing', 'Scaling'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
