@@ -123,5 +123,45 @@ namespace Microsoft.Azure.Management.HDInsight
                 }
             }
 
+            /// <summary>
+            /// Get the async operation status.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The Azure location (region) for which to make the request.
+            /// </param>
+            /// <param name='operationId'>
+            /// The long running operation id.
+            /// </param>
+            public static AsyncOperationResult GetAzureAsyncOperationStatus(this ILocationsOperations operations, string location, string operationId)
+            {
+                return operations.GetAzureAsyncOperationStatusAsync(location, operationId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get the async operation status.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The Azure location (region) for which to make the request.
+            /// </param>
+            /// <param name='operationId'>
+            /// The long running operation id.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AsyncOperationResult> GetAzureAsyncOperationStatusAsync(this ILocationsOperations operations, string location, string operationId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAzureAsyncOperationStatusWithHttpMessagesAsync(location, operationId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
     }
 }

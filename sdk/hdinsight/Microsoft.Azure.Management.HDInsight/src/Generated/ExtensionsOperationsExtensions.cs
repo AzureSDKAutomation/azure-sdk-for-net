@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='extensionName'>
             /// The name of the cluster extension.
             /// </param>
-            public static Extension Get(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName)
+            public static ClusterMonitoringResponse Get(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName)
             {
                 return operations.GetAsync(resourceGroupName, clusterName, extensionName).GetAwaiter().GetResult();
             }
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extension> GetAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ClusterMonitoringResponse> GetAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, clusterName, extensionName, null, cancellationToken).ConfigureAwait(false))
                 {
