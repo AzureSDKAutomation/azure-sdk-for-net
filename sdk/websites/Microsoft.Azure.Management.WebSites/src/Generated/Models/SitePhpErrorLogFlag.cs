@@ -36,14 +36,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="localLogErrors">Local log_errors setting.</param>
         /// <param name="masterLogErrors">Master log_errors setting.</param>
         /// <param name="localLogErrorsMaxLength">Local log_errors_max_len
         /// setting.</param>
         /// <param name="masterLogErrorsMaxLength">Master log_errors_max_len
         /// setting.</param>
-        public SitePhpErrorLogFlag(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string localLogErrors = default(string), string masterLogErrors = default(string), string localLogErrorsMaxLength = default(string), string masterLogErrorsMaxLength = default(string))
-            : base(id, name, kind, type)
+        public SitePhpErrorLogFlag(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string localLogErrors = default(string), string masterLogErrors = default(string), string localLogErrorsMaxLength = default(string), string masterLogErrorsMaxLength = default(string))
+            : base(id, name, kind, type, systemData)
         {
             LocalLogErrors = localLogErrors;
             MasterLogErrors = masterLogErrors;

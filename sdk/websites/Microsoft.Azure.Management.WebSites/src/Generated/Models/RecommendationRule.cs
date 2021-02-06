@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="recommendationName">Unique name of the rule.</param>
         /// <param name="displayName">UI friendly name of the rule.</param>
         /// <param name="message">Localized name of the rule (Good for
@@ -66,8 +68,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Applicable to dynamic rule only.</param>
         /// <param name="forwardLink">Forward link to an external document
         /// associated with the rule. Applicable to dynamic rule only.</param>
-        public RecommendationRule(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string recommendationName = default(string), string displayName = default(string), string message = default(string), System.Guid? recommendationId = default(System.Guid?), string description = default(string), string actionName = default(string), NotificationLevel? level = default(NotificationLevel?), Channels? channels = default(Channels?), IList<string> categoryTags = default(IList<string>), bool? isDynamic = default(bool?), string extensionName = default(string), string bladeName = default(string), string forwardLink = default(string))
-            : base(id, name, kind, type)
+        public RecommendationRule(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string recommendationName = default(string), string displayName = default(string), string message = default(string), System.Guid? recommendationId = default(System.Guid?), string description = default(string), string actionName = default(string), NotificationLevel? level = default(NotificationLevel?), Channels? channels = default(Channels?), IList<string> categoryTags = default(IList<string>), bool? isDynamic = default(bool?), string extensionName = default(string), string bladeName = default(string), string forwardLink = default(string))
+            : base(id, name, kind, type, systemData)
         {
             RecommendationName = recommendationName;
             DisplayName = displayName;

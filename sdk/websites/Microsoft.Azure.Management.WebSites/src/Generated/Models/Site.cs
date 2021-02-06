@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="state">Current state of the app.</param>
         /// <param name="hostNames">Hostnames associated with the app.</param>
         /// <param name="repositorySiteName">Name of the repository
@@ -140,8 +142,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'GeoRedundant'</param>
         /// <param name="inProgressOperationId">Specifies an operation id if
         /// this site has a pending operation.</param>
-        public Site(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
-            : base(location, id, name, kind, type, tags)
+        /// <param name="storageAccountRequired">Checks if Customer provided
+        /// storage account is required</param>
+        public Site(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), bool? storageAccountRequired = default(bool?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+            : base(location, id, name, kind, type, tags, systemData)
         {
             State = state;
             HostNames = hostNames;
@@ -181,6 +185,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             HttpsOnly = httpsOnly;
             RedundancyMode = redundancyMode;
             InProgressOperationId = inProgressOperationId;
+            StorageAccountRequired = storageAccountRequired;
             Identity = identity;
             CustomInit();
         }
@@ -470,6 +475,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.inProgressOperationId")]
         public System.Guid? InProgressOperationId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets checks if Customer provided storage account is
+        /// required
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.storageAccountRequired")]
+        public bool? StorageAccountRequired { get; set; }
 
         /// <summary>
         /// </summary>

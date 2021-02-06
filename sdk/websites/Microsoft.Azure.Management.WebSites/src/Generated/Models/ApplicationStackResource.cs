@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="applicationStackResourceName">Application stack
         /// name.</param>
         /// <param name="display">Application stack display name.</param>
@@ -46,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// available.</param>
         /// <param name="frameworks">List of frameworks associated with
         /// application stack.</param>
-        public ApplicationStackResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string applicationStackResourceName = default(string), string display = default(string), string dependency = default(string), IList<StackMajorVersion> majorVersions = default(IList<StackMajorVersion>), IList<ApplicationStack> frameworks = default(IList<ApplicationStack>))
-            : base(id, name, kind, type)
+        public ApplicationStackResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string applicationStackResourceName = default(string), string display = default(string), string dependency = default(string), IList<StackMajorVersion> majorVersions = default(IList<StackMajorVersion>), IList<ApplicationStack> frameworks = default(IList<ApplicationStack>))
+            : base(id, name, kind, type, systemData)
         {
             ApplicationStackResourceName = applicationStackResourceName;
             Display = display;
