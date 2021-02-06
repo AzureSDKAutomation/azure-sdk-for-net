@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="provider">The identity provider for the static site
         /// user.</param>
         /// <param name="userId">The user id for the static site user.</param>
@@ -43,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// user.</param>
         /// <param name="roles">The roles for the static site user, in
         /// free-form string format</param>
-        public StaticSiteUserARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string provider = default(string), string userId = default(string), string displayName = default(string), string roles = default(string))
-            : base(id, name, kind, type)
+        public StaticSiteUserARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string provider = default(string), string userId = default(string), string displayName = default(string), string roles = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Provider = provider;
             UserId = userId;

@@ -33,8 +33,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public OpenIdConnectConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string authorizationEndpoint = default(string), string tokenEndpoint = default(string), string issuer = default(string), string certificationUri = default(string), string wellKnownOpenIdConfiguration = default(string))
-            : base(id, name, kind, type)
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
+        public OpenIdConnectConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string authorizationEndpoint = default(string), string tokenEndpoint = default(string), string issuer = default(string), string certificationUri = default(string), string wellKnownOpenIdConfiguration = default(string))
+            : base(id, name, kind, type, systemData)
         {
             AuthorizationEndpoint = authorizationEndpoint;
             TokenEndpoint = tokenEndpoint;

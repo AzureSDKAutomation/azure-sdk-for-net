@@ -38,12 +38,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="enabled">Whether private access is enabled or
         /// not.</param>
         /// <param name="virtualNetworks">The Virtual Networks (and subnets)
         /// allowed to access the site privately.</param>
-        public PrivateAccess(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), IList<PrivateAccessVirtualNetwork> virtualNetworks = default(IList<PrivateAccessVirtualNetwork>))
-            : base(id, name, kind, type)
+        public PrivateAccess(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), IList<PrivateAccessVirtualNetwork> virtualNetworks = default(IList<PrivateAccessVirtualNetwork>))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             VirtualNetworks = virtualNetworks;
