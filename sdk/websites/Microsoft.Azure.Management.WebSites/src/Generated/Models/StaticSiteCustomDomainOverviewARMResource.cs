@@ -38,12 +38,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="domainName">The domain name for the static site custom
         /// domain.</param>
         /// <param name="createdOn">The date and time on which the custom
         /// domain was created for the static site.</param>
-        public StaticSiteCustomDomainOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string domainName = default(string), System.DateTime? createdOn = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public StaticSiteCustomDomainOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string domainName = default(string), System.DateTime? createdOn = default(System.DateTime?))
+            : base(id, name, kind, type, systemData)
         {
             DomainName = domainName;
             CreatedOn = createdOn;

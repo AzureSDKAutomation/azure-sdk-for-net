@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="deletedSiteId">ARM resource ID of the deleted app.
         /// Example:
         /// /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}</param>
@@ -47,8 +49,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// deleted.</param>
         /// <param name="useDRSecondary">If true, the snapshot is retrieved
         /// from DRSecondary endpoint.</param>
-        public DeletedAppRestoreRequest(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string deletedSiteId = default(string), bool? recoverConfiguration = default(bool?), string snapshotTime = default(string), bool? useDRSecondary = default(bool?))
-            : base(id, name, kind, type)
+        public DeletedAppRestoreRequest(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string deletedSiteId = default(string), bool? recoverConfiguration = default(bool?), string snapshotTime = default(string), bool? useDRSecondary = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             DeletedSiteId = deletedSiteId;
             RecoverConfiguration = recoverConfiguration;
