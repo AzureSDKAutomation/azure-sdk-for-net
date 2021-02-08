@@ -364,5 +364,15 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         IKeysOperations Keys { get; }
 
+        /// <summary>
+        /// Gets the ILibraryOperations.
+        /// </summary>
+        ILibraryOperations Library { get; }
+
+        /// <summary>
+        /// Gets the ILibrariesOperations.
+        /// </summary>
+        ILibrariesOperations Libraries { get; }
+
     }
 }
