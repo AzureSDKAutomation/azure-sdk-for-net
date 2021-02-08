@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Management.Network
         public string ApiVersion { get; private set; }
 
         /// <summary>
+        /// Client API version.
+        /// </summary>
+        public string ApiVersion1 { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -132,6 +137,16 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IBastionHostsOperations.
         /// </summary>
         public virtual IBastionHostsOperations BastionHosts { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkInterfacesOperations.
+        /// </summary>
+        public virtual INetworkInterfacesOperations NetworkInterfaces { get; private set; }
+
+        /// <summary>
+        /// Gets the IPublicIPAddressesOperations.
+        /// </summary>
+        public virtual IPublicIPAddressesOperations PublicIPAddresses { get; private set; }
 
         /// <summary>
         /// Gets the ICustomIPPrefixesOperations.
@@ -279,11 +294,6 @@ namespace Microsoft.Azure.Management.Network
         public virtual INatGatewaysOperations NatGateways { get; private set; }
 
         /// <summary>
-        /// Gets the INetworkInterfacesOperations.
-        /// </summary>
-        public virtual INetworkInterfacesOperations NetworkInterfaces { get; private set; }
-
-        /// <summary>
         /// Gets the INetworkInterfaceIPConfigurationsOperations.
         /// </summary>
         public virtual INetworkInterfaceIPConfigurationsOperations NetworkInterfaceIPConfigurations { get; private set; }
@@ -382,11 +392,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IPrivateLinkServicesOperations.
         /// </summary>
         public virtual IPrivateLinkServicesOperations PrivateLinkServices { get; private set; }
-
-        /// <summary>
-        /// Gets the IPublicIPAddressesOperations.
-        /// </summary>
-        public virtual IPublicIPAddressesOperations PublicIPAddresses { get; private set; }
 
         /// <summary>
         /// Gets the IPublicIPPrefixesOperations.
@@ -860,6 +865,8 @@ namespace Microsoft.Azure.Management.Network
             AzureFirewallFqdnTags = new AzureFirewallFqdnTagsOperations(this);
             WebCategories = new WebCategoriesOperations(this);
             BastionHosts = new BastionHostsOperations(this);
+            NetworkInterfaces = new NetworkInterfacesOperations(this);
+            PublicIPAddresses = new PublicIPAddressesOperations(this);
             CustomIPPrefixes = new CustomIPPrefixesOperations(this);
             DdosCustomPolicies = new DdosCustomPoliciesOperations(this);
             DdosProtectionPlans = new DdosProtectionPlansOperations(this);
@@ -889,7 +896,6 @@ namespace Microsoft.Azure.Management.Network
             LoadBalancerNetworkInterfaces = new LoadBalancerNetworkInterfacesOperations(this);
             LoadBalancerProbes = new LoadBalancerProbesOperations(this);
             NatGateways = new NatGatewaysOperations(this);
-            NetworkInterfaces = new NetworkInterfacesOperations(this);
             NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
             NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
             NetworkInterfaceTapConfigurations = new NetworkInterfaceTapConfigurationsOperations(this);
@@ -910,7 +916,6 @@ namespace Microsoft.Azure.Management.Network
             AvailablePrivateEndpointTypes = new AvailablePrivateEndpointTypesOperations(this);
             PrivateDnsZoneGroups = new PrivateDnsZoneGroupsOperations(this);
             PrivateLinkServices = new PrivateLinkServicesOperations(this);
-            PublicIPAddresses = new PublicIPAddressesOperations(this);
             PublicIPPrefixes = new PublicIPPrefixesOperations(this);
             RouteFilters = new RouteFiltersOperations(this);
             RouteFilterRules = new RouteFilterRulesOperations(this);
@@ -956,6 +961,8 @@ namespace Microsoft.Azure.Management.Network
             HubRouteTables = new HubRouteTablesOperations(this);
             WebApplicationFirewallPolicies = new WebApplicationFirewallPoliciesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2021-03-01";
+            ApiVersion1 = "2017-03-30";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -1088,6 +1095,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bastionHostName");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -1096,7 +1107,6 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1106,7 +1116,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("bslRequest", bslRequest);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetBastionShareableLink", tracingParameters);
@@ -1118,9 +1127,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1318,6 +1327,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bastionHostName");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -1326,7 +1339,6 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "sessionIds");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1336,7 +1348,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("sessionIds", sessionIds);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "DisconnectActiveSessions", tracingParameters);
@@ -1348,9 +1359,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1525,11 +1536,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "domainNameLabel");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1539,7 +1553,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("domainNameLabel", domainNameLabel);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CheckDnsNameAvailability", tracingParameters);
             }
@@ -1553,9 +1566,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _queryParameters.Add(string.Format("domainNameLabel={0}", System.Uri.EscapeDataString(domainNameLabel)));
             }
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1727,7 +1740,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualWANName");
             }
-            string apiVersion = "2020-08-01";
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1737,7 +1753,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "SupportedSecurityProviders", tracingParameters);
             }
@@ -1748,9 +1763,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{virtualWANName}", System.Uri.EscapeDataString(virtualWANName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1949,6 +1964,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bastionHostName");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -1957,7 +1976,6 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1967,7 +1985,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("bslRequest", bslRequest);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginPutBastionShareableLink", tracingParameters);
@@ -1979,9 +1996,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2155,6 +2172,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bastionHostName");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -2163,7 +2184,6 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2173,7 +2193,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("bslRequest", bslRequest);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDeleteBastionShareableLink", tracingParameters);
@@ -2185,9 +2204,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2342,11 +2361,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bastionHostName");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2356,7 +2378,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginGetActiveSessions", tracingParameters);
             }
@@ -2367,9 +2388,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2551,7 +2572,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vpnClientParams");
             }
-            string apiVersion = "2020-08-01";
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2562,7 +2586,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
                 tracingParameters.Add("vpnClientParams", vpnClientParams);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginGeneratevirtualwanvpnserverconfigurationvpnprofile", tracingParameters);
             }
@@ -2573,9 +2596,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{virtualWANName}", System.Uri.EscapeDataString(virtualWANName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
