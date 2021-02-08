@@ -254,5 +254,45 @@ namespace Microsoft.Azure.Management.Monitor
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
+            /// <summary>
+            /// Retrieve an alert rule quota.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='ruleName'>
+            /// The name of the rule.
+            /// </param>
+            public static MetricAlertsQuota GetQuota(this IMetricAlertsOperations operations, string resourceGroupName, string ruleName)
+            {
+                return operations.GetQuotaAsync(resourceGroupName, ruleName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieve an alert rule quota.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='ruleName'>
+            /// The name of the rule.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MetricAlertsQuota> GetQuotaAsync(this IMetricAlertsOperations operations, string resourceGroupName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetQuotaWithHttpMessagesAsync(resourceGroupName, ruleName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
     }
 }

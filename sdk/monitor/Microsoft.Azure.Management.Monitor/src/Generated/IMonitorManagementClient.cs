@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The Azure subscription Id.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
 
@@ -169,39 +169,5 @@ namespace Microsoft.Azure.Management.Monitor
         /// </summary>
         IVMInsightsOperations VMInsights { get; }
 
-        /// <summary>
-        /// Gets the IPrivateLinkScopesOperations.
-        /// </summary>
-        IPrivateLinkScopesOperations PrivateLinkScopes { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopeOperationStatusOperations.
-        /// </summary>
-        IPrivateLinkScopeOperationStatusOperations PrivateLinkScopeOperationStatus { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkScopedResourcesOperations.
-        /// </summary>
-        IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRules.
-        /// </summary>
-        IDataCollectionRules DataCollectionRules { get; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRuleAssociations.
-        /// </summary>
-        IDataCollectionRuleAssociations DataCollectionRuleAssociations { get; }
     }
 }
