@@ -518,6 +518,11 @@ namespace Microsoft.Azure.Management.Sql
         IManagedDatabasesOperations ManagedDatabases { get; }
 
         /// <summary>
+        /// Gets the IHybridLinksOperations.
+        /// </summary>
+        IHybridLinksOperations HybridLinks { get; }
+
+        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }

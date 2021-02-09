@@ -523,6 +523,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
 
         /// <summary>
+        /// Gets the IHybridLinksOperations.
+        /// </summary>
+        public virtual IHybridLinksOperations HybridLinks { get; private set; }
+
+        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
@@ -883,6 +888,7 @@ namespace Microsoft.Azure.Management.Sql
             SyncMembers = new SyncMembersOperations(this);
             ImportExport = new ImportExportOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
+            HybridLinks = new HybridLinksOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             ServerAzureADOnlyAuthentications = new ServerAzureADOnlyAuthenticationsOperations(this);
             ManagedInstances = new ManagedInstancesOperations(this);
