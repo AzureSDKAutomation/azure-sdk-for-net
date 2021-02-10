@@ -38,8 +38,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public RelayServiceConnectionEntity(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string entityName = default(string), string entityConnectionString = default(string), string resourceType = default(string), string resourceConnectionString = default(string), string hostname = default(string), int? port = default(int?), string biztalkUri = default(string))
-            : base(id, name, kind, type)
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
+        public RelayServiceConnectionEntity(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string entityName = default(string), string entityConnectionString = default(string), string resourceType = default(string), string resourceConnectionString = default(string), string hostname = default(string), int? port = default(int?), string biztalkUri = default(string))
+            : base(id, name, kind, type, systemData)
         {
             EntityName = entityName;
             EntityConnectionString = entityConnectionString;

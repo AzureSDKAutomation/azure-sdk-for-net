@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="domain">The domain name for the static site custom
         /// domain.</param>
         /// <param name="provider">The identity provider for the static site
@@ -48,8 +50,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// free-form string format</param>
         /// <param name="numHoursToExpiration">The number of hours the sas
         /// token stays valid</param>
-        public StaticSiteUserInvitationRequestResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string domain = default(string), string provider = default(string), string userDetails = default(string), string roles = default(string), int? numHoursToExpiration = default(int?))
-            : base(id, name, kind, type)
+        public StaticSiteUserInvitationRequestResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string domain = default(string), string provider = default(string), string userDetails = default(string), string roles = default(string), int? numHoursToExpiration = default(int?))
+            : base(id, name, kind, type, systemData)
         {
             Domain = domain;
             Provider = provider;

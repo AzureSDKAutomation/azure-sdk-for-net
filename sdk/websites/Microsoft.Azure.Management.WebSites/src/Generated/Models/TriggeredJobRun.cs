@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="webJobId">Job ID.</param>
         /// <param name="webJobName">Job name.</param>
         /// <param name="status">Job status. Possible values include:
@@ -48,8 +50,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="url">Job URL.</param>
         /// <param name="jobName">Job name.</param>
         /// <param name="trigger">Job trigger.</param>
-        public TriggeredJobRun(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string webJobId = default(string), string webJobName = default(string), TriggeredWebJobStatus? status = default(TriggeredWebJobStatus?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string duration = default(string), string outputUrl = default(string), string errorUrl = default(string), string url = default(string), string jobName = default(string), string trigger = default(string))
-            : base(id, name, kind, type)
+        public TriggeredJobRun(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string webJobId = default(string), string webJobName = default(string), TriggeredWebJobStatus? status = default(TriggeredWebJobStatus?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string duration = default(string), string outputUrl = default(string), string errorUrl = default(string), string url = default(string), string jobName = default(string), string trigger = default(string))
+            : base(id, name, kind, type, systemData)
         {
             WebJobId = webJobId;
             WebJobName = webJobName;
