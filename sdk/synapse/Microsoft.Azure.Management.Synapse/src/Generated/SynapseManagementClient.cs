@@ -370,6 +370,16 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual IKeysOperations Keys { get; private set; }
 
         /// <summary>
+        /// Gets the ILibraryOperations.
+        /// </summary>
+        public virtual ILibraryOperations Library { get; private set; }
+
+        /// <summary>
+        /// Gets the ILibrariesOperations.
+        /// </summary>
+        public virtual ILibrariesOperations Libraries { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SynapseManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -669,6 +679,8 @@ namespace Microsoft.Azure.Management.Synapse
             WorkspaceManagedSqlServerUsages = new WorkspaceManagedSqlServerUsagesOperations(this);
             WorkspaceManagedSqlServerRecoverableSqlPools = new WorkspaceManagedSqlServerRecoverableSqlPoolsOperations(this);
             Keys = new KeysOperations(this);
+            Library = new LibraryOperations(this);
+            Libraries = new LibrariesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-12-01";
             AcceptLanguage = "en-US";
