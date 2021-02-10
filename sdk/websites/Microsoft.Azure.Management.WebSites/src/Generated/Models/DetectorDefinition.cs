@@ -36,13 +36,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="displayName">Display name of the detector</param>
         /// <param name="description">Description of the detector</param>
         /// <param name="rank">Detector Rank</param>
         /// <param name="isEnabled">Flag representing whether detector is
         /// enabled or not.</param>
-        public DetectorDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string displayName = default(string), string description = default(string), double? rank = default(double?), bool? isEnabled = default(bool?))
-            : base(id, name, kind, type)
+        public DetectorDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string displayName = default(string), string description = default(string), double? rank = default(double?), bool? isEnabled = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             DisplayName = displayName;
             Description = description;

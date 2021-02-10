@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="serviceBusNamespace">The name of the Service Bus
         /// namespace.</param>
         /// <param name="relayName">The name of the Service Bus relay.</param>
@@ -53,8 +55,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// normally, use the POST /listKeys API instead.</param>
         /// <param name="serviceBusSuffix">The suffix for the service bus
         /// endpoint. By default this is .servicebus.windows.net</param>
-        public HybridConnection(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string serviceBusNamespace = default(string), string relayName = default(string), string relayArmUri = default(string), string hostname = default(string), int? port = default(int?), string sendKeyName = default(string), string sendKeyValue = default(string), string serviceBusSuffix = default(string))
-            : base(id, name, kind, type)
+        public HybridConnection(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string serviceBusNamespace = default(string), string relayName = default(string), string relayArmUri = default(string), string hostname = default(string), int? port = default(int?), string sendKeyName = default(string), string sendKeyValue = default(string), string serviceBusSuffix = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ServiceBusNamespace = serviceBusNamespace;
             RelayName = relayName;
