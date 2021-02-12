@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Management.MixedReality
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
+        /// Gets the IObjectAnchorsAccountsOperations.
+        /// </summary>
+        public virtual IObjectAnchorsAccountsOperations ObjectAnchorsAccounts { get; private set; }
+
+        /// <summary>
         /// Gets the ISpatialAnchorsAccountsOperations.
         /// </summary>
         public virtual ISpatialAnchorsAccountsOperations SpatialAnchorsAccounts { get; private set; }
@@ -334,10 +339,11 @@ namespace Microsoft.Azure.Management.MixedReality
         private void Initialize()
         {
             Operations = new Operations(this);
+            ObjectAnchorsAccounts = new ObjectAnchorsAccountsOperations(this);
             SpatialAnchorsAccounts = new SpatialAnchorsAccountsOperations(this);
             RemoteRenderingAccounts = new RemoteRenderingAccountsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-01-01";
+            ApiVersion = "2021-03-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

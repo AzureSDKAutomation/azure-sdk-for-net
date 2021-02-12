@@ -80,6 +80,11 @@ namespace Microsoft.Azure.Management.MixedReality
         IOperations Operations { get; }
 
         /// <summary>
+        /// Gets the IObjectAnchorsAccountsOperations.
+        /// </summary>
+        IObjectAnchorsAccountsOperations ObjectAnchorsAccounts { get; }
+
+        /// <summary>
         /// Gets the ISpatialAnchorsAccountsOperations.
         /// </summary>
         ISpatialAnchorsAccountsOperations SpatialAnchorsAccounts { get; }
