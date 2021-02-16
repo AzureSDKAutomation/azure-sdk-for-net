@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// Initializes a new instance of the ExternalSecuritySolutionKind1
         /// class.
         /// </summary>
-        /// <param name="kind">The kind of the external solution. Possible
-        /// values include: 'CEF', 'ATA', 'AAD'</param>
-        public ExternalSecuritySolutionKind1(string kind = default(string))
+        /// <param name="solutionKind">The kind of the external solution.
+        /// Possible values include: 'CEF', 'ATA', 'AAD'</param>
+        public ExternalSecuritySolutionKind1(string solutionKind = default(string))
         {
-            Kind = kind;
+            SolutionKind = solutionKind;
             CustomInit();
         }
 
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// Gets or sets the kind of the external solution. Possible values
         /// include: 'CEF', 'ATA', 'AAD'
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        [JsonProperty(PropertyName = "solutionKind")]
+        public string SolutionKind { get; set; }
 
     }
 }
