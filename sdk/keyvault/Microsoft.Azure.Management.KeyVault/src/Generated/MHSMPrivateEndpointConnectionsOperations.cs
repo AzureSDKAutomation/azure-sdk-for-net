@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.KeyVault
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateEndpointConnectionsOperations operations.
+    /// MHSMPrivateEndpointConnectionsOperations operations.
     /// </summary>
-    internal partial class PrivateEndpointConnectionsOperations : IServiceOperations<KeyVaultManagementClient>, IPrivateEndpointConnectionsOperations
+    internal partial class MHSMPrivateEndpointConnectionsOperations : IServiceOperations<KeyVaultManagementClient>, IMHSMPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnectionsOperations class.
+        /// Initializes a new instance of the MHSMPrivateEndpointConnectionsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal PrivateEndpointConnectionsOperations(KeyVaultManagementClient client)
+        internal MHSMPrivateEndpointConnectionsOperations(KeyVaultManagementClient client)
         {
             if (client == null)
             {
@@ -51,17 +51,18 @@ namespace Microsoft.Azure.Management.KeyVault
         public KeyVaultManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the key
-        /// vault.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// Name of the resource group that contains the managed HSM pool.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// <param name='name'>
+        /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key vault.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ManagedHsmErrorException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MHSMPrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -94,16 +95,9 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (vaultName == null)
+            if (name == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
-            }
-            if (vaultName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(vaultName, "^[a-zA-Z0-9-]{3,24}$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "vaultName", "^[a-zA-Z0-9-]{3,24}$");
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "name");
             }
             if (privateEndpointConnectionName == null)
             {
@@ -121,17 +115,17 @@ namespace Microsoft.Azure.Management.KeyVault
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("vaultName", vaultName);
+                tracingParameters.Add("name", name);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{vaultName}", System.Uri.EscapeDataString(vaultName));
+            _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -198,14 +192,13 @@ namespace Microsoft.Azure.Management.KeyVault
             string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ManagedHsmErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ManagedHsmError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ManagedHsmError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -215,10 +208,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -231,7 +220,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateEndpointConnection>();
+            var _result = new AzureOperationResponse<MHSMPrivateEndpointConnection>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -244,7 +233,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateEndpointConnection>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MHSMPrivateEndpointConnection>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -264,17 +253,18 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the key
-        /// vault.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// Name of the resource group that contains the managed HSM pool.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// <param name='name'>
+        /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key vault.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='properties'>
         /// The intended state of private endpoint connection.
@@ -300,7 +290,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsPutHeaders>> PutWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MHSMPrivateEndpointConnection,MHSMPrivateEndpointConnectionsPutHeaders>> PutWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, MHSMPrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -310,16 +300,9 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (vaultName == null)
+            if (name == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
-            }
-            if (vaultName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(vaultName, "^[a-zA-Z0-9-]{3,24}$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "vaultName", "^[a-zA-Z0-9-]{3,24}$");
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "name");
             }
             if (privateEndpointConnectionName == null)
             {
@@ -341,7 +324,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("vaultName", vaultName);
+                tracingParameters.Add("name", name);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
                 tracingParameters.Add("properties", properties);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -349,10 +332,10 @@ namespace Microsoft.Azure.Management.KeyVault
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{vaultName}", System.Uri.EscapeDataString(vaultName));
+            _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -458,7 +441,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsPutHeaders>();
+            var _result = new AzureOperationResponse<MHSMPrivateEndpointConnection,MHSMPrivateEndpointConnectionsPutHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -471,7 +454,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateEndpointConnection>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MHSMPrivateEndpointConnection>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -485,7 +468,7 @@ namespace Microsoft.Azure.Management.KeyVault
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PrivateEndpointConnectionsPutHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<MHSMPrivateEndpointConnectionsPutHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -504,17 +487,18 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key
-        /// vault.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// Name of the resource group that contains the managed HSM pool.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// <param name='name'>
+        /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key vault.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -522,25 +506,26 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MHSMPrivateEndpointConnection,MHSMPrivateEndpointConnectionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<MHSMPrivateEndpointConnection,MHSMPrivateEndpointConnectionsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, privateEndpointConnectionName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key
-        /// vault.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// Name of the resource group that contains the managed HSM pool.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// <param name='name'>
+        /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key vault.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -563,7 +548,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MHSMPrivateEndpointConnection,MHSMPrivateEndpointConnectionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -573,16 +558,9 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (vaultName == null)
+            if (name == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
-            }
-            if (vaultName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(vaultName, "^[a-zA-Z0-9-]{3,24}$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "vaultName", "^[a-zA-Z0-9-]{3,24}$");
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "name");
             }
             if (privateEndpointConnectionName == null)
             {
@@ -600,17 +578,17 @@ namespace Microsoft.Azure.Management.KeyVault
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("vaultName", vaultName);
+                tracingParameters.Add("name", name);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{vaultName}", System.Uri.EscapeDataString(vaultName));
+            _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -710,7 +688,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>();
+            var _result = new AzureOperationResponse<MHSMPrivateEndpointConnection,MHSMPrivateEndpointConnectionsDeleteHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -723,7 +701,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateEndpointConnection>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<MHSMPrivateEndpointConnection>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -737,7 +715,7 @@ namespace Microsoft.Azure.Management.KeyVault
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PrivateEndpointConnectionsDeleteHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<MHSMPrivateEndpointConnectionsDeleteHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
