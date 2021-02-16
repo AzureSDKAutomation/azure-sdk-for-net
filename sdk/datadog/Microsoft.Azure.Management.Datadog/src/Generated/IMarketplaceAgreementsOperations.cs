@@ -19,20 +19,34 @@ namespace Microsoft.Azure.Management.Datadog
     using System.Threading.Tasks;
 
     /// <summary>
-    /// MonitoredResourcesOperations operations.
+    /// MarketplaceAgreementsOperations operations.
     /// </summary>
-    public partial interface IMonitoredResourcesOperations
+    public partial interface IMarketplaceAgreementsOperations
     {
         /// <summary>
-        /// List the resources currently being monitored by the Datadog monitor
-        /// resource.
+        /// List Datadog marketplace agreements in the subscription.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group to which the Datadog resource
-        /// belongs.
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
         /// </param>
-        /// <param name='monitorName'>
-        /// Monitor resource name
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ResourceProviderDefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DatadogAgreementResource>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create Datadog marketplace agreement in the subscription.
+        /// </summary>
+        /// <param name='properties'>
+        /// Represents the properties of the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,10 +63,9 @@ namespace Microsoft.Azure.Management.Datadog
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<MonitoredResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string monitorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DatadogAgreementResource>> CreateOrUpdateWithHttpMessagesAsync(DatadogAgreementProperties properties = default(DatadogAgreementProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List the resources currently being monitored by the Datadog monitor
-        /// resource.
+        /// List Datadog marketplace agreements in the subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -72,6 +85,6 @@ namespace Microsoft.Azure.Management.Datadog
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<MonitoredResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DatadogAgreementResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
