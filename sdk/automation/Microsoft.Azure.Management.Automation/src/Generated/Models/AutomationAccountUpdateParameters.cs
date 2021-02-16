@@ -37,14 +37,18 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// class.
         /// </summary>
         /// <param name="sku">Gets or sets account SKU.</param>
+        /// <param name="publicNetworkAccess">Indicates whether traffic on the
+        /// non-ARM endpoint (Webhook/Agent) is allowed from the public
+        /// internet</param>
         /// <param name="name">Gets or sets the name of the resource.</param>
         /// <param name="location">Gets or sets the location of the
         /// resource.</param>
         /// <param name="tags">Gets or sets the tags attached to the
         /// resource.</param>
-        public AutomationAccountUpdateParameters(Sku sku = default(Sku), string name = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public AutomationAccountUpdateParameters(Sku sku = default(Sku), bool? publicNetworkAccess = default(bool?), string name = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Sku = sku;
+            PublicNetworkAccess = publicNetworkAccess;
             Name = name;
             Location = location;
             Tags = tags;
@@ -61,6 +65,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.sku")]
         public Sku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether traffic on the non-ARM endpoint
+        /// (Webhook/Agent) is allowed from the public internet
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public bool? PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource.
