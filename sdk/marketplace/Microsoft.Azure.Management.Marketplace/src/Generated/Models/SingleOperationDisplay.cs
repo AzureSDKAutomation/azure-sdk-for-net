@@ -16,25 +16,25 @@ namespace Microsoft.Azure.Management.Marketplace.Models
     /// <summary>
     /// The object that represents the operation.
     /// </summary>
-    public partial class OperationDisplay
+    public partial class SingleOperationDisplay
     {
         /// <summary>
-        /// Initializes a new instance of the OperationDisplay class.
+        /// Initializes a new instance of the SingleOperationDisplay class.
         /// </summary>
-        public OperationDisplay()
+        public SingleOperationDisplay()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OperationDisplay class.
+        /// Initializes a new instance of the SingleOperationDisplay class.
         /// </summary>
         /// <param name="provider">Service provider:
         /// Microsoft.Marketplace</param>
         /// <param name="resource">Resource on which the operation is
         /// performed: Amendments</param>
         /// <param name="operation">Operation type: Get Amendments etc.</param>
-        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
+        public SingleOperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
         {
             Provider = provider;
             Resource = resource;
