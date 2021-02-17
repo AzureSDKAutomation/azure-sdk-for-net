@@ -36,10 +36,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="emailId">Email id.</param>
         /// <param name="timeStamp">Time stamp.</param>
-        public CertificateEmail(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string emailId = default(string), System.DateTime? timeStamp = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public CertificateEmail(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string emailId = default(string), System.DateTime? timeStamp = default(System.DateTime?))
+            : base(id, name, kind, type, systemData)
         {
             EmailId = emailId;
             TimeStamp = timeStamp;

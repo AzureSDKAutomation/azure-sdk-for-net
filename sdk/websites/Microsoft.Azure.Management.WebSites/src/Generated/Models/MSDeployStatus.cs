@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="deployer">Username of deployer</param>
         /// <param name="provisioningState">Provisioning state. Possible values
         /// include: 'accepted', 'running', 'succeeded', 'failed',
@@ -44,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="endTime">End time of deploy operation</param>
         /// <param name="complete">Whether the deployment operation has
         /// completed</param>
-        public MSDeployStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string deployer = default(string), MSDeployProvisioningState? provisioningState = default(MSDeployProvisioningState?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? complete = default(bool?))
-            : base(id, name, kind, type)
+        public MSDeployStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string deployer = default(string), MSDeployProvisioningState? provisioningState = default(MSDeployProvisioningState?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? complete = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             Deployer = deployer;
             ProvisioningState = provisioningState;
