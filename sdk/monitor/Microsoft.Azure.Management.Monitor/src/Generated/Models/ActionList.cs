@@ -11,31 +11,30 @@
 namespace Microsoft.Azure.Management.Monitor.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The error response.
+    /// A list of Activity Log Alert rule actions.
     /// </summary>
-    public partial class ErrorResponse
+    public partial class ActionList
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the ActionList class.
         /// </summary>
-        public ErrorResponse()
+        public ActionList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the ActionList class.
         /// </summary>
-        /// <param name="code">The error code.</param>
-        /// <param name="message">The error message indicating why the
-        /// operation failed.</param>
-        public ErrorResponse(string code = default(string), string message = default(string))
+        /// <param name="actionGroups">The list of the Action Groups.</param>
+        public ActionList(IList<ActionGroup> actionGroups = default(IList<ActionGroup>))
         {
-            Code = code;
-            Message = message;
+            ActionGroups = actionGroups;
             CustomInit();
         }
 
@@ -45,16 +44,10 @@ namespace Microsoft.Azure.Management.Monitor.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the error code.
+        /// Gets or sets the list of the Action Groups.
         /// </summary>
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; private set; }
-
-        /// <summary>
-        /// Gets the error message indicating why the operation failed.
-        /// </summary>
-        [JsonProperty(PropertyName = "message")]
-        public string Message { get; private set; }
+        [JsonProperty(PropertyName = "actionGroups")]
+        public IList<ActionGroup> ActionGroups { get; set; }
 
     }
 }
