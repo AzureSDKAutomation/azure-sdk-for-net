@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         Task<AzureOperationResponse<ApiManagementServiceNameAvailabilityResult>> CheckNameAvailabilityWithHttpMessagesAsync(ApiManagementServiceCheckNameAvailabilityParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the Microsoft.ApiManagement resource running in the Virtual
-        /// network to pick the updated network settings.
+        /// network to pick the updated DNS changes.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         Task<AzureOperationResponse<ApiManagementServiceResource>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the Microsoft.ApiManagement resource running in the Virtual
-        /// network to pick the updated network settings.
+        /// network to pick the updated DNS changes.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Management.ApiManagement
 
             /// <summary>
             /// Updates the Microsoft.ApiManagement resource running in the Virtual network
-            /// to pick the updated network settings.
+            /// to pick the updated DNS changes.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Management.ApiManagement
 
             /// <summary>
             /// Updates the Microsoft.ApiManagement resource running in the Virtual network
-            /// to pick the updated network settings.
+            /// to pick the updated DNS changes.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Management.ApiManagement
 
             /// <summary>
             /// Updates the Microsoft.ApiManagement resource running in the Virtual network
-            /// to pick the updated network settings.
+            /// to pick the updated DNS changes.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Management.ApiManagement
 
             /// <summary>
             /// Updates the Microsoft.ApiManagement resource running in the Virtual network
-            /// to pick the updated network settings.
+            /// to pick the updated DNS changes.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
