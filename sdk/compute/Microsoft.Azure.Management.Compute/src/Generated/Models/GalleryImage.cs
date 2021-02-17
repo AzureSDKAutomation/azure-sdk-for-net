@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// purposes. This property is updatable.</param>
         /// <param name="provisioningState">The current state of the gallery
         /// Image Definition.</param>
-        public GalleryImage(string location, OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), string hyperVGeneration = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string provisioningState = default(string))
+        /// <param name="features">A list of gallery image features.</param>
+        public GalleryImage(string location, OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), string hyperVGeneration = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string provisioningState = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             Disallowed = disallowed;
             PurchasePlan = purchasePlan;
             ProvisioningState = provisioningState;
+            Features = features;
             CustomInit();
         }
 
@@ -178,6 +180,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a list of gallery image features.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.features")]
+        public IList<GalleryImageFeature> Features { get; set; }
 
         /// <summary>
         /// Validate the object.
