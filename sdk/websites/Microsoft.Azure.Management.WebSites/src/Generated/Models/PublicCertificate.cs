@@ -36,13 +36,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="blob">Public Certificate byte array</param>
         /// <param name="publicCertificateLocation">Public Certificate
         /// Location. Possible values include: 'CurrentUserMy',
         /// 'LocalMachineMy', 'Unknown'</param>
         /// <param name="thumbprint">Certificate Thumbprint</param>
-        public PublicCertificate(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), byte[] blob = default(byte[]), PublicCertificateLocation? publicCertificateLocation = default(PublicCertificateLocation?), string thumbprint = default(string))
-            : base(id, name, kind, type)
+        public PublicCertificate(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), byte[] blob = default(byte[]), PublicCertificateLocation? publicCertificateLocation = default(PublicCertificateLocation?), string thumbprint = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Blob = blob;
             PublicCertificateLocation = publicCertificateLocation;
