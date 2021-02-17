@@ -16,21 +16,21 @@ namespace Microsoft.Azure.Management.MixedReality.Models
     /// <summary>
     /// Operation properties.
     /// </summary>
-    public partial class OperationProperties
+    public partial class Properties
     {
         /// <summary>
-        /// Initializes a new instance of the OperationProperties class.
+        /// Initializes a new instance of the Properties class.
         /// </summary>
-        public OperationProperties()
+        public Properties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OperationProperties class.
+        /// Initializes a new instance of the Properties class.
         /// </summary>
         /// <param name="serviceSpecification">Service specification.</param>
-        public OperationProperties(ServiceSpecification serviceSpecification = default(ServiceSpecification))
+        public Properties(ServiceSpecification serviceSpecification = default(ServiceSpecification))
         {
             ServiceSpecification = serviceSpecification;
             CustomInit();

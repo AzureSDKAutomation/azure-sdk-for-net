@@ -31,19 +31,15 @@ namespace Microsoft.Azure.Management.MixedReality.Models
         /// </summary>
         /// <param name="name">Operation name:
         /// {provider}/{resource}/{operation}</param>
+        /// <param name="isDataAction">Indicates whether the operation is a
+        /// data action</param>
         /// <param name="display">The object that represents the
         /// operation.</param>
-        /// <param name="isDataAction">Whether or not this is a data plane
-        /// operation</param>
-        /// <param name="origin">The origin</param>
-        /// <param name="properties">Properties of the operation</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), bool? isDataAction = default(bool?), string origin = default(string), OperationProperties properties = default(OperationProperties))
+        public Operation(string name = default(string), bool? isDataAction = default(bool?), OperationDisplay display = default(OperationDisplay))
         {
             Name = name;
-            Display = display;
             IsDataAction = isDataAction;
-            Origin = origin;
-            Properties = properties;
+            Display = display;
             CustomInit();
         }
 
@@ -59,28 +55,16 @@ namespace Microsoft.Azure.Management.MixedReality.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the object that represents the operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether or not this is a data plane operation
+        /// Gets or sets indicates whether the operation is a data action
         /// </summary>
         [JsonProperty(PropertyName = "isDataAction")]
         public bool? IsDataAction { get; set; }
 
         /// <summary>
-        /// Gets or sets the origin
+        /// Gets or sets the object that represents the operation.
         /// </summary>
-        [JsonProperty(PropertyName = "origin")]
-        public string Origin { get; set; }
-
-        /// <summary>
-        /// Gets or sets properties of the operation
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public OperationProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "display")]
+        public OperationDisplay Display { get; set; }
 
         /// <summary>
         /// Validate the object.
