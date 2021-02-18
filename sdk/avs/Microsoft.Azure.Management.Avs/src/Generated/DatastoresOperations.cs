@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Avs
     using System.Threading.Tasks;
 
     /// <summary>
-    /// HcxEnterpriseSitesOperations operations.
+    /// DatastoresOperations operations.
     /// </summary>
-    internal partial class HcxEnterpriseSitesOperations : IServiceOperations<AvsClient>, IHcxEnterpriseSitesOperations
+    internal partial class DatastoresOperations : IServiceOperations<AvsClient>, IDatastoresOperations
     {
         /// <summary>
-        /// Initializes a new instance of the HcxEnterpriseSitesOperations class.
+        /// Initializes a new instance of the DatastoresOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Avs
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal HcxEnterpriseSitesOperations(AvsClient client)
+        internal DatastoresOperations(AvsClient client)
         {
             if (client == null)
             {
@@ -51,13 +51,16 @@ namespace Microsoft.Azure.Management.Avs
         public AvsClient Client { get; private set; }
 
         /// <summary>
-        /// List HCX Enterprise Sites in a private cloud
+        /// List cloud datastores in a private cloud
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateCloudName'>
         /// Name of the private cloud
+        /// </param>
+        /// <param name='clusterName'>
+        /// Name of the cluster in the private cloud
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -80,7 +83,7 @@ namespace Microsoft.Azure.Management.Avs
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<HcxEnterpriseSite>>> ListWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<Datastore>>> ListWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string clusterName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -116,6 +119,10 @@ namespace Microsoft.Azure.Management.Avs
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateCloudName");
             }
+            if (clusterName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -136,15 +143,17 @@ namespace Microsoft.Azure.Management.Avs
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("privateCloudName", privateCloudName);
+                tracingParameters.Add("clusterName", clusterName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{privateCloudName}", System.Uri.EscapeDataString(privateCloudName));
+            _url = _url.Replace("{clusterName}", System.Uri.EscapeDataString(clusterName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -243,7 +252,7 @@ namespace Microsoft.Azure.Management.Avs
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<HcxEnterpriseSite>>();
+            var _result = new AzureOperationResponse<IPage<Datastore>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -256,7 +265,7 @@ namespace Microsoft.Azure.Management.Avs
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<HcxEnterpriseSite>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Datastore>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -276,7 +285,7 @@ namespace Microsoft.Azure.Management.Avs
         }
 
         /// <summary>
-        /// Get an HCX Enterprise Site by name in a private cloud
+        /// Get a datastore in a private cloud cluster
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -284,8 +293,11 @@ namespace Microsoft.Azure.Management.Avs
         /// <param name='privateCloudName'>
         /// Name of the private cloud
         /// </param>
-        /// <param name='hcxEnterpriseSiteName'>
-        /// Name of the HCX Enterprise Site in the private cloud
+        /// <param name='clusterName'>
+        /// Name of the cluster in the private cloud
+        /// </param>
+        /// <param name='datastoreName'>
+        /// Name of the datastore in the private cloud cluster
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -308,7 +320,7 @@ namespace Microsoft.Azure.Management.Avs
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<HcxEnterpriseSite>> GetWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Datastore>> GetWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -344,9 +356,13 @@ namespace Microsoft.Azure.Management.Avs
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateCloudName");
             }
-            if (hcxEnterpriseSiteName == null)
+            if (clusterName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "hcxEnterpriseSiteName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
+            }
+            if (datastoreName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "datastoreName");
             }
             if (Client.ApiVersion == null)
             {
@@ -368,17 +384,19 @@ namespace Microsoft.Azure.Management.Avs
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("privateCloudName", privateCloudName);
-                tracingParameters.Add("hcxEnterpriseSiteName", hcxEnterpriseSiteName);
+                tracingParameters.Add("clusterName", clusterName);
+                tracingParameters.Add("datastoreName", datastoreName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{privateCloudName}", System.Uri.EscapeDataString(privateCloudName));
-            _url = _url.Replace("{hcxEnterpriseSiteName}", System.Uri.EscapeDataString(hcxEnterpriseSiteName));
+            _url = _url.Replace("{clusterName}", System.Uri.EscapeDataString(clusterName));
+            _url = _url.Replace("{datastoreName}", System.Uri.EscapeDataString(datastoreName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -477,7 +495,7 @@ namespace Microsoft.Azure.Management.Avs
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<HcxEnterpriseSite>();
+            var _result = new AzureOperationResponse<Datastore>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -490,7 +508,7 @@ namespace Microsoft.Azure.Management.Avs
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<HcxEnterpriseSite>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Datastore>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -510,16 +528,81 @@ namespace Microsoft.Azure.Management.Avs
         }
 
         /// <summary>
-        /// Create or update an HCX Enterprise Site in a private cloud
+        /// Create a datastore in a private cloud cluster
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateCloudName'>
-        /// The name of the private cloud.
+        /// Name of the private cloud
         /// </param>
-        /// <param name='hcxEnterpriseSiteName'>
-        /// Name of the HCX Enterprise Site in the private cloud
+        /// <param name='clusterName'>
+        /// Name of the cluster in the private cloud
+        /// </param>
+        /// <param name='datastoreName'>
+        /// Name of the datastore in the private cloud cluster
+        /// </param>
+        /// <param name='datastore'>
+        /// A datastore in a private cloud cluster
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<Datastore>> CreateWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Datastore datastore, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<Datastore> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, privateCloudName, clusterName, datastoreName, datastore, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a datastore in a private cloud cluster
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateCloudName'>
+        /// Name of the private cloud
+        /// </param>
+        /// <param name='clusterName'>
+        /// Name of the cluster in the private cloud
+        /// </param>
+        /// <param name='datastoreName'>
+        /// Name of the datastore in the private cloud cluster
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateCloudName, clusterName, datastoreName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Create a datastore in a private cloud cluster
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateCloudName'>
+        /// Name of the private cloud
+        /// </param>
+        /// <param name='clusterName'>
+        /// Name of the cluster in the private cloud
+        /// </param>
+        /// <param name='datastoreName'>
+        /// Name of the datastore in the private cloud cluster
+        /// </param>
+        /// <param name='datastore'>
+        /// A datastore in a private cloud cluster
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -542,7 +625,7 @@ namespace Microsoft.Azure.Management.Avs
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<HcxEnterpriseSite>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Datastore>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Datastore datastore, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -578,9 +661,17 @@ namespace Microsoft.Azure.Management.Avs
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateCloudName");
             }
-            if (hcxEnterpriseSiteName == null)
+            if (clusterName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "hcxEnterpriseSiteName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
+            }
+            if (datastoreName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "datastoreName");
+            }
+            if (datastore == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "datastore");
             }
             if (Client.ApiVersion == null)
             {
@@ -593,7 +684,6 @@ namespace Microsoft.Azure.Management.Avs
                     throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
                 }
             }
-            HcxEnterpriseSite hcxEnterpriseSite = new HcxEnterpriseSite();
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -603,18 +693,20 @@ namespace Microsoft.Azure.Management.Avs
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("privateCloudName", privateCloudName);
-                tracingParameters.Add("hcxEnterpriseSiteName", hcxEnterpriseSiteName);
-                tracingParameters.Add("hcxEnterpriseSite", hcxEnterpriseSite);
+                tracingParameters.Add("clusterName", clusterName);
+                tracingParameters.Add("datastoreName", datastoreName);
+                tracingParameters.Add("datastore", datastore);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{privateCloudName}", System.Uri.EscapeDataString(privateCloudName));
-            _url = _url.Replace("{hcxEnterpriseSiteName}", System.Uri.EscapeDataString(hcxEnterpriseSiteName));
+            _url = _url.Replace("{clusterName}", System.Uri.EscapeDataString(clusterName));
+            _url = _url.Replace("{datastoreName}", System.Uri.EscapeDataString(datastoreName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -658,9 +750,9 @@ namespace Microsoft.Azure.Management.Avs
 
             // Serialize Request
             string _requestContent = null;
-            if(hcxEnterpriseSite != null)
+            if(datastore != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(hcxEnterpriseSite, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(datastore, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -719,7 +811,7 @@ namespace Microsoft.Azure.Management.Avs
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<HcxEnterpriseSite>();
+            var _result = new AzureOperationResponse<Datastore>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -732,7 +824,7 @@ namespace Microsoft.Azure.Management.Avs
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<HcxEnterpriseSite>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Datastore>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -750,7 +842,7 @@ namespace Microsoft.Azure.Management.Avs
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<HcxEnterpriseSite>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Datastore>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -770,7 +862,7 @@ namespace Microsoft.Azure.Management.Avs
         }
 
         /// <summary>
-        /// Delete an HCX Enterprise Site in a private cloud
+        /// Delete a datastore in a private cloud cluster
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -778,8 +870,11 @@ namespace Microsoft.Azure.Management.Avs
         /// <param name='privateCloudName'>
         /// Name of the private cloud
         /// </param>
-        /// <param name='hcxEnterpriseSiteName'>
-        /// Name of the HCX Enterprise Site in the private cloud
+        /// <param name='clusterName'>
+        /// Name of the cluster in the private cloud
+        /// </param>
+        /// <param name='datastoreName'>
+        /// Name of the datastore in the private cloud cluster
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -799,7 +894,7 @@ namespace Microsoft.Azure.Management.Avs
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -835,9 +930,13 @@ namespace Microsoft.Azure.Management.Avs
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateCloudName");
             }
-            if (hcxEnterpriseSiteName == null)
+            if (clusterName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "hcxEnterpriseSiteName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
+            }
+            if (datastoreName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "datastoreName");
             }
             if (Client.ApiVersion == null)
             {
@@ -859,17 +958,19 @@ namespace Microsoft.Azure.Management.Avs
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("privateCloudName", privateCloudName);
-                tracingParameters.Add("hcxEnterpriseSiteName", hcxEnterpriseSiteName);
+                tracingParameters.Add("clusterName", clusterName);
+                tracingParameters.Add("datastoreName", datastoreName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{privateCloudName}", System.Uri.EscapeDataString(privateCloudName));
-            _url = _url.Replace("{hcxEnterpriseSiteName}", System.Uri.EscapeDataString(hcxEnterpriseSiteName));
+            _url = _url.Replace("{clusterName}", System.Uri.EscapeDataString(clusterName));
+            _url = _url.Replace("{datastoreName}", System.Uri.EscapeDataString(datastoreName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -933,7 +1034,7 @@ namespace Microsoft.Azure.Management.Avs
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 204)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202 && (int)_statusCode != 204)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -983,7 +1084,7 @@ namespace Microsoft.Azure.Management.Avs
         }
 
         /// <summary>
-        /// List HCX Enterprise Sites in a private cloud
+        /// List cloud datastores in a private cloud
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1009,7 +1110,7 @@ namespace Microsoft.Azure.Management.Avs
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<HcxEnterpriseSite>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<Datastore>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -1123,7 +1224,7 @@ namespace Microsoft.Azure.Management.Avs
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<HcxEnterpriseSite>>();
+            var _result = new AzureOperationResponse<IPage<Datastore>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1136,7 +1237,7 @@ namespace Microsoft.Azure.Management.Avs
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<HcxEnterpriseSite>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Datastore>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
