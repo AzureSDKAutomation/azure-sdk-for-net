@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// Job details.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("JobDetails")]
     public partial class JobDetails
     {
         /// <summary>
@@ -54,10 +53,10 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// the chain of custody logs</param>
         /// <param name="keyEncryptionKey">Details about which key encryption
         /// type is being used.</param>
-        /// <param name="expectedDataSizeInTerabytes">The expected size of the
+        /// <param name="expectedDataSizeInTeraBytes">The expected size of the
         /// data, which needs to be transferred in this job, in
         /// terabytes.</param>
-        public JobDetails(ContactDetails contactDetails, IList<JobStages> jobStages = default(IList<JobStages>), ShippingAddress shippingAddress = default(ShippingAddress), PackageShippingDetails deliveryPackage = default(PackageShippingDetails), PackageShippingDetails returnPackage = default(PackageShippingDetails), IList<DataImportDetails> dataImportDetails = default(IList<DataImportDetails>), IList<DataExportDetails> dataExportDetails = default(IList<DataExportDetails>), Preferences preferences = default(Preferences), IList<CopyLogDetails> copyLogDetails = default(IList<CopyLogDetails>), string reverseShipmentLabelSasKey = default(string), string chainOfCustodySasKey = default(string), KeyEncryptionKey keyEncryptionKey = default(KeyEncryptionKey), int? expectedDataSizeInTerabytes = default(int?))
+        public JobDetails(ContactDetails contactDetails, IList<JobStages> jobStages = default(IList<JobStages>), ShippingAddress shippingAddress = default(ShippingAddress), PackageShippingDetails deliveryPackage = default(PackageShippingDetails), PackageShippingDetails returnPackage = default(PackageShippingDetails), IList<DataImportDetails> dataImportDetails = default(IList<DataImportDetails>), IList<DataExportDetails> dataExportDetails = default(IList<DataExportDetails>), Preferences preferences = default(Preferences), IList<CopyLogDetails> copyLogDetails = default(IList<CopyLogDetails>), string reverseShipmentLabelSasKey = default(string), string chainOfCustodySasKey = default(string), KeyEncryptionKey keyEncryptionKey = default(KeyEncryptionKey), int? expectedDataSizeInTeraBytes = default(int?))
         {
             JobStages = jobStages;
             ContactDetails = contactDetails;
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
             ReverseShipmentLabelSasKey = reverseShipmentLabelSasKey;
             ChainOfCustodySasKey = chainOfCustodySasKey;
             KeyEncryptionKey = keyEncryptionKey;
-            ExpectedDataSizeInTerabytes = expectedDataSizeInTerabytes;
+            ExpectedDataSizeInTeraBytes = expectedDataSizeInTeraBytes;
             CustomInit();
         }
 
@@ -156,8 +155,8 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// Gets or sets the expected size of the data, which needs to be
         /// transferred in this job, in terabytes.
         /// </summary>
-        [JsonProperty(PropertyName = "expectedDataSizeInTerabytes")]
-        public int? ExpectedDataSizeInTerabytes { get; set; }
+        [JsonProperty(PropertyName = "expectedDataSizeInTeraBytes")]
+        public int? ExpectedDataSizeInTeraBytes { get; set; }
 
         /// <summary>
         /// Validate the object.
