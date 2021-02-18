@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Initializes a new instance of the WorkspacePatch class.
         /// </summary>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="etag">Resource Etag.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// workspace. Possible values include: 'Creating', 'Succeeded',
@@ -48,27 +48,32 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <param name="customerId">This is a read-only property. Represents
         /// the ID associated with the workspace.</param>
         /// <param name="sku">The SKU of the workspace.</param>
-        /// <param name="retentionInDays">The workspace data retention in days.
-        /// -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-        /// maximum allowed for all other Skus. </param>
+        /// <param name="retentionInDays">The workspace data retention in days,
+        /// between 30 and 730.</param>
+        /// <param name="workspaceCapping">The daily volume cap for
+        /// ingestion.</param>
         /// <param name="publicNetworkAccessForIngestion">The network access
         /// type for accessing Log Analytics ingestion. Possible values
         /// include: 'Enabled', 'Disabled'</param>
         /// <param name="publicNetworkAccessForQuery">The network access type
         /// for accessing Log Analytics query. Possible values include:
         /// 'Enabled', 'Disabled'</param>
+        /// <param name="forceCmkForQuery">Indicates whether customer managed
+        /// storage is mandatory for query management.</param>
         /// <param name="privateLinkScopedResources">List of linked private
         /// link scope resources.</param>
         /// <param name="tags">Resource tags. Optional.</param>
-        public WorkspacePatch(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string customerId = default(string), WorkspaceSku sku = default(WorkspaceSku), int? retentionInDays = default(int?), string publicNetworkAccessForIngestion = default(string), string publicNetworkAccessForQuery = default(string), IList<PrivateLinkScopedResource> privateLinkScopedResources = default(IList<PrivateLinkScopedResource>), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public WorkspacePatch(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string customerId = default(string), WorkspaceSku sku = default(WorkspaceSku), int? retentionInDays = default(int?), WorkspaceCapping workspaceCapping = default(WorkspaceCapping), string publicNetworkAccessForIngestion = default(string), string publicNetworkAccessForQuery = default(string), bool? forceCmkForQuery = default(bool?), IList<PrivateLinkScopedResource> privateLinkScopedResources = default(IList<PrivateLinkScopedResource>), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id, name, type, etag)
         {
             ProvisioningState = provisioningState;
             CustomerId = customerId;
             Sku = sku;
             RetentionInDays = retentionInDays;
+            WorkspaceCapping = workspaceCapping;
             PublicNetworkAccessForIngestion = publicNetworkAccessForIngestion;
             PublicNetworkAccessForQuery = publicNetworkAccessForQuery;
+            ForceCmkForQuery = forceCmkForQuery;
             PrivateLinkScopedResources = privateLinkScopedResources;
             Tags = tags;
             CustomInit();
@@ -101,12 +106,17 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         public WorkspaceSku Sku { get; set; }
 
         /// <summary>
-        /// Gets or sets the workspace data retention in days. -1 means
-        /// Unlimited retention for the Unlimited Sku. 730 days is the maximum
-        /// allowed for all other Skus.
+        /// Gets or sets the workspace data retention in days, between 30 and
+        /// 730.
         /// </summary>
         [JsonProperty(PropertyName = "properties.retentionInDays")]
         public int? RetentionInDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets the daily volume cap for ingestion.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.workspaceCapping")]
+        public WorkspaceCapping WorkspaceCapping { get; set; }
 
         /// <summary>
         /// Gets or sets the network access type for accessing Log Analytics
@@ -121,6 +131,13 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccessForQuery")]
         public string PublicNetworkAccessForQuery { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether customer managed storage is
+        /// mandatory for query management.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.forceCmkForQuery")]
+        public bool? ForceCmkForQuery { get; set; }
 
         /// <summary>
         /// Gets list of linked private link scope resources.
@@ -150,9 +167,9 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
             {
                 throw new ValidationException(ValidationRules.InclusiveMaximum, "RetentionInDays", 730);
             }
-            if (RetentionInDays < -1)
+            if (RetentionInDays < 30)
             {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", -1);
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", 30);
             }
         }
     }
