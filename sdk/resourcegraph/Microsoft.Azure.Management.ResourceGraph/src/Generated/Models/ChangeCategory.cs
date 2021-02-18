@@ -16,43 +16,43 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for ResultTruncated.
+    /// Defines values for ChangeCategory.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum ResultTruncated
+    public enum ChangeCategory
     {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
+        [EnumMember(Value = "User")]
+        User,
+        [EnumMember(Value = "System")]
+        System
     }
-    internal static class ResultTruncatedEnumExtension
+    internal static class ChangeCategoryEnumExtension
     {
-        internal static string ToSerializedValue(this ResultTruncated? value)
+        internal static string ToSerializedValue(this ChangeCategory? value)
         {
-            return value == null ? null : ((ResultTruncated)value).ToSerializedValue();
+            return value == null ? null : ((ChangeCategory)value).ToSerializedValue();
         }
 
-        internal static string ToSerializedValue(this ResultTruncated value)
+        internal static string ToSerializedValue(this ChangeCategory value)
         {
             switch( value )
             {
-                case ResultTruncated.True:
-                    return "true";
-                case ResultTruncated.False:
-                    return "false";
+                case ChangeCategory.User:
+                    return "User";
+                case ChangeCategory.System:
+                    return "System";
             }
             return null;
         }
 
-        internal static ResultTruncated? ParseResultTruncated(this string value)
+        internal static ChangeCategory? ParseChangeCategory(this string value)
         {
             switch( value )
             {
-                case "true":
-                    return ResultTruncated.True;
-                case "false":
-                    return ResultTruncated.False;
+                case "User":
+                    return ChangeCategory.User;
+                case "System":
+                    return ChangeCategory.System;
             }
             return null;
         }
