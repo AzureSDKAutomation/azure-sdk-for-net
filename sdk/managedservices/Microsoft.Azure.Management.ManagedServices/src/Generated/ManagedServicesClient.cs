@@ -80,6 +80,16 @@ namespace Microsoft.Azure.Management.ManagedServices
         public virtual IRegistrationAssignmentsOperations RegistrationAssignments { get; private set; }
 
         /// <summary>
+        /// Gets the IMarketplaceRegistrationDefinitionsOperations.
+        /// </summary>
+        public virtual IMarketplaceRegistrationDefinitionsOperations MarketplaceRegistrationDefinitions { get; private set; }
+
+        /// <summary>
+        /// Gets the IMarketplaceRegistrationDefinitionsWithoutScopeOperations.
+        /// </summary>
+        public virtual IMarketplaceRegistrationDefinitionsWithoutScopeOperations MarketplaceRegistrationDefinitionsWithoutScope { get; private set; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -327,9 +337,11 @@ namespace Microsoft.Azure.Management.ManagedServices
         {
             RegistrationDefinitions = new RegistrationDefinitionsOperations(this);
             RegistrationAssignments = new RegistrationAssignmentsOperations(this);
+            MarketplaceRegistrationDefinitions = new MarketplaceRegistrationDefinitionsOperations(this);
+            MarketplaceRegistrationDefinitionsWithoutScope = new MarketplaceRegistrationDefinitionsWithoutScopeOperations(this);
             Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-06-01";
+            ApiVersion = "2020-02-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
