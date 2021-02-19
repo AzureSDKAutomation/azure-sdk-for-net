@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,6 +23,74 @@ namespace Microsoft.Azure.Management.ResourceGraph
     /// </summary>
     public static partial class ResourceGraphClientExtensions
     {
+            /// <summary>
+            /// List changes to a resource for a given time interval.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='parameters'>
+            /// the parameters for this request for changes.
+            /// </param>
+            public static ResourceChangeList ResourceChanges(this IResourceGraphClient operations, ResourceChangesRequestParameters parameters)
+            {
+                return operations.ResourceChangesAsync(parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List changes to a resource for a given time interval.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='parameters'>
+            /// the parameters for this request for changes.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ResourceChangeList> ResourceChangesAsync(this IResourceGraphClient operations, ResourceChangesRequestParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ResourceChangesWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get resource change details.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters for this request for resource change details.
+            /// </param>
+            public static IList<ResourceChangeData> ResourceChangeDetails(this IResourceGraphClient operations, ResourceChangeDetailsRequestParameters parameters)
+            {
+                return operations.ResourceChangeDetailsAsync(parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get resource change details.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters for this request for resource change details.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<ResourceChangeData>> ResourceChangeDetailsAsync(this IResourceGraphClient operations, ResourceChangeDetailsRequestParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ResourceChangeDetailsWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
             /// <summary>
             /// Queries the resources managed by Azure Resource Manager for all
             /// subscriptions specified in the request.
@@ -54,6 +124,38 @@ namespace Microsoft.Azure.Management.ResourceGraph
             public static async Task<QueryResponse> ResourcesAsync(this IResourceGraphClient operations, QueryRequest query, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ResourcesWithHttpMessagesAsync(query, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List all snapshots of a resource for a given time interval.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='request'>
+            /// </param>
+            public static object ResourcesHistory(this IResourceGraphClient operations, ResourcesHistoryRequest request)
+            {
+                return operations.ResourcesHistoryAsync(request).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List all snapshots of a resource for a given time interval.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='request'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> ResourcesHistoryAsync(this IResourceGraphClient operations, ResourcesHistoryRequest request, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ResourcesHistoryWithHttpMessagesAsync(request, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
