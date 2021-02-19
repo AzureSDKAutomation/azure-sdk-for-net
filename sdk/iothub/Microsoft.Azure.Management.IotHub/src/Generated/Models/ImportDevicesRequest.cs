@@ -35,10 +35,23 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// URI.</param>
         /// <param name="outputBlobContainerUri">The output blob container
         /// URI.</param>
-        public ImportDevicesRequest(string inputBlobContainerUri, string outputBlobContainerUri)
+        /// <param name="inputBlobName">The blob name to be used when importing
+        /// from the provided input blob container.</param>
+        /// <param name="outputBlobName">The blob name to use for storing the
+        /// status of the import job.</param>
+        /// <param name="authenticationType">Specifies authentication type
+        /// being used for connecting to the storage account. Possible values
+        /// include: 'keyBased', 'identityBased'</param>
+        /// <param name="identity">Managed identity properties of storage
+        /// endpoint for import devices.</param>
+        public ImportDevicesRequest(string inputBlobContainerUri, string outputBlobContainerUri, string inputBlobName = default(string), string outputBlobName = default(string), string authenticationType = default(string), ManagedIdentity identity = default(ManagedIdentity))
         {
             InputBlobContainerUri = inputBlobContainerUri;
             OutputBlobContainerUri = outputBlobContainerUri;
+            InputBlobName = inputBlobName;
+            OutputBlobName = outputBlobName;
+            AuthenticationType = authenticationType;
+            Identity = identity;
             CustomInit();
         }
 
@@ -58,6 +71,35 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "outputBlobContainerUri")]
         public string OutputBlobContainerUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the blob name to be used when importing from the
+        /// provided input blob container.
+        /// </summary>
+        [JsonProperty(PropertyName = "inputBlobName")]
+        public string InputBlobName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the blob name to use for storing the status of the
+        /// import job.
+        /// </summary>
+        [JsonProperty(PropertyName = "outputBlobName")]
+        public string OutputBlobName { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies authentication type being used for
+        /// connecting to the storage account. Possible values include:
+        /// 'keyBased', 'identityBased'
+        /// </summary>
+        [JsonProperty(PropertyName = "authenticationType")]
+        public string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets managed identity properties of storage endpoint for
+        /// import devices.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.
