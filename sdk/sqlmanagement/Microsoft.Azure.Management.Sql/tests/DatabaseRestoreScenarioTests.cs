@@ -448,7 +448,7 @@ namespace Sql.Tests
                     new Database
                     {
                         Location = server.Location,
-                        Sku = new Microsoft.Azure.Management.Sql.Models.Sku(ServiceObjectiveId.DW100)
+                        Sku = new Microsoft.Azure.Management.Sql.Models.Sku(ServiceObjectiveName.DW100)
                     });
                 Assert.NotNull(db);
 
