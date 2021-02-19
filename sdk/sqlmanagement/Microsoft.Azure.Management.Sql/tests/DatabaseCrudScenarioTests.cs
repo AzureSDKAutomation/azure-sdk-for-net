@@ -55,7 +55,7 @@ namespace Sql.Tests
                     Tags = tags,
                     CreateMode = "Default",
                     SampleName = SampleName.AdventureWorksLT,
-                    StorageAccountType = "GRS",
+                    RequestedBackupStorageRedundancy = "GRS",
                 };
                 var db2 = sqlClient.Databases.CreateOrUpdate(resourceGroup.Name, server.Name, dbName, db2Input);
                 Assert.NotNull(db2);
@@ -117,7 +117,7 @@ namespace Sql.Tests
                 var db8Input = new Database()
                 {
                     Location = server.Location,
-                    StorageAccountType = "GRS",
+                    RequestedBackupStorageRedundancy = "GRS",
                 };
                 var db8 = sqlClient.Databases.CreateOrUpdate(resourceGroup.Name, server.Name, dbName, db8Input);
                 Assert.NotNull(db8);
@@ -352,7 +352,7 @@ namespace Sql.Tests
                 // Make sure the database is not updated due to cancel operation
                 //
                 var dbGetResponse = sqlClient.Databases.Get(resourceGroup.Name, server.Name, dbName);
-                Assert.Equal(dbGetResponse.ServiceLevelObjective, ServiceObjectiveName.S0);
+                Assert.Equal(dbGetResponse.ServiceLevelObjective, ServiceObjectiveId.S0);
             }
         }
 
