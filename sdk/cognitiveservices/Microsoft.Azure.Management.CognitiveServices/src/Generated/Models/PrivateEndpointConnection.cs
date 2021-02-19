@@ -29,17 +29,19 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="properties">Resource properties.</param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties))
+        /// <param name="etag">Entity Tag</param>
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), string etag = default(string))
             : base(id, name, type)
         {
             Properties = properties;
+            Etag = etag;
             CustomInit();
         }
 
@@ -53,6 +55,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public PrivateEndpointConnectionProperties Properties { get; set; }
+
+        /// <summary>
+        /// Gets entity Tag
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

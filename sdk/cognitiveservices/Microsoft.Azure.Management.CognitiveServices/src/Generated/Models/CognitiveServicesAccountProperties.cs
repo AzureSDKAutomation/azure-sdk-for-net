@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="capabilities">Gets the capabilities of the cognitive
         /// services account. Each item indicates the capability of a specific
         /// feature. The values are read-only and for reference only.</param>
+        /// <param name="isMigrated">If the resource is migrated from an
+        /// existing key.</param>
+        /// <param name="skuChangeInfo">Sku change info of account.</param>
         /// <param name="customSubDomainName">Optional subdomain name used for
         /// token-based authentication.</param>
         /// <param name="networkAcls">A collection of rules governing the
@@ -58,12 +61,16 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// 'Enabled', 'Disabled'</param>
         /// <param name="apiProperties">The api properties for special
         /// APIs.</param>
-        public CognitiveServicesAccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<SkuCapability> capabilities = default(IList<SkuCapability>), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), CognitiveServicesAccountApiProperties apiProperties = default(CognitiveServicesAccountApiProperties))
+        /// <param name="dateCreated">Gets the date of cognitive services
+        /// account creation.</param>
+        public CognitiveServicesAccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<SkuCapability> capabilities = default(IList<SkuCapability>), bool? isMigrated = default(bool?), CognitiveServicesAccountSkuChangeInfo skuChangeInfo = default(CognitiveServicesAccountSkuChangeInfo), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), CognitiveServicesAccountApiProperties apiProperties = default(CognitiveServicesAccountApiProperties), string dateCreated = default(string))
         {
             ProvisioningState = provisioningState;
             Endpoint = endpoint;
             InternalId = internalId;
             Capabilities = capabilities;
+            IsMigrated = isMigrated;
+            SkuChangeInfo = skuChangeInfo;
             CustomSubDomainName = customSubDomainName;
             NetworkAcls = networkAcls;
             Encryption = encryption;
@@ -71,6 +78,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             PrivateEndpointConnections = privateEndpointConnections;
             PublicNetworkAccess = publicNetworkAccess;
             ApiProperties = apiProperties;
+            DateCreated = dateCreated;
             CustomInit();
         }
 
@@ -106,6 +114,18 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "capabilities")]
         public IList<SkuCapability> Capabilities { get; private set; }
+
+        /// <summary>
+        /// Gets if the resource is migrated from an existing key.
+        /// </summary>
+        [JsonProperty(PropertyName = "isMigrated")]
+        public bool? IsMigrated { get; private set; }
+
+        /// <summary>
+        /// Gets sku change info of account.
+        /// </summary>
+        [JsonProperty(PropertyName = "skuChangeInfo")]
+        public CognitiveServicesAccountSkuChangeInfo SkuChangeInfo { get; private set; }
 
         /// <summary>
         /// Gets or sets optional subdomain name used for token-based
@@ -153,6 +173,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "apiProperties")]
         public CognitiveServicesAccountApiProperties ApiProperties { get; set; }
+
+        /// <summary>
+        /// Gets the date of cognitive services account creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "dateCreated")]
+        public string DateCreated { get; private set; }
 
         /// <summary>
         /// Validate the object.
