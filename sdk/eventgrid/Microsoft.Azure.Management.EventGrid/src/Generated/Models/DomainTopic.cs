@@ -39,10 +39,13 @@ namespace Microsoft.Azure.Management.EventGrid.Models
         /// <param name="provisioningState">Provisioning state of the domain
         /// topic. Possible values include: 'Creating', 'Updating', 'Deleting',
         /// 'Succeeded', 'Canceled', 'Failed'</param>
-        public DomainTopic(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string))
+        /// <param name="systemData">The system metadata relating to Domain
+        /// Topic resource.</param>
+        public DomainTopic(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             ProvisioningState = provisioningState;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -58,6 +61,12 @@ namespace Microsoft.Azure.Management.EventGrid.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets the system metadata relating to Domain Topic resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }
