@@ -15,21 +15,21 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// Login by a local user that isn't allowed. Allow list consists of login
-    /// names to allow.
+    /// Inbound connection from an ip that isn't allowed. Allow list consists
+    /// of ipv4 or ipv6 range in CIDR notation.
     /// </summary>
-    public partial class LocalUserNotAllowed : AllowlistCustomAlertRule
+    public partial class ConnectionFromIpNotAllowed : AllowlistCustomAlertRule
     {
         /// <summary>
-        /// Initializes a new instance of the LocalUserNotAllowed class.
+        /// Initializes a new instance of the ConnectionFromIpNotAllowed class.
         /// </summary>
-        public LocalUserNotAllowed()
+        public ConnectionFromIpNotAllowed()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LocalUserNotAllowed class.
+        /// Initializes a new instance of the ConnectionFromIpNotAllowed class.
         /// </summary>
         /// <param name="isEnabled">Status of the custom alert.</param>
         /// <param name="allowlistValues">The values to allow. The format of
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// alert.</param>
         /// <param name="valueType">The value type of the items in the list.
         /// Possible values include: 'IpCidr', 'String'</param>
-        public LocalUserNotAllowed(bool isEnabled, IList<string> allowlistValues, string displayName = default(string), string description = default(string), string valueType = default(string))
+        public ConnectionFromIpNotAllowed(bool isEnabled, IList<string> allowlistValues, string displayName = default(string), string description = default(string), string valueType = default(string))
             : base(isEnabled, allowlistValues, displayName, description, valueType)
         {
             CustomInit();

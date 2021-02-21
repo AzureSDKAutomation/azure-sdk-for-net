@@ -11,32 +11,30 @@
 namespace Microsoft.Azure.Management.Security.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// IoT sensor
+    /// List of IoT sites
     /// </summary>
-    public partial class IotSensor : Resource
+    public partial class IotSitesList
     {
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the IotSitesList class.
         /// </summary>
-        public IotSensor()
+        public IotSitesList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the IotSitesList class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="properties">IoT sensor properties</param>
-        public IotSensor(string id = default(string), string name = default(string), string type = default(string), object properties = default(object))
-            : base(id, name, type)
+        /// <param name="value">List data</param>
+        public IotSitesList(IList<IotSitesModel> value = default(IList<IotSitesModel>))
         {
-            Properties = properties;
+            Value = value;
             CustomInit();
         }
 
@@ -46,10 +44,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ioT sensor properties
+        /// Gets list data
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public object Properties { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<IotSitesModel> Value { get; private set; }
 
     }
 }

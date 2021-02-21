@@ -33,10 +33,13 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="properties">On-premise IoT sensor properties</param>
-        public OnPremiseIotSensor(string id = default(string), string name = default(string), string type = default(string), object properties = default(object))
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        public OnPremiseIotSensor(string id = default(string), string name = default(string), string type = default(string), object properties = default(object), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             Properties = properties;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -50,6 +53,13 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public object Properties { get; set; }
+
+        /// <summary>
+        /// Gets azure Resource Manager metadata containing createdBy and
+        /// modifiedBy information.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }
