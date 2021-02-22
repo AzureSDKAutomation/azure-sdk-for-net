@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Attestation
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// Client API version.
+        /// Client API version. Current version is 2010-10-01
         /// </summary>
         string ApiVersion { get; }
 
@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Attestation
         /// Gets the IPolicyCertificatesOperations.
         /// </summary>
         IPolicyCertificatesOperations PolicyCertificates { get; }
+
+        /// <summary>
+        /// Gets the IAttestationOperations.
+        /// </summary>
+        IAttestationOperations Attestation { get; }
 
         /// <summary>
         /// Gets the ISigningCertificatesOperations.

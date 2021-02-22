@@ -22,146 +22,96 @@ namespace Microsoft.Azure.Attestation
     public static partial class PolicyOperationsExtensions
     {
             /// <summary>
-            /// Accepts a new policy document and returns a JWT which expresses  used in
-            /// preparation to set attestation policy.
+            /// Retrieves the current policy for an attestation type.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            /// <param name='tee'>
+            /// <param name='attestationType'>
             /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
+            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
             /// </param>
-            /// <param name='policyJws'>
-            /// JSON Web Signature (See RFC7515) expressing the new policy
-            /// </param>
-            public static object PrepareToSet(this IPolicyOperations operations, string tenantBaseUrl, string tee, string policyJws)
+            public static PolicyResponse Get(this IPolicyOperations operations, string instanceUrl, string attestationType)
             {
-                return operations.PrepareToSetAsync(tenantBaseUrl, tee, policyJws).GetAwaiter().GetResult();
+                return operations.GetAsync(instanceUrl, attestationType).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Accepts a new policy document and returns a JWT which expresses  used in
-            /// preparation to set attestation policy.
+            /// Retrieves the current policy for an attestation type.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            /// <param name='tee'>
+            /// <param name='attestationType'>
             /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
-            /// </param>
-            /// <param name='policyJws'>
-            /// JSON Web Signature (See RFC7515) expressing the new policy
+            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> PrepareToSetAsync(this IPolicyOperations operations, string tenantBaseUrl, string tee, string policyJws, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PolicyResponse> GetAsync(this IPolicyOperations operations, string instanceUrl, string attestationType, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PrepareToSetWithHttpMessagesAsync(tenantBaseUrl, tee, policyJws, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(instanceUrl, attestationType, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Retrieves the current policy for a given kind of TEE.
+            /// Sets the policy for a given attestation type.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            /// <param name='tee'>
+            /// <param name='attestationType'>
             /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
+            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
             /// </param>
-            public static object Get(this IPolicyOperations operations, string tenantBaseUrl, string tee)
+            /// <param name='newAttestationPolicy'>
+            /// JWT Expressing the new policy whose body is a StoredAttestationPolicy
+            /// object.
+            /// </param>
+            public static PolicyResponse Set(this IPolicyOperations operations, string instanceUrl, string attestationType, string newAttestationPolicy)
             {
-                return operations.GetAsync(tenantBaseUrl, tee).GetAwaiter().GetResult();
+                return operations.SetAsync(instanceUrl, attestationType, newAttestationPolicy).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Retrieves the current policy for a given kind of TEE.
+            /// Sets the policy for a given attestation type.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            /// <param name='tee'>
+            /// <param name='attestationType'>
             /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
+            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
+            /// </param>
+            /// <param name='newAttestationPolicy'>
+            /// JWT Expressing the new policy whose body is a StoredAttestationPolicy
+            /// object.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> GetAsync(this IPolicyOperations operations, string tenantBaseUrl, string tee, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PolicyResponse> SetAsync(this IPolicyOperations operations, string instanceUrl, string attestationType, string newAttestationPolicy, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(tenantBaseUrl, tee, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Sets the policy for a given kind of TEE.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
-            /// </param>
-            /// <param name='tee'>
-            /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
-            /// </param>
-            /// <param name='newAttestationPolicy'>
-            /// JWT Expressing the new policy
-            /// </param>
-            public static object Set(this IPolicyOperations operations, string tenantBaseUrl, string tee, string newAttestationPolicy)
-            {
-                return operations.SetAsync(tenantBaseUrl, tee, newAttestationPolicy).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Sets the policy for a given kind of TEE.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
-            /// </param>
-            /// <param name='tee'>
-            /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
-            /// </param>
-            /// <param name='newAttestationPolicy'>
-            /// JWT Expressing the new policy
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<object> SetAsync(this IPolicyOperations operations, string tenantBaseUrl, string tee, string newAttestationPolicy, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.SetWithHttpMessagesAsync(tenantBaseUrl, tee, newAttestationPolicy, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.SetWithHttpMessagesAsync(instanceUrl, attestationType, newAttestationPolicy, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -174,20 +124,20 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            /// <param name='tee'>
+            /// <param name='attestationType'>
             /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
+            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
             /// </param>
             /// <param name='policyJws'>
             /// JSON Web Signature with an empty policy document
             /// </param>
-            public static object Reset(this IPolicyOperations operations, string tenantBaseUrl, string tee, string policyJws)
+            public static PolicyResponse Reset(this IPolicyOperations operations, string instanceUrl, string attestationType, string policyJws)
             {
-                return operations.ResetAsync(tenantBaseUrl, tee, policyJws).GetAwaiter().GetResult();
+                return operations.ResetAsync(instanceUrl, attestationType, policyJws).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -197,13 +147,13 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            /// <param name='tee'>
+            /// <param name='attestationType'>
             /// Specifies the trusted execution environment to be used to validate the
-            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave',
-            /// 'CyResComponent', 'VSMEnclave'
+            /// evidence. Possible values include: 'SgxEnclave', 'OpenEnclave', 'Tpm'
             /// </param>
             /// <param name='policyJws'>
             /// JSON Web Signature with an empty policy document
@@ -211,9 +161,9 @@ namespace Microsoft.Azure.Attestation
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> ResetAsync(this IPolicyOperations operations, string tenantBaseUrl, string tee, string policyJws, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PolicyResponse> ResetAsync(this IPolicyOperations operations, string instanceUrl, string attestationType, string policyJws, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ResetWithHttpMessagesAsync(tenantBaseUrl, tee, policyJws, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ResetWithHttpMessagesAsync(instanceUrl, attestationType, policyJws, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
