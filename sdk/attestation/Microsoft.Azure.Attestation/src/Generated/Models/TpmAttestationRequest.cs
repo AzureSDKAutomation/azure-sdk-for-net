@@ -10,27 +10,32 @@
 
 namespace Microsoft.Azure.Attestation.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class AttestationPolicy
+    /// <summary>
+    /// Attestation request for Trusted Platform Module (TPM) attestation.
+    /// </summary>
+    public partial class TpmAttestationRequest
     {
         /// <summary>
-        /// Initializes a new instance of the AttestationPolicy class.
+        /// Initializes a new instance of the TpmAttestationRequest class.
         /// </summary>
-        public AttestationPolicy()
+        public TpmAttestationRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AttestationPolicy class.
+        /// Initializes a new instance of the TpmAttestationRequest class.
         /// </summary>
-        /// <param name="policy">String-encoded attestation policy
-        /// document.</param>
-        public AttestationPolicy(string policy = default(string))
+        /// <param name="data">Protocol data containing artifacts for
+        /// attestation.</param>
+        public TpmAttestationRequest(byte[] data = default(byte[]))
         {
-            Policy = policy;
+            Data = data;
             CustomInit();
         }
 
@@ -40,10 +45,11 @@ namespace Microsoft.Azure.Attestation.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets string-encoded attestation policy document.
+        /// Gets or sets protocol data containing artifacts for attestation.
         /// </summary>
-        [JsonProperty(PropertyName = "policy")]
-        public string Policy { get; set; }
+        [JsonConverter(typeof(Base64UrlJsonConverter))]
+        [JsonProperty(PropertyName = "data")]
+        public byte[] Data { get; set; }
 
     }
 }

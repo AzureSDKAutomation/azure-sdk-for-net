@@ -31,8 +31,9 @@ namespace Microsoft.Azure.Attestation
         /// Retrieves metadata about the attestation signing keys in use by the
         /// attestation service
         /// </remarks>
-        /// <param name='tenantBaseUrl'>
-        /// The tenant name, for example https://mytenant.attest.azure.net.
+        /// <param name='instanceUrl'>
+        /// The attestation instance base URI, for example
+        /// https://mytenant.attest.azure.net.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,6 +50,6 @@ namespace Microsoft.Azure.Attestation
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> GetWithHttpMessagesAsync(string tenantBaseUrl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> GetWithHttpMessagesAsync(string instanceUrl, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -12,25 +12,19 @@ namespace Microsoft.Azure.Attestation.Models
 {
 
     /// <summary>
-    /// Defines values for TeeKind.
+    /// Defines values for CertificateModification.
     /// </summary>
-    public static class TeeKind
+    public static class CertificateModification
     {
         /// <summary>
-        /// Intel Software Guard eXtensions
+        /// After the operation was performed, the certificate is in the set of
+        /// certificates.
         /// </summary>
-        public const string SgxEnclave = "SgxEnclave";
+        public const string IsPresent = "IsPresent";
         /// <summary>
-        /// OpenEnclave extensions to SGX
+        /// After the operation was performed, the certificate is no longer
+        /// present in the set of certificates.
         /// </summary>
-        public const string OpenEnclave = "OpenEnclave";
-        /// <summary>
-        /// IoT Edge validation
-        /// </summary>
-        public const string CyResComponent = "CyResComponent";
-        /// <summary>
-        /// VSM Enclave Attestation
-        /// </summary>
-        public const string VSMEnclave = "VSMEnclave";
+        public const string IsAbsent = "IsAbsent";
     }
 }

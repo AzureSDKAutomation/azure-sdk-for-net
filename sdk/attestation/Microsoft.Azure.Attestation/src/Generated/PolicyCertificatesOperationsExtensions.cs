@@ -28,12 +28,13 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            public static object Get(this IPolicyCertificatesOperations operations, string tenantBaseUrl)
+            public static PolicyCertificatesResponse Get(this IPolicyCertificatesOperations operations, string instanceUrl)
             {
-                return operations.GetAsync(tenantBaseUrl).GetAwaiter().GetResult();
+                return operations.GetAsync(instanceUrl).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -43,15 +44,16 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> GetAsync(this IPolicyCertificatesOperations operations, string tenantBaseUrl, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PolicyCertificatesResponse> GetAsync(this IPolicyCertificatesOperations operations, string instanceUrl, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(tenantBaseUrl, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(instanceUrl, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -64,18 +66,17 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
             /// <param name='policyCertificateToAdd'>
-            /// An RFC7519 JSON Web Token containing a claim named "aas-policyCertificate"
-            /// whose value is an RFC7517 JSON Web Key which specifies a new key to add.
-            /// The RFC7519 JWT must be signed with one of the existing signing
-            /// certificates
+            /// An RFC7519 JSON Web Token whose body is an RFC7517 JSON Web Key object. The
+            /// RFC7519 JWT must be signed with one of the existing signing certificates
             /// </param>
-            public static object Add(this IPolicyCertificatesOperations operations, string tenantBaseUrl, string policyCertificateToAdd)
+            public static PolicyCertificatesModifyResponse Add(this IPolicyCertificatesOperations operations, string instanceUrl, string policyCertificateToAdd)
             {
-                return operations.AddAsync(tenantBaseUrl, policyCertificateToAdd).GetAwaiter().GetResult();
+                return operations.AddAsync(instanceUrl, policyCertificateToAdd).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -85,21 +86,20 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
             /// <param name='policyCertificateToAdd'>
-            /// An RFC7519 JSON Web Token containing a claim named "aas-policyCertificate"
-            /// whose value is an RFC7517 JSON Web Key which specifies a new key to add.
-            /// The RFC7519 JWT must be signed with one of the existing signing
-            /// certificates
+            /// An RFC7519 JSON Web Token whose body is an RFC7517 JSON Web Key object. The
+            /// RFC7519 JWT must be signed with one of the existing signing certificates
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> AddAsync(this IPolicyCertificatesOperations operations, string tenantBaseUrl, string policyCertificateToAdd, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PolicyCertificatesModifyResponse> AddAsync(this IPolicyCertificatesOperations operations, string instanceUrl, string policyCertificateToAdd, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.AddWithHttpMessagesAsync(tenantBaseUrl, policyCertificateToAdd, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.AddWithHttpMessagesAsync(instanceUrl, policyCertificateToAdd, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -112,18 +112,18 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
             /// <param name='policyCertificateToRemove'>
-            /// An RFC7519 JSON Web Token containing a claim named "aas-policyCertificate"
-            /// whose value is an RFC7517 JSON Web Key which specifies a new key to update.
-            /// The RFC7519 JWT must be signed with one of the existing signing
-            /// certificates
+            /// An RFC7519 JSON Web Token whose body is an
+            /// AttestationCertificateManagementBody object. The RFC7519 JWT must be signed
+            /// with one of the existing signing certificates
             /// </param>
-            public static object Remove(this IPolicyCertificatesOperations operations, string tenantBaseUrl, string policyCertificateToRemove)
+            public static PolicyCertificatesModifyResponse Remove(this IPolicyCertificatesOperations operations, string instanceUrl, string policyCertificateToRemove)
             {
-                return operations.RemoveAsync(tenantBaseUrl, policyCertificateToRemove).GetAwaiter().GetResult();
+                return operations.RemoveAsync(instanceUrl, policyCertificateToRemove).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -133,21 +133,21 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
             /// <param name='policyCertificateToRemove'>
-            /// An RFC7519 JSON Web Token containing a claim named "aas-policyCertificate"
-            /// whose value is an RFC7517 JSON Web Key which specifies a new key to update.
-            /// The RFC7519 JWT must be signed with one of the existing signing
-            /// certificates
+            /// An RFC7519 JSON Web Token whose body is an
+            /// AttestationCertificateManagementBody object. The RFC7519 JWT must be signed
+            /// with one of the existing signing certificates
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> RemoveAsync(this IPolicyCertificatesOperations operations, string tenantBaseUrl, string policyCertificateToRemove, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PolicyCertificatesModifyResponse> RemoveAsync(this IPolicyCertificatesOperations operations, string instanceUrl, string policyCertificateToRemove, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.RemoveWithHttpMessagesAsync(tenantBaseUrl, policyCertificateToRemove, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.RemoveWithHttpMessagesAsync(instanceUrl, policyCertificateToRemove, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -31,12 +31,13 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
-            public static object Get(this IMetadataConfigurationOperations operations, string tenantBaseUrl)
+            public static object Get(this IMetadataConfigurationOperations operations, string instanceUrl)
             {
-                return operations.GetAsync(tenantBaseUrl).GetAwaiter().GetResult();
+                return operations.GetAsync(instanceUrl).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -49,15 +50,16 @@ namespace Microsoft.Azure.Attestation
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='tenantBaseUrl'>
-            /// The tenant name, for example https://mytenant.attest.azure.net.
+            /// <param name='instanceUrl'>
+            /// The attestation instance base URI, for example
+            /// https://mytenant.attest.azure.net.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> GetAsync(this IMetadataConfigurationOperations operations, string tenantBaseUrl, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> GetAsync(this IMetadataConfigurationOperations operations, string instanceUrl, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(tenantBaseUrl, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(instanceUrl, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
