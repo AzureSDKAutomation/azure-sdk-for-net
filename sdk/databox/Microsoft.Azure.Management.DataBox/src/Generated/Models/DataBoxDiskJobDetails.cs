@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// the chain of custody logs</param>
         /// <param name="keyEncryptionKey">Details about which key encryption
         /// type is being used.</param>
-        /// <param name="expectedDataSizeInTerabytes">The expected size of the
+        /// <param name="expectedDataSizeInTeraBytes">The expected size of the
         /// data, which needs to be transferred in this job, in
         /// terabytes.</param>
         /// <param name="preferredDisks">User preference on what size disks are
@@ -66,8 +66,8 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// after the disks are shipped to the customer.</param>
         /// <param name="passkey">User entered passkey for DataBox Disk
         /// job.</param>
-        public DataBoxDiskJobDetails(ContactDetails contactDetails, IList<JobStages> jobStages = default(IList<JobStages>), ShippingAddress shippingAddress = default(ShippingAddress), PackageShippingDetails deliveryPackage = default(PackageShippingDetails), PackageShippingDetails returnPackage = default(PackageShippingDetails), IList<DataImportDetails> dataImportDetails = default(IList<DataImportDetails>), IList<DataExportDetails> dataExportDetails = default(IList<DataExportDetails>), Preferences preferences = default(Preferences), IList<CopyLogDetails> copyLogDetails = default(IList<CopyLogDetails>), string reverseShipmentLabelSasKey = default(string), string chainOfCustodySasKey = default(string), KeyEncryptionKey keyEncryptionKey = default(KeyEncryptionKey), int? expectedDataSizeInTerabytes = default(int?), IDictionary<string, int?> preferredDisks = default(IDictionary<string, int?>), IList<DataBoxDiskCopyProgress> copyProgress = default(IList<DataBoxDiskCopyProgress>), IDictionary<string, int?> disksAndSizeDetails = default(IDictionary<string, int?>), string passkey = default(string))
-            : base(contactDetails, jobStages, shippingAddress, deliveryPackage, returnPackage, dataImportDetails, dataExportDetails, preferences, copyLogDetails, reverseShipmentLabelSasKey, chainOfCustodySasKey, keyEncryptionKey, expectedDataSizeInTerabytes)
+        public DataBoxDiskJobDetails(ContactDetails contactDetails, IList<JobStages> jobStages = default(IList<JobStages>), ShippingAddress shippingAddress = default(ShippingAddress), PackageShippingDetails deliveryPackage = default(PackageShippingDetails), PackageShippingDetails returnPackage = default(PackageShippingDetails), IList<DataImportDetails> dataImportDetails = default(IList<DataImportDetails>), IList<DataExportDetails> dataExportDetails = default(IList<DataExportDetails>), Preferences preferences = default(Preferences), IList<CopyLogDetails> copyLogDetails = default(IList<CopyLogDetails>), string reverseShipmentLabelSasKey = default(string), string chainOfCustodySasKey = default(string), KeyEncryptionKey keyEncryptionKey = default(KeyEncryptionKey), int? expectedDataSizeInTeraBytes = default(int?), IDictionary<string, int?> preferredDisks = default(IDictionary<string, int?>), IList<DataBoxDiskCopyProgress> copyProgress = default(IList<DataBoxDiskCopyProgress>), IDictionary<string, int?> disksAndSizeDetails = default(IDictionary<string, int?>), string passkey = default(string))
+            : base(contactDetails, jobStages, shippingAddress, deliveryPackage, returnPackage, dataImportDetails, dataExportDetails, preferences, copyLogDetails, reverseShipmentLabelSasKey, chainOfCustodySasKey, keyEncryptionKey, expectedDataSizeInTeraBytes)
         {
             PreferredDisks = preferredDisks;
             CopyProgress = copyProgress;
