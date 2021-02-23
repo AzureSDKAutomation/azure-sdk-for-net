@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <summary>
         /// Initializes a new instance of the CognitiveServicesAccount class.
         /// </summary>
-        /// <param name="etag">Entity Tag</param>
-        /// <param name="id">The id of the created account</param>
         /// <param name="kind">The Kind of the resource.</param>
         /// <param name="location">The location of the resource</param>
-        /// <param name="name">The name of the created account</param>
         /// <param name="properties">Properties of Cognitive Services
         /// account.</param>
         /// <param name="sku">The SKU of Cognitive Services account.</param>
+        /// <param name="etag">Entity Tag</param>
+        /// <param name="id">The id of the created account</param>
+        /// <param name="name">The name of the created account</param>
         /// <param name="tags">Gets or sets a list of key value pairs that
         /// describe the resource. These tags can be used in viewing and
         /// grouping this resource (across resource groups). A maximum of 15
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="type">Resource type</param>
         /// <param name="identity">The identity of Cognitive Services
         /// account.</param>
-        public CognitiveServicesAccount(string etag = default(string), string id = default(string), string kind = default(string), string location = default(string), string name = default(string), CognitiveServicesAccountProperties properties = default(CognitiveServicesAccountProperties), Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>), string type = default(string), Identity identity = default(Identity))
+        public CognitiveServicesAccount(string kind, string location, CognitiveServicesAccountProperties properties, Sku sku, string etag = default(string), string id = default(string), string name = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string type = default(string), Identity identity = default(Identity))
         {
             Etag = etag;
             Id = id;
@@ -143,6 +143,22 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (Kind == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");
+            }
+            if (Location == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
+            }
+            if (Properties == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
+            }
+            if (Sku == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
+            }
             if (Properties != null)
             {
                 Properties.Validate();

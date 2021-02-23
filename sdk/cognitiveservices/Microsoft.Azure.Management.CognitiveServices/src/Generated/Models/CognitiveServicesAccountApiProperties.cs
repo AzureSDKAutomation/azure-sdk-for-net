@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         /// <param name="qnaRuntimeEndpoint">(QnAMaker Only) The runtime
         /// endpoint of QnAMaker.</param>
+        /// <param name="qnaAzureSearchEndpointKey">(QnAMaker Only) The Azure
+        /// Search endpoint key of QnAMaker.</param>
+        /// <param name="qnaAzureSearchEndpointId">(QnAMaker Only) The Azure
+        /// Search endpoint id of QnAMaker.</param>
         /// <param name="statisticsEnabled">(Bing Search Only) The flag to
         /// enable statistics of Bing Search.</param>
         /// <param name="eventHubConnectionString">(Personalization Only) The
@@ -48,9 +52,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Metrics Advisor.</param>
         /// <param name="websiteName">(Metrics Advisor Only) The website name
         /// of Metrics Advisor.</param>
-        public CognitiveServicesAccountApiProperties(string qnaRuntimeEndpoint = default(string), bool? statisticsEnabled = default(bool?), string eventHubConnectionString = default(string), string storageAccountConnectionString = default(string), string aadClientId = default(string), string aadTenantId = default(string), string superUser = default(string), string websiteName = default(string))
+        public CognitiveServicesAccountApiProperties(string qnaRuntimeEndpoint = default(string), string qnaAzureSearchEndpointKey = default(string), string qnaAzureSearchEndpointId = default(string), bool? statisticsEnabled = default(bool?), string eventHubConnectionString = default(string), string storageAccountConnectionString = default(string), string aadClientId = default(string), string aadTenantId = default(string), string superUser = default(string), string websiteName = default(string))
         {
             QnaRuntimeEndpoint = qnaRuntimeEndpoint;
+            QnaAzureSearchEndpointKey = qnaAzureSearchEndpointKey;
+            QnaAzureSearchEndpointId = qnaAzureSearchEndpointId;
             StatisticsEnabled = statisticsEnabled;
             EventHubConnectionString = eventHubConnectionString;
             StorageAccountConnectionString = storageAccountConnectionString;
@@ -71,6 +77,20 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "qnaRuntimeEndpoint")]
         public string QnaRuntimeEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets (QnAMaker Only) The Azure Search endpoint key of
+        /// QnAMaker.
+        /// </summary>
+        [JsonProperty(PropertyName = "qnaAzureSearchEndpointKey")]
+        public string QnaAzureSearchEndpointKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets (QnAMaker Only) The Azure Search endpoint id of
+        /// QnAMaker.
+        /// </summary>
+        [JsonProperty(PropertyName = "qnaAzureSearchEndpointId")]
+        public string QnaAzureSearchEndpointId { get; set; }
 
         /// <summary>
         /// Gets or sets (Bing Search Only) The flag to enable statistics of
