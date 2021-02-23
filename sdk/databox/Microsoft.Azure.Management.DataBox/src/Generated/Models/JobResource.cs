@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.DataBox.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -73,10 +72,12 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// <param name="deliveryInfo">Delivery Info of Job.</param>
         /// <param name="isCancellableWithoutFee">Flag to indicate cancellation
         /// of scheduled job.</param>
+        /// <param name="systemData">Represents resource creation and updation
+        /// time</param>
         /// <param name="name">Name of the object.</param>
         /// <param name="id">Id of the object.</param>
         /// <param name="type">Type of the object.</param>
-        public JobResource(string location, Sku sku, TransferType transferType, IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), bool? isCancellable = default(bool?), bool? isDeletable = default(bool?), bool? isShippingAddressEditable = default(bool?), bool? isPrepareToShipEnabled = default(bool?), StageName? status = default(StageName?), System.DateTime? startTime = default(System.DateTime?), CloudError error = default(CloudError), JobDetails details = default(JobDetails), string cancellationReason = default(string), JobDeliveryType? deliveryType = default(JobDeliveryType?), JobDeliveryInfo deliveryInfo = default(JobDeliveryInfo), bool? isCancellableWithoutFee = default(bool?), string name = default(string), string id = default(string), string type = default(string))
+        public JobResource(string location, Sku sku, TransferType transferType, IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), bool? isCancellable = default(bool?), bool? isDeletable = default(bool?), bool? isShippingAddressEditable = default(bool?), bool? isPrepareToShipEnabled = default(bool?), StageName? status = default(StageName?), System.DateTime? startTime = default(System.DateTime?), CloudError error = default(CloudError), JobDetails details = default(JobDetails), string cancellationReason = default(string), JobDeliveryType? deliveryType = default(JobDeliveryType?), JobDeliveryInfo deliveryInfo = default(JobDeliveryInfo), bool? isCancellableWithoutFee = default(bool?), SystemData systemData = default(SystemData), string name = default(string), string id = default(string), string type = default(string))
             : base(location, sku, tags, identity)
         {
             TransferType = transferType;
@@ -92,6 +93,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
             DeliveryType = deliveryType;
             DeliveryInfo = deliveryInfo;
             IsCancellableWithoutFee = isCancellableWithoutFee;
+            SystemData = systemData;
             Name = name;
             Id = id;
             Type = type;
@@ -189,6 +191,12 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.isCancellableWithoutFee")]
         public bool? IsCancellableWithoutFee { get; private set; }
+
+        /// <summary>
+        /// Gets represents resource creation and updation time
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Gets name of the object.
