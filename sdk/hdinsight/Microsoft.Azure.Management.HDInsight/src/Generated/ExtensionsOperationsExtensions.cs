@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='extensionName'>
             /// The name of the cluster extension.
             /// </param>
-            public static Extension Get(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName)
+            public static ClusterMonitoringResponse Get(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName)
             {
                 return operations.GetAsync(resourceGroupName, clusterName, extensionName).GetAwaiter().GetResult();
             }
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.HDInsight
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extension> GetAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ClusterMonitoringResponse> GetAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, clusterName, extensionName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -281,6 +281,58 @@ namespace Microsoft.Azure.Management.HDInsight
             public static async Task DeleteAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, extensionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the async operation status.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='clusterName'>
+            /// The name of the cluster.
+            /// </param>
+            /// <param name='extensionName'>
+            /// The name of the cluster extension.
+            /// </param>
+            /// <param name='operationId'>
+            /// The long running operation id.
+            /// </param>
+            public static AsyncOperationResult GetAzureAsyncOperationStatus(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, string operationId)
+            {
+                return operations.GetAzureAsyncOperationStatusAsync(resourceGroupName, clusterName, extensionName, operationId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the async operation status.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='clusterName'>
+            /// The name of the cluster.
+            /// </param>
+            /// <param name='extensionName'>
+            /// The name of the cluster extension.
+            /// </param>
+            /// <param name='operationId'>
+            /// The long running operation id.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AsyncOperationResult> GetAzureAsyncOperationStatusAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, string extensionName, string operationId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAzureAsyncOperationStatusWithHttpMessagesAsync(resourceGroupName, clusterName, extensionName, operationId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
