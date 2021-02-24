@@ -299,6 +299,61 @@ namespace Microsoft.Azure.Management.Network
         public virtual INetworkInterfaceTapConfigurationsOperations NetworkInterfaceTapConfigurations { get; private set; }
 
         /// <summary>
+        /// Gets the INetworkManagersOperations.
+        /// </summary>
+        public virtual INetworkManagersOperations NetworkManagers { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkManagerCommitsOperations.
+        /// </summary>
+        public virtual INetworkManagerCommitsOperations NetworkManagerCommits { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkManagerDeploymentStatusOperations.
+        /// </summary>
+        public virtual INetworkManagerDeploymentStatusOperations NetworkManagerDeploymentStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the IEffectiveVirtualNetworksOperations.
+        /// </summary>
+        public virtual IEffectiveVirtualNetworksOperations EffectiveVirtualNetworks { get; private set; }
+
+        /// <summary>
+        /// Gets the IActiveConfigurationsOperations.
+        /// </summary>
+        public virtual IActiveConfigurationsOperations ActiveConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the IConnectivityConfigurationsOperations.
+        /// </summary>
+        public virtual IConnectivityConfigurationsOperations ConnectivityConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEffectiveConfigurationsOperations.
+        /// </summary>
+        public virtual IEffectiveConfigurationsOperations EffectiveConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkGroupsOperations.
+        /// </summary>
+        public virtual INetworkGroupsOperations NetworkGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecurityConfigurationsOperations.
+        /// </summary>
+        public virtual ISecurityConfigurationsOperations SecurityConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the IAdminRulesOperations.
+        /// </summary>
+        public virtual IAdminRulesOperations AdminRules { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserRulesOperations.
+        /// </summary>
+        public virtual IUserRulesOperations UserRules { get; private set; }
+
+        /// <summary>
         /// Gets the INetworkProfilesOperations.
         /// </summary>
         public virtual INetworkProfilesOperations NetworkProfiles { get; private set; }
@@ -893,6 +948,17 @@ namespace Microsoft.Azure.Management.Network
             NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
             NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
             NetworkInterfaceTapConfigurations = new NetworkInterfaceTapConfigurationsOperations(this);
+            NetworkManagers = new NetworkManagersOperations(this);
+            NetworkManagerCommits = new NetworkManagerCommitsOperations(this);
+            NetworkManagerDeploymentStatus = new NetworkManagerDeploymentStatusOperations(this);
+            EffectiveVirtualNetworks = new EffectiveVirtualNetworksOperations(this);
+            ActiveConfigurations = new ActiveConfigurationsOperations(this);
+            ConnectivityConfigurations = new ConnectivityConfigurationsOperations(this);
+            EffectiveConfigurations = new EffectiveConfigurationsOperations(this);
+            NetworkGroups = new NetworkGroupsOperations(this);
+            SecurityConfigurations = new SecurityConfigurationsOperations(this);
+            AdminRules = new AdminRulesOperations(this);
+            UserRules = new UserRulesOperations(this);
             NetworkProfiles = new NetworkProfilesOperations(this);
             NetworkSecurityGroups = new NetworkSecurityGroupsOperations(this);
             SecurityRules = new SecurityRulesOperations(this);
