@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="provisioningState">Resource provisioning state</param>
         /// <param name="encryption">The encryption details of the
         /// workspace</param>
-        public WorkspacePatchInfo(IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedIdentity identity = default(ManagedIdentity), string sqlAdministratorLoginPassword = default(string), ManagedVirtualNetworkSettings managedVirtualNetworkSettings = default(ManagedVirtualNetworkSettings), WorkspaceRepositoryConfiguration workspaceRepositoryConfiguration = default(WorkspaceRepositoryConfiguration), PurviewConfiguration purviewConfiguration = default(PurviewConfiguration), string provisioningState = default(string), EncryptionDetails encryption = default(EncryptionDetails))
+        /// <param name="networkSettings">Network Settings</param>
+        public WorkspacePatchInfo(IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedIdentity identity = default(ManagedIdentity), string sqlAdministratorLoginPassword = default(string), ManagedVirtualNetworkSettings managedVirtualNetworkSettings = default(ManagedVirtualNetworkSettings), WorkspaceRepositoryConfiguration workspaceRepositoryConfiguration = default(WorkspaceRepositoryConfiguration), PurviewConfiguration purviewConfiguration = default(PurviewConfiguration), string provisioningState = default(string), EncryptionDetails encryption = default(EncryptionDetails), NetworkSettings networkSettings = default(NetworkSettings))
         {
             Tags = tags;
             Identity = identity;
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             PurviewConfiguration = purviewConfiguration;
             ProvisioningState = provisioningState;
             Encryption = encryption;
+            NetworkSettings = networkSettings;
             CustomInit();
         }
 
@@ -111,6 +113,12 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryption")]
         public EncryptionDetails Encryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets network Settings
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkSettings")]
+        public NetworkSettings NetworkSettings { get; set; }
 
     }
 }
