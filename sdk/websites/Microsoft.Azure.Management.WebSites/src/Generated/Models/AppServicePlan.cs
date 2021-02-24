@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="workerTierName">Target worker tier assigned to the App
         /// Service plan.</param>
         /// <param name="status">App Service plan status. Possible values
@@ -82,8 +84,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="provisioningState">Provisioning state of the App
         /// Service Environment. Possible values include: 'Succeeded',
         /// 'Failed', 'Canceled', 'InProgress', 'Deleting'</param>
-        public AppServicePlan(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string workerTierName = default(string), StatusOptions? status = default(StatusOptions?), string subscription = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), int? maximumNumberOfWorkers = default(int?), string geoRegion = default(string), bool? perSiteScaling = default(bool?), int? maximumElasticWorkerCount = default(int?), int? numberOfSites = default(int?), bool? isSpot = default(bool?), System.DateTime? spotExpirationTime = default(System.DateTime?), System.DateTime? freeOfferExpirationTime = default(System.DateTime?), string resourceGroup = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), int? targetWorkerCount = default(int?), int? targetWorkerSizeId = default(int?), ProvisioningState? provisioningState = default(ProvisioningState?), SkuDescription sku = default(SkuDescription))
-            : base(location, id, name, kind, type, tags)
+        public AppServicePlan(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string workerTierName = default(string), StatusOptions? status = default(StatusOptions?), string subscription = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), int? maximumNumberOfWorkers = default(int?), string geoRegion = default(string), bool? perSiteScaling = default(bool?), int? maximumElasticWorkerCount = default(int?), int? numberOfSites = default(int?), bool? isSpot = default(bool?), System.DateTime? spotExpirationTime = default(System.DateTime?), System.DateTime? freeOfferExpirationTime = default(System.DateTime?), string resourceGroup = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), int? targetWorkerCount = default(int?), int? targetWorkerSizeId = default(int?), ProvisioningState? provisioningState = default(ProvisioningState?), SkuDescription sku = default(SkuDescription))
+            : base(location, id, name, kind, type, tags, systemData)
         {
             WorkerTierName = workerTierName;
             Status = status;

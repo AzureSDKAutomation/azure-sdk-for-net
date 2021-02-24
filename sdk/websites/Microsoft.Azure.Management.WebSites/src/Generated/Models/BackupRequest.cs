@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="backupName">Name of the backup.</param>
         /// <param name="enabled">True if the backup schedule is enabled (must
         /// be included in that case), false if the backup schedule should be
@@ -46,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="backupSchedule">Schedule for the backup if it is
         /// executed periodically.</param>
         /// <param name="databases">Databases included in the backup.</param>
-        public BackupRequest(string storageAccountUrl, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string backupName = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
-            : base(id, name, kind, type)
+        public BackupRequest(string storageAccountUrl, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string backupName = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
+            : base(id, name, kind, type, systemData)
         {
             BackupName = backupName;
             Enabled = enabled;

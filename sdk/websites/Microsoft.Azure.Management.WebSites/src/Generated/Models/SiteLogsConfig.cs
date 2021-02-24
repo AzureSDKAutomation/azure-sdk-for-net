@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="applicationLogs">Application logs
         /// configuration.</param>
         /// <param name="httpLogs">HTTP logs configuration.</param>
@@ -43,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// configuration.</param>
         /// <param name="detailedErrorMessages">Detailed error messages
         /// configuration.</param>
-        public SiteLogsConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ApplicationLogsConfig applicationLogs = default(ApplicationLogsConfig), HttpLogsConfig httpLogs = default(HttpLogsConfig), EnabledConfig failedRequestsTracing = default(EnabledConfig), EnabledConfig detailedErrorMessages = default(EnabledConfig))
-            : base(id, name, kind, type)
+        public SiteLogsConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), ApplicationLogsConfig applicationLogs = default(ApplicationLogsConfig), HttpLogsConfig httpLogs = default(HttpLogsConfig), EnabledConfig failedRequestsTracing = default(EnabledConfig), EnabledConfig detailedErrorMessages = default(EnabledConfig))
+            : base(id, name, kind, type, systemData)
         {
             ApplicationLogs = applicationLogs;
             HttpLogs = httpLogs;
