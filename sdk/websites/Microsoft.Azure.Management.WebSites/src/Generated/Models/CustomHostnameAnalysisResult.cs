@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param
         /// name="isHostnameAlreadyVerified">&lt;code&gt;true&lt;/code&gt; if
         /// hostname is already verified; otherwise,
@@ -68,8 +70,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// controller can see for this hostname.</param>
         /// <param name="alternateTxtRecords">Alternate TXT records controller
         /// can see for this hostname.</param>
-        public CustomHostnameAnalysisResult(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? isHostnameAlreadyVerified = default(bool?), DnsVerificationTestResult? customDomainVerificationTest = default(DnsVerificationTestResult?), ErrorEntity customDomainVerificationFailureInfo = default(ErrorEntity), bool? hasConflictOnScaleUnit = default(bool?), bool? hasConflictAcrossSubscription = default(bool?), string conflictingAppResourceId = default(string), IList<string> cNameRecords = default(IList<string>), IList<string> txtRecords = default(IList<string>), IList<string> aRecords = default(IList<string>), IList<string> alternateCNameRecords = default(IList<string>), IList<string> alternateTxtRecords = default(IList<string>))
-            : base(id, name, kind, type)
+        public CustomHostnameAnalysisResult(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? isHostnameAlreadyVerified = default(bool?), DnsVerificationTestResult? customDomainVerificationTest = default(DnsVerificationTestResult?), ErrorEntity customDomainVerificationFailureInfo = default(ErrorEntity), bool? hasConflictOnScaleUnit = default(bool?), bool? hasConflictAcrossSubscription = default(bool?), string conflictingAppResourceId = default(string), IList<string> cNameRecords = default(IList<string>), IList<string> txtRecords = default(IList<string>), IList<string> aRecords = default(IList<string>), IList<string> alternateCNameRecords = default(IList<string>), IList<string> alternateTxtRecords = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             IsHostnameAlreadyVerified = isHostnameAlreadyVerified;
             CustomDomainVerificationTest = customDomainVerificationTest;

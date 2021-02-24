@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="snapshotTime">Point in time in which the app restore
         /// should be done, formatted as a DateTime string.</param>
         /// <param name="recoverySource">Optional. Specifies the web app that
@@ -52,8 +54,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// enabled.</param>
         /// <param name="useDRSecondary">If true, the snapshot is retrieved
         /// from DRSecondary endpoint.</param>
-        public SnapshotRestoreRequest(bool overwrite, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string snapshotTime = default(string), SnapshotRecoverySource recoverySource = default(SnapshotRecoverySource), bool? recoverConfiguration = default(bool?), bool? ignoreConflictingHostNames = default(bool?), bool? useDRSecondary = default(bool?))
-            : base(id, name, kind, type)
+        public SnapshotRestoreRequest(bool overwrite, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string snapshotTime = default(string), SnapshotRecoverySource recoverySource = default(SnapshotRecoverySource), bool? recoverConfiguration = default(bool?), bool? ignoreConflictingHostNames = default(bool?), bool? useDRSecondary = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             SnapshotTime = snapshotTime;
             RecoverySource = recoverySource;
