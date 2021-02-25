@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.HDInsight.Models
     using System.Linq;
 
     /// <summary>
-    /// Cluster monitoring extensions
+    /// Cluster monitoring extensions.
     /// </summary>
     public partial class Extension
     {
@@ -33,10 +33,13 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// monitoring extension.</param>
         /// <param name="primaryKey">The certificate for the cluster monitoring
         /// extensions.</param>
-        public Extension(string workspaceId = default(string), string primaryKey = default(string))
+        /// <param name="selectedConfigurations">The selected
+        /// configurations.</param>
+        public Extension(string workspaceId = default(string), string primaryKey = default(string), string selectedConfigurations = default(string))
         {
             WorkspaceId = workspaceId;
             PrimaryKey = primaryKey;
+            SelectedConfigurations = selectedConfigurations;
             CustomInit();
         }
 
@@ -56,6 +59,12 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [JsonProperty(PropertyName = "primaryKey")]
         public string PrimaryKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected configurations.
+        /// </summary>
+        [JsonProperty(PropertyName = "selectedConfigurations")]
+        public string SelectedConfigurations { get; set; }
 
     }
 }
