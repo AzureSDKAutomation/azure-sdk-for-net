@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Management.Confluent.Models
         public System.DateTime? CreatedTime { get; private set; }
 
         /// <summary>
-        /// Gets or sets provision states for confluent RP. Possible values
-        /// include: 'Accepted', 'Creating', 'Updating', 'Deleting',
-        /// 'Succeeded', 'Failed', 'Canceled', 'Deleted', 'NotSpecified'
+        /// Gets provision states for confluent RP. Possible values include:
+        /// 'Accepted', 'Creating', 'Updating', 'Deleting', 'Succeeded',
+        /// 'Failed', 'Canceled', 'Deleted', 'NotSpecified'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public string ProvisioningState { get; set; }
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets id of the Confluent organization.
