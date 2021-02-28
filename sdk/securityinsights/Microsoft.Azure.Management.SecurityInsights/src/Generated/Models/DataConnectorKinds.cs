@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for DataConnectorKind.
+    /// Defines values for DataConnectorKinds.
     /// </summary>
-    public static class DataConnectorKind
+    public static class DataConnectorKinds
     {
         public const string AzureActiveDirectory = "AzureActiveDirectory";
         public const string AzureSecurityCenter = "AzureSecurityCenter";
