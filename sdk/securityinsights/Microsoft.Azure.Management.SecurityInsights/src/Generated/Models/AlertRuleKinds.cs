@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
 
     /// <summary>
-    /// Defines values for AlertRuleKind.
+    /// Defines values for AlertRuleKinds.
     /// </summary>
-    public static class AlertRuleKind
+    public static class AlertRuleKinds
     {
         public const string Scheduled = "Scheduled";
         public const string MicrosoftSecurityIncidentCreation = "MicrosoftSecurityIncidentCreation";
