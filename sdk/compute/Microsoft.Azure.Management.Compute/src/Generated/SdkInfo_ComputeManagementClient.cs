@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.Compute
                 new Tuple<string, string, string>("Compute", "Operations", "2020-12-01"),
                 new Tuple<string, string, string>("Compute", "ProximityPlacementGroups", "2020-12-01"),
                 new Tuple<string, string, string>("Compute", "ResourceSkus", "2019-04-01"),
+                new Tuple<string, string, string>("Compute", "RestorePointCollections", "2020-12-01"),
+                new Tuple<string, string, string>("Compute", "RestorePoints", "2020-12-01"),
                 new Tuple<string, string, string>("Compute", "Snapshots", "2020-09-30"),
                 new Tuple<string, string, string>("Compute", "SshPublicKeys", "2020-12-01"),
                 new Tuple<string, string, string>("Compute", "Usage", "2020-12-01"),

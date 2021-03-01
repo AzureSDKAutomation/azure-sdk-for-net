@@ -167,6 +167,16 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; private set; }
 
         /// <summary>
+        /// Gets the IRestorePointCollectionsOperations.
+        /// </summary>
+        public virtual IRestorePointCollectionsOperations RestorePointCollections { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        public virtual IRestorePointsOperations RestorePoints { get; private set; }
+
+        /// <summary>
         /// Gets the ILogAnalyticsOperations.
         /// </summary>
         public virtual ILogAnalyticsOperations LogAnalytics { get; private set; }
@@ -496,6 +506,8 @@ namespace Microsoft.Azure.Management.Compute
             VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
             VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
             VirtualMachineScaleSetVMs = new VirtualMachineScaleSetVMsOperations(this);
+            RestorePointCollections = new RestorePointCollectionsOperations(this);
+            RestorePoints = new RestorePointsOperations(this);
             LogAnalytics = new LogAnalyticsOperations(this);
             VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
             VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
