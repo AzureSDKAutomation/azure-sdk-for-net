@@ -162,6 +162,16 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; }
 
         /// <summary>
+        /// Gets the IRestorePointCollectionsOperations.
+        /// </summary>
+        IRestorePointCollectionsOperations RestorePointCollections { get; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        IRestorePointsOperations RestorePoints { get; }
+
+        /// <summary>
         /// Gets the ILogAnalyticsOperations.
         /// </summary>
         ILogAnalyticsOperations LogAnalytics { get; }
