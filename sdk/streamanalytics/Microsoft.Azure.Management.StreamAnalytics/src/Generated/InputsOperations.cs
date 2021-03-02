@@ -108,6 +108,17 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 input.Validate();
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.ApiVersion != null)
+            {
+                if (Client.ApiVersion.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -146,7 +157,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "inputName");
             }
-            string apiVersion = "2017-04-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -157,7 +167,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
                 tracingParameters.Add("input", input);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("ifNoneMatch", ifNoneMatch);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("inputName", inputName);
@@ -172,9 +181,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{inputName}", System.Uri.EscapeDataString(inputName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -407,6 +416,17 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "input");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.ApiVersion != null)
+            {
+                if (Client.ApiVersion.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -445,7 +465,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "inputName");
             }
-            string apiVersion = "2017-04-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -455,7 +474,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("input", input);
                 tracingParameters.Add("ifMatch", ifMatch);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("inputName", inputName);
@@ -470,9 +488,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{inputName}", System.Uri.EscapeDataString(inputName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -658,6 +676,17 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// </return>
         public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string jobName, string inputName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.ApiVersion != null)
+            {
+                if (Client.ApiVersion.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -696,7 +725,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "inputName");
             }
-            string apiVersion = "2017-04-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -704,7 +732,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("inputName", inputName);
@@ -719,9 +746,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{inputName}", System.Uri.EscapeDataString(inputName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -865,6 +892,17 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// </return>
         public async Task<AzureOperationResponse<Input,InputsGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string jobName, string inputName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.ApiVersion != null)
+            {
+                if (Client.ApiVersion.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -903,7 +941,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "inputName");
             }
-            string apiVersion = "2017-04-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -911,7 +948,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("inputName", inputName);
@@ -926,9 +962,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{inputName}", System.Uri.EscapeDataString(inputName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1106,6 +1142,17 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// </return>
         public async Task<AzureOperationResponse<IPage<Input>>> ListByStreamingJobWithHttpMessagesAsync(string resourceGroupName, string jobName, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.ApiVersion != null)
+            {
+                if (Client.ApiVersion.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1140,7 +1187,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
             }
-            string apiVersion = "2017-04-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1149,7 +1195,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("select", select);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1166,9 +1211,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 _queryParameters.Add(string.Format("$select={0}", System.Uri.EscapeDataString(select)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1377,6 +1422,17 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 input.Validate();
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.ApiVersion != null)
+            {
+                if (Client.ApiVersion.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1415,7 +1471,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "inputName");
             }
-            string apiVersion = "2017-04-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1424,7 +1479,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("input", input);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("inputName", inputName);
@@ -1439,9 +1493,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{inputName}", System.Uri.EscapeDataString(inputName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

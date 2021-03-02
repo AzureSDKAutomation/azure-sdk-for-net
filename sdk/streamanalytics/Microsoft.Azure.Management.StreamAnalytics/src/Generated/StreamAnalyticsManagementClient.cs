@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -80,6 +85,11 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         public virtual IInputsOperations Inputs { get; private set; }
 
         /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
         /// Gets the IOutputsOperations.
         /// </summary>
         public virtual IOutputsOperations Outputs { get; private set; }
@@ -98,21 +108,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// Gets the ITransformationsOperations.
         /// </summary>
         public virtual ITransformationsOperations Transformations { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IClustersOperations.
-        /// </summary>
-        public virtual IClustersOperations Clusters { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointsOperations.
-        /// </summary>
-        public virtual IPrivateEndpointsOperations PrivateEndpoints { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the StreamAnalyticsManagementClient class.
@@ -357,14 +352,13 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         {
             Functions = new FunctionsOperations(this);
             Inputs = new InputsOperations(this);
+            Operations = new Operations(this);
             Outputs = new OutputsOperations(this);
             StreamingJobs = new StreamingJobsOperations(this);
             Subscriptions = new SubscriptionsOperations(this);
             Transformations = new TransformationsOperations(this);
-            Operations = new Operations(this);
-            Clusters = new ClustersOperations(this);
-            PrivateEndpoints = new PrivateEndpointsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2017-04-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
