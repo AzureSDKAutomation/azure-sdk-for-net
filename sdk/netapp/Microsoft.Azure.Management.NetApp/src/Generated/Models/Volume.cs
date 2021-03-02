@@ -424,20 +424,17 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 DataProtection.Validate();
             }
-            if (ThroughputMibps != null)
+            if (ThroughputMibps > 4500)
             {
-                if (ThroughputMibps > 4500)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "ThroughputMibps", 4500);
-                }
-                if (ThroughputMibps < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "ThroughputMibps", 0);
-                }
-                if (ThroughputMibps % 0.001 != 0)
-                {
-                    throw new ValidationException(ValidationRules.MultipleOf, "ThroughputMibps", 0.001);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "ThroughputMibps", 4500);
+            }
+            if (ThroughputMibps < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "ThroughputMibps", 0);
+            }
+            if (ThroughputMibps % 0.001 != 0)
+            {
+                throw new ValidationException(ValidationRules.MultipleOf, "ThroughputMibps", 0.001);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.NetApp
     using System.Net.Http;
 
     /// <summary>
-    /// Microsoft NetApp Azure Resource Provider specification
+    /// Microsoft NetApp Files Azure Resource Provider specification
     /// </summary>
     public partial class AzureNetAppFilesManagementClient : ServiceClient<AzureNetAppFilesManagementClient>, IAzureNetAppFilesManagementClient, IAzureClient
     {
