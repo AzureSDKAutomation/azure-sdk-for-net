@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Compute", "NetworkInterfaces", "2020-08-01"),
                 new Tuple<string, string, string>("Compute", "PublicIPAddresses", "2018-10-01"),
                 new Tuple<string, string, string>("Compute", "PublicIPAddresses", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "ActiveConfigurations", "2021-02-01-preview"),
+                new Tuple<string, string, string>("Network", "AdminRules", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "ApplicationGatewayPrivateEndpointConnections", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "ApplicationGatewayPrivateLinkResources", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "ApplicationGateways", "2020-08-01"),
@@ -38,6 +40,7 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "BgpServiceCommunities", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "CheckDnsNameAvailability", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "ConnectionMonitors", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "ConnectivityConfigurations", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "CustomIPPrefixes", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "DdosCustomPolicies", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "DdosProtectionPlans", "2020-08-01"),
@@ -45,6 +48,8 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "DeleteBastionShareableLink", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "DisconnectActiveSessions", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "DscpConfiguration", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "EffectiveConfigurations", "2021-02-01-preview"),
+                new Tuple<string, string, string>("Network", "EffectiveVirtualNetworks", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "ExpressRouteCircuitAuthorizations", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "ExpressRouteCircuitConnections", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "ExpressRouteCircuitPeerings", "2020-08-01"),
@@ -78,10 +83,14 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "LocalNetworkGateways", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NatGateways", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NatRules", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "NetworkGroups", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "NetworkInterfaceIPConfigurations", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NetworkInterfaceLoadBalancers", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NetworkInterfaceTapConfigurations", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NetworkInterfaces", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "NetworkManagerCommits", "2021-02-01-preview"),
+                new Tuple<string, string, string>("Network", "NetworkManagerDeploymentStatus", "2021-02-01-preview"),
+                new Tuple<string, string, string>("Network", "NetworkManagers", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "NetworkProfiles", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NetworkSecurityGroups", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "NetworkVirtualAppliances", "2020-08-01"),
@@ -102,6 +111,7 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "RouteFilters", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "RouteTables", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "Routes", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "SecurityConfigurations", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "SecurityPartnerProviders", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "SecurityRules", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "ServiceAssociationLinks", "2020-08-01"),
@@ -111,6 +121,7 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "Subnets", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "SupportedSecurityProviders", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "Usages", "2020-08-01"),
+                new Tuple<string, string, string>("Network", "UserRules", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Network", "VirtualApplianceSites", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "VirtualApplianceSkus", "2020-08-01"),
                 new Tuple<string, string, string>("Network", "VirtualHubBgpConnection", "2020-08-01"),
@@ -141,16 +152,5 @@ namespace Microsoft.Azure.Management.Network
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "v2";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4413";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/readme.md --csharp --version=v2 --reflect-api-versions --csharp-sdks-folder=C:\\Projects\\Generator\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "34f7a6a94a5edfe32bc914f56443b980f582e599";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-
