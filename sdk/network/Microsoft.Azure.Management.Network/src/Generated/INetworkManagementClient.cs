@@ -296,6 +296,61 @@ namespace Microsoft.Azure.Management.Network
         INetworkInterfaceTapConfigurationsOperations NetworkInterfaceTapConfigurations { get; }
 
         /// <summary>
+        /// Gets the INetworkManagersOperations.
+        /// </summary>
+        INetworkManagersOperations NetworkManagers { get; }
+
+        /// <summary>
+        /// Gets the INetworkManagerCommitsOperations.
+        /// </summary>
+        INetworkManagerCommitsOperations NetworkManagerCommits { get; }
+
+        /// <summary>
+        /// Gets the INetworkManagerDeploymentStatusOperations.
+        /// </summary>
+        INetworkManagerDeploymentStatusOperations NetworkManagerDeploymentStatus { get; }
+
+        /// <summary>
+        /// Gets the IEffectiveVirtualNetworksOperations.
+        /// </summary>
+        IEffectiveVirtualNetworksOperations EffectiveVirtualNetworks { get; }
+
+        /// <summary>
+        /// Gets the IActiveConfigurationsOperations.
+        /// </summary>
+        IActiveConfigurationsOperations ActiveConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IConnectivityConfigurationsOperations.
+        /// </summary>
+        IConnectivityConfigurationsOperations ConnectivityConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IEffectiveConfigurationsOperations.
+        /// </summary>
+        IEffectiveConfigurationsOperations EffectiveConfigurations { get; }
+
+        /// <summary>
+        /// Gets the INetworkGroupsOperations.
+        /// </summary>
+        INetworkGroupsOperations NetworkGroups { get; }
+
+        /// <summary>
+        /// Gets the ISecurityConfigurationsOperations.
+        /// </summary>
+        ISecurityConfigurationsOperations SecurityConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IAdminRulesOperations.
+        /// </summary>
+        IAdminRulesOperations AdminRules { get; }
+
+        /// <summary>
+        /// Gets the IUserRulesOperations.
+        /// </summary>
+        IUserRulesOperations UserRules { get; }
+
+        /// <summary>
         /// Gets the INetworkProfilesOperations.
         /// </summary>
         INetworkProfilesOperations NetworkProfiles { get; }
