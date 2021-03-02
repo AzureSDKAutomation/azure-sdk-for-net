@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -75,6 +80,11 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         IInputsOperations Inputs { get; }
 
         /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
         /// Gets the IOutputsOperations.
         /// </summary>
         IOutputsOperations Outputs { get; }
@@ -93,21 +103,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// Gets the ITransformationsOperations.
         /// </summary>
         ITransformationsOperations Transformations { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IClustersOperations.
-        /// </summary>
-        IClustersOperations Clusters { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointsOperations.
-        /// </summary>
-        IPrivateEndpointsOperations PrivateEndpoints { get; }
 
     }
 }
