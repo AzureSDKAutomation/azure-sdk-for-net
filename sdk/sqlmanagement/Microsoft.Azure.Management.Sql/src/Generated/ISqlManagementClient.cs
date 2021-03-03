@@ -547,5 +547,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         ILongTermRetentionPoliciesOperations LongTermRetentionPolicies { get; }
 
+        /// <summary>
+        /// Gets the IHybridLinksOperations.
+        /// </summary>
+        IHybridLinksOperations HybridLinks { get; }
+
     }
 }
