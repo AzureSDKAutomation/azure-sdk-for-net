@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="registrationStatus">Domain registration status.
         /// Possible values include: 'Active', 'Awaiting', 'Cancelled',
         /// 'Confiscated', 'Disabled', 'Excluded', 'Expired', 'Failed', 'Held',
@@ -83,8 +85,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="targetDnsType">Target DNS type (would be used for
         /// migration). Possible values include: 'AzureDns',
         /// 'DefaultDomainRegistrarDns'</param>
-        public Domain(string location, Contact contactAdmin, Contact contactBilling, Contact contactRegistrant, Contact contactTech, DomainPurchaseConsent consent, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DomainStatus? registrationStatus = default(DomainStatus?), ProvisioningState? provisioningState = default(ProvisioningState?), IList<string> nameServers = default(IList<string>), bool? privacy = default(bool?), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), System.DateTime? lastRenewedTime = default(System.DateTime?), bool? autoRenew = default(bool?), bool? readyForDnsRecordManagement = default(bool?), IList<HostName> managedHostNames = default(IList<HostName>), IList<string> domainNotRenewableReasons = default(IList<string>), DnsType? dnsType = default(DnsType?), string dnsZoneId = default(string), DnsType? targetDnsType = default(DnsType?), string authCode = default(string))
-            : base(location, id, name, kind, type, tags)
+        public Domain(string location, Contact contactAdmin, Contact contactBilling, Contact contactRegistrant, Contact contactTech, DomainPurchaseConsent consent, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), DomainStatus? registrationStatus = default(DomainStatus?), ProvisioningState? provisioningState = default(ProvisioningState?), IList<string> nameServers = default(IList<string>), bool? privacy = default(bool?), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), System.DateTime? lastRenewedTime = default(System.DateTime?), bool? autoRenew = default(bool?), bool? readyForDnsRecordManagement = default(bool?), IList<HostName> managedHostNames = default(IList<HostName>), IList<string> domainNotRenewableReasons = default(IList<string>), DnsType? dnsType = default(DnsType?), string dnsZoneId = default(string), DnsType? targetDnsType = default(DnsType?), string authCode = default(string))
+            : base(location, id, name, kind, type, tags, systemData)
         {
             ContactAdmin = contactAdmin;
             ContactBilling = contactBilling;
