@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "FailoverGroups", "2015-05-01-preview"),
                 new Tuple<string, string, string>("Sql", "FirewallRules", "2014-04-01"),
                 new Tuple<string, string, string>("Sql", "GeoBackupPolicies", "2014-04-01"),
+                new Tuple<string, string, string>("Sql", "HybridLinks", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ImportExport", "2020-02-02-preview"),
                 new Tuple<string, string, string>("Sql", "InstanceFailoverGroups", "2017-10-01-preview"),
                 new Tuple<string, string, string>("Sql", "InstancePools", "2018-06-01-preview"),
