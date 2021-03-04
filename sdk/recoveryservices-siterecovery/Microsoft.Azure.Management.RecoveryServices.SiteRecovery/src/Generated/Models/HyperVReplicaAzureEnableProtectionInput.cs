@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// placement group ARM Id.</param>
         /// <param name="targetAvailabilitySetId">The availability set ARM
         /// Id.</param>
-        public HyperVReplicaAzureEnableProtectionInput(string hvHostVmId = default(string), string vmName = default(string), string osType = default(string), string vhdId = default(string), string targetStorageAccountId = default(string), string targetAzureNetworkId = default(string), string targetAzureSubnetId = default(string), string enableRdpOnTargetOption = default(string), string targetAzureVmName = default(string), string logStorageAccountId = default(string), IList<string> disksToInclude = default(IList<string>), string targetAzureV1ResourceGroupId = default(string), string targetAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetAvailabilitySetId = default(string))
+        /// <param name="targetVmSize">The target VM size.</param>
+        public HyperVReplicaAzureEnableProtectionInput(string hvHostVmId = default(string), string vmName = default(string), string osType = default(string), string vhdId = default(string), string targetStorageAccountId = default(string), string targetAzureNetworkId = default(string), string targetAzureSubnetId = default(string), string enableRdpOnTargetOption = default(string), string targetAzureVmName = default(string), string logStorageAccountId = default(string), IList<string> disksToInclude = default(IList<string>), string targetAzureV1ResourceGroupId = default(string), string targetAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetAvailabilitySetId = default(string), string targetVmSize = default(string))
         {
             HvHostVmId = hvHostVmId;
             VmName = vmName;
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             TargetAvailabilityZone = targetAvailabilityZone;
             TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
             TargetAvailabilitySetId = targetAvailabilitySetId;
+            TargetVmSize = targetVmSize;
             CustomInit();
         }
 
@@ -200,6 +202,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "targetAvailabilitySetId")]
         public string TargetAvailabilitySetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM size.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetVmSize")]
+        public string TargetVmSize { get; set; }
 
     }
 }
