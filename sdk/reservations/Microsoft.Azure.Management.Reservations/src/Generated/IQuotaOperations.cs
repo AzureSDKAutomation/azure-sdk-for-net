@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.Reservations
     public partial interface IQuotaOperations
     {
         /// <summary>
-        /// Get the current quota (service limit) and usage of a resource. You
-        /// can use the response from the GET operation to submit quota update
-        /// request.
+        /// Get the current `quota` (service limit) and usage of a resource.
+        /// You can use the response from the GET operation to submit quota
+        /// update request.
         /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription ID.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<CurrentQuotaLimitBase,QuotaGetHeaders>> GetWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update the quota (service limits) of a resource to the
+        /// Create or update the `quota` (service limits) of a resource to the
         /// requested value.
         /// Steps:
         ///
@@ -107,8 +107,8 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> CreateOrUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update the quota (service limits) of this resource to the requested
-        /// value.
+        /// Update the `quota` (service limits) of this resource to the
+        /// requested value.
         ///
         /// • To get the quota information for specific resource, send a GET
         /// request.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> UpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of current quotas (service limits) and usage for all
+        /// Gets a list of current `quotas` (service limits) and usage for all
         /// resources. The response from the list quota operation can be
         /// leveraged to request quota updates.
         /// </summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<IPage<CurrentQuotaLimitBase>,QuotaListHeaders>> ListWithHttpMessagesAsync(string subscriptionId, string providerId, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update the quota (service limits) of a resource to the
+        /// Create or update the `quota` (service limits) of a resource to the
         /// requested value.
         /// Steps:
         ///
@@ -232,8 +232,8 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> BeginCreateOrUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update the quota (service limits) of this resource to the requested
-        /// value.
+        /// Update the `quota` (service limits) of this resource to the
+        /// requested value.
         ///
         /// • To get the quota information for specific resource, send a GET
         /// request.
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<object>> BeginUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of current quotas (service limits) and usage for all
+        /// Gets a list of current `quotas` (service limits) and usage for all
         /// resources. The response from the list quota operation can be
         /// leveraged to request quota updates.
         /// </summary>

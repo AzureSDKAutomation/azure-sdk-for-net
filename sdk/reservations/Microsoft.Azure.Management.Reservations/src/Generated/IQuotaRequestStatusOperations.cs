@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Reservations
     {
         /// <summary>
         /// For the specified Azure region (location), get the details and
-        /// status of the quota request by the quota request ID for the
+        /// status of the `quota request` by the quota request ID for the
         /// resources of the resource provider. The PUT request for the quota
         /// (service limit) returns a response with the requestId parameter.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Reservations
         Task<AzureOperationResponse<QuotaRequestDetails>> GetWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// For the specified Azure region (location), subscription, and
-        /// resource provider, get the history of the quota requests for the
+        /// resource provider, get the history of the `quota request`s for the
         /// past year. To select specific quota requests, use the oData filter.
         /// </summary>
         /// <param name='subscriptionId'>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Reservations
         Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// For the specified Azure region (location), subscription, and
-        /// resource provider, get the history of the quota requests for the
+        /// resource provider, get the history of the `quota request`s for the
         /// past year. To select specific quota requests, use the oData filter.
         /// </summary>
         /// <param name='nextPageLink'>

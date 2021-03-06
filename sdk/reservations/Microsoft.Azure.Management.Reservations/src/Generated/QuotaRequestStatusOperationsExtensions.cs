@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Management.Reservations
     {
             /// <summary>
             /// For the specified Azure region (location), get the details and status of
-            /// the quota request by the quota request ID for the resources of the resource
-            /// provider. The PUT request for the quota (service limit) returns a response
-            /// with the requestId parameter.
+            /// the `quota request` by the quota request ID for the resources of the
+            /// resource provider. The PUT request for the quota (service limit) returns a
+            /// response with the requestId parameter.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Reservations
 
             /// <summary>
             /// For the specified Azure region (location), get the details and status of
-            /// the quota request by the quota request ID for the resources of the resource
-            /// provider. The PUT request for the quota (service limit) returns a response
-            /// with the requestId parameter.
+            /// the `quota request` by the quota request ID for the resources of the
+            /// resource provider. The PUT request for the quota (service limit) returns a
+            /// response with the requestId parameter.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Reservations
 
             /// <summary>
             /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
+            /// provider, get the history of the `quota request`s for the past year. To
             /// select specific quota requests, use the oData filter.
             /// </summary>
             /// <param name='operations'>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Reservations
 
             /// <summary>
             /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
+            /// provider, get the history of the `quota request`s for the past year. To
             /// select specific quota requests, use the oData filter.
             /// </summary>
             /// <param name='operations'>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Reservations
 
             /// <summary>
             /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
+            /// provider, get the history of the `quota request`s for the past year. To
             /// select specific quota requests, use the oData filter.
             /// </summary>
             /// <param name='operations'>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Reservations
 
             /// <summary>
             /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
+            /// provider, get the history of the `quota request`s for the past year. To
             /// select specific quota requests, use the oData filter.
             /// </summary>
             /// <param name='operations'>

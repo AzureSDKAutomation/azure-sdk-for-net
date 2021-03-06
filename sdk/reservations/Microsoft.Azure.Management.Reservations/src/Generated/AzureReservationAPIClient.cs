@@ -64,6 +64,16 @@ namespace Microsoft.Azure.Management.Reservations
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IQuotaOperations.
+        /// </summary>
+        public virtual IQuotaOperations Quota { get; private set; }
+
+        /// <summary>
+        /// Gets the IQuotaRequestStatusOperations.
+        /// </summary>
+        public virtual IQuotaRequestStatusOperations QuotaRequestStatus { get; private set; }
+
+        /// <summary>
         /// Gets the IReservationOperations.
         /// </summary>
         public virtual IReservationOperations Reservation { get; private set; }
@@ -87,16 +97,6 @@ namespace Microsoft.Azure.Management.Reservations
         /// Gets the IExchangeOperations.
         /// </summary>
         public virtual IExchangeOperations Exchange { get; private set; }
-
-        /// <summary>
-        /// Gets the IQuotaOperations.
-        /// </summary>
-        public virtual IQuotaOperations Quota { get; private set; }
-
-        /// <summary>
-        /// Gets the IQuotaRequestStatusOperations.
-        /// </summary>
-        public virtual IQuotaRequestStatusOperations QuotaRequestStatus { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AzureReservationAPIClient class.
@@ -339,13 +339,13 @@ namespace Microsoft.Azure.Management.Reservations
         /// </summary>
         private void Initialize()
         {
+            Quota = new QuotaOperations(this);
+            QuotaRequestStatus = new QuotaRequestStatusOperations(this);
             Reservation = new ReservationOperations(this);
             ReservationOrder = new ReservationOrderOperations(this);
             Operation = new OperationOperations(this);
             CalculateExchange = new CalculateExchangeOperations(this);
             Exchange = new ExchangeOperations(this);
-            Quota = new QuotaOperations(this);
-            QuotaRequestStatus = new QuotaRequestStatusOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

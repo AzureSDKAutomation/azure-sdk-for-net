@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Management.Reservations
         public AzureReservationAPIClient Client { get; private set; }
 
         /// <summary>
-        /// Get the current quota (service limit) and usage of a resource. You can use
-        /// the response from the GET operation to submit quota update request.
+        /// Get the current `quota` (service limit) and usage of a resource. You can
+        /// use the response from the GET operation to submit quota update request.
         /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription ID.
@@ -269,8 +269,8 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Create or update the quota (service limits) of a resource to the requested
-        /// value.
+        /// Create or update the `quota` (service limits) of a resource to the
+        /// requested value.
         /// Steps:
         ///
         /// 1. Make the Get request to get the quota information for specific resource.
@@ -313,7 +313,8 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Update the quota (service limits) of this resource to the requested value.
+        /// Update the `quota` (service limits) of this resource to the requested
+        /// value.
         ///
         /// • To get the quota information for specific resource, send a GET request.
         ///
@@ -355,9 +356,9 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Gets a list of current quotas (service limits) and usage for all resources.
-        /// The response from the list quota operation can be leveraged to request
-        /// quota updates.
+        /// Gets a list of current `quotas` (service limits) and usage for all
+        /// resources. The response from the list quota operation can be leveraged to
+        /// request quota updates.
         /// </summary>
         /// <param name='subscriptionId'>
         /// Azure subscription ID.
@@ -563,8 +564,8 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Create or update the quota (service limits) of a resource to the requested
-        /// value.
+        /// Create or update the `quota` (service limits) of a resource to the
+        /// requested value.
         /// Steps:
         ///
         /// 1. Make the Get request to get the quota information for specific resource.
@@ -810,7 +811,8 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Update the quota (service limits) of this resource to the requested value.
+        /// Update the `quota` (service limits) of this resource to the requested
+        /// value.
         ///
         /// • To get the quota information for specific resource, send a GET request.
         ///
@@ -1055,9 +1057,9 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Gets a list of current quotas (service limits) and usage for all resources.
-        /// The response from the list quota operation can be leveraged to request
-        /// quota updates.
+        /// Gets a list of current `quotas` (service limits) and usage for all
+        /// resources. The response from the list quota operation can be leveraged to
+        /// request quota updates.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
