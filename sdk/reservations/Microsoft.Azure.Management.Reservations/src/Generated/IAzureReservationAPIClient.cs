@@ -63,6 +63,16 @@ namespace Microsoft.Azure.Management.Reservations
 
 
         /// <summary>
+        /// Gets the IQuotaOperations.
+        /// </summary>
+        IQuotaOperations Quota { get; }
+
+        /// <summary>
+        /// Gets the IQuotaRequestStatusOperations.
+        /// </summary>
+        IQuotaRequestStatusOperations QuotaRequestStatus { get; }
+
+        /// <summary>
         /// Gets the IReservationOperations.
         /// </summary>
         IReservationOperations Reservation { get; }
@@ -86,16 +96,6 @@ namespace Microsoft.Azure.Management.Reservations
         /// Gets the IExchangeOperations.
         /// </summary>
         IExchangeOperations Exchange { get; }
-
-        /// <summary>
-        /// Gets the IQuotaOperations.
-        /// </summary>
-        IQuotaOperations Quota { get; }
-
-        /// <summary>
-        /// Gets the IQuotaRequestStatusOperations.
-        /// </summary>
-        IQuotaRequestStatusOperations QuotaRequestStatus { get; }
 
         /// <summary>
         /// Get the regions and skus that are available for RI purchase for the
