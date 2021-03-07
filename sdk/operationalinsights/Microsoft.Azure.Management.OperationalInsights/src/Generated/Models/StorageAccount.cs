@@ -30,13 +30,11 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// <summary>
         /// Initializes a new instance of the StorageAccount class.
         /// </summary>
-        /// <param name="id">The Azure Resource Manager ID of the storage
-        /// account resource.</param>
-        /// <param name="key">The storage account key.</param>
-        public StorageAccount(string id, string key)
+        /// <param name="resourceId">The Azure Resource Manager ID of the
+        /// storage account resource.</param>
+        public StorageAccount(string resourceId)
         {
-            Id = id;
-            Key = key;
+            ResourceId = resourceId;
             CustomInit();
         }
 
@@ -49,14 +47,8 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// Gets or sets the Azure Resource Manager ID of the storage account
         /// resource.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the storage account key.
-        /// </summary>
-        [JsonProperty(PropertyName = "key")]
-        public string Key { get; set; }
+        [JsonProperty(PropertyName = "resourceId")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -66,13 +58,9 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Id == null)
+            if (ResourceId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
-            }
-            if (Key == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Key");
+                throw new ValidationException(ValidationRules.CannotBeNull, "ResourceId");
             }
         }
     }
