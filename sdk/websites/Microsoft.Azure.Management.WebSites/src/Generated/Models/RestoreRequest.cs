@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="blobName">Name of a blob which contains the
         /// backup.</param>
         /// <param name="siteName">Name of an app.</param>
@@ -68,8 +70,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="hostingEnvironment">App Service Environment name, if
         /// needed (only when restoring an app to an App Service
         /// Environment).</param>
-        public RestoreRequest(string storageAccountUrl, bool overwrite, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string blobName = default(string), string siteName = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? ignoreConflictingHostNames = default(bool?), bool? ignoreDatabases = default(bool?), string appServicePlan = default(string), BackupRestoreOperationType? operationType = default(BackupRestoreOperationType?), bool? adjustConnectionStrings = default(bool?), string hostingEnvironment = default(string))
-            : base(id, name, kind, type)
+        public RestoreRequest(string storageAccountUrl, bool overwrite, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string blobName = default(string), string siteName = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? ignoreConflictingHostNames = default(bool?), bool? ignoreDatabases = default(bool?), string appServicePlan = default(string), BackupRestoreOperationType? operationType = default(BackupRestoreOperationType?), bool? adjustConnectionStrings = default(bool?), string hostingEnvironment = default(string))
+            : base(id, name, kind, type, systemData)
         {
             StorageAccountUrl = storageAccountUrl;
             BlobName = blobName;

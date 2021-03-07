@@ -35,8 +35,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public AzureActiveDirectoryLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? disableWWWAuthenticate = default(bool?), IList<string> loginParameters = default(IList<string>))
-            : base(id, name, kind, type)
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
+        public AzureActiveDirectoryLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? disableWWWAuthenticate = default(bool?), IList<string> loginParameters = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             DisableWWWAuthenticate = disableWWWAuthenticate;
             LoginParameters = loginParameters;

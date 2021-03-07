@@ -38,11 +38,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="functionName">The name for the function</param>
         /// <param name="triggerType">The trigger type of the function.
         /// Possible values include: 'HttpTrigger', 'Unknown'</param>
-        public StaticSiteFunctionOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string functionName = default(string), string triggerType = default(string))
-            : base(id, name, kind, type)
+        public StaticSiteFunctionOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string functionName = default(string), string triggerType = default(string))
+            : base(id, name, kind, type, systemData)
         {
             FunctionName = functionName;
             TriggerType = triggerType;

@@ -33,10 +33,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="convention">Possible values include: 'NoProxy',
         /// 'Standard', 'Custom'</param>
-        public ForwardProxy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ForwardProxyConvention? convention = default(ForwardProxyConvention?), string customHostHeaderName = default(string), string customProtoHeaderName = default(string))
-            : base(id, name, kind, type)
+        public ForwardProxy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), ForwardProxyConvention? convention = default(ForwardProxyConvention?), string customHostHeaderName = default(string), string customProtoHeaderName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Convention = convention;
             CustomHostHeaderName = customHostHeaderName;

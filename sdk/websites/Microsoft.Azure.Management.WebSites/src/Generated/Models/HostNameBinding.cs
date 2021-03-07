@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="siteName">App Service app name.</param>
         /// <param name="domainId">Fully qualified ARM domain resource
         /// URI.</param>
@@ -51,8 +53,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="thumbprint">SSL certificate thumbprint</param>
         /// <param name="virtualIP">Virtual IP address assigned to the hostname
         /// if IP based SSL is enabled.</param>
-        public HostNameBinding(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string siteName = default(string), string domainId = default(string), string azureResourceName = default(string), AzureResourceType? azureResourceType = default(AzureResourceType?), CustomHostNameDnsRecordType? customHostNameDnsRecordType = default(CustomHostNameDnsRecordType?), HostNameType? hostNameType = default(HostNameType?), SslState? sslState = default(SslState?), string thumbprint = default(string), string virtualIP = default(string))
-            : base(id, name, kind, type)
+        public HostNameBinding(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string siteName = default(string), string domainId = default(string), string azureResourceName = default(string), AzureResourceType? azureResourceType = default(AzureResourceType?), CustomHostNameDnsRecordType? customHostNameDnsRecordType = default(CustomHostNameDnsRecordType?), HostNameType? hostNameType = default(HostNameType?), SslState? sslState = default(SslState?), string thumbprint = default(string), string virtualIP = default(string))
+            : base(id, name, kind, type, systemData)
         {
             SiteName = siteName;
             DomainId = domainId;
