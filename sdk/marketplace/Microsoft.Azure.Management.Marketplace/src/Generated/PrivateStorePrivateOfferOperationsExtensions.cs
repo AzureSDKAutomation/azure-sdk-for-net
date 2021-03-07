@@ -22,6 +22,46 @@ namespace Microsoft.Azure.Management.Marketplace
     public static partial class PrivateStorePrivateOfferOperationsExtensions
     {
             /// <summary>
+            /// Get a list of all private offers in the given private store
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription id of the private offers
+            /// </param>
+            /// <param name='privateStoreId'>
+            /// The store ID - must use the tenant ID
+            /// </param>
+            public static IPage<Offer> List(this IPrivateStorePrivateOfferOperations operations, string subscriptionId, string privateStoreId)
+            {
+                return operations.ListAsync(subscriptionId, privateStoreId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get a list of all private offers in the given private store
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription id of the private offers
+            /// </param>
+            /// <param name='privateStoreId'>
+            /// The store ID - must use the tenant ID
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Offer>> ListAsync(this IPrivateStorePrivateOfferOperations operations, string subscriptionId, string privateStoreId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(subscriptionId, privateStoreId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets information about a specific private offer.
             /// </summary>
             /// <param name='operations'>
@@ -114,6 +154,40 @@ namespace Microsoft.Azure.Management.Marketplace
             public static async Task<Offer> CreateOrUpdateAsync(this IPrivateStorePrivateOfferOperations operations, string subscriptionId, string privateStoreId, string offerId, Offer payload = default(Offer), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(subscriptionId, privateStoreId, offerId, payload, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get a list of all private offers in the given private store
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Offer> ListNext(this IPrivateStorePrivateOfferOperations operations, string nextPageLink)
+            {
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get a list of all private offers in the given private store
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Offer>> ListNextAsync(this IPrivateStorePrivateOfferOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

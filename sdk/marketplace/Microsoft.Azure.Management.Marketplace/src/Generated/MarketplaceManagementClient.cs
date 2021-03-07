@@ -70,16 +70,6 @@ namespace Microsoft.Azure.Management.Marketplace
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IPrivateStoreOffersOperations.
-        /// </summary>
-        public virtual IPrivateStoreOffersOperations PrivateStoreOffers { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateStorePrivateOffersOperations.
-        /// </summary>
-        public virtual IPrivateStorePrivateOffersOperations PrivateStorePrivateOffers { get; private set; }
-
-        /// <summary>
         /// Gets the IPrivateStoreOfferOperations.
         /// </summary>
         public virtual IPrivateStoreOfferOperations PrivateStoreOffer { get; private set; }
@@ -340,8 +330,6 @@ namespace Microsoft.Azure.Management.Marketplace
         /// </summary>
         private void Initialize()
         {
-            PrivateStoreOffers = new PrivateStoreOffersOperations(this);
-            PrivateStorePrivateOffers = new PrivateStorePrivateOffersOperations(this);
             PrivateStoreOffer = new PrivateStoreOfferOperations(this);
             PrivateStorePrivateOffer = new PrivateStorePrivateOfferOperations(this);
             PrivateStore = new PrivateStoreOperations(this);
