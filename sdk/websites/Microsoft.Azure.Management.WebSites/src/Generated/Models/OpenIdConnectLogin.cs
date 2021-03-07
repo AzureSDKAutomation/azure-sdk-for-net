@@ -35,8 +35,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public OpenIdConnectLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string nameClaimType = default(string), IList<string> scopes = default(IList<string>))
-            : base(id, name, kind, type)
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
+        public OpenIdConnectLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string nameClaimType = default(string), IList<string> scopes = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             NameClaimType = nameClaimType;
             Scopes = scopes;

@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="creationTime">Timestamp when this instance was
         /// created.</param>
         /// <param name="recommendationId">A GUID value that each
@@ -87,8 +89,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="bladeName">Deep link to a blade on the portal.</param>
         /// <param name="forwardLink">Forward link to an external document
         /// associated with the rule.</param>
-        public Recommendation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? creationTime = default(System.DateTime?), System.Guid? recommendationId = default(System.Guid?), string resourceId = default(string), string resourceScope = default(string), string ruleName = default(string), string displayName = default(string), string message = default(string), NotificationLevel? level = default(NotificationLevel?), Channels? channels = default(Channels?), IList<string> categoryTags = default(IList<string>), string actionName = default(string), int? enabled = default(int?), IList<string> states = default(IList<string>), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), System.DateTime? nextNotificationTime = default(System.DateTime?), System.DateTime? notificationExpirationTime = default(System.DateTime?), System.DateTime? notifiedTime = default(System.DateTime?), double? score = default(double?), bool? isDynamic = default(bool?), string extensionName = default(string), string bladeName = default(string), string forwardLink = default(string))
-            : base(id, name, kind, type)
+        public Recommendation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? creationTime = default(System.DateTime?), System.Guid? recommendationId = default(System.Guid?), string resourceId = default(string), string resourceScope = default(string), string ruleName = default(string), string displayName = default(string), string message = default(string), NotificationLevel? level = default(NotificationLevel?), Channels? channels = default(Channels?), IList<string> categoryTags = default(IList<string>), string actionName = default(string), int? enabled = default(int?), IList<string> states = default(IList<string>), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), System.DateTime? nextNotificationTime = default(System.DateTime?), System.DateTime? notificationExpirationTime = default(System.DateTime?), System.DateTime? notifiedTime = default(System.DateTime?), double? score = default(double?), bool? isDynamic = default(bool?), string extensionName = default(string), string bladeName = default(string), string forwardLink = default(string))
+            : base(id, name, kind, type, systemData)
         {
             CreationTime = creationTime;
             RecommendationId = recommendationId;
