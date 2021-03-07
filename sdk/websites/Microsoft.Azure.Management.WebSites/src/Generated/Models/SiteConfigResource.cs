@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="numberOfWorkers">Number of workers.</param>
         /// <param name="defaultDocuments">Default documents.</param>
         /// <param name="netFrameworkVersion">.NET Framework version.</param>
@@ -104,6 +106,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="autoHealRules">Auto Heal rules.</param>
         /// <param name="tracingOptions">Tracing options.</param>
         /// <param name="vnetName">Virtual Network name.</param>
+        /// <param name="vnetRouteAllEnabled">Virtual Network Route All
+        /// enabled. This causes all outbound traffic to have Virtual Network
+        /// Security Groups and User Defined Routes applied.</param>
+        /// <param name="vnetPrivatePortsCount">The number of private ports
+        /// assigned to this app. These will be assigned dynamically on
+        /// runtime.</param>
         /// <param name="cors">Cross-Origin Resource Sharing (CORS)
         /// settings.</param>
         /// <param name="push">Push endpoint settings.</param>
@@ -130,14 +138,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="minTlsVersion">MinTlsVersion: configures the minimum
         /// version of TLS required for SSL requests. Possible values include:
         /// '1.0', '1.1', '1.2'</param>
+        /// <param name="scmMinTlsVersion">ScmMinTlsVersion: configures the
+        /// minimum version of TLS required for SSL requests for SCM site.
+        /// Possible values include: '1.0', '1.1', '1.2'</param>
         /// <param name="ftpsState">State of FTP / FTPS service. Possible
         /// values include: 'AllAllowed', 'FtpsOnly', 'Disabled'</param>
         /// <param name="preWarmedInstanceCount">Number of preWarmed instances.
         /// This setting only applies to the Consumption and Elastic
         /// Plans</param>
         /// <param name="healthCheckPath">Health check path</param>
-        public SiteConfigResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? numberOfWorkers = default(int?), IList<string> defaultDocuments = default(IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string powerShellVersion = default(string), string linuxFxVersion = default(string), string windowsFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), IList<NameValuePair> appSettings = default(IList<NameValuePair>), IList<ConnStringInfo> connectionStrings = default(IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), IList<HandlerMapping> handlerMappings = default(IList<HandlerMapping>), string documentRoot = default(string), string scmType = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), IList<VirtualApplication> virtualApplications = default(IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), Experiments experiments = default(Experiments), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), CorsSettings cors = default(CorsSettings), PushSettings push = default(PushSettings), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), ApiManagementConfig apiManagementConfig = default(ApiManagementConfig), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), int? managedServiceIdentityId = default(int?), int? xManagedServiceIdentityId = default(int?), IList<IpSecurityRestriction> ipSecurityRestrictions = default(IList<IpSecurityRestriction>), IList<IpSecurityRestriction> scmIpSecurityRestrictions = default(IList<IpSecurityRestriction>), bool? scmIpSecurityRestrictionsUseMain = default(bool?), bool? http20Enabled = default(bool?), string minTlsVersion = default(string), string ftpsState = default(string), int? preWarmedInstanceCount = default(int?), string healthCheckPath = default(string))
-            : base(id, name, kind, type)
+        public SiteConfigResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), int? numberOfWorkers = default(int?), IList<string> defaultDocuments = default(IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string powerShellVersion = default(string), string linuxFxVersion = default(string), string windowsFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), IList<NameValuePair> appSettings = default(IList<NameValuePair>), IList<ConnStringInfo> connectionStrings = default(IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), IList<HandlerMapping> handlerMappings = default(IList<HandlerMapping>), string documentRoot = default(string), string scmType = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), IList<VirtualApplication> virtualApplications = default(IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), Experiments experiments = default(Experiments), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), bool? vnetRouteAllEnabled = default(bool?), int? vnetPrivatePortsCount = default(int?), CorsSettings cors = default(CorsSettings), PushSettings push = default(PushSettings), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), ApiManagementConfig apiManagementConfig = default(ApiManagementConfig), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), int? managedServiceIdentityId = default(int?), int? xManagedServiceIdentityId = default(int?), IList<IpSecurityRestriction> ipSecurityRestrictions = default(IList<IpSecurityRestriction>), IList<IpSecurityRestriction> scmIpSecurityRestrictions = default(IList<IpSecurityRestriction>), bool? scmIpSecurityRestrictionsUseMain = default(bool?), bool? http20Enabled = default(bool?), string minTlsVersion = default(string), string scmMinTlsVersion = default(string), string ftpsState = default(string), int? preWarmedInstanceCount = default(int?), string healthCheckPath = default(string))
+            : base(id, name, kind, type, systemData)
         {
             NumberOfWorkers = numberOfWorkers;
             DefaultDocuments = defaultDocuments;
@@ -178,6 +189,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
             AutoHealRules = autoHealRules;
             TracingOptions = tracingOptions;
             VnetName = vnetName;
+            VnetRouteAllEnabled = vnetRouteAllEnabled;
+            VnetPrivatePortsCount = vnetPrivatePortsCount;
             Cors = cors;
             Push = push;
             ApiDefinition = apiDefinition;
@@ -191,6 +204,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             ScmIpSecurityRestrictionsUseMain = scmIpSecurityRestrictionsUseMain;
             Http20Enabled = http20Enabled;
             MinTlsVersion = minTlsVersion;
+            ScmMinTlsVersion = scmMinTlsVersion;
             FtpsState = ftpsState;
             PreWarmedInstanceCount = preWarmedInstanceCount;
             HealthCheckPath = healthCheckPath;
@@ -459,6 +473,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string VnetName { get; set; }
 
         /// <summary>
+        /// Gets or sets virtual Network Route All enabled. This causes all
+        /// outbound traffic to have Virtual Network Security Groups and User
+        /// Defined Routes applied.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.vnetRouteAllEnabled")]
+        public bool? VnetRouteAllEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of private ports assigned to this app.
+        /// These will be assigned dynamically on runtime.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.vnetPrivatePortsCount")]
+        public int? VnetPrivatePortsCount { get; set; }
+
+        /// <summary>
         /// Gets or sets cross-Origin Resource Sharing (CORS) settings.
         /// </summary>
         [JsonProperty(PropertyName = "properties.cors")]
@@ -541,6 +570,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.minTlsVersion")]
         public string MinTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets scmMinTlsVersion: configures the minimum version of
+        /// TLS required for SSL requests for SCM site. Possible values
+        /// include: '1.0', '1.1', '1.2'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.scmMinTlsVersion")]
+        public string ScmMinTlsVersion { get; set; }
 
         /// <summary>
         /// Gets or sets state of FTP / FTPS service. Possible values include:

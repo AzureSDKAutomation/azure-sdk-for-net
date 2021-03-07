@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="meterId">Meter GUID onboarded in Commerce</param>
         /// <param name="billingLocation">Azure Location of billable
         /// resource</param>
@@ -46,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="resourceType">App Service ResourceType meter used
         /// for</param>
         /// <param name="osType">App Service OS type meter used for</param>
-        public BillingMeter(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string meterId = default(string), string billingLocation = default(string), string shortName = default(string), string friendlyName = default(string), string resourceType = default(string), string osType = default(string))
-            : base(id, name, kind, type)
+        public BillingMeter(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string meterId = default(string), string billingLocation = default(string), string shortName = default(string), string friendlyName = default(string), string resourceType = default(string), string osType = default(string))
+            : base(id, name, kind, type, systemData)
         {
             MeterId = meterId;
             BillingLocation = billingLocation;
