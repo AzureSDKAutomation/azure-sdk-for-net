@@ -16,24 +16,24 @@ namespace Microsoft.Azure.Management.Marketplace.Models
     /// <summary>
     /// Microsoft.Marketplace REST API operation
     /// </summary>
-    public partial class Operation1
+    public partial class SingleOperation
     {
         /// <summary>
-        /// Initializes a new instance of the Operation1 class.
+        /// Initializes a new instance of the SingleOperation class.
         /// </summary>
-        public Operation1()
+        public SingleOperation()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation1 class.
+        /// Initializes a new instance of the SingleOperation class.
         /// </summary>
         /// <param name="name">Operation name:
         /// {provider}/{resource}/{operation}</param>
         /// <param name="display">The object that represents the
         /// operation.</param>
-        public Operation1(string name = default(string), OperationDisplay display = default(OperationDisplay))
+        public SingleOperation(string name = default(string), SingleOperationDisplay display = default(SingleOperationDisplay))
         {
             Name = name;
             Display = display;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Marketplace.Models
         /// Gets or sets the object that represents the operation.
         /// </summary>
         [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
+        public SingleOperationDisplay Display { get; set; }
 
     }
 }
