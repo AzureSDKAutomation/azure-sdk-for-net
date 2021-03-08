@@ -79,14 +79,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// or not.</param>
         /// <param name="inboundDnsForwardingEndpoint">The IP address allocated
         /// by the gateway to which dns requests can be sent.</param>
-        /// <param name="vNetExtendedLocationResourceId">MAS FIJI customer vnet
-        /// resource id. VirtualNetworkGateway of type local gateway is
-        /// associated with the customer vnet.</param>
-        /// <param name="virtualNetworkExtendedLocation">The extended location
-        /// of type local virtual network gateway.</param>
+        /// <param name="virtualNetworkExtendedLocationResourceId">MAS FIJI
+        /// customer vnet resource id. VirtualNetworkGateway of type local
+        /// gateway is associated with the customer vnet.</param>
+        /// <param name="extendedLocation">The extended location of type local
+        /// virtual network gateway.</param>
+        /// <param name="natRules">NatRules for virtual network
+        /// gateway.</param>
+        /// <param
+        /// name="enableBgpRouteTranslationForNat">enableBgpRouteTranslationForNat
+        /// flag.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public VirtualNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIpAddress = default(bool?), bool? activeActive = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), ExtendedLocation virtualNetworkExtendedLocation = default(ExtendedLocation), string etag = default(string))
+        public VirtualNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIpAddress = default(bool?), bool? activeActive = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string virtualNetworkExtendedLocationResourceId = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), IList<VirtualNetworkGatewayNatRule> natRules = default(IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             IpConfigurations = ipConfigurations;
@@ -105,8 +110,10 @@ namespace Microsoft.Azure.Management.Network.Models
             ProvisioningState = provisioningState;
             EnableDnsForwarding = enableDnsForwarding;
             InboundDnsForwardingEndpoint = inboundDnsForwardingEndpoint;
-            VNetExtendedLocationResourceId = vNetExtendedLocationResourceId;
-            VirtualNetworkExtendedLocation = virtualNetworkExtendedLocation;
+            VirtualNetworkExtendedLocationResourceId = virtualNetworkExtendedLocationResourceId;
+            ExtendedLocation = extendedLocation;
+            NatRules = natRules;
+            EnableBgpRouteTranslationForNat = enableBgpRouteTranslationForNat;
             Etag = etag;
             CustomInit();
         }
@@ -233,15 +240,27 @@ namespace Microsoft.Azure.Management.Network.Models
         /// VirtualNetworkGateway of type local gateway is associated with the
         /// customer vnet.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.vNetExtendedLocationResourceId")]
-        public string VNetExtendedLocationResourceId { get; set; }
+        [JsonProperty(PropertyName = "properties.virtualNetworkExtendedLocationResourceId")]
+        public string VirtualNetworkExtendedLocationResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the extended location of type local virtual network
         /// gateway.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.virtualNetworkExtendedLocation")]
-        public ExtendedLocation VirtualNetworkExtendedLocation { get; set; }
+        [JsonProperty(PropertyName = "properties.extendedLocation")]
+        public ExtendedLocation ExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets natRules for virtual network gateway.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.natRules")]
+        public IList<VirtualNetworkGatewayNatRule> NatRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets enableBgpRouteTranslationForNat flag.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableBgpRouteTranslationForNat")]
+        public bool? EnableBgpRouteTranslationForNat { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
@@ -262,9 +281,9 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 BgpSettings.Validate();
             }
-            if (VirtualNetworkExtendedLocation != null)
+            if (ExtendedLocation != null)
             {
-                VirtualNetworkExtendedLocation.Validate();
+                ExtendedLocation.Validate();
             }
         }
     }
