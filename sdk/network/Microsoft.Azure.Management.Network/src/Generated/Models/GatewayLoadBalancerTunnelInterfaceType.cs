@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for LoadBalancerSkuName.
+    /// Defines values for GatewayLoadBalancerTunnelInterfaceType.
     /// </summary>
-    public static class LoadBalancerSkuName
+    public static class GatewayLoadBalancerTunnelInterfaceType
     {
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
-        public const string Gateway = "Gateway";
+        public const string None = "None";
+        public const string Internal = "Internal";
+        public const string External = "External";
     }
 }
