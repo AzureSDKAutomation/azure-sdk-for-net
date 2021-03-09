@@ -69,11 +69,16 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// of the API Management service.</param>
         /// <param name="publicIPAddresses">Public Static Load Balanced IP
         /// addresses of the API Management service in Primary region.
-        /// Available only for Basic, Standard and Premium SKU.</param>
+        /// Available only for Basic, Standard, Premium and Isolated
+        /// SKU.</param>
         /// <param name="privateIPAddresses">Private Static Load Balanced IP
         /// addresses of the API Management service in Primary region which is
         /// deployed in an Internal Virtual Network. Available only for Basic,
-        /// Standard and Premium SKU.</param>
+        /// Standard, Premium and Isolated SKU.</param>
+        /// <param name="publicIpAddressId">Public Standard SKU IP V4 based IP
+        /// address to be associated with Virtual Network deployed service in
+        /// the region. Supported only for Developer and Premium SKU being
+        /// deployed in Virtual Network.</param>
         /// <param name="virtualNetworkConfiguration">Virtual network
         /// configuration of the API Management service.</param>
         /// <param name="additionalLocations">Additional datacenter locations
@@ -137,6 +142,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// values include: 'None', 'External', 'Internal'</param>
         /// <param name="apiVersionConstraint">Control Plane Apis version
         /// constraint for the API Management service.</param>
+        /// <param name="restore">Undelete Api Management Service if it was
+        /// previously soft-deleted. If this flag is specified and set to True
+        /// all other properties will be ignored.</param>
         /// <param name="publisherEmail">Publisher email.</param>
         /// <param name="publisherName">Publisher name.</param>
         /// <param name="sku">SKU properties of the API Management
@@ -144,7 +152,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="identity">Managed service identity of the Api
         /// Management service.</param>
         /// <param name="etag">ETag of the resource.</param>
-        public ApiManagementServiceUpdateParameters(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), IList<HostnameConfiguration> hostnameConfigurations = default(IList<HostnameConfiguration>), IList<string> publicIPAddresses = default(IList<string>), IList<string> privateIPAddresses = default(IList<string>), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), IList<AdditionalLocation> additionalLocations = default(IList<AdditionalLocation>), IDictionary<string, string> customProperties = default(IDictionary<string, string>), IList<CertificateConfiguration> certificates = default(IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), string publisherEmail = default(string), string publisherName = default(string), ApiManagementServiceSkuProperties sku = default(ApiManagementServiceSkuProperties), ApiManagementServiceIdentity identity = default(ApiManagementServiceIdentity), string etag = default(string))
+        public ApiManagementServiceUpdateParameters(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), IList<HostnameConfiguration> hostnameConfigurations = default(IList<HostnameConfiguration>), IList<string> publicIPAddresses = default(IList<string>), IList<string> privateIPAddresses = default(IList<string>), string publicIpAddressId = default(string), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), IList<AdditionalLocation> additionalLocations = default(IList<AdditionalLocation>), IDictionary<string, string> customProperties = default(IDictionary<string, string>), IList<CertificateConfiguration> certificates = default(IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), bool? restore = default(bool?), string publisherEmail = default(string), string publisherName = default(string), ApiManagementServiceSkuProperties sku = default(ApiManagementServiceSkuProperties), ApiManagementServiceIdentity identity = default(ApiManagementServiceIdentity), string etag = default(string))
             : base(id, name, type, tags)
         {
             NotificationSenderEmail = notificationSenderEmail;
@@ -160,6 +168,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             HostnameConfigurations = hostnameConfigurations;
             PublicIPAddresses = publicIPAddresses;
             PrivateIPAddresses = privateIPAddresses;
+            PublicIpAddressId = publicIpAddressId;
             VirtualNetworkConfiguration = virtualNetworkConfiguration;
             AdditionalLocations = additionalLocations;
             CustomProperties = customProperties;
@@ -168,6 +177,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             DisableGateway = disableGateway;
             VirtualNetworkType = virtualNetworkType;
             ApiVersionConstraint = apiVersionConstraint;
+            Restore = restore;
             PublisherEmail = publisherEmail;
             PublisherName = publisherName;
             Sku = sku;
@@ -257,8 +267,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <summary>
         /// Gets public Static Load Balanced IP addresses of the API Management
-        /// service in Primary region. Available only for Basic, Standard and
-        /// Premium SKU.
+        /// service in Primary region. Available only for Basic, Standard,
+        /// Premium and Isolated SKU.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPAddresses")]
         public IList<string> PublicIPAddresses { get; private set; }
@@ -266,11 +276,20 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <summary>
         /// Gets private Static Load Balanced IP addresses of the API
         /// Management service in Primary region which is deployed in an
-        /// Internal Virtual Network. Available only for Basic, Standard and
-        /// Premium SKU.
+        /// Internal Virtual Network. Available only for Basic, Standard,
+        /// Premium and Isolated SKU.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAddresses")]
         public IList<string> PrivateIPAddresses { get; private set; }
+
+        /// <summary>
+        /// Gets or sets public Standard SKU IP V4 based IP address to be
+        /// associated with Virtual Network deployed service in the region.
+        /// Supported only for Developer and Premium SKU being deployed in
+        /// Virtual Network.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicIpAddressId")]
+        public string PublicIpAddressId { get; set; }
 
         /// <summary>
         /// Gets or sets virtual network configuration of the API Management
@@ -375,6 +394,14 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public ApiVersionConstraint ApiVersionConstraint { get; set; }
 
         /// <summary>
+        /// Gets or sets undelete Api Management Service if it was previously
+        /// soft-deleted. If this flag is specified and set to True all other
+        /// properties will be ignored.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.restore")]
+        public bool? Restore { get; set; }
+
+        /// <summary>
         /// Gets or sets publisher email.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publisherEmail")]
@@ -413,6 +440,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (NotificationSenderEmail != null)
+            {
+                if (NotificationSenderEmail.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "NotificationSenderEmail", 100);
+                }
+            }
             if (HostnameConfigurations != null)
             {
                 foreach (var element in HostnameConfigurations)
@@ -422,6 +456,10 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
                         element.Validate();
                     }
                 }
+            }
+            if (VirtualNetworkConfiguration != null)
+            {
+                VirtualNetworkConfiguration.Validate();
             }
             if (AdditionalLocations != null)
             {
@@ -441,6 +479,20 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
                     {
                         element2.Validate();
                     }
+                }
+            }
+            if (PublisherEmail != null)
+            {
+                if (PublisherEmail.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "PublisherEmail", 100);
+                }
+            }
+            if (PublisherName != null)
+            {
+                if (PublisherName.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "PublisherName", 100);
                 }
             }
             if (Sku != null)
