@@ -12,11 +12,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for OpenShiftAgentPoolProfileRole.
+    /// Defines values for UpgradeChannel.
     /// </summary>
-    public static class OpenShiftAgentPoolProfileRole
+    public static class UpgradeChannel
     {
-        public const string Compute = "compute";
-        public const string Infra = "infra";
+        public const string Rapid = "rapid";
+        public const string Stable = "stable";
+        public const string Patch = "patch";
+        public const string None = "none";
     }
 }
