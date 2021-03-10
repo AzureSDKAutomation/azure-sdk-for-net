@@ -69,29 +69,9 @@ namespace Microsoft.Azure.Management.Datadog
 
 
         /// <summary>
-        /// Gets the IApiKeysOperations.
+        /// Gets the IMarketplaceAgreementsOperations.
         /// </summary>
-        IApiKeysOperations ApiKeys { get; }
-
-        /// <summary>
-        /// Gets the IHostsOperations.
-        /// </summary>
-        IHostsOperations Hosts { get; }
-
-        /// <summary>
-        /// Gets the ILinkedResourcesOperations.
-        /// </summary>
-        ILinkedResourcesOperations LinkedResources { get; }
-
-        /// <summary>
-        /// Gets the IMonitoredResourcesOperations.
-        /// </summary>
-        IMonitoredResourcesOperations MonitoredResources { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
+        IMarketplaceAgreementsOperations MarketplaceAgreements { get; }
 
         /// <summary>
         /// Gets the IMonitorsOperations.
@@ -99,9 +79,9 @@ namespace Microsoft.Azure.Management.Datadog
         IMonitorsOperations Monitors { get; }
 
         /// <summary>
-        /// Gets the IRefreshSetPasswordOperations.
+        /// Gets the IOperations.
         /// </summary>
-        IRefreshSetPasswordOperations RefreshSetPassword { get; }
+        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the ITagRulesOperations.
