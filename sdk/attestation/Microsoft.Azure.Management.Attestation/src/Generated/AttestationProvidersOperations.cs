@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Attestation
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
-        /// Name of the attestation service instance
+        /// Name of the attestation provider.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -115,6 +115,10 @@ namespace Microsoft.Azure.Management.Attestation
             if (providerName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "providerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -265,13 +269,13 @@ namespace Microsoft.Azure.Management.Attestation
         }
 
         /// <summary>
-        /// Creates or updates the Attestation Provider.
+        /// Creates a new Attestation Provider.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
-        /// Name of the attestation service
+        /// Name of the attestation provider.
         /// </param>
         /// <param name='creationParams'>
         /// Client supplied parameters.
@@ -332,6 +336,10 @@ namespace Microsoft.Azure.Management.Attestation
             if (providerName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "providerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
             if (creationParams == null)
             {
@@ -521,7 +529,7 @@ namespace Microsoft.Azure.Management.Attestation
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
-        /// Name of the attestation service
+        /// Name of the attestation provider.
         /// </param>
         /// <param name='updateParams'>
         /// Client supplied parameters.
@@ -582,6 +590,10 @@ namespace Microsoft.Azure.Management.Attestation
             if (providerName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "providerName");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
             if (updateParams == null)
             {
@@ -805,6 +817,10 @@ namespace Microsoft.Azure.Management.Attestation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "providerName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -961,6 +977,10 @@ namespace Microsoft.Azure.Management.Attestation
         /// </return>
         public async Task<AzureOperationResponse<AttestationProviderListResult>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1164,6 +1184,10 @@ namespace Microsoft.Azure.Management.Attestation
                     throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1347,6 +1371,10 @@ namespace Microsoft.Azure.Management.Attestation
         /// </return>
         public async Task<AzureOperationResponse<AttestationProviderListResult>> ListDefaultWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1541,6 +1569,10 @@ namespace Microsoft.Azure.Management.Attestation
                 {
                     throw new ValidationException(ValidationRules.MinLength, "location", 1);
                 }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
             if (Client.SubscriptionId == null)
             {
