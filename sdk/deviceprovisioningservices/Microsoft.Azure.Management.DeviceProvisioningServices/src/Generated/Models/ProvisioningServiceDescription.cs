@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -45,12 +44,15 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
         /// <param name="etag">The Etag field is *not* required. If it is
         /// provided in the response body, it must also be provided as a header
         /// per the normal ETag convention.</param>
-        public ProvisioningServiceDescription(string location, IotDpsPropertiesDescription properties, IotDpsSkuInfo sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string))
+        /// <param name="identity">The managed identities for the IotDps
+        /// instance.</param>
+        public ProvisioningServiceDescription(string location, IotDpsPropertiesDescription properties, IotDpsSkuInfo sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), ArmIdentity identity = default(ArmIdentity))
             : base(location, id, name, type, tags)
         {
             Etag = etag;
             Properties = properties;
             Sku = sku;
+            Identity = identity;
             CustomInit();
         }
 
@@ -80,22 +82,10 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
         public IotDpsSkuInfo Sku { get; set; }
 
         /// <summary>
-        /// Validate the object.
+        /// Gets or sets the managed identities for the IotDps instance.
         /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-            if (Properties == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
-            }
-            if (Sku == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
-            }
-        }
+        [JsonProperty(PropertyName = "identity")]
+        public ArmIdentity Identity { get; set; }
+
     }
 }
