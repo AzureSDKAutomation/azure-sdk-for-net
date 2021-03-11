@@ -82,7 +82,14 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// been created for this container. The hasImmutabilityPolicy public
         /// property is set to false by SRP if ImmutabilityPolicy has not been
         /// created for this container.</param>
-        public BlobContainer(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string defaultEncryptionScope = default(string), bool? denyEncryptionScopeOverride = default(bool?), PublicAccess? publicAccess = default(PublicAccess?), System.DateTime? lastModifiedTime = default(System.DateTime?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), IDictionary<string, string> metadata = default(IDictionary<string, string>), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?))
+        /// <param name="enabled">This is an immutable property, when set to
+        /// true enables version level worm at the container level.</param>
+        /// <param name="timeStamp">Returns the date and time the version level
+        /// worm was enabled.</param>
+        /// <param name="migrationState">This property denotes the container
+        /// level worm to version level worm migration state. Possible values
+        /// include: 'InProgress', 'Completed', 'Abort'</param>
+        public BlobContainer(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string defaultEncryptionScope = default(string), bool? denyEncryptionScopeOverride = default(bool?), PublicAccess? publicAccess = default(PublicAccess?), System.DateTime? lastModifiedTime = default(System.DateTime?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), IDictionary<string, string> metadata = default(IDictionary<string, string>), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?), bool? enabled = default(bool?), System.DateTime? timeStamp = default(System.DateTime?), string migrationState = default(string))
             : base(id, name, type, etag)
         {
             Version = version;
@@ -101,6 +108,9 @@ namespace Microsoft.Azure.Management.Storage.Models
             LegalHold = legalHold;
             HasLegalHold = hasLegalHold;
             HasImmutabilityPolicy = hasImmutabilityPolicy;
+            Enabled = enabled;
+            TimeStamp = timeStamp;
+            MigrationState = migrationState;
             CustomInit();
         }
 
@@ -220,6 +230,27 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hasImmutabilityPolicy")]
         public bool? HasImmutabilityPolicy { get; private set; }
+
+        /// <summary>
+        /// Gets or sets this is an immutable property, when set to true
+        /// enables version level worm at the container level.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.versionLevelWorm.enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Gets returns the date and time the version level worm was enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.versionLevelWorm.timeStamp")]
+        public System.DateTime? TimeStamp { get; private set; }
+
+        /// <summary>
+        /// Gets this property denotes the container level worm to version
+        /// level worm migration state. Possible values include: 'InProgress',
+        /// 'Completed', 'Abort'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.versionLevelWorm.migrationState")]
+        public string MigrationState { get; private set; }
 
     }
 }

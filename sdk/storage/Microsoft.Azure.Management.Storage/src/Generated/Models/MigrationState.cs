@@ -12,11 +12,12 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for ListSharesExpand.
+    /// Defines values for MigrationState.
     /// </summary>
-    public static class ListSharesExpand
+    public static class MigrationState
     {
-        public const string Deleted = "deleted";
-        public const string Snapshots = "snapshots";
+        public const string InProgress = "InProgress";
+        public const string Completed = "Completed";
+        public const string Abort = "Abort";
     }
 }
