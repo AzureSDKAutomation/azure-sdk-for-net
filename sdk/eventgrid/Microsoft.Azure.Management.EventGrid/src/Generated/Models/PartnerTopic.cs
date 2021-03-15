@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Management.EventGrid.Models
         /// creation of the partner topic for the customer.</param>
         /// <param name="identity">Identity information for the
         /// resource.</param>
-        /// <param name="systemData">The system metadata relating to this
-        /// resource.</param>
+        /// <param name="systemData">The system metadata relating to Partner
+        /// Topic resource.</param>
         public PartnerTopic(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string source = default(string), System.DateTime? expirationTimeIfNotActivatedUtc = default(System.DateTime?), string provisioningState = default(string), string activationState = default(string), string partnerTopicFriendlyDescription = default(string), IdentityInfo identity = default(IdentityInfo), SystemData systemData = default(SystemData))
             : base(location, id, name, type, tags)
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.EventGrid.Models
         public IdentityInfo Identity { get; set; }
 
         /// <summary>
-        /// Gets the system metadata relating to this resource.
+        /// Gets the system metadata relating to Partner Topic resource.
         /// </summary>
         [JsonProperty(PropertyName = "systemData")]
         public SystemData SystemData { get; private set; }

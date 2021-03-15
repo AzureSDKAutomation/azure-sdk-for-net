@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.EventGrid.Models
         /// format:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.</param>
         /// <param name="endpoint">Endpoint for the partner namespace.</param>
-        /// <param name="systemData">The system metadata relating to this
-        /// resource.</param>
+        /// <param name="systemData">The system metadata relating to Partner
+        /// Namespace resource.</param>
         public PartnerNamespace(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string partnerRegistrationFullyQualifiedId = default(string), string endpoint = default(string), SystemData systemData = default(SystemData))
             : base(location, id, name, type, tags)
         {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.EventGrid.Models
         public string Endpoint { get; private set; }
 
         /// <summary>
-        /// Gets the system metadata relating to this resource.
+        /// Gets the system metadata relating to Partner Namespace resource.
         /// </summary>
         [JsonProperty(PropertyName = "systemData")]
         public SystemData SystemData { get; private set; }
