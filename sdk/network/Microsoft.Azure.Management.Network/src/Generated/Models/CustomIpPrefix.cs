@@ -43,6 +43,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// IP prefix.</param>
         /// <param name="cidr">The prefix range in CIDR notation. Should
         /// include the start address and the prefix length.</param>
+        /// <param name="signedMessage">Signed message for WAN
+        /// validation.</param>
+        /// <param name="authorizationMessage">Authorization message for WAN
+        /// validation.</param>
+        /// <param name="customIpPrefixParent">The Parent CustomIpPrefix for
+        /// IPv6 /64 CustomIpPrefix.</param>
+        /// <param name="childCustomIpPrefixes">The list of all Children for
+        /// IPv6 /48 CustomIpPrefix.</param>
         /// <param name="commissionedState">The commissioned state of the
         /// Custom IP Prefix. Possible values include: 'Provisioning',
         /// 'Provisioned', 'Commissioning', 'Commissioned', 'Decommissioning',
@@ -58,11 +66,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public CustomIpPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string cidr = default(string), string commissionedState = default(string), IList<SubResource> publicIpPrefixes = default(IList<SubResource>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public CustomIpPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string cidr = default(string), string signedMessage = default(string), string authorizationMessage = default(string), CustomIpPrefix customIpPrefixParent = default(CustomIpPrefix), IList<CustomIpPrefix> childCustomIpPrefixes = default(IList<CustomIpPrefix>), string commissionedState = default(string), IList<SubResource> publicIpPrefixes = default(IList<SubResource>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
             Cidr = cidr;
+            SignedMessage = signedMessage;
+            AuthorizationMessage = authorizationMessage;
+            CustomIpPrefixParent = customIpPrefixParent;
+            ChildCustomIpPrefixes = childCustomIpPrefixes;
             CommissionedState = commissionedState;
             PublicIpPrefixes = publicIpPrefixes;
             ResourceGuid = resourceGuid;
@@ -89,6 +101,30 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.cidr")]
         public string Cidr { get; set; }
+
+        /// <summary>
+        /// Gets or sets signed message for WAN validation.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.signedMessage")]
+        public string SignedMessage { get; set; }
+
+        /// <summary>
+        /// Gets or sets authorization message for WAN validation.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.authorizationMessage")]
+        public string AuthorizationMessage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.customIpPrefixParent")]
+        public CustomIpPrefix CustomIpPrefixParent { get; set; }
+
+        /// <summary>
+        /// Gets the list of all Children for IPv6 /48 CustomIpPrefix.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.childCustomIpPrefixes")]
+        public IList<CustomIpPrefix> ChildCustomIpPrefixes { get; private set; }
 
         /// <summary>
         /// Gets or sets the commissioned state of the Custom IP Prefix.
@@ -144,6 +180,20 @@ namespace Microsoft.Azure.Management.Network.Models
             if (ExtendedLocation != null)
             {
                 ExtendedLocation.Validate();
+            }
+            if (CustomIpPrefixParent != null)
+            {
+                CustomIpPrefixParent.Validate();
+            }
+            if (ChildCustomIpPrefixes != null)
+            {
+                foreach (var element in ChildCustomIpPrefixes)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }
