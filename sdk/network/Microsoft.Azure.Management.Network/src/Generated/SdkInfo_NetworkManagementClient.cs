@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Management.Network
                 new Tuple<string, string, string>("Network", "VirtualHubRouteTableV2s", "2020-11-01"),
                 new Tuple<string, string, string>("Network", "VirtualHubs", "2020-11-01"),
                 new Tuple<string, string, string>("Network", "VirtualNetworkGatewayConnections", "2020-11-01"),
+                new Tuple<string, string, string>("Network", "VirtualNetworkGatewayNatRules", "2020-11-01"),
                 new Tuple<string, string, string>("Network", "VirtualNetworkGateways", "2020-11-01"),
                 new Tuple<string, string, string>("Network", "VirtualNetworkPeerings", "2020-11-01"),
                 new Tuple<string, string, string>("Network", "VirtualNetworkTaps", "2020-11-01"),
@@ -141,16 +142,5 @@ namespace Microsoft.Azure.Management.Network
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "v2";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4413";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/network/resource-manager/readme.md --csharp --version=v2 --reflect-api-versions --csharp-sdks-folder=C:\\Projects\\Generator\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "bd75cbc7ae9c997f39362ac9d19d557219720bbd";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-
