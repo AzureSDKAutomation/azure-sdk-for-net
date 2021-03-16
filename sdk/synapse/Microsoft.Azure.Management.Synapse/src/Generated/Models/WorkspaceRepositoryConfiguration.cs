@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Initializes a new instance of the WorkspaceRepositoryConfiguration
         /// class.
         /// </summary>
-        /// <param name="type">Type of workspace repositoryID configuration.
+        /// <param name="type">Type of workspace repository ID configuration.
         /// Example WorkspaceVSTSConfiguration,
         /// WorkspaceGitHubConfiguration</param>
         /// <param name="hostName">GitHub Enterprise host name. For example:
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets type of workspace repositoryID configuration. Example
+        /// Gets or sets type of workspace repository ID configuration. Example
         /// WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
         /// </summary>
         [JsonProperty(PropertyName = "type")]
