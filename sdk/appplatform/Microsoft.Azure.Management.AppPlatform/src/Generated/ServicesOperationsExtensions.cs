@@ -474,6 +474,42 @@ namespace Microsoft.Azure.Management.AppPlatform
             }
 
             /// <summary>
+            /// Checks if the required owner role of the vnet is assigned to Azure Spring
+            /// Cloud.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentParameter'>
+            /// Parameters supplied to the operation.
+            /// </param>
+            public static VnetRoleAssignment CheckVnetRoleAssignment(this IServicesOperations operations, VnetRoleAssignmentParameter roleAssignmentParameter)
+            {
+                return operations.CheckVnetRoleAssignmentAsync(roleAssignmentParameter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Checks if the required owner role of the vnet is assigned to Azure Spring
+            /// Cloud.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentParameter'>
+            /// Parameters supplied to the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VnetRoleAssignment> CheckVnetRoleAssignmentAsync(this IServicesOperations operations, VnetRoleAssignmentParameter roleAssignmentParameter, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckVnetRoleAssignmentWithHttpMessagesAsync(roleAssignmentParameter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Create a new Service or update an exiting Service.
             /// </summary>
             /// <param name='operations'>
