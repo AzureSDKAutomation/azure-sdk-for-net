@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
@@ -63,41 +68,6 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
-
-        /// <summary>
-        /// Gets the IFunctionsOperations.
-        /// </summary>
-        IFunctionsOperations Functions { get; }
-
-        /// <summary>
-        /// Gets the IInputsOperations.
-        /// </summary>
-        IInputsOperations Inputs { get; }
-
-        /// <summary>
-        /// Gets the IOutputsOperations.
-        /// </summary>
-        IOutputsOperations Outputs { get; }
-
-        /// <summary>
-        /// Gets the IStreamingJobsOperations.
-        /// </summary>
-        IStreamingJobsOperations StreamingJobs { get; }
-
-        /// <summary>
-        /// Gets the ISubscriptionsOperations.
-        /// </summary>
-        ISubscriptionsOperations Subscriptions { get; }
-
-        /// <summary>
-        /// Gets the ITransformationsOperations.
-        /// </summary>
-        ITransformationsOperations Transformations { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IClustersOperations.
