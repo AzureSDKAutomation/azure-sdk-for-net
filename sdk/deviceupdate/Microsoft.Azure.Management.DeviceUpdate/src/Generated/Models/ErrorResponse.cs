@@ -11,12 +11,18 @@
 namespace Microsoft.Azure.Management.DeviceUpdate.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Error response indicates that the service is not able to process the
-    /// incoming request.
+    /// Error Response
     /// </summary>
+    /// <remarks>
+    /// Common error response for all Azure Resource Manager APIs to return
+    /// error details for failed operations. (This also follows the OData error
+    /// response format.)
+    /// </remarks>
     public partial class ErrorResponse
     {
         /// <summary>
@@ -30,12 +36,18 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         /// <summary>
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="code">Error status code.</param>
-        /// <param name="error">Error details.</param>
-        public ErrorResponse(string code = default(string), ErrorDefinition error = default(ErrorDefinition))
+        /// <param name="code">The error code.</param>
+        /// <param name="message">The error message.</param>
+        /// <param name="target">The error target.</param>
+        /// <param name="details">The error details.</param>
+        /// <param name="additionalInfo">The error additional info.</param>
+        public ErrorResponse(string code = default(string), string message = default(string), string target = default(string), IList<ErrorResponse> details = default(IList<ErrorResponse>), IList<ErrorAdditionalInfo> additionalInfo = default(IList<ErrorAdditionalInfo>))
         {
             Code = code;
-            Error = error;
+            Message = message;
+            Target = target;
+            Details = details;
+            AdditionalInfo = additionalInfo;
             CustomInit();
         }
 
@@ -45,16 +57,34 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets error status code.
+        /// Gets the error code.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; private set; }
 
         /// <summary>
-        /// Gets error details.
+        /// Gets the error message.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDefinition Error { get; private set; }
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
+
+        /// <summary>
+        /// Gets the error target.
+        /// </summary>
+        [JsonProperty(PropertyName = "target")]
+        public string Target { get; private set; }
+
+        /// <summary>
+        /// Gets the error details.
+        /// </summary>
+        [JsonProperty(PropertyName = "details")]
+        public IList<ErrorResponse> Details { get; private set; }
+
+        /// <summary>
+        /// Gets the error additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "additionalInfo")]
+        public IList<ErrorAdditionalInfo> AdditionalInfo { get; private set; }
 
     }
 }

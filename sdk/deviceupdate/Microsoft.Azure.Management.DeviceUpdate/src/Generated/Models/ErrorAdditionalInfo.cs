@@ -14,26 +14,27 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
     using System.Linq;
 
     /// <summary>
-    /// Error response indicates that the service is not able to process the
-    /// incoming request.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class ErrorDefinition
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDefinition class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public ErrorDefinition()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDefinition class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="error">Error details.</param>
-        public ErrorDefinition(ErrorResponse error = default(ErrorResponse))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Error = error;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -43,10 +44,16 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets error details.
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponse Error { get; private set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }
