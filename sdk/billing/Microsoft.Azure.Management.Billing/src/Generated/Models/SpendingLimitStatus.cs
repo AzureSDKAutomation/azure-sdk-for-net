@@ -12,13 +12,14 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for InvoiceStatus.
+    /// Defines values for SpendingLimitStatus.
     /// </summary>
-    public static class InvoiceStatus
+    public static class SpendingLimitStatus
     {
-        public const string Due = "Due";
-        public const string OverDue = "OverDue";
-        public const string Paid = "Paid";
-        public const string Void = "Void";
+        public const string Active = "Active";
+        public const string Expired = "Expired";
+        public const string LimitReached = "LimitReached";
+        public const string LimitRemoved = "LimitRemoved";
+        public const string None = "None";
     }
 }

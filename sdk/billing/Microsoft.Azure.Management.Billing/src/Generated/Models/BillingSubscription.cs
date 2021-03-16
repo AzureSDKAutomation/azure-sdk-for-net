@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="subscriptionBillingStatus">The current billing status
         /// of the subscription. Possible values include: 'Active', 'Inactive',
         /// 'Abandoned', 'Deleted', 'Warning'</param>
+        /// <param name="subscriptionBillingStatusReasonDetails">Spending limit
+        /// details.</param>
         /// <param name="lastMonthCharges">The last month charges.</param>
         /// <param name="monthToDateCharges">The current month to date
         /// charges.</param>
@@ -64,12 +66,14 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// subscription.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
         /// for the subscription.</param>
-        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string))
+        /// <param name="spendingLimitDetails">Spending limit details.</param>
+        public BillingSubscription(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), System.Guid? subscriptionId = default(System.Guid?), string subscriptionBillingStatus = default(string), object subscriptionBillingStatusReasonDetails = default(object), Amount lastMonthCharges = default(Amount), Amount monthToDateCharges = default(Amount), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string costCenter = default(string), string customerId = default(string), string customerDisplayName = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), Reseller reseller = default(Reseller), string skuId = default(string), string skuDescription = default(string), object spendingLimitDetails = default(object))
             : base(id, name, type)
         {
             DisplayName = displayName;
             SubscriptionId = subscriptionId;
             SubscriptionBillingStatus = subscriptionBillingStatus;
+            SubscriptionBillingStatusReasonDetails = subscriptionBillingStatusReasonDetails;
             LastMonthCharges = lastMonthCharges;
             MonthToDateCharges = monthToDateCharges;
             BillingProfileId = billingProfileId;
@@ -82,6 +86,7 @@ namespace Microsoft.Azure.Management.Billing.Models
             Reseller = reseller;
             SkuId = skuId;
             SkuDescription = skuDescription;
+            SpendingLimitDetails = spendingLimitDetails;
             CustomInit();
         }
 
@@ -109,6 +114,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.subscriptionBillingStatus")]
         public string SubscriptionBillingStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets spending limit details.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.SubscriptionBillingStatusReasonDetails")]
+        public object SubscriptionBillingStatusReasonDetails { get; set; }
 
         /// <summary>
         /// Gets the last month charges.
@@ -189,6 +200,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.skuDescription")]
         public string SkuDescription { get; private set; }
+
+        /// <summary>
+        /// Gets or sets spending limit details.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.spendingLimitDetails")]
+        public object SpendingLimitDetails { get; set; }
 
     }
 }

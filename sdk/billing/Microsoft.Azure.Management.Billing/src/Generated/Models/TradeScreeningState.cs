@@ -12,13 +12,15 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for InvoiceStatus.
+    /// Defines values for TradeScreeningState.
     /// </summary>
-    public static class InvoiceStatus
+    public static class TradeScreeningState
     {
-        public const string Due = "Due";
-        public const string OverDue = "OverDue";
-        public const string Paid = "Paid";
-        public const string Void = "Void";
+        public const string Unknown = "Unknown";
+        public const string NeedScreening = "NeedScreening";
+        public const string UnderReview = "UnderReview";
+        public const string IngestionError = "IngestionError";
+        public const string Allowed = "Allowed";
+        public const string NotAllowed = "NotAllowed";
     }
 }
