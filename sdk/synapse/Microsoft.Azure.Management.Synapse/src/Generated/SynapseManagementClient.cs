@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Management.Synapse
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
         /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription.
+        /// </summary>
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -75,299 +75,9 @@ namespace Microsoft.Azure.Management.Synapse
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IBigDataPoolsOperations.
+        /// Gets the IKustoPoolsOperations.
         /// </summary>
-        public virtual IBigDataPoolsOperations BigDataPools { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IIpFirewallRulesOperations.
-        /// </summary>
-        public virtual IIpFirewallRulesOperations IpFirewallRules { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolsOperations.
-        /// </summary>
-        public virtual ISqlPoolsOperations SqlPools { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolMetadataSyncConfigsOperations.
-        /// </summary>
-        public virtual ISqlPoolMetadataSyncConfigsOperations SqlPoolMetadataSyncConfigs { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolOperationResultsOperations.
-        /// </summary>
-        public virtual ISqlPoolOperationResultsOperations SqlPoolOperationResults { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolGeoBackupPoliciesOperations.
-        /// </summary>
-        public virtual ISqlPoolGeoBackupPoliciesOperations SqlPoolGeoBackupPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolDataWarehouseUserActivitiesOperations.
-        /// </summary>
-        public virtual ISqlPoolDataWarehouseUserActivitiesOperations SqlPoolDataWarehouseUserActivities { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolRestorePointsOperations.
-        /// </summary>
-        public virtual ISqlPoolRestorePointsOperations SqlPoolRestorePoints { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolReplicationLinksOperations.
-        /// </summary>
-        public virtual ISqlPoolReplicationLinksOperations SqlPoolReplicationLinks { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolMaintenanceWindowsOperations.
-        /// </summary>
-        public virtual ISqlPoolMaintenanceWindowsOperations SqlPoolMaintenanceWindows { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolMaintenanceWindowOptionsOperations.
-        /// </summary>
-        public virtual ISqlPoolMaintenanceWindowOptionsOperations SqlPoolMaintenanceWindowOptions { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolTransparentDataEncryptionsOperations.
-        /// </summary>
-        public virtual ISqlPoolTransparentDataEncryptionsOperations SqlPoolTransparentDataEncryptions { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual ISqlPoolBlobAuditingPoliciesOperations SqlPoolBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolOperations.
-        /// </summary>
-        public virtual ISqlPoolOperations SqlPoolOperations { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolUsagesOperations.
-        /// </summary>
-        public virtual ISqlPoolUsagesOperations SqlPoolUsages { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolSensitivityLabelsOperations.
-        /// </summary>
-        public virtual ISqlPoolSensitivityLabelsOperations SqlPoolSensitivityLabels { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolRecommendedSensitivityLabelsOperations.
-        /// </summary>
-        public virtual ISqlPoolRecommendedSensitivityLabelsOperations SqlPoolRecommendedSensitivityLabels { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolSchemasOperations.
-        /// </summary>
-        public virtual ISqlPoolSchemasOperations SqlPoolSchemas { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolTablesOperations.
-        /// </summary>
-        public virtual ISqlPoolTablesOperations SqlPoolTables { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolTableColumnsOperations.
-        /// </summary>
-        public virtual ISqlPoolTableColumnsOperations SqlPoolTableColumns { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolConnectionPoliciesOperations.
-        /// </summary>
-        public virtual ISqlPoolConnectionPoliciesOperations SqlPoolConnectionPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolVulnerabilityAssessmentsOperations.
-        /// </summary>
-        public virtual ISqlPoolVulnerabilityAssessmentsOperations SqlPoolVulnerabilityAssessments { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolVulnerabilityAssessmentScansOperations.
-        /// </summary>
-        public virtual ISqlPoolVulnerabilityAssessmentScansOperations SqlPoolVulnerabilityAssessmentScans { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual ISqlPoolSecurityAlertPoliciesOperations SqlPoolSecurityAlertPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolVulnerabilityAssessmentRuleBaselinesOperations.
-        /// </summary>
-        public virtual ISqlPoolVulnerabilityAssessmentRuleBaselinesOperations SqlPoolVulnerabilityAssessmentRuleBaselines { get; private set; }
-
-        /// <summary>
-        /// Gets the IExtendedSqlPoolBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IExtendedSqlPoolBlobAuditingPoliciesOperations ExtendedSqlPoolBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataMaskingPoliciesOperations.
-        /// </summary>
-        public virtual IDataMaskingPoliciesOperations DataMaskingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataMaskingRulesOperations.
-        /// </summary>
-        public virtual IDataMaskingRulesOperations DataMaskingRules { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolColumnsOperations.
-        /// </summary>
-        public virtual ISqlPoolColumnsOperations SqlPoolColumns { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolWorkloadGroupOperations.
-        /// </summary>
-        public virtual ISqlPoolWorkloadGroupOperations SqlPoolWorkloadGroup { get; private set; }
-
-        /// <summary>
-        /// Gets the ISqlPoolWorkloadClassifierOperations.
-        /// </summary>
-        public virtual ISqlPoolWorkloadClassifierOperations SqlPoolWorkloadClassifier { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspacesOperations.
-        /// </summary>
-        public virtual IWorkspacesOperations Workspaces { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceAadAdminsOperations.
-        /// </summary>
-        public virtual IWorkspaceAadAdminsOperations WorkspaceAadAdmins { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceSqlAadAdminsOperations.
-        /// </summary>
-        public virtual IWorkspaceSqlAadAdminsOperations WorkspaceSqlAadAdmins { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedIdentitySqlControlSettingsOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedIdentitySqlControlSettingsOperations WorkspaceManagedIdentitySqlControlSettings { get; private set; }
-
-        /// <summary>
-        /// Gets the IRestorableDroppedSqlPoolsOperations.
-        /// </summary>
-        public virtual IRestorableDroppedSqlPoolsOperations RestorableDroppedSqlPools { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimesOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimesOperations IntegrationRuntimes { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeNodeIpAddressOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeNodeIpAddressOperations IntegrationRuntimeNodeIpAddress { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeObjectMetadataOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeObjectMetadataOperations IntegrationRuntimeObjectMetadata { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeNodesOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeNodesOperations IntegrationRuntimeNodes { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeCredentialsOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeCredentialsOperations IntegrationRuntimeCredentials { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeConnectionInfosOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeConnectionInfosOperations IntegrationRuntimeConnectionInfos { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeAuthKeysOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeAuthKeysOperations IntegrationRuntimeAuthKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeMonitoringDataOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeMonitoringDataOperations IntegrationRuntimeMonitoringData { get; private set; }
-
-        /// <summary>
-        /// Gets the IIntegrationRuntimeStatusOperations.
-        /// </summary>
-        public virtual IIntegrationRuntimeStatusOperations IntegrationRuntimeStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkHubPrivateLinkResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkHubPrivateLinkResourcesOperations PrivateLinkHubPrivateLinkResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkHubsOperations.
-        /// </summary>
-        public virtual IPrivateLinkHubsOperations PrivateLinkHubs { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsPrivateLinkHubOperations.
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsPrivateLinkHubOperations PrivateEndpointConnectionsPrivateLinkHub { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerBlobAuditingPoliciesOperations WorkspaceManagedSqlServerBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations WorkspaceManagedSqlServerExtendedBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerSecurityAlertPolicyOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerSecurityAlertPolicyOperations WorkspaceManagedSqlServerSecurityAlertPolicy { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations WorkspaceManagedSqlServerVulnerabilityAssessments { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerEncryptionProtectorOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerEncryptionProtectorOperations WorkspaceManagedSqlServerEncryptionProtector { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerUsagesOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerUsagesOperations WorkspaceManagedSqlServerUsages { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations.
-        /// </summary>
-        public virtual IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations WorkspaceManagedSqlServerRecoverableSqlPools { get; private set; }
-
-        /// <summary>
-        /// Gets the IKeysOperations.
-        /// </summary>
-        public virtual IKeysOperations Keys { get; private set; }
+        public virtual IKustoPoolsOperations KustoPools { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SynapseManagementClient class.
@@ -610,67 +320,9 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         private void Initialize()
         {
-            BigDataPools = new BigDataPoolsOperations(this);
-            Operations = new Operations(this);
-            IpFirewallRules = new IpFirewallRulesOperations(this);
-            SqlPools = new SqlPoolsOperations(this);
-            SqlPoolMetadataSyncConfigs = new SqlPoolMetadataSyncConfigsOperations(this);
-            SqlPoolOperationResults = new SqlPoolOperationResultsOperations(this);
-            SqlPoolGeoBackupPolicies = new SqlPoolGeoBackupPoliciesOperations(this);
-            SqlPoolDataWarehouseUserActivities = new SqlPoolDataWarehouseUserActivitiesOperations(this);
-            SqlPoolRestorePoints = new SqlPoolRestorePointsOperations(this);
-            SqlPoolReplicationLinks = new SqlPoolReplicationLinksOperations(this);
-            SqlPoolMaintenanceWindows = new SqlPoolMaintenanceWindowsOperations(this);
-            SqlPoolMaintenanceWindowOptions = new SqlPoolMaintenanceWindowOptionsOperations(this);
-            SqlPoolTransparentDataEncryptions = new SqlPoolTransparentDataEncryptionsOperations(this);
-            SqlPoolBlobAuditingPolicies = new SqlPoolBlobAuditingPoliciesOperations(this);
-            SqlPoolOperations = new SqlPoolOperations(this);
-            SqlPoolUsages = new SqlPoolUsagesOperations(this);
-            SqlPoolSensitivityLabels = new SqlPoolSensitivityLabelsOperations(this);
-            SqlPoolRecommendedSensitivityLabels = new SqlPoolRecommendedSensitivityLabelsOperations(this);
-            SqlPoolSchemas = new SqlPoolSchemasOperations(this);
-            SqlPoolTables = new SqlPoolTablesOperations(this);
-            SqlPoolTableColumns = new SqlPoolTableColumnsOperations(this);
-            SqlPoolConnectionPolicies = new SqlPoolConnectionPoliciesOperations(this);
-            SqlPoolVulnerabilityAssessments = new SqlPoolVulnerabilityAssessmentsOperations(this);
-            SqlPoolVulnerabilityAssessmentScans = new SqlPoolVulnerabilityAssessmentScansOperations(this);
-            SqlPoolSecurityAlertPolicies = new SqlPoolSecurityAlertPoliciesOperations(this);
-            SqlPoolVulnerabilityAssessmentRuleBaselines = new SqlPoolVulnerabilityAssessmentRuleBaselinesOperations(this);
-            ExtendedSqlPoolBlobAuditingPolicies = new ExtendedSqlPoolBlobAuditingPoliciesOperations(this);
-            DataMaskingPolicies = new DataMaskingPoliciesOperations(this);
-            DataMaskingRules = new DataMaskingRulesOperations(this);
-            SqlPoolColumns = new SqlPoolColumnsOperations(this);
-            SqlPoolWorkloadGroup = new SqlPoolWorkloadGroupOperations(this);
-            SqlPoolWorkloadClassifier = new SqlPoolWorkloadClassifierOperations(this);
-            Workspaces = new WorkspacesOperations(this);
-            WorkspaceAadAdmins = new WorkspaceAadAdminsOperations(this);
-            WorkspaceSqlAadAdmins = new WorkspaceSqlAadAdminsOperations(this);
-            WorkspaceManagedIdentitySqlControlSettings = new WorkspaceManagedIdentitySqlControlSettingsOperations(this);
-            RestorableDroppedSqlPools = new RestorableDroppedSqlPoolsOperations(this);
-            IntegrationRuntimes = new IntegrationRuntimesOperations(this);
-            IntegrationRuntimeNodeIpAddress = new IntegrationRuntimeNodeIpAddressOperations(this);
-            IntegrationRuntimeObjectMetadata = new IntegrationRuntimeObjectMetadataOperations(this);
-            IntegrationRuntimeNodes = new IntegrationRuntimeNodesOperations(this);
-            IntegrationRuntimeCredentials = new IntegrationRuntimeCredentialsOperations(this);
-            IntegrationRuntimeConnectionInfos = new IntegrationRuntimeConnectionInfosOperations(this);
-            IntegrationRuntimeAuthKeys = new IntegrationRuntimeAuthKeysOperations(this);
-            IntegrationRuntimeMonitoringData = new IntegrationRuntimeMonitoringDataOperations(this);
-            IntegrationRuntimeStatus = new IntegrationRuntimeStatusOperations(this);
-            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            PrivateLinkHubPrivateLinkResources = new PrivateLinkHubPrivateLinkResourcesOperations(this);
-            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            PrivateLinkHubs = new PrivateLinkHubsOperations(this);
-            PrivateEndpointConnectionsPrivateLinkHub = new PrivateEndpointConnectionsPrivateLinkHubOperations(this);
-            WorkspaceManagedSqlServerBlobAuditingPolicies = new WorkspaceManagedSqlServerBlobAuditingPoliciesOperations(this);
-            WorkspaceManagedSqlServerExtendedBlobAuditingPolicies = new WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations(this);
-            WorkspaceManagedSqlServerSecurityAlertPolicy = new WorkspaceManagedSqlServerSecurityAlertPolicyOperations(this);
-            WorkspaceManagedSqlServerVulnerabilityAssessments = new WorkspaceManagedSqlServerVulnerabilityAssessmentsOperations(this);
-            WorkspaceManagedSqlServerEncryptionProtector = new WorkspaceManagedSqlServerEncryptionProtectorOperations(this);
-            WorkspaceManagedSqlServerUsages = new WorkspaceManagedSqlServerUsagesOperations(this);
-            WorkspaceManagedSqlServerRecoverableSqlPools = new WorkspaceManagedSqlServerRecoverableSqlPoolsOperations(this);
-            Keys = new KeysOperations(this);
+            KustoPools = new KustoPoolsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-12-01";
+            ApiVersion = "2021-04-04";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -700,18 +352,6 @@ namespace Microsoft.Azure.Management.Synapse
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<IntegrationRuntime>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<IntegrationRuntime>("type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CustomSetupBase>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CustomSetupBase>("type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SecretBase>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SecretBase>("type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<LinkedIntegrationRuntimeType>("authorizationType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<LinkedIntegrationRuntimeType>("authorizationType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<IntegrationRuntimeStatus>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<IntegrationRuntimeStatus>("type"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SsisObjectMetadata>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SsisObjectMetadata>("type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
