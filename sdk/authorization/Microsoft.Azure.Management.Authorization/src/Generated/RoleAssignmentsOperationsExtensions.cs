@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Management.Authorization
     public static partial class RoleAssignmentsOperationsExtensions
     {
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List role assignments for a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='resourceProviderNamespace'>
             /// The namespace of the resource provider.
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List role assignments for a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='resourceProviderNamespace'>
             /// The namespace of the resource provider.
@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List role assignments for a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
@@ -104,13 +104,13 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List role assignments for a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// Delete a role assignment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// Delete a role assignment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Creates a role assignment.
+            /// Create a role assignment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Creates a role assignment.
+            /// Create a role assignment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// Delete a role assignment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// Delete a role assignment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List role assignments for a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List role assignments for a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List role assignments for a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List role assignments for a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
