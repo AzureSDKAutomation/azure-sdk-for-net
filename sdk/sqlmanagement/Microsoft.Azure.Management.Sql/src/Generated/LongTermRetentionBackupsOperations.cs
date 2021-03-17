@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Copy an existing long term retention backup to a different server.
+        /// Copy an existing long term retention backup to a differnt server.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -2616,7 +2616,7 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Copy an existing long term retention backup to a different server.
+        /// Copy an existing long term retention backup to a differnt server.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
