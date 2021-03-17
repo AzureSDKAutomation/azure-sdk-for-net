@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Copy an existing long term retention backup to a different server.
+            /// Copy an existing long term retention backup to a differnt server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Copy an existing long term retention backup to a different server.
+            /// Copy an existing long term retention backup to a differnt server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Copy an existing long term retention backup to a different server.
+            /// Copy an existing long term retention backup to a differnt server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1031,7 +1031,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Copy an existing long term retention backup to a different server.
+            /// Copy an existing long term retention backup to a differnt server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
