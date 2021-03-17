@@ -11,12 +11,10 @@
 namespace Microsoft.Azure.Management.Synapse.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The error detail.
+    /// Error details
     /// </summary>
     public partial class ErrorDetail
     {
@@ -31,18 +29,14 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <summary>
         /// Initializes a new instance of the ErrorDetail class.
         /// </summary>
-        /// <param name="code">The error code.</param>
-        /// <param name="message">The error message.</param>
-        /// <param name="target">The error target.</param>
-        /// <param name="details">The error details.</param>
-        /// <param name="additionalInfo">The error additional info.</param>
-        public ErrorDetail(string code = default(string), string message = default(string), string target = default(string), IList<ErrorDetail> details = default(IList<ErrorDetail>), IList<ErrorAdditionalInfo> additionalInfo = default(IList<ErrorAdditionalInfo>))
+        /// <param name="message">Error message</param>
+        /// <param name="code">Error code</param>
+        /// <param name="target">Error target</param>
+        public ErrorDetail(string message = default(string), string code = default(string), string target = default(string))
         {
-            Code = code;
             Message = message;
+            Code = code;
             Target = target;
-            Details = details;
-            AdditionalInfo = additionalInfo;
             CustomInit();
         }
 
@@ -52,34 +46,22 @@ namespace Microsoft.Azure.Management.Synapse.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the error code.
-        /// </summary>
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; private set; }
-
-        /// <summary>
-        /// Gets the error message.
+        /// Gets or sets error message
         /// </summary>
         [JsonProperty(PropertyName = "message")]
-        public string Message { get; private set; }
+        public string Message { get; set; }
 
         /// <summary>
-        /// Gets the error target.
+        /// Gets or sets error code
+        /// </summary>
+        [JsonProperty(PropertyName = "code")]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error target
         /// </summary>
         [JsonProperty(PropertyName = "target")]
-        public string Target { get; private set; }
-
-        /// <summary>
-        /// Gets the error details.
-        /// </summary>
-        [JsonProperty(PropertyName = "details")]
-        public IList<ErrorDetail> Details { get; private set; }
-
-        /// <summary>
-        /// Gets the error additional info.
-        /// </summary>
-        [JsonProperty(PropertyName = "additionalInfo")]
-        public IList<ErrorAdditionalInfo> AdditionalInfo { get; private set; }
+        public string Target { get; set; }
 
     }
 }

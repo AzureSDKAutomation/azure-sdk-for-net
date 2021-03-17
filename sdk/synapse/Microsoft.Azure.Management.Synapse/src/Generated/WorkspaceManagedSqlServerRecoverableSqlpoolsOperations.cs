@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// WorkspaceManagedSqlServerRecoverableSqlPoolsOperations operations.
+    /// WorkspaceManagedSqlServerRecoverableSqlpoolsOperations operations.
     /// </summary>
-    internal partial class WorkspaceManagedSqlServerRecoverableSqlPoolsOperations : IServiceOperations<SynapseManagementClient>, IWorkspaceManagedSqlServerRecoverableSqlPoolsOperations
+    internal partial class WorkspaceManagedSqlServerRecoverableSqlpoolsOperations : IServiceOperations<SynapseManagementClient>, IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the WorkspaceManagedSqlServerRecoverableSqlPoolsOperations class.
+        /// Initializes a new instance of the WorkspaceManagedSqlServerRecoverableSqlpoolsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal WorkspaceManagedSqlServerRecoverableSqlPoolsOperations(SynapseManagementClient client)
+        internal WorkspaceManagedSqlServerRecoverableSqlpoolsOperations(SynapseManagementClient client)
         {
             if (client == null)
             {
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Synapse
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlpools").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
@@ -290,8 +290,8 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='workspaceName'>
         /// The name of the workspace
         /// </param>
-        /// <param name='sqlPoolName'>
-        /// The name of the sql pool
+        /// <param name='sqlComputeName'>
+        /// The name of the sql compute
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<RecoverableSqlPool>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<RecoverableSqlPool>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlComputeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -361,9 +361,9 @@ namespace Microsoft.Azure.Management.Synapse
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
             }
-            if (sqlPoolName == null)
+            if (sqlComputeName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "sqlPoolName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "sqlComputeName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -374,17 +374,17 @@ namespace Microsoft.Azure.Management.Synapse
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("sqlPoolName", sqlPoolName);
+                tracingParameters.Add("sqlComputeName", sqlComputeName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools/{sqlPoolName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools/{sqlComputeName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{sqlPoolName}", System.Uri.EscapeDataString(sqlPoolName));
+            _url = _url.Replace("{sqlComputeName}", System.Uri.EscapeDataString(sqlComputeName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
