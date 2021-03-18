@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Management.Billing.Models
 {
 
     /// <summary>
-    /// Defines values for InvoiceStatus.
+    /// Defines values for SubscriptionBillingStatus.
     /// </summary>
-    public static class InvoiceStatus
+    public static class SubscriptionBillingStatus
     {
-        public const string Due = "Due";
-        public const string OverDue = "OverDue";
-        public const string Paid = "Paid";
-        public const string Void = "Void";
+        public const string Active = "Active";
+        public const string Deleted = "Deleted";
+        public const string Disabled = "Disabled";
+        public const string PastDue = "PastDue";
     }
 }

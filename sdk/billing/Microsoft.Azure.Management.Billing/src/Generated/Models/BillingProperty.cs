@@ -71,7 +71,11 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// subscription.</param>
         /// <param name="skuDescription">The sku description of the Azure plan
         /// for the subscription.</param>
-        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string accountAdminNotificationEmailAddress = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileStatus = default(string), string billingProfileStatusReasonCode = default(string), string billingProfileSpendingLimit = default(string), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), bool? isAccountAdmin = default(bool?), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string))
+        /// <param name="subscriptionBillingStatus">The subscription status.
+        /// Possible values include: 'Active', 'Deleted', 'Disabled',
+        /// 'PastDue'</param>
+        /// <param name="spendingLimitDetails">Spending limit details.</param>
+        public BillingProperty(string id = default(string), string name = default(string), string type = default(string), string accountAdminNotificationEmailAddress = default(string), string billingTenantId = default(string), string billingAccountId = default(string), string billingAccountDisplayName = default(string), string billingProfileId = default(string), string billingProfileDisplayName = default(string), string billingProfileStatus = default(string), string billingProfileStatusReasonCode = default(string), string billingProfileSpendingLimit = default(string), string costCenter = default(string), string invoiceSectionId = default(string), string invoiceSectionDisplayName = default(string), bool? isAccountAdmin = default(bool?), string productId = default(string), string productName = default(string), string skuId = default(string), string skuDescription = default(string), string subscriptionBillingStatus = default(string), object spendingLimitDetails = default(object))
             : base(id, name, type)
         {
             AccountAdminNotificationEmailAddress = accountAdminNotificationEmailAddress;
@@ -91,6 +95,8 @@ namespace Microsoft.Azure.Management.Billing.Models
             ProductName = productName;
             SkuId = skuId;
             SkuDescription = skuDescription;
+            SubscriptionBillingStatus = subscriptionBillingStatus;
+            SpendingLimitDetails = spendingLimitDetails;
             CustomInit();
         }
 
@@ -212,6 +218,19 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.skuDescription")]
         public string SkuDescription { get; private set; }
+
+        /// <summary>
+        /// Gets the subscription status. Possible values include: 'Active',
+        /// 'Deleted', 'Disabled', 'PastDue'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptionBillingStatus")]
+        public string SubscriptionBillingStatus { get; private set; }
+
+        /// <summary>
+        /// Gets or sets spending limit details.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.spendingLimitDetails")]
+        public object SpendingLimitDetails { get; set; }
 
     }
 }

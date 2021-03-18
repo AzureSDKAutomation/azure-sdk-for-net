@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// 'MicrosoftPartnerAgreement'</param>
         /// <param name="accountType">The type of customer. Possible values
         /// include: 'Enterprise', 'Individual', 'Partner'</param>
+        /// <param name="notificationEmailAddress">Notification email address,
+        /// only for legacy accounts</param>
         /// <param name="accountStatus">The current status of the billing
         /// account. Possible values include: 'Active', 'Deleted', 'Disabled',
         /// 'Expired', 'Transferred', 'Extended', 'Terminated'</param>
@@ -60,18 +62,27 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// enrollment.</param>
         /// <param name="hasReadAccess">Indicates whether user has read access
         /// to the billing account.</param>
-        public BillingAccountUpdateRequest(string displayName = default(string), AddressDetails soldTo = default(AddressDetails), string agreementType = default(string), string accountType = default(string), string accountStatus = default(string), BillingProfilesOnExpand billingProfiles = default(BillingProfilesOnExpand), Enrollment enrollmentDetails = default(Enrollment), IList<Department> departments = default(IList<Department>), IList<EnrollmentAccount> enrollmentAccounts = default(IList<EnrollmentAccount>), bool? hasReadAccess = default(bool?))
+        /// <param name="subscriptions">List of subscriptions, associated with
+        /// billing account.</param>
+        /// <param name="tradeScreeningState">The current trade screening state
+        /// of the billing account. Possible values include: 'Unknown',
+        /// 'NeedScreening', 'UnderReview', 'IngestionError', 'Allowed',
+        /// 'NotAllowed'</param>
+        public BillingAccountUpdateRequest(string displayName = default(string), AddressDetails soldTo = default(AddressDetails), string agreementType = default(string), string accountType = default(string), string notificationEmailAddress = default(string), string accountStatus = default(string), BillingProfilesOnExpand billingProfiles = default(BillingProfilesOnExpand), Enrollment enrollmentDetails = default(Enrollment), IList<Department> departments = default(IList<Department>), IList<EnrollmentAccount> enrollmentAccounts = default(IList<EnrollmentAccount>), bool? hasReadAccess = default(bool?), IList<BillingAccountSubscriptions> subscriptions = default(IList<BillingAccountSubscriptions>), string tradeScreeningState = default(string))
         {
             DisplayName = displayName;
             SoldTo = soldTo;
             AgreementType = agreementType;
             AccountType = accountType;
+            NotificationEmailAddress = notificationEmailAddress;
             AccountStatus = accountStatus;
             BillingProfiles = billingProfiles;
             EnrollmentDetails = enrollmentDetails;
             Departments = departments;
             EnrollmentAccounts = enrollmentAccounts;
             HasReadAccess = hasReadAccess;
+            Subscriptions = subscriptions;
+            TradeScreeningState = tradeScreeningState;
             CustomInit();
         }
 
@@ -107,6 +118,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.accountType")]
         public string AccountType { get; private set; }
+
+        /// <summary>
+        /// Gets or sets notification email address, only for legacy accounts
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.NotificationEmailAddress")]
+        public string NotificationEmailAddress { get; set; }
 
         /// <summary>
         /// Gets the current status of the billing account. Possible values
@@ -148,6 +165,21 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hasReadAccess")]
         public bool? HasReadAccess { get; private set; }
+
+        /// <summary>
+        /// Gets or sets list of subscriptions, associated with billing
+        /// account.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.subscriptions")]
+        public IList<BillingAccountSubscriptions> Subscriptions { get; set; }
+
+        /// <summary>
+        /// Gets the current trade screening state of the billing account.
+        /// Possible values include: 'Unknown', 'NeedScreening', 'UnderReview',
+        /// 'IngestionError', 'Allowed', 'NotAllowed'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tradeScreeningState")]
+        public string TradeScreeningState { get; private set; }
 
         /// <summary>
         /// Validate the object.

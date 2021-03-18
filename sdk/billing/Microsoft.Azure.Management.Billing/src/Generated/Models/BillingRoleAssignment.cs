@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="type">Resource type.</param>
         /// <param name="createdOn">The date the role assignment was
         /// created.</param>
+        /// <param name="modifiedOn">The date the role assignment was
+        /// modified.</param>
         /// <param name="createdByPrincipalTenantId">The tenant Id of the user
         /// who created the role assignment.</param>
         /// <param name="createdByPrincipalId">The principal Id of the user who
@@ -55,10 +57,11 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// type.</param>
         /// <param name="userEmailAddress">The email address of the
         /// user.</param>
-        public BillingRoleAssignment(string id = default(string), string name = default(string), string type = default(string), string createdOn = default(string), string createdByPrincipalTenantId = default(string), string createdByPrincipalId = default(string), string createdByUserEmailAddress = default(string), string principalId = default(string), string principalTenantId = default(string), string roleDefinitionId = default(string), string scope = default(string), string userAuthenticationType = default(string), string userEmailAddress = default(string))
+        public BillingRoleAssignment(string id = default(string), string name = default(string), string type = default(string), string createdOn = default(string), string modifiedOn = default(string), string createdByPrincipalTenantId = default(string), string createdByPrincipalId = default(string), string createdByUserEmailAddress = default(string), string principalId = default(string), string principalTenantId = default(string), string roleDefinitionId = default(string), string scope = default(string), string userAuthenticationType = default(string), string userEmailAddress = default(string))
             : base(id, name, type)
         {
             CreatedOn = createdOn;
+            ModifiedOn = modifiedOn;
             CreatedByPrincipalTenantId = createdByPrincipalTenantId;
             CreatedByPrincipalId = createdByPrincipalId;
             CreatedByUserEmailAddress = createdByUserEmailAddress;
@@ -81,6 +84,12 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdOn")]
         public string CreatedOn { get; private set; }
+
+        /// <summary>
+        /// Gets the date the role assignment was modified.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.modifiedOn")]
+        public string ModifiedOn { get; private set; }
 
         /// <summary>
         /// Gets the tenant Id of the user who created the role assignment.
