@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for LoadBalancerSkuName.
+    /// Defines values for GatewayLoadBalancerTunnelProtocol.
     /// </summary>
-    public static class LoadBalancerSkuName
+    public static class GatewayLoadBalancerTunnelProtocol
     {
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
-        public const string Gateway = "Gateway";
+        public const string None = "None";
+        public const string Native = "Native";
+        public const string VXLAN = "VXLAN";
     }
 }
