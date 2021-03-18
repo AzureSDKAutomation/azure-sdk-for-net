@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="subscriptionKeyParameterNames">Protocols over which
         /// API is made available.</param>
         /// <param name="apiType">Type of API. Possible values include: 'http',
-        /// 'soap'</param>
+        /// 'soap', 'websocket'</param>
         /// <param name="apiRevision">Describes the Revision of the Api. If no
         /// value is provided, default revision 1 is created</param>
         /// <param name="apiVersion">Indicates the Version identifier of the
@@ -67,6 +67,10 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// ApiVersionSet.</param>
         /// <param name="subscriptionRequired">Specifies whether an API or
         /// Product subscription is required for accessing the API.</param>
+        /// <param name="termsOfServiceUrl"> A URL to the Terms of Service for
+        /// the API. MUST be in the format of a URL.</param>
+        /// <param name="contact">Contact information for the API.</param>
+        /// <param name="license">License information for the API.</param>
         /// <param name="sourceApiId">API identifier of the source API.</param>
         /// <param name="displayName">API name. Must be 1 to 300 characters
         /// long.</param>
@@ -76,7 +80,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="protocols">Describes on which protocols the operations
         /// in this API can be invoked.</param>
         /// <param name="apiVersionSet">Version set details</param>
-        public ApiContract(string path, string id = default(string), string name = default(string), string type = default(string), string description = default(string), AuthenticationSettingsContract authenticationSettings = default(AuthenticationSettingsContract), SubscriptionKeyParameterNamesContract subscriptionKeyParameterNames = default(SubscriptionKeyParameterNamesContract), string apiType = default(string), string apiRevision = default(string), string apiVersion = default(string), bool? isCurrent = default(bool?), bool? isOnline = default(bool?), string apiRevisionDescription = default(string), string apiVersionDescription = default(string), string apiVersionSetId = default(string), bool? subscriptionRequired = default(bool?), string sourceApiId = default(string), string displayName = default(string), string serviceUrl = default(string), IList<Protocol?> protocols = default(IList<Protocol?>), ApiVersionSetContractDetails apiVersionSet = default(ApiVersionSetContractDetails))
+        public ApiContract(string path, string id = default(string), string name = default(string), string type = default(string), string description = default(string), AuthenticationSettingsContract authenticationSettings = default(AuthenticationSettingsContract), SubscriptionKeyParameterNamesContract subscriptionKeyParameterNames = default(SubscriptionKeyParameterNamesContract), string apiType = default(string), string apiRevision = default(string), string apiVersion = default(string), bool? isCurrent = default(bool?), bool? isOnline = default(bool?), string apiRevisionDescription = default(string), string apiVersionDescription = default(string), string apiVersionSetId = default(string), bool? subscriptionRequired = default(bool?), string termsOfServiceUrl = default(string), ApiContactInformation contact = default(ApiContactInformation), ApiLicenseInformation license = default(ApiLicenseInformation), string sourceApiId = default(string), string displayName = default(string), string serviceUrl = default(string), IList<string> protocols = default(IList<string>), ApiVersionSetContractDetails apiVersionSet = default(ApiVersionSetContractDetails))
             : base(id, name, type)
         {
             Description = description;
@@ -91,6 +95,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             ApiVersionDescription = apiVersionDescription;
             ApiVersionSetId = apiVersionSetId;
             SubscriptionRequired = subscriptionRequired;
+            TermsOfServiceUrl = termsOfServiceUrl;
+            Contact = contact;
+            License = license;
             SourceApiId = sourceApiId;
             DisplayName = displayName;
             ServiceUrl = serviceUrl;
@@ -126,7 +133,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public SubscriptionKeyParameterNamesContract SubscriptionKeyParameterNames { get; set; }
 
         /// <summary>
-        /// Gets or sets type of API. Possible values include: 'http', 'soap'
+        /// Gets or sets type of API. Possible values include: 'http', 'soap',
+        /// 'websocket'
         /// </summary>
         [JsonProperty(PropertyName = "properties.type")]
         public string ApiType { get; set; }
@@ -183,6 +191,25 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public bool? SubscriptionRequired { get; set; }
 
         /// <summary>
+        /// Gets or sets  A URL to the Terms of Service for the API. MUST be in
+        /// the format of a URL.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.termsOfServiceUrl")]
+        public string TermsOfServiceUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets contact information for the API.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.contact")]
+        public ApiContactInformation Contact { get; set; }
+
+        /// <summary>
+        /// Gets or sets license information for the API.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.license")]
+        public ApiLicenseInformation License { get; set; }
+
+        /// <summary>
         /// Gets or sets API identifier of the source API.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceApiId")]
@@ -215,7 +242,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// API can be invoked.
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocols")]
-        public IList<Protocol?> Protocols { get; set; }
+        public IList<string> Protocols { get; set; }
 
         /// <summary>
         /// Gets or sets version set details
@@ -234,6 +261,71 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             if (Path == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Path");
+            }
+            if (ApiRevision != null)
+            {
+                if (ApiRevision.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "ApiRevision", 100);
+                }
+                if (ApiRevision.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "ApiRevision", 1);
+                }
+            }
+            if (ApiVersion != null)
+            {
+                if (ApiVersion.Length > 100)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "ApiVersion", 100);
+                }
+            }
+            if (ApiRevisionDescription != null)
+            {
+                if (ApiRevisionDescription.Length > 256)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "ApiRevisionDescription", 256);
+                }
+            }
+            if (ApiVersionDescription != null)
+            {
+                if (ApiVersionDescription.Length > 256)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "ApiVersionDescription", 256);
+                }
+            }
+            if (DisplayName != null)
+            {
+                if (DisplayName.Length > 300)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "DisplayName", 300);
+                }
+                if (DisplayName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "DisplayName", 1);
+                }
+            }
+            if (ServiceUrl != null)
+            {
+                if (ServiceUrl.Length > 2000)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "ServiceUrl", 2000);
+                }
+                if (ServiceUrl.Length < 0)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "ServiceUrl", 0);
+                }
+            }
+            if (Path != null)
+            {
+                if (Path.Length > 400)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "Path", 400);
+                }
+                if (Path.Length < 0)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Path", 0);
+                }
             }
         }
     }
