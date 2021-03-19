@@ -30,13 +30,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the LinuxPatchSettings class.
         /// </summary>
         /// <param name="patchMode">Specifies the mode of VM Guest Patching to
-        /// IaaS virtual machine.&lt;br /&gt;&lt;br /&gt; Possible values
-        /// are:&lt;br /&gt;&lt;br /&gt; **ImageDefault** - The virtual
-        /// machine's default patching configuration is used. &lt;br
-        /// /&gt;&lt;br /&gt; **AutomaticByPlatform** - The virtual machine
-        /// will be automatically updated by the platform. The property
-        /// provisionVMAgent must be true. Possible values include:
-        /// 'ImageDefault', 'AutomaticByPlatform'</param>
+        /// IaaS virtual machine or virtual machines associated to virtual
+        /// machine scale set with OrchestrationMode as Flexible.&lt;br
+        /// /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt;
+        /// **ImageDefault** - The virtual machine's default patching
+        /// configuration is used. &lt;br /&gt;&lt;br /&gt;
+        /// **AutomaticByPlatform** - The virtual machine will be automatically
+        /// updated by the platform. The property provisionVMAgent must be
+        /// true. Possible values include: 'ImageDefault',
+        /// 'AutomaticByPlatform'</param>
         public LinuxPatchSettings(string patchMode = default(string))
         {
             PatchMode = patchMode;
@@ -50,14 +52,15 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the mode of VM Guest Patching to IaaS
-        /// virtual machine.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; Possible
-        /// values are:&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
-        /// **ImageDefault** - The virtual machine's default patching
-        /// configuration is used. &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
-        /// **AutomaticByPlatform** - The virtual machine will be automatically
-        /// updated by the platform. The property provisionVMAgent must be
-        /// true. Possible values include: 'ImageDefault',
-        /// 'AutomaticByPlatform'
+        /// virtual machine or virtual machines associated to virtual machine
+        /// scale set with OrchestrationMode as Flexible.&amp;lt;br
+        /// /&amp;gt;&amp;lt;br /&amp;gt; Possible values are:&amp;lt;br
+        /// /&amp;gt;&amp;lt;br /&amp;gt; **ImageDefault** - The virtual
+        /// machine's default patching configuration is used. &amp;lt;br
+        /// /&amp;gt;&amp;lt;br /&amp;gt; **AutomaticByPlatform** - The virtual
+        /// machine will be automatically updated by the platform. The property
+        /// provisionVMAgent must be true. Possible values include:
+        /// 'ImageDefault', 'AutomaticByPlatform'
         /// </summary>
         [JsonProperty(PropertyName = "patchMode")]
         public string PatchMode { get; set; }
