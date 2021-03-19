@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -47,17 +48,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="vmDisks">The list of vm disk details.</param>
         /// <param name="vmManagedDisks">The list of vm managed disk
         /// details.</param>
+        /// <param name="autoProtectionOfDataDisk">A value indicating whether
+        /// the auto protection is enabled. Possible values include:
+        /// 'Disabled', 'Enabled'</param>
         /// <param name="multiVmGroupName">The multi vm group name.</param>
+        /// <param name="multiVmGroupId">The multi vm group id.</param>
         /// <param name="recoveryBootDiagStorageAccountId">The boot diagnostic
         /// storage account.</param>
         /// <param name="diskEncryptionInfo">The recovery disk encryption
-        /// information.</param>
+        /// information (for two pass flows).</param>
         /// <param name="recoveryAvailabilityZone">The recovery availability
         /// zone.</param>
         /// <param name="recoveryAzureNetworkId">The recovery Azure virtual
         /// network ARM id.</param>
         /// <param name="recoverySubnetName">The recovery subnet name.</param>
-        public A2AEnableProtectionInput(string fabricObjectId = default(string), string recoveryContainerId = default(string), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryProximityPlacementGroupId = default(string), IList<A2AVmDiskInputDetails> vmDisks = default(IList<A2AVmDiskInputDetails>), IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(IList<A2AVmManagedDiskInputDetails>), string multiVmGroupName = default(string), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), string recoveryAzureNetworkId = default(string), string recoverySubnetName = default(string))
+        /// <param name="recoveryVirtualMachineScaleSetId">The virtual machine
+        /// scale set Id.</param>
+        public A2AEnableProtectionInput(string fabricObjectId, string recoveryContainerId = default(string), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryProximityPlacementGroupId = default(string), IList<A2AVmDiskInputDetails> vmDisks = default(IList<A2AVmDiskInputDetails>), IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(IList<A2AVmManagedDiskInputDetails>), string autoProtectionOfDataDisk = default(string), string multiVmGroupName = default(string), string multiVmGroupId = default(string), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), string recoveryAzureNetworkId = default(string), string recoverySubnetName = default(string), string recoveryVirtualMachineScaleSetId = default(string))
         {
             FabricObjectId = fabricObjectId;
             RecoveryContainerId = recoveryContainerId;
@@ -67,12 +74,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             RecoveryProximityPlacementGroupId = recoveryProximityPlacementGroupId;
             VmDisks = vmDisks;
             VmManagedDisks = vmManagedDisks;
+            AutoProtectionOfDataDisk = autoProtectionOfDataDisk;
             MultiVmGroupName = multiVmGroupName;
+            MultiVmGroupId = multiVmGroupId;
             RecoveryBootDiagStorageAccountId = recoveryBootDiagStorageAccountId;
             DiskEncryptionInfo = diskEncryptionInfo;
             RecoveryAvailabilityZone = recoveryAvailabilityZone;
             RecoveryAzureNetworkId = recoveryAzureNetworkId;
             RecoverySubnetName = recoverySubnetName;
+            RecoveryVirtualMachineScaleSetId = recoveryVirtualMachineScaleSetId;
             CustomInit();
         }
 
@@ -131,10 +141,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public IList<A2AVmManagedDiskInputDetails> VmManagedDisks { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the auto protection is
+        /// enabled. Possible values include: 'Disabled', 'Enabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "autoProtectionOfDataDisk")]
+        public string AutoProtectionOfDataDisk { get; set; }
+
+        /// <summary>
         /// Gets or sets the multi vm group name.
         /// </summary>
         [JsonProperty(PropertyName = "multiVmGroupName")]
         public string MultiVmGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the multi vm group id.
+        /// </summary>
+        [JsonProperty(PropertyName = "multiVmGroupId")]
+        public string MultiVmGroupId { get; set; }
 
         /// <summary>
         /// Gets or sets the boot diagnostic storage account.
@@ -143,7 +166,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string RecoveryBootDiagStorageAccountId { get; set; }
 
         /// <summary>
-        /// Gets or sets the recovery disk encryption information.
+        /// Gets or sets the recovery disk encryption information (for two pass
+        /// flows).
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionInfo")]
         public DiskEncryptionInfo DiskEncryptionInfo { get; set; }
@@ -166,5 +190,44 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         [JsonProperty(PropertyName = "recoverySubnetName")]
         public string RecoverySubnetName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the virtual machine scale set Id.
+        /// </summary>
+        [JsonProperty(PropertyName = "recoveryVirtualMachineScaleSetId")]
+        public string RecoveryVirtualMachineScaleSetId { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (FabricObjectId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "FabricObjectId");
+            }
+            if (VmDisks != null)
+            {
+                foreach (var element in VmDisks)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (VmManagedDisks != null)
+            {
+                foreach (var element1 in VmManagedDisks)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
+            }
+        }
     }
 }

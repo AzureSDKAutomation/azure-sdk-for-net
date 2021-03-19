@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the client request Id.
+        /// Gets or sets the client request Id.
         /// </summary>
         [JsonProperty(PropertyName = "clientRequestId")]
-        public string ClientRequestId { get; private set; }
+        public string ClientRequestId { get; set; }
 
         /// <summary>
         /// Gets or sets the error details.
