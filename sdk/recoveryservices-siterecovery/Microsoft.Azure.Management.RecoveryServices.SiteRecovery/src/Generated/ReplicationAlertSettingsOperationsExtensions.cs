@@ -142,6 +142,52 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
 
             /// <summary>
+            /// Configures email notifications for this vault.
+            /// </summary>
+            /// <remarks>
+            /// Create or update an email notification(alert) configuration.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='alertSettingName'>
+            /// The name of the email notification(alert) configuration.
+            /// </param>
+            /// <param name='request'>
+            /// The input to configure the email notification(alert).
+            /// </param>
+            public static Alert BeginCreate(this IReplicationAlertSettingsOperations operations, string alertSettingName, ConfigureAlertRequest request)
+            {
+                return operations.BeginCreateAsync(alertSettingName, request).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Configures email notifications for this vault.
+            /// </summary>
+            /// <remarks>
+            /// Create or update an email notification(alert) configuration.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='alertSettingName'>
+            /// The name of the email notification(alert) configuration.
+            /// </param>
+            /// <param name='request'>
+            /// The input to configure the email notification(alert).
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Alert> BeginCreateAsync(this IReplicationAlertSettingsOperations operations, string alertSettingName, ConfigureAlertRequest request, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(alertSettingName, request, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets the list of configured email notification(alert) configurations.
             /// </summary>
             /// <remarks>

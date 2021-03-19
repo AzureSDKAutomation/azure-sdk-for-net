@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings").ToString();
             _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(Client.ResourceName));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(Client.ResourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}").ToString();
             _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(Client.ResourceName));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(Client.ResourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
@@ -454,6 +454,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The input to configure the email notification(alert).
         /// </param>
         /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<Alert>> CreateWithHttpMessagesAsync(string alertSettingName, ConfigureAlertRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<Alert> _response = await BeginCreateWithHttpMessagesAsync(alertSettingName, request, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Configures email notifications for this vault.
+        /// </summary>
+        /// <remarks>
+        /// Create or update an email notification(alert) configuration.
+        /// </remarks>
+        /// <param name='alertSettingName'>
+        /// The name of the email notification(alert) configuration.
+        /// </param>
+        /// <param name='request'>
+        /// The input to configure the email notification(alert).
+        /// </param>
+        /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
@@ -474,7 +499,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Alert>> CreateWithHttpMessagesAsync(string alertSettingName, ConfigureAlertRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Alert>> BeginCreateWithHttpMessagesAsync(string alertSettingName, ConfigureAlertRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -510,11 +535,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 tracingParameters.Add("alertSettingName", alertSettingName);
                 tracingParameters.Add("request", request);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginCreate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}").ToString();
             _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(Client.ResourceName));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(Client.ResourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
