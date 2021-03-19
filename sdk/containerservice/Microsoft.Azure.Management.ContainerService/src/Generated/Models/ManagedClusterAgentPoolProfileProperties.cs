@@ -96,8 +96,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// the disk size for every machine in this master/agent pool. If you
         /// specify 0, it will apply the default osDisk size according to the
         /// vmSize specified.</param>
+        /// <param name="osDiskType">OS disk type to be used for machines in a
+        /// given agent pool. Allowed values are 'Ephemeral' and 'Managed'.
+        /// Defaults to 'Managed'. May not be changed after creation. Possible
+        /// values include: 'Managed', 'Ephemeral'</param>
+        /// <param name="kubeletDiskType">KubeletDiskType determines the
+        /// placement of emptyDir volumes, container runtime data root, and
+        /// Kubelet ephemeral storage. Currently allows one value, OS,
+        /// resulting in Kubelet using the OS disk for data. Possible values
+        /// include: 'OS', 'Temporary'</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the VNet's
-        /// subnet identifier.</param>
+        /// subnet identifier for nodes and maybe pods</param>
+        /// <param name="podSubnetID">Pod SubnetID specifies the VNet's subnet
+        /// identifier for pods.</param>
         /// <param name="maxPods">Maximum number of pods that can run on a
         /// node.</param>
         /// <param name="osType">OsType to be used to specify os type. Choose
@@ -121,9 +132,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// agentpool</param>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response.</param>
+        /// <param name="powerState">Describes whether the Agent Pool is
+        /// Running or Stopped</param>
         /// <param name="availabilityZones">Availability zones for nodes. Must
         /// use VirtualMachineScaleSets AgentPoolType.</param>
         /// <param name="enableNodePublicIP">Enable public IP for nodes</param>
+        /// <param name="nodePublicIPPrefixID">Public IP Prefix ID. VM nodes
+        /// use IPs assigned from this Public IP Prefix.</param>
         /// <param name="scaleSetPriority">ScaleSetPriority to be used to
         /// specify virtual machine scale set priority. Default to regular.
         /// Possible values include: 'Spot', 'Regular'</param>
@@ -143,12 +158,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// create and scale. For example, key=value:NoSchedule.</param>
         /// <param name="proximityPlacementGroupID">The ID for Proximity
         /// Placement Group.</param>
-        public ManagedClusterAgentPoolProfileProperties(int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string vnetSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string))
+        /// <param name="kubeletConfig">KubeletConfig specifies the
+        /// configuration of kubelet on agent nodes.</param>
+        /// <param name="linuxOSConfig">LinuxOSConfig specifies the OS
+        /// configuration of linux agent nodes.</param>
+        /// <param name="enableEncryptionAtHost">Whether to enable
+        /// EncryptionAtHost</param>
+        public ManagedClusterAgentPoolProfileProperties(int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string vnetSubnetID = default(string), string podSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixID = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?))
         {
             Count = count;
             VmSize = vmSize;
             OsDiskSizeGB = osDiskSizeGB;
+            OsDiskType = osDiskType;
+            KubeletDiskType = kubeletDiskType;
             VnetSubnetID = vnetSubnetID;
+            PodSubnetID = podSubnetID;
             MaxPods = maxPods;
             OsType = osType;
             MaxCount = maxCount;
@@ -160,8 +184,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             NodeImageVersion = nodeImageVersion;
             UpgradeSettings = upgradeSettings;
             ProvisioningState = provisioningState;
+            PowerState = powerState;
             AvailabilityZones = availabilityZones;
             EnableNodePublicIP = enableNodePublicIP;
+            NodePublicIPPrefixID = nodePublicIPPrefixID;
             ScaleSetPriority = scaleSetPriority;
             ScaleSetEvictionPolicy = scaleSetEvictionPolicy;
             SpotMaxPrice = spotMaxPrice;
@@ -169,6 +195,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             NodeLabels = nodeLabels;
             NodeTaints = nodeTaints;
             ProximityPlacementGroupID = proximityPlacementGroupID;
+            KubeletConfig = kubeletConfig;
+            LinuxOSConfig = linuxOSConfig;
+            EnableEncryptionAtHost = enableEncryptionAtHost;
             CustomInit();
         }
 
@@ -256,10 +285,36 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public int? OsDiskSizeGB { get; set; }
 
         /// <summary>
-        /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier.
+        /// Gets or sets OS disk type to be used for machines in a given agent
+        /// pool. Allowed values are 'Ephemeral' and 'Managed'. Defaults to
+        /// 'Managed'. May not be changed after creation. Possible values
+        /// include: 'Managed', 'Ephemeral'
+        /// </summary>
+        [JsonProperty(PropertyName = "osDiskType")]
+        public string OsDiskType { get; set; }
+
+        /// <summary>
+        /// Gets or sets kubeletDiskType determines the placement of emptyDir
+        /// volumes, container runtime data root, and Kubelet ephemeral
+        /// storage. Currently allows one value, OS, resulting in Kubelet using
+        /// the OS disk for data. Possible values include: 'OS', 'Temporary'
+        /// </summary>
+        [JsonProperty(PropertyName = "kubeletDiskType")]
+        public string KubeletDiskType { get; set; }
+
+        /// <summary>
+        /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier
+        /// for nodes and maybe pods
         /// </summary>
         [JsonProperty(PropertyName = "vnetSubnetID")]
         public string VnetSubnetID { get; set; }
+
+        /// <summary>
+        /// Gets or sets pod SubnetID specifies the VNet's subnet identifier
+        /// for pods.
+        /// </summary>
+        [JsonProperty(PropertyName = "podSubnetID")]
+        public string PodSubnetID { get; set; }
 
         /// <summary>
         /// Gets or sets maximum number of pods that can run on a node.
@@ -335,6 +390,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets describes whether the Agent Pool is Running or Stopped
+        /// </summary>
+        [JsonProperty(PropertyName = "powerState")]
+        public PowerState PowerState { get; private set; }
+
+        /// <summary>
         /// Gets or sets availability zones for nodes. Must use
         /// VirtualMachineScaleSets AgentPoolType.
         /// </summary>
@@ -346,6 +407,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "enableNodePublicIP")]
         public bool? EnableNodePublicIP { get; set; }
+
+        /// <summary>
+        /// Gets or sets public IP Prefix ID. VM nodes use IPs assigned from
+        /// this Public IP Prefix.
+        /// </summary>
+        [JsonProperty(PropertyName = "nodePublicIPPrefixID")]
+        public string NodePublicIPPrefixID { get; set; }
 
         /// <summary>
         /// Gets or sets scaleSetPriority to be used to specify virtual machine
@@ -399,5 +467,38 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         [JsonProperty(PropertyName = "proximityPlacementGroupID")]
         public string ProximityPlacementGroupID { get; set; }
 
+        /// <summary>
+        /// Gets or sets kubeletConfig specifies the configuration of kubelet
+        /// on agent nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "kubeletConfig")]
+        public KubeletConfig KubeletConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets linuxOSConfig specifies the OS configuration of linux
+        /// agent nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "linuxOSConfig")]
+        public LinuxOSConfig LinuxOSConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable EncryptionAtHost
+        /// </summary>
+        [JsonProperty(PropertyName = "enableEncryptionAtHost")]
+        public bool? EnableEncryptionAtHost { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (KubeletConfig != null)
+            {
+                KubeletConfig.Validate();
+            }
+        }
     }
 }
