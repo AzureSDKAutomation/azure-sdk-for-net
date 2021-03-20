@@ -12,11 +12,13 @@ namespace Microsoft.Azure.Management.Automanage.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationProfile.
+    /// Defines values for CreatedByType.
     /// </summary>
-    public static class ConfigurationProfile
+    public static class CreatedByType
     {
-        public const string AzurevirtualmachinebestpracticesDevTest = "Azure virtual machine best practices – Dev/Test";
-        public const string AzurevirtualmachinebestpracticesProduction = "Azure virtual machine best practices – Production";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }
