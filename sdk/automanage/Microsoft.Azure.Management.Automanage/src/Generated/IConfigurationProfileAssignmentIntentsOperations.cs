@@ -19,21 +19,27 @@ namespace Microsoft.Azure.Management.Automanage
     using System.Threading.Tasks;
 
     /// <summary>
-    /// AccountsOperations operations.
+    /// ConfigurationProfileAssignmentIntentsOperations operations.
     /// </summary>
-    public partial interface IAccountsOperations
+    public partial interface IConfigurationProfileAssignmentIntentsOperations
     {
         /// <summary>
-        /// Creates an Automanage Account
+        /// Creates an association between a VM and Automanage configuration
+        /// profile assignment intent
         /// </summary>
-        /// <param name='accountName'>
-        /// Name of the Automanage account.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='configurationProfileAssignmentIntentName'>
+        /// Name of the configuration profile assignment intent. Only default
+        /// is supported.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to create or update Automanage account.
+        /// Parameters supplied to the create or update configuration profile
+        /// assignment intent.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the virtual machine.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,15 +56,18 @@ namespace Microsoft.Azure.Management.Automanage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Account>> CreateOrUpdateWithHttpMessagesAsync(string accountName, string resourceGroupName, Account parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ConfigurationProfileAssignmentIntent>> CreateOrUpdateWithHttpMessagesAsync(string configurationProfileAssignmentIntentName, ConfigurationProfileAssignmentIntent parameters, string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get information about a Automanage account
+        /// Get information about a configuration profile assignment intent
         /// </summary>
-        /// <param name='accountName'>
-        /// The Automanage account name.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='configurationProfileAssignmentIntentName'>
+        /// The configuration profile assignment intent name.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the virtual machine.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,60 +84,10 @@ namespace Microsoft.Azure.Management.Automanage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Account>> GetWithHttpMessagesAsync(string accountName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ConfigurationProfileAssignmentIntent>> GetWithHttpMessagesAsync(string resourceGroupName, string configurationProfileAssignmentIntentName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a Automanage account
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Name of the Automanage account
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates an Automanage Account
-        /// </summary>
-        /// <param name='accountName'>
-        /// Name of the Automanage account.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to update Automanage account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<Account>> UpdateWithHttpMessagesAsync(string accountName, string resourceGroupName, AccountUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Retrieve a list of Automanage accounts within a given resource
-        /// group
+        /// Get list of configuration profile assignment intents within a given
+        /// resource group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -148,9 +107,10 @@ namespace Microsoft.Azure.Management.Automanage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Account>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<ConfigurationProfileAssignmentIntent>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Retrieve a list of Automanage accounts within a subscription
+        /// Get list of configuration profile assignment intents under a given
+        /// subscription
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -167,6 +127,6 @@ namespace Microsoft.Azure.Management.Automanage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Account>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<ConfigurationProfileAssignmentIntent>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

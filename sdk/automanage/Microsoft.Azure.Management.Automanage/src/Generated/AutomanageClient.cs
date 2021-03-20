@@ -47,13 +47,12 @@ namespace Microsoft.Azure.Management.Automanage
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Client Api Version.
+        /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Subscription ID which uniquely identify Microsoft Azure subscription. The
-        /// subscription ID forms part of the URI for every service call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
@@ -94,6 +93,11 @@ namespace Microsoft.Azure.Management.Automanage
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
+        /// Gets the IConfigurationProfileAssignmentIntentsOperations.
+        /// </summary>
+        public virtual IConfigurationProfileAssignmentIntentsOperations ConfigurationProfileAssignmentIntents { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AutomanageClient class.
@@ -340,6 +344,7 @@ namespace Microsoft.Azure.Management.Automanage
             ConfigurationProfileAssignments = new ConfigurationProfileAssignmentsOperations(this);
             ConfigurationProfilePreferences = new ConfigurationProfilePreferencesOperations(this);
             Operations = new Operations(this);
+            ConfigurationProfileAssignmentIntents = new ConfigurationProfileAssignmentIntentsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-06-30-preview";
             AcceptLanguage = "en-US";
