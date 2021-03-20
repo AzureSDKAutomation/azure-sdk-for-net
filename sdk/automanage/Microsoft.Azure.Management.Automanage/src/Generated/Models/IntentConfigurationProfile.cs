@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.Automanage.Models
 {
 
     /// <summary>
-    /// Defines values for ProvisioningStatus.
+    /// Defines values for IntentConfigurationProfile.
     /// </summary>
-    public static class ProvisioningStatus
+    public static class IntentConfigurationProfile
     {
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string Created = "Created";
+        public const string DevTest = "DevTest";
+        public const string Production = "Production";
     }
 }
