@@ -12,13 +12,17 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
 
     /// <summary>
-    /// Defines values for KeySource.
+    /// Defines values for BackupType.
     /// </summary>
-    public static class KeySource
+    public static class BackupType
     {
         /// <summary>
-        /// The service manages the keys.
+        /// Manual backup
         /// </summary>
-        public const string MicrosoftNetApp = "Microsoft.NetApp";
+        public const string Manual = "Manual";
+        /// <summary>
+        /// Scheduled backup
+        /// </summary>
+        public const string Scheduled = "Scheduled";
     }
 }

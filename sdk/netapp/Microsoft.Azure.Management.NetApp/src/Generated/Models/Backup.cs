@@ -42,9 +42,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="provisioningState">Azure lifecycle management</param>
         /// <param name="size">Size of backup</param>
         /// <param name="label">Label for backup</param>
-        /// <param name="backupType">Type of backup adhoc or scheduled</param>
+        /// <param name="backupType">backupType</param>
         /// <param name="failureReason">Failure reason</param>
-        public Backup(string location, string id = default(string), string name = default(string), string type = default(string), string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string))
+        /// <param name="volumeName">Volume name</param>
+        public Backup(string location, string id = default(string), string name = default(string), string type = default(string), string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string), string volumeName = default(string))
         {
             Location = location;
             Id = id;
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             Label = label;
             BackupType = backupType;
             FailureReason = failureReason;
+            VolumeName = volumeName;
             CustomInit();
         }
 
@@ -126,8 +128,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string Label { get; set; }
 
         /// <summary>
-        /// Gets type of backup adhoc or scheduled
+        /// Gets backupType
         /// </summary>
+        /// <remarks>
+        /// Type of backup Manual or Scheduled. Possible values include:
+        /// 'Manual', 'Scheduled'
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.backupType")]
         public string BackupType { get; private set; }
 
@@ -136,6 +142,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.failureReason")]
         public string FailureReason { get; private set; }
+
+        /// <summary>
+        /// Gets volume name
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.volumeName")]
+        public string VolumeName { get; private set; }
 
         /// <summary>
         /// Validate the object.
