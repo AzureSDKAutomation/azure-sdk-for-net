@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// The billing information of the SignalR resource.
+    /// The billing information of the resource.
     /// </summary>
     public partial class ResourceSku
     {
