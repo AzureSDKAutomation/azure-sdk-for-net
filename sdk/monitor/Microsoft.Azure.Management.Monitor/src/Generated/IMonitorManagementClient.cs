@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The Azure subscription Id.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
 
@@ -194,14 +194,5 @@ namespace Microsoft.Azure.Management.Monitor
         /// </summary>
         IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; }
 
-        /// <summary>
-        /// Gets the IDataCollectionRules.
-        /// </summary>
-        IDataCollectionRules DataCollectionRules { get; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRuleAssociations.
-        /// </summary>
-        IDataCollectionRuleAssociations DataCollectionRuleAssociations { get; }
     }
 }
