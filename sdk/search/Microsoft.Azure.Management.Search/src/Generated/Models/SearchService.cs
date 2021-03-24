@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="replicaCount">The number of replicas in the search
         /// service. If specified, it must be a value between 1 and 12
@@ -95,6 +95,10 @@ namespace Microsoft.Azure.Management.Search.Models
         /// the call to Create search service. This is because the free service
         /// uses capacity that is already set up. Possible values include:
         /// 'succeeded', 'provisioning', 'failed'</param>
+        /// <param name="encryptionWithCmk">Details related to encrypting
+        /// resources (.i.e. index, indexer, skillset, synonym map and debug
+        /// session) with customer managed keys by the Azure Cognitive Search
+        /// service. </param>
         /// <param name="networkRuleSet">Network specific rules that determine
         /// how the Azure Cognitive Search service may be reached.</param>
         /// <param name="privateEndpointConnections">The list of private
@@ -106,7 +110,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// price tier and capacity limits. This property is required when
         /// creating a new Search Service.</param>
         /// <param name="identity">The identity of the resource.</param>
-        public SearchService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), PublicNetworkAccess? publicNetworkAccess = default(PublicNetworkAccess?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>), Sku sku = default(Sku), Identity identity = default(Identity))
+        public SearchService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), PublicNetworkAccess? publicNetworkAccess = default(PublicNetworkAccess?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>), Sku sku = default(Sku), Identity identity = default(Identity))
             : base(location, id, name, type, tags)
         {
             ReplicaCount = replicaCount;
@@ -116,6 +120,7 @@ namespace Microsoft.Azure.Management.Search.Models
             Status = status;
             StatusDetails = statusDetails;
             ProvisioningState = provisioningState;
+            EncryptionWithCmk = encryptionWithCmk;
             NetworkRuleSet = networkRuleSet;
             PrivateEndpointConnections = privateEndpointConnections;
             SharedPrivateLinkResources = sharedPrivateLinkResources;
@@ -211,6 +216,14 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public ProvisioningState? ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets details related to encrypting resources (.i.e. index,
+        /// indexer, skillset, synonym map and debug session) with customer
+        /// managed keys by the Azure Cognitive Search service.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.encryptionWithCmk")]
+        public EncryptionWithCmk EncryptionWithCmk { get; set; }
 
         /// <summary>
         /// Gets or sets network specific rules that determine how the Azure

@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Management.Search
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             SharedPrivateLinkResources = new SharedPrivateLinkResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-08-01";
+            ApiVersion = "2021-01-04";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
