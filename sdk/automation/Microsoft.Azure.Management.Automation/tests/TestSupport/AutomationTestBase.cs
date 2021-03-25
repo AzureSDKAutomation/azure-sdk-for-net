@@ -312,7 +312,7 @@ namespace Automation.Tests.TestSupport
             return runbook;
         }
 
-        public Stream GetRunbookContent(string runbookName)
+        public string GetRunbookContent(string runbookName)
         {
             var runbookContentStream =
                 AutomationClient.RunbookDraft.GetContent(ResourceGroup, AutomationAccount, runbookName);
