@@ -392,46 +392,6 @@ namespace Microsoft.Azure.Management.Media
             }
 
             /// <summary>
-            /// Get a Media Services account
-            /// </summary>
-            /// <remarks>
-            /// Get the details of a Media Services account
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='accountName'>
-            /// The Media Services account name.
-            /// </param>
-            public static MediaService GetBySubscription(this IMediaservicesOperations operations, string accountName)
-            {
-                return operations.GetBySubscriptionAsync(accountName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get a Media Services account
-            /// </summary>
-            /// <remarks>
-            /// Get the details of a Media Services account
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='accountName'>
-            /// The Media Services account name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<MediaService> GetBySubscriptionAsync(this IMediaservicesOperations operations, string accountName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetBySubscriptionWithHttpMessagesAsync(accountName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// List Media Services accounts
             /// </summary>
             /// <remarks>
