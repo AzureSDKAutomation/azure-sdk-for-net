@@ -82,9 +82,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// - that is, the property does not accept false as its value.</param>
         /// <param name="networkAcls">Rules governing the accessibility of the
         /// key vault from specific network locations.</param>
+        /// <param name="provisioningState">Provisioning state of the vault.
+        /// Possible values include: 'Succeeded', 'RegisteringDns'</param>
         /// <param name="privateEndpointConnections">List of private endpoint
         /// connections associated with the key vault.</param>
-        public VaultProperties(System.Guid tenantId, Sku sku, IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), string vaultUri = default(string), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), bool? enableRbacAuthorization = default(bool?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?), NetworkRuleSet networkAcls = default(NetworkRuleSet), IList<PrivateEndpointConnectionItem> privateEndpointConnections = default(IList<PrivateEndpointConnectionItem>))
+        public VaultProperties(System.Guid tenantId, Sku sku, IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), string vaultUri = default(string), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), bool? enableRbacAuthorization = default(bool?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?), NetworkRuleSet networkAcls = default(NetworkRuleSet), string provisioningState = default(string), IList<PrivateEndpointConnectionItem> privateEndpointConnections = default(IList<PrivateEndpointConnectionItem>))
         {
             TenantId = tenantId;
             Sku = sku;
@@ -99,6 +101,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             CreateMode = createMode;
             EnablePurgeProtection = enablePurgeProtection;
             NetworkAcls = networkAcls;
+            ProvisioningState = provisioningState;
             PrivateEndpointConnections = privateEndpointConnections;
             CustomInit();
         }
@@ -216,6 +219,13 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [JsonProperty(PropertyName = "networkAcls")]
         public NetworkRuleSet NetworkAcls { get; set; }
+
+        /// <summary>
+        /// Gets or sets provisioning state of the vault. Possible values
+        /// include: 'Succeeded', 'RegisteringDns'
+        /// </summary>
+        [JsonProperty(PropertyName = "provisioningState")]
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets list of private endpoint connections associated with the key
