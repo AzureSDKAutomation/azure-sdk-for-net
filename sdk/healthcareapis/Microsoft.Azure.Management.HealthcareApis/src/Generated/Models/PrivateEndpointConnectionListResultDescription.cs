@@ -16,29 +16,28 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
     using System.Linq;
 
     /// <summary>
-    /// A list of private link resources
+    /// List of private endpoint connection associated with the specified
+    /// storage account
     /// </summary>
-    public partial class PrivateLinkResourceListResult
+    public partial class PrivateEndpointConnectionListResultDescription
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResourceListResult
-        /// class.
+        /// Initializes a new instance of the
+        /// PrivateEndpointConnectionListResultDescription class.
         /// </summary>
-        public PrivateLinkResourceListResult()
+        public PrivateEndpointConnectionListResultDescription()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResourceListResult
-        /// class.
+        /// Initializes a new instance of the
+        /// PrivateEndpointConnectionListResultDescription class.
         /// </summary>
-        /// <param name="value">Array of private link resources</param>
-        /// <param name="systemData">System metadata for this resource.</param>
-        public PrivateLinkResourceListResult(IList<PrivateLinkResource> value = default(IList<PrivateLinkResource>), SystemData systemData = default(SystemData))
+        /// <param name="value">Array of private endpoint connections</param>
+        public PrivateEndpointConnectionListResultDescription(IList<PrivateEndpointConnectionDescription> value = default(IList<PrivateEndpointConnectionDescription>))
         {
             Value = value;
-            SystemData = systemData;
             CustomInit();
         }
 
@@ -48,16 +47,10 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of private link resources
+        /// Gets or sets array of private endpoint connections
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<PrivateLinkResource> Value { get; set; }
-
-        /// <summary>
-        /// Gets or sets system metadata for this resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
+        public IList<PrivateEndpointConnectionDescription> Value { get; set; }
 
     }
 }

@@ -45,12 +45,14 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         /// member names.</param>
         /// <param name="requiredZoneNames">The private link resource Private
         /// link DNS zone name.</param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), IList<string> requiredMembers = default(IList<string>), IList<string> requiredZoneNames = default(IList<string>))
+        /// <param name="systemData">System metadata for this resource.</param>
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), IList<string> requiredMembers = default(IList<string>), IList<string> requiredZoneNames = default(IList<string>), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             GroupId = groupId;
             RequiredMembers = requiredMembers;
             RequiredZoneNames = requiredZoneNames;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -76,6 +78,12 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.requiredZoneNames")]
         public IList<string> RequiredZoneNames { get; set; }
+
+        /// <summary>
+        /// Gets or sets system metadata for this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; set; }
 
     }
 }
