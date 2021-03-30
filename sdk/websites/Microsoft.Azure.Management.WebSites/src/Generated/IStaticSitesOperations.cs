@@ -24,6 +24,36 @@ namespace Microsoft.Azure.Management.WebSites
     public partial interface IStaticSitesOperations
     {
         /// <summary>
+        /// Generates a preview workflow file for the static site
+        /// </summary>
+        /// <remarks>
+        /// Description for Generates a preview workflow file for the static
+        /// site
+        /// </remarks>
+        /// <param name='location'>
+        /// Location where you plan to create the static site.
+        /// </param>
+        /// <param name='staticSitesWorkflowPreviewRequest'>
+        /// A JSON representation of the StaticSitesWorkflowPreviewRequest
+        /// properties. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StaticSitesWorkflowPreview>> PreviewWorkflowWithHttpMessagesAsync(string location, StaticSitesWorkflowPreviewRequest staticSitesWorkflowPreviewRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get all Static Sites for a subscription.
         /// </summary>
         /// <remarks>
