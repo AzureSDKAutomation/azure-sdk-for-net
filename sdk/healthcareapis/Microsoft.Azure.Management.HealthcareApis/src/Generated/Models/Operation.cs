@@ -31,14 +31,19 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         /// </summary>
         /// <param name="name">Operation name: {provider}/{resource}/{read |
         /// write | action | delete}</param>
+        /// <param name="isDataAction">Gets or sets a value indicating whether
+        /// the operation is a data action or not</param>
         /// <param name="origin">Default value is 'user,system'.</param>
         /// <param name="display">The information displayed about the
         /// operation.</param>
-        public Operation(string name = default(string), string origin = default(string), OperationDisplay display = default(OperationDisplay))
+        /// <param name="properties">Properties of the operation</param>
+        public Operation(string name = default(string), bool? isDataAction = default(bool?), string origin = default(string), OperationDisplay display = default(OperationDisplay), object properties = default(object))
         {
             Name = name;
+            IsDataAction = isDataAction;
             Origin = origin;
             Display = display;
+            Properties = properties;
             CustomInit();
         }
 
@@ -55,6 +60,13 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         public string Name { get; private set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the operation is a data
+        /// action or not
+        /// </summary>
+        [JsonProperty(PropertyName = "isDataAction")]
+        public bool? IsDataAction { get; set; }
+
+        /// <summary>
         /// Gets default value is 'user,system'.
         /// </summary>
         [JsonProperty(PropertyName = "origin")]
@@ -65,6 +77,12 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         /// </summary>
         [JsonProperty(PropertyName = "display")]
         public OperationDisplay Display { get; set; }
+
+        /// <summary>
+        /// Gets or sets properties of the operation
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public object Properties { get; set; }
 
     }
 }
