@@ -19,21 +19,24 @@ namespace Microsoft.Azure.Management.ContainerService
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ContainerServicesOperations operations.
+    /// PrivateLinkResourcesOperations operations.
     /// </summary>
-    public partial interface IContainerServicesOperations
+    public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Gets supported OS options in the specified subscription.
+        /// Gets a list of private link resources in the specified managed
+        /// cluster.
         /// </summary>
         /// <remarks>
-        /// Gets supported OS options in the specified subscription.
+        /// Gets a list of private link resources in the specified managed
+        /// cluster. The operation returns properties of each private link
+        /// resource.
         /// </remarks>
-        /// <param name='location'>
-        /// The name of a supported Azure region.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
         /// </param>
-        /// <param name='resourceType'>
-        /// resource type for which the OS options needs to be returned
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,6 +53,6 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OSOptionProfile>> GetOSOptionsWithHttpMessagesAsync(string location, string resourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateLinkResourcesListResult>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
