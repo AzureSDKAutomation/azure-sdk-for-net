@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for SftpAuthenticationType.
+    /// Defines values for SqlAlwaysEncryptedAkvAuthType.
     /// </summary>
-    public static class SftpAuthenticationType
+    public static class SqlAlwaysEncryptedAkvAuthType
     {
-        public const string Basic = "Basic";
-        public const string SshPublicKey = "SshPublicKey";
-        public const string MultiFactor = "MultiFactor";
+        public const string ServicePrincipal = "ServicePrincipal";
+        public const string ManagedIdentity = "ManagedIdentity";
     }
 }
