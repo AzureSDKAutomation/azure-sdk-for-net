@@ -40,12 +40,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="failed">A flag describing whether or not validation
         /// failed.</param>
         /// <param name="failedTests">A list of tests that failed in the
         /// validation.</param>
-        public VnetValidationFailureDetails(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? failed = default(bool?), IList<VnetValidationTestFailure> failedTests = default(IList<VnetValidationTestFailure>))
-            : base(id, name, kind, type)
+        public VnetValidationFailureDetails(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? failed = default(bool?), IList<VnetValidationTestFailure> failedTests = default(IList<VnetValidationTestFailure>))
+            : base(id, name, kind, type, systemData)
         {
             Failed = failed;
             FailedTests = failedTests;
