@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="backupId">Id of the backup.</param>
         /// <param name="storageAccountUrl">SAS URL for the storage account
         /// container which contains this backup.</param>
@@ -65,8 +67,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// support.</param>
         /// <param name="websiteSizeInBytes">Size of the original web app which
         /// has been backed up.</param>
-        public BackupItem(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
-            : base(id, name, kind, type)
+        public BackupItem(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
+            : base(id, name, kind, type, systemData)
         {
             BackupId = backupId;
             StorageAccountUrl = storageAccountUrl;

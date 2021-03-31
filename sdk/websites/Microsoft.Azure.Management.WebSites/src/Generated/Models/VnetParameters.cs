@@ -36,13 +36,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="vnetResourceGroup">The Resource Group of the VNET to
         /// be validated</param>
         /// <param name="vnetName">The name of the VNET to be validated</param>
         /// <param name="vnetSubnetName">The subnet name to be
         /// validated</param>
-        public VnetParameters(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetResourceGroup = default(string), string vnetName = default(string), string vnetSubnetName = default(string))
-            : base(id, name, kind, type)
+        public VnetParameters(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string vnetResourceGroup = default(string), string vnetName = default(string), string vnetSubnetName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             VnetResourceGroup = vnetResourceGroup;
             VnetName = vnetName;

@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="friendlyName">Friendly name of the
         /// certificate.</param>
         /// <param name="subjectName">Subject name of the certificate.</param>
@@ -70,8 +72,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".</param>
         /// <param name="canonicalName">CNAME of the certificate to be issued
         /// via free certificate</param>
-        public CertificatePatchResource(string password, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string friendlyName = default(string), string subjectName = default(string), IList<string> hostNames = default(IList<string>), byte[] pfxBlob = default(byte[]), string siteName = default(string), string selfLink = default(string), string issuer = default(string), System.DateTime? issueDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), string thumbprint = default(string), bool? valid = default(bool?), byte[] cerBlob = default(byte[]), string publicKeyHash = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? keyVaultSecretStatus = default(KeyVaultSecretStatus?), string serverFarmId = default(string), string canonicalName = default(string))
-            : base(id, name, kind, type)
+        public CertificatePatchResource(string password, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string friendlyName = default(string), string subjectName = default(string), IList<string> hostNames = default(IList<string>), byte[] pfxBlob = default(byte[]), string siteName = default(string), string selfLink = default(string), string issuer = default(string), System.DateTime? issueDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), string thumbprint = default(string), bool? valid = default(bool?), byte[] cerBlob = default(byte[]), string publicKeyHash = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? keyVaultSecretStatus = default(KeyVaultSecretStatus?), string serverFarmId = default(string), string canonicalName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             FriendlyName = friendlyName;
             SubjectName = subjectName;
