@@ -14,28 +14,27 @@ namespace Microsoft.Azure.Management.Quota.Models
     using System.Linq;
 
     /// <summary>
-    /// Name of the resource provide by the resource Provider. Please use this
-    /// name property for quotaRequests.
+    /// The resource provider resource dimension
     /// </summary>
-    public partial class ResourceName
+    public partial class ResourceProviderDimension
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceName class.
+        /// Initializes a new instance of the ResourceProviderDimension class.
         /// </summary>
-        public ResourceName()
+        public ResourceProviderDimension()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceName class.
+        /// Initializes a new instance of the ResourceProviderDimension class.
         /// </summary>
-        /// <param name="value">Resource name.</param>
-        /// <param name="localizedValue">Resource display name.</param>
-        public ResourceName(string value = default(string), string localizedValue = default(string))
+        /// <param name="name">The resource dimension name</param>
+        /// <param name="displayName">The display name</param>
+        public ResourceProviderDimension(string name = default(string), string displayName = default(string))
         {
-            Value = value;
-            LocalizedValue = localizedValue;
+            Name = name;
+            DisplayName = displayName;
             CustomInit();
         }
 
@@ -45,16 +44,16 @@ namespace Microsoft.Azure.Management.Quota.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource name.
+        /// Gets or sets the resource dimension name
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public string Value { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets resource display name.
+        /// Gets or sets the display name
         /// </summary>
-        [JsonProperty(PropertyName = "localizedValue")]
-        public string LocalizedValue { get; private set; }
+        [JsonProperty(PropertyName = "displayName")]
+        public string DisplayName { get; set; }
 
     }
 }

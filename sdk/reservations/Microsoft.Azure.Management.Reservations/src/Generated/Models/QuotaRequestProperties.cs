@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -31,13 +31,15 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the QuotaRequestProperties class.
         /// </summary>
-        /// <param name="provisioningState">The quota request status.</param>
+        /// <param name="provisioningState">The quota request status. Possible
+        /// values include: 'Accepted', 'Invalid', 'Succeeded', 'Failed',
+        /// 'InProgress'</param>
         /// <param name="message">User friendly status message.</param>
-        /// <param name="requestSubmitTime">The time when the quota request was
-        /// submitted using format: yyyy-MM-ddTHH:mm:ssZ as specified by the
-        /// ISO 8601 standard.</param>
+        /// <param name="requestSubmitTime">The quota request submit time. The
+        /// date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as
+        /// specified by the ISO 8601 standard.</param>
         /// <param name="value">The quotaRequests.</param>
-        public QuotaRequestProperties(object provisioningState = default(object), string message = default(string), System.DateTime? requestSubmitTime = default(System.DateTime?), IList<SubRequest> value = default(IList<SubRequest>))
+        public QuotaRequestProperties(string provisioningState = default(string), string message = default(string), System.DateTime? requestSubmitTime = default(System.DateTime?), IList<SubRequest> value = default(IList<SubRequest>))
         {
             ProvisioningState = provisioningState;
             Message = message;
@@ -52,10 +54,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the quota request status.
+        /// Gets or sets the quota request status. Possible values include:
+        /// 'Accepted', 'Invalid', 'Succeeded', 'Failed', 'InProgress'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public object ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets user friendly status message.
@@ -64,8 +67,9 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string Message { get; private set; }
 
         /// <summary>
-        /// Gets the time when the quota request was submitted using format:
-        /// yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
+        /// Gets the quota request submit time. The date conforms to the
+        /// following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601
+        /// standard.
         /// </summary>
         [JsonProperty(PropertyName = "requestSubmitTime")]
         public System.DateTime? RequestSubmitTime { get; private set; }

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for the quota submission request.
+    /// Quota submit request response
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class QuotaRequestOneResourceSubmitResponse : IResource
@@ -35,17 +35,19 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// Initializes a new instance of the
         /// QuotaRequestOneResourceSubmitResponse class.
         /// </summary>
-        /// <param name="id">The quota request ID.</param>
+        /// <param name="id">The quota request Id.</param>
         /// <param name="name">The name of the quota request.</param>
         /// <param name="type">Type of resource.
-        /// "Microsoft.Capacity/ServiceLimits"</param>
-        /// <param name="provisioningState">The quota request status.</param>
+        /// "Microsoft.Quota/ServiceLimitRequests"</param>
+        /// <param name="provisioningState">The quota request status. Possible
+        /// values include: 'Accepted', 'Invalid', 'Succeeded', 'Failed',
+        /// 'InProgress'</param>
         /// <param name="message">User friendly status message.</param>
-        /// <param name="requestSubmitTime">The time when the quota request was
-        /// submitted using format: yyyy-MM-ddTHH:mm:ssZ as specified by the
-        /// ISO 8601 standard.</param>
+        /// <param name="requestSubmitTime">The quota request submit time. The
+        /// date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as
+        /// specified by the ISO 8601 standard.</param>
         /// <param name="properties">Quota properties for the resource.</param>
-        public QuotaRequestOneResourceSubmitResponse(string id = default(string), string name = default(string), string type = default(string), object provisioningState = default(object), string message = default(string), System.DateTime? requestSubmitTime = default(System.DateTime?), QuotaProperties properties = default(QuotaProperties))
+        public QuotaRequestOneResourceSubmitResponse(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), string message = default(string), System.DateTime? requestSubmitTime = default(System.DateTime?), QuotaProperties properties = default(QuotaProperties))
         {
             Id = id;
             Name = name;
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the quota request ID.
+        /// Gets the quota request Id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
@@ -75,16 +77,17 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets type of resource. "Microsoft.Capacity/ServiceLimits"
+        /// Gets type of resource. "Microsoft.Quota/ServiceLimitRequests"
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets the quota request status.
+        /// Gets the quota request status. Possible values include: 'Accepted',
+        /// 'Invalid', 'Succeeded', 'Failed', 'InProgress'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public object ProvisioningState { get; private set; }
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets user friendly status message.
@@ -93,8 +96,9 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string Message { get; private set; }
 
         /// <summary>
-        /// Gets the time when the quota request was submitted using format:
-        /// yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
+        /// Gets the quota request submit time. The date conforms to the
+        /// following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601
+        /// standard.
         /// </summary>
         [JsonProperty(PropertyName = "properties.requestSubmitTime")]
         public System.DateTime? RequestSubmitTime { get; private set; }

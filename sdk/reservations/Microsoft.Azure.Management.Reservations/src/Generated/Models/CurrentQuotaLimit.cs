@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Current quota limits.
+    /// Quota limits.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class CurrentQuotaLimit : IResource
@@ -34,10 +34,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// Initializes a new instance of the CurrentQuotaLimit class.
         /// </summary>
         /// <param name="properties">Quota properties for the resource.</param>
-        /// <param name="provisioningState">The details of the quota request
-        /// status.</param>
+        /// <param name="provisioningState">The quota request status. Possible
+        /// values include: 'Accepted', 'Invalid', 'Succeeded', 'Failed',
+        /// 'InProgress'</param>
         /// <param name="message">A user friendly message.</param>
-        public CurrentQuotaLimit(QuotaProperties properties = default(QuotaProperties), object provisioningState = default(object), string message = default(string))
+        public CurrentQuotaLimit(QuotaProperties properties = default(QuotaProperties), string provisioningState = default(string), string message = default(string))
         {
             Properties = properties;
             ProvisioningState = provisioningState;
@@ -57,10 +58,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public QuotaProperties Properties { get; set; }
 
         /// <summary>
-        /// Gets the details of the quota request status.
+        /// Gets the quota request status. Possible values include: 'Accepted',
+        /// 'Invalid', 'Succeeded', 'Failed', 'InProgress'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public object ProvisioningState { get; private set; }
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets a user friendly message.

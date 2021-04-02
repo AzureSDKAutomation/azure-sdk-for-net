@@ -16,25 +16,23 @@ namespace Microsoft.Azure.Management.Quota.Models
     using System.Linq;
 
     /// <summary>
-    /// Quota change requests information.
+    /// Quota templates details.
     /// </summary>
-    public partial class CreateGenericQuotaRequestParameters
+    public partial class QuotaTemplatesDetails
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateGenericQuotaRequestParameters class.
+        /// Initializes a new instance of the QuotaTemplatesDetails class.
         /// </summary>
-        public CreateGenericQuotaRequestParameters()
+        public QuotaTemplatesDetails()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateGenericQuotaRequestParameters class.
+        /// Initializes a new instance of the QuotaTemplatesDetails class.
         /// </summary>
-        /// <param name="value">Quota change requests.</param>
-        public CreateGenericQuotaRequestParameters(IList<CurrentQuotaLimitBase> value = default(IList<CurrentQuotaLimitBase>))
+        /// <param name="value">The quota templates information.</param>
+        public QuotaTemplatesDetails(IList<QuotaTemplateDetails> value = default(IList<QuotaTemplateDetails>))
         {
             Value = value;
             CustomInit();
@@ -46,10 +44,10 @@ namespace Microsoft.Azure.Management.Quota.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets quota change requests.
+        /// Gets or sets the quota templates information.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<CurrentQuotaLimitBase> Value { get; set; }
+        public IList<QuotaTemplateDetails> Value { get; set; }
 
     }
 }

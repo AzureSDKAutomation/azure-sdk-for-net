@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations
+namespace Microsoft.Azure.Management.Quota
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -22,85 +22,58 @@ namespace Microsoft.Azure.Management.Reservations
     public static partial class QuotaRequestStatusOperationsExtensions
     {
             /// <summary>
-            /// For the specified Azure region (location), get the details and status of
-            /// the quota request by the quota request ID for the resources of the resource
-            /// provider. The PUT request for the quota (service limit) returns a response
-            /// with the requestId parameter.
+            /// Gets the QuotaRequest details and status by the quota request Id for the
+            /// resources for the resource provider at a specific location. The requestId
+            /// is returned as response to the Put requests for quotaLimits.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
             /// <param name='id'>
-            /// Quota Request ID.
+            /// Quota Request id.
             /// </param>
-            public static QuotaRequestDetails Get(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string id)
+            public static QuotaRequestDetails Get(this IQuotaRequestStatusOperations operations, string id)
             {
-                return operations.GetAsync(subscriptionId, providerId, location, id).GetAwaiter().GetResult();
+                return operations.GetAsync(id).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// For the specified Azure region (location), get the details and status of
-            /// the quota request by the quota request ID for the resources of the resource
-            /// provider. The PUT request for the quota (service limit) returns a response
-            /// with the requestId parameter.
+            /// Gets the QuotaRequest details and status by the quota request Id for the
+            /// resources for the resource provider at a specific location. The requestId
+            /// is returned as response to the Put requests for quotaLimits.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
             /// <param name='id'>
-            /// Quota Request ID.
+            /// Quota Request id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<QuotaRequestDetails> GetAsync(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string id, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<QuotaRequestDetails> GetAsync(this IQuotaRequestStatusOperations operations, string id, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, providerId, location, id, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
-            /// select specific quota requests, use the oData filter.
+            /// For the specified location and Resource provider gets the current quota
+            /// requests under the subscription over the time period of one year ago from
+            /// now to one year back. oData filter can be used to select quota requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='filter'>
             /// | Field                    | Supported operators
             /// |---------------------|------------------------
             ///
             /// |requestSubmitTime | ge, le, eq, gt, lt
+            /// |provisioningState eq {QuotaRequestState}
+            /// |resourceName eq {resourceName}
             /// </param>
             /// <param name='top'>
             /// Number of records to return.
@@ -108,36 +81,29 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='skiptoken'>
             /// Skiptoken is only used if a previous operation returned a partial result.
             /// If a previous response contains a nextLink element, the value of the
-            /// nextLink element includes a skiptoken parameter that specifies a starting
-            /// point to use for subsequent calls.
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls
             /// </param>
-            public static IPage<QuotaRequestDetails> List(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string))
+            public static IPage<QuotaRequestDetails> List(this IQuotaRequestStatusOperations operations, string filter = default(string), int? top = default(int?), string skiptoken = default(string))
             {
-                return operations.ListAsync(subscriptionId, providerId, location, filter, top, skiptoken).GetAwaiter().GetResult();
+                return operations.ListAsync(filter, top, skiptoken).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
-            /// select specific quota requests, use the oData filter.
+            /// For the specified location and Resource provider gets the current quota
+            /// requests under the subscription over the time period of one year ago from
+            /// now to one year back. oData filter can be used to select quota requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='filter'>
             /// | Field                    | Supported operators
             /// |---------------------|------------------------
             ///
             /// |requestSubmitTime | ge, le, eq, gt, lt
+            /// |provisioningState eq {QuotaRequestState}
+            /// |resourceName eq {resourceName}
             /// </param>
             /// <param name='top'>
             /// Number of records to return.
@@ -145,24 +111,24 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='skiptoken'>
             /// Skiptoken is only used if a previous operation returned a partial result.
             /// If a previous response contains a nextLink element, the value of the
-            /// nextLink element includes a skiptoken parameter that specifies a starting
-            /// point to use for subsequent calls.
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<QuotaRequestDetails>> ListAsync(this IQuotaRequestStatusOperations operations, string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<QuotaRequestDetails>> ListAsync(this IQuotaRequestStatusOperations operations, string filter = default(string), int? top = default(int?), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(subscriptionId, providerId, location, filter, top, skiptoken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(filter, top, skiptoken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
-            /// select specific quota requests, use the oData filter.
+            /// For the specified location and Resource provider gets the current quota
+            /// requests under the subscription over the time period of one year ago from
+            /// now to one year back. oData filter can be used to select quota requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -176,9 +142,9 @@ namespace Microsoft.Azure.Management.Reservations
             }
 
             /// <summary>
-            /// For the specified Azure region (location), subscription, and resource
-            /// provider, get the history of the quota requests for the past year. To
-            /// select specific quota requests, use the oData filter.
+            /// For the specified location and Resource provider gets the current quota
+            /// requests under the subscription over the time period of one year ago from
+            /// now to one year back. oData filter can be used to select quota requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

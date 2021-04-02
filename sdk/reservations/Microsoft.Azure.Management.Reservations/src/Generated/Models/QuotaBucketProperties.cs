@@ -11,32 +11,30 @@
 namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Quota change requests information.
+    /// The resource provider quotaBucket properties
     /// </summary>
-    public partial class CreateGenericQuotaRequestParameters
+    public partial class QuotaBucketProperties
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateGenericQuotaRequestParameters class.
+        /// Initializes a new instance of the QuotaBucketProperties class.
         /// </summary>
-        public CreateGenericQuotaRequestParameters()
+        public QuotaBucketProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateGenericQuotaRequestParameters class.
+        /// Initializes a new instance of the QuotaBucketProperties class.
         /// </summary>
-        /// <param name="value">Quota change requests.</param>
-        public CreateGenericQuotaRequestParameters(IList<CurrentQuotaLimitBase> value = default(IList<CurrentQuotaLimitBase>))
+        /// <param name="name">The name</param>
+        /// <param name="displayName">The display name</param>
+        public QuotaBucketProperties(string name = default(string), string displayName = default(string))
         {
-            Value = value;
+            Name = name;
+            DisplayName = displayName;
             CustomInit();
         }
 
@@ -46,10 +44,16 @@ namespace Microsoft.Azure.Management.Quota.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets quota change requests.
+        /// Gets or sets the name
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<CurrentQuotaLimitBase> Value { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the display name
+        /// </summary>
+        [JsonProperty(PropertyName = "displayName")]
+        public string DisplayName { get; set; }
 
     }
 }

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -26,6 +26,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
+        /// <param name="provider">The provider name.</param>
+        /// <param name="resource">The resource name.</param>
+        /// <param name="operation">The operation name.</param>
+        /// <param name="description">The description of operation.</param>
         public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
         {
             Provider = provider;
@@ -41,21 +45,25 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the provider name.
         /// </summary>
         [JsonProperty(PropertyName = "provider")]
         public string Provider { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource name.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public string Resource { get; set; }
 
         /// <summary>
+        /// Gets or sets the operation name.
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
         public string Operation { get; set; }
 
         /// <summary>
+        /// Gets or sets the description of operation.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }

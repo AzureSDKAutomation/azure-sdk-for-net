@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations
+namespace Microsoft.Azure.Management.Quota
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Reservations
     /// <summary>
     /// QuotaRequestStatusOperations operations.
     /// </summary>
-    internal partial class QuotaRequestStatusOperations : IServiceOperations<AzureReservationAPIClient>, IQuotaRequestStatusOperations
+    internal partial class QuotaRequestStatusOperations : IServiceOperations<AzureQuotaExtensionAPIClient>, IQuotaRequestStatusOperations
     {
         /// <summary>
         /// Initializes a new instance of the QuotaRequestStatusOperations class.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal QuotaRequestStatusOperations(AzureReservationAPIClient client)
+        internal QuotaRequestStatusOperations(AzureQuotaExtensionAPIClient client)
         {
             if (client == null)
             {
@@ -46,27 +46,17 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// Gets a reference to the AzureReservationAPIClient
+        /// Gets a reference to the AzureQuotaExtensionAPIClient
         /// </summary>
-        public AzureReservationAPIClient Client { get; private set; }
+        public AzureQuotaExtensionAPIClient Client { get; private set; }
 
         /// <summary>
-        /// For the specified Azure region (location), get the details and status of
-        /// the quota request by the quota request ID for the resources of the resource
-        /// provider. The PUT request for the quota (service limit) returns a response
-        /// with the requestId parameter.
+        /// Gets the QuotaRequest details and status by the quota request Id for the
+        /// resources for the resource provider at a specific location. The requestId
+        /// is returned as response to the Put requests for quotaLimits.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='id'>
-        /// Quota Request ID.
+        /// Quota Request id.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -89,25 +79,20 @@ namespace Microsoft.Azure.Management.Reservations
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<QuotaRequestDetails>> GetWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<QuotaRequestDetails>> GetWithHttpMessagesAsync(string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (subscriptionId == null)
+            if (Client.ResourceUrl == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "subscriptionId");
-            }
-            if (providerId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "providerId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ResourceUrl");
             }
             if (id == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "id");
             }
-            string apiVersion = "2020-10-25";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -115,25 +100,19 @@ namespace Microsoft.Azure.Management.Reservations
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("subscriptionId", subscriptionId);
-                tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("providerId", providerId);
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("id", id);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Capacity/resourceProviders/{providerId}/locations/{location}/serviceLimitsRequests/{id}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(subscriptionId));
-            _url = _url.Replace("{providerId}", System.Uri.EscapeDataString(providerId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            var _baseUrl = Client.BaseUri;
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "providers/Microsoft.Quota/quotaLimitsRequests/{id}";
+            _url = _url.Replace("{resourceUrl}", Client.ResourceUrl);
             _url = _url.Replace("{id}", System.Uri.EscapeDataString(id));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -256,24 +235,17 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// For the specified Azure region (location), subscription, and resource
-        /// provider, get the history of the quota requests for the past year. To
-        /// select specific quota requests, use the oData filter.
+        /// For the specified location and Resource provider gets the current quota
+        /// requests under the subscription over the time period of one year ago from
+        /// now to one year back. oData filter can be used to select quota requests.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='filter'>
         /// | Field                    | Supported operators
         /// |---------------------|------------------------
         ///
         /// |requestSubmitTime | ge, le, eq, gt, lt
+        /// |provisioningState eq {QuotaRequestState}
+        /// |resourceName eq {resourceName}
         /// </param>
         /// <param name='top'>
         /// Number of records to return.
@@ -281,8 +253,8 @@ namespace Microsoft.Azure.Management.Reservations
         /// <param name='skiptoken'>
         /// Skiptoken is only used if a previous operation returned a partial result.
         /// If a previous response contains a nextLink element, the value of the
-        /// nextLink element includes a skiptoken parameter that specifies a starting
-        /// point to use for subsequent calls.
+        /// nextLink element will include a skiptoken parameter that specifies a
+        /// starting point to use for subsequent calls
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -305,25 +277,20 @@ namespace Microsoft.Azure.Management.Reservations
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string filter = default(string), int? top = default(int?), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<QuotaRequestDetails>>> ListWithHttpMessagesAsync(string filter = default(string), int? top = default(int?), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (subscriptionId == null)
+            if (Client.ResourceUrl == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "subscriptionId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ResourceUrl");
             }
-            if (providerId == null)
+            if (Client.ApiVersion == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "providerId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
             if (top < 1)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "top", 1);
             }
-            string apiVersion = "2020-10-25";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -331,10 +298,6 @@ namespace Microsoft.Azure.Management.Reservations
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("subscriptionId", subscriptionId);
-                tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("providerId", providerId);
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("filter", filter);
                 tracingParameters.Add("top", top);
                 tracingParameters.Add("skiptoken", skiptoken);
@@ -342,15 +305,13 @@ namespace Microsoft.Azure.Management.Reservations
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Capacity/resourceProviders/{providerId}/locations/{location}/serviceLimitsRequests").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(subscriptionId));
-            _url = _url.Replace("{providerId}", System.Uri.EscapeDataString(providerId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            var _baseUrl = Client.BaseUri;
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "providers/Microsoft.Quota/quotaLimitsRequests";
+            _url = _url.Replace("{resourceUrl}", Client.ResourceUrl);
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (filter != null)
             {
@@ -485,9 +446,9 @@ namespace Microsoft.Azure.Management.Reservations
         }
 
         /// <summary>
-        /// For the specified Azure region (location), subscription, and resource
-        /// provider, get the history of the quota requests for the past year. To
-        /// select specific quota requests, use the oData filter.
+        /// For the specified location and Resource provider gets the current quota
+        /// requests under the subscription over the time period of one year ago from
+        /// now to one year back. oData filter can be used to select quota requests.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

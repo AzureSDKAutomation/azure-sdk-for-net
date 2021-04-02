@@ -13,24 +13,32 @@ namespace Microsoft.Azure.Management.Quota.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class OperationResponse
+    /// <summary>
+    /// Quota type information.
+    /// </summary>
+    public partial class QuotaTypeDimensionInformation
     {
         /// <summary>
-        /// Initializes a new instance of the OperationResponse class.
+        /// Initializes a new instance of the QuotaTypeDimensionInformation
+        /// class.
         /// </summary>
-        public OperationResponse()
+        public QuotaTypeDimensionInformation()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OperationResponse class.
+        /// Initializes a new instance of the QuotaTypeDimensionInformation
+        /// class.
         /// </summary>
-        public OperationResponse(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string))
+        /// <param name="name">The property name.</param>
+        /// <param name="displayName">The display name.</param>
+        /// <param name="id">The dimension id.</param>
+        public QuotaTypeDimensionInformation(string name = default(string), string displayName = default(string), string id = default(string))
         {
             Name = name;
-            Display = display;
-            Origin = origin;
+            DisplayName = displayName;
+            Id = id;
             CustomInit();
         }
 
@@ -40,19 +48,22 @@ namespace Microsoft.Azure.Management.Quota.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the property name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the display name.
         /// </summary>
-        [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; set; }
+        [JsonProperty(PropertyName = "displayName")]
+        public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets the dimension id.
         /// </summary>
-        [JsonProperty(PropertyName = "origin")]
-        public string Origin { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
     }
 }
