@@ -10,37 +10,33 @@
 
 namespace Microsoft.Azure.Management.Quota.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Quota submit request response
+    /// Resource properties
     /// </summary>
-    public partial class QuotaRequestSubmitResponse : IResource
+    public partial class CommonResourceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the QuotaRequestSubmitResponse class.
+        /// Initializes a new instance of the CommonResourceProperties class.
         /// </summary>
-        public QuotaRequestSubmitResponse()
+        public CommonResourceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the QuotaRequestSubmitResponse class.
+        /// Initializes a new instance of the CommonResourceProperties class.
         /// </summary>
-        /// <param name="id">The quota request Id.</param>
-        /// <param name="name">The name of the quota request.</param>
-        /// <param name="properties">The quota request details.</param>
+        /// <param name="id">The resource Id.</param>
+        /// <param name="name">The resource name.</param>
         /// <param name="type">Type of resource.
         /// "Microsoft.Quota/quotaLimits"</param>
-        public QuotaRequestSubmitResponse(string id = default(string), string name = default(string), QuotaRequestProperties properties = default(QuotaRequestProperties), string type = default(string))
+        public CommonResourceProperties(string id = default(string), string name = default(string), string type = default(string))
         {
             Id = id;
             Name = name;
-            Properties = properties;
             Type = type;
             CustomInit();
         }
@@ -51,22 +47,16 @@ namespace Microsoft.Azure.Management.Quota.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the quota request Id.
+        /// Gets the resource Id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets the name of the quota request.
+        /// Gets the resource name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the quota request details.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public QuotaRequestProperties Properties { get; set; }
 
         /// <summary>
         /// Gets type of resource. "Microsoft.Quota/quotaLimits"

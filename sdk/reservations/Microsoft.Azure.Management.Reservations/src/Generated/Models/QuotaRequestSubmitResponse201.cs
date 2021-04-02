@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Response with request ID that the quota request was accepted.
+    /// The quota request submit response with request id.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class QuotaRequestSubmitResponse201
@@ -34,14 +34,15 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// Initializes a new instance of the QuotaRequestSubmitResponse201
         /// class.
         /// </summary>
-        /// <param name="id">The quota request ID. Use the requestId parameter
-        /// to check the request status.</param>
-        /// <param name="name">Operation ID</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="provisioningState">The details of the quota request
-        /// status.</param>
+        /// <param name="id">The quota request id. Please use the requestId to
+        /// check the request status.</param>
+        /// <param name="name">The operation Id</param>
+        /// <param name="type">The resource type</param>
+        /// <param name="provisioningState">The quota request status. Possible
+        /// values include: 'Accepted', 'Invalid', 'Succeeded', 'Failed',
+        /// 'InProgress'</param>
         /// <param name="message">A user friendly message.</param>
-        public QuotaRequestSubmitResponse201(string id = default(string), string name = default(string), string type = default(string), object provisioningState = default(object), string message = default(string))
+        public QuotaRequestSubmitResponse201(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), string message = default(string))
         {
             Id = id;
             Name = name;
@@ -57,29 +58,30 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the quota request ID. Use the requestId parameter to check the
+        /// Gets the quota request id. Please use the requestId to check the
         /// request status.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets operation ID
+        /// Gets the operation Id
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource type
+        /// Gets the resource type
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets the details of the quota request status.
+        /// Gets the quota request status. Possible values include: 'Accepted',
+        /// 'Invalid', 'Succeeded', 'Failed', 'InProgress'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public object ProvisioningState { get; private set; }
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets a user friendly message.

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations
+namespace Microsoft.Azure.Management.Quota
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -24,19 +24,10 @@ namespace Microsoft.Azure.Management.Reservations
     public partial interface IQuotaOperations
     {
         /// <summary>
-        /// Get the current quota (service limit) and usage of a resource. You
-        /// can use the response from the GET operation to submit quota update
-        /// request.
+        /// Gets the current service limits (quotas) and usage of a resource.
+        /// The response from Get API can be leveraged to submit quota update
+        /// requests.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='resourceName'>
         /// The resource name for a resource provider, such as SKU name for
         /// Microsoft.Compute, Sku or TotalLowPriorityCores for
@@ -57,9 +48,9 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CurrentQuotaLimitBase,QuotaGetHeaders>> GetWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CurrentQuotaLimitBase,QuotaGetHeaders>> GetWithHttpMessagesAsync(string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update the quota (service limits) of a resource to the
+        /// Create or update the service limits (quota) of a resource to
         /// requested value.
         /// Steps:
         ///
@@ -73,22 +64,13 @@ namespace Microsoft.Azure.Management.Reservations
         /// The Create quota request may be constructed as follows. The PUT
         /// operation can be used to update the quota.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='resourceName'>
         /// The resource name for a resource provider, such as SKU name for
         /// Microsoft.Compute, Sku or TotalLowPriorityCores for
         /// Microsoft.MachineLearningServices
         /// </param>
-        /// <param name='createQuotaRequest'>
-        /// Quota requests payload.
+        /// <param name='properties'>
+        /// Quota properties for the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -105,37 +87,28 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> CreateOrUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> CreateOrUpdateWithHttpMessagesAsync(string resourceName, QuotaProperties properties = default(QuotaProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update the quota (service limits) of this resource to the requested
-        /// value.
+        /// Update the service limits (quota) of a resource to requested value.
+        /// Steps:
         ///
-        /// • To get the quota information for specific resource, send a GET
-        /// request.
+        /// 1. Make the Get request to get the quota information for specific
+        /// resource.
         ///
-        /// • To increase the quota, update the limit field from the GET
-        /// response to a new value.
+        /// 2. To increase the quota, update the limit field in the response
+        /// from Get request to new value.
         ///
-        /// • To update the quota value, submit the JSON response to the quota
-        /// request API to update the quota.
-        /// • To update the quota. use the PATCH operation.
+        /// 3. Submit the JSON to the quota request API to update the quota.
+        /// The Update quota request may be constructed as follows. The PATCH
+        /// operation can be used to update the quota.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='resourceName'>
         /// The resource name for a resource provider, such as SKU name for
         /// Microsoft.Compute, Sku or TotalLowPriorityCores for
         /// Microsoft.MachineLearningServices
         /// </param>
-        /// <param name='createQuotaRequest'>
-        /// Payload for the quota request.
+        /// <param name='properties'>
+        /// Quota properties for the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -152,21 +125,12 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> UpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> UpdateWithHttpMessagesAsync(string resourceName, QuotaProperties properties = default(QuotaProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of current quotas (service limits) and usage for all
-        /// resources. The response from the list quota operation can be
-        /// leveraged to request quota updates.
+        /// Get a list of current service limits (quota) and usages of all the
+        /// resources. The response from List API can be leveraged to submit
+        /// quota update requests.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -182,9 +146,9 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<CurrentQuotaLimitBase>,QuotaListHeaders>> ListWithHttpMessagesAsync(string subscriptionId, string providerId, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<CurrentQuotaLimitBase>,QuotaListHeaders>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or update the quota (service limits) of a resource to the
+        /// Create or update the service limits (quota) of a resource to
         /// requested value.
         /// Steps:
         ///
@@ -198,22 +162,13 @@ namespace Microsoft.Azure.Management.Reservations
         /// The Create quota request may be constructed as follows. The PUT
         /// operation can be used to update the quota.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='resourceName'>
         /// The resource name for a resource provider, such as SKU name for
         /// Microsoft.Compute, Sku or TotalLowPriorityCores for
         /// Microsoft.MachineLearningServices
         /// </param>
-        /// <param name='createQuotaRequest'>
-        /// Quota requests payload.
+        /// <param name='properties'>
+        /// Quota properties for the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -230,37 +185,28 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> BeginCreateOrUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceName, QuotaProperties properties = default(QuotaProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update the quota (service limits) of this resource to the requested
-        /// value.
+        /// Update the service limits (quota) of a resource to requested value.
+        /// Steps:
         ///
-        /// • To get the quota information for specific resource, send a GET
-        /// request.
+        /// 1. Make the Get request to get the quota information for specific
+        /// resource.
         ///
-        /// • To increase the quota, update the limit field from the GET
-        /// response to a new value.
+        /// 2. To increase the quota, update the limit field in the response
+        /// from Get request to new value.
         ///
-        /// • To update the quota value, submit the JSON response to the quota
-        /// request API to update the quota.
-        /// • To update the quota. use the PATCH operation.
+        /// 3. Submit the JSON to the quota request API to update the quota.
+        /// The Update quota request may be constructed as follows. The PATCH
+        /// operation can be used to update the quota.
         /// </summary>
-        /// <param name='subscriptionId'>
-        /// Azure subscription ID.
-        /// </param>
-        /// <param name='providerId'>
-        /// Azure resource provider ID.
-        /// </param>
-        /// <param name='location'>
-        /// Azure region.
-        /// </param>
         /// <param name='resourceName'>
         /// The resource name for a resource provider, such as SKU name for
         /// Microsoft.Compute, Sku or TotalLowPriorityCores for
         /// Microsoft.MachineLearningServices
         /// </param>
-        /// <param name='createQuotaRequest'>
-        /// Payload for the quota request.
+        /// <param name='properties'>
+        /// Quota properties for the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -277,11 +223,11 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<object>> BeginUpdateWithHttpMessagesAsync(string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<object>> BeginUpdateWithHttpMessagesAsync(string resourceName, QuotaProperties properties = default(QuotaProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of current quotas (service limits) and usage for all
-        /// resources. The response from the list quota operation can be
-        /// leveraged to request quota updates.
+        /// Get a list of current service limits (quota) and usages of all the
+        /// resources. The response from List API can be leveraged to submit
+        /// quota update requests.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

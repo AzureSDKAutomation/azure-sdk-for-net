@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// The API error details.
+    /// The api error details.
     /// </summary>
     public partial class ServiceError
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// Initializes a new instance of the ServiceError class.
         /// </summary>
         /// <param name="code">The error code.</param>
-        /// <param name="message">The error message text.</param>
+        /// <param name="message">The error message.</param>
         /// <param name="details">The list of error details.</param>
         public ServiceError(string code = default(string), string message = default(string), IList<ServiceErrorDetail> details = default(IList<ServiceErrorDetail>))
         {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets the error message text.
+        /// Gets or sets the error message.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }

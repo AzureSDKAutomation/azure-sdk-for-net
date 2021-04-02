@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations
+namespace Microsoft.Azure.Management.Quota
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="ExceptionResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="ExceptionResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

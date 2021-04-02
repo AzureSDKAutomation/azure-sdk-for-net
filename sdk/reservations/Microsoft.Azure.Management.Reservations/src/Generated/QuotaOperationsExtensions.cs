@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations
+namespace Microsoft.Azure.Management.Quota
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -22,46 +22,28 @@ namespace Microsoft.Azure.Management.Reservations
     public static partial class QuotaOperationsExtensions
     {
             /// <summary>
-            /// Get the current quota (service limit) and usage of a resource. You can use
-            /// the response from the GET operation to submit quota update request.
+            /// Gets the current service limits (quotas) and usage of a resource. The
+            /// response from Get API can be leveraged to submit quota update requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            public static CurrentQuotaLimitBase Get(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName)
+            public static CurrentQuotaLimitBase Get(this IQuotaOperations operations, string resourceName)
             {
-                return operations.GetAsync(subscriptionId, providerId, location, resourceName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the current quota (service limit) and usage of a resource. You can use
-            /// the response from the GET operation to submit quota update request.
+            /// Gets the current service limits (quotas) and usage of a resource. The
+            /// response from Get API can be leveraged to submit quota update requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
@@ -71,16 +53,16 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CurrentQuotaLimitBase> GetAsync(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CurrentQuotaLimitBase> GetAsync(this IQuotaOperations operations, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, providerId, location, resourceName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Create or update the quota (service limits) of a resource to the requested
+            /// Create or update the service limits (quota) of a resource to requested
             /// value.
             /// Steps:
             ///
@@ -96,30 +78,21 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Quota requests payload.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
-            public static object CreateOrUpdate(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest)
+            public static object CreateOrUpdate(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties))
             {
-                return operations.CreateOrUpdateAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceName, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Create or update the quota (service limits) of a resource to the requested
+            /// Create or update the service limits (quota) of a resource to requested
             /// value.
             /// Steps:
             ///
@@ -135,166 +108,123 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Quota requests payload.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> CreateOrUpdateAsync(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> CreateOrUpdateAsync(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceName, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Update the quota (service limits) of this resource to the requested value.
+            /// Update the service limits (quota) of a resource to requested value.
+            /// Steps:
             ///
-            /// • To get the quota information for specific resource, send a GET request.
+            /// 1. Make the Get request to get the quota information for specific resource.
             ///
-            /// • To increase the quota, update the limit field from the GET response to a
-            /// new value.
+            /// 2. To increase the quota, update the limit field in the response from Get
+            /// request to new value.
             ///
-            /// • To update the quota value, submit the JSON response to the quota request
-            /// API to update the quota.
-            /// • To update the quota. use the PATCH operation.
+            /// 3. Submit the JSON to the quota request API to update the quota.
+            /// The Update quota request may be constructed as follows. The PATCH operation
+            /// can be used to update the quota.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Payload for the quota request.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
-            public static object Update(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest)
+            public static object Update(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties))
             {
-                return operations.UpdateAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceName, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update the quota (service limits) of this resource to the requested value.
+            /// Update the service limits (quota) of a resource to requested value.
+            /// Steps:
             ///
-            /// • To get the quota information for specific resource, send a GET request.
+            /// 1. Make the Get request to get the quota information for specific resource.
             ///
-            /// • To increase the quota, update the limit field from the GET response to a
-            /// new value.
+            /// 2. To increase the quota, update the limit field in the response from Get
+            /// request to new value.
             ///
-            /// • To update the quota value, submit the JSON response to the quota request
-            /// API to update the quota.
-            /// • To update the quota. use the PATCH operation.
+            /// 3. Submit the JSON to the quota request API to update the quota.
+            /// The Update quota request may be constructed as follows. The PATCH operation
+            /// can be used to update the quota.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Payload for the quota request.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> UpdateAsync(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> UpdateAsync(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceName, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets a list of current quotas (service limits) and usage for all resources.
-            /// The response from the list quota operation can be leveraged to request
-            /// quota updates.
+            /// Get a list of current service limits (quota) and usages of all the
+            /// resources. The response from List API can be leveraged to submit quota
+            /// update requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
-            public static IPage<CurrentQuotaLimitBase> List(this IQuotaOperations operations, string subscriptionId, string providerId, string location)
+            public static IPage<CurrentQuotaLimitBase> List(this IQuotaOperations operations)
             {
-                return operations.ListAsync(subscriptionId, providerId, location).GetAwaiter().GetResult();
+                return operations.ListAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of current quotas (service limits) and usage for all resources.
-            /// The response from the list quota operation can be leveraged to request
-            /// quota updates.
+            /// Get a list of current service limits (quota) and usages of all the
+            /// resources. The response from List API can be leveraged to submit quota
+            /// update requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<CurrentQuotaLimitBase>> ListAsync(this IQuotaOperations operations, string subscriptionId, string providerId, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<CurrentQuotaLimitBase>> ListAsync(this IQuotaOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(subscriptionId, providerId, location, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Create or update the quota (service limits) of a resource to the requested
+            /// Create or update the service limits (quota) of a resource to requested
             /// value.
             /// Steps:
             ///
@@ -310,30 +240,21 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Quota requests payload.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
-            public static object BeginCreateOrUpdate(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest)
+            public static object BeginCreateOrUpdate(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties))
             {
-                return operations.BeginCreateOrUpdateAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceName, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Create or update the quota (service limits) of a resource to the requested
+            /// Create or update the service limits (quota) of a resource to requested
             /// value.
             /// Steps:
             ///
@@ -349,118 +270,93 @@ namespace Microsoft.Azure.Management.Reservations
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
-            /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Quota requests payload.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> BeginCreateOrUpdateAsync(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> BeginCreateOrUpdateAsync(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceName, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Update the quota (service limits) of this resource to the requested value.
+            /// Update the service limits (quota) of a resource to requested value.
+            /// Steps:
             ///
-            /// • To get the quota information for specific resource, send a GET request.
+            /// 1. Make the Get request to get the quota information for specific resource.
             ///
-            /// • To increase the quota, update the limit field from the GET response to a
-            /// new value.
+            /// 2. To increase the quota, update the limit field in the response from Get
+            /// request to new value.
             ///
-            /// • To update the quota value, submit the JSON response to the quota request
-            /// API to update the quota.
-            /// • To update the quota. use the PATCH operation.
+            /// 3. Submit the JSON to the quota request API to update the quota.
+            /// The Update quota request may be constructed as follows. The PATCH operation
+            /// can be used to update the quota.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Payload for the quota request.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
-            public static object BeginUpdate(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest)
+            public static object BeginUpdate(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties))
             {
-                return operations.BeginUpdateAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(resourceName, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update the quota (service limits) of this resource to the requested value.
+            /// Update the service limits (quota) of a resource to requested value.
+            /// Steps:
             ///
-            /// • To get the quota information for specific resource, send a GET request.
+            /// 1. Make the Get request to get the quota information for specific resource.
             ///
-            /// • To increase the quota, update the limit field from the GET response to a
-            /// new value.
+            /// 2. To increase the quota, update the limit field in the response from Get
+            /// request to new value.
             ///
-            /// • To update the quota value, submit the JSON response to the quota request
-            /// API to update the quota.
-            /// • To update the quota. use the PATCH operation.
+            /// 3. Submit the JSON to the quota request API to update the quota.
+            /// The Update quota request may be constructed as follows. The PATCH operation
+            /// can be used to update the quota.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='subscriptionId'>
-            /// Azure subscription ID.
-            /// </param>
-            /// <param name='providerId'>
-            /// Azure resource provider ID.
-            /// </param>
-            /// <param name='location'>
-            /// Azure region.
             /// </param>
             /// <param name='resourceName'>
             /// The resource name for a resource provider, such as SKU name for
             /// Microsoft.Compute, Sku or TotalLowPriorityCores for
             /// Microsoft.MachineLearningServices
             /// </param>
-            /// <param name='createQuotaRequest'>
-            /// Payload for the quota request.
+            /// <param name='properties'>
+            /// Quota properties for the resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> BeginUpdateAsync(this IQuotaOperations operations, string subscriptionId, string providerId, string location, string resourceName, CurrentQuotaLimitBase createQuotaRequest, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> BeginUpdateAsync(this IQuotaOperations operations, string resourceName, QuotaProperties properties = default(QuotaProperties), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(subscriptionId, providerId, location, resourceName, createQuotaRequest, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceName, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets a list of current quotas (service limits) and usage for all resources.
-            /// The response from the list quota operation can be leveraged to request
-            /// quota updates.
+            /// Get a list of current service limits (quota) and usages of all the
+            /// resources. The response from List API can be leveraged to submit quota
+            /// update requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -474,9 +370,9 @@ namespace Microsoft.Azure.Management.Reservations
             }
 
             /// <summary>
-            /// Gets a list of current quotas (service limits) and usage for all resources.
-            /// The response from the list quota operation can be leveraged to request
-            /// quota updates.
+            /// Get a list of current service limits (quota) and usages of all the
+            /// resources. The response from List API can be leveraged to submit quota
+            /// update requests.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

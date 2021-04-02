@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the QuotaGetHeaders class.
         /// </summary>
-        /// <param name="eTag">Current entity state version. It should be
-        /// treated as opaque and used to make conditional HTTP
-        /// requests.</param>
+        /// <param name="eTag">Current entity state version. Should be treated
+        /// as opaque and used to make conditional HTTP requests.</param>
         public QuotaGetHeaders(string eTag = default(string))
         {
             ETag = eTag;
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets current entity state version. It should be treated as
+        /// Gets or sets current entity state version. Should be treated as
         /// opaque and used to make conditional HTTP requests.
         /// </summary>
         [JsonProperty(PropertyName = "ETag")]

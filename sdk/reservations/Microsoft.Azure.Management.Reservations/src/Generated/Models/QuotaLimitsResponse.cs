@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Quotas (service limits) in the request response.
+    /// Quota limits request response.
     /// </summary>
     public partial class QuotaLimitsResponse
     {
@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the QuotaLimitsResponse class.
         /// </summary>
-        /// <param name="value">List of quotas with the quota request
+        /// <param name="value">List of Quota limits with the quota request
         /// status.</param>
-        /// <param name="nextLink">The URI for fetching the next page of quota
-        /// limits. When no more pages exist, the value is null.</param>
-        public QuotaLimitsResponse(IList<CurrentQuotaLimit> value = default(IList<CurrentQuotaLimit>), string nextLink = default(string))
+        /// <param name="nextLink">The uri to fetch the next page of quota
+        /// limits. When there are no more pages, this is null.</param>
+        public QuotaLimitsResponse(IList<CurrentQuotaLimitBase> value = default(IList<CurrentQuotaLimitBase>), string nextLink = default(string))
         {
             Value = value;
             NextLink = nextLink;
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of quotas with the quota request status.
+        /// Gets or sets list of Quota limits with the quota request status.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<CurrentQuotaLimit> Value { get; set; }
+        public IList<CurrentQuotaLimitBase> Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the URI for fetching the next page of quota limits.
-        /// When no more pages exist, the value is null.
+        /// Gets or sets the uri to fetch the next page of quota limits. When
+        /// there are no more pages, this is null.
         /// </summary>
         [JsonProperty(PropertyName = "nextLink")]
         public string NextLink { get; set; }

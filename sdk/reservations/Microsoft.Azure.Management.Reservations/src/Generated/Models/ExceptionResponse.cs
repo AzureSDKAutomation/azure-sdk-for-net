@@ -8,13 +8,13 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// The API error.
+    /// The api error.
     /// </summary>
     public partial class ExceptionResponse
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the ExceptionResponse class.
         /// </summary>
-        /// <param name="error">The API error details.</param>
+        /// <param name="error">The api error details.</param>
         public ExceptionResponse(ServiceError error = default(ServiceError))
         {
             Error = error;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the API error details.
+        /// Gets or sets the api error details.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public ServiceError Error { get; set; }

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using System.Linq;
 
     /// <summary>
-    /// Quota properties.
+    /// Quota limits.
     /// </summary>
     public partial class CurrentQuotaLimitBase : IResource
     {

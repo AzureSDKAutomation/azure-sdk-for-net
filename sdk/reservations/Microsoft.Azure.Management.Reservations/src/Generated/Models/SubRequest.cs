@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Reservations.Models
+namespace Microsoft.Azure.Management.Quota.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -29,18 +29,19 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// <summary>
         /// Initializes a new instance of the SubRequest class.
         /// </summary>
-        /// <param name="limit">Quota (resource limit).</param>
-        /// <param name="name">The resource name.</param>
+        /// <param name="limit">The Resource limit.</param>
+        /// <param name="name">The Resource name.</param>
         /// <param name="resourceType">Resource type for which the quota check
         /// was made.</param>
-        /// <param name="unit"> The limit units, such as **count** and
-        /// **bytes**. Use the unit field provided in the response of the GET
-        /// quota operation.</param>
-        /// <param name="provisioningState">The quota request status.</param>
-        /// <param name="message">User-friendly status message.</param>
-        /// <param name="subRequestId">Sub request ID for individual
+        /// <param name="unit"> The units of the limit, such as - Count, Bytes,
+        /// etc. Use the unit field provided in the Get quota response.</param>
+        /// <param name="provisioningState">The quota request status. Possible
+        /// values include: 'Accepted', 'Invalid', 'Succeeded', 'Failed',
+        /// 'InProgress'</param>
+        /// <param name="message">User friendly status message.</param>
+        /// <param name="subRequestId">Sub request id for individual
         /// request.</param>
-        public SubRequest(int? limit = default(int?), ResourceName name = default(ResourceName), string resourceType = default(string), string unit = default(string), object provisioningState = default(object), string message = default(string), string subRequestId = default(string))
+        public SubRequest(int? limit = default(int?), ResourceName name = default(ResourceName), string resourceType = default(string), string unit = default(string), string provisioningState = default(string), string message = default(string), string subRequestId = default(string))
         {
             Limit = limit;
             Name = name;
@@ -58,13 +59,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets quota (resource limit).
+        /// Gets the Resource limit.
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
         public int? Limit { get; private set; }
 
         /// <summary>
-        /// Gets or sets the resource name.
+        /// Gets or sets the Resource name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public ResourceName Name { get; set; }
@@ -76,26 +77,27 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string ResourceType { get; private set; }
 
         /// <summary>
-        /// Gets or sets  The limit units, such as **count** and **bytes**. Use
-        /// the unit field provided in the response of the GET quota operation.
+        /// Gets or sets  The units of the limit, such as - Count, Bytes, etc.
+        /// Use the unit field provided in the Get quota response.
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public string Unit { get; set; }
 
         /// <summary>
-        /// Gets or sets the quota request status.
+        /// Gets or sets the quota request status. Possible values include:
+        /// 'Accepted', 'Invalid', 'Succeeded', 'Failed', 'InProgress'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public object ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets user-friendly status message.
+        /// Gets user friendly status message.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; private set; }
 
         /// <summary>
-        /// Gets sub request ID for individual request.
+        /// Gets sub request id for individual request.
         /// </summary>
         [JsonProperty(PropertyName = "subRequestId")]
         public string SubRequestId { get; private set; }

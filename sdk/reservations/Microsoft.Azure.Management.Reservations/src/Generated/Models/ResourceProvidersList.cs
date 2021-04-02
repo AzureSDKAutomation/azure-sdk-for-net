@@ -16,25 +16,23 @@ namespace Microsoft.Azure.Management.Quota.Models
     using System.Linq;
 
     /// <summary>
-    /// Quota change requests information.
+    /// List of resource providers.
     /// </summary>
-    public partial class CreateGenericQuotaRequestParameters
+    public partial class ResourceProvidersList
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateGenericQuotaRequestParameters class.
+        /// Initializes a new instance of the ResourceProvidersList class.
         /// </summary>
-        public CreateGenericQuotaRequestParameters()
+        public ResourceProvidersList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateGenericQuotaRequestParameters class.
+        /// Initializes a new instance of the ResourceProvidersList class.
         /// </summary>
-        /// <param name="value">Quota change requests.</param>
-        public CreateGenericQuotaRequestParameters(IList<CurrentQuotaLimitBase> value = default(IList<CurrentQuotaLimitBase>))
+        /// <param name="value">The resource provider information.</param>
+        public ResourceProvidersList(IList<ResourceProviderInformation> value = default(IList<ResourceProviderInformation>))
         {
             Value = value;
             CustomInit();
@@ -46,10 +44,10 @@ namespace Microsoft.Azure.Management.Quota.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets quota change requests.
+        /// Gets or sets the resource provider information.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<CurrentQuotaLimitBase> Value { get; set; }
+        public IList<ResourceProviderInformation> Value { get; set; }
 
     }
 }
