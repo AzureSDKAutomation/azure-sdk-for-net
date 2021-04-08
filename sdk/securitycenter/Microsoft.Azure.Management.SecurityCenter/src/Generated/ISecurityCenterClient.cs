@@ -242,11 +242,6 @@ namespace Microsoft.Azure.Management.Security
         ITopologyOperations Topology { get; }
 
         /// <summary>
-        /// Gets the IAlertsOperations.
-        /// </summary>
-        IAlertsOperations Alerts { get; }
-
-        /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.
         /// </summary>
         IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; }
@@ -335,6 +330,16 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IOnPremiseIotSensorsOperations.
         /// </summary>
         IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; }
+
+        /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        IIotSitesOperations IotSites { get; }
+
+        /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        IAlertsOperations Alerts { get; }
 
     }
 }
