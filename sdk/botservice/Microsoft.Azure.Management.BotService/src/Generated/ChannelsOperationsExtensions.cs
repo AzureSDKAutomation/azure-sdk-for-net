@@ -30,16 +30,17 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
             /// </param>
             /// <param name='channelName'>
-            /// The name of the Channel resource. Possible values include:
+            /// The name of the Channel resource. Possible values include: 'AlexaChannel',
             /// 'FacebookChannel', 'EmailChannel', 'KikChannel', 'TelegramChannel',
             /// 'SlackChannel', 'MsTeamsChannel', 'SkypeChannel', 'WebChatChannel',
-            /// 'DirectLineChannel', 'SmsChannel'
+            /// 'DirectLineChannel', 'SmsChannel', 'LineChannel',
+            /// 'DirectLineSpeechChannel', 'TelephonyChannel'
             /// </param>
             /// <param name='parameters'>
             /// The parameters to provide for the created bot.
@@ -56,16 +57,17 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
             /// </param>
             /// <param name='channelName'>
-            /// The name of the Channel resource. Possible values include:
+            /// The name of the Channel resource. Possible values include: 'AlexaChannel',
             /// 'FacebookChannel', 'EmailChannel', 'KikChannel', 'TelegramChannel',
             /// 'SlackChannel', 'MsTeamsChannel', 'SkypeChannel', 'WebChatChannel',
-            /// 'DirectLineChannel', 'SmsChannel'
+            /// 'DirectLineChannel', 'SmsChannel', 'LineChannel',
+            /// 'DirectLineSpeechChannel', 'TelephonyChannel'
             /// </param>
             /// <param name='parameters'>
             /// The parameters to provide for the created bot.
@@ -88,16 +90,17 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
             /// </param>
             /// <param name='channelName'>
-            /// The name of the Channel resource. Possible values include:
+            /// The name of the Channel resource. Possible values include: 'AlexaChannel',
             /// 'FacebookChannel', 'EmailChannel', 'KikChannel', 'TelegramChannel',
             /// 'SlackChannel', 'MsTeamsChannel', 'SkypeChannel', 'WebChatChannel',
-            /// 'DirectLineChannel', 'SmsChannel'
+            /// 'DirectLineChannel', 'SmsChannel', 'LineChannel',
+            /// 'DirectLineSpeechChannel', 'TelephonyChannel'
             /// </param>
             /// <param name='location'>
             /// Specifies the location of the resource.
@@ -110,7 +113,7 @@ namespace Microsoft.Azure.Management.BotService
             /// </param>
             /// <param name='kind'>
             /// Required. Gets or sets the Kind of the resource. Possible values include:
-            /// 'sdk', 'designer', 'bot', 'function'
+            /// 'sdk', 'designer', 'bot', 'function', 'azurebot'
             /// </param>
             /// <param name='etag'>
             /// Entity Tag
@@ -130,16 +133,17 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
             /// </param>
             /// <param name='channelName'>
-            /// The name of the Channel resource. Possible values include:
+            /// The name of the Channel resource. Possible values include: 'AlexaChannel',
             /// 'FacebookChannel', 'EmailChannel', 'KikChannel', 'TelegramChannel',
             /// 'SlackChannel', 'MsTeamsChannel', 'SkypeChannel', 'WebChatChannel',
-            /// 'DirectLineChannel', 'SmsChannel'
+            /// 'DirectLineChannel', 'SmsChannel', 'LineChannel',
+            /// 'DirectLineSpeechChannel', 'TelephonyChannel'
             /// </param>
             /// <param name='location'>
             /// Specifies the location of the resource.
@@ -152,7 +156,7 @@ namespace Microsoft.Azure.Management.BotService
             /// </param>
             /// <param name='kind'>
             /// Required. Gets or sets the Kind of the resource. Possible values include:
-            /// 'sdk', 'designer', 'bot', 'function'
+            /// 'sdk', 'designer', 'bot', 'function', 'azurebot'
             /// </param>
             /// <param name='etag'>
             /// Entity Tag
@@ -178,7 +182,7 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
@@ -198,7 +202,7 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
@@ -221,7 +225,7 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
@@ -241,7 +245,7 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
@@ -267,16 +271,17 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
             /// </param>
             /// <param name='channelName'>
-            /// The name of the Channel resource. Possible values include:
+            /// The name of the Channel resource. Possible values include: 'AlexaChannel',
             /// 'FacebookChannel', 'EmailChannel', 'KikChannel', 'TelegramChannel',
             /// 'SlackChannel', 'MsTeamsChannel', 'SkypeChannel', 'WebChatChannel',
-            /// 'DirectLineChannel', 'SmsChannel'
+            /// 'DirectLineChannel', 'SmsChannel', 'LineChannel',
+            /// 'DirectLineSpeechChannel', 'TelephonyChannel'
             /// </param>
             public static BotChannel ListWithKeys(this IChannelsOperations operations, string resourceGroupName, string resourceName, ChannelName channelName)
             {
@@ -290,16 +295,17 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
             /// </param>
             /// <param name='channelName'>
-            /// The name of the Channel resource. Possible values include:
+            /// The name of the Channel resource. Possible values include: 'AlexaChannel',
             /// 'FacebookChannel', 'EmailChannel', 'KikChannel', 'TelegramChannel',
             /// 'SlackChannel', 'MsTeamsChannel', 'SkypeChannel', 'WebChatChannel',
-            /// 'DirectLineChannel', 'SmsChannel'
+            /// 'DirectLineChannel', 'SmsChannel', 'LineChannel',
+            /// 'DirectLineSpeechChannel', 'TelephonyChannel'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -319,7 +325,7 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.
@@ -336,7 +342,7 @@ namespace Microsoft.Azure.Management.BotService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription.
+            /// The name of the Bot resource group in the user subscription.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the Bot resource.

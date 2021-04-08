@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Management.BotService.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ChannelName
     {
+        [EnumMember(Value = "AlexaChannel")]
+        AlexaChannel,
         [EnumMember(Value = "FacebookChannel")]
         FacebookChannel,
         [EnumMember(Value = "EmailChannel")]
@@ -40,7 +42,13 @@ namespace Microsoft.Azure.Management.BotService.Models
         [EnumMember(Value = "DirectLineChannel")]
         DirectLineChannel,
         [EnumMember(Value = "SmsChannel")]
-        SmsChannel
+        SmsChannel,
+        [EnumMember(Value = "LineChannel")]
+        LineChannel,
+        [EnumMember(Value = "DirectLineSpeechChannel")]
+        DirectLineSpeechChannel,
+        [EnumMember(Value = "TelephonyChannel")]
+        TelephonyChannel
     }
     internal static class ChannelNameEnumExtension
     {
@@ -53,6 +61,8 @@ namespace Microsoft.Azure.Management.BotService.Models
         {
             switch( value )
             {
+                case ChannelName.AlexaChannel:
+                    return "AlexaChannel";
                 case ChannelName.FacebookChannel:
                     return "FacebookChannel";
                 case ChannelName.EmailChannel:
@@ -73,6 +83,12 @@ namespace Microsoft.Azure.Management.BotService.Models
                     return "DirectLineChannel";
                 case ChannelName.SmsChannel:
                     return "SmsChannel";
+                case ChannelName.LineChannel:
+                    return "LineChannel";
+                case ChannelName.DirectLineSpeechChannel:
+                    return "DirectLineSpeechChannel";
+                case ChannelName.TelephonyChannel:
+                    return "TelephonyChannel";
             }
             return null;
         }
@@ -81,6 +97,8 @@ namespace Microsoft.Azure.Management.BotService.Models
         {
             switch( value )
             {
+                case "AlexaChannel":
+                    return ChannelName.AlexaChannel;
                 case "FacebookChannel":
                     return ChannelName.FacebookChannel;
                 case "EmailChannel":
@@ -101,6 +119,12 @@ namespace Microsoft.Azure.Management.BotService.Models
                     return ChannelName.DirectLineChannel;
                 case "SmsChannel":
                     return ChannelName.SmsChannel;
+                case "LineChannel":
+                    return ChannelName.LineChannel;
+                case "DirectLineSpeechChannel":
+                    return ChannelName.DirectLineSpeechChannel;
+                case "TelephonyChannel":
+                    return ChannelName.TelephonyChannel;
             }
             return null;
         }
