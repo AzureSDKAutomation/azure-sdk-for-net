@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="level">Level of the difference: Information, Warning
         /// or Error.</param>
         /// <param name="settingType">The type of the setting: General,
@@ -49,8 +51,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// slot.</param>
         /// <param name="description">Description of the setting
         /// difference.</param>
-        public SlotDifference(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string level = default(string), string settingType = default(string), string diffRule = default(string), string settingName = default(string), string valueInCurrentSlot = default(string), string valueInTargetSlot = default(string), string description = default(string))
-            : base(id, name, kind, type)
+        public SlotDifference(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string level = default(string), string settingType = default(string), string diffRule = default(string), string settingName = default(string), string valueInCurrentSlot = default(string), string valueInTargetSlot = default(string), string description = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Level = level;
             SettingType = settingType;

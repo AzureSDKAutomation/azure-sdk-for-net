@@ -150,6 +150,27 @@ namespace Microsoft.Azure.Management.WebSites
         IResourceHealthMetadataOperations ResourceHealthMetadata { get; }
 
         /// <summary>
+        /// Exchange code for GitHub access token for AppService CLI
+        /// </summary>
+        /// <remarks>
+        /// Description for Exchange code for GitHub access token for
+        /// AppService CLI
+        /// </remarks>
+        /// <param name='code'>
+        /// Code string to exchange for Github Access token
+        /// </param>
+        /// <param name='state'>
+        /// State string used for verification.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<AppserviceGithubToken>> GenerateGithubAccessTokenForAppserviceCLIAsyncWithHttpMessagesAsync(string code, string state, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Gets publishing user
         /// </summary>
         /// <remarks>

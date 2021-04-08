@@ -36,12 +36,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="token">OAuth access token.</param>
         /// <param name="tokenSecret">OAuth access token secret.</param>
         /// <param name="refreshToken">OAuth refresh token.</param>
         /// <param name="expirationTime">OAuth token expiration.</param>
-        public SourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string token = default(string), string tokenSecret = default(string), string refreshToken = default(string), System.DateTime? expirationTime = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public SourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string token = default(string), string tokenSecret = default(string), string refreshToken = default(string), System.DateTime? expirationTime = default(System.DateTime?))
+            : base(id, name, kind, type, systemData)
         {
             Token = token;
             TokenSecret = tokenSecret;
