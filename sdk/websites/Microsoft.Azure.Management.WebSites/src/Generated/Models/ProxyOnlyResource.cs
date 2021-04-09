@@ -36,12 +36,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public ProxyOnlyResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string))
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
+        public ProxyOnlyResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData))
         {
             Id = id;
             Name = name;
             Kind = kind;
             Type = type;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -73,6 +76,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the system metadata relating to this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; set; }
 
     }
 }

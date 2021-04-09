@@ -35,8 +35,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public IdentityProviders(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), Facebook facebook = default(Facebook), GitHub gitHub = default(GitHub), Google google = default(Google), Twitter twitter = default(Twitter), IDictionary<string, CustomOpenIdConnectProvider> customOpenIdConnectProviders = default(IDictionary<string, CustomOpenIdConnectProvider>))
-            : base(id, name, kind, type)
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
+        public IdentityProviders(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), Facebook facebook = default(Facebook), GitHub gitHub = default(GitHub), Google google = default(Google), Twitter twitter = default(Twitter), IDictionary<string, CustomOpenIdConnectProvider> customOpenIdConnectProviders = default(IDictionary<string, CustomOpenIdConnectProvider>))
+            : base(id, name, kind, type, systemData)
         {
             AzureActiveDirectory = azureActiveDirectory;
             Facebook = facebook;
