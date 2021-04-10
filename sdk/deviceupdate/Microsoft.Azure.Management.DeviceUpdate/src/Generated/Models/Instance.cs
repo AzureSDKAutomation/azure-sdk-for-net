@@ -50,9 +50,10 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         /// Instance belongs to.</param>
         /// <param name="iotHubs">List of IoT Hubs associated with the
         /// account.</param>
-        public Instance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string accountName = default(string), IList<IotHubSettings> iotHubs = default(IList<IotHubSettings>))
+        public Instance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), string accountName = default(string), IList<IotHubSettings> iotHubs = default(IList<IotHubSettings>))
             : base(location, id, name, type, tags)
         {
+            SystemData = systemData;
             ProvisioningState = provisioningState;
             AccountName = accountName;
             IotHubs = iotHubs;
@@ -63,6 +64,11 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Gets provisioning state. Possible values include: 'Succeeded',
