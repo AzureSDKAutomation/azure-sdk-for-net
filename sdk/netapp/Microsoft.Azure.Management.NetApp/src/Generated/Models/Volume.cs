@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Gets or sets protocolTypes
         /// </summary>
         /// <remarks>
-        /// Set of protocol types, default NFSv3, CIFS fro SMB protocol
+        /// Set of protocol types, default NFSv3, CIFS for SMB protocol
         /// </remarks>
         [JsonProperty(PropertyName = "properties.protocolTypes")]
         public IList<string> ProtocolTypes { get; set; }
@@ -434,16 +434,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 DataProtection.Validate();
             }
-            if (ThroughputMibps != null)
+            if (ThroughputMibps > 4500)
             {
-                if (ThroughputMibps > 4500)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "ThroughputMibps", 4500);
-                }
-                if (ThroughputMibps < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "ThroughputMibps", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "ThroughputMibps", 4500);
+            }
+            if (ThroughputMibps < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "ThroughputMibps", 0);
             }
         }
     }
