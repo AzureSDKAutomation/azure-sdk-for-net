@@ -135,6 +135,11 @@ namespace Microsoft.Azure.Management.Synapse
         IKeysOperations Keys { get; }
 
         /// <summary>
+        /// Gets the IKustoPoolsOperations.
+        /// </summary>
+        IKustoPoolsOperations KustoPools { get; }
+
+        /// <summary>
         /// Gets the ILibraryOperations.
         /// </summary>
         ILibraryOperations Library { get; }
