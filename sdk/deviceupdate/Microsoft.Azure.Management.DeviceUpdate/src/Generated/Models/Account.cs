@@ -47,11 +47,15 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         /// include: 'Succeeded', 'Deleted', 'Failed', 'Canceled', 'Accepted',
         /// 'Creating'</param>
         /// <param name="hostName">API host name.</param>
-        public Account(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string hostName = default(string))
+        /// <param name="identity">The type of identity used for the
+        /// resource.</param>
+        public Account(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), string hostName = default(string), Identity identity = default(Identity))
             : base(location, id, name, type, tags)
         {
+            SystemData = systemData;
             ProvisioningState = provisioningState;
             HostName = hostName;
+            Identity = identity;
             CustomInit();
         }
 
@@ -59,6 +63,11 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Gets provisioning state. Possible values include: 'Succeeded',
@@ -72,6 +81,12 @@ namespace Microsoft.Azure.Management.DeviceUpdate.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostName")]
         public string HostName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the type of identity used for the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public Identity Identity { get; set; }
 
     }
 }
