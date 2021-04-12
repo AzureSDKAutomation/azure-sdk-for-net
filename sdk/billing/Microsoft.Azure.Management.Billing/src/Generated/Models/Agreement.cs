@@ -40,8 +40,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="agreementLink">The URL to download the
         /// agreement.</param>
         /// <param name="category">The category of the agreement signed by a
-        /// customer. Possible values include: 'MicrosoftCustomerAgreement',
-        /// 'AffiliatePurchaseTerms', 'Other'</param>
+        /// customer. Possible values include: 'AffiliatePurchaseTerms',
+        /// 'IndirectForGovernmentAgreement', 'MicrosoftCustomerAgreement',
+        /// 'MicrosoftPartnerAgreement', 'Other',
+        /// 'UKCloudComputeFramework'</param>
         /// <param name="acceptanceMode">The mode of acceptance for an
         /// agreement. Possible values include: 'ClickToAccept',
         /// 'ESignEmbedded', 'ESignOffline'</param>
@@ -78,8 +80,9 @@ namespace Microsoft.Azure.Management.Billing.Models
 
         /// <summary>
         /// Gets the category of the agreement signed by a customer. Possible
-        /// values include: 'MicrosoftCustomerAgreement',
-        /// 'AffiliatePurchaseTerms', 'Other'
+        /// values include: 'AffiliatePurchaseTerms',
+        /// 'IndirectForGovernmentAgreement', 'MicrosoftCustomerAgreement',
+        /// 'MicrosoftPartnerAgreement', 'Other', 'UKCloudComputeFramework'
         /// </summary>
         [JsonProperty(PropertyName = "properties.category")]
         public string Category { get; private set; }

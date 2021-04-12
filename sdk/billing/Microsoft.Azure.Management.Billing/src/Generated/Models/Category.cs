@@ -16,8 +16,11 @@ namespace Microsoft.Azure.Management.Billing.Models
     /// </summary>
     public static class Category
     {
-        public const string MicrosoftCustomerAgreement = "MicrosoftCustomerAgreement";
         public const string AffiliatePurchaseTerms = "AffiliatePurchaseTerms";
+        public const string IndirectForGovernmentAgreement = "IndirectForGovernmentAgreement";
+        public const string MicrosoftCustomerAgreement = "MicrosoftCustomerAgreement";
+        public const string MicrosoftPartnerAgreement = "MicrosoftPartnerAgreement";
         public const string Other = "Other";
+        public const string UKCloudComputeFramework = "UKCloudComputeFramework";
     }
 }
