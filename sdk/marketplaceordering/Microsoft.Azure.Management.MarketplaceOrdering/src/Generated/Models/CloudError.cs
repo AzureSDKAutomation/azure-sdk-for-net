@@ -14,28 +14,27 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
     using System.Linq;
 
     /// <summary>
-    /// The details of the error.
+    /// Error response indicates Microsoft.MarketplaceOrdering service is not
+    /// able to process the incoming request. The reason is provided in the
+    /// error message.
     /// </summary>
-    public partial class ErrorResponseError
+    public partial class CloudError
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponseError class.
+        /// Initializes a new instance of the CloudError class.
         /// </summary>
-        public ErrorResponseError()
+        public CloudError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponseError class.
+        /// Initializes a new instance of the CloudError class.
         /// </summary>
-        /// <param name="code">Error code.</param>
-        /// <param name="message">Error message indicating why the operation
-        /// failed.</param>
-        public ErrorResponseError(string code = default(string), string message = default(string))
+        /// <param name="error">The details of the error.</param>
+        public CloudError(CloudErrorError error = default(CloudErrorError))
         {
-            Code = code;
-            Message = message;
+            Error = error;
             CustomInit();
         }
 
@@ -45,16 +44,10 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets error code.
+        /// Gets or sets the details of the error.
         /// </summary>
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; private set; }
-
-        /// <summary>
-        /// Gets error message indicating why the operation failed.
-        /// </summary>
-        [JsonProperty(PropertyName = "message")]
-        public string Message { get; private set; }
+        [JsonProperty(PropertyName = "error")]
+        public CloudErrorError Error { get; set; }
 
     }
 }

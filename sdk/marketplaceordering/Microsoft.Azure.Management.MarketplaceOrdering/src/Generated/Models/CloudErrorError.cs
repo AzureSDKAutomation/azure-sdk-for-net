@@ -14,27 +14,28 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
     using System.Linq;
 
     /// <summary>
-    /// Error response indicates Microsoft.MarketplaceOrdering service is not
-    /// able to process the incoming request. The reason is provided in the
-    /// error message.
+    /// The details of the error.
     /// </summary>
-    public partial class ErrorResponse
+    public partial class CloudErrorError
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the CloudErrorError class.
         /// </summary>
-        public ErrorResponse()
+        public CloudErrorError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the CloudErrorError class.
         /// </summary>
-        /// <param name="error">The details of the error.</param>
-        public ErrorResponse(ErrorResponseError error = default(ErrorResponseError))
+        /// <param name="code">Error code.</param>
+        /// <param name="message">Error message indicating why the operation
+        /// failed.</param>
+        public CloudErrorError(string code = default(string), string message = default(string))
         {
-            Error = error;
+            Code = code;
+            Message = message;
             CustomInit();
         }
 
@@ -44,10 +45,16 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the details of the error.
+        /// Gets error code.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseError Error { get; set; }
+        [JsonProperty(PropertyName = "code")]
+        public string Code { get; private set; }
+
+        /// <summary>
+        /// Gets error message indicating why the operation failed.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
 
     }
 }
