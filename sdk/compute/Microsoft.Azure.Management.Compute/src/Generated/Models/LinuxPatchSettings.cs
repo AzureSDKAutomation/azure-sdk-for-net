@@ -37,9 +37,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// will be automatically updated by the platform. The property
         /// provisionVMAgent must be true. Possible values include:
         /// 'ImageDefault', 'AutomaticByPlatform'</param>
-        public LinuxPatchSettings(string patchMode = default(string))
+        /// <param name="assessmentMode">Specifies the mode of VM Guest Patch
+        /// Assessment for the IaaS virtual machine.&lt;br /&gt;&lt;br /&gt;
+        /// Possible values are:&lt;br /&gt;&lt;br /&gt; **ImageDefault** - You
+        /// control the timing of patch assessments on a virtual machine.
+        /// &lt;br /&gt;&lt;br /&gt; **AutomaticByPlatform** - The platform
+        /// will trigger periodic patch assessments. The property
+        /// provisionVMAgent must be true. Possible values include:
+        /// 'ImageDefault', 'AutomaticByPlatform'</param>
+        public LinuxPatchSettings(string patchMode = default(string), string assessmentMode = default(string))
         {
             PatchMode = patchMode;
+            AssessmentMode = assessmentMode;
             CustomInit();
         }
 
@@ -61,6 +70,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "patchMode")]
         public string PatchMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the mode of VM Guest Patch Assessment for
+        /// the IaaS virtual machine.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
+        /// Possible values are:&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
+        /// **ImageDefault** - You control the timing of patch assessments on a
+        /// virtual machine. &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
+        /// **AutomaticByPlatform** - The platform will trigger periodic patch
+        /// assessments. The property provisionVMAgent must be true. Possible
+        /// values include: 'ImageDefault', 'AutomaticByPlatform'
+        /// </summary>
+        [JsonProperty(PropertyName = "assessmentMode")]
+        public string AssessmentMode { get; set; }
 
     }
 }
