@@ -27,15 +27,15 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// Creates a Stream Analytics Cluster or replaces an already existing
         /// cluster.
         /// </summary>
-        /// <param name='cluster'>
-        /// The definition of the cluster that will be used to create a new
-        /// cluster or replace the existing one.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The definition of the cluster that will be used to create a new
+        /// cluster or replace the existing one.
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the
@@ -62,22 +62,22 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Cluster>> CreateOrUpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Cluster>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates an existing cluster. This can be used to partially update
         /// (ie. update one or two properties) a cluster without affecting the
         /// rest of the cluster definition.
         /// </summary>
-        /// <param name='cluster'>
-        /// The properties specified here will overwrite the corresponding
-        /// properties in the existing cluster (ie. Those properties will be
-        /// updated).
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The properties specified here will overwrite the corresponding
+        /// properties in the existing cluster (ie. Those properties will be
+        /// updated).
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets information about the specified cluster.
         /// </summary>
@@ -217,15 +217,15 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// Creates a Stream Analytics Cluster or replaces an already existing
         /// cluster.
         /// </summary>
-        /// <param name='cluster'>
-        /// The definition of the cluster that will be used to create a new
-        /// cluster or replace the existing one.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The definition of the cluster that will be used to create a new
+        /// cluster or replace the existing one.
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the
@@ -252,22 +252,22 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Cluster>> BeginCreateOrUpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Cluster>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates an existing cluster. This can be used to partially update
         /// (ie. update one or two properties) a cluster without affecting the
         /// rest of the cluster definition.
         /// </summary>
-        /// <param name='cluster'>
-        /// The properties specified here will overwrite the corresponding
-        /// properties in the existing cluster (ie. Those properties will be
-        /// updated).
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The properties specified here will overwrite the corresponding
+        /// properties in the existing cluster (ie. Those properties will be
+        /// updated).
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Cluster>> BeginUpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Cluster>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified cluster.
         /// </summary>

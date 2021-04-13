@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <summary>
         /// Creates a Stream Analytics Cluster or replaces an already existing cluster.
         /// </summary>
-        /// <param name='cluster'>
-        /// The definition of the cluster that will be used to create a new cluster or
-        /// replace the existing one.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The definition of the cluster that will be used to create a new cluster or
+        /// replace the existing one.
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the current
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<Cluster>> CreateOrUpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<Cluster> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(cluster, resourceGroupName, clusterName, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<Cluster> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, cluster, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -91,15 +91,15 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// update one or two properties) a cluster without affecting the rest of the
         /// cluster definition.
         /// </summary>
-        /// <param name='cluster'>
-        /// The properties specified here will overwrite the corresponding properties
-        /// in the existing cluster (ie. Those properties will be updated).
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The properties specified here will overwrite the corresponding properties
+        /// in the existing cluster (ie. Those properties will be updated).
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the current
@@ -112,10 +112,10 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<Cluster> _response = await BeginUpdateWithHttpMessagesAsync(cluster, resourceGroupName, clusterName, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<Cluster> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, cluster, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -946,15 +946,15 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <summary>
         /// Creates a Stream Analytics Cluster or replaces an already existing cluster.
         /// </summary>
-        /// <param name='cluster'>
-        /// The definition of the cluster that will be used to create a new cluster or
-        /// replace the existing one.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The definition of the cluster that will be used to create a new cluster or
+        /// replace the existing one.
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the current
@@ -987,16 +987,8 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Cluster>> BeginCreateOrUpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (cluster == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "cluster");
-            }
-            if (cluster != null)
-            {
-                cluster.Validate();
-            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1031,6 +1023,14 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
             }
+            if (cluster == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "cluster");
+            }
+            if (cluster != null)
+            {
+                cluster.Validate();
+            }
             string apiVersion = "2020-03-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1039,12 +1039,12 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("cluster", cluster);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("clusterName", clusterName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("ifNoneMatch", ifNoneMatch);
+                tracingParameters.Add("cluster", cluster);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
@@ -1224,15 +1224,15 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// update one or two properties) a cluster without affecting the rest of the
         /// cluster definition.
         /// </summary>
-        /// <param name='cluster'>
-        /// The properties specified here will overwrite the corresponding properties
-        /// in the existing cluster (ie. Those properties will be updated).
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster.
+        /// </param>
+        /// <param name='cluster'>
+        /// The properties specified here will overwrite the corresponding properties
+        /// in the existing cluster (ie. Those properties will be updated).
         /// </param>
         /// <param name='ifMatch'>
         /// The ETag of the resource. Omit this value to always overwrite the current
@@ -1260,12 +1260,8 @@ namespace Microsoft.Azure.Management.StreamAnalytics
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Cluster>> BeginUpdateWithHttpMessagesAsync(Cluster cluster, string resourceGroupName, string clusterName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Cluster>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, Cluster cluster, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (cluster == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "cluster");
-            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1300,6 +1296,10 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
             }
+            if (cluster == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "cluster");
+            }
             string apiVersion = "2020-03-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1308,11 +1308,11 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("cluster", cluster);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("clusterName", clusterName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("ifMatch", ifMatch);
+                tracingParameters.Add("cluster", cluster);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
             }
