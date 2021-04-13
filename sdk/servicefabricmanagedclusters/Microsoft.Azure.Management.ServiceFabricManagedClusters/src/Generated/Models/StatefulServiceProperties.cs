@@ -47,9 +47,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <param name="servicePackageActivationMode">The activation Mode of
         /// the service package. Possible values include: 'SharedProcess',
         /// 'ExclusiveProcess'</param>
-        /// <param name="serviceDnsName">The DNS name of the service. It
-        /// requires the DNS system service to be enabled in Service Fabric
-        /// cluster.</param>
         /// <param name="hasPersistedState">A flag indicating whether this is a
         /// persistent service which stores states on the local disk. If it is
         /// then the value of this property is true, if not it is
@@ -75,8 +72,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// finished build. If desired behavior is to drop it as soon as
         /// possible the value of this property is true, if not it is
         /// false.</param>
-        public StatefulServiceProperties(string serviceTypeName, Partition partitionDescription, string placementConstraints = default(string), IList<ServiceCorrelation> correlationScheme = default(IList<ServiceCorrelation>), IList<ServiceLoadMetric> serviceLoadMetrics = default(IList<ServiceLoadMetric>), IList<ServicePlacementPolicy> servicePlacementPolicies = default(IList<ServicePlacementPolicy>), string defaultMoveCost = default(string), IList<ScalingPolicy> scalingPolicies = default(IList<ScalingPolicy>), string provisioningState = default(string), string servicePackageActivationMode = default(string), string serviceDnsName = default(string), bool? hasPersistedState = default(bool?), int? targetReplicaSetSize = default(int?), int? minReplicaSetSize = default(int?), string replicaRestartWaitDuration = default(string), string quorumLossWaitDuration = default(string), string standByReplicaKeepDuration = default(string), string servicePlacementTimeLimit = default(string), bool? dropSourceReplicaOnMove = default(bool?))
-            : base(serviceTypeName, partitionDescription, placementConstraints, correlationScheme, serviceLoadMetrics, servicePlacementPolicies, defaultMoveCost, scalingPolicies, provisioningState, servicePackageActivationMode, serviceDnsName)
+        public StatefulServiceProperties(string serviceTypeName, Partition partitionDescription, string placementConstraints = default(string), IList<ServiceCorrelation> correlationScheme = default(IList<ServiceCorrelation>), IList<ServiceLoadMetric> serviceLoadMetrics = default(IList<ServiceLoadMetric>), IList<ServicePlacementPolicy> servicePlacementPolicies = default(IList<ServicePlacementPolicy>), string defaultMoveCost = default(string), IList<ScalingPolicy> scalingPolicies = default(IList<ScalingPolicy>), string provisioningState = default(string), string servicePackageActivationMode = default(string), bool? hasPersistedState = default(bool?), int? targetReplicaSetSize = default(int?), int? minReplicaSetSize = default(int?), string replicaRestartWaitDuration = default(string), string quorumLossWaitDuration = default(string), string standByReplicaKeepDuration = default(string), string servicePlacementTimeLimit = default(string), bool? dropSourceReplicaOnMove = default(bool?))
+            : base(serviceTypeName, partitionDescription, placementConstraints, correlationScheme, serviceLoadMetrics, servicePlacementPolicies, defaultMoveCost, scalingPolicies, provisioningState, servicePackageActivationMode)
         {
             HasPersistedState = hasPersistedState;
             TargetReplicaSetSize = targetReplicaSetSize;
