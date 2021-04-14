@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="description">Description of the Email
         /// Template.</param>
         /// <param name="isDefault">Whether the template is the default
-        /// template provided by Api Management or has been edited.</param>
+        /// template provided by API Management or has been edited.</param>
         /// <param name="parameters">Email Template Parameter values.</param>
         public EmailTemplateContract(string subject, string body, string id = default(string), string name = default(string), string type = default(string), string title = default(string), string description = default(string), bool? isDefault = default(bool?), IList<EmailTemplateParametersContractProperties> parameters = default(IList<EmailTemplateParametersContractProperties>))
             : base(id, name, type)
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets whether the template is the default template provided by Api
+        /// Gets whether the template is the default template provided by API
         /// Management or has been edited.
         /// </summary>
         [JsonProperty(PropertyName = "properties.isDefault")]
@@ -116,6 +116,34 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             if (Body == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Body");
+            }
+            if (Subject != null)
+            {
+                if (Subject.Length > 1000)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "Subject", 1000);
+                }
+                if (Subject.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Subject", 1);
+                }
+            }
+            if (Body != null)
+            {
+                if (Body.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Body", 1);
+                }
+            }
+            if (Parameters != null)
+            {
+                foreach (var element in Parameters)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }
