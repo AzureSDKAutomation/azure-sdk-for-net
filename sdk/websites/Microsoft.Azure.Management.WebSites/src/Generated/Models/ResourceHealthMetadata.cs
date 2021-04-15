@@ -36,12 +36,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="category">The category that the resource matches in
         /// the RHC Policy File</param>
         /// <param name="signalAvailability">Is there a health signal for the
         /// resource</param>
-        public ResourceHealthMetadata(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string category = default(string), bool? signalAvailability = default(bool?))
-            : base(id, name, kind, type)
+        public ResourceHealthMetadata(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string category = default(string), bool? signalAvailability = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             Category = category;
             SignalAvailability = signalAvailability;

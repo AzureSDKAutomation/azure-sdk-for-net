@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="extensionId">Site extension ID.</param>
         /// <param name="extensionType">Site extension type. Possible values
         /// include: 'Gallery', 'WebRoot'</param>
@@ -61,8 +63,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="installedDateTime">Installed timestamp.</param>
         /// <param name="provisioningState">Provisioning state.</param>
         /// <param name="comment">Site Extension comment.</param>
-        public SiteExtensionInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string extensionId = default(string), string title = default(string), SiteExtensionType? extensionType = default(SiteExtensionType?), string summary = default(string), string description = default(string), string version = default(string), string extensionUrl = default(string), string projectUrl = default(string), string iconUrl = default(string), string licenseUrl = default(string), string feedUrl = default(string), IList<string> authors = default(IList<string>), string installerCommandLineParams = default(string), System.DateTime? publishedDateTime = default(System.DateTime?), int? downloadCount = default(int?), bool? localIsLatestVersion = default(bool?), string localPath = default(string), System.DateTime? installedDateTime = default(System.DateTime?), string provisioningState = default(string), string comment = default(string))
-            : base(id, name, kind, type)
+        public SiteExtensionInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string extensionId = default(string), string title = default(string), SiteExtensionType? extensionType = default(SiteExtensionType?), string summary = default(string), string description = default(string), string version = default(string), string extensionUrl = default(string), string projectUrl = default(string), string iconUrl = default(string), string licenseUrl = default(string), string feedUrl = default(string), IList<string> authors = default(IList<string>), string installerCommandLineParams = default(string), System.DateTime? publishedDateTime = default(System.DateTime?), int? downloadCount = default(int?), bool? localIsLatestVersion = default(bool?), string localPath = default(string), System.DateTime? installedDateTime = default(System.DateTime?), string provisioningState = default(string), string comment = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ExtensionId = extensionId;
             Title = title;

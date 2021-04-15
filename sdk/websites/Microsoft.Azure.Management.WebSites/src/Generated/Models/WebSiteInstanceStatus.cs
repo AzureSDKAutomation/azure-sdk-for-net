@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="systemData">The system metadata relating to this
+        /// resource.</param>
         /// <param name="state">Possible values include: 'READY', 'STOPPED',
         /// 'UNKNOWN'</param>
         /// <param name="statusUrl">Link to the GetStatusApi in Kudu</param>
@@ -44,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// instance</param>
         /// <param name="healthCheckUrl">Link to the console to web app
         /// instance</param>
-        public WebSiteInstanceStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SiteRuntimeState? state = default(SiteRuntimeState?), string statusUrl = default(string), string detectorUrl = default(string), string consoleUrl = default(string), string healthCheckUrl = default(string), IDictionary<string, ContainerInfo> containers = default(IDictionary<string, ContainerInfo>))
-            : base(id, name, kind, type)
+        public WebSiteInstanceStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), SiteRuntimeState? state = default(SiteRuntimeState?), string statusUrl = default(string), string detectorUrl = default(string), string consoleUrl = default(string), string healthCheckUrl = default(string), IDictionary<string, ContainerInfo> containers = default(IDictionary<string, ContainerInfo>))
+            : base(id, name, kind, type, systemData)
         {
             State = state;
             StatusUrl = statusUrl;
