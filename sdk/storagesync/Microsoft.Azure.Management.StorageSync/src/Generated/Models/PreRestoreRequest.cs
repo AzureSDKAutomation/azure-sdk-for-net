@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// array.</param>
         /// <param name="pauseWaitForSyncDrainTimePeriodInSeconds">Pre Restore
         /// pause wait for sync drain time period in seconds.</param>
-        public PreRestoreRequest(string partition = default(string), string replicaGroup = default(string), string requestId = default(string), string azureFileShareUri = default(string), string status = default(string), string sourceAzureFileShareUri = default(string), string backupMetadataPropertyBag = default(string), IList<RestoreFileSpec> restoreFileSpec = default(IList<RestoreFileSpec>), int? pauseWaitForSyncDrainTimePeriodInSeconds = default(int?))
+        public PreRestoreRequest(string partition = default(string), string replicaGroup = default(string), string requestId = default(string), string azureFileShareUri = default(string), string status = default(string), string sourceAzureFileShareUri = default(string), string backupMetadataPropertyBag = default(string), IList<RestoreFileSpec> restoreFileSpec = default(IList<RestoreFileSpec>), long? pauseWaitForSyncDrainTimePeriodInSeconds = default(long?))
         {
             Partition = partition;
             ReplicaGroup = replicaGroup;
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// seconds.
         /// </summary>
         [JsonProperty(PropertyName = "pauseWaitForSyncDrainTimePeriodInSeconds")]
-        public int? PauseWaitForSyncDrainTimePeriodInSeconds { get; set; }
+        public long? PauseWaitForSyncDrainTimePeriodInSeconds { get; set; }
 
     }
 }
