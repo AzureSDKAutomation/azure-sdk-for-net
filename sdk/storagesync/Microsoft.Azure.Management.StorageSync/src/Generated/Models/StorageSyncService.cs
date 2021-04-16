@@ -59,7 +59,9 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="privateEndpointConnections">List of private endpoint
         /// connection associated with the specified storage sync
         /// service</param>
-        public StorageSyncService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string incomingTrafficPolicy = default(string), int? storageSyncServiceStatus = default(int?), string storageSyncServiceUid = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>))
+        /// <param name="systemData">The system meta data relating to this
+        /// resource.</param>
+        public StorageSyncService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string incomingTrafficPolicy = default(string), int? storageSyncServiceStatus = default(int?), string storageSyncServiceUid = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), SystemData systemData = default(SystemData))
             : base(location, id, name, type, tags)
         {
             IncomingTrafficPolicy = incomingTrafficPolicy;
@@ -69,6 +71,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             LastWorkflowId = lastWorkflowId;
             LastOperationName = lastOperationName;
             PrivateEndpointConnections = privateEndpointConnections;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -120,6 +123,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the system meta data relating to this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.

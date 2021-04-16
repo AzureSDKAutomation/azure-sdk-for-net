@@ -40,11 +40,14 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Microsoft.Storage/storageAccounts.</param>
         /// <param name="uniqueId">Unique Id</param>
         /// <param name="syncGroupStatus">Sync group status</param>
-        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), string uniqueId = default(string), string syncGroupStatus = default(string))
+        /// <param name="systemData">The system meta data relating to this
+        /// resource.</param>
+        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), string uniqueId = default(string), string syncGroupStatus = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             UniqueId = uniqueId;
             SyncGroupStatus = syncGroupStatus;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -64,6 +67,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.syncGroupStatus")]
         public string SyncGroupStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the system meta data relating to this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

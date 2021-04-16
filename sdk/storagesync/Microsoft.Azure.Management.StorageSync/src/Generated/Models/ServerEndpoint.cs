@@ -73,7 +73,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// business models: link local cache to cloud behavior to pre-populate
         /// before local access. Possible values include:
         /// 'DownloadNewAndModifiedFiles', 'UpdateLocallyCachedFiles'</param>
-        public ServerEndpoint(string id = default(string), string name = default(string), string type = default(string), string serverLocalPath = default(string), string cloudTiering = default(string), int? volumeFreeSpacePercent = default(int?), int? tierFilesOlderThanDays = default(int?), string friendlyName = default(string), string serverResourceId = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), ServerEndpointSyncStatus syncStatus = default(ServerEndpointSyncStatus), string offlineDataTransfer = default(string), string offlineDataTransferStorageAccountResourceId = default(string), string offlineDataTransferStorageAccountTenantId = default(string), string offlineDataTransferShareName = default(string), ServerEndpointCloudTieringStatus cloudTieringStatus = default(ServerEndpointCloudTieringStatus), ServerEndpointRecallStatus recallStatus = default(ServerEndpointRecallStatus), string initialDownloadPolicy = default(string), string localCacheMode = default(string))
+        /// <param name="initialUploadPolicy">Policy for how the initial upload
+        /// sync session is performed. Possible values include:
+        /// 'ServerAuthoritative', 'Merge'</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="systemData">The system meta data relating to this
+        /// resource.</param>
+        public ServerEndpoint(string id = default(string), string name = default(string), string type = default(string), string serverLocalPath = default(string), string cloudTiering = default(string), int? volumeFreeSpacePercent = default(int?), int? tierFilesOlderThanDays = default(int?), string friendlyName = default(string), string serverResourceId = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), ServerEndpointSyncStatus syncStatus = default(ServerEndpointSyncStatus), string offlineDataTransfer = default(string), string offlineDataTransferStorageAccountResourceId = default(string), string offlineDataTransferStorageAccountTenantId = default(string), string offlineDataTransferShareName = default(string), ServerEndpointCloudTieringStatus cloudTieringStatus = default(ServerEndpointCloudTieringStatus), ServerEndpointRecallStatus recallStatus = default(ServerEndpointRecallStatus), string initialDownloadPolicy = default(string), string localCacheMode = default(string), string initialUploadPolicy = default(string), string serverName = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             ServerLocalPath = serverLocalPath;
@@ -94,6 +100,9 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             RecallStatus = recallStatus;
             InitialDownloadPolicy = initialDownloadPolicy;
             LocalCacheMode = localCacheMode;
+            InitialUploadPolicy = initialUploadPolicy;
+            ServerName = serverName;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -217,6 +226,25 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.localCacheMode")]
         public string LocalCacheMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets policy for how the initial upload sync session is
+        /// performed. Possible values include: 'ServerAuthoritative', 'Merge'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.initialUploadPolicy")]
+        public string InitialUploadPolicy { get; set; }
+
+        /// <summary>
+        /// Gets server name
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serverName")]
+        public string ServerName { get; private set; }
+
+        /// <summary>
+        /// Gets the system meta data relating to this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.
