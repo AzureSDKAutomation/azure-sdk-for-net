@@ -37,15 +37,18 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="etag">Resource etag.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="pricesheets">Price sheet</param>
         /// <param name="nextLink">The link (url) to the next page of
         /// results.</param>
-        public PriceSheetResult(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<PriceSheetProperties> pricesheets = default(IList<PriceSheetProperties>), string nextLink = default(string))
-            : base(id, name, type, tags)
+        /// <param name="download">Pricesheet download details.</param>
+        public PriceSheetResult(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<PriceSheetProperties> pricesheets = default(IList<PriceSheetProperties>), string nextLink = default(string), MeterDetails download = default(MeterDetails))
+            : base(id, name, type, etag, tags)
         {
             Pricesheets = pricesheets;
             NextLink = nextLink;
+            Download = download;
             CustomInit();
         }
 
@@ -65,6 +68,12 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.nextLink")]
         public string NextLink { get; private set; }
+
+        /// <summary>
+        /// Gets pricesheet download details.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.download")]
+        public MeterDetails Download { get; private set; }
 
     }
 }
