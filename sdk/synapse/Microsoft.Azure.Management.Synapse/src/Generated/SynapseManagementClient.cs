@@ -140,6 +140,26 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual IKeysOperations Keys { get; private set; }
 
         /// <summary>
+        /// Gets the IKustoOperations.
+        /// </summary>
+        public virtual IKustoOperations KustoOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IKustoPoolsOperations.
+        /// </summary>
+        public virtual IKustoPoolsOperations KustoPools { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabasesOperations.
+        /// </summary>
+        public virtual IDatabasesOperations Databases { get; private set; }
+
+        /// <summary>
+        /// Gets the IDataConnectionsOperations.
+        /// </summary>
+        public virtual IDataConnectionsOperations DataConnections { get; private set; }
+
+        /// <summary>
         /// Gets the ILibraryOperations.
         /// </summary>
         public virtual ILibraryOperations Library { get; private set; }
@@ -633,6 +653,10 @@ namespace Microsoft.Azure.Management.Synapse
             IntegrationRuntimeMonitoringData = new IntegrationRuntimeMonitoringDataOperations(this);
             IntegrationRuntimeStatus = new IntegrationRuntimeStatusOperations(this);
             Keys = new KeysOperations(this);
+            KustoOperations = new KustoOperations(this);
+            KustoPools = new KustoPoolsOperations(this);
+            Databases = new DatabasesOperations(this);
+            DataConnections = new DataConnectionsOperations(this);
             Library = new LibraryOperations(this);
             Libraries = new LibrariesOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
@@ -682,7 +706,7 @@ namespace Microsoft.Azure.Management.Synapse
             WorkspaceManagedIdentitySqlControlSettings = new WorkspaceManagedIdentitySqlControlSettingsOperations(this);
             RestorableDroppedSqlPools = new RestorableDroppedSqlPoolsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-03-01";
+            ApiVersion = "2021-04-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -724,6 +748,10 @@ namespace Microsoft.Azure.Management.Synapse
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<IntegrationRuntimeStatus>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SsisObjectMetadata>("type"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SsisObjectMetadata>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Database>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Database>("kind"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DataConnection>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DataConnection>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
