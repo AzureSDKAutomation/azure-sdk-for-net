@@ -19,23 +19,27 @@ namespace Microsoft.Azure.Management.KeyVault
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateEndpointConnectionsOperations operations.
+    /// SecretsOperations operations.
     /// </summary>
-    public partial interface IPrivateEndpointConnectionsOperations
+    public partial interface ISecretsOperations
     {
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the
-        /// key vault.
+        /// Create or update a secret in a key vault in the specified
+        /// subscription.  NOTE: This API is intended for internal use in ARM
+        /// deployments. Users should use the data-plane REST service for
+        /// interaction with vault secrets.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the Resource Group to which the vault belongs.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// Name of the vault
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key
-        /// vault.
+        /// <param name='secretName'>
+        /// Name of the secret
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to create or update the secret
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,23 +56,23 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Secret>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, string secretName, SecretCreateOrUpdateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates the specified private endpoint connection associated with
-        /// the key vault.
+        /// Update a secret in the specified subscription.  NOTE: This API is
+        /// intended for internal use in ARM deployments.  Users should use the
+        /// data-plane REST service for interaction with vault secrets.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the Resource Group to which the vault belongs.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// Name of the vault
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key
-        /// vault.
+        /// <param name='secretName'>
+        /// Name of the secret
         /// </param>
-        /// <param name='properties'>
-        /// The intended state of private endpoint connection.
+        /// <param name='parameters'>
+        /// Parameters to patch the secret
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -85,20 +89,20 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsPutHeaders>> PutWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Secret>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, string secretName, SecretPatchParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with
-        /// the key vault.
+        /// Gets the specified secret.  NOTE: This API is intended for internal
+        /// use in ARM deployments. Users should use the data-plane REST
+        /// service for interaction with vault secrets.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the Resource Group to which the vault belongs.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key
-        /// vault.
+        /// <param name='secretName'>
+        /// The name of the secret.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -115,16 +119,21 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Secret>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string secretName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// The List operation gets information about the private endpoint
-        /// connections associated with the vault.
+        /// The List operation gets information about the secrets in a vault.
+        /// NOTE: This API is intended for internal use in ARM deployments.
+        /// Users should use the data-plane REST service for interaction with
+        /// vault secrets.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the Resource Group to which the vault belongs.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of results to return.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -141,40 +150,12 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<PrivateEndpointConnection>>> ListByResourceWithHttpMessagesAsync(string resourceGroupName, string vaultName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Secret>>> ListWithHttpMessagesAsync(string resourceGroupName, string vaultName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with
-        /// the key vault.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the key vault.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the key
-        /// vault.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The List operation gets information about the private endpoint
-        /// connections associated with the vault.
+        /// The List operation gets information about the secrets in a vault.
+        /// NOTE: This API is intended for internal use in ARM deployments.
+        /// Users should use the data-plane REST service for interaction with
+        /// vault secrets.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -194,6 +175,6 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<PrivateEndpointConnection>>> ListByResourceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Secret>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
