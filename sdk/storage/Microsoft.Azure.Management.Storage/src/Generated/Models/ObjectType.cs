@@ -12,10 +12,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for PutSharesExpand.
+    /// Defines values for ObjectType.
     /// </summary>
-    public static class PutSharesExpand
+    public static class ObjectType
     {
-        public const string Snapshots = "snapshots";
+        public const string Blob = "Blob";
+        public const string Container = "Container";
     }
 }
