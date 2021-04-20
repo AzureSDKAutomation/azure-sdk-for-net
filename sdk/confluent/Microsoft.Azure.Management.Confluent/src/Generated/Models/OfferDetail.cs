@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Management.Confluent.Models
         public string TermUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets saaS Offer Status. Possible values include: 'Started',
+        /// Gets saaS Offer Status. Possible values include: 'Started',
         /// 'PendingFulfillmentStart', 'InProgress', 'Subscribed', 'Suspended',
         /// 'Reinstated', 'Succeeded', 'Failed', 'Unsubscribed', 'Updating'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        public string Status { get; private set; }
 
         /// <summary>
         /// Validate the object.
