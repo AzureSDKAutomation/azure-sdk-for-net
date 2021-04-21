@@ -55,13 +55,17 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// boolean (or Expression with resultType boolean).</param>
         /// <param name="copyBehavior">The type of copy behavior for copy
         /// sink.</param>
-        public BlobSink(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object blobWriterOverwriteFiles = default(object), object blobWriterDateTimeFormat = default(object), object blobWriterAddHeader = default(object), object copyBehavior = default(object))
+        /// <param name="metadata">Specify the custom metadata to be added to
+        /// sink data. Type: array of objects (or Expression with resultType
+        /// array of objects).</param>
+        public BlobSink(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object blobWriterOverwriteFiles = default(object), object blobWriterDateTimeFormat = default(object), object blobWriterAddHeader = default(object), object copyBehavior = default(object), IList<MetadataItem> metadata = default(IList<MetadataItem>))
             : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections)
         {
             BlobWriterOverwriteFiles = blobWriterOverwriteFiles;
             BlobWriterDateTimeFormat = blobWriterDateTimeFormat;
             BlobWriterAddHeader = blobWriterAddHeader;
             CopyBehavior = copyBehavior;
+            Metadata = metadata;
             CustomInit();
         }
 
@@ -96,6 +100,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [JsonProperty(PropertyName = "copyBehavior")]
         public object CopyBehavior { get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the custom metadata to be added to sink data.
+        /// Type: array of objects (or Expression with resultType array of
+        /// objects).
+        /// </summary>
+        [JsonProperty(PropertyName = "metadata")]
+        public IList<MetadataItem> Metadata { get; set; }
 
     }
 }
