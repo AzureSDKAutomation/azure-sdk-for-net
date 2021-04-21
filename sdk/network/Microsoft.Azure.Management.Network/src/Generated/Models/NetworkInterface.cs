@@ -203,42 +203,5 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (ExtendedLocation != null)
-            {
-                ExtendedLocation.Validate();
-            }
-            if (PrivateEndpoint != null)
-            {
-                PrivateEndpoint.Validate();
-            }
-            if (IpConfigurations != null)
-            {
-                foreach (var element in IpConfigurations)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (TapConfigurations != null)
-            {
-                foreach (var element1 in TapConfigurations)
-                {
-                    if (element1 != null)
-                    {
-                        element1.Validate();
-                    }
-                }
-            }
-        }
     }
 }
