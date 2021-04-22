@@ -56,12 +56,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the list of ASR replication protection intent objects in the vault.
         /// </remarks>
-        /// <param name='skipToken'>
-        /// The pagination token.
-        /// </param>
-        /// <param name='takeToken'>
-        /// The page size.
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -83,7 +77,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ReplicationProtectionIntent>>> ListWithHttpMessagesAsync(string skipToken = default(string), string takeToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ReplicationProtectionIntent>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -108,8 +102,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("skipToken", skipToken);
-                tracingParameters.Add("takeToken", takeToken);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -123,14 +115,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (skipToken != null)
-            {
-                _queryParameters.Add(string.Format("skipToken={0}", System.Uri.EscapeDataString(skipToken)));
-            }
-            if (takeToken != null)
-            {
-                _queryParameters.Add(string.Format("takeToken={0}", System.Uri.EscapeDataString(takeToken)));
             }
             if (_queryParameters.Count > 0)
             {

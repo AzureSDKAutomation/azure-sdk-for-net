@@ -33,18 +33,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         /// <param name="id">The DRA Id.</param>
         /// <param name="name">The DRA name.</param>
-        /// <param name="biosId">The DRA Bios Id.</param>
-        /// <param name="version">The version.</param>
+        /// <param name="version">The DRA version.</param>
         /// <param name="lastHeartbeatUtc">The last heartbeat received from the
         /// DRA.</param>
-        /// <param name="health">The health. Possible values include: 'None',
-        /// 'Normal', 'Warning', 'Critical'</param>
+        /// <param name="health">The health of the DRA. Possible values
+        /// include: 'None', 'Normal', 'Warning', 'Critical'</param>
         /// <param name="healthErrors">The health errors.</param>
-        public DraDetails(string id = default(string), string name = default(string), string biosId = default(string), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), string health = default(string), IList<HealthError> healthErrors = default(IList<HealthError>))
+        public DraDetails(string id = default(string), string name = default(string), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), string health = default(string), IList<HealthError> healthErrors = default(IList<HealthError>))
         {
             Id = id;
             Name = name;
-            BiosId = biosId;
             Version = version;
             LastHeartbeatUtc = lastHeartbeatUtc;
             Health = health;
@@ -70,13 +68,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the DRA Bios Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "biosId")]
-        public string BiosId { get; private set; }
-
-        /// <summary>
-        /// Gets the version.
+        /// Gets the DRA version.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; private set; }
@@ -88,8 +80,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public System.DateTime? LastHeartbeatUtc { get; private set; }
 
         /// <summary>
-        /// Gets the health. Possible values include: 'None', 'Normal',
-        /// 'Warning', 'Critical'
+        /// Gets the health of the DRA. Possible values include: 'None',
+        /// 'Normal', 'Warning', 'Critical'
         /// </summary>
         [JsonProperty(PropertyName = "health")]
         public string Health { get; private set; }

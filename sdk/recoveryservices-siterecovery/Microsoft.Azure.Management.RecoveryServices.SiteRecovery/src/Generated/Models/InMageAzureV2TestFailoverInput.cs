@@ -32,11 +32,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the InMageAzureV2TestFailoverInput
         /// class.
         /// </summary>
+        /// <param name="vaultLocation">Location of the vault.</param>
         /// <param name="recoveryPointId">The recovery point id to be passed to
         /// test failover to a particular recovery point. In case of latest
         /// recovery point, null should be passed.</param>
-        public InMageAzureV2TestFailoverInput(string recoveryPointId = default(string))
+        public InMageAzureV2TestFailoverInput(string vaultLocation = default(string), string recoveryPointId = default(string))
         {
+            VaultLocation = vaultLocation;
             RecoveryPointId = recoveryPointId;
             CustomInit();
         }
@@ -45,6 +47,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets location of the vault.
+        /// </summary>
+        [JsonProperty(PropertyName = "vaultLocation")]
+        public string VaultLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the recovery point id to be passed to test failover to

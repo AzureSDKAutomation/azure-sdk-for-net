@@ -10,18 +10,19 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Resync provider specific input.
+    /// San enable protection provider specific input.
     /// </summary>
-    public partial class ResyncProviderSpecificInput
+    [Newtonsoft.Json.JsonObject("San")]
+    public partial class SanEnableProtectionInput : EnableProtectionProviderSpecificInput
     {
         /// <summary>
-        /// Initializes a new instance of the ResyncProviderSpecificInput
-        /// class.
+        /// Initializes a new instance of the SanEnableProtectionInput class.
         /// </summary>
-        public ResyncProviderSpecificInput()
+        public SanEnableProtectionInput()
         {
             CustomInit();
         }

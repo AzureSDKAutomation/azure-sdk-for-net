@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// class.
         /// </summary>
         /// <param name="providerSpecificDetails">The ReplicationProviderInput.
-        /// For A2A provider, it will be A2ACreateProtectionIntentInput
-        /// object.</param>
+        /// For A2A provider, it will be A2ACreateProtectionIntentInput object.
+        /// For other providers, it can be null.</param>
         public CreateProtectionIntentProperties(CreateProtectionIntentProviderSpecificDetails providerSpecificDetails = default(CreateProtectionIntentProviderSpecificDetails))
         {
             ProviderSpecificDetails = providerSpecificDetails;
@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <summary>
         /// Gets or sets the ReplicationProviderInput. For A2A provider, it
-        /// will be A2ACreateProtectionIntentInput object.
+        /// will be A2ACreateProtectionIntentInput object. For other providers,
+        /// it can be null.
         /// </summary>
         [JsonProperty(PropertyName = "providerSpecificDetails")]
         public CreateProtectionIntentProviderSpecificDetails ProviderSpecificDetails { get; set; }

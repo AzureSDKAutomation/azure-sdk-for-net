@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="capacityInBytes">The disk capacity in bytes.</param>
         /// <param name="logStorageAccountId">The log storage account ARM
         /// Id.</param>
-        /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM
+        /// <param name="diskEncryptionSetId">The disk encryption set ARM
         /// Id.</param>
         /// <param name="seedManagedDiskId">The ARM Id of the seed managed
         /// disk.</param>
@@ -46,15 +46,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// disk.</param>
         /// <param name="diskType">The disk type. Possible values include:
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
-        /// <param name="dataPendingInLogDataStoreInMB">The data pending in log
-        /// data store in MB.</param>
-        /// <param name="dataPendingAtSourceAgentInMB">The data pending at
-        /// source agent in MB.</param>
-        /// <param name="isInitialReplicationComplete">A value indicating
-        /// whether initial replication is complete or not.</param>
-        /// <param name="irDetails">The initial replication details.</param>
-        /// <param name="resyncDetails">The resync details.</param>
-        public InMageRcmProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string targetManagedDiskId = default(string), string diskType = default(string), double? dataPendingInLogDataStoreInMB = default(double?), double? dataPendingAtSourceAgentInMB = default(double?), string isInitialReplicationComplete = default(string), InMageRcmSyncDetails irDetails = default(InMageRcmSyncDetails), InMageRcmSyncDetails resyncDetails = default(InMageRcmSyncDetails))
+        public InMageRcmProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string targetManagedDiskId = default(string), string diskType = default(string))
         {
             DiskId = diskId;
             DiskName = diskName;
@@ -65,11 +57,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             SeedManagedDiskId = seedManagedDiskId;
             TargetManagedDiskId = targetManagedDiskId;
             DiskType = diskType;
-            DataPendingInLogDataStoreInMB = dataPendingInLogDataStoreInMB;
-            DataPendingAtSourceAgentInMB = dataPendingAtSourceAgentInMB;
-            IsInitialReplicationComplete = isInitialReplicationComplete;
-            IrDetails = irDetails;
-            ResyncDetails = resyncDetails;
             CustomInit();
         }
 
@@ -109,7 +96,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string LogStorageAccountId { get; private set; }
 
         /// <summary>
-        /// Gets the DiskEncryptionSet ARM Id.
+        /// Gets the disk encryption set ARM Id.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId { get; private set; }
@@ -127,42 +114,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string TargetManagedDiskId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the disk type. Possible values include:
-        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+        /// Gets the disk type. Possible values include: 'Standard_LRS',
+        /// 'Premium_LRS', 'StandardSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "diskType")]
-        public string DiskType { get; set; }
-
-        /// <summary>
-        /// Gets the data pending in log data store in MB.
-        /// </summary>
-        [JsonProperty(PropertyName = "dataPendingInLogDataStoreInMB")]
-        public double? DataPendingInLogDataStoreInMB { get; private set; }
-
-        /// <summary>
-        /// Gets the data pending at source agent in MB.
-        /// </summary>
-        [JsonProperty(PropertyName = "dataPendingAtSourceAgentInMB")]
-        public double? DataPendingAtSourceAgentInMB { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether initial replication is complete or
-        /// not.
-        /// </summary>
-        [JsonProperty(PropertyName = "isInitialReplicationComplete")]
-        public string IsInitialReplicationComplete { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the initial replication details.
-        /// </summary>
-        [JsonProperty(PropertyName = "irDetails")]
-        public InMageRcmSyncDetails IrDetails { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resync details.
-        /// </summary>
-        [JsonProperty(PropertyName = "resyncDetails")]
-        public InMageRcmSyncDetails ResyncDetails { get; set; }
+        public string DiskType { get; private set; }
 
     }
 }

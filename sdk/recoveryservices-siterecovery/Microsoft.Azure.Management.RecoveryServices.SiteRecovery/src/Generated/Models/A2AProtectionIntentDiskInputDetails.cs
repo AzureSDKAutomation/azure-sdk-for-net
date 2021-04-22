@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     using System.Linq;
 
     /// <summary>
-    /// Azure VM unmanaged disk input details.
+    /// Azure VM disk input details.
     /// </summary>
     public partial class A2AProtectionIntentDiskInputDetails
     {

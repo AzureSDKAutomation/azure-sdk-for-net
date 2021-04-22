@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -37,11 +36,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         /// <param name="fabricDiscoveryMachineId">The ARM Id of discovered
         /// machine.</param>
-        /// <param name="targetResourceGroupId">The target resource group ARM
-        /// Id.</param>
-        /// <param name="processServerId">The process server Id.</param>
         /// <param name="disksToInclude">The disks to include list.</param>
         /// <param name="disksDefault">The default disk input.</param>
+        /// <param name="targetResourceGroupId">The target resource group ARM
+        /// Id.</param>
         /// <param name="targetNetworkId">The selected target network ARM
         /// Id.</param>
         /// <param name="testNetworkId">The selected test network ARM
@@ -62,8 +60,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="targetBootDiagnosticsStorageAccountId">The target boot
         /// diagnostics storage account ARM Id.</param>
         /// <param name="runAsAccountId">The run-as account Id.</param>
+        /// <param name="processServerId">The process server Id.</param>
         /// <param name="multiVmGroupName">The multi VM group name.</param>
-        public InMageRcmEnableProtectionInput(string fabricDiscoveryMachineId, string targetResourceGroupId, string processServerId, IList<InMageRcmDiskInput> disksToInclude = default(IList<InMageRcmDiskInput>), InMageRcmDisksDefaultInput disksDefault = default(InMageRcmDisksDefaultInput), string targetNetworkId = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetVmName = default(string), string targetVmSize = default(string), string licenseType = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string runAsAccountId = default(string), string multiVmGroupName = default(string))
+        public InMageRcmEnableProtectionInput(string fabricDiscoveryMachineId = default(string), IList<InMageRcmDiskInput> disksToInclude = default(IList<InMageRcmDiskInput>), InMageRcmDisksDefaultInput disksDefault = default(InMageRcmDisksDefaultInput), string targetResourceGroupId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetVmName = default(string), string targetVmSize = default(string), string licenseType = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string runAsAccountId = default(string), string processServerId = default(string), string multiVmGroupName = default(string))
         {
             FabricDiscoveryMachineId = fabricDiscoveryMachineId;
             DisksToInclude = disksToInclude;
@@ -200,40 +199,5 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         [JsonProperty(PropertyName = "multiVmGroupName")]
         public string MultiVmGroupName { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (FabricDiscoveryMachineId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "FabricDiscoveryMachineId");
-            }
-            if (TargetResourceGroupId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TargetResourceGroupId");
-            }
-            if (ProcessServerId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ProcessServerId");
-            }
-            if (DisksToInclude != null)
-            {
-                foreach (var element in DisksToInclude)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (DisksDefault != null)
-            {
-                DisksDefault.Validate();
-            }
-        }
     }
 }

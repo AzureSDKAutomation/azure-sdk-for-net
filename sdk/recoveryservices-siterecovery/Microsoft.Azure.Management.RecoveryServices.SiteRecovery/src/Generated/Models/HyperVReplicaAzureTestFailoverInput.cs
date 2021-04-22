@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the
         /// HyperVReplicaAzureTestFailoverInput class.
         /// </summary>
+        /// <param name="vaultLocation">Location of the vault.</param>
         /// <param name="primaryKekCertificatePfx">Primary kek certificate
         /// pfx.</param>
         /// <param name="secondaryKekCertificatePfx">Secondary kek certificate
@@ -39,8 +40,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryPointId">The recovery point id to be passed to
         /// test failover to a particular recovery point. In case of latest
         /// recovery point, null should be passed.</param>
-        public HyperVReplicaAzureTestFailoverInput(string primaryKekCertificatePfx = default(string), string secondaryKekCertificatePfx = default(string), string recoveryPointId = default(string))
+        public HyperVReplicaAzureTestFailoverInput(string vaultLocation = default(string), string primaryKekCertificatePfx = default(string), string secondaryKekCertificatePfx = default(string), string recoveryPointId = default(string))
         {
+            VaultLocation = vaultLocation;
             PrimaryKekCertificatePfx = primaryKekCertificatePfx;
             SecondaryKekCertificatePfx = secondaryKekCertificatePfx;
             RecoveryPointId = recoveryPointId;
@@ -51,6 +53,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets location of the vault.
+        /// </summary>
+        [JsonProperty(PropertyName = "vaultLocation")]
+        public string VaultLocation { get; set; }
 
         /// <summary>
         /// Gets or sets primary kek certificate pfx.

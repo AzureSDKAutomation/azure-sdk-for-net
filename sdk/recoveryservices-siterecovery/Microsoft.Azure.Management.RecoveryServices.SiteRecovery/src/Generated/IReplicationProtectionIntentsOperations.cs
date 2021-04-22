@@ -30,12 +30,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the list of ASR replication protection intent objects in the
         /// vault.
         /// </remarks>
-        /// <param name='skipToken'>
-        /// The pagination token.
-        /// </param>
-        /// <param name='takeToken'>
-        /// The page size.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -51,7 +45,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ReplicationProtectionIntent>>> ListWithHttpMessagesAsync(string skipToken = default(string), string takeToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ReplicationProtectionIntent>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the details of a Replication protection intent item.
         /// </summary>

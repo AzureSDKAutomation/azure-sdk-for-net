@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="runAsAccountId">The run-as account Id.</param>
         /// <param name="osType">The type of the OS on the VM.</param>
         /// <param name="firmwareType">The firmware type.</param>
-        /// <param name="primaryNicIpAddress">The IP address of the primary
-        /// network interface.</param>
         /// <param name="targetGeneration">The target generation.</param>
         /// <param name="licenseType">License Type of the VM to be
         /// used.</param>
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="targetVmSize">The target VM size.</param>
         /// <param name="targetResourceGroupId">The target resource group
         /// Id.</param>
-        /// <param name="targetLocation">The target location.</param>
         /// <param name="targetAvailabilitySetId">The target availability set
         /// Id.</param>
         /// <param name="targetAvailabilityZone">The target availability
@@ -88,9 +85,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="initialReplicationTransferredBytes">The initial
         /// replication transferred bytes from source VM to azure for all
         /// selected disks on source VM.</param>
-        /// <param name="initialReplicationProgressHealth">The initial
-        /// replication progress health. Possible values include: 'None',
-        /// 'InProgress', 'SlowProgress', 'NoProgress'</param>
         /// <param name="resyncProgressPercentage">The resync progress
         /// percentage. This is calculated based on total bytes processed for
         /// all disks in the source VM.</param>
@@ -100,9 +94,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="resyncTransferredBytes">The resync transferred bytes
         /// from source VM to azure for all selected disks on source
         /// VM.</param>
-        /// <param name="resyncProgressHealth">The resync progress health.
-        /// Possible values include: 'None', 'InProgress', 'SlowProgress',
-        /// 'NoProgress'</param>
         /// <param name="resyncRequired">A value indicating whether resync is
         /// required.</param>
         /// <param name="resyncState">The resync state. Possible values
@@ -113,9 +104,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// 'Commit'</param>
         /// <param name="lastAgentUpgradeType">The last agent upgrade
         /// type.</param>
-        /// <param name="agentUpgradeJobId">The agent upgrade job Id.</param>
-        /// <param name="agentUpgradeAttemptToVersion">The agent version to
-        /// which last agent upgrade was attempted.</param>
+        /// <param name="lastAgentUpgradeFailedJobId">The last agent upgrade
+        /// failed or cancelled job Id.</param>
         /// <param name="protectedDisks">The list of protected disks.</param>
         /// <param name="isLastUpgradeSuccessful">A value indicating whether
         /// last agent upgrade was successful or not.</param>
@@ -126,7 +116,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="agentUpgradeBlockingErrorDetails">The agent upgrade
         /// blocking error information.</param>
         /// <param name="vmNics">The network details.</param>
-        public InMageRcmReplicationDetails(string internalIdentifier = default(string), string fabricDiscoveryMachineId = default(string), string multiVmGroupName = default(string), string discoveryType = default(string), string processServerId = default(string), int? processorCoreCount = default(int?), double? allocatedMemoryInMB = default(double?), string processServerName = default(string), string runAsAccountId = default(string), string osType = default(string), string firmwareType = default(string), string primaryNicIpAddress = default(string), string targetGeneration = default(string), string licenseType = default(string), string targetVmName = default(string), string targetVmSize = default(string), string targetResourceGroupId = default(string), string targetLocation = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string failoverRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), long? lastRpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialReplicationProgressPercentage = default(int?), long? initialReplicationProcessedBytes = default(long?), long? initialReplicationTransferredBytes = default(long?), string initialReplicationProgressHealth = default(string), int? resyncProgressPercentage = default(int?), long? resyncProcessedBytes = default(long?), long? resyncTransferredBytes = default(long?), string resyncProgressHealth = default(string), string resyncRequired = default(string), string resyncState = default(string), string agentUpgradeState = default(string), string lastAgentUpgradeType = default(string), string agentUpgradeJobId = default(string), string agentUpgradeAttemptToVersion = default(string), IList<InMageRcmProtectedDiskDetails> protectedDisks = default(IList<InMageRcmProtectedDiskDetails>), string isLastUpgradeSuccessful = default(string), InMageRcmMobilityAgentDetails mobilityAgentDetails = default(InMageRcmMobilityAgentDetails), IList<InMageRcmLastAgentUpgradeErrorDetails> lastAgentUpgradeErrorDetails = default(IList<InMageRcmLastAgentUpgradeErrorDetails>), IList<InMageRcmAgentUpgradeBlockingErrorDetails> agentUpgradeBlockingErrorDetails = default(IList<InMageRcmAgentUpgradeBlockingErrorDetails>), IList<InMageRcmNicDetails> vmNics = default(IList<InMageRcmNicDetails>))
+        public InMageRcmReplicationDetails(string internalIdentifier = default(string), string fabricDiscoveryMachineId = default(string), string multiVmGroupName = default(string), string discoveryType = default(string), string processServerId = default(string), int? processorCoreCount = default(int?), double? allocatedMemoryInMB = default(double?), string processServerName = default(string), string runAsAccountId = default(string), string osType = default(string), string firmwareType = default(string), string targetGeneration = default(string), string licenseType = default(string), string targetVmName = default(string), string targetVmSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string failoverRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), long? lastRpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialReplicationProgressPercentage = default(int?), long? initialReplicationProcessedBytes = default(long?), long? initialReplicationTransferredBytes = default(long?), int? resyncProgressPercentage = default(int?), long? resyncProcessedBytes = default(long?), long? resyncTransferredBytes = default(long?), string resyncRequired = default(string), string resyncState = default(string), string agentUpgradeState = default(string), string lastAgentUpgradeType = default(string), string lastAgentUpgradeFailedJobId = default(string), IList<InMageRcmProtectedDiskDetails> protectedDisks = default(IList<InMageRcmProtectedDiskDetails>), string isLastUpgradeSuccessful = default(string), InMageRcmMobilityAgentDetails mobilityAgentDetails = default(InMageRcmMobilityAgentDetails), IList<InMageRcmLastAgentUpgradeErrorDetails> lastAgentUpgradeErrorDetails = default(IList<InMageRcmLastAgentUpgradeErrorDetails>), IList<InMageRcmAgentUpgradeBlockingErrorDetails> agentUpgradeBlockingErrorDetails = default(IList<InMageRcmAgentUpgradeBlockingErrorDetails>), IList<InMageRcmNicDetails> vmNics = default(IList<InMageRcmNicDetails>))
         {
             InternalIdentifier = internalIdentifier;
             FabricDiscoveryMachineId = fabricDiscoveryMachineId;
@@ -139,13 +129,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             RunAsAccountId = runAsAccountId;
             OsType = osType;
             FirmwareType = firmwareType;
-            PrimaryNicIpAddress = primaryNicIpAddress;
             TargetGeneration = targetGeneration;
             LicenseType = licenseType;
             TargetVmName = targetVmName;
             TargetVmSize = targetVmSize;
             TargetResourceGroupId = targetResourceGroupId;
-            TargetLocation = targetLocation;
             TargetAvailabilitySetId = targetAvailabilitySetId;
             TargetAvailabilityZone = targetAvailabilityZone;
             TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
@@ -160,17 +148,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             InitialReplicationProgressPercentage = initialReplicationProgressPercentage;
             InitialReplicationProcessedBytes = initialReplicationProcessedBytes;
             InitialReplicationTransferredBytes = initialReplicationTransferredBytes;
-            InitialReplicationProgressHealth = initialReplicationProgressHealth;
             ResyncProgressPercentage = resyncProgressPercentage;
             ResyncProcessedBytes = resyncProcessedBytes;
             ResyncTransferredBytes = resyncTransferredBytes;
-            ResyncProgressHealth = resyncProgressHealth;
             ResyncRequired = resyncRequired;
             ResyncState = resyncState;
             AgentUpgradeState = agentUpgradeState;
             LastAgentUpgradeType = lastAgentUpgradeType;
-            AgentUpgradeJobId = agentUpgradeJobId;
-            AgentUpgradeAttemptToVersion = agentUpgradeAttemptToVersion;
+            LastAgentUpgradeFailedJobId = lastAgentUpgradeFailedJobId;
             ProtectedDisks = protectedDisks;
             IsLastUpgradeSuccessful = isLastUpgradeSuccessful;
             MobilityAgentDetails = mobilityAgentDetails;
@@ -252,82 +237,70 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string FirmwareType { get; private set; }
 
         /// <summary>
-        /// Gets the IP address of the primary network interface.
-        /// </summary>
-        [JsonProperty(PropertyName = "primaryNicIpAddress")]
-        public string PrimaryNicIpAddress { get; private set; }
-
-        /// <summary>
         /// Gets the target generation.
         /// </summary>
         [JsonProperty(PropertyName = "targetGeneration")]
         public string TargetGeneration { get; private set; }
 
         /// <summary>
-        /// Gets or sets license Type of the VM to be used.
+        /// Gets license Type of the VM to be used.
         /// </summary>
         [JsonProperty(PropertyName = "licenseType")]
-        public string LicenseType { get; set; }
+        public string LicenseType { get; private set; }
 
         /// <summary>
-        /// Gets or sets target VM name.
+        /// Gets target VM name.
         /// </summary>
         [JsonProperty(PropertyName = "targetVmName")]
-        public string TargetVmName { get; set; }
+        public string TargetVmName { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target VM size.
+        /// Gets the target VM size.
         /// </summary>
         [JsonProperty(PropertyName = "targetVmSize")]
-        public string TargetVmSize { get; set; }
+        public string TargetVmSize { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target resource group Id.
+        /// Gets the target resource group Id.
         /// </summary>
         [JsonProperty(PropertyName = "targetResourceGroupId")]
-        public string TargetResourceGroupId { get; set; }
+        public string TargetResourceGroupId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target location.
-        /// </summary>
-        [JsonProperty(PropertyName = "targetLocation")]
-        public string TargetLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets the target availability set Id.
+        /// Gets the target availability set Id.
         /// </summary>
         [JsonProperty(PropertyName = "targetAvailabilitySetId")]
-        public string TargetAvailabilitySetId { get; set; }
+        public string TargetAvailabilitySetId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target availability zone.
+        /// Gets the target availability zone.
         /// </summary>
         [JsonProperty(PropertyName = "targetAvailabilityZone")]
-        public string TargetAvailabilityZone { get; set; }
+        public string TargetAvailabilityZone { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target proximity placement group Id.
+        /// Gets the target proximity placement group Id.
         /// </summary>
         [JsonProperty(PropertyName = "targetProximityPlacementGroupId")]
-        public string TargetProximityPlacementGroupId { get; set; }
+        public string TargetProximityPlacementGroupId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target boot diagnostics storage account ARM Id.
+        /// Gets the target boot diagnostics storage account ARM Id.
         /// </summary>
         [JsonProperty(PropertyName = "targetBootDiagnosticsStorageAccountId")]
-        public string TargetBootDiagnosticsStorageAccountId { get; set; }
+        public string TargetBootDiagnosticsStorageAccountId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target network Id.
+        /// Gets the target network Id.
         /// </summary>
         [JsonProperty(PropertyName = "targetNetworkId")]
-        public string TargetNetworkId { get; set; }
+        public string TargetNetworkId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the test network Id.
+        /// Gets the test network Id.
         /// </summary>
         [JsonProperty(PropertyName = "testNetworkId")]
-        public string TestNetworkId { get; set; }
+        public string TestNetworkId { get; private set; }
 
         /// <summary>
         /// Gets the recovery point Id to which the VM was failed over.
@@ -383,13 +356,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public long? InitialReplicationTransferredBytes { get; private set; }
 
         /// <summary>
-        /// Gets the initial replication progress health. Possible values
-        /// include: 'None', 'InProgress', 'SlowProgress', 'NoProgress'
-        /// </summary>
-        [JsonProperty(PropertyName = "initialReplicationProgressHealth")]
-        public string InitialReplicationProgressHealth { get; private set; }
-
-        /// <summary>
         /// Gets the resync progress percentage. This is calculated based on
         /// total bytes processed for all disks in the source VM.
         /// </summary>
@@ -409,13 +375,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "resyncTransferredBytes")]
         public long? ResyncTransferredBytes { get; private set; }
-
-        /// <summary>
-        /// Gets the resync progress health. Possible values include: 'None',
-        /// 'InProgress', 'SlowProgress', 'NoProgress'
-        /// </summary>
-        [JsonProperty(PropertyName = "resyncProgressHealth")]
-        public string ResyncProgressHealth { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether resync is required.
@@ -444,22 +403,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string LastAgentUpgradeType { get; private set; }
 
         /// <summary>
-        /// Gets the agent upgrade job Id.
+        /// Gets the last agent upgrade failed or cancelled job Id.
         /// </summary>
-        [JsonProperty(PropertyName = "agentUpgradeJobId")]
-        public string AgentUpgradeJobId { get; private set; }
+        [JsonProperty(PropertyName = "lastAgentUpgradeFailedJobId")]
+        public string LastAgentUpgradeFailedJobId { get; private set; }
 
         /// <summary>
-        /// Gets the agent version to which last agent upgrade was attempted.
-        /// </summary>
-        [JsonProperty(PropertyName = "agentUpgradeAttemptToVersion")]
-        public string AgentUpgradeAttemptToVersion { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the list of protected disks.
+        /// Gets the list of protected disks.
         /// </summary>
         [JsonProperty(PropertyName = "protectedDisks")]
-        public IList<InMageRcmProtectedDiskDetails> ProtectedDisks { get; set; }
+        public IList<InMageRcmProtectedDiskDetails> ProtectedDisks { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether last agent upgrade was successful
@@ -469,28 +422,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string IsLastUpgradeSuccessful { get; private set; }
 
         /// <summary>
-        /// Gets or sets the mobility agent information.
+        /// Gets the mobility agent information.
         /// </summary>
         [JsonProperty(PropertyName = "mobilityAgentDetails")]
-        public InMageRcmMobilityAgentDetails MobilityAgentDetails { get; set; }
+        public InMageRcmMobilityAgentDetails MobilityAgentDetails { get; private set; }
 
         /// <summary>
-        /// Gets or sets the last agent upgrade error information.
+        /// Gets the last agent upgrade error information.
         /// </summary>
         [JsonProperty(PropertyName = "lastAgentUpgradeErrorDetails")]
-        public IList<InMageRcmLastAgentUpgradeErrorDetails> LastAgentUpgradeErrorDetails { get; set; }
+        public IList<InMageRcmLastAgentUpgradeErrorDetails> LastAgentUpgradeErrorDetails { get; private set; }
 
         /// <summary>
-        /// Gets or sets the agent upgrade blocking error information.
+        /// Gets the agent upgrade blocking error information.
         /// </summary>
         [JsonProperty(PropertyName = "agentUpgradeBlockingErrorDetails")]
-        public IList<InMageRcmAgentUpgradeBlockingErrorDetails> AgentUpgradeBlockingErrorDetails { get; set; }
+        public IList<InMageRcmAgentUpgradeBlockingErrorDetails> AgentUpgradeBlockingErrorDetails { get; private set; }
 
         /// <summary>
-        /// Gets or sets the network details.
+        /// Gets the network details.
         /// </summary>
         [JsonProperty(PropertyName = "vmNics")]
-        public IList<InMageRcmNicDetails> VmNics { get; set; }
+        public IList<InMageRcmNicDetails> VmNics { get; private set; }
 
     }
 }

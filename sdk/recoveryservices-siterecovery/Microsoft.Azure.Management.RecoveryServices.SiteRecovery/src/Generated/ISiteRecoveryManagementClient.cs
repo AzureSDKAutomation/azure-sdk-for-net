@@ -160,6 +160,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         IReplicationProtectionContainerMappingsOperations ReplicationProtectionContainerMappings { get; }
 
         /// <summary>
+        /// Gets the IReplicationProtectionIntentsOperations.
+        /// </summary>
+        IReplicationProtectionIntentsOperations ReplicationProtectionIntents { get; }
+
+        /// <summary>
         /// Gets the IReplicationRecoveryServicesProvidersOperations.
         /// </summary>
         IReplicationRecoveryServicesProvidersOperations ReplicationRecoveryServicesProviders { get; }
@@ -188,11 +193,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationPoliciesOperations.
         /// </summary>
         IReplicationPoliciesOperations ReplicationPolicies { get; }
-
-        /// <summary>
-        /// Gets the IReplicationProtectionIntentsOperations.
-        /// </summary>
-        IReplicationProtectionIntentsOperations ReplicationProtectionIntents { get; }
 
         /// <summary>
         /// Gets the IReplicationRecoveryPlansOperations.

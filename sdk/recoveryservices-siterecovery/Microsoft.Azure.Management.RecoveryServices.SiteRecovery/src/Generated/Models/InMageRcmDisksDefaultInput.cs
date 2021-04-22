@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -34,9 +33,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Id.</param>
         /// <param name="diskType">The disk type. Possible values include:
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
-        /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM
+        /// <param name="diskEncryptionSetId">The disk encryption set ARM
         /// Id.</param>
-        public InMageRcmDisksDefaultInput(string logStorageAccountId, string diskType, string diskEncryptionSetId = default(string))
+        public InMageRcmDisksDefaultInput(string logStorageAccountId = default(string), string diskType = default(string), string diskEncryptionSetId = default(string))
         {
             LogStorageAccountId = logStorageAccountId;
             DiskType = diskType;
@@ -63,27 +62,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string DiskType { get; set; }
 
         /// <summary>
-        /// Gets or sets the DiskEncryptionSet ARM Id.
+        /// Gets or sets the disk encryption set ARM Id.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (LogStorageAccountId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LogStorageAccountId");
-            }
-            if (DiskType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DiskType");
-            }
-        }
     }
 }

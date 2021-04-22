@@ -33,10 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         /// <param name="id">The process server Id.</param>
         /// <param name="name">The process server name.</param>
-        /// <param name="biosId">The process server Bios Id.</param>
-        /// <param name="fabricObjectId">The fabric object Id.</param>
-        /// <param name="fqdn">The process server Fqdn.</param>
-        /// <param name="version">The version.</param>
+        /// <param name="version">The process server version.</param>
         /// <param name="lastHeartbeatUtc">The last heartbeat received from the
         /// process server.</param>
         /// <param name="totalMemoryInBytes">The total memory.</param>
@@ -55,31 +52,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="throughputInBytes">The throughput in bytes.</param>
         /// <param name="processorUsagePercentage">The processor usage
         /// percentage.</param>
-        /// <param name="throughputStatus">The throughput status. Possible
-        /// values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
-        /// <param name="systemLoad">The system load.</param>
-        /// <param name="systemLoadStatus">The system load status. Possible
-        /// values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
-        /// <param name="diskUsageStatus">The disk usage status. Possible
-        /// values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
-        /// <param name="memoryUsageStatus">The memory usage status. Possible
-        /// values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
-        /// <param name="processorUsageStatus">The processor usage status.
-        /// Possible values include: 'Healthy', 'Warning', 'Critical',
-        /// 'Unknown'</param>
         /// <param name="health">The health of the process server. Possible
         /// values include: 'None', 'Normal', 'Warning', 'Critical'</param>
         /// <param name="healthErrors">The health errors.</param>
         /// <param name="historicHealth">The historic health of the process
         /// server based on the health in last 24 hours. Possible values
         /// include: 'None', 'Normal', 'Warning', 'Critical'</param>
-        public ProcessServerDetails(string id = default(string), string name = default(string), string biosId = default(string), string fabricObjectId = default(string), string fqdn = default(string), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), long? totalMemoryInBytes = default(long?), long? availableMemoryInBytes = default(long?), long? usedMemoryInBytes = default(long?), double? memoryUsagePercentage = default(double?), long? totalSpaceInBytes = default(long?), long? availableSpaceInBytes = default(long?), long? usedSpaceInBytes = default(long?), double? freeSpacePercentage = default(double?), long? throughputUploadPendingDataInBytes = default(long?), long? throughputInBytes = default(long?), double? processorUsagePercentage = default(double?), string throughputStatus = default(string), long? systemLoad = default(long?), string systemLoadStatus = default(string), string diskUsageStatus = default(string), string memoryUsageStatus = default(string), string processorUsageStatus = default(string), string health = default(string), IList<HealthError> healthErrors = default(IList<HealthError>), string historicHealth = default(string))
+        public ProcessServerDetails(string id = default(string), string name = default(string), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), long? totalMemoryInBytes = default(long?), long? availableMemoryInBytes = default(long?), long? usedMemoryInBytes = default(long?), double? memoryUsagePercentage = default(double?), long? totalSpaceInBytes = default(long?), long? availableSpaceInBytes = default(long?), long? usedSpaceInBytes = default(long?), double? freeSpacePercentage = default(double?), long? throughputUploadPendingDataInBytes = default(long?), long? throughputInBytes = default(long?), double? processorUsagePercentage = default(double?), string health = default(string), IList<HealthError> healthErrors = default(IList<HealthError>), string historicHealth = default(string))
         {
             Id = id;
             Name = name;
-            BiosId = biosId;
-            FabricObjectId = fabricObjectId;
-            Fqdn = fqdn;
             Version = version;
             LastHeartbeatUtc = lastHeartbeatUtc;
             TotalMemoryInBytes = totalMemoryInBytes;
@@ -93,12 +75,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             ThroughputUploadPendingDataInBytes = throughputUploadPendingDataInBytes;
             ThroughputInBytes = throughputInBytes;
             ProcessorUsagePercentage = processorUsagePercentage;
-            ThroughputStatus = throughputStatus;
-            SystemLoad = systemLoad;
-            SystemLoadStatus = systemLoadStatus;
-            DiskUsageStatus = diskUsageStatus;
-            MemoryUsageStatus = memoryUsageStatus;
-            ProcessorUsageStatus = processorUsageStatus;
             Health = health;
             HealthErrors = healthErrors;
             HistoricHealth = historicHealth;
@@ -123,25 +99,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the process server Bios Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "biosId")]
-        public string BiosId { get; private set; }
-
-        /// <summary>
-        /// Gets the fabric object Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "fabricObjectId")]
-        public string FabricObjectId { get; private set; }
-
-        /// <summary>
-        /// Gets the process server Fqdn.
-        /// </summary>
-        [JsonProperty(PropertyName = "fqdn")]
-        public string Fqdn { get; private set; }
-
-        /// <summary>
-        /// Gets the version.
+        /// Gets the process server version.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; private set; }
@@ -217,47 +175,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "processorUsagePercentage")]
         public double? ProcessorUsagePercentage { get; private set; }
-
-        /// <summary>
-        /// Gets the throughput status. Possible values include: 'Healthy',
-        /// 'Warning', 'Critical', 'Unknown'
-        /// </summary>
-        [JsonProperty(PropertyName = "throughputStatus")]
-        public string ThroughputStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the system load.
-        /// </summary>
-        [JsonProperty(PropertyName = "systemLoad")]
-        public long? SystemLoad { get; private set; }
-
-        /// <summary>
-        /// Gets the system load status. Possible values include: 'Healthy',
-        /// 'Warning', 'Critical', 'Unknown'
-        /// </summary>
-        [JsonProperty(PropertyName = "systemLoadStatus")]
-        public string SystemLoadStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the disk usage status. Possible values include: 'Healthy',
-        /// 'Warning', 'Critical', 'Unknown'
-        /// </summary>
-        [JsonProperty(PropertyName = "diskUsageStatus")]
-        public string DiskUsageStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the memory usage status. Possible values include: 'Healthy',
-        /// 'Warning', 'Critical', 'Unknown'
-        /// </summary>
-        [JsonProperty(PropertyName = "memoryUsageStatus")]
-        public string MemoryUsageStatus { get; private set; }
-
-        /// <summary>
-        /// Gets the processor usage status. Possible values include:
-        /// 'Healthy', 'Warning', 'Critical', 'Unknown'
-        /// </summary>
-        [JsonProperty(PropertyName = "processorUsageStatus")]
-        public string ProcessorUsageStatus { get; private set; }
 
         /// <summary>
         /// Gets the health of the process server. Possible values include:

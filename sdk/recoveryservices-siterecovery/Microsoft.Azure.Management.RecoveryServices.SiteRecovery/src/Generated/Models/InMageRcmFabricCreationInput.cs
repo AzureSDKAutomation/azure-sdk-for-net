@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -38,11 +37,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// site.</param>
         /// <param name="sourceAgentIdentity">The identity provider input for
         /// source agent authentication.</param>
-        public InMageRcmFabricCreationInput(string vmwareSiteId, string physicalSiteId, IdentityProviderInput sourceAgentIdentity)
+        /// <param name="authCertificate">The certificate to be used for AAD
+        /// authentication.</param>
+        public InMageRcmFabricCreationInput(string vmwareSiteId = default(string), string physicalSiteId = default(string), IdentityProviderInput sourceAgentIdentity = default(IdentityProviderInput), string authCertificate = default(string))
         {
             VmwareSiteId = vmwareSiteId;
             PhysicalSiteId = physicalSiteId;
             SourceAgentIdentity = sourceAgentIdentity;
+            AuthCertificate = authCertificate;
             CustomInit();
         }
 
@@ -71,25 +73,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public IdentityProviderInput SourceAgentIdentity { get; set; }
 
         /// <summary>
+        /// Gets or sets the certificate to be used for AAD authentication.
+        /// </summary>
+        [JsonProperty(PropertyName = "authCertificate")]
+        public string AuthCertificate { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (VmwareSiteId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VmwareSiteId");
-            }
-            if (PhysicalSiteId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PhysicalSiteId");
-            }
-            if (SourceAgentIdentity == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SourceAgentIdentity");
-            }
             if (SourceAgentIdentity != null)
             {
                 SourceAgentIdentity.Validate();

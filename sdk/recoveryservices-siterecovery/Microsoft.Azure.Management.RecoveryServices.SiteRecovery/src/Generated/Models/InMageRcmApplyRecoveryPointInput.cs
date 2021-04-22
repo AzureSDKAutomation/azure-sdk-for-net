@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// class.
         /// </summary>
         /// <param name="recoveryPointId">The recovery point Id.</param>
-        public InMageRcmApplyRecoveryPointInput(string recoveryPointId)
+        public InMageRcmApplyRecoveryPointInput(string recoveryPointId = default(string))
         {
             RecoveryPointId = recoveryPointId;
             CustomInit();
@@ -51,18 +50,5 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         [JsonProperty(PropertyName = "recoveryPointId")]
         public string RecoveryPointId { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (RecoveryPointId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "RecoveryPointId");
-            }
-        }
     }
 }

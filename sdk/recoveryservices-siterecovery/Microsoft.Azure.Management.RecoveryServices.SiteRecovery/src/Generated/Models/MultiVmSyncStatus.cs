@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
 
     /// <summary>
-    /// Defines values for ExportJobOutputSerializationType.
+    /// Defines values for MultiVmSyncStatus.
     /// </summary>
-    public static class ExportJobOutputSerializationType
+    public static class MultiVmSyncStatus
     {
-        public const string Json = "Json";
-        public const string Xml = "Xml";
-        public const string Excel = "Excel";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
     }
 }

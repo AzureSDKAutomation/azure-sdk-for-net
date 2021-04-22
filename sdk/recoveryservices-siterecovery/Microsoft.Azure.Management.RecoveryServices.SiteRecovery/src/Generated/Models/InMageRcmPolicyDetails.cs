@@ -53,30 +53,29 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the duration in minutes until which the recovery
-        /// points need to be stored.
+        /// Gets the duration in minutes until which the recovery points need
+        /// to be stored.
         /// </summary>
         [JsonProperty(PropertyName = "recoveryPointHistoryInMinutes")]
-        public int? RecoveryPointHistoryInMinutes { get; set; }
+        public int? RecoveryPointHistoryInMinutes { get; private set; }
 
         /// <summary>
-        /// Gets or sets the app consistent snapshot frequency in minutes.
+        /// Gets the app consistent snapshot frequency in minutes.
         /// </summary>
         [JsonProperty(PropertyName = "appConsistentFrequencyInMinutes")]
-        public int? AppConsistentFrequencyInMinutes { get; set; }
+        public int? AppConsistentFrequencyInMinutes { get; private set; }
 
         /// <summary>
-        /// Gets or sets the crash consistent snapshot frequency in minutes.
+        /// Gets the crash consistent snapshot frequency in minutes.
         /// </summary>
         [JsonProperty(PropertyName = "crashConsistentFrequencyInMinutes")]
-        public int? CrashConsistentFrequencyInMinutes { get; set; }
+        public int? CrashConsistentFrequencyInMinutes { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether multi-VM sync has to be
-        /// enabled.
+        /// Gets a value indicating whether multi-VM sync has to be enabled.
         /// </summary>
         [JsonProperty(PropertyName = "enableMultiVmSync")]
-        public string EnableMultiVmSync { get; set; }
+        public string EnableMultiVmSync { get; private set; }
 
     }
 }

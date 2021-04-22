@@ -77,17 +77,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string NicId { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this is the primary NIC.
+        /// Gets a value indicating whether this is the primary NIC.
         /// </summary>
         [JsonProperty(PropertyName = "isPrimaryNic")]
-        public string IsPrimaryNic { get; set; }
+        public string IsPrimaryNic { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this NIC is selected for
-        /// failover.
+        /// Gets a value indicating whether this NIC is selected for failover.
         /// </summary>
         [JsonProperty(PropertyName = "isSelectedForFailover")]
-        public string IsSelectedForFailover { get; set; }
+        public string IsSelectedForFailover { get; private set; }
 
         /// <summary>
         /// Gets the source IP address.
@@ -115,42 +114,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string SourceSubnetName { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target IP address.
+        /// Gets the target IP address.
         /// </summary>
         [JsonProperty(PropertyName = "targetIPAddress")]
-        public string TargetIPAddress { get; set; }
+        public string TargetIPAddress { get; private set; }
 
         /// <summary>
-        /// Gets or sets the target IP address type. Possible values include:
+        /// Gets the target IP address type. Possible values include:
         /// 'Dynamic', 'Static'
         /// </summary>
         [JsonProperty(PropertyName = "targetIPAddressType")]
-        public string TargetIPAddressType { get; set; }
+        public string TargetIPAddressType { get; private set; }
 
         /// <summary>
-        /// Gets or sets target subnet name.
+        /// Gets target subnet name.
         /// </summary>
         [JsonProperty(PropertyName = "targetSubnetName")]
-        public string TargetSubnetName { get; set; }
+        public string TargetSubnetName { get; private set; }
 
         /// <summary>
-        /// Gets or sets test subnet name.
+        /// Gets test subnet name.
         /// </summary>
         [JsonProperty(PropertyName = "testSubnetName")]
-        public string TestSubnetName { get; set; }
+        public string TestSubnetName { get; private set; }
 
         /// <summary>
-        /// Gets or sets the test IP address.
+        /// Gets the test IP address.
         /// </summary>
         [JsonProperty(PropertyName = "testIPAddress")]
-        public string TestIPAddress { get; set; }
+        public string TestIPAddress { get; private set; }
 
         /// <summary>
-        /// Gets or sets the test IP address type. Possible values include:
-        /// 'Dynamic', 'Static'
+        /// Gets the test IP address type. Possible values include: 'Dynamic',
+        /// 'Static'
         /// </summary>
         [JsonProperty(PropertyName = "testIPAddressType")]
-        public string TestIPAddressType { get; set; }
+        public string TestIPAddressType { get; private set; }
 
     }
 }

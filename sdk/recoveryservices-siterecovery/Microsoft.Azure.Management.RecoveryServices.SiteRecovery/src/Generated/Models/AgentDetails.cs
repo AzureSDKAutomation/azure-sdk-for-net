@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// registered.</param>
         /// <param name="biosId">The machine BIOS Id.</param>
         /// <param name="fqdn">The machine FQDN.</param>
-        /// <param name="disks">The disks.</param>
+        /// <param name="disks">The details of agent disks.</param>
         public AgentDetails(string agentId = default(string), string machineId = default(string), string biosId = default(string), string fqdn = default(string), IList<AgentDiskDetails> disks = default(IList<AgentDiskDetails>))
         {
             AgentId = agentId;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string Fqdn { get; private set; }
 
         /// <summary>
-        /// Gets the disks.
+        /// Gets the details of agent disks.
         /// </summary>
         [JsonProperty(PropertyName = "disks")]
         public IList<AgentDiskDetails> Disks { get; private set; }

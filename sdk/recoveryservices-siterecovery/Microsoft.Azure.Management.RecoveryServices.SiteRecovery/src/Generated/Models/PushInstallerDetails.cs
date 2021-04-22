@@ -33,22 +33,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         /// <param name="id">The push installer Id.</param>
         /// <param name="name">The push installer name.</param>
-        /// <param name="biosId">The push installer Bios Id.</param>
-        /// <param name="fabricObjectId">The fabric object Id.</param>
-        /// <param name="fqdn">The push installer Fqdn.</param>
-        /// <param name="version">The version.</param>
+        /// <param name="version">The push installer version.</param>
         /// <param name="lastHeartbeatUtc">The last heartbeat received from the
         /// push installer.</param>
         /// <param name="health">The health of the push installer. Possible
         /// values include: 'None', 'Normal', 'Warning', 'Critical'</param>
         /// <param name="healthErrors">The health errors.</param>
-        public PushInstallerDetails(string id = default(string), string name = default(string), string biosId = default(string), string fabricObjectId = default(string), string fqdn = default(string), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), string health = default(string), IList<HealthError> healthErrors = default(IList<HealthError>))
+        public PushInstallerDetails(string id = default(string), string name = default(string), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), string health = default(string), IList<HealthError> healthErrors = default(IList<HealthError>))
         {
             Id = id;
             Name = name;
-            BiosId = biosId;
-            FabricObjectId = fabricObjectId;
-            Fqdn = fqdn;
             Version = version;
             LastHeartbeatUtc = lastHeartbeatUtc;
             Health = health;
@@ -74,25 +68,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the push installer Bios Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "biosId")]
-        public string BiosId { get; private set; }
-
-        /// <summary>
-        /// Gets the fabric object Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "fabricObjectId")]
-        public string FabricObjectId { get; private set; }
-
-        /// <summary>
-        /// Gets the push installer Fqdn.
-        /// </summary>
-        [JsonProperty(PropertyName = "fqdn")]
-        public string Fqdn { get; private set; }
-
-        /// <summary>
-        /// Gets the version.
+        /// Gets the push installer version.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; private set; }

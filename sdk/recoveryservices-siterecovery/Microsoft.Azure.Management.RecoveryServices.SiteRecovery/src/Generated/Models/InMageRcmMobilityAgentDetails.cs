@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="version">The agent version.</param>
         /// <param name="latestVersion">The latest agent version
         /// available.</param>
-        /// <param name="latestAgentReleaseDate">The latest agent version
-        /// release date.</param>
         /// <param name="driverVersion">The driver version.</param>
         /// <param name="latestUpgradableVersionWithoutReboot">The latest
         /// upgradeable version available without reboot.</param>
@@ -51,11 +49,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// or not.</param>
         /// <param name="isUpgradeable">A value indicating whether agent is
         /// upgradeable or not.</param>
-        public InMageRcmMobilityAgentDetails(string version = default(string), string latestVersion = default(string), string latestAgentReleaseDate = default(string), string driverVersion = default(string), string latestUpgradableVersionWithoutReboot = default(string), System.DateTime? agentVersionExpiryDate = default(System.DateTime?), System.DateTime? driverVersionExpiryDate = default(System.DateTime?), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), IList<string> reasonsBlockingUpgrade = default(IList<string>), string isUpgradeable = default(string))
+        public InMageRcmMobilityAgentDetails(string version = default(string), string latestVersion = default(string), string driverVersion = default(string), string latestUpgradableVersionWithoutReboot = default(string), System.DateTime? agentVersionExpiryDate = default(System.DateTime?), System.DateTime? driverVersionExpiryDate = default(System.DateTime?), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), IList<string> reasonsBlockingUpgrade = default(IList<string>), string isUpgradeable = default(string))
         {
             Version = version;
             LatestVersion = latestVersion;
-            LatestAgentReleaseDate = latestAgentReleaseDate;
             DriverVersion = driverVersion;
             LatestUpgradableVersionWithoutReboot = latestUpgradableVersionWithoutReboot;
             AgentVersionExpiryDate = agentVersionExpiryDate;
@@ -82,12 +79,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "latestVersion")]
         public string LatestVersion { get; private set; }
-
-        /// <summary>
-        /// Gets the latest agent version release date.
-        /// </summary>
-        [JsonProperty(PropertyName = "latestAgentReleaseDate")]
-        public string LatestAgentReleaseDate { get; private set; }
 
         /// <summary>
         /// Gets the driver version.

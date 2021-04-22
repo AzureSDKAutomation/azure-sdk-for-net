@@ -163,6 +163,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public virtual IReplicationProtectionContainerMappingsOperations ReplicationProtectionContainerMappings { get; private set; }
 
         /// <summary>
+        /// Gets the IReplicationProtectionIntentsOperations.
+        /// </summary>
+        public virtual IReplicationProtectionIntentsOperations ReplicationProtectionIntents { get; private set; }
+
+        /// <summary>
         /// Gets the IReplicationRecoveryServicesProvidersOperations.
         /// </summary>
         public virtual IReplicationRecoveryServicesProvidersOperations ReplicationRecoveryServicesProviders { get; private set; }
@@ -191,11 +196,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationPoliciesOperations.
         /// </summary>
         public virtual IReplicationPoliciesOperations ReplicationPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IReplicationProtectionIntentsOperations.
-        /// </summary>
-        public virtual IReplicationProtectionIntentsOperations ReplicationProtectionIntents { get; private set; }
 
         /// <summary>
         /// Gets the IReplicationRecoveryPlansOperations.
@@ -474,19 +474,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             RecoveryPoints = new RecoveryPointsOperations(this);
             TargetComputeSizes = new TargetComputeSizesOperations(this);
             ReplicationProtectionContainerMappings = new ReplicationProtectionContainerMappingsOperations(this);
+            ReplicationProtectionIntents = new ReplicationProtectionIntentsOperations(this);
             ReplicationRecoveryServicesProviders = new ReplicationRecoveryServicesProvidersOperations(this);
             ReplicationStorageClassifications = new ReplicationStorageClassificationsOperations(this);
             ReplicationStorageClassificationMappings = new ReplicationStorageClassificationMappingsOperations(this);
             ReplicationvCenters = new ReplicationvCentersOperations(this);
             ReplicationJobs = new ReplicationJobsOperations(this);
             ReplicationPolicies = new ReplicationPoliciesOperations(this);
-            ReplicationProtectionIntents = new ReplicationProtectionIntentsOperations(this);
             ReplicationRecoveryPlans = new ReplicationRecoveryPlansOperations(this);
             SupportedOperatingSystems = new SupportedOperatingSystemsOperations(this);
             ReplicationVaultHealth = new ReplicationVaultHealthOperations(this);
             ReplicationVaultSetting = new ReplicationVaultSettingOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-02-10";
+            ApiVersion = "2021-03-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -575,8 +575,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MigrationProviderSpecificSettings>("instanceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<NetworkMappingFabricSpecificSettings>("instanceType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<NetworkMappingFabricSpecificSettings>("instanceType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<PlannedFailoverProviderSpecificFailoverInput>("instanceType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<PlannedFailoverProviderSpecificFailoverInput>("instanceType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProviderSpecificFailoverInput>("instanceType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ProviderSpecificFailoverInput>("instanceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<PolicyProviderSpecificDetails>("instanceType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<PolicyProviderSpecificDetails>("instanceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ProtectionContainerMappingProviderSpecificDetails>("instanceType"));
@@ -595,8 +595,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ReplicationProtectionIntentProviderSpecificSettings>("instanceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ReplicationProviderSpecificUpdateContainerMappingInput>("instanceType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ReplicationProviderSpecificUpdateContainerMappingInput>("instanceType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResyncProviderSpecificInput>("instanceType"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ResyncProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ReverseReplicationProviderSpecificInput>("instanceType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ReverseReplicationProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SwitchProtectionProviderSpecificInput>("instanceType"));

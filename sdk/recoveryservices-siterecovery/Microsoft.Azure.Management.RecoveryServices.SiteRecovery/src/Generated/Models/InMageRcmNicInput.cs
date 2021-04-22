@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="testSubnetName">The test subnet name.</param>
         /// <param name="testStaticIPAddress">The test static IP
         /// address.</param>
-        public InMageRcmNicInput(string nicId, string isPrimaryNic, string isSelectedForFailover = default(string), string targetSubnetName = default(string), string targetStaticIPAddress = default(string), string testSubnetName = default(string), string testStaticIPAddress = default(string))
+        public InMageRcmNicInput(string nicId = default(string), string isPrimaryNic = default(string), string isSelectedForFailover = default(string), string targetSubnetName = default(string), string targetStaticIPAddress = default(string), string testSubnetName = default(string), string testStaticIPAddress = default(string))
         {
             NicId = nicId;
             IsPrimaryNic = isPrimaryNic;
@@ -101,22 +100,5 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         [JsonProperty(PropertyName = "testStaticIPAddress")]
         public string TestStaticIPAddress { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (NicId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NicId");
-            }
-            if (IsPrimaryNic == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "IsPrimaryNic");
-            }
-        }
     }
 }

@@ -10,20 +10,18 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// ApplyRecoveryPoint input specific to A2ACrossClusterMigration provider.
+    /// Provider specific failover input.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("A2ACrossClusterMigration")]
-    public partial class A2ACrossClusterMigrationApplyRecoveryPointInput : ApplyRecoveryPointProviderSpecificInput
+    public partial class ProviderSpecificFailoverInput
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// A2ACrossClusterMigrationApplyRecoveryPointInput class.
+        /// Initializes a new instance of the ProviderSpecificFailoverInput
+        /// class.
         /// </summary>
-        public A2ACrossClusterMigrationApplyRecoveryPointInput()
+        public ProviderSpecificFailoverInput()
         {
             CustomInit();
         }

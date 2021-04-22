@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
 
     /// <summary>
-    /// Defines values for SqlServerLicenseType.
+    /// Defines values for AutoProtectionOfDataDiskStatus.
     /// </summary>
-    public static class SqlServerLicenseType
+    public static class AutoProtectionOfDataDiskStatus
     {
-        public const string NotSpecified = "NotSpecified";
-        public const string NoLicenseType = "NoLicenseType";
-        public const string PAYG = "PAYG";
-        public const string AHUB = "AHUB";
+        public const string Disabled = "Disabled";
+        public const string Enabled = "Enabled";
     }
 }

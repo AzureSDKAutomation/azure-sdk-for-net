@@ -12,13 +12,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
 
     /// <summary>
-    /// Defines values for VmReplicationProgressHealth.
+    /// Defines values for DiskType.
     /// </summary>
-    public static class VmReplicationProgressHealth
+    public static class DiskType
     {
-        public const string None = "None";
-        public const string InProgress = "InProgress";
-        public const string SlowProgress = "SlowProgress";
-        public const string NoProgress = "NoProgress";
+        public const string StandardLRS = "Standard_LRS";
+        public const string PremiumLRS = "Premium_LRS";
+        public const string StandardSSDLRS = "StandardSSD_LRS";
     }
 }

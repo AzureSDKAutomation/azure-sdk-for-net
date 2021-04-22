@@ -48,10 +48,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="replicationAgents">The list of replication
         /// agents.</param>
         /// <param name="reprotectAgents">The list of reprotect agents.</param>
-        /// <param name="marsAgents">The list of Mars agents.</param>
         /// <param name="dras">The list of DRAs.</param>
         /// <param name="agentDetails">The list of agent details.</param>
-        public InMageRcmFabricSpecificDetails(string vmwareSiteId = default(string), string physicalSiteId = default(string), string serviceEndpoint = default(string), string serviceResourceId = default(string), string serviceContainerId = default(string), string dataPlaneUri = default(string), string controlPlaneUri = default(string), IList<ProcessServerDetails> processServers = default(IList<ProcessServerDetails>), IList<RcmProxyDetails> rcmProxies = default(IList<RcmProxyDetails>), IList<PushInstallerDetails> pushInstallers = default(IList<PushInstallerDetails>), IList<ReplicationAgentDetails> replicationAgents = default(IList<ReplicationAgentDetails>), IList<ReprotectAgentDetails> reprotectAgents = default(IList<ReprotectAgentDetails>), IList<MarsAgentDetails> marsAgents = default(IList<MarsAgentDetails>), IList<DraDetails> dras = default(IList<DraDetails>), IList<AgentDetails> agentDetails = default(IList<AgentDetails>))
+        public InMageRcmFabricSpecificDetails(string vmwareSiteId = default(string), string physicalSiteId = default(string), string serviceEndpoint = default(string), string serviceResourceId = default(string), string serviceContainerId = default(string), string dataPlaneUri = default(string), string controlPlaneUri = default(string), IList<ProcessServerDetails> processServers = default(IList<ProcessServerDetails>), IList<RcmProxyDetails> rcmProxies = default(IList<RcmProxyDetails>), IList<PushInstallerDetails> pushInstallers = default(IList<PushInstallerDetails>), IList<ReplicationAgentDetails> replicationAgents = default(IList<ReplicationAgentDetails>), IList<ReprotectAgentDetails> reprotectAgents = default(IList<ReprotectAgentDetails>), IList<DraDetails> dras = default(IList<DraDetails>), IList<AgentDetails> agentDetails = default(IList<AgentDetails>))
         {
             VmwareSiteId = vmwareSiteId;
             PhysicalSiteId = physicalSiteId;
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             PushInstallers = pushInstallers;
             ReplicationAgents = replicationAgents;
             ReprotectAgents = reprotectAgents;
-            MarsAgents = marsAgents;
             Dras = dras;
             AgentDetails = agentDetails;
             CustomInit();
@@ -147,12 +145,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "reprotectAgents")]
         public IList<ReprotectAgentDetails> ReprotectAgents { get; private set; }
-
-        /// <summary>
-        /// Gets the list of Mars agents.
-        /// </summary>
-        [JsonProperty(PropertyName = "marsAgents")]
-        public IList<MarsAgentDetails> MarsAgents { get; private set; }
 
         /// <summary>
         /// Gets the list of DRAs.

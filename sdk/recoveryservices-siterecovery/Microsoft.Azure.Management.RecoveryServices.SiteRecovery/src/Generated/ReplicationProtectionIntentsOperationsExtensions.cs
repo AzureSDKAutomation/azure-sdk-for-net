@@ -30,15 +30,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='skipToken'>
-            /// The pagination token.
-            /// </param>
-            /// <param name='takeToken'>
-            /// The page size.
-            /// </param>
-            public static IPage<ReplicationProtectionIntent> List(this IReplicationProtectionIntentsOperations operations, string skipToken = default(string), string takeToken = default(string))
+            public static IPage<ReplicationProtectionIntent> List(this IReplicationProtectionIntentsOperations operations)
             {
-                return operations.ListAsync(skipToken, takeToken).GetAwaiter().GetResult();
+                return operations.ListAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -50,18 +44,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='skipToken'>
-            /// The pagination token.
-            /// </param>
-            /// <param name='takeToken'>
-            /// The page size.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ReplicationProtectionIntent>> ListAsync(this IReplicationProtectionIntentsOperations operations, string skipToken = default(string), string takeToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ReplicationProtectionIntent>> ListAsync(this IReplicationProtectionIntentsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

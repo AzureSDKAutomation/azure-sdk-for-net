@@ -14,35 +14,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     using System.Linq;
 
     /// <summary>
-    /// HyperVReplicaAzure specific planned failover input.
+    /// InMageAzureV2 provider specific input for failover.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("HyperVReplicaAzure")]
-    public partial class HyperVReplicaAzurePlannedFailoverProviderInput : PlannedFailoverProviderSpecificFailoverInput
+    [Newtonsoft.Json.JsonObject("InMageAzureV2")]
+    public partial class InMageAzureV2FailoverProviderInput : ProviderSpecificFailoverInput
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// HyperVReplicaAzurePlannedFailoverProviderInput class.
+        /// InMageAzureV2FailoverProviderInput class.
         /// </summary>
-        public HyperVReplicaAzurePlannedFailoverProviderInput()
+        public InMageAzureV2FailoverProviderInput()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// HyperVReplicaAzurePlannedFailoverProviderInput class.
+        /// InMageAzureV2FailoverProviderInput class.
         /// </summary>
-        /// <param name="primaryKekCertificatePfx">Primary kek certificate
-        /// pfx.</param>
-        /// <param name="secondaryKekCertificatePfx">Secondary kek certificate
-        /// pfx.</param>
+        /// <param name="vaultLocation">Location of the vault.</param>
         /// <param name="recoveryPointId">The recovery point id to be passed to
         /// failover to a particular recovery point. In case of latest recovery
         /// point, null should be passed.</param>
-        public HyperVReplicaAzurePlannedFailoverProviderInput(string primaryKekCertificatePfx = default(string), string secondaryKekCertificatePfx = default(string), string recoveryPointId = default(string))
+        public InMageAzureV2FailoverProviderInput(string vaultLocation = default(string), string recoveryPointId = default(string))
         {
-            PrimaryKekCertificatePfx = primaryKekCertificatePfx;
-            SecondaryKekCertificatePfx = secondaryKekCertificatePfx;
+            VaultLocation = vaultLocation;
             RecoveryPointId = recoveryPointId;
             CustomInit();
         }
@@ -53,16 +49,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets primary kek certificate pfx.
+        /// Gets or sets location of the vault.
         /// </summary>
-        [JsonProperty(PropertyName = "primaryKekCertificatePfx")]
-        public string PrimaryKekCertificatePfx { get; set; }
-
-        /// <summary>
-        /// Gets or sets secondary kek certificate pfx.
-        /// </summary>
-        [JsonProperty(PropertyName = "secondaryKekCertificatePfx")]
-        public string SecondaryKekCertificatePfx { get; set; }
+        [JsonProperty(PropertyName = "vaultLocation")]
+        public string VaultLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the recovery point id to be passed to failover to a
