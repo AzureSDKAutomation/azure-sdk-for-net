@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// </summary>
         /// <param name="resourceAccessPolicy">Possible values include:
         /// 'NotSpecified', 'AcisReadAllowed', 'AcisActionAllowed'</param>
-        public ResourceProviderManagement(IList<string> schemaOwners = default(IList<string>), IList<string> manifestOwners = default(IList<string>), string incidentRoutingService = default(string), string incidentRoutingTeam = default(string), string incidentContactEmail = default(string), IList<ServiceTreeInfo> serviceTreeInfos = default(IList<ServiceTreeInfo>), string resourceAccessPolicy = default(string), IList<object> resourceAccessRoles = default(IList<object>))
+        public ResourceProviderManagement(IList<string> schemaOwners = default(IList<string>), IList<string> manifestOwners = default(IList<string>), string incidentRoutingService = default(string), string incidentRoutingTeam = default(string), string incidentContactEmail = default(string), IList<ServiceTreeInfo> serviceTreeInfos = default(IList<ServiceTreeInfo>), string resourceAccessPolicy = default(string), IList<IDictionary<string, string>> resourceAccessRoles = default(IList<IDictionary<string, string>>))
         {
             SchemaOwners = schemaOwners;
             ManifestOwners = manifestOwners;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "resourceAccessRoles")]
-        public IList<object> ResourceAccessRoles { get; set; }
+        public IList<IDictionary<string, string>> ResourceAccessRoles { get; set; }
 
     }
 }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// Initializes a new instance of the
         /// ProviderRegistrationPropertiesProviderHubMetadata class.
         /// </summary>
-        public ProviderRegistrationPropertiesProviderHubMetadata(IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), ProviderHubMetadataProviderAuthentication providerAuthentication = default(ProviderHubMetadataProviderAuthentication), ProviderHubMetadataThirdPartyProviderAuthorization thirdPartyProviderAuthorization = default(ProviderHubMetadataThirdPartyProviderAuthorization))
+        public ProviderRegistrationPropertiesProviderHubMetadata(IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), ResourceProviderAuthentication providerAuthentication = default(ResourceProviderAuthentication), ThirdPartyProviderAuthorization thirdPartyProviderAuthorization = default(ThirdPartyProviderAuthorization))
             : base(providerAuthorizations, providerAuthentication, thirdPartyProviderAuthorization)
         {
             CustomInit();

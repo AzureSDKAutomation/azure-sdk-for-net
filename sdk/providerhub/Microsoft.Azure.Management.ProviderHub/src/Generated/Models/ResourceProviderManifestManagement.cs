@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// </summary>
         /// <param name="resourceAccessPolicy">Possible values include:
         /// 'NotSpecified', 'AcisReadAllowed', 'AcisActionAllowed'</param>
-        public ResourceProviderManifestManagement(IList<string> schemaOwners = default(IList<string>), IList<string> manifestOwners = default(IList<string>), string incidentRoutingService = default(string), string incidentRoutingTeam = default(string), string incidentContactEmail = default(string), IList<ServiceTreeInfo> serviceTreeInfos = default(IList<ServiceTreeInfo>), string resourceAccessPolicy = default(string), IList<object> resourceAccessRoles = default(IList<object>))
+        public ResourceProviderManifestManagement(IList<string> schemaOwners = default(IList<string>), IList<string> manifestOwners = default(IList<string>), string incidentRoutingService = default(string), string incidentRoutingTeam = default(string), string incidentContactEmail = default(string), IList<ServiceTreeInfo> serviceTreeInfos = default(IList<ServiceTreeInfo>), string resourceAccessPolicy = default(string), IList<IDictionary<string, string>> resourceAccessRoles = default(IList<IDictionary<string, string>>))
             : base(schemaOwners, manifestOwners, incidentRoutingService, incidentRoutingTeam, incidentContactEmail, serviceTreeInfos, resourceAccessPolicy, resourceAccessRoles)
         {
             CustomInit();
