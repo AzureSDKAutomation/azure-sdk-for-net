@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// 'Internal', 'External', 'Hidden', 'RegistrationFree',
         /// 'LegacyRegistrationRequired', 'TenantOnly',
         /// 'AuthorizationFree'</param>
-        public ResourceProviderManifest(ResourceProviderManifestProviderAuthentication providerAuthentication = default(ResourceProviderManifestProviderAuthentication), IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), string namespaceProperty = default(string), string providerVersion = default(string), string providerType = default(string), IList<string> requiredFeatures = default(IList<string>), ResourceProviderManifestFeaturesRule featuresRule = default(ResourceProviderManifestFeaturesRule), ResourceProviderManifestRequestHeaderOptions requestHeaderOptions = default(ResourceProviderManifestRequestHeaderOptions), IList<ResourceType> resourceTypes = default(IList<ResourceType>), ResourceProviderManifestManagement management = default(ResourceProviderManifestManagement), IList<ResourceProviderCapabilities> capabilities = default(IList<ResourceProviderCapabilities>), object metadata = default(object), IList<ResourceProviderEndpoint> globalNotificationEndpoints = default(IList<ResourceProviderEndpoint>), ResourceProviderManifestReRegisterSubscriptionMetadata reRegisterSubscriptionMetadata = default(ResourceProviderManifestReRegisterSubscriptionMetadata))
+        public ResourceProviderManifest(ResourceProviderManifestProviderAuthentication providerAuthentication = default(ResourceProviderManifestProviderAuthentication), IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), string namespaceProperty = default(string), string providerVersion = default(string), string providerType = default(string), IList<string> requiredFeatures = default(IList<string>), ResourceProviderManifestFeaturesRule featuresRule = default(ResourceProviderManifestFeaturesRule), ResourceProviderManifestRequestHeaderOptions requestHeaderOptions = default(ResourceProviderManifestRequestHeaderOptions), IList<ResourceType> resourceTypes = default(IList<ResourceType>), ResourceProviderManifestManagement management = default(ResourceProviderManifestManagement), IList<ResourceProviderCapabilities> capabilities = default(IList<ResourceProviderCapabilities>), IDictionary<string, string> metadata = default(IDictionary<string, string>), IList<ResourceProviderEndpoint> globalNotificationEndpoints = default(IList<ResourceProviderEndpoint>), ResourceProviderManifestReRegisterSubscriptionMetadata reRegisterSubscriptionMetadata = default(ResourceProviderManifestReRegisterSubscriptionMetadata))
         {
             ProviderAuthentication = providerAuthentication;
             ProviderAuthorizations = providerAuthorizations;
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
-        public object Metadata { get; set; }
+        public IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// </summary>

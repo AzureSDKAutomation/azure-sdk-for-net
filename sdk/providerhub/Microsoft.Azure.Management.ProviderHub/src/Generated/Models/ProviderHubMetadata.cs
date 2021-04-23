@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// <summary>
         /// Initializes a new instance of the ProviderHubMetadata class.
         /// </summary>
-        public ProviderHubMetadata(IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), ProviderHubMetadataProviderAuthentication providerAuthentication = default(ProviderHubMetadataProviderAuthentication), ProviderHubMetadataThirdPartyProviderAuthorization thirdPartyProviderAuthorization = default(ProviderHubMetadataThirdPartyProviderAuthorization))
+        public ProviderHubMetadata(IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), ResourceProviderAuthentication providerAuthentication = default(ResourceProviderAuthentication), ThirdPartyProviderAuthorization thirdPartyProviderAuthorization = default(ThirdPartyProviderAuthorization))
         {
             ProviderAuthorizations = providerAuthorizations;
             ProviderAuthentication = providerAuthentication;
@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "providerAuthentication")]
-        public ProviderHubMetadataProviderAuthentication ProviderAuthentication { get; set; }
+        public ResourceProviderAuthentication ProviderAuthentication { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "thirdPartyProviderAuthorization")]
-        public ProviderHubMetadataThirdPartyProviderAuthorization ThirdPartyProviderAuthorization { get; set; }
+        public ThirdPartyProviderAuthorization ThirdPartyProviderAuthorization { get; set; }
 
     }
 }
