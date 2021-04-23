@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -327,6 +327,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='vmScaleSetName'>
         /// The name of the VM scale set.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. 'UserData' will retrieve
+        /// the UserData of the virtual machine scale set. Possible values include:
+        /// 'userData'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -348,7 +353,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualMachineScaleSet>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualMachineScaleSet>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -362,7 +367,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -373,6 +378,7 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("vmScaleSetName", vmScaleSetName);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
@@ -386,6 +392,10 @@ namespace Microsoft.Azure.Management.Compute
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -614,7 +624,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -801,7 +811,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -982,7 +992,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1173,7 +1183,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1367,7 +1377,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1792,7 +1802,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1992,7 +2002,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VMScaleSetConvertToSinglePlacementGroupInput parameters = new VMScaleSetConvertToSinglePlacementGroupInput();
             if (activePlacementGroupId != null)
             {
@@ -2216,7 +2226,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2442,7 +2452,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2643,7 +2653,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2828,7 +2838,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -3025,7 +3035,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "instanceIds");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceRequiredIDs vmInstanceIDs = new VirtualMachineScaleSetVMInstanceRequiredIDs();
             if (instanceIds != null)
             {
@@ -3227,7 +3237,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -3423,7 +3433,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -3614,7 +3624,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -3806,7 +3816,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -4000,7 +4010,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -4194,7 +4204,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "instanceIds");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceRequiredIDs vmInstanceIDs = new VirtualMachineScaleSetVMInstanceRequiredIDs();
             if (instanceIds != null)
             {
@@ -4384,7 +4394,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4570,7 +4580,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             VirtualMachineScaleSetVMInstanceIDs vmInstanceIDs = default(VirtualMachineScaleSetVMInstanceIDs);
             if (instanceIds != null)
             {
@@ -4767,7 +4777,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-12-01";
+            string apiVersion = "2021-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
