@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// changes.</param>
         /// <param name="traceEnabled">Indicates whether enable the trace
         /// functionality, which will be deprecated since api version
-        /// 2020-11-01-preview. Please leverage appInsightsInstrumentationKey
+        /// 2021-03-03-preview. Please leverage appInsightsInstrumentationKey
         /// to indicate if monitoringSettings enabled or not</param>
         /// <param name="appInsightsInstrumentationKey">Target application
         /// insight instrumentation key, null or whitespace include empty will
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 
         /// <summary>
         /// Gets or sets indicates whether enable the trace functionality,
-        /// which will be deprecated since api version 2020-11-01-preview.
+        /// which will be deprecated since api version 2021-03-03-preview.
         /// Please leverage appInsightsInstrumentationKey to indicate if
         /// monitoringSettings enabled or not
         /// </summary>
