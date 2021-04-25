@@ -37,11 +37,19 @@ namespace Microsoft.Azure.Management.Security.Models
         /// assessment status</param>
         /// <param name="description">Human readable description of the
         /// assessment status</param>
-        public AssessmentStatus(string code, string cause = default(string), string description = default(string))
+        /// <param name="firstEvaluationDate">The time that the assessment was
+        /// created and first evaluated. Returned as UTC time in ISO 8601
+        /// format</param>
+        /// <param name="statusChangeDate">The time that the status of the
+        /// assessment last changed. Returned as UTC time in ISO 8601
+        /// format</param>
+        public AssessmentStatus(string code, string cause = default(string), string description = default(string), System.DateTime? firstEvaluationDate = default(System.DateTime?), System.DateTime? statusChangeDate = default(System.DateTime?))
         {
             Code = code;
             Cause = cause;
             Description = description;
+            FirstEvaluationDate = firstEvaluationDate;
+            StatusChangeDate = statusChangeDate;
             CustomInit();
         }
 
@@ -69,6 +77,20 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets the time that the assessment was created and first evaluated.
+        /// Returned as UTC time in ISO 8601 format
+        /// </summary>
+        [JsonProperty(PropertyName = "firstEvaluationDate")]
+        public System.DateTime? FirstEvaluationDate { get; private set; }
+
+        /// <summary>
+        /// Gets the time that the status of the assessment last changed.
+        /// Returned as UTC time in ISO 8601 format
+        /// </summary>
+        [JsonProperty(PropertyName = "statusChangeDate")]
+        public System.DateTime? StatusChangeDate { get; private set; }
 
         /// <summary>
         /// Validate the object.

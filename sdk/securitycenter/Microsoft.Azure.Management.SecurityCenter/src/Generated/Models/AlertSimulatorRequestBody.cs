@@ -14,27 +14,23 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// IoT sensor
+    /// Alert Simulator request body.
     /// </summary>
-    public partial class IotSensor : Resource
+    public partial class AlertSimulatorRequestBody
     {
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the AlertSimulatorRequestBody class.
         /// </summary>
-        public IotSensor()
+        public AlertSimulatorRequestBody()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the AlertSimulatorRequestBody class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="properties">IoT sensor properties</param>
-        public IotSensor(string id = default(string), string name = default(string), string type = default(string), object properties = default(object))
-            : base(id, name, type)
+        /// <param name="properties">Alert Simulator request body data.</param>
+        public AlertSimulatorRequestBody(AlertSimulatorRequestProperties properties = default(AlertSimulatorRequestProperties))
         {
             Properties = properties;
             CustomInit();
@@ -46,10 +42,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ioT sensor properties
+        /// Gets or sets alert Simulator request body data.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public object Properties { get; set; }
+        public AlertSimulatorRequestProperties Properties { get; set; }
 
     }
 }
