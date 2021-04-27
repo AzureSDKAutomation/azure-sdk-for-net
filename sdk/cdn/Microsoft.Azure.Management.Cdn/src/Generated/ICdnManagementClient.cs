@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Cdn
 
         /// <summary>
         /// Version of the API to be used with the client request. Current
-        /// version is 2020-09-01.
+        /// version is 2021-06-01.
         /// </summary>
         string ApiVersion { get; }
 
@@ -73,46 +73,6 @@ namespace Microsoft.Azure.Management.Cdn
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
-
-        /// <summary>
-        /// Gets the IProfilesOperations.
-        /// </summary>
-        IProfilesOperations Profiles { get; }
-
-        /// <summary>
-        /// Gets the IEndpointsOperations.
-        /// </summary>
-        IEndpointsOperations Endpoints { get; }
-
-        /// <summary>
-        /// Gets the IOriginsOperations.
-        /// </summary>
-        IOriginsOperations Origins { get; }
-
-        /// <summary>
-        /// Gets the IOriginGroupsOperations.
-        /// </summary>
-        IOriginGroupsOperations OriginGroups { get; }
-
-        /// <summary>
-        /// Gets the ICustomDomainsOperations.
-        /// </summary>
-        ICustomDomainsOperations CustomDomains { get; }
-
-        /// <summary>
-        /// Gets the IResourceUsageOperations.
-        /// </summary>
-        IResourceUsageOperations ResourceUsage { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IEdgeNodesOperations.
-        /// </summary>
-        IEdgeNodesOperations EdgeNodes { get; }
 
         /// <summary>
         /// Gets the IAFDProfilesOperations.
@@ -173,6 +133,46 @@ namespace Microsoft.Azure.Management.Cdn
         /// Gets the ILogAnalyticsOperations.
         /// </summary>
         ILogAnalyticsOperations LogAnalytics { get; }
+
+        /// <summary>
+        /// Gets the IProfilesOperations.
+        /// </summary>
+        IProfilesOperations Profiles { get; }
+
+        /// <summary>
+        /// Gets the IEndpointsOperations.
+        /// </summary>
+        IEndpointsOperations Endpoints { get; }
+
+        /// <summary>
+        /// Gets the IOriginsOperations.
+        /// </summary>
+        IOriginsOperations Origins { get; }
+
+        /// <summary>
+        /// Gets the IOriginGroupsOperations.
+        /// </summary>
+        IOriginGroupsOperations OriginGroups { get; }
+
+        /// <summary>
+        /// Gets the ICustomDomainsOperations.
+        /// </summary>
+        ICustomDomainsOperations CustomDomains { get; }
+
+        /// <summary>
+        /// Gets the IResourceUsageOperations.
+        /// </summary>
+        IResourceUsageOperations ResourceUsage { get; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IEdgeNodesOperations.
+        /// </summary>
+        IEdgeNodesOperations EdgeNodes { get; }
 
         /// <summary>
         /// Gets the IPoliciesOperations.
