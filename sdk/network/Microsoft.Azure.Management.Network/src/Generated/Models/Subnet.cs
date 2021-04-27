@@ -70,10 +70,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// subnet resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
         /// <param name="privateEndpointNetworkPolicies">Enable or Disable
-        /// apply network policies on private end point in the subnet.</param>
+        /// apply network policies on private end point in the subnet. Possible
+        /// values include: 'Enabled', 'Disabled'</param>
         /// <param name="privateLinkServiceNetworkPolicies">Enable or Disable
-        /// apply network policies on private link service in the
-        /// subnet.</param>
+        /// apply network policies on private link service in the subnet.
+        /// Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
@@ -213,14 +214,16 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets enable or Disable apply network policies on private
-        /// end point in the subnet.
+        /// end point in the subnet. Possible values include: 'Enabled',
+        /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateEndpointNetworkPolicies")]
         public string PrivateEndpointNetworkPolicies { get; set; }
 
         /// <summary>
         /// Gets or sets enable or Disable apply network policies on private
-        /// link service in the subnet.
+        /// link service in the subnet. Possible values include: 'Enabled',
+        /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateLinkServiceNetworkPolicies")]
         public string PrivateLinkServiceNetworkPolicies { get; set; }
