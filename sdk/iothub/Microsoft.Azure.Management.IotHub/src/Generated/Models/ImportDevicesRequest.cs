@@ -42,13 +42,16 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// <param name="authenticationType">Specifies authentication type
         /// being used for connecting to the storage account. Possible values
         /// include: 'keyBased', 'identityBased'</param>
-        public ImportDevicesRequest(string inputBlobContainerUri, string outputBlobContainerUri, string inputBlobName = default(string), string outputBlobName = default(string), string authenticationType = default(string))
+        /// <param name="identity">Managed identity properties of storage
+        /// endpoint for import devices.</param>
+        public ImportDevicesRequest(string inputBlobContainerUri, string outputBlobContainerUri, string inputBlobName = default(string), string outputBlobName = default(string), string authenticationType = default(string), ManagedIdentity identity = default(ManagedIdentity))
         {
             InputBlobContainerUri = inputBlobContainerUri;
             OutputBlobContainerUri = outputBlobContainerUri;
             InputBlobName = inputBlobName;
             OutputBlobName = outputBlobName;
             AuthenticationType = authenticationType;
+            Identity = identity;
             CustomInit();
         }
 
@@ -90,6 +93,13 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "authenticationType")]
         public string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets managed identity properties of storage endpoint for
+        /// import devices.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.
