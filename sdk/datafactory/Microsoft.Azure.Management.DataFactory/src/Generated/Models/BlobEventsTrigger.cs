@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// blobPathBeginsWith, blobPathEndsWith.</param>
         /// <param name="ignoreEmptyBlobs">If set to true, blobs with zero
         /// bytes will be ignored.</param>
-        public BlobEventsTrigger(IList<string> events, string scope, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), string runtimeState = default(string), IList<object> annotations = default(IList<object>), IList<TriggerPipelineReference> pipelines = default(IList<TriggerPipelineReference>), string blobPathBeginsWith = default(string), string blobPathEndsWith = default(string), bool? ignoreEmptyBlobs = default(bool?))
+        public BlobEventsTrigger(IList<string> events, object scope, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), string runtimeState = default(string), IList<object> annotations = default(IList<object>), IList<TriggerPipelineReference> pipelines = default(IList<TriggerPipelineReference>), string blobPathBeginsWith = default(string), string blobPathEndsWith = default(string), bool? ignoreEmptyBlobs = default(bool?))
             : base(additionalProperties, description, runtimeState, annotations, pipelines)
         {
             BlobPathBeginsWith = blobPathBeginsWith;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets the ARM resource ID of the Storage Account.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.scope")]
-        public string Scope { get; set; }
+        public object Scope { get; set; }
 
         /// <summary>
         /// Validate the object.
