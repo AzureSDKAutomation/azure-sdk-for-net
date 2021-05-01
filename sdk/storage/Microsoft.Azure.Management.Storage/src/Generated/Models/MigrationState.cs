@@ -12,14 +12,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for State.
+    /// Defines values for MigrationState.
     /// </summary>
-    public static class State
+    public static class MigrationState
     {
-        public const string Provisioning = "Provisioning";
-        public const string Deprovisioning = "Deprovisioning";
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string NetworkSourceDeleted = "NetworkSourceDeleted";
+        public const string InProgress = "InProgress";
+        public const string Completed = "Completed";
     }
 }
