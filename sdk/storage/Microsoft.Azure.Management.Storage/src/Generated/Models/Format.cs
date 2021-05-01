@@ -12,10 +12,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for PutSharesExpand.
+    /// Defines values for Format.
     /// </summary>
-    public static class PutSharesExpand
+    public static class Format
     {
-        public const string Snapshots = "snapshots";
+        public const string Csv = "Csv";
+        public const string Parquet = "Parquet";
     }
 }

@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Management.Storage.Models
 
     /// <summary>
     /// An object that defines the blob inventory rule filter conditions.
+    /// Filter option cannot be used when definition.objectType property is set
+    /// to 'Container'.
     /// </summary>
     public partial class BlobInventoryPolicyFilter
     {
@@ -34,13 +36,18 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         /// <param name="blobTypes">An array of predefined enum values. Valid
         /// values include blockBlob, appendBlob, pageBlob. Hns accounts does
-        /// not support pageBlobs.</param>
+        /// not support pageBlobs. This field is required when
+        /// definition.objectType property is set to 'Blob'.</param>
         /// <param name="prefixMatch">An array of strings for blob prefixes to
         /// be matched.</param>
         /// <param name="includeBlobVersions">Includes blob versions in blob
-        /// inventory when value set to true.</param>
+        /// inventory when value is set to true. The definition.schemaFields
+        /// values 'VersionId and IsCurrentVersion' are required if this
+        /// property is set to true, else they must be excluded.</param>
         /// <param name="includeSnapshots">Includes blob snapshots in blob
-        /// inventory when value set to true.</param>
+        /// inventory when value is set to true. The definition.schemaFields
+        /// value 'Snapshot' is required if this property is set to true, else
+        /// it must be excluded.</param>
         public BlobInventoryPolicyFilter(IList<string> blobTypes, IList<string> prefixMatch = default(IList<string>), bool? includeBlobVersions = default(bool?), bool? includeSnapshots = default(bool?))
         {
             PrefixMatch = prefixMatch;
@@ -64,21 +71,25 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Gets or sets an array of predefined enum values. Valid values
         /// include blockBlob, appendBlob, pageBlob. Hns accounts does not
-        /// support pageBlobs.
+        /// support pageBlobs. This field is required when
+        /// definition.objectType property is set to 'Blob'.
         /// </summary>
         [JsonProperty(PropertyName = "blobTypes")]
         public IList<string> BlobTypes { get; set; }
 
         /// <summary>
-        /// Gets or sets includes blob versions in blob inventory when value
-        /// set to true.
+        /// Gets or sets includes blob versions in blob inventory when value is
+        /// set to true. The definition.schemaFields values 'VersionId and
+        /// IsCurrentVersion' are required if this property is set to true,
+        /// else they must be excluded.
         /// </summary>
         [JsonProperty(PropertyName = "includeBlobVersions")]
         public bool? IncludeBlobVersions { get; set; }
 
         /// <summary>
         /// Gets or sets includes blob snapshots in blob inventory when value
-        /// set to true.
+        /// is set to true. The definition.schemaFields value 'Snapshot' is
+        /// required if this property is set to true, else it must be excluded.
         /// </summary>
         [JsonProperty(PropertyName = "includeSnapshots")]
         public bool? IncludeSnapshots { get; set; }
