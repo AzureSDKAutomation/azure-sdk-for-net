@@ -15,29 +15,25 @@ namespace Microsoft.Azure.Management.IotHub.Models
     using System.Linq;
 
     /// <summary>
-    /// The group information for creating a private endpoint on an IotHub
+    /// The EventHub consumer group.
     /// </summary>
-    public partial class GroupIdInformation
+    public partial class EventHubConsumerGroupBodyDescription
     {
         /// <summary>
-        /// Initializes a new instance of the GroupIdInformation class.
+        /// Initializes a new instance of the
+        /// EventHubConsumerGroupBodyDescription class.
         /// </summary>
-        public GroupIdInformation()
+        public EventHubConsumerGroupBodyDescription()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GroupIdInformation class.
+        /// Initializes a new instance of the
+        /// EventHubConsumerGroupBodyDescription class.
         /// </summary>
-        /// <param name="id">The resource identifier.</param>
-        /// <param name="name">The resource name.</param>
-        /// <param name="type">The resource type.</param>
-        public GroupIdInformation(GroupIdInformationProperties properties, string id = default(string), string name = default(string), string type = default(string))
+        public EventHubConsumerGroupBodyDescription(EventHubConsumerGroupName properties)
         {
-            Id = id;
-            Name = name;
-            Type = type;
             Properties = properties;
             CustomInit();
         }
@@ -48,27 +44,9 @@ namespace Microsoft.Azure.Management.IotHub.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the resource identifier.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets the resource name.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets the resource type.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public GroupIdInformationProperties Properties { get; set; }
+        public EventHubConsumerGroupName Properties { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -81,6 +59,10 @@ namespace Microsoft.Azure.Management.IotHub.Models
             if (Properties == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
+            }
+            if (Properties != null)
+            {
+                Properties.Validate();
             }
         }
     }
