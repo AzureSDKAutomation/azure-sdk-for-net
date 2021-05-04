@@ -30,11 +30,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the PatchSettings class.
         /// </summary>
         /// <param name="patchMode">Specifies the mode of VM Guest Patching to
-        /// IaaS virtual machine.&lt;br /&gt;&lt;br /&gt; Possible values
-        /// are:&lt;br /&gt;&lt;br /&gt; **Manual** - You  control the
-        /// application of patches to a virtual machine. You do this by
-        /// applying patches manually inside the VM. In this mode, automatic
-        /// updates are disabled; the property
+        /// IaaS virtual machine or virtual machines associated to virtual
+        /// machine scale set with OrchestrationMode as Flexible.&lt;br
+        /// /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt;
+        /// **Manual** - You  control the application of patches to a virtual
+        /// machine. You do this by applying patches manually inside the VM. In
+        /// this mode, automatic updates are disabled; the property
         /// WindowsConfiguration.enableAutomaticUpdates must be false&lt;br
         /// /&gt;&lt;br /&gt; **AutomaticByOS** - The virtual machine will
         /// automatically be updated by the OS. The property
@@ -62,11 +63,13 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the mode of VM Guest Patching to IaaS
-        /// virtual machine.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; Possible
-        /// values are:&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; **Manual** -
-        /// You  control the application of patches to a virtual machine. You
-        /// do this by applying patches manually inside the VM. In this mode,
-        /// automatic updates are disabled; the property
+        /// virtual machine or virtual machines associated to virtual machine
+        /// scale set with OrchestrationMode as Flexible.&amp;lt;br
+        /// /&amp;gt;&amp;lt;br /&amp;gt; Possible values are:&amp;lt;br
+        /// /&amp;gt;&amp;lt;br /&amp;gt; **Manual** - You  control the
+        /// application of patches to a virtual machine. You do this by
+        /// applying patches manually inside the VM. In this mode, automatic
+        /// updates are disabled; the property
         /// WindowsConfiguration.enableAutomaticUpdates must be false&amp;lt;br
         /// /&amp;gt;&amp;lt;br /&amp;gt; **AutomaticByOS** - The virtual
         /// machine will automatically be updated by the OS. The property
