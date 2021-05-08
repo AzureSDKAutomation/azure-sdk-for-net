@@ -76,9 +76,7 @@ namespace Microsoft.Azure.Management.IotHub
             /// Create or update the metadata of an Iot hub. The usual pattern to modify a
             /// property is to retrieve the IoT hub metadata and security metadata, and
             /// then combine them with the modified values in a new body to update the IoT
-            /// hub. If certain properties are missing in the JSON, updating IoT Hub may
-            /// cause these values to fallback to default, which may lead to unexpected
-            /// behavior.
+            /// hub.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -108,9 +106,7 @@ namespace Microsoft.Azure.Management.IotHub
             /// Create or update the metadata of an Iot hub. The usual pattern to modify a
             /// property is to retrieve the IoT hub metadata and security metadata, and
             /// then combine them with the modified values in a new body to update the IoT
-            /// hub. If certain properties are missing in the JSON, updating IoT Hub may
-            /// cause these values to fallback to default, which may lead to unexpected
-            /// behavior.
+            /// hub.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -544,9 +540,11 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='name'>
             /// The name of the consumer group to add.
             /// </param>
-            public static EventHubConsumerGroupInfo CreateEventHubConsumerGroup(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name)
+            /// <param name='properties'>
+            /// </param>
+            public static EventHubConsumerGroupInfo CreateEventHubConsumerGroup(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name, EventHubConsumerGroupName properties = default(EventHubConsumerGroupName))
             {
-                return operations.CreateEventHubConsumerGroupAsync(resourceGroupName, resourceName, eventHubEndpointName, name).GetAwaiter().GetResult();
+                return operations.CreateEventHubConsumerGroupAsync(resourceGroupName, resourceName, eventHubEndpointName, name, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -570,12 +568,14 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='name'>
             /// The name of the consumer group to add.
             /// </param>
+            /// <param name='properties'>
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EventHubConsumerGroupInfo> CreateEventHubConsumerGroupAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EventHubConsumerGroupInfo> CreateEventHubConsumerGroupAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name, EventHubConsumerGroupName properties = default(EventHubConsumerGroupName), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateEventHubConsumerGroupWithHttpMessagesAsync(resourceGroupName, resourceName, eventHubEndpointName, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateEventHubConsumerGroupWithHttpMessagesAsync(resourceGroupName, resourceName, eventHubEndpointName, name, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1209,9 +1209,7 @@ namespace Microsoft.Azure.Management.IotHub
             /// Create or update the metadata of an Iot hub. The usual pattern to modify a
             /// property is to retrieve the IoT hub metadata and security metadata, and
             /// then combine them with the modified values in a new body to update the IoT
-            /// hub. If certain properties are missing in the JSON, updating IoT Hub may
-            /// cause these values to fallback to default, which may lead to unexpected
-            /// behavior.
+            /// hub.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1241,9 +1239,7 @@ namespace Microsoft.Azure.Management.IotHub
             /// Create or update the metadata of an Iot hub. The usual pattern to modify a
             /// property is to retrieve the IoT hub metadata and security metadata, and
             /// then combine them with the modified values in a new body to update the IoT
-            /// hub. If certain properties are missing in the JSON, updating IoT Hub may
-            /// cause these values to fallback to default, which may lead to unexpected
-            /// behavior.
+            /// hub.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
