@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Confluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Confluent Agreements Resource.
+    /// Agreement Terms definition
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class ConfluentAgreementResource : IResource
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.Confluent.Models
         /// <summary>
         /// Initializes a new instance of the ConfluentAgreementResource class.
         /// </summary>
-        /// <param name="id">ARM id of the resource.</param>
-        /// <param name="name">Name of the agreement.</param>
-        /// <param name="type">The type of the resource.</param>
+        /// <param name="id">The ARM id of the resource.</param>
+        /// <param name="name">The name of the agreement.</param>
+        /// <param name="type">The type of the agreement.</param>
         /// <param name="publisher">Publisher identifier string.</param>
         /// <param name="product">Product identifier string.</param>
         /// <param name="plan">Plan identifier string.</param>
@@ -70,19 +70,19 @@ namespace Microsoft.Azure.Management.Confluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets ARM id of the resource.
+        /// Gets the ARM id of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets name of the agreement.
+        /// Gets the name of the agreement.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the type of the resource.
+        /// Gets the type of the agreement.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
