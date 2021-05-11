@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.NetApp
     using System.Threading.Tasks;
 
     /// <summary>
-    /// VolumeBackupStatusOperations operations.
+    /// VolumeRestoreStatusOperations operations.
     /// </summary>
-    internal partial class VolumeBackupStatusOperations : IServiceOperations<AzureNetAppFilesManagementClient>, IVolumeBackupStatusOperations
+    internal partial class VolumeRestoreStatusOperations : IServiceOperations<AzureNetAppFilesManagementClient>, IVolumeRestoreStatusOperations
     {
         /// <summary>
-        /// Initializes a new instance of the VolumeBackupStatusOperations class.
+        /// Initializes a new instance of the VolumeRestoreStatusOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal VolumeBackupStatusOperations(AzureNetAppFilesManagementClient client)
+        internal VolumeRestoreStatusOperations(AzureNetAppFilesManagementClient client)
         {
             if (client == null)
             {
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Management.NetApp
         public AzureNetAppFilesManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get volume's backup status
+        /// Get volume's restore status
         /// </summary>
         /// <remarks>
-        /// Get the status of the backup for a volume
+        /// Get the status of the restore for a volume
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BackupStatus>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<RestoreStatus>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.NetApp
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/backupStatus").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/restoreStatus").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.NetApp
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<BackupStatus>();
+            var _result = new AzureOperationResponse<RestoreStatus>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.NetApp
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<BackupStatus>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<RestoreStatus>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

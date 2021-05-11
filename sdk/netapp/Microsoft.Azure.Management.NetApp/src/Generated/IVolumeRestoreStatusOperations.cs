@@ -19,15 +19,15 @@ namespace Microsoft.Azure.Management.NetApp
     using System.Threading.Tasks;
 
     /// <summary>
-    /// VolumeBackupStatusOperations operations.
+    /// VolumeRestoreStatusOperations operations.
     /// </summary>
-    public partial interface IVolumeBackupStatusOperations
+    public partial interface IVolumeRestoreStatusOperations
     {
         /// <summary>
-        /// Get volume's backup status
+        /// Get volume's restore status
         /// </summary>
         /// <remarks>
-        /// Get the status of the backup for a volume
+        /// Get the status of the restore for a volume
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -56,6 +56,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BackupStatus>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RestoreStatus>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -107,19 +107,19 @@ namespace Microsoft.Azure.Management.NetApp
         ISnapshotPoliciesOperations SnapshotPolicies { get; }
 
         /// <summary>
-        /// Gets the IVolumeBackupStatusOperations.
+        /// Gets the IBackupsOperations.
         /// </summary>
-        IVolumeBackupStatusOperations VolumeBackupStatus { get; }
+        IBackupsOperations Backups { get; }
+
+        /// <summary>
+        /// Gets the IVolumeRestoreStatusOperations.
+        /// </summary>
+        IVolumeRestoreStatusOperations VolumeRestoreStatus { get; }
 
         /// <summary>
         /// Gets the IAccountBackupsOperations.
         /// </summary>
         IAccountBackupsOperations AccountBackups { get; }
-
-        /// <summary>
-        /// Gets the IBackupsOperations.
-        /// </summary>
-        IBackupsOperations Backups { get; }
 
         /// <summary>
         /// Gets the IBackupPoliciesOperations.
