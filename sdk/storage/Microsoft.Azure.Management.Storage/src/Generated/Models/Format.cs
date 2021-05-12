@@ -12,14 +12,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for State.
+    /// Defines values for Format.
     /// </summary>
-    public static class State
+    public static class Format
     {
-        public const string Provisioning = "Provisioning";
-        public const string Deprovisioning = "Deprovisioning";
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string NetworkSourceDeleted = "NetworkSourceDeleted";
+        public const string Csv = "Csv";
+        public const string Parquet = "Parquet";
     }
 }

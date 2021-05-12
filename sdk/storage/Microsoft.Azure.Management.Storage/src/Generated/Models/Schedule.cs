@@ -12,14 +12,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for State.
+    /// Defines values for Schedule.
     /// </summary>
-    public static class State
+    public static class Schedule
     {
-        public const string Provisioning = "Provisioning";
-        public const string Deprovisioning = "Deprovisioning";
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string NetworkSourceDeleted = "NetworkSourceDeleted";
+        public const string Daily = "Daily";
+        public const string Weekly = "Weekly";
     }
 }
