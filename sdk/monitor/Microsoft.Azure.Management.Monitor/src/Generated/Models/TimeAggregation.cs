@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Management.Monitor.Models
 {
 
     /// <summary>
-    /// Defines values for ConditionOperator.
+    /// Defines values for TimeAggregation.
     /// </summary>
-    public static class ConditionOperator
+    public static class TimeAggregation
     {
-        public const string Equals = "Equals";
-        public const string GreaterThan = "GreaterThan";
-        public const string GreaterThanOrEqual = "GreaterThanOrEqual";
-        public const string LessThan = "LessThan";
-        public const string LessThanOrEqual = "LessThanOrEqual";
+        public const string Count = "Count";
+        public const string Average = "Average";
+        public const string Minimum = "Minimum";
+        public const string Maximum = "Maximum";
+        public const string Total = "Total";
     }
 }

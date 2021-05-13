@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Models
     using System.Linq;
 
     /// <summary>
-    /// Specifies the criteria for converting log to metric.
+    /// Dimension splitting and filtering definition
     /// </summary>
     public partial class Dimension
     {
@@ -33,19 +33,15 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// Initializes a new instance of the Dimension class.
         /// </summary>
         /// <param name="name">Name of the dimension</param>
+        /// <param name="operatorProperty">Operator for dimension values.
+        /// Possible values include: 'Include', 'Exclude'</param>
         /// <param name="values">List of dimension values</param>
-        public Dimension(string name, IList<string> values)
+        public Dimension(string name, string operatorProperty, IList<string> values)
         {
             Name = name;
+            OperatorProperty = operatorProperty;
             Values = values;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for Dimension class.
-        /// </summary>
-        static Dimension()
-        {
-            OperatorProperty = "Include";
         }
 
         /// <summary>
@@ -60,16 +56,17 @@ namespace Microsoft.Azure.Management.Monitor.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets operator for dimension values. Possible values
+        /// include: 'Include', 'Exclude'
+        /// </summary>
+        [JsonProperty(PropertyName = "operator")]
+        public string OperatorProperty { get; set; }
+
+        /// <summary>
         /// Gets or sets list of dimension values
         /// </summary>
         [JsonProperty(PropertyName = "values")]
         public IList<string> Values { get; set; }
-
-        /// <summary>
-        /// Operator for dimension values
-        /// </summary>
-        [JsonProperty(PropertyName = "operator")]
-        public static string OperatorProperty { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -82,6 +79,10 @@ namespace Microsoft.Azure.Management.Monitor.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (OperatorProperty == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "OperatorProperty");
             }
             if (Values == null)
             {
