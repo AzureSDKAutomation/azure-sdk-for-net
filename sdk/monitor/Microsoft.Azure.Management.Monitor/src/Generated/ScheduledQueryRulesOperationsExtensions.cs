@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Monitor
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -25,76 +24,92 @@ namespace Microsoft.Azure.Management.Monitor
     public static partial class ScheduledQueryRulesOperationsExtensions
     {
             /// <summary>
-            /// Creates or updates an log search rule.
+            /// Retrieve a scheduled query rule definitions in a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters of the rule to create or update.
-            /// </param>
-            public static LogSearchRuleResource CreateOrUpdate(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, LogSearchRuleResource parameters)
+            public static IEnumerable<ScheduledQueryRuleResource> ListBySubscription(this IScheduledQueryRulesOperations operations)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, ruleName, parameters).GetAwaiter().GetResult();
+                return operations.ListBySubscriptionAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates or updates an log search rule.
+            /// Retrieve a scheduled query rule definitions in a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters of the rule to create or update.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogSearchRuleResource> CreateOrUpdateAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, LogSearchRuleResource parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<ScheduledQueryRuleResource>> ListBySubscriptionAsync(this IScheduledQueryRulesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ruleName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets an Log Search rule
+            /// Retrieve scheduled query rule definitions in a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            public static IEnumerable<ScheduledQueryRuleResource> ListByResourceGroup(this IScheduledQueryRulesOperations operations, string resourceGroupName)
+            {
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieve scheduled query rule definitions in a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<ScheduledQueryRuleResource>> ListByResourceGroupAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Retrieve an scheduled query rule definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='ruleName'>
             /// The name of the rule.
             /// </param>
-            public static LogSearchRuleResource Get(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName)
+            public static ScheduledQueryRuleResource Get(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName)
             {
                 return operations.GetAsync(resourceGroupName, ruleName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets an Log Search rule
+            /// Retrieve an scheduled query rule definition.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='ruleName'>
             /// The name of the rule.
@@ -102,7 +117,7 @@ namespace Microsoft.Azure.Management.Monitor
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogSearchRuleResource> GetAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ScheduledQueryRuleResource> GetAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, ruleName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -111,13 +126,59 @@ namespace Microsoft.Azure.Management.Monitor
             }
 
             /// <summary>
-            /// Update log search Rule.
+            /// Creates or updates a scheduled query rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='ruleName'>
+            /// The name of the rule.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters of the rule to create or update.
+            /// </param>
+            public static ScheduledQueryRuleResource CreateOrUpdate(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, ScheduledQueryRuleResource parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, ruleName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a scheduled query rule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='ruleName'>
+            /// The name of the rule.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters of the rule to create or update.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ScheduledQueryRuleResource> CreateOrUpdateAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, ScheduledQueryRuleResource parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ruleName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update a scheduled query rule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='ruleName'>
             /// The name of the rule.
@@ -125,19 +186,19 @@ namespace Microsoft.Azure.Management.Monitor
             /// <param name='parameters'>
             /// The parameters of the rule to update.
             /// </param>
-            public static LogSearchRuleResource Update(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, LogSearchRuleResourcePatch parameters)
+            public static ScheduledQueryRuleResource Update(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, ScheduledQueryRuleResourcePatch parameters)
             {
                 return operations.UpdateAsync(resourceGroupName, ruleName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update log search Rule.
+            /// Update a scheduled query rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='ruleName'>
             /// The name of the rule.
@@ -148,7 +209,7 @@ namespace Microsoft.Azure.Management.Monitor
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LogSearchRuleResource> UpdateAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, LogSearchRuleResourcePatch parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ScheduledQueryRuleResource> UpdateAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, ScheduledQueryRuleResourcePatch parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, ruleName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -157,13 +218,13 @@ namespace Microsoft.Azure.Management.Monitor
             }
 
             /// <summary>
-            /// Deletes a Log Search rule
+            /// Deletes a scheduled query rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='ruleName'>
             /// The name of the rule.
@@ -174,13 +235,13 @@ namespace Microsoft.Azure.Management.Monitor
             }
 
             /// <summary>
-            /// Deletes a Log Search rule
+            /// Deletes a scheduled query rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='ruleName'>
             /// The name of the rule.
@@ -191,80 +252,6 @@ namespace Microsoft.Azure.Management.Monitor
             public static async Task DeleteAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// List the Log Search rules within a subscription group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            public static IEnumerable<LogSearchRuleResource> ListBySubscription(this IScheduledQueryRulesOperations operations, ODataQuery<LogSearchRuleResource> odataQuery = default(ODataQuery<LogSearchRuleResource>))
-            {
-                return operations.ListBySubscriptionAsync(odataQuery).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List the Log Search rules within a subscription group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<LogSearchRuleResource>> ListBySubscriptionAsync(this IScheduledQueryRulesOperations operations, ODataQuery<LogSearchRuleResource> odataQuery = default(ODataQuery<LogSearchRuleResource>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List the Log Search rules within a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            public static IEnumerable<LogSearchRuleResource> ListByResourceGroup(this IScheduledQueryRulesOperations operations, string resourceGroupName, ODataQuery<LogSearchRuleResource> odataQuery = default(ODataQuery<LogSearchRuleResource>))
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName, odataQuery).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List the Log Search rules within a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<LogSearchRuleResource>> ListByResourceGroupAsync(this IScheduledQueryRulesOperations operations, string resourceGroupName, ODataQuery<LogSearchRuleResource> odataQuery = default(ODataQuery<LogSearchRuleResource>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
     }

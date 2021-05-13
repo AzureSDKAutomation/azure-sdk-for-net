@@ -10,10 +10,13 @@
 
 namespace Microsoft.Azure.Management.Monitor.Models
 {
+    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Action descriptor.
+    /// Actions to invoke when the alert fires.
     /// </summary>
     public partial class Action
     {
@@ -25,11 +28,37 @@ namespace Microsoft.Azure.Management.Monitor.Models
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Action class.
+        /// </summary>
+        /// <param name="actionGroupId">Action Group resource Id to invoke when
+        /// the alert fires.</param>
+        /// <param name="webHookProperties">The properties of a webhook
+        /// object.</param>
+        public Action(string actionGroupId = default(string), IDictionary<string, string> webHookProperties = default(IDictionary<string, string>))
+        {
+            ActionGroupId = actionGroupId;
+            WebHookProperties = webHookProperties;
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets action Group resource Id to invoke when the alert
+        /// fires.
+        /// </summary>
+        [JsonProperty(PropertyName = "actionGroupId")]
+        public string ActionGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the properties of a webhook object.
+        /// </summary>
+        [JsonProperty(PropertyName = "webHookProperties")]
+        public IDictionary<string, string> WebHookProperties { get; set; }
 
     }
 }

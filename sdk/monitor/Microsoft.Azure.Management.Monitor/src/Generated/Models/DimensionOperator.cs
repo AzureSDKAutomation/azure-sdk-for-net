@@ -12,14 +12,11 @@ namespace Microsoft.Azure.Management.Monitor.Models
 {
 
     /// <summary>
-    /// Defines values for ConditionOperator.
+    /// Defines values for DimensionOperator.
     /// </summary>
-    public static class ConditionOperator
+    public static class DimensionOperator
     {
-        public const string Equals = "Equals";
-        public const string GreaterThan = "GreaterThan";
-        public const string GreaterThanOrEqual = "GreaterThanOrEqual";
-        public const string LessThan = "LessThan";
-        public const string LessThanOrEqual = "LessThanOrEqual";
+        public const string Include = "Include";
+        public const string Exclude = "Exclude";
     }
 }
