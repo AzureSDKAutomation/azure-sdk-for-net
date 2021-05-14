@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Management.ManagedServices
         IRegistrationAssignmentsOperations RegistrationAssignments { get; }
 
         /// <summary>
+        /// Gets the IMarketplaceRegistrationDefinitionsOperations.
+        /// </summary>
+        IMarketplaceRegistrationDefinitionsOperations MarketplaceRegistrationDefinitions { get; }
+
+        /// <summary>
+        /// Gets the IMarketplaceRegistrationDefinitionsWithoutScopeOperations.
+        /// </summary>
+        IMarketplaceRegistrationDefinitionsWithoutScopeOperations MarketplaceRegistrationDefinitionsWithoutScope { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
