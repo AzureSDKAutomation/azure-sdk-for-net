@@ -1325,7 +1325,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>> ListKeysWithHttpMessagesAsync(string provisioningServiceName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRule>>> ListKeysWithHttpMessagesAsync(string provisioningServiceName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (provisioningServiceName == null)
             {
@@ -1454,7 +1454,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>();
+            var _result = new AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRule>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedAccessSignatureAuthorizationRule>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>> ListKeysForKeyNameWithHttpMessagesAsync(string provisioningServiceName, string keyName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SharedAccessSignatureAuthorizationRule>> ListKeysForKeyNameWithHttpMessagesAsync(string provisioningServiceName, string keyName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (provisioningServiceName == null)
             {
@@ -1657,7 +1657,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>();
+            var _result = new AzureOperationResponse<SharedAccessSignatureAuthorizationRule>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1670,7 +1670,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SharedAccessSignatureAuthorizationRule>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -4162,7 +4162,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>> ListKeysNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRule>>> ListKeysNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -4271,7 +4271,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>();
+            var _result = new AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRule>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -4284,7 +4284,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedAccessSignatureAuthorizationRule>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

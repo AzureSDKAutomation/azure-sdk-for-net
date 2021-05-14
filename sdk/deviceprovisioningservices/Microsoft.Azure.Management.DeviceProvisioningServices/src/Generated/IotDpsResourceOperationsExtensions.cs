@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='resourceGroupName'>
             /// resource group name
             /// </param>
-            public static IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> ListKeys(this IIotDpsResourceOperations operations, string provisioningServiceName, string resourceGroupName)
+            public static IPage<SharedAccessSignatureAuthorizationRule> ListKeys(this IIotDpsResourceOperations operations, string provisioningServiceName, string resourceGroupName)
             {
                 return operations.ListKeysAsync(provisioningServiceName, resourceGroupName).GetAwaiter().GetResult();
             }
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>> ListKeysAsync(this IIotDpsResourceOperations operations, string provisioningServiceName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SharedAccessSignatureAuthorizationRule>> ListKeysAsync(this IIotDpsResourceOperations operations, string provisioningServiceName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListKeysWithHttpMessagesAsync(provisioningServiceName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the provisioning service.
             /// </param>
-            public static SharedAccessSignatureAuthorizationRuleAccessRightsDescription ListKeysForKeyName(this IIotDpsResourceOperations operations, string provisioningServiceName, string keyName, string resourceGroupName)
+            public static SharedAccessSignatureAuthorizationRule ListKeysForKeyName(this IIotDpsResourceOperations operations, string provisioningServiceName, string keyName, string resourceGroupName)
             {
                 return operations.ListKeysForKeyNameAsync(provisioningServiceName, keyName, resourceGroupName).GetAwaiter().GetResult();
             }
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> ListKeysForKeyNameAsync(this IIotDpsResourceOperations operations, string provisioningServiceName, string keyName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SharedAccessSignatureAuthorizationRule> ListKeysForKeyNameAsync(this IIotDpsResourceOperations operations, string provisioningServiceName, string keyName, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListKeysForKeyNameWithHttpMessagesAsync(provisioningServiceName, keyName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1237,7 +1237,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> ListKeysNext(this IIotDpsResourceOperations operations, string nextPageLink)
+            public static IPage<SharedAccessSignatureAuthorizationRule> ListKeysNext(this IIotDpsResourceOperations operations, string nextPageLink)
             {
                 return operations.ListKeysNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -1257,7 +1257,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>> ListKeysNextAsync(this IIotDpsResourceOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SharedAccessSignatureAuthorizationRule>> ListKeysNextAsync(this IIotDpsResourceOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListKeysNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
