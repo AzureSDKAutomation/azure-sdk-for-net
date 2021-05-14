@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
         /// service.</param>
         /// <param name="authorizationPolicies">List of authorization keys for
         /// a provisioning service.</param>
-        public IotDpsPropertiesDescription(string state = default(string), string publicNetworkAccess = default(string), IList<IpFilterRule> ipFilterRules = default(IList<IpFilterRule>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string provisioningState = default(string), IList<IotHubDefinitionDescription> iotHubs = default(IList<IotHubDefinitionDescription>), string allocationPolicy = default(string), string serviceOperationsHostName = default(string), string deviceProvisioningHostName = default(string), string idScope = default(string), IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> authorizationPolicies = default(IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>))
+        public IotDpsPropertiesDescription(string state = default(string), string publicNetworkAccess = default(string), IList<IpFilterRule> ipFilterRules = default(IList<IpFilterRule>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string provisioningState = default(string), IList<IotHubDefinitionDescription> iotHubs = default(IList<IotHubDefinitionDescription>), string allocationPolicy = default(string), string serviceOperationsHostName = default(string), string deviceProvisioningHostName = default(string), string idScope = default(string), IList<SharedAccessSignatureAuthorizationRule> authorizationPolicies = default(IList<SharedAccessSignatureAuthorizationRule>))
         {
             State = state;
             PublicNetworkAccess = publicNetworkAccess;
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
         /// Gets or sets list of authorization keys for a provisioning service.
         /// </summary>
         [JsonProperty(PropertyName = "authorizationPolicies")]
-        public IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> AuthorizationPolicies { get; set; }
+        public IList<SharedAccessSignatureAuthorizationRule> AuthorizationPolicies { get; set; }
 
     }
 }

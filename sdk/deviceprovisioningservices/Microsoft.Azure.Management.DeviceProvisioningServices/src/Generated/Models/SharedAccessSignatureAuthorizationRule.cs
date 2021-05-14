@@ -16,22 +16,20 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
     /// <summary>
     /// Description of the shared access key.
     /// </summary>
-    public partial class SharedAccessSignatureAuthorizationRuleAccessRightsDescription
+    public partial class SharedAccessSignatureAuthorizationRule
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// SharedAccessSignatureAuthorizationRuleAccessRightsDescription
-        /// class.
+        /// SharedAccessSignatureAuthorizationRule class.
         /// </summary>
-        public SharedAccessSignatureAuthorizationRuleAccessRightsDescription()
+        public SharedAccessSignatureAuthorizationRule()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// SharedAccessSignatureAuthorizationRuleAccessRightsDescription
-        /// class.
+        /// SharedAccessSignatureAuthorizationRule class.
         /// </summary>
         /// <param name="keyName">Name of the key.</param>
         /// <param name="rights">Rights that this key has. Possible values
@@ -40,7 +38,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices.Models
         /// 'RegistrationStatusWrite'</param>
         /// <param name="primaryKey">Primary SAS key value.</param>
         /// <param name="secondaryKey">Secondary SAS key value.</param>
-        public SharedAccessSignatureAuthorizationRuleAccessRightsDescription(string keyName, string rights, string primaryKey = default(string), string secondaryKey = default(string))
+        public SharedAccessSignatureAuthorizationRule(string keyName, string rights, string primaryKey = default(string), string secondaryKey = default(string))
         {
             KeyName = keyName;
             PrimaryKey = primaryKey;

@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>> ListKeysWithHttpMessagesAsync(string provisioningServiceName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRule>>> ListKeysWithHttpMessagesAsync(string provisioningServiceName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a shared access policy by name from a provisioning service.
         /// </summary>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>> ListKeysForKeyNameWithHttpMessagesAsync(string provisioningServiceName, string keyName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SharedAccessSignatureAuthorizationRule>> ListKeysForKeyNameWithHttpMessagesAsync(string provisioningServiceName, string keyName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List private link resources
         /// </summary>
@@ -785,6 +785,6 @@ namespace Microsoft.Azure.Management.DeviceProvisioningServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>> ListKeysNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SharedAccessSignatureAuthorizationRule>>> ListKeysNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
