@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity.Models
         /// </summary>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="tenantId">The id of the tenant which the identity
         /// belongs to.</param>
@@ -49,12 +49,14 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity.Models
         /// associated with the created identity.</param>
         /// <param name="clientId">The id of the app associated with the
         /// identity. This is a random generated UUID by MSI.</param>
-        public Identity(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.Guid? tenantId = default(System.Guid?), System.Guid? principalId = default(System.Guid?), System.Guid? clientId = default(System.Guid?))
+        /// <param name="testNewProperty">for test only</param>
+        public Identity(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.Guid? tenantId = default(System.Guid?), System.Guid? principalId = default(System.Guid?), System.Guid? clientId = default(System.Guid?), string testNewProperty = default(string))
             : base(location, id, name, type, tags)
         {
             TenantId = tenantId;
             PrincipalId = principalId;
             ClientId = clientId;
+            TestNewProperty = testNewProperty;
             CustomInit();
         }
 
@@ -82,6 +84,12 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.clientId")]
         public System.Guid? ClientId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets for test only
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.testNewProperty")]
+        public string TestNewProperty { get; set; }
 
         /// <summary>
         /// Validate the object.
