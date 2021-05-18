@@ -16,49 +16,55 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for IdentityType.
+    /// Defines values for ResourceIdentityType.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum IdentityType
+    public enum ResourceIdentityType
     {
         [EnumMember(Value = "None")]
         None,
         [EnumMember(Value = "SystemAssigned")]
         SystemAssigned,
         [EnumMember(Value = "UserAssigned")]
-        UserAssigned
+        UserAssigned,
+        [EnumMember(Value = "SystemAssigned, UserAssigned")]
+        SystemAssignedUserAssigned
     }
-    internal static class IdentityTypeEnumExtension
+    internal static class ResourceIdentityTypeEnumExtension
     {
-        internal static string ToSerializedValue(this IdentityType? value)
+        internal static string ToSerializedValue(this ResourceIdentityType? value)
         {
-            return value == null ? null : ((IdentityType)value).ToSerializedValue();
+            return value == null ? null : ((ResourceIdentityType)value).ToSerializedValue();
         }
 
-        internal static string ToSerializedValue(this IdentityType value)
+        internal static string ToSerializedValue(this ResourceIdentityType value)
         {
             switch( value )
             {
-                case IdentityType.None:
+                case ResourceIdentityType.None:
                     return "None";
-                case IdentityType.SystemAssigned:
+                case ResourceIdentityType.SystemAssigned:
                     return "SystemAssigned";
-                case IdentityType.UserAssigned:
+                case ResourceIdentityType.UserAssigned:
                     return "UserAssigned";
+                case ResourceIdentityType.SystemAssignedUserAssigned:
+                    return "SystemAssigned, UserAssigned";
             }
             return null;
         }
 
-        internal static IdentityType? ParseIdentityType(this string value)
+        internal static ResourceIdentityType? ParseResourceIdentityType(this string value)
         {
             switch( value )
             {
                 case "None":
-                    return IdentityType.None;
+                    return ResourceIdentityType.None;
                 case "SystemAssigned":
-                    return IdentityType.SystemAssigned;
+                    return ResourceIdentityType.SystemAssigned;
                 case "UserAssigned":
-                    return IdentityType.UserAssigned;
+                    return ResourceIdentityType.UserAssigned;
+                case "SystemAssigned, UserAssigned":
+                    return ResourceIdentityType.SystemAssignedUserAssigned;
             }
             return null;
         }

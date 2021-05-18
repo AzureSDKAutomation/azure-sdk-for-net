@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// Check SKU availability result.
+    /// SKU availability.
     /// </summary>
-    public partial class CheckSkuAvailabilityResult
+    public partial class SkuAvailability
     {
         /// <summary>
-        /// Initializes a new instance of the CheckSkuAvailabilityResult class.
+        /// Initializes a new instance of the SkuAvailability class.
         /// </summary>
-        public CheckSkuAvailabilityResult()
+        public SkuAvailability()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CheckSkuAvailabilityResult class.
+        /// Initializes a new instance of the SkuAvailability class.
         /// </summary>
         /// <param name="kind">The Kind of the resource.</param>
         /// <param name="type">The Type of the resource.</param>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// not.</param>
         /// <param name="reason">Reason why the SKU is not available.</param>
         /// <param name="message">Additional error message.</param>
-        public CheckSkuAvailabilityResult(string kind = default(string), string type = default(string), string skuName = default(string), bool? skuAvailable = default(bool?), string reason = default(string), string message = default(string))
+        public SkuAvailability(string kind = default(string), string type = default(string), string skuName = default(string), bool? skuAvailable = default(bool?), string reason = default(string), string message = default(string))
         {
             Kind = kind;
             Type = type;

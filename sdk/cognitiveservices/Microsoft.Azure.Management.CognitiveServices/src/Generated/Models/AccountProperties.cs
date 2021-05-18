@@ -18,30 +18,33 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     /// <summary>
     /// Properties of Cognitive Services account.
     /// </summary>
-    public partial class CognitiveServicesAccountProperties
+    public partial class AccountProperties
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CognitiveServicesAccountProperties class.
+        /// Initializes a new instance of the AccountProperties class.
         /// </summary>
-        public CognitiveServicesAccountProperties()
+        public AccountProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CognitiveServicesAccountProperties class.
+        /// Initializes a new instance of the AccountProperties class.
         /// </summary>
         /// <param name="provisioningState">Gets the status of the cognitive
         /// services account at the time the operation was called. Possible
-        /// values include: 'Creating', 'ResolvingDNS', 'Moving', 'Deleting',
-        /// 'Succeeded', 'Failed'</param>
+        /// values include: 'Accepted', 'Creating', 'Deleting', 'Moving',
+        /// 'Failed', 'Succeeded', 'ResolvingDNS'</param>
         /// <param name="endpoint">Endpoint of the created account.</param>
-        /// <param name="internalId">The internal identifier.</param>
+        /// <param name="internalId">The internal identifier (deprecated, do
+        /// not use this property).</param>
         /// <param name="capabilities">Gets the capabilities of the cognitive
         /// services account. Each item indicates the capability of a specific
         /// feature. The values are read-only and for reference only.</param>
+        /// <param name="isMigrated">If the resource is migrated from an
+        /// existing key.</param>
+        /// <param name="migrationToken">Resource migration token.</param>
+        /// <param name="skuChangeInfo">Sku change info of account.</param>
         /// <param name="customSubDomainName">Optional subdomain name used for
         /// token-based authentication.</param>
         /// <param name="networkAcls">A collection of rules governing the
@@ -58,12 +61,17 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// 'Enabled', 'Disabled'</param>
         /// <param name="apiProperties">The api properties for special
         /// APIs.</param>
-        public CognitiveServicesAccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<SkuCapability> capabilities = default(IList<SkuCapability>), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), CognitiveServicesAccountApiProperties apiProperties = default(CognitiveServicesAccountApiProperties))
+        /// <param name="dateCreated">Gets the date of cognitive services
+        /// account creation.</param>
+        public AccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<SkuCapability> capabilities = default(IList<SkuCapability>), bool? isMigrated = default(bool?), string migrationToken = default(string), SkuChangeInfo skuChangeInfo = default(SkuChangeInfo), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), ApiProperties apiProperties = default(ApiProperties), string dateCreated = default(string), CallRateLimit callRateLimit = default(CallRateLimit), QuotaLimit quotaLimit = default(QuotaLimit), bool? restrictOutboundNetworkAccess = default(bool?), IList<string> allowedFqdnList = default(IList<string>), bool? disableLocalAuth = default(bool?), IDictionary<string, string> endpoints = default(IDictionary<string, string>), bool? restore = default(bool?))
         {
             ProvisioningState = provisioningState;
             Endpoint = endpoint;
             InternalId = internalId;
             Capabilities = capabilities;
+            IsMigrated = isMigrated;
+            MigrationToken = migrationToken;
+            SkuChangeInfo = skuChangeInfo;
             CustomSubDomainName = customSubDomainName;
             NetworkAcls = networkAcls;
             Encryption = encryption;
@@ -71,6 +79,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             PrivateEndpointConnections = privateEndpointConnections;
             PublicNetworkAccess = publicNetworkAccess;
             ApiProperties = apiProperties;
+            DateCreated = dateCreated;
+            CallRateLimit = callRateLimit;
+            QuotaLimit = quotaLimit;
+            RestrictOutboundNetworkAccess = restrictOutboundNetworkAccess;
+            AllowedFqdnList = allowedFqdnList;
+            DisableLocalAuth = disableLocalAuth;
+            Endpoints = endpoints;
+            Restore = restore;
             CustomInit();
         }
 
@@ -81,8 +97,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <summary>
         /// Gets the status of the cognitive services account at the time the
-        /// operation was called. Possible values include: 'Creating',
-        /// 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded', 'Failed'
+        /// operation was called. Possible values include: 'Accepted',
+        /// 'Creating', 'Deleting', 'Moving', 'Failed', 'Succeeded',
+        /// 'ResolvingDNS'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }
@@ -94,7 +111,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public string Endpoint { get; private set; }
 
         /// <summary>
-        /// Gets the internal identifier.
+        /// Gets the internal identifier (deprecated, do not use this
+        /// property).
         /// </summary>
         [JsonProperty(PropertyName = "internalId")]
         public string InternalId { get; private set; }
@@ -106,6 +124,24 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "capabilities")]
         public IList<SkuCapability> Capabilities { get; private set; }
+
+        /// <summary>
+        /// Gets if the resource is migrated from an existing key.
+        /// </summary>
+        [JsonProperty(PropertyName = "isMigrated")]
+        public bool? IsMigrated { get; private set; }
+
+        /// <summary>
+        /// Gets or sets resource migration token.
+        /// </summary>
+        [JsonProperty(PropertyName = "migrationToken")]
+        public string MigrationToken { get; set; }
+
+        /// <summary>
+        /// Gets sku change info of account.
+        /// </summary>
+        [JsonProperty(PropertyName = "skuChangeInfo")]
+        public SkuChangeInfo SkuChangeInfo { get; private set; }
 
         /// <summary>
         /// Gets or sets optional subdomain name used for token-based
@@ -134,11 +170,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public IList<UserOwnedStorage> UserOwnedStorage { get; set; }
 
         /// <summary>
-        /// Gets or sets the private endpoint connection associated with the
-        /// Cognitive Services account.
+        /// Gets the private endpoint connection associated with the Cognitive
+        /// Services account.
         /// </summary>
         [JsonProperty(PropertyName = "privateEndpointConnections")]
-        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
         /// Gets or sets whether or not public endpoint access is allowed for
@@ -152,7 +188,48 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Gets or sets the api properties for special APIs.
         /// </summary>
         [JsonProperty(PropertyName = "apiProperties")]
-        public CognitiveServicesAccountApiProperties ApiProperties { get; set; }
+        public ApiProperties ApiProperties { get; set; }
+
+        /// <summary>
+        /// Gets the date of cognitive services account creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "dateCreated")]
+        public string DateCreated { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "callRateLimit")]
+        public CallRateLimit CallRateLimit { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "quotaLimit")]
+        public QuotaLimit QuotaLimit { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "restrictOutboundNetworkAccess")]
+        public bool? RestrictOutboundNetworkAccess { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "allowedFqdnList")]
+        public IList<string> AllowedFqdnList { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "disableLocalAuth")]
+        public bool? DisableLocalAuth { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "endpoints")]
+        public IDictionary<string, string> Endpoints { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "restore")]
+        public bool? Restore { get; set; }
 
         /// <summary>
         /// Validate the object.

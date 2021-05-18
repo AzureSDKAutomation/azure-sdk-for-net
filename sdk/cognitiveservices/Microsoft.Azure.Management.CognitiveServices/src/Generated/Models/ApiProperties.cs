@@ -12,28 +12,34 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The api properties for special APIs.
     /// </summary>
-    public partial class CognitiveServicesAccountApiProperties
+    public partial class ApiProperties
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CognitiveServicesAccountApiProperties class.
+        /// Initializes a new instance of the ApiProperties class.
         /// </summary>
-        public CognitiveServicesAccountApiProperties()
+        public ApiProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CognitiveServicesAccountApiProperties class.
+        /// Initializes a new instance of the ApiProperties class.
         /// </summary>
+        /// <param name="additionalProperties">Unmatched properties from the
+        /// message are deserialized this collection</param>
         /// <param name="qnaRuntimeEndpoint">(QnAMaker Only) The runtime
         /// endpoint of QnAMaker.</param>
+        /// <param name="qnaAzureSearchEndpointKey">(QnAMaker Only) The Azure
+        /// Search endpoint key of QnAMaker.</param>
+        /// <param name="qnaAzureSearchEndpointId">(QnAMaker Only) The Azure
+        /// Search endpoint id of QnAMaker.</param>
         /// <param name="statisticsEnabled">(Bing Search Only) The flag to
         /// enable statistics of Bing Search.</param>
         /// <param name="eventHubConnectionString">(Personalization Only) The
@@ -48,9 +54,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Metrics Advisor.</param>
         /// <param name="websiteName">(Metrics Advisor Only) The website name
         /// of Metrics Advisor.</param>
-        public CognitiveServicesAccountApiProperties(string qnaRuntimeEndpoint = default(string), bool? statisticsEnabled = default(bool?), string eventHubConnectionString = default(string), string storageAccountConnectionString = default(string), string aadClientId = default(string), string aadTenantId = default(string), string superUser = default(string), string websiteName = default(string))
+        public ApiProperties(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string qnaRuntimeEndpoint = default(string), string qnaAzureSearchEndpointKey = default(string), string qnaAzureSearchEndpointId = default(string), bool? statisticsEnabled = default(bool?), string eventHubConnectionString = default(string), string storageAccountConnectionString = default(string), string aadClientId = default(string), string aadTenantId = default(string), string superUser = default(string), string websiteName = default(string))
         {
+            AdditionalProperties = additionalProperties;
             QnaRuntimeEndpoint = qnaRuntimeEndpoint;
+            QnaAzureSearchEndpointKey = qnaAzureSearchEndpointKey;
+            QnaAzureSearchEndpointId = qnaAzureSearchEndpointId;
             StatisticsEnabled = statisticsEnabled;
             EventHubConnectionString = eventHubConnectionString;
             StorageAccountConnectionString = storageAccountConnectionString;
@@ -67,10 +76,31 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets unmatched properties from the message are deserialized
+        /// this collection
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Gets or sets (QnAMaker Only) The runtime endpoint of QnAMaker.
         /// </summary>
         [JsonProperty(PropertyName = "qnaRuntimeEndpoint")]
         public string QnaRuntimeEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets (QnAMaker Only) The Azure Search endpoint key of
+        /// QnAMaker.
+        /// </summary>
+        [JsonProperty(PropertyName = "qnaAzureSearchEndpointKey")]
+        public string QnaAzureSearchEndpointKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets (QnAMaker Only) The Azure Search endpoint id of
+        /// QnAMaker.
+        /// </summary>
+        [JsonProperty(PropertyName = "qnaAzureSearchEndpointId")]
+        public string QnaAzureSearchEndpointId { get; set; }
 
         /// <summary>
         /// Gets or sets (Bing Search Only) The flag to enable statistics of

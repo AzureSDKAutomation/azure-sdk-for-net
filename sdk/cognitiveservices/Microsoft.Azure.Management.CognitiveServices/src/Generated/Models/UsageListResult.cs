@@ -11,30 +11,31 @@
 namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The user owned storage for Cognitive Services account.
+    /// The response to a list usage request.
     /// </summary>
-    public partial class UserOwnedStorage
+    public partial class UsageListResult
     {
         /// <summary>
-        /// Initializes a new instance of the UserOwnedStorage class.
+        /// Initializes a new instance of the UsageListResult class.
         /// </summary>
-        public UserOwnedStorage()
+        public UsageListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserOwnedStorage class.
+        /// Initializes a new instance of the UsageListResult class.
         /// </summary>
-        /// <param name="resourceId">Full resource id of a Microsoft.Storage
-        /// resource.</param>
-        public UserOwnedStorage(string resourceId = default(string), string identityClientId = default(string))
+        /// <param name="value">The list of usages for Cognitive Service
+        /// account.</param>
+        public UsageListResult(IList<Usage> value = default(IList<Usage>))
         {
-            ResourceId = resourceId;
-            IdentityClientId = identityClientId;
+            Value = value;
             CustomInit();
         }
 
@@ -44,15 +45,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets full resource id of a Microsoft.Storage resource.
+        /// Gets or sets the list of usages for Cognitive Service account.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceId")]
-        public string ResourceId { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "identityClientId")]
-        public string IdentityClientId { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<Usage> Value { get; set; }
 
     }
 }

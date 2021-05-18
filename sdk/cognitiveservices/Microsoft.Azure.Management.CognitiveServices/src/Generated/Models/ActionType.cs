@@ -12,16 +12,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
 
     /// <summary>
-    /// Defines values for ProvisioningState.
+    /// Defines values for ActionType.
     /// </summary>
-    public static class ProvisioningState
+    public static class ActionType
     {
-        public const string Accepted = "Accepted";
-        public const string Creating = "Creating";
-        public const string Deleting = "Deleting";
-        public const string Moving = "Moving";
-        public const string Failed = "Failed";
-        public const string Succeeded = "Succeeded";
-        public const string ResolvingDNS = "ResolvingDNS";
+        public const string Internal = "Internal";
     }
 }

@@ -16,24 +16,22 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     /// <summary>
     /// Cognitive Services resource type and SKU.
     /// </summary>
-    public partial class CognitiveServicesResourceAndSku
+    public partial class AccountSku
     {
         /// <summary>
-        /// Initializes a new instance of the CognitiveServicesResourceAndSku
-        /// class.
+        /// Initializes a new instance of the AccountSku class.
         /// </summary>
-        public CognitiveServicesResourceAndSku()
+        public AccountSku()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CognitiveServicesResourceAndSku
-        /// class.
+        /// Initializes a new instance of the AccountSku class.
         /// </summary>
         /// <param name="resourceType">Resource Namespace and Type</param>
         /// <param name="sku">The SKU of Cognitive Services account.</param>
-        public CognitiveServicesResourceAndSku(string resourceType = default(string), Sku sku = default(Sku))
+        public AccountSku(string resourceType = default(string), Sku sku = default(Sku))
         {
             ResourceType = resourceType;
             Sku = sku;

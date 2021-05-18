@@ -12,16 +12,13 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
 
     /// <summary>
-    /// Defines values for ProvisioningState.
+    /// Defines values for CreatedByType.
     /// </summary>
-    public static class ProvisioningState
+    public static class CreatedByType
     {
-        public const string Accepted = "Accepted";
-        public const string Creating = "Creating";
-        public const string Deleting = "Deleting";
-        public const string Moving = "Moving";
-        public const string Failed = "Failed";
-        public const string Succeeded = "Succeeded";
-        public const string ResolvingDNS = "ResolvingDNS";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }

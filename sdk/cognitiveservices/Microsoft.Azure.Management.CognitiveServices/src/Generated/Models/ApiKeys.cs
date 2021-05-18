@@ -14,27 +14,27 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// The user owned storage for Cognitive Services account.
+    /// The access keys for the cognitive services account.
     /// </summary>
-    public partial class UserOwnedStorage
+    public partial class ApiKeys
     {
         /// <summary>
-        /// Initializes a new instance of the UserOwnedStorage class.
+        /// Initializes a new instance of the ApiKeys class.
         /// </summary>
-        public UserOwnedStorage()
+        public ApiKeys()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserOwnedStorage class.
+        /// Initializes a new instance of the ApiKeys class.
         /// </summary>
-        /// <param name="resourceId">Full resource id of a Microsoft.Storage
-        /// resource.</param>
-        public UserOwnedStorage(string resourceId = default(string), string identityClientId = default(string))
+        /// <param name="key1">Gets the value of key 1.</param>
+        /// <param name="key2">Gets the value of key 2.</param>
+        public ApiKeys(string key1 = default(string), string key2 = default(string))
         {
-            ResourceId = resourceId;
-            IdentityClientId = identityClientId;
+            Key1 = key1;
+            Key2 = key2;
             CustomInit();
         }
 
@@ -44,15 +44,16 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets full resource id of a Microsoft.Storage resource.
+        /// Gets the value of key 1.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceId")]
-        public string ResourceId { get; set; }
+        [JsonProperty(PropertyName = "key1")]
+        public string Key1 { get; set; }
 
         /// <summary>
+        /// Gets the value of key 2.
         /// </summary>
-        [JsonProperty(PropertyName = "identityClientId")]
-        public string IdentityClientId { get; set; }
+        [JsonProperty(PropertyName = "key2")]
+        public string Key2 { get; set; }
 
     }
 }

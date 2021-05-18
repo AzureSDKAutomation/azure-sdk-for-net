@@ -14,27 +14,30 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// The user owned storage for Cognitive Services account.
+    /// Error response
     /// </summary>
-    public partial class UserOwnedStorage
+    /// <remarks>
+    /// Common error response for all Azure Resource Manager APIs to return
+    /// error details for failed operations. (This also follows the OData error
+    /// response format.).
+    /// </remarks>
+    public partial class ErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the UserOwnedStorage class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public UserOwnedStorage()
+        public ErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserOwnedStorage class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="resourceId">Full resource id of a Microsoft.Storage
-        /// resource.</param>
-        public UserOwnedStorage(string resourceId = default(string), string identityClientId = default(string))
+        /// <param name="error">The error object.</param>
+        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
         {
-            ResourceId = resourceId;
-            IdentityClientId = identityClientId;
+            Error = error;
             CustomInit();
         }
 
@@ -44,15 +47,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets full resource id of a Microsoft.Storage resource.
+        /// Gets or sets the error object.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceId")]
-        public string ResourceId { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "identityClientId")]
-        public string IdentityClientId { get; set; }
+        [JsonProperty(PropertyName = "error")]
+        public ErrorDetail Error { get; set; }
 
     }
 }

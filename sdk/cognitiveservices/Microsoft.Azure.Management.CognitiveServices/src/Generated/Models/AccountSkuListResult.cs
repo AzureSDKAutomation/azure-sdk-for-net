@@ -11,28 +11,31 @@
 namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Cognitive Services error object.
+    /// The list of cognitive services accounts operation response.
     /// </summary>
-    public partial class Error
+    public partial class AccountSkuListResult
     {
         /// <summary>
-        /// Initializes a new instance of the Error class.
+        /// Initializes a new instance of the AccountSkuListResult class.
         /// </summary>
-        public Error()
+        public AccountSkuListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Error class.
+        /// Initializes a new instance of the AccountSkuListResult class.
         /// </summary>
-        /// <param name="errorProperty">The error body.</param>
-        public Error(ErrorBody errorProperty = default(ErrorBody))
+        /// <param name="value">Gets the list of Cognitive Services accounts
+        /// and their properties.</param>
+        public AccountSkuListResult(IList<AccountSku> value = default(IList<AccountSku>))
         {
-            ErrorProperty = errorProperty;
+            Value = value;
             CustomInit();
         }
 
@@ -42,23 +45,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error body.
+        /// Gets the list of Cognitive Services accounts and their properties.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorBody ErrorProperty { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<AccountSku> Value { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (ErrorProperty != null)
-            {
-                ErrorProperty.Validate();
-            }
-        }
     }
 }

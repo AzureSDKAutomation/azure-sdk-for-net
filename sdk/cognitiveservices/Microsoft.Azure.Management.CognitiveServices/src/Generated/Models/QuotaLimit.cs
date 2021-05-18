@@ -15,28 +15,24 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Check SKU availability result list.
-    /// </summary>
-    public partial class CheckSkuAvailabilityResultList
+    public partial class QuotaLimit
     {
         /// <summary>
-        /// Initializes a new instance of the CheckSkuAvailabilityResultList
-        /// class.
+        /// Initializes a new instance of the QuotaLimit class.
         /// </summary>
-        public CheckSkuAvailabilityResultList()
+        public QuotaLimit()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CheckSkuAvailabilityResultList
-        /// class.
+        /// Initializes a new instance of the QuotaLimit class.
         /// </summary>
-        /// <param name="value">Check SKU availability result list.</param>
-        public CheckSkuAvailabilityResultList(IList<CheckSkuAvailabilityResult> value = default(IList<CheckSkuAvailabilityResult>))
+        public QuotaLimit(double? count = default(double?), double? renewalPeriod = default(double?), IList<ThrottlingRule> rules = default(IList<ThrottlingRule>))
         {
-            Value = value;
+            Count = count;
+            RenewalPeriod = renewalPeriod;
+            Rules = rules;
             CustomInit();
         }
 
@@ -46,10 +42,19 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets check SKU availability result list.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<CheckSkuAvailabilityResult> Value { get; set; }
+        [JsonProperty(PropertyName = "count")]
+        public double? Count { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "renewalPeriod")]
+        public double? RenewalPeriod { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "rules")]
+        public IList<ThrottlingRule> Rules { get; set; }
 
     }
 }

@@ -11,31 +11,25 @@
 namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The response to a list usage request.
-    /// </summary>
-    public partial class UsagesResult
+    public partial class RequestMatchPattern
     {
         /// <summary>
-        /// Initializes a new instance of the UsagesResult class.
+        /// Initializes a new instance of the RequestMatchPattern class.
         /// </summary>
-        public UsagesResult()
+        public RequestMatchPattern()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UsagesResult class.
+        /// Initializes a new instance of the RequestMatchPattern class.
         /// </summary>
-        /// <param name="value">The list of usages for Cognitive Service
-        /// account.</param>
-        public UsagesResult(IList<Usage> value = default(IList<Usage>))
+        public RequestMatchPattern(string path = default(string), string method = default(string))
         {
-            Value = value;
+            Path = path;
+            Method = method;
             CustomInit();
         }
 
@@ -45,10 +39,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the list of usages for Cognitive Service account.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<Usage> Value { get; private set; }
+        [JsonProperty(PropertyName = "path")]
+        public string Path { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "method")]
+        public string Method { get; set; }
 
     }
 }

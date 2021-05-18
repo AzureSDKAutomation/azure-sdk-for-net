@@ -14,29 +14,27 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// The access keys for the cognitive services account.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class CognitiveServicesAccountKeys
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the CognitiveServicesAccountKeys
-        /// class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public CognitiveServicesAccountKeys()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CognitiveServicesAccountKeys
-        /// class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="key1">Gets the value of key 1.</param>
-        /// <param name="key2">Gets the value of key 2.</param>
-        public CognitiveServicesAccountKeys(string key1 = default(string), string key2 = default(string))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Key1 = key1;
-            Key2 = key2;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -46,16 +44,16 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the value of key 1.
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "key1")]
-        public string Key1 { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
-        /// Gets the value of key 2.
+        /// Gets the additional info.
         /// </summary>
-        [JsonProperty(PropertyName = "key2")]
-        public string Key2 { get; set; }
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }

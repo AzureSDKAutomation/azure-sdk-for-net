@@ -16,26 +16,23 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// The list of cognitive services accounts operation response.
+    /// Check SKU availability result list.
     /// </summary>
-    public partial class CognitiveServicesAccountEnumerateSkusResult
+    public partial class SkuAvailabilityListResult
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CognitiveServicesAccountEnumerateSkusResult class.
+        /// Initializes a new instance of the SkuAvailabilityListResult class.
         /// </summary>
-        public CognitiveServicesAccountEnumerateSkusResult()
+        public SkuAvailabilityListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CognitiveServicesAccountEnumerateSkusResult class.
+        /// Initializes a new instance of the SkuAvailabilityListResult class.
         /// </summary>
-        /// <param name="value">Gets the list of Cognitive Services accounts
-        /// and their properties.</param>
-        public CognitiveServicesAccountEnumerateSkusResult(IList<CognitiveServicesResourceAndSku> value = default(IList<CognitiveServicesResourceAndSku>))
+        /// <param name="value">Check SKU availability result list.</param>
+        public SkuAvailabilityListResult(IList<SkuAvailability> value = default(IList<SkuAvailability>))
         {
             Value = value;
             CustomInit();
@@ -47,10 +44,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the list of Cognitive Services accounts and their properties.
+        /// Gets or sets check SKU availability result list.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<CognitiveServicesResourceAndSku> Value { get; private set; }
+        public IList<SkuAvailability> Value { get; set; }
 
     }
 }

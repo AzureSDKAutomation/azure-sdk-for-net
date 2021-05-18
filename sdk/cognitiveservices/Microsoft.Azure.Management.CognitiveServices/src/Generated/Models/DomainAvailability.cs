@@ -14,29 +14,27 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// Check Domain availability result.
+    /// Domain availability.
     /// </summary>
-    public partial class CheckDomainAvailabilityResult
+    public partial class DomainAvailability
     {
         /// <summary>
-        /// Initializes a new instance of the CheckDomainAvailabilityResult
-        /// class.
+        /// Initializes a new instance of the DomainAvailability class.
         /// </summary>
-        public CheckDomainAvailabilityResult()
+        public DomainAvailability()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CheckDomainAvailabilityResult
-        /// class.
+        /// Initializes a new instance of the DomainAvailability class.
         /// </summary>
         /// <param name="isSubdomainAvailable">Indicates the given SKU is
         /// available or not.</param>
         /// <param name="reason">Reason why the SKU is not available.</param>
         /// <param name="subdomainName">The subdomain name to use.</param>
         /// <param name="type">The Type of the resource.</param>
-        public CheckDomainAvailabilityResult(bool? isSubdomainAvailable = default(bool?), string reason = default(string), string subdomainName = default(string), string type = default(string))
+        public DomainAvailability(bool? isSubdomainAvailable = default(bool?), string reason = default(string), string subdomainName = default(string), string type = default(string))
         {
             IsSubdomainAvailable = isSubdomainAvailable;
             Reason = reason;
