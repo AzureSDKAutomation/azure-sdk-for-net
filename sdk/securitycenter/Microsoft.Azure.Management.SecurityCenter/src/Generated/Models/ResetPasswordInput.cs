@@ -14,29 +14,25 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// IoT sensor
+    /// Reset password input.
     /// </summary>
-    public partial class IotSensor : Resource
+    public partial class ResetPasswordInput
     {
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the ResetPasswordInput class.
         /// </summary>
-        public IotSensor()
+        public ResetPasswordInput()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the IotSensor class.
+        /// Initializes a new instance of the ResetPasswordInput class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="properties">IoT sensor properties</param>
-        public IotSensor(string id = default(string), string name = default(string), string type = default(string), object properties = default(object))
-            : base(id, name, type)
+        /// <param name="applianceId">The appliance id of the sensor.</param>
+        public ResetPasswordInput(string applianceId = default(string))
         {
-            Properties = properties;
+            ApplianceId = applianceId;
             CustomInit();
         }
 
@@ -46,10 +42,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ioT sensor properties
+        /// Gets or sets the appliance id of the sensor.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public object Properties { get; set; }
+        [JsonProperty(PropertyName = "applianceId")]
+        public string ApplianceId { get; set; }
 
     }
 }
