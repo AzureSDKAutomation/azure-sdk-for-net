@@ -38,12 +38,11 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// 'NotSpecified', 'Accepted', 'Running', 'Creating', 'Created',
         /// 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
         /// 'MovingResources', 'TransientFailure', 'RolloutInProgress'</param>
-        public ProviderRegistrationProperties(ResourceProviderManifestPropertiesProviderAuthentication providerAuthentication = default(ResourceProviderManifestPropertiesProviderAuthentication), IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), string namespaceProperty = default(string), string providerVersion = default(string), string providerType = default(string), IList<string> requiredFeatures = default(IList<string>), ResourceProviderManifestPropertiesFeaturesRule featuresRule = default(ResourceProviderManifestPropertiesFeaturesRule), ResourceProviderManifestPropertiesRequestHeaderOptions requestHeaderOptions = default(ResourceProviderManifestPropertiesRequestHeaderOptions), ResourceProviderManifestPropertiesManagement management = default(ResourceProviderManifestPropertiesManagement), IList<ResourceProviderCapabilities> capabilities = default(IList<ResourceProviderCapabilities>), object metadata = default(object), ResourceProviderManifestPropertiesTemplateDeploymentOptions templateDeploymentOptions = default(ResourceProviderManifestPropertiesTemplateDeploymentOptions), ProviderRegistrationPropertiesProviderHubMetadata providerHubMetadata = default(ProviderRegistrationPropertiesProviderHubMetadata), string provisioningState = default(string), ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications subscriptionLifecycleNotificationSpecifications = default(ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications))
-            : base(providerAuthentication, providerAuthorizations, namespaceProperty, providerVersion, providerType, requiredFeatures, featuresRule, requestHeaderOptions, management, capabilities, metadata, templateDeploymentOptions)
+        public ProviderRegistrationProperties(ResourceProviderManifestPropertiesProviderAuthentication providerAuthentication = default(ResourceProviderManifestPropertiesProviderAuthentication), IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), string namespaceProperty = default(string), string providerVersion = default(string), string providerType = default(string), IList<string> requiredFeatures = default(IList<string>), ResourceProviderManifestPropertiesFeaturesRule featuresRule = default(ResourceProviderManifestPropertiesFeaturesRule), ResourceProviderManifestPropertiesRequestHeaderOptions requestHeaderOptions = default(ResourceProviderManifestPropertiesRequestHeaderOptions), ResourceProviderManifestPropertiesManagement management = default(ResourceProviderManifestPropertiesManagement), IList<ResourceProviderCapabilities> capabilities = default(IList<ResourceProviderCapabilities>), object metadata = default(object), ProviderRegistrationPropertiesProviderHubMetadata providerHubMetadata = default(ProviderRegistrationPropertiesProviderHubMetadata), string provisioningState = default(string))
+            : base(providerAuthentication, providerAuthorizations, namespaceProperty, providerVersion, providerType, requiredFeatures, featuresRule, requestHeaderOptions, management, capabilities, metadata)
         {
             ProviderHubMetadata = providerHubMetadata;
             ProvisioningState = provisioningState;
-            SubscriptionLifecycleNotificationSpecifications = subscriptionLifecycleNotificationSpecifications;
             CustomInit();
         }
 
@@ -65,11 +64,6 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "subscriptionLifecycleNotificationSpecifications")]
-        public ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications SubscriptionLifecycleNotificationSpecifications { get; set; }
 
     }
 }
