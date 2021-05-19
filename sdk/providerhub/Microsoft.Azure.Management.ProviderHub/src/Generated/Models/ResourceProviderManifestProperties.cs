@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// 'Internal', 'External', 'Hidden', 'RegistrationFree',
         /// 'LegacyRegistrationRequired', 'TenantOnly',
         /// 'AuthorizationFree'</param>
-        public ResourceProviderManifestProperties(ResourceProviderManifestPropertiesProviderAuthentication providerAuthentication = default(ResourceProviderManifestPropertiesProviderAuthentication), IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), string namespaceProperty = default(string), string providerVersion = default(string), string providerType = default(string), IList<string> requiredFeatures = default(IList<string>), ResourceProviderManifestPropertiesFeaturesRule featuresRule = default(ResourceProviderManifestPropertiesFeaturesRule), ResourceProviderManifestPropertiesRequestHeaderOptions requestHeaderOptions = default(ResourceProviderManifestPropertiesRequestHeaderOptions), ResourceProviderManifestPropertiesManagement management = default(ResourceProviderManifestPropertiesManagement), IList<ResourceProviderCapabilities> capabilities = default(IList<ResourceProviderCapabilities>), object metadata = default(object), ResourceProviderManifestPropertiesTemplateDeploymentOptions templateDeploymentOptions = default(ResourceProviderManifestPropertiesTemplateDeploymentOptions))
+        public ResourceProviderManifestProperties(ResourceProviderManifestPropertiesProviderAuthentication providerAuthentication = default(ResourceProviderManifestPropertiesProviderAuthentication), IList<ResourceProviderAuthorization> providerAuthorizations = default(IList<ResourceProviderAuthorization>), string namespaceProperty = default(string), string providerVersion = default(string), string providerType = default(string), IList<string> requiredFeatures = default(IList<string>), ResourceProviderManifestPropertiesFeaturesRule featuresRule = default(ResourceProviderManifestPropertiesFeaturesRule), ResourceProviderManifestPropertiesRequestHeaderOptions requestHeaderOptions = default(ResourceProviderManifestPropertiesRequestHeaderOptions), ResourceProviderManifestPropertiesManagement management = default(ResourceProviderManifestPropertiesManagement), IList<ResourceProviderCapabilities> capabilities = default(IList<ResourceProviderCapabilities>), object metadata = default(object))
         {
             ProviderAuthentication = providerAuthentication;
             ProviderAuthorizations = providerAuthorizations;
@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
             Management = management;
             Capabilities = capabilities;
             Metadata = metadata;
-            TemplateDeploymentOptions = templateDeploymentOptions;
             CustomInit();
         }
 
@@ -113,11 +112,6 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public object Metadata { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "templateDeploymentOptions")]
-        public ResourceProviderManifestPropertiesTemplateDeploymentOptions TemplateDeploymentOptions { get; set; }
 
     }
 }
