@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.BotService.Models
 
     /// <summary>
     /// The request body for a request to Bot Service Management to check
-    /// availability of a bot name.
+    /// availability of a bot name. Change
     /// </summary>
     public partial class CheckNameAvailabilityRequestBody
     {
