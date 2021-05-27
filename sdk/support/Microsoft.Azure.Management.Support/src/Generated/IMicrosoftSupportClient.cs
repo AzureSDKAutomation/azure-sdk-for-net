@@ -14,6 +14,10 @@ namespace Microsoft.Azure.Management.Support
     using Microsoft.Rest.Azure;
     using Models;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Microsoft Azure Support Resource Provider.
@@ -93,6 +97,20 @@ namespace Microsoft.Azure.Management.Support
         /// Gets the ICommunicationsOperations.
         /// </summary>
         ICommunicationsOperations Communications { get; }
+
+        /// <summary>
+        /// This operation fetches ARM resource id of support ticket
+        /// </summary>
+        /// <param name='supportTicketResourceIdLookupRequest'>
+        /// Support ticket resource id request body
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<SupportTicketResourceIdLookUpResponse>> SupportTicketResourceIdLookUpWithHttpMessagesAsync(SupportTicketResourceIdLookupRequest supportTicketResourceIdLookupRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
