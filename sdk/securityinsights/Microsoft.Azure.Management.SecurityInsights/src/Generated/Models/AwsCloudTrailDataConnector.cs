@@ -33,16 +33,18 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the AwsCloudTrailDataConnector class.
         /// </summary>
+        /// <param name="dataTypes">The available data types for the
+        /// connector.</param>
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="awsRoleArn">The Aws Role Arn (with CloudTrailReadOnly
         /// policy) that is used to access the Aws account.</param>
-        /// <param name="dataTypes">The available data types for the
-        /// connector.</param>
-        public AwsCloudTrailDataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string awsRoleArn = default(string), AwsCloudTrailDataConnectorDataTypes dataTypes = default(AwsCloudTrailDataConnectorDataTypes))
-            : base(id, name, type, etag)
+        public AwsCloudTrailDataConnector(AwsCloudTrailDataConnectorDataTypes dataTypes, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string awsRoleArn = default(string))
+            : base(id, name, type, etag, systemData)
         {
             AwsRoleArn = awsRoleArn;
             DataTypes = dataTypes;
@@ -67,5 +69,22 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.dataTypes")]
         public AwsCloudTrailDataConnectorDataTypes DataTypes { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (DataTypes == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "DataTypes");
+            }
+            if (DataTypes != null)
+            {
+                DataTypes.Validate();
+            }
+        }
     }
 }

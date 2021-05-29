@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Data connector.
+    /// Data connector
     /// </summary>
     public partial class DataConnector : ResourceWithEtag
     {
@@ -32,8 +32,10 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
-        public DataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
-            : base(id, name, type, etag)
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        public DataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData))
+            : base(id, name, type, etag, systemData)
         {
             CustomInit();
         }

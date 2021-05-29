@@ -33,18 +33,20 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the TIDataConnector class.
         /// </summary>
+        /// <param name="tenantId">The tenant id to connect to, and get the
+        /// data from.</param>
+        /// <param name="dataTypes">The available data types for the
+        /// connector.</param>
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
-        /// <param name="tenantId">The tenant id to connect to, and get the
-        /// data from.</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="tipLookbackPeriod">The lookback period for the feed to
         /// be imported.</param>
-        /// <param name="dataTypes">The available data types for the
-        /// connector.</param>
-        public TIDataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string tenantId = default(string), System.DateTime? tipLookbackPeriod = default(System.DateTime?), TIDataConnectorDataTypes dataTypes = default(TIDataConnectorDataTypes))
-            : base(id, name, type, etag)
+        public TIDataConnector(string tenantId, TIDataConnectorDataTypes dataTypes, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), System.DateTime? tipLookbackPeriod = default(System.DateTime?))
+            : base(id, name, type, etag, systemData)
         {
             TenantId = tenantId;
             TipLookbackPeriod = tipLookbackPeriod;
@@ -75,5 +77,26 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.dataTypes")]
         public TIDataConnectorDataTypes DataTypes { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (TenantId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "TenantId");
+            }
+            if (DataTypes == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "DataTypes");
+            }
+            if (DataTypes != null)
+            {
+                DataTypes.Validate();
+            }
+        }
     }
 }
