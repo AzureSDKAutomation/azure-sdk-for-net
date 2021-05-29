@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'Ready', 'Failed', 'Deleting', 'Detached'</param>
         /// <param name="userProvidedFunctionApps">User provided function apps
         /// registered with the static site build</param>
-        public StaticSiteBuildARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string buildId = default(string), string sourceBranch = default(string), string pullRequestTitle = default(string), string hostname = default(string), System.DateTime? createdTimeUtc = default(System.DateTime?), System.DateTime? lastUpdatedOn = default(System.DateTime?), string status = default(string), IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(IList<StaticSiteUserProvidedFunctionApp>))
-            : base(id, name, kind, type)
+        public StaticSiteBuildARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string buildId = default(string), string sourceBranch = default(string), string pullRequestTitle = default(string), string hostname = default(string), System.DateTime? createdTimeUtc = default(System.DateTime?), System.DateTime? lastUpdatedOn = default(System.DateTime?), string status = default(string), IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(IList<StaticSiteUserProvidedFunctionApp>))
+            : base(id, name, kind, type, systemData)
         {
             BuildId = buildId;
             SourceBranch = sourceBranch;

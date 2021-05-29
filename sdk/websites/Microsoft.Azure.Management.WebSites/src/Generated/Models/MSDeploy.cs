@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="appOffline">Sets the AppOffline rule while the
         /// MSDeploy operation executes.
         /// Setting is &lt;code&gt;false&lt;/code&gt; by default.</param>
-        public MSDeploy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string packageUri = default(string), string connectionString = default(string), string dbType = default(string), string setParametersXmlFileUri = default(string), IDictionary<string, string> setParameters = default(IDictionary<string, string>), bool? skipAppData = default(bool?), bool? appOffline = default(bool?))
-            : base(id, name, kind, type)
+        public MSDeploy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string packageUri = default(string), string connectionString = default(string), string dbType = default(string), string setParametersXmlFileUri = default(string), IDictionary<string, string> setParameters = default(IDictionary<string, string>), bool? skipAppData = default(bool?), bool? appOffline = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             PackageUri = packageUri;
             ConnectionString = connectionString;

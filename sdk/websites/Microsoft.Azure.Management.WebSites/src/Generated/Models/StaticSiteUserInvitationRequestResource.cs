@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// free-form string format</param>
         /// <param name="numHoursToExpiration">The number of hours the sas
         /// token stays valid</param>
-        public StaticSiteUserInvitationRequestResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string domain = default(string), string provider = default(string), string userDetails = default(string), string roles = default(string), int? numHoursToExpiration = default(int?))
-            : base(id, name, kind, type)
+        public StaticSiteUserInvitationRequestResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string domain = default(string), string provider = default(string), string userDetails = default(string), string roles = default(string), int? numHoursToExpiration = default(int?))
+            : base(id, name, kind, type, systemData)
         {
             Domain = domain;
             Provider = provider;

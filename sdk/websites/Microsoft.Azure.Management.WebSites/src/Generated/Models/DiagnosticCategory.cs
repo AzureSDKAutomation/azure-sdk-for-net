@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="description">Description of the diagnostic
         /// category</param>
-        public DiagnosticCategory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string description = default(string))
-            : base(id, name, kind, type)
+        public DiagnosticCategory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string description = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Description = description;
             CustomInit();

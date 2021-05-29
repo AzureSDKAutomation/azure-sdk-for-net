@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="language">The function language</param>
         /// <param name="isDisabled">Gets or sets a value indicating whether
         /// the function is disabled</param>
-        public FunctionEnvelope(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string functionAppId = default(string), string scriptRootPathHref = default(string), string scriptHref = default(string), string configHref = default(string), string testDataHref = default(string), string secretsFileHref = default(string), string href = default(string), object config = default(object), IDictionary<string, string> files = default(IDictionary<string, string>), string testData = default(string), string invokeUrlTemplate = default(string), string language = default(string), bool? isDisabled = default(bool?))
-            : base(id, name, kind, type)
+        public FunctionEnvelope(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string functionAppId = default(string), string scriptRootPathHref = default(string), string scriptHref = default(string), string configHref = default(string), string testDataHref = default(string), string secretsFileHref = default(string), string href = default(string), object config = default(object), IDictionary<string, string> files = default(IDictionary<string, string>), string testData = default(string), string invokeUrlTemplate = default(string), string language = default(string), bool? isDisabled = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             FunctionAppId = functionAppId;
             ScriptRootPathHref = scriptRootPathHref;

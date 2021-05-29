@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// names.</param>
         /// <param name="azureStorageConfigNames">List of external Azure
         /// storage account identifiers.</param>
-        public SlotConfigNamesResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>), IList<string> azureStorageConfigNames = default(IList<string>))
-            : base(id, name, kind, type)
+        public SlotConfigNamesResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>), IList<string> azureStorageConfigNames = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             ConnectionStringNames = connectionStringNames;
             AppSettingNames = appSettingNames;

@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="blockWriteAccessToSite">&lt;code&gt;true&lt;/code&gt;
         /// if the app should be read only during copy operation; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
-        public StorageMigrationOptions(string azurefilesConnectionString, string azurefilesShare, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? switchSiteAfterMigration = default(bool?), bool? blockWriteAccessToSite = default(bool?))
-            : base(id, name, kind, type)
+        public StorageMigrationOptions(string azurefilesConnectionString, string azurefilesShare, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? switchSiteAfterMigration = default(bool?), bool? blockWriteAccessToSite = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             AzurefilesConnectionString = azurefilesConnectionString;
             AzurefilesShare = azurefilesShare;

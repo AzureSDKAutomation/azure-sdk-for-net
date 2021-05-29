@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        public MigrateMySqlRequest(string connectionString, MySqlMigrationType migrationType, string id = default(string), string name = default(string), string kind = default(string), string type = default(string))
-            : base(id, name, kind, type)
+        public MigrateMySqlRequest(string connectionString, MySqlMigrationType migrationType, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData))
+            : base(id, name, kind, type, systemData)
         {
             ConnectionString = connectionString;
             MigrationType = migrationType;

@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// available.</param>
         /// <param name="preferredOs">Web App stack preferred OS. Possible
         /// values include: 'Windows', 'Linux'</param>
-        public WebAppStack(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string location = default(string), string displayText = default(string), string value = default(string), IList<WebAppMajorVersion> majorVersions = default(IList<WebAppMajorVersion>), StackPreferredOs? preferredOs = default(StackPreferredOs?))
-            : base(id, name, kind, type)
+        public WebAppStack(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), string displayText = default(string), string value = default(string), IList<WebAppMajorVersion> majorVersions = default(IList<WebAppMajorVersion>), StackPreferredOs? preferredOs = default(StackPreferredOs?))
+            : base(id, name, kind, type, systemData)
         {
             Location = location;
             DisplayText = displayText;

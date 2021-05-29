@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// login.</param>
         /// <param name="clientSecretSettingName">The app setting name that
         /// contains the client secret.</param>
-        public AppleRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string clientId = default(string), string clientSecretSettingName = default(string))
-            : base(id, name, kind, type)
+        public AppleRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string clientId = default(string), string clientSecretSettingName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ClientId = clientId;
             ClientSecretSettingName = clientSecretSettingName;

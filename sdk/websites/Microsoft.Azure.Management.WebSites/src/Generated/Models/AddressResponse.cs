@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="outboundIpAddresses">IP addresses appearing on
         /// outbound connections.</param>
         /// <param name="vipMappings">Additional virtual IPs.</param>
-        public AddressResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string serviceIpAddress = default(string), string internalIpAddress = default(string), IList<string> outboundIpAddresses = default(IList<string>), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>))
-            : base(id, name, kind, type)
+        public AddressResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string serviceIpAddress = default(string), string internalIpAddress = default(string), IList<string> outboundIpAddresses = default(IList<string>), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>))
+            : base(id, name, kind, type, systemData)
         {
             ServiceIpAddress = serviceIpAddress;
             InternalIpAddress = internalIpAddress;

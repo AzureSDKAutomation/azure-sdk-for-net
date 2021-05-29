@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="apiPrefix">The prefix that should precede all the
         /// authentication/authorization paths.</param>
-        public HttpSettingsRoutes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string apiPrefix = default(string))
-            : base(id, name, kind, type)
+        public HttpSettingsRoutes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string apiPrefix = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ApiPrefix = apiPrefix;
             CustomInit();

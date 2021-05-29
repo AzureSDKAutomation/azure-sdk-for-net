@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// different data providers to be used by the UI</param>
         /// <param name="suggestedUtterances">Suggested utterances where the
         /// detector can be applicable.</param>
-        public DetectorResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), DetectorInfo metadata = default(DetectorInfo), IList<DiagnosticData> dataset = default(IList<DiagnosticData>), Status status = default(Status), IList<DataProviderMetadata> dataProvidersMetadata = default(IList<DataProviderMetadata>), QueryUtterancesResults suggestedUtterances = default(QueryUtterancesResults))
-            : base(id, name, kind, type)
+        public DetectorResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), DetectorInfo metadata = default(DetectorInfo), IList<DiagnosticData> dataset = default(IList<DiagnosticData>), Status status = default(Status), IList<DataProviderMetadata> dataProvidersMetadata = default(IList<DataProviderMetadata>), QueryUtterancesResults suggestedUtterances = default(QueryUtterancesResults))
+            : base(id, name, kind, type, systemData)
         {
             Metadata = metadata;
             Dataset = dataset;

@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// first.</param>
         /// <param name="swiftSupported">A flag that specifies if the scale
         /// unit this Web App is on supports Swift integration.</param>
-        public SwiftVirtualNetwork(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string subnetResourceId = default(string), bool? swiftSupported = default(bool?))
-            : base(id, name, kind, type)
+        public SwiftVirtualNetwork(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string subnetResourceId = default(string), bool? swiftSupported = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             SubnetResourceId = subnetResourceId;
             SwiftSupported = swiftSupported;

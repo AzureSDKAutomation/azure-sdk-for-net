@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// users name.</param>
         /// <param name="scopes">A list of the scopes that should be requested
         /// while authenticating.</param>
-        public OpenIdConnectLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string nameClaimType = default(string), IList<string> scopes = default(IList<string>))
-            : base(id, name, kind, type)
+        public OpenIdConnectLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string nameClaimType = default(string), IList<string> scopes = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             NameClaimType = nameClaimType;
             Scopes = scopes;
