@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="httpSettings">The configuration settings of the HTTP
         /// requests for authentication and authorization requests made against
         /// App Service Authentication/Authorization.</param>
-        public SiteAuthSettingsV2(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), AuthPlatform platform = default(AuthPlatform), GlobalValidation globalValidation = default(GlobalValidation), IdentityProviders identityProviders = default(IdentityProviders), Login login = default(Login), HttpSettings httpSettings = default(HttpSettings))
-            : base(id, name, kind, type)
+        public SiteAuthSettingsV2(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), AuthPlatform platform = default(AuthPlatform), GlobalValidation globalValidation = default(GlobalValidation), IdentityProviders identityProviders = default(IdentityProviders), Login login = default(Login), HttpSettings httpSettings = default(HttpSettings))
+            : base(id, name, kind, type, systemData)
         {
             Platform = platform;
             GlobalValidation = globalValidation;

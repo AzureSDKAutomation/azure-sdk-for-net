@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="legalTermsUrl">Legal terms URL.</param>
         /// <param name="marketplacePublisher">Marketplace publisher.</param>
         /// <param name="marketplaceOffer">Marketplace offer.</param>
-        public PremierAddOnOffer(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string sku = default(string), string product = default(string), string vendor = default(string), bool? promoCodeRequired = default(bool?), int? quota = default(int?), AppServicePlanRestrictions? webHostingPlanRestrictions = default(AppServicePlanRestrictions?), string privacyPolicyUrl = default(string), string legalTermsUrl = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
-            : base(id, name, kind, type)
+        public PremierAddOnOffer(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string sku = default(string), string product = default(string), string vendor = default(string), bool? promoCodeRequired = default(bool?), int? quota = default(int?), AppServicePlanRestrictions? webHostingPlanRestrictions = default(AppServicePlanRestrictions?), string privacyPolicyUrl = default(string), string legalTermsUrl = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Sku = sku;
             Product = product;

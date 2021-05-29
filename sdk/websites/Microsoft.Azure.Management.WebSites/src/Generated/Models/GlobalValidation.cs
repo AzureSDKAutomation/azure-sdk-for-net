@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// action is set to "RedirectToLoginPage".</param>
         /// <param name="excludedPaths">The paths for which unauthenticated
         /// flow would not be redirected to the login page.</param>
-        public GlobalValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? requireAuthentication = default(bool?), UnauthenticatedClientActionV2? unauthenticatedClientAction = default(UnauthenticatedClientActionV2?), string redirectToProvider = default(string), IList<string> excludedPaths = default(IList<string>))
-            : base(id, name, kind, type)
+        public GlobalValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? requireAuthentication = default(bool?), UnauthenticatedClientActionV2? unauthenticatedClientAction = default(UnauthenticatedClientActionV2?), string redirectToProvider = default(string), IList<string> excludedPaths = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             RequireAuthentication = requireAuthentication;
             UnauthenticatedClientAction = unauthenticatedClientAction;

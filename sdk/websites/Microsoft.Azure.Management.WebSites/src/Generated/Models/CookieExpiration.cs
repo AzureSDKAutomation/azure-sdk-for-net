@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'IdentityProviderDerived'</param>
         /// <param name="timeToExpiration">The time after the request is made
         /// when the session cookie should expire.</param>
-        public CookieExpiration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CookieExpirationConvention? convention = default(CookieExpirationConvention?), string timeToExpiration = default(string))
-            : base(id, name, kind, type)
+        public CookieExpiration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), CookieExpirationConvention? convention = default(CookieExpirationConvention?), string timeToExpiration = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Convention = convention;
             TimeToExpiration = timeToExpiration;

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'Adding', 'Ready', 'Failed', 'Deleting'</param>
         /// <param name="validationToken">The TXT record validation
         /// token</param>
-        public StaticSiteCustomDomainOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string domainName = default(string), System.DateTime? createdOn = default(System.DateTime?), string status = default(string), string validationToken = default(string), string errorMessage = default(string))
-            : base(id, name, kind, type)
+        public StaticSiteCustomDomainOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string domainName = default(string), System.DateTime? createdOn = default(System.DateTime?), string status = default(string), string validationToken = default(string), string errorMessage = default(string))
+            : base(id, name, kind, type, systemData)
         {
             DomainName = domainName;
             CreatedOn = createdOn;
