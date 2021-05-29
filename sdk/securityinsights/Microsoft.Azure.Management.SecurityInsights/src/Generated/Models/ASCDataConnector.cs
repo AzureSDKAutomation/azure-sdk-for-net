@@ -37,12 +37,14 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="dataTypes">The available data types for the
         /// connector.</param>
         /// <param name="subscriptionId">The subscription id to connect to, and
         /// get the data from.</param>
-        public ASCDataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), AlertsDataTypeOfDataConnector dataTypes = default(AlertsDataTypeOfDataConnector), string subscriptionId = default(string))
-            : base(id, name, type, etag)
+        public ASCDataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), AlertsDataTypeOfDataConnector dataTypes = default(AlertsDataTypeOfDataConnector), string subscriptionId = default(string))
+            : base(id, name, type, etag, systemData)
         {
             DataTypes = dataTypes;
             SubscriptionId = subscriptionId;
@@ -67,5 +69,18 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.subscriptionId")]
         public string SubscriptionId { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (DataTypes != null)
+            {
+                DataTypes.Validate();
+            }
+        }
     }
 }

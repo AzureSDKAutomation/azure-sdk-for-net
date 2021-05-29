@@ -33,16 +33,18 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the MCASDataConnector class.
         /// </summary>
-        /// <param name="id">Azure resource Id</param>
-        /// <param name="name">Azure resource name</param>
-        /// <param name="type">Azure resource type</param>
-        /// <param name="etag">Etag of the azure resource</param>
         /// <param name="tenantId">The tenant id to connect to, and get the
         /// data from.</param>
         /// <param name="dataTypes">The available data types for the
         /// connector.</param>
-        public MCASDataConnector(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string tenantId = default(string), MCASDataConnectorDataTypes dataTypes = default(MCASDataConnectorDataTypes))
-            : base(id, name, type, etag)
+        /// <param name="id">Azure resource Id</param>
+        /// <param name="name">Azure resource name</param>
+        /// <param name="type">Azure resource type</param>
+        /// <param name="etag">Etag of the azure resource</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        public MCASDataConnector(string tenantId, MCASDataConnectorDataTypes dataTypes, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData))
+            : base(id, name, type, etag, systemData)
         {
             TenantId = tenantId;
             DataTypes = dataTypes;
@@ -66,5 +68,26 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.dataTypes")]
         public MCASDataConnectorDataTypes DataTypes { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (TenantId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "TenantId");
+            }
+            if (DataTypes == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "DataTypes");
+            }
+            if (DataTypes != null)
+            {
+                DataTypes.Validate();
+            }
+        }
     }
 }

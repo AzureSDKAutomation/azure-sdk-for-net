@@ -42,14 +42,24 @@ namespace Microsoft.Azure.Management.SecurityInsights
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// API version for the operation
+        /// Azure subscription ID
+        /// </summary>
+        string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The ID of the target subscription.
+        /// </summary>
+        string SubscriptionId1 { get; set; }
+
+        /// <summary>
+        /// The API version to use for this operation.
         /// </summary>
         string ApiVersion { get; }
 
         /// <summary>
-        /// Azure subscription ID
+        /// API version for the operation
         /// </summary>
-        string SubscriptionId { get; set; }
+        string ApiVersion1 { get; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -71,29 +81,39 @@ namespace Microsoft.Azure.Management.SecurityInsights
 
 
         /// <summary>
-        /// Gets the IOperations.
+        /// Gets the IMetadataOperations.
         /// </summary>
-        IOperations Operations { get; }
+        IMetadataOperations Metadata { get; }
 
         /// <summary>
-        /// Gets the IAlertRulesOperations.
+        /// Gets the ISentinelOnboardingStatesOperations.
         /// </summary>
-        IAlertRulesOperations AlertRules { get; }
+        ISentinelOnboardingStatesOperations SentinelOnboardingStates { get; }
 
         /// <summary>
-        /// Gets the IActionsOperations.
+        /// Gets the IProductSettingsOperations.
         /// </summary>
-        IActionsOperations Actions { get; }
+        IProductSettingsOperations ProductSettings { get; }
 
         /// <summary>
-        /// Gets the IAlertRuleTemplatesOperations.
+        /// Gets the ISourceControlOperations.
         /// </summary>
-        IAlertRuleTemplatesOperations AlertRuleTemplates { get; }
+        ISourceControlOperations SourceControl { get; }
 
         /// <summary>
-        /// Gets the IBookmarksOperations.
+        /// Gets the ISourceControlsOperations.
         /// </summary>
-        IBookmarksOperations Bookmarks { get; }
+        ISourceControlsOperations SourceControls { get; }
+
+        /// <summary>
+        /// Gets the IWatchlistsOperations.
+        /// </summary>
+        IWatchlistsOperations Watchlists { get; }
+
+        /// <summary>
+        /// Gets the IWatchlistItemsOperations.
+        /// </summary>
+        IWatchlistItemsOperations WatchlistItems { get; }
 
         /// <summary>
         /// Gets the IDataConnectorsOperations.
@@ -101,14 +121,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
         IDataConnectorsOperations DataConnectors { get; }
 
         /// <summary>
-        /// Gets the IIncidentsOperations.
+        /// Gets the IOperations.
         /// </summary>
-        IIncidentsOperations Incidents { get; }
-
-        /// <summary>
-        /// Gets the IIncidentCommentsOperations.
-        /// </summary>
-        IIncidentCommentsOperations IncidentComments { get; }
+        IOperations Operations { get; }
 
     }
 }

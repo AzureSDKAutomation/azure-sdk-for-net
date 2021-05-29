@@ -35,12 +35,15 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
-        public ResourceWithEtag(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        public ResourceWithEtag(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData))
         {
             Id = id;
             Name = name;
             Type = type;
             Etag = etag;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -72,6 +75,13 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets azure Resource Manager metadata containing createdBy and
+        /// modifiedBy information.
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }
