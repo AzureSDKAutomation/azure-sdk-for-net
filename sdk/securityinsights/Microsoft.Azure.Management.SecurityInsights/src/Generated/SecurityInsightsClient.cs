@@ -48,14 +48,19 @@ namespace Microsoft.Azure.Management.SecurityInsights
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// API version for the operation
+        /// The ID of the target subscription.
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Azure subscription ID
+        /// API version for the operation
         /// </summary>
-        public string SubscriptionId { get; set; }
+        public string ApiVersion1 { get; private set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -76,44 +81,19 @@ namespace Microsoft.Azure.Management.SecurityInsights
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IWatchlistsOperations.
+        /// </summary>
+        public virtual IWatchlistsOperations Watchlists { get; private set; }
+
+        /// <summary>
+        /// Gets the IWatchlistItemsOperations.
+        /// </summary>
+        public virtual IWatchlistItemsOperations WatchlistItems { get; private set; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IAlertRulesOperations.
-        /// </summary>
-        public virtual IAlertRulesOperations AlertRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IActionsOperations.
-        /// </summary>
-        public virtual IActionsOperations Actions { get; private set; }
-
-        /// <summary>
-        /// Gets the IAlertRuleTemplatesOperations.
-        /// </summary>
-        public virtual IAlertRuleTemplatesOperations AlertRuleTemplates { get; private set; }
-
-        /// <summary>
-        /// Gets the IBookmarksOperations.
-        /// </summary>
-        public virtual IBookmarksOperations Bookmarks { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataConnectorsOperations.
-        /// </summary>
-        public virtual IDataConnectorsOperations DataConnectors { get; private set; }
-
-        /// <summary>
-        /// Gets the IIncidentsOperations.
-        /// </summary>
-        public virtual IIncidentsOperations Incidents { get; private set; }
-
-        /// <summary>
-        /// Gets the IIncidentCommentsOperations.
-        /// </summary>
-        public virtual IIncidentCommentsOperations IncidentComments { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SecurityInsightsClient class.
@@ -356,16 +336,12 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// </summary>
         private void Initialize()
         {
+            Watchlists = new WatchlistsOperations(this);
+            WatchlistItems = new WatchlistItemsOperations(this);
             Operations = new Operations(this);
-            AlertRules = new AlertRulesOperations(this);
-            Actions = new ActionsOperations(this);
-            AlertRuleTemplates = new AlertRuleTemplatesOperations(this);
-            Bookmarks = new BookmarksOperations(this);
-            DataConnectors = new DataConnectorsOperations(this);
-            Incidents = new IncidentsOperations(this);
-            IncidentComments = new IncidentCommentsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-01-01";
+            ApiVersion = "2021-07-01";
+            ApiVersion1 = "2021-03-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -395,14 +371,6 @@ namespace Microsoft.Azure.Management.SecurityInsights
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AlertRule>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AlertRule>("kind"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AlertRuleTemplate>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AlertRuleTemplate>("kind"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DataConnector>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DataConnector>("kind"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Settings>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Settings>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
