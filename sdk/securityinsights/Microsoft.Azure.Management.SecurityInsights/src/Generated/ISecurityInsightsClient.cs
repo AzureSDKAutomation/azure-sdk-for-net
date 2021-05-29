@@ -42,14 +42,19 @@ namespace Microsoft.Azure.Management.SecurityInsights
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// API version for the operation
+        /// The ID of the target subscription.
+        /// </summary>
+        string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The API version to use for this operation.
         /// </summary>
         string ApiVersion { get; }
 
         /// <summary>
-        /// Azure subscription ID
+        /// API version for the operation
         /// </summary>
-        string SubscriptionId { get; set; }
+        string ApiVersion1 { get; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -71,44 +76,19 @@ namespace Microsoft.Azure.Management.SecurityInsights
 
 
         /// <summary>
+        /// Gets the IWatchlistsOperations.
+        /// </summary>
+        IWatchlistsOperations Watchlists { get; }
+
+        /// <summary>
+        /// Gets the IWatchlistItemsOperations.
+        /// </summary>
+        IWatchlistItemsOperations WatchlistItems { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IAlertRulesOperations.
-        /// </summary>
-        IAlertRulesOperations AlertRules { get; }
-
-        /// <summary>
-        /// Gets the IActionsOperations.
-        /// </summary>
-        IActionsOperations Actions { get; }
-
-        /// <summary>
-        /// Gets the IAlertRuleTemplatesOperations.
-        /// </summary>
-        IAlertRuleTemplatesOperations AlertRuleTemplates { get; }
-
-        /// <summary>
-        /// Gets the IBookmarksOperations.
-        /// </summary>
-        IBookmarksOperations Bookmarks { get; }
-
-        /// <summary>
-        /// Gets the IDataConnectorsOperations.
-        /// </summary>
-        IDataConnectorsOperations DataConnectors { get; }
-
-        /// <summary>
-        /// Gets the IIncidentsOperations.
-        /// </summary>
-        IIncidentsOperations Incidents { get; }
-
-        /// <summary>
-        /// Gets the IIncidentCommentsOperations.
-        /// </summary>
-        IIncidentCommentsOperations IncidentComments { get; }
 
     }
 }
