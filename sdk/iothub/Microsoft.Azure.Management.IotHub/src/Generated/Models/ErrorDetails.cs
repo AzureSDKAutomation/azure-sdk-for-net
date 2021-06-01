@@ -10,12 +10,17 @@
 
 namespace Microsoft.Azure.Management.IotHub.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Error details.
     /// </summary>
+    [Rest.Serialization.JsonTransformation]
     public partial class ErrorDetails
     {
         /// <summary>
@@ -29,16 +34,27 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// <summary>
         /// Initializes a new instance of the ErrorDetails class.
         /// </summary>
-        /// <param name="code">The error code.</param>
+        /// <param name="code">Deprecated: Use error.code</param>
         /// <param name="httpStatusCode">The HTTP status code.</param>
-        /// <param name="message">The error message.</param>
-        /// <param name="details">The error details.</param>
-        public ErrorDetails(string code = default(string), string httpStatusCode = default(string), string message = default(string), string details = default(string))
+        /// <param name="message">Deprecated: use error.message</param>
+        /// <param name="details">Deprecated: use error.details</param>
+        /// <param name="code1">The error code.</param>
+        /// <param name="message1">The error message.</param>
+        /// <param name="target">The target of the particular error.</param>
+        /// <param name="details1">A list of additional details about the
+        /// error.</param>
+        /// <param name="additionalInfo">The error additional info.</param>
+        public ErrorDetails(string code = default(string), string httpStatusCode = default(string), string message = default(string), string details = default(string), string code1 = default(string), string message1 = default(string), string target = default(string), IList<ErrorDetails> details1 = default(IList<ErrorDetails>), IList<ErrorAdditionalInfo> additionalInfo = default(IList<ErrorAdditionalInfo>))
         {
             Code = code;
             HttpStatusCode = httpStatusCode;
             Message = message;
             Details = details;
+            Code1 = code1;
+            Message1 = message1;
+            Target = target;
+            Details1 = details1;
+            AdditionalInfo = additionalInfo;
             CustomInit();
         }
 
@@ -48,7 +64,7 @@ namespace Microsoft.Azure.Management.IotHub.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the error code.
+        /// Gets deprecated: Use error.code
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; private set; }
@@ -60,16 +76,46 @@ namespace Microsoft.Azure.Management.IotHub.Models
         public string HttpStatusCode { get; private set; }
 
         /// <summary>
-        /// Gets the error message.
+        /// Gets deprecated: use error.message
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; private set; }
 
         /// <summary>
-        /// Gets the error details.
+        /// Gets deprecated: use error.details
         /// </summary>
         [JsonProperty(PropertyName = "details")]
         public string Details { get; private set; }
+
+        /// <summary>
+        /// Gets the error code.
+        /// </summary>
+        [JsonProperty(PropertyName = "error.code")]
+        public string Code1 { get; private set; }
+
+        /// <summary>
+        /// Gets the error message.
+        /// </summary>
+        [JsonProperty(PropertyName = "error.message")]
+        public string Message1 { get; private set; }
+
+        /// <summary>
+        /// Gets the target of the particular error.
+        /// </summary>
+        [JsonProperty(PropertyName = "error.target")]
+        public string Target { get; private set; }
+
+        /// <summary>
+        /// Gets a list of additional details about the error.
+        /// </summary>
+        [JsonProperty(PropertyName = "error.details")]
+        public IList<ErrorDetails> Details1 { get; private set; }
+
+        /// <summary>
+        /// Gets the error additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "error.additionalInfo")]
+        public IList<ErrorAdditionalInfo> AdditionalInfo { get; private set; }
 
     }
 }

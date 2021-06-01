@@ -14,25 +14,27 @@ namespace Microsoft.Azure.Management.IotHub.Models
     using System.Linq;
 
     /// <summary>
-    /// The EventHub consumer group name.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class EventHubConsumerGroupName
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the EventHubConsumerGroupName class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public EventHubConsumerGroupName()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the EventHubConsumerGroupName class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="name">EventHub consumer group name</param>
-        public EventHubConsumerGroupName(string name = default(string))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Name = name;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -42,10 +44,16 @@ namespace Microsoft.Azure.Management.IotHub.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets eventHub consumer group name
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }
