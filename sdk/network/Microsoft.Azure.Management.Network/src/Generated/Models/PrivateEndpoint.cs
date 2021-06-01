@@ -56,9 +56,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the remote resource.</param>
         /// <param name="customDnsConfigs">An array of custom dns
         /// configurations.</param>
+        /// <param name="applicationSecurityGroups">Application security groups
+        /// in which the private endpoint IP configuration is included.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public PrivateEndpoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), Subnet subnet = default(Subnet), IList<NetworkInterface> networkInterfaces = default(IList<NetworkInterface>), string provisioningState = default(string), IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(IList<PrivateLinkServiceConnection>), IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(IList<PrivateLinkServiceConnection>), IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(IList<CustomDnsConfigPropertiesFormat>), string etag = default(string))
+        public PrivateEndpoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), Subnet subnet = default(Subnet), IList<NetworkInterface> networkInterfaces = default(IList<NetworkInterface>), string provisioningState = default(string), IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(IList<PrivateLinkServiceConnection>), IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(IList<PrivateLinkServiceConnection>), IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(IList<CustomDnsConfigPropertiesFormat>), IList<ApplicationSecurityGroup> applicationSecurityGroups = default(IList<ApplicationSecurityGroup>), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
@@ -68,6 +70,7 @@ namespace Microsoft.Azure.Management.Network.Models
             PrivateLinkServiceConnections = privateLinkServiceConnections;
             ManualPrivateLinkServiceConnections = manualPrivateLinkServiceConnections;
             CustomDnsConfigs = customDnsConfigs;
+            ApplicationSecurityGroups = applicationSecurityGroups;
             Etag = etag;
             CustomInit();
         }
@@ -125,6 +128,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.customDnsConfigs")]
         public IList<CustomDnsConfigPropertiesFormat> CustomDnsConfigs { get; set; }
+
+        /// <summary>
+        /// Gets or sets application security groups in which the private
+        /// endpoint IP configuration is included.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.applicationSecurityGroups")]
+        public IList<ApplicationSecurityGroup> ApplicationSecurityGroups { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
