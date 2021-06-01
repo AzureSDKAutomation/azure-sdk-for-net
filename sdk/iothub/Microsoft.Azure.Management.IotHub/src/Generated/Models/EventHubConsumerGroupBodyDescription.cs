@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.IotHub.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// Initializes a new instance of the
         /// EventHubConsumerGroupBodyDescription class.
         /// </summary>
-        public EventHubConsumerGroupBodyDescription(EventHubConsumerGroupName properties)
+        public EventHubConsumerGroupBodyDescription(EventHubConsumerGroupName properties = default(EventHubConsumerGroupName))
         {
             Properties = properties;
             CustomInit();
@@ -48,22 +47,5 @@ namespace Microsoft.Azure.Management.IotHub.Models
         [JsonProperty(PropertyName = "properties")]
         public EventHubConsumerGroupName Properties { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Properties == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
-            }
-            if (Properties != null)
-            {
-                Properties.Validate();
-            }
-        }
     }
 }

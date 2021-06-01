@@ -44,12 +44,7 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// include: 'keyBased', 'identityBased'</param>
         /// <param name="identity">Managed identity properties of storage
         /// endpoint for import devices.</param>
-        /// <param name="includeConfigurations">The value indicating whether
-        /// configurations should be imported.</param>
-        /// <param name="configurationsBlobName">The blob name to be used when
-        /// importing configurations from the provided input blob
-        /// container.</param>
-        public ImportDevicesRequest(string inputBlobContainerUri, string outputBlobContainerUri, string inputBlobName = default(string), string outputBlobName = default(string), string authenticationType = default(string), ManagedIdentity identity = default(ManagedIdentity), bool? includeConfigurations = default(bool?), string configurationsBlobName = default(string))
+        public ImportDevicesRequest(string inputBlobContainerUri, string outputBlobContainerUri, string inputBlobName = default(string), string outputBlobName = default(string), string authenticationType = default(string), ManagedIdentity identity = default(ManagedIdentity))
         {
             InputBlobContainerUri = inputBlobContainerUri;
             OutputBlobContainerUri = outputBlobContainerUri;
@@ -57,8 +52,6 @@ namespace Microsoft.Azure.Management.IotHub.Models
             OutputBlobName = outputBlobName;
             AuthenticationType = authenticationType;
             Identity = identity;
-            IncludeConfigurations = includeConfigurations;
-            ConfigurationsBlobName = configurationsBlobName;
             CustomInit();
         }
 
@@ -107,20 +100,6 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public ManagedIdentity Identity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value indicating whether configurations should be
-        /// imported.
-        /// </summary>
-        [JsonProperty(PropertyName = "includeConfigurations")]
-        public bool? IncludeConfigurations { get; set; }
-
-        /// <summary>
-        /// Gets or sets the blob name to be used when importing configurations
-        /// from the provided input blob container.
-        /// </summary>
-        [JsonProperty(PropertyName = "configurationsBlobName")]
-        public string ConfigurationsBlobName { get; set; }
 
         /// <summary>
         /// Validate the object.
