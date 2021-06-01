@@ -87,11 +87,6 @@ namespace Microsoft.Azure.Management.Security
         public virtual IPricingsOperations Pricings { get; private set; }
 
         /// <summary>
-        /// Gets the ISettingsOperations.
-        /// </summary>
-        public virtual ISettingsOperations Settings { get; private set; }
-
-        /// <summary>
         /// Gets the IAdvancedThreatProtectionOperations.
         /// </summary>
         public virtual IAdvancedThreatProtectionOperations AdvancedThreatProtection { get; private set; }
@@ -247,11 +242,6 @@ namespace Microsoft.Azure.Management.Security
         public virtual ITopologyOperations Topology { get; private set; }
 
         /// <summary>
-        /// Gets the IAlertsOperations.
-        /// </summary>
-        public virtual IAlertsOperations Alerts { get; private set; }
-
-        /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.
         /// </summary>
         public virtual IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; private set; }
@@ -340,6 +330,31 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IOnPremiseIotSensorsOperations.
         /// </summary>
         public virtual IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; private set; }
+
+        /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        public virtual IIotSitesOperations IotSites { get; private set; }
+
+        /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        public virtual IAlertsOperations Alerts { get; private set; }
+
+        /// <summary>
+        /// Gets the ISettingsOperations.
+        /// </summary>
+        public virtual ISettingsOperations Settings { get; private set; }
+
+        /// <summary>
+        /// Gets the IIngestionSettingsOperations.
+        /// </summary>
+        public virtual IIngestionSettingsOperations IngestionSettings { get; private set; }
+
+        /// <summary>
+        /// Gets the ISoftwareInventoriesOperations.
+        /// </summary>
+        public virtual ISoftwareInventoriesOperations SoftwareInventories { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
@@ -584,7 +599,6 @@ namespace Microsoft.Azure.Management.Security
         {
             ComplianceResults = new ComplianceResultsOperations(this);
             Pricings = new PricingsOperations(this);
-            Settings = new SettingsOperations(this);
             AdvancedThreatProtection = new AdvancedThreatProtectionOperations(this);
             DeviceSecurityGroups = new DeviceSecurityGroupsOperations(this);
             IotSecuritySolution = new IotSecuritySolutionOperations(this);
@@ -616,7 +630,6 @@ namespace Microsoft.Azure.Management.Security
             AdaptiveNetworkHardenings = new AdaptiveNetworkHardeningsOperations(this);
             AllowedConnections = new AllowedConnectionsOperations(this);
             Topology = new TopologyOperations(this);
-            Alerts = new AlertsOperations(this);
             JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
             DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
             SecuritySolutionsReferenceData = new SecuritySolutionsReferenceDataOperations(this);
@@ -635,6 +648,11 @@ namespace Microsoft.Azure.Management.Security
             DevicesForHub = new DevicesForHubOperations(this);
             Device = new DeviceOperations(this);
             OnPremiseIotSensors = new OnPremiseIotSensorsOperations(this);
+            IotSites = new IotSitesOperations(this);
+            Alerts = new AlertsOperations(this);
+            Settings = new SettingsOperations(this);
+            IngestionSettings = new IngestionSettingsOperations(this);
+            SoftwareInventories = new SoftwareInventoriesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -665,8 +683,6 @@ namespace Microsoft.Azure.Management.Security
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<SettingResource>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<SettingResource>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CustomAlertRule>("ruleType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CustomAlertRule>("ruleType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceDetails>("source"));
@@ -675,12 +691,16 @@ namespace Microsoft.Azure.Management.Security
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AdditionalData>("assessedResourceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AutomationAction>("actionType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AutomationAction>("actionType"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceIdentifier>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ResourceIdentifier>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ExternalSecuritySolution>("kind"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ExternalSecuritySolution>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceIdentifier>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ResourceIdentifier>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AlertSimulatorRequestProperties>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AlertSimulatorRequestProperties>("kind"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Setting>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Setting>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
