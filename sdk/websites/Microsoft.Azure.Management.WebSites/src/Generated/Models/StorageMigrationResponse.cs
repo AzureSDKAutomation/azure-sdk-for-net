@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="operationId">When server starts the migration process,
         /// it will return an operation ID identifying that particular
         /// migration operation.</param>
-        public StorageMigrationResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string operationId = default(string))
-            : base(id, name, kind, type)
+        public StorageMigrationResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string operationId = default(string))
+            : base(id, name, kind, type, systemData)
         {
             OperationId = operationId;
             CustomInit();

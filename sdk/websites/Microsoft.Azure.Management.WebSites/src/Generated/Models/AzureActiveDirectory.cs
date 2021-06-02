@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// This is an internal flag primarily intended to support the Azure
         /// Management Portal. Users should not
         /// read or write to this property.</param>
-        public AzureActiveDirectory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), AzureActiveDirectoryRegistration registration = default(AzureActiveDirectoryRegistration), AzureActiveDirectoryLogin login = default(AzureActiveDirectoryLogin), AzureActiveDirectoryValidation validation = default(AzureActiveDirectoryValidation), bool? isAutoProvisioned = default(bool?))
-            : base(id, name, kind, type)
+        public AzureActiveDirectory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), AzureActiveDirectoryRegistration registration = default(AzureActiveDirectoryRegistration), AzureActiveDirectoryLogin login = default(AzureActiveDirectoryLogin), AzureActiveDirectoryValidation validation = default(AzureActiveDirectoryValidation), bool? isAutoProvisioned = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             Registration = registration;

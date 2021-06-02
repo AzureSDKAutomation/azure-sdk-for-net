@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Location. Possible values include: 'CurrentUserMy',
         /// 'LocalMachineMy', 'Unknown'</param>
         /// <param name="thumbprint">Certificate Thumbprint</param>
-        public PublicCertificate(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), byte[] blob = default(byte[]), PublicCertificateLocation? publicCertificateLocation = default(PublicCertificateLocation?), string thumbprint = default(string))
-            : base(id, name, kind, type)
+        public PublicCertificate(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), byte[] blob = default(byte[]), PublicCertificateLocation? publicCertificateLocation = default(PublicCertificateLocation?), string thumbprint = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Blob = blob;
             PublicCertificateLocation = publicCertificateLocation;

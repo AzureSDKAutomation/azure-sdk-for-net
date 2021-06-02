@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="payload">Data by each detector</param>
         /// <param name="nonCorrelatedDetectors">Data by each detector for
         /// detectors that did not corelate</param>
-        public DiagnosticAnalysis(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<AbnormalTimePeriod> abnormalTimePeriods = default(IList<AbnormalTimePeriod>), IList<AnalysisData> payload = default(IList<AnalysisData>), IList<DetectorDefinition> nonCorrelatedDetectors = default(IList<DetectorDefinition>))
-            : base(id, name, kind, type)
+        public DiagnosticAnalysis(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<AbnormalTimePeriod> abnormalTimePeriods = default(IList<AbnormalTimePeriod>), IList<AnalysisData> payload = default(IList<AnalysisData>), IList<DetectorDefinition> nonCorrelatedDetectors = default(IList<DetectorDefinition>))
+            : base(id, name, kind, type, systemData)
         {
             StartTime = startTime;
             EndTime = endTime;

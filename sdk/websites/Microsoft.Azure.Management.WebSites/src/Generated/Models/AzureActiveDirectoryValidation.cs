@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// checks that should be made while validating the JWT Claims.</param>
         /// <param name="allowedAudiences">The list of audiences that can make
         /// successful authentication/authorization requests.</param>
-        public AzureActiveDirectoryValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), JwtClaimChecks jwtClaimChecks = default(JwtClaimChecks), IList<string> allowedAudiences = default(IList<string>))
-            : base(id, name, kind, type)
+        public AzureActiveDirectoryValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), JwtClaimChecks jwtClaimChecks = default(JwtClaimChecks), IList<string> allowedAudiences = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             JwtClaimChecks = jwtClaimChecks;
             AllowedAudiences = allowedAudiences;

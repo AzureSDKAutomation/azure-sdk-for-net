@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="expiresOn">The expiration time of the
         /// invitation</param>
         /// <param name="invitationUrl">The url for the invitation link</param>
-        public StaticSiteUserInvitationResponseResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? expiresOn = default(System.DateTime?), string invitationUrl = default(string))
-            : base(id, name, kind, type)
+        public StaticSiteUserInvitationResponseResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? expiresOn = default(System.DateTime?), string invitationUrl = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ExpiresOn = expiresOn;
             InvitationUrl = invitationUrl;

@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="clientId">The Client ID of the app used for
         /// login.</param>
-        public AzureStaticWebAppsRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string clientId = default(string))
-            : base(id, name, kind, type)
+        public AzureStaticWebAppsRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string clientId = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ClientId = clientId;
             CustomInit();

@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// registered with the static site</param>
         /// <param name="createdOn">The date and time on which the function app
         /// was registered with the static site.</param>
-        public StaticSiteUserProvidedFunctionApp(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string functionAppResourceId = default(string), string functionAppRegion = default(string), System.DateTime? createdOn = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public StaticSiteUserProvidedFunctionApp(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string functionAppResourceId = default(string), string functionAppRegion = default(string), System.DateTime? createdOn = default(System.DateTime?))
+            : base(id, name, kind, type, systemData)
         {
             FunctionAppResourceId = functionAppResourceId;
             FunctionAppRegion = functionAppRegion;

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// of the tokens if a file system is used.</param>
         /// <param name="azureBlobStorage">The configuration settings of the
         /// storage of the tokens if blob storage is used.</param>
-        public TokenStore(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), double? tokenRefreshExtensionHours = default(double?), FileSystemTokenStore fileSystem = default(FileSystemTokenStore), BlobStorageTokenStore azureBlobStorage = default(BlobStorageTokenStore))
-            : base(id, name, kind, type)
+        public TokenStore(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), double? tokenRefreshExtensionHours = default(double?), FileSystemTokenStore fileSystem = default(FileSystemTokenStore), BlobStorageTokenStore azureBlobStorage = default(BlobStorageTokenStore))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             TokenRefreshExtensionHours = tokenRefreshExtensionHours;

@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'FraudDocumentationRequired', 'Unknown'</param>
         /// <param name="createdAt">Time at which the certificate action was
         /// performed.</param>
-        public CertificateOrderAction(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CertificateOrderActionType? actionType = default(CertificateOrderActionType?), System.DateTime? createdAt = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public CertificateOrderAction(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), CertificateOrderActionType? actionType = default(CertificateOrderActionType?), System.DateTime? createdAt = default(System.DateTime?))
+            : base(id, name, kind, type, systemData)
         {
             ActionType = actionType;
             CreatedAt = createdAt;

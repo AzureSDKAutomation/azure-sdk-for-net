@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="dynamicTagsJson">Gets or sets a JSON string containing
         /// a list of dynamic tags that will be evaluated from user claims in
         /// the push registration endpoint.</param>
-        public PushSettings(bool isPushEnabled, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string tagWhitelistJson = default(string), string tagsRequiringAuth = default(string), string dynamicTagsJson = default(string))
-            : base(id, name, kind, type)
+        public PushSettings(bool isPushEnabled, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string tagWhitelistJson = default(string), string tagsRequiringAuth = default(string), string dynamicTagsJson = default(string))
+            : base(id, name, kind, type, systemData)
         {
             IsPushEnabled = isPushEnabled;
             TagWhitelistJson = tagWhitelistJson;

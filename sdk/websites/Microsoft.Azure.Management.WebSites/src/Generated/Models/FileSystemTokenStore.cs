@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="directory">The directory in which the tokens will be
         /// stored.</param>
-        public FileSystemTokenStore(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string directory = default(string))
-            : base(id, name, kind, type)
+        public FileSystemTokenStore(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string directory = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Directory = directory;
             CustomInit();

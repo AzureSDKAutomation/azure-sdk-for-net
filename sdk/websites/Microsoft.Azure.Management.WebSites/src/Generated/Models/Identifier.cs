@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="value">String representation of the identity.</param>
-        public Identifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string value = default(string))
-            : base(id, name, kind, type)
+        public Identifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string value = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Value = value;
             CustomInit();

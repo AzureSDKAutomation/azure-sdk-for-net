@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="computeMode">Compute mode used for this usage.
         /// Possible values include: 'Shared', 'Dedicated', 'Dynamic'</param>
         /// <param name="siteMode">Site mode used for this usage.</param>
-        public Usage(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string displayName = default(string), string resourceName = default(string), string unit = default(string), long? currentValue = default(long?), long? limit = default(long?), System.DateTime? nextResetTime = default(System.DateTime?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string siteMode = default(string))
-            : base(id, name, kind, type)
+        public Usage(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string displayName = default(string), string resourceName = default(string), string unit = default(string), long? currentValue = default(long?), long? limit = default(long?), System.DateTime? nextResetTime = default(System.DateTime?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string siteMode = default(string))
+            : base(id, name, kind, type, systemData)
         {
             DisplayName = displayName;
             ResourceName = resourceName;
