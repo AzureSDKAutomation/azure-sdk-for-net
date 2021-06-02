@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// registration for the GitHub provider.</param>
         /// <param name="login">The configuration settings of the login
         /// flow.</param>
-        public GitHub(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), ClientRegistration registration = default(ClientRegistration), LoginScopes login = default(LoginScopes))
-            : base(id, name, kind, type)
+        public GitHub(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), ClientRegistration registration = default(ClientRegistration), LoginScopes login = default(LoginScopes))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             Registration = registration;

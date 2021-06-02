@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="validationMethod">Validation method for adding a
         /// custom domain</param>
-        public StaticSiteCustomDomainRequestPropertiesARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string validationMethod = default(string))
-            : base(id, name, kind, type)
+        public StaticSiteCustomDomainRequestPropertiesARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string validationMethod = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ValidationMethod = validationMethod;
             CustomInit();

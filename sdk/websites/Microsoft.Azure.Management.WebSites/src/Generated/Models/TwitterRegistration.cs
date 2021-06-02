@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="consumerSecretSettingName">The app setting name that
         /// contains the OAuth 1.0a consumer secret of the Twitter
         /// application used for sign-in.</param>
-        public TwitterRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string consumerKey = default(string), string consumerSecretSettingName = default(string))
-            : base(id, name, kind, type)
+        public TwitterRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string consumerKey = default(string), string consumerSecretSettingName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ConsumerKey = consumerKey;
             ConsumerSecretSettingName = consumerSecretSettingName;

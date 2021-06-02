@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// endpoint connection</param>
         /// <param name="ipAddresses">Private IPAddresses mapped to the remote
         /// private endpoint</param>
-        public RemotePrivateEndpointConnection(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string provisioningState = default(string), ArmIdWrapper privateEndpoint = default(ArmIdWrapper), PrivateLinkConnectionState privateLinkServiceConnectionState = default(PrivateLinkConnectionState), IList<string> ipAddresses = default(IList<string>))
-            : base(id, name, kind, type)
+        public RemotePrivateEndpointConnection(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), ArmIdWrapper privateEndpoint = default(ArmIdWrapper), PrivateLinkConnectionState privateLinkServiceConnectionState = default(PrivateLinkConnectionState), IList<string> ipAddresses = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             ProvisioningState = provisioningState;
             PrivateEndpoint = privateEndpoint;

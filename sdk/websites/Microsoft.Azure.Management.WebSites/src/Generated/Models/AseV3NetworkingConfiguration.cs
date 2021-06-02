@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="allowNewPrivateEndpointConnections">Property to enable
         /// and disable new private endpoint connection creation on ASE</param>
-        public AseV3NetworkingConfiguration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> windowsOutboundIpAddresses = default(IList<string>), IList<string> linuxOutboundIpAddresses = default(IList<string>), bool? allowNewPrivateEndpointConnections = default(bool?))
-            : base(id, name, kind, type)
+        public AseV3NetworkingConfiguration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> windowsOutboundIpAddresses = default(IList<string>), IList<string> linuxOutboundIpAddresses = default(IList<string>), bool? allowNewPrivateEndpointConnections = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             WindowsOutboundIpAddresses = windowsOutboundIpAddresses;
             LinuxOutboundIpAddresses = linuxOutboundIpAddresses;

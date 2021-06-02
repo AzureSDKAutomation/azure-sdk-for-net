@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="slot">Slot of the deleted site</param>
         /// <param name="deletedSiteKind">Kind of site that was deleted</param>
         /// <param name="geoRegionName">Geo Region of the deleted site</param>
-        public DeletedSite(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? deletedSiteId = default(int?), string deletedTimestamp = default(string), string subscription = default(string), string resourceGroup = default(string), string deletedSiteName = default(string), string slot = default(string), string deletedSiteKind = default(string), string geoRegionName = default(string))
-            : base(id, name, kind, type)
+        public DeletedSite(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), int? deletedSiteId = default(int?), string deletedTimestamp = default(string), string subscription = default(string), string resourceGroup = default(string), string deletedSiteName = default(string), string slot = default(string), string deletedSiteKind = default(string), string geoRegionName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             DeletedSiteId = deletedSiteId;
             DeletedTimestamp = deletedTimestamp;

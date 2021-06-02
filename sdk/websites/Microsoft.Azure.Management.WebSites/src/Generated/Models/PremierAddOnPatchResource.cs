@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// publisher.</param>
         /// <param name="marketplaceOffer">Premier add on Marketplace
         /// offer.</param>
-        public PremierAddOnPatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
-            : base(id, name, kind, type)
+        public PremierAddOnPatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Sku = sku;
             Product = product;

@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// These values will be used for syncing an app's routes with those
         /// from a Virtual Network. Possible values include: 'DEFAULT',
         /// 'INHERITED', 'STATIC'</param>
-        public VnetRoute(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string startAddress = default(string), string endAddress = default(string), string routeType = default(string))
-            : base(id, name, kind, type)
+        public VnetRoute(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string startAddress = default(string), string endAddress = default(string), string routeType = default(string))
+            : base(id, name, kind, type, systemData)
         {
             StartAddress = startAddress;
             EndAddress = endAddress;

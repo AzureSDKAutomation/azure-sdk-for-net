@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="sasUrlSettingName">The name of the app setting
         /// containing the SAS URL of the blob storage containing the
         /// tokens.</param>
-        public BlobStorageTokenStore(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string sasUrlSettingName = default(string))
-            : base(id, name, kind, type)
+        public BlobStorageTokenStore(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string sasUrlSettingName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             SasUrlSettingName = sasUrlSettingName;
             CustomInit();

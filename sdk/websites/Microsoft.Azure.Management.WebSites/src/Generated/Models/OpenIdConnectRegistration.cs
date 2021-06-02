@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="openIdConnectConfiguration">The configuration settings
         /// of the endpoints used for the custom Open ID Connect
         /// provider.</param>
-        public OpenIdConnectRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string clientId = default(string), OpenIdConnectClientCredential clientCredential = default(OpenIdConnectClientCredential), OpenIdConnectConfig openIdConnectConfiguration = default(OpenIdConnectConfig))
-            : base(id, name, kind, type)
+        public OpenIdConnectRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string clientId = default(string), OpenIdConnectClientCredential clientCredential = default(OpenIdConnectClientCredential), OpenIdConnectConfig openIdConnectConfiguration = default(OpenIdConnectConfig))
+            : base(id, name, kind, type, systemData)
         {
             ClientId = clientId;
             ClientCredential = clientCredential;

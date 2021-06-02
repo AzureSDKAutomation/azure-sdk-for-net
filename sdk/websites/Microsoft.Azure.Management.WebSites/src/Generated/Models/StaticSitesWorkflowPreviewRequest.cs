@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="branch">The target branch in the repository.</param>
         /// <param name="buildProperties">Build properties to configure on the
         /// repository.</param>
-        public StaticSitesWorkflowPreviewRequest(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string repositoryUrl = default(string), string branch = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties))
-            : base(id, name, kind, type)
+        public StaticSitesWorkflowPreviewRequest(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string repositoryUrl = default(string), string branch = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties))
+            : base(id, name, kind, type, systemData)
         {
             RepositoryUrl = repositoryUrl;
             Branch = branch;

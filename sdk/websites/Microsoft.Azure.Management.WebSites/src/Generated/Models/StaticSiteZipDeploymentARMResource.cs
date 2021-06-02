@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// deployment</param>
         /// <param name="functionLanguage">The language of the api content, if
         /// it exists</param>
-        public StaticSiteZipDeploymentARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string appZipUrl = default(string), string apiZipUrl = default(string), string deploymentTitle = default(string), string provider = default(string), string functionLanguage = default(string))
-            : base(id, name, kind, type)
+        public StaticSiteZipDeploymentARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string appZipUrl = default(string), string apiZipUrl = default(string), string deploymentTitle = default(string), string provider = default(string), string functionLanguage = default(string))
+            : base(id, name, kind, type, systemData)
         {
             AppZipUrl = appZipUrl;
             ApiZipUrl = apiZipUrl;

@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// validated</param>
         /// <param name="subnetResourceId">The ARM Resource ID of the subnet to
         /// validate</param>
-        public VnetParameters(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetResourceGroup = default(string), string vnetName = default(string), string vnetSubnetName = default(string), string subnetResourceId = default(string))
-            : base(id, name, kind, type)
+        public VnetParameters(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string vnetResourceGroup = default(string), string vnetName = default(string), string vnetSubnetName = default(string), string subnetResourceId = default(string))
+            : base(id, name, kind, type, systemData)
         {
             VnetResourceGroup = vnetResourceGroup;
             VnetName = vnetName;

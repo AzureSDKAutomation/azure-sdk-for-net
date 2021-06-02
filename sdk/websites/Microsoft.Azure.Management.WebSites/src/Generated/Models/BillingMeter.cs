@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// for</param>
         /// <param name="osType">App Service OS type meter used for</param>
         /// <param name="multiplier">Meter Multiplier</param>
-        public BillingMeter(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string meterId = default(string), string billingLocation = default(string), string shortName = default(string), string friendlyName = default(string), string resourceType = default(string), string osType = default(string), double? multiplier = default(double?))
-            : base(id, name, kind, type)
+        public BillingMeter(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string meterId = default(string), string billingLocation = default(string), string shortName = default(string), string friendlyName = default(string), string resourceType = default(string), string osType = default(string), double? multiplier = default(double?))
+            : base(id, name, kind, type, systemData)
         {
             MeterId = meterId;
             BillingLocation = billingLocation;

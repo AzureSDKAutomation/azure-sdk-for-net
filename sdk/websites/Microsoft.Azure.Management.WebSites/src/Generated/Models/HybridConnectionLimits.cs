@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Connections.</param>
         /// <param name="maximum">The maximum number of Hybrid Connections
         /// allowed.</param>
-        public HybridConnectionLimits(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? current = default(int?), int? maximum = default(int?))
-            : base(id, name, kind, type)
+        public HybridConnectionLimits(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), int? current = default(int?), int? maximum = default(int?))
+            : base(id, name, kind, type, systemData)
         {
             Current = current;
             Maximum = maximum;
