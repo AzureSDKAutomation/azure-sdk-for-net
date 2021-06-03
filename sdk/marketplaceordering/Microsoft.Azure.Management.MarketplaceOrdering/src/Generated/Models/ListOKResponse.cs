@@ -11,30 +11,26 @@
 namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Error response indicates Microsoft.MarketplaceOrdering service is not
-    /// able to process the incoming request. The reason is provided in the
-    /// error message.
-    /// </summary>
-    public partial class ErrorResponse
+    public partial class ListOKResponse
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the ListOKResponse class.
         /// </summary>
-        public ErrorResponse()
+        public ListOKResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the ListOKResponse class.
         /// </summary>
-        /// <param name="error">The details of the error.</param>
-        public ErrorResponse(ErrorResponseError error = default(ErrorResponseError))
+        public ListOKResponse(IList<AgreementTerms> value = default(IList<AgreementTerms>))
         {
-            Error = error;
+            Value = value;
             CustomInit();
         }
 
@@ -44,10 +40,9 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the details of the error.
         /// </summary>
-        [JsonProperty(PropertyName = "Error")]
-        public ErrorResponseError Error { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<AgreementTerms> Value { get; set; }
 
     }
 }
