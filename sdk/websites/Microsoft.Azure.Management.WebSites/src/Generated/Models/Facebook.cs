@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// used while logging in.</param>
         /// <param name="login">The configuration settings of the login
         /// flow.</param>
-        public Facebook(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), AppRegistration registration = default(AppRegistration), string graphApiVersion = default(string), LoginScopes login = default(LoginScopes))
-            : base(id, name, kind, type)
+        public Facebook(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), AppRegistration registration = default(AppRegistration), string graphApiVersion = default(string), LoginScopes login = default(LoginScopes))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             Registration = registration;

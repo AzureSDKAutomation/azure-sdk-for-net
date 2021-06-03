@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="error">Error information.</param>
         /// <param name="usingSdk">Using SDK?</param>
         /// <param name="settings">Job settings.</param>
-        public TriggeredWebJob(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), TriggeredJobRun latestRun = default(TriggeredJobRun), string historyUrl = default(string), string schedulerLogsUrl = default(string), string runCommand = default(string), string url = default(string), string extraInfoUrl = default(string), WebJobType? webJobType = default(WebJobType?), string error = default(string), bool? usingSdk = default(bool?), IDictionary<string, object> settings = default(IDictionary<string, object>))
-            : base(id, name, kind, type)
+        public TriggeredWebJob(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), TriggeredJobRun latestRun = default(TriggeredJobRun), string historyUrl = default(string), string schedulerLogsUrl = default(string), string runCommand = default(string), string url = default(string), string extraInfoUrl = default(string), WebJobType? webJobType = default(WebJobType?), string error = default(string), bool? usingSdk = default(bool?), IDictionary<string, object> settings = default(IDictionary<string, object>))
+            : base(id, name, kind, type, systemData)
         {
             LatestRun = latestRun;
             HistoryUrl = historyUrl;

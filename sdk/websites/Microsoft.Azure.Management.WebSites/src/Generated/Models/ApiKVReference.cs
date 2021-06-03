@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'AccessToKeyVaultDenied', 'OtherReasons', 'FetchTimedOut',
         /// 'UnauthorizedClient'</param>
         /// <param name="source">Possible values include: 'KeyVault'</param>
-        public ApiKVReference(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string reference = default(string), ResolveStatus? status = default(ResolveStatus?), string vaultName = default(string), string secretName = default(string), string secretVersion = default(string), ManagedServiceIdentity identityType = default(ManagedServiceIdentity), string details = default(string), ConfigReferenceSource? source = default(ConfigReferenceSource?), string activeVersion = default(string))
-            : base(id, name, kind, type)
+        public ApiKVReference(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string reference = default(string), ResolveStatus? status = default(ResolveStatus?), string vaultName = default(string), string secretName = default(string), string secretVersion = default(string), ManagedServiceIdentity identityType = default(ManagedServiceIdentity), string details = default(string), ConfigReferenceSource? source = default(ConfigReferenceSource?), string activeVersion = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Reference = reference;
             Status = status;

@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// privileges to the repository.</param>
         /// <param name="shouldUpdateRepository">Determines whether the
         /// repository should be updated with the new properties.</param>
-        public StaticSiteResetPropertiesARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string repositoryToken = default(string), bool? shouldUpdateRepository = default(bool?))
-            : base(id, name, kind, type)
+        public StaticSiteResetPropertiesARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string repositoryToken = default(string), bool? shouldUpdateRepository = default(bool?))
+            : base(id, name, kind, type, systemData)
         {
             RepositoryToken = repositoryToken;
             ShouldUpdateRepository = shouldUpdateRepository;

@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// generated</param>
         /// <param name="contents">The contents for the workflow file to be
         /// generated</param>
-        public StaticSitesWorkflowPreview(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string path = default(string), string contents = default(string))
-            : base(id, name, kind, type)
+        public StaticSitesWorkflowPreview(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string path = default(string), string contents = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Path = path;
             Contents = contents;

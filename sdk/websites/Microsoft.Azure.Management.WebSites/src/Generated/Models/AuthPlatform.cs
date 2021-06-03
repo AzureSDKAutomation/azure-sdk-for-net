@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// auth settings if they come from a file.
         /// If the path is relative, base will the site's root
         /// directory.</param>
-        public AuthPlatform(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), string runtimeVersion = default(string), string configFilePath = default(string))
-            : base(id, name, kind, type)
+        public AuthPlatform(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), string runtimeVersion = default(string), string configFilePath = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             RuntimeVersion = runtimeVersion;

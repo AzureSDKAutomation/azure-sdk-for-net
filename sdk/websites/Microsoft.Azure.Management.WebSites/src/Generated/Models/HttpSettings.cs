@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// requests.</param>
         /// <param name="forwardProxy">The configuration settings of a forward
         /// proxy used to make the requests.</param>
-        public HttpSettings(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? requireHttps = default(bool?), HttpSettingsRoutes routes = default(HttpSettingsRoutes), ForwardProxy forwardProxy = default(ForwardProxy))
-            : base(id, name, kind, type)
+        public HttpSettings(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? requireHttps = default(bool?), HttpSettingsRoutes routes = default(HttpSettingsRoutes), ForwardProxy forwardProxy = default(ForwardProxy))
+            : base(id, name, kind, type, systemData)
         {
             RequireHttps = requireHttps;
             Routes = routes;

@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// registration; otherwise, &lt;code&gt;true&lt;/code&gt;.</param>
         /// <param name="registration">The configuration settings of the Azure
         /// Static Web Apps registration.</param>
-        public AzureStaticWebApps(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), AzureStaticWebAppsRegistration registration = default(AzureStaticWebAppsRegistration))
-            : base(id, name, kind, type)
+        public AzureStaticWebApps(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), AzureStaticWebAppsRegistration registration = default(AzureStaticWebAppsRegistration))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             Registration = registration;

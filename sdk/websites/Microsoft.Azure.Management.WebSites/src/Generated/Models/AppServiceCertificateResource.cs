@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
         /// 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
         /// 'Unknown'</param>
-        public AppServiceCertificateResource(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
-            : base(location, id, name, kind, type, tags)
+        public AppServiceCertificateResource(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
+            : base(location, id, name, kind, type, tags, systemData)
         {
             KeyVaultId = keyVaultId;
             KeyVaultSecretName = keyVaultSecretName;

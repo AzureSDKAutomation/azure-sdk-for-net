@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// OpenID Connect authorization endpoint when
         /// a user logs in. Each parameter must be in the form
         /// "key=value".</param>
-        public AzureActiveDirectoryLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? disableWWWAuthenticate = default(bool?), IList<string> loginParameters = default(IList<string>))
-            : base(id, name, kind, type)
+        public AzureActiveDirectoryLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? disableWWWAuthenticate = default(bool?), IList<string> loginParameters = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             DisableWWWAuthenticate = disableWWWAuthenticate;
             LoginParameters = loginParameters;

@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// repository.</param>
         /// <param name="gitHubActionConfiguration">If GitHub Action is
         /// selected, than the associated configuration.</param>
-        public SiteSourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? isGitHubAction = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?), GitHubActionConfiguration gitHubActionConfiguration = default(GitHubActionConfiguration))
-            : base(id, name, kind, type)
+        public SiteSourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? isGitHubAction = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?), GitHubActionConfiguration gitHubActionConfiguration = default(GitHubActionConfiguration))
+            : base(id, name, kind, type, systemData)
         {
             RepoUrl = repoUrl;
             Branch = branch;

@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="allowedGroups">The list of the allowed groups.</param>
         /// <param name="allowedClientApplications">The list of the allowed
         /// client applications.</param>
-        public JwtClaimChecks(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> allowedGroups = default(IList<string>), IList<string> allowedClientApplications = default(IList<string>))
-            : base(id, name, kind, type)
+        public JwtClaimChecks(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> allowedGroups = default(IList<string>), IList<string> allowedClientApplications = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             AllowedGroups = allowedGroups;
             AllowedClientApplications = allowedClientApplications;

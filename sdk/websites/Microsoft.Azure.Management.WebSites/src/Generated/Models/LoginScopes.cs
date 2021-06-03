@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="scopes">A list of the scopes that should be requested
         /// while authenticating.</param>
-        public LoginScopes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> scopes = default(IList<string>))
-            : base(id, name, kind, type)
+        public LoginScopes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> scopes = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             Scopes = scopes;
             CustomInit();

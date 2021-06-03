@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// provider.</param>
         /// <param name="azureStaticWebApps">The configuration settings of the
         /// Azure Static Web Apps provider.</param>
-        public IdentityProviders(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), Facebook facebook = default(Facebook), GitHub gitHub = default(GitHub), Google google = default(Google), Twitter twitter = default(Twitter), IDictionary<string, CustomOpenIdConnectProvider> customOpenIdConnectProviders = default(IDictionary<string, CustomOpenIdConnectProvider>), LegacyMicrosoftAccount legacyMicrosoftAccount = default(LegacyMicrosoftAccount), Apple apple = default(Apple), AzureStaticWebApps azureStaticWebApps = default(AzureStaticWebApps))
-            : base(id, name, kind, type)
+        public IdentityProviders(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), Facebook facebook = default(Facebook), GitHub gitHub = default(GitHub), Google google = default(Google), Twitter twitter = default(Twitter), IDictionary<string, CustomOpenIdConnectProvider> customOpenIdConnectProviders = default(IDictionary<string, CustomOpenIdConnectProvider>), LegacyMicrosoftAccount legacyMicrosoftAccount = default(LegacyMicrosoftAccount), Apple apple = default(Apple), AzureStaticWebApps azureStaticWebApps = default(AzureStaticWebApps))
+            : base(id, name, kind, type, systemData)
         {
             AzureActiveDirectory = azureActiveDirectory;
             Facebook = facebook;
