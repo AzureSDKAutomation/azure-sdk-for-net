@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         /// <summary>
         /// Gets error code.
         /// </summary>
-        [JsonProperty(PropertyName = "code")]
+        [JsonProperty(PropertyName = "Code")]
         public string Code { get; private set; }
 
         /// <summary>
         /// Gets error message indicating why the operation failed.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonProperty(PropertyName = "Message")]
         public string Message { get; private set; }
 
     }

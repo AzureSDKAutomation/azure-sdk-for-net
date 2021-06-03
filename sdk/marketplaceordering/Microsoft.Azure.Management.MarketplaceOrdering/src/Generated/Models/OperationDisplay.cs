@@ -35,11 +35,13 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         /// performed: Agreement, virtualmachine, etc.</param>
         /// <param name="operation">Operation type: Get Agreement, Sign
         /// Agreement, Cancel Agreement etc.</param>
-        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
+        /// <param name="description">The description of the operation</param>
+        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
         {
             Provider = provider;
             Resource = resource;
             Operation = operation;
+            Description = description;
             CustomInit();
         }
 
@@ -67,6 +69,12 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering.Models
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
         public string Operation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description of the operation
+        /// </summary>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
 
     }
 }

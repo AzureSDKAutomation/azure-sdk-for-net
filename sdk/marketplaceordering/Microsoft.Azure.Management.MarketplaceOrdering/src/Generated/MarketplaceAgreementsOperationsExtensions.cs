@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -136,7 +134,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='planId'>
             /// Plan identifier string of image being deployed.
             /// </param>
-            public static AgreementTerms Sign(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId)
+            public static OldAgreementTerms Sign(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId)
             {
                 return operations.SignAsync(publisherId, offerId, planId).GetAwaiter().GetResult();
             }
@@ -159,7 +157,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AgreementTerms> SignAsync(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OldAgreementTerms> SignAsync(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.SignWithHttpMessagesAsync(publisherId, offerId, planId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -182,7 +180,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='planId'>
             /// Plan identifier string of image being deployed.
             /// </param>
-            public static AgreementTerms Cancel(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId)
+            public static OldAgreementTerms Cancel(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId)
             {
                 return operations.CancelAsync(publisherId, offerId, planId).GetAwaiter().GetResult();
             }
@@ -205,7 +203,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AgreementTerms> CancelAsync(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OldAgreementTerms> CancelAsync(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CancelWithHttpMessagesAsync(publisherId, offerId, planId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -228,7 +226,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='planId'>
             /// Plan identifier string of image being deployed.
             /// </param>
-            public static AgreementTerms GetAgreement(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId)
+            public static OldAgreementTerms GetAgreement(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId)
             {
                 return operations.GetAgreementAsync(publisherId, offerId, planId).GetAwaiter().GetResult();
             }
@@ -251,7 +249,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AgreementTerms> GetAgreementAsync(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OldAgreementTerms> GetAgreementAsync(this IMarketplaceAgreementsOperations operations, string publisherId, string offerId, string planId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAgreementWithHttpMessagesAsync(publisherId, offerId, planId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -265,7 +263,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IList<AgreementTerms> List(this IMarketplaceAgreementsOperations operations)
+            public static ListOKResponse List(this IMarketplaceAgreementsOperations operations)
             {
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
@@ -279,7 +277,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<AgreementTerms>> ListAsync(this IMarketplaceAgreementsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ListOKResponse> ListAsync(this IMarketplaceAgreementsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {

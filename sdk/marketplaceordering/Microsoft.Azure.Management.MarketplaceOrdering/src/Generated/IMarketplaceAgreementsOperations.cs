@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AgreementTerms>> SignWithHttpMessagesAsync(string publisherId, string offerId, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OldAgreementTerms>> SignWithHttpMessagesAsync(string publisherId, string offerId, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Cancel marketplace terms.
         /// </summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AgreementTerms>> CancelWithHttpMessagesAsync(string publisherId, string offerId, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OldAgreementTerms>> CancelWithHttpMessagesAsync(string publisherId, string offerId, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get marketplace agreement.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AgreementTerms>> GetAgreementWithHttpMessagesAsync(string publisherId, string offerId, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OldAgreementTerms>> GetAgreementWithHttpMessagesAsync(string publisherId, string offerId, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List marketplace agreements in the subscription.
         /// </summary>
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -184,6 +184,6 @@ namespace Microsoft.Azure.Management.MarketplaceOrdering
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IList<AgreementTerms>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ListOKResponse>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
