@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="ownershipId">Ownership Id.</param>
-        public DomainOwnershipIdentifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string ownershipId = default(string))
-            : base(id, name, kind, type)
+        public DomainOwnershipIdentifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string ownershipId = default(string))
+            : base(id, name, kind, type, systemData)
         {
             OwnershipId = ownershipId;
             CustomInit();

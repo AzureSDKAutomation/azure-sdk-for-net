@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// the client secret, that is the thumbprint of a certificate used for
         /// signing purposes. This property acts as
         /// a replacement for the Client Secret. It is also optional.</param>
-        public AzureActiveDirectoryRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string openIdIssuer = default(string), string clientId = default(string), string clientSecretSettingName = default(string), string clientSecretCertificateThumbprint = default(string))
-            : base(id, name, kind, type)
+        public AzureActiveDirectoryRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string openIdIssuer = default(string), string clientId = default(string), string clientSecretSettingName = default(string), string clientSecretCertificateThumbprint = default(string))
+            : base(id, name, kind, type, systemData)
         {
             OpenIdIssuer = openIdIssuer;
             ClientId = clientId;

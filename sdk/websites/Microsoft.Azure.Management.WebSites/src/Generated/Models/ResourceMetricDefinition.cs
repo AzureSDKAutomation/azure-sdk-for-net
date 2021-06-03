@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="resourceUri">Resource URI.</param>
         /// <param name="properties">Resource metric definition
         /// properties.</param>
-        public ResourceMetricDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string unit = default(string), string primaryAggregationType = default(string), IList<ResourceMetricAvailability> metricAvailabilities = default(IList<ResourceMetricAvailability>), string resourceUri = default(string), IDictionary<string, string> properties = default(IDictionary<string, string>))
-            : base(id, name, kind, type)
+        public ResourceMetricDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string unit = default(string), string primaryAggregationType = default(string), IList<ResourceMetricAvailability> metricAvailabilities = default(IList<ResourceMetricAvailability>), string resourceUri = default(string), IDictionary<string, string> properties = default(IDictionary<string, string>))
+            : base(id, name, kind, type, systemData)
         {
             Unit = unit;
             PrimaryAggregationType = primaryAggregationType;

@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="logoutEndpoint">The endpoint at which a logout request
         /// should be made.</param>
-        public LoginRoutes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string logoutEndpoint = default(string))
-            : base(id, name, kind, type)
+        public LoginRoutes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string logoutEndpoint = default(string))
+            : base(id, name, kind, type, systemData)
         {
             LogoutEndpoint = logoutEndpoint;
             CustomInit();

@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// registration for the custom Open ID Connect provider.</param>
         /// <param name="login">The configuration settings of the login flow of
         /// the custom Open ID Connect provider.</param>
-        public CustomOpenIdConnectProvider(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), OpenIdConnectRegistration registration = default(OpenIdConnectRegistration), OpenIdConnectLogin login = default(OpenIdConnectLogin))
-            : base(id, name, kind, type)
+        public CustomOpenIdConnectProvider(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), OpenIdConnectRegistration registration = default(OpenIdConnectRegistration), OpenIdConnectLogin login = default(OpenIdConnectLogin))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             Registration = registration;

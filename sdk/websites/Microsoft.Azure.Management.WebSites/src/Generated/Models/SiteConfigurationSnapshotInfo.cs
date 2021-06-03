@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="type">Resource type.</param>
         /// <param name="time">The time the snapshot was taken.</param>
         /// <param name="snapshotId">The id of the snapshot</param>
-        public SiteConfigurationSnapshotInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? time = default(System.DateTime?), int? snapshotId = default(int?))
-            : base(id, name, kind, type)
+        public SiteConfigurationSnapshotInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? time = default(System.DateTime?), int? snapshotId = default(int?))
+            : base(id, name, kind, type, systemData)
         {
             Time = time;
             SnapshotId = snapshotId;

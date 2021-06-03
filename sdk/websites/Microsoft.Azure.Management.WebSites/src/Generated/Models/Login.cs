@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// session cookie's expiration.</param>
         /// <param name="nonce">The configuration settings of the nonce used in
         /// the login flow.</param>
-        public Login(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), LoginRoutes routes = default(LoginRoutes), TokenStore tokenStore = default(TokenStore), bool? preserveUrlFragmentsForLogins = default(bool?), IList<string> allowedExternalRedirectUrls = default(IList<string>), CookieExpiration cookieExpiration = default(CookieExpiration), Nonce nonce = default(Nonce))
-            : base(id, name, kind, type)
+        public Login(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), LoginRoutes routes = default(LoginRoutes), TokenStore tokenStore = default(TokenStore), bool? preserveUrlFragmentsForLogins = default(bool?), IList<string> allowedExternalRedirectUrls = default(IList<string>), CookieExpiration cookieExpiration = default(CookieExpiration), Nonce nonce = default(Nonce))
+            : base(id, name, kind, type, systemData)
         {
             Routes = routes;
             TokenStore = tokenStore;

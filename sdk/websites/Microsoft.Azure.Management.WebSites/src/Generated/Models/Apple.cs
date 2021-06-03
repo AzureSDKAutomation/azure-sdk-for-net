@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// registration.</param>
         /// <param name="login">The configuration settings of the login
         /// flow.</param>
-        public Apple(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), AppleRegistration registration = default(AppleRegistration), LoginScopes login = default(LoginScopes))
-            : base(id, name, kind, type)
+        public Apple(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? enabled = default(bool?), AppleRegistration registration = default(AppleRegistration), LoginScopes login = default(LoginScopes))
+            : base(id, name, kind, type, systemData)
         {
             Enabled = enabled;
             Registration = registration;

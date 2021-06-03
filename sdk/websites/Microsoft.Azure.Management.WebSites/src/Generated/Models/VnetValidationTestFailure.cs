@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="testName">The name of the test that failed.</param>
         /// <param name="details">The details of what caused the failure, e.g.
         /// the blocking rule name, etc.</param>
-        public VnetValidationTestFailure(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string testName = default(string), string details = default(string))
-            : base(id, name, kind, type)
+        public VnetValidationTestFailure(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string testName = default(string), string details = default(string))
+            : base(id, name, kind, type, systemData)
         {
             TestName = testName;
             Details = details;

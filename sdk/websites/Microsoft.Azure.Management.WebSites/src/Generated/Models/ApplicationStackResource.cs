@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="isDeprecated">&lt;code&gt;true&lt;/code&gt; if this is
         /// the stack is deprecated; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
-        public ApplicationStackResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string applicationStackResourceName = default(string), string display = default(string), string dependency = default(string), IList<StackMajorVersion> majorVersions = default(IList<StackMajorVersion>), IList<ApplicationStack> frameworks = default(IList<ApplicationStack>), IList<ApplicationStack> isDeprecated = default(IList<ApplicationStack>))
-            : base(id, name, kind, type)
+        public ApplicationStackResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string applicationStackResourceName = default(string), string display = default(string), string dependency = default(string), IList<StackMajorVersion> majorVersions = default(IList<StackMajorVersion>), IList<ApplicationStack> frameworks = default(IList<ApplicationStack>), IList<ApplicationStack> isDeprecated = default(IList<ApplicationStack>))
+            : base(id, name, kind, type, systemData)
         {
             ApplicationStackResourceName = applicationStackResourceName;
             Display = display;

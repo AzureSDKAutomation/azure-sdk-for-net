@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// validation.</param>
         /// <param name="warnings">A list of warnings generated during
         /// validation.</param>
-        public VnetValidationFailureDetails(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string message = default(string), bool? failed = default(bool?), IList<VnetValidationTestFailure> failedTests = default(IList<VnetValidationTestFailure>), IList<VnetValidationTestFailure> warnings = default(IList<VnetValidationTestFailure>))
-            : base(id, name, kind, type)
+        public VnetValidationFailureDetails(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string message = default(string), bool? failed = default(bool?), IList<VnetValidationTestFailure> failedTests = default(IList<VnetValidationTestFailure>), IList<VnetValidationTestFailure> warnings = default(IList<VnetValidationTestFailure>))
+            : base(id, name, kind, type, systemData)
         {
             Message = message;
             Failed = failed;

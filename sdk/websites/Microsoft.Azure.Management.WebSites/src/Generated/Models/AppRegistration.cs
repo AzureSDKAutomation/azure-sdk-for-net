@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="appId">The App ID of the app used for login.</param>
         /// <param name="appSecretSettingName">The app setting name that
         /// contains the app secret.</param>
-        public AppRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string appId = default(string), string appSecretSettingName = default(string))
-            : base(id, name, kind, type)
+        public AppRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string appId = default(string), string appSecretSettingName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             AppId = appId;
             AppSecretSettingName = appSecretSettingName;

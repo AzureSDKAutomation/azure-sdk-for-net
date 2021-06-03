@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// the user. Possible values include: 'ClientSecretPost'</param>
         /// <param name="clientSecretSettingName">The app setting that contains
         /// the client secret for the custom Open ID Connect provider.</param>
-        public OpenIdConnectClientCredential(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ClientCredentialMethod? method = default(ClientCredentialMethod?), string clientSecretSettingName = default(string))
-            : base(id, name, kind, type)
+        public OpenIdConnectClientCredential(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), ClientCredentialMethod? method = default(ClientCredentialMethod?), string clientSecretSettingName = default(string))
+            : base(id, name, kind, type, systemData)
         {
             Method = method;
             ClientSecretSettingName = clientSecretSettingName;

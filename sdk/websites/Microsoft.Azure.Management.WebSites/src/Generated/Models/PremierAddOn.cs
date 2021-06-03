@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// publisher.</param>
         /// <param name="marketplaceOffer">Premier add on Marketplace
         /// offer.</param>
-        public PremierAddOn(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
-            : base(location, id, name, kind, type, tags)
+        public PremierAddOn(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SystemData systemData = default(SystemData), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+            : base(location, id, name, kind, type, tags, systemData)
         {
             Sku = sku;
             Product = product;

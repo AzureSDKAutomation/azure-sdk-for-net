@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// setting.</param>
         /// <param name="masterLogErrorsMaxLength">Master log_errors_max_len
         /// setting.</param>
-        public SitePhpErrorLogFlag(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string localLogErrors = default(string), string masterLogErrors = default(string), string localLogErrorsMaxLength = default(string), string masterLogErrorsMaxLength = default(string))
-            : base(id, name, kind, type)
+        public SitePhpErrorLogFlag(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string localLogErrors = default(string), string masterLogErrors = default(string), string localLogErrorsMaxLength = default(string), string masterLogErrorsMaxLength = default(string))
+            : base(id, name, kind, type, systemData)
         {
             LocalLogErrors = localLogErrors;
             MasterLogErrors = masterLogErrors;

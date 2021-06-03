@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="data">Additional Data that detector wants to
         /// send.</param>
         /// <param name="responseMetaData">Meta Data</param>
-        public DiagnosticDetectorResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? issueDetected = default(bool?), DetectorDefinition detectorDefinition = default(DetectorDefinition), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<DetectorAbnormalTimePeriod> abnormalTimePeriods = default(IList<DetectorAbnormalTimePeriod>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData responseMetaData = default(ResponseMetaData))
-            : base(id, name, kind, type)
+        public DiagnosticDetectorResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? issueDetected = default(bool?), DetectorDefinition detectorDefinition = default(DetectorDefinition), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<DetectorAbnormalTimePeriod> abnormalTimePeriods = default(IList<DetectorAbnormalTimePeriod>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData responseMetaData = default(ResponseMetaData))
+            : base(id, name, kind, type, systemData)
         {
             StartTime = startTime;
             EndTime = endTime;

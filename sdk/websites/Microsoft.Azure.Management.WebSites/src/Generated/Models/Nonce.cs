@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// otherwise, &lt;code&gt;true&lt;/code&gt;.</param>
         /// <param name="nonceExpirationInterval">The time after the request is
         /// made when the nonce should expire.</param>
-        public Nonce(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? validateNonce = default(bool?), string nonceExpirationInterval = default(string))
-            : base(id, name, kind, type)
+        public Nonce(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? validateNonce = default(bool?), string nonceExpirationInterval = default(string))
+            : base(id, name, kind, type, systemData)
         {
             ValidateNonce = validateNonce;
             NonceExpirationInterval = nonceExpirationInterval;

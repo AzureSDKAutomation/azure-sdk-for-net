@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="properties">List of string resources.</param>
-        public StringList(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> properties = default(IList<string>))
-            : base(id, name, kind, type)
+        public StringList(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> properties = default(IList<string>))
+            : base(id, name, kind, type, systemData)
         {
             Properties = properties;
             CustomInit();

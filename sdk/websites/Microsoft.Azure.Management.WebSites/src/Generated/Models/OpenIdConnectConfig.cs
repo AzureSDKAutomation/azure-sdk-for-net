@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// necessary to validate the token.</param>
         /// <param name="wellKnownOpenIdConfiguration">The endpoint that
         /// contains all the configuration endpoints for the provider.</param>
-        public OpenIdConnectConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string authorizationEndpoint = default(string), string tokenEndpoint = default(string), string issuer = default(string), string certificationUri = default(string), string wellKnownOpenIdConfiguration = default(string))
-            : base(id, name, kind, type)
+        public OpenIdConnectConfig(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SystemData systemData = default(SystemData), string authorizationEndpoint = default(string), string tokenEndpoint = default(string), string issuer = default(string), string certificationUri = default(string), string wellKnownOpenIdConfiguration = default(string))
+            : base(id, name, kind, type, systemData)
         {
             AuthorizationEndpoint = authorizationEndpoint;
             TokenEndpoint = tokenEndpoint;
