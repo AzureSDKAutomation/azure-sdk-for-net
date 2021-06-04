@@ -23,54 +23,24 @@ namespace Microsoft.Azure.Management.Authorization
     public static partial class RoleAssignmentsOperationsExtensions
     {
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List all role assignments that apply to a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='resourceProviderNamespace'>
-            /// The namespace of the resource provider.
-            /// </param>
-            /// <param name='parentResourcePath'>
-            /// The parent resource identity.
-            /// </param>
-            /// <param name='resourceType'>
-            /// The resource type of the resource.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the resource to get role assignments for.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<RoleAssignment> ListForResource(this IRoleAssignmentsOperations operations, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>))
+            public static IPage<RoleAssignment> ListForSubscription(this IRoleAssignmentsOperations operations, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>))
             {
-                return operations.ListForResourceAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListForSubscriptionAsync(odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List all role assignments that apply to a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='resourceProviderNamespace'>
-            /// The namespace of the resource provider.
-            /// </param>
-            /// <param name='parentResourcePath'>
-            /// The parent resource identity.
-            /// </param>
-            /// <param name='resourceType'>
-            /// The resource type of the resource.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the resource to get role assignments for.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
@@ -78,22 +48,22 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RoleAssignment>> ListForResourceAsync(this IRoleAssignmentsOperations operations, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<RoleAssignment>> ListForSubscriptionAsync(this IRoleAssignmentsOperations operations, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListForResourceWithHttpMessagesAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForSubscriptionWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List all role assignments that apply to a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
@@ -104,13 +74,13 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List all role assignments that apply to a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
@@ -127,62 +97,128 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// List all role assignments that apply to a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='scope'>
-            /// The scope of the role assignment to delete.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='roleAssignmentName'>
-            /// The name of the role assignment to delete.
+            /// <param name='resourceProviderNamespace'>
+            /// The namespace of the resource provider.
             /// </param>
-            public static RoleAssignment Delete(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName)
+            /// <param name='resourceType'>
+            /// The resource type name. For example the type name of a web app is 'sites'
+            /// (from Microsoft.Web/sites).
+            /// </param>
+            /// <param name='resourceName'>
+            /// The resource name.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            public static IPage<RoleAssignment> ListForResource(this IRoleAssignmentsOperations operations, string resourceGroupName, string resourceProviderNamespace, string resourceType, string resourceName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>))
             {
-                return operations.DeleteAsync(scope, roleAssignmentName).GetAwaiter().GetResult();
+                return operations.ListForResourceAsync(resourceGroupName, resourceProviderNamespace, resourceType, resourceName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// List all role assignments that apply to a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='scope'>
-            /// The scope of the role assignment to delete.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='roleAssignmentName'>
-            /// The name of the role assignment to delete.
+            /// <param name='resourceProviderNamespace'>
+            /// The namespace of the resource provider.
+            /// </param>
+            /// <param name='resourceType'>
+            /// The resource type name. For example the type name of a web app is 'sites'
+            /// (from Microsoft.Web/sites).
+            /// </param>
+            /// <param name='resourceName'>
+            /// The resource name.
+            /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RoleAssignment> DeleteAsync(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<RoleAssignment>> ListForResourceAsync(this IRoleAssignmentsOperations operations, string resourceGroupName, string resourceProviderNamespace, string resourceType, string resourceName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(scope, roleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForResourceWithHttpMessagesAsync(resourceGroupName, resourceProviderNamespace, resourceType, resourceName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates a role assignment.
+            /// Get a role assignment by scope and name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of the role assignment to create. The scope can be any REST
-            /// resource instance. For example, use '/subscriptions/{subscription-id}/' for
-            /// a subscription,
-            /// '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
-            /// a resource group, and
-            /// '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
-            /// for a resource.
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
             /// <param name='roleAssignmentName'>
-            /// The name of the role assignment to create. It can be any valid GUID.
+            /// The name of the role assignment. It can be any valid GUID.
+            /// </param>
+            public static RoleAssignment Get(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName)
+            {
+                return operations.GetAsync(scope, roleAssignmentName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get a role assignment by scope and name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+            /// </param>
+            /// <param name='roleAssignmentName'>
+            /// The name of the role assignment. It can be any valid GUID.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RoleAssignment> GetAsync(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(scope, roleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update a role assignment by scope and name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+            /// </param>
+            /// <param name='roleAssignmentName'>
+            /// The name of the role assignment. It can be any valid GUID.
             /// </param>
             /// <param name='parameters'>
             /// Parameters for the role assignment.
@@ -193,22 +229,20 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Creates a role assignment.
+            /// Create or update a role assignment by scope and name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of the role assignment to create. The scope can be any REST
-            /// resource instance. For example, use '/subscriptions/{subscription-id}/' for
-            /// a subscription,
-            /// '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
-            /// a resource group, and
-            /// '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
-            /// for a resource.
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
             /// <param name='roleAssignmentName'>
-            /// The name of the role assignment to create. It can be any valid GUID.
+            /// The name of the role assignment. It can be any valid GUID.
             /// </param>
             /// <param name='parameters'>
             /// Parameters for the role assignment.
@@ -225,104 +259,92 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Get the specified role assignment.
+            /// Delete a role assignment by scope and name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of the role assignment.
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
             /// <param name='roleAssignmentName'>
-            /// The name of the role assignment to get.
+            /// The name of the role assignment. It can be any valid GUID.
             /// </param>
-            public static RoleAssignment Get(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName)
+            public static RoleAssignment Delete(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName)
             {
-                return operations.GetAsync(scope, roleAssignmentName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(scope, roleAssignmentName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the specified role assignment.
+            /// Delete a role assignment by scope and name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of the role assignment.
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
             /// <param name='roleAssignmentName'>
-            /// The name of the role assignment to get.
+            /// The name of the role assignment. It can be any valid GUID.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RoleAssignment> GetAsync(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RoleAssignment> DeleteAsync(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(scope, roleAssignmentName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(scope, roleAssignmentName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Deletes a role assignment.
+            /// Validate a role assignment create or update operation by scope and name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='roleId'>
-            /// The ID of the role assignment to delete.
+            /// <param name='scope'>
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
-            public static RoleAssignment DeleteById(this IRoleAssignmentsOperations operations, string roleId)
-            {
-                return operations.DeleteByIdAsync(roleId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a role assignment.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='roleId'>
-            /// The ID of the role assignment to delete.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RoleAssignment> DeleteByIdAsync(this IRoleAssignmentsOperations operations, string roleId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.DeleteByIdWithHttpMessagesAsync(roleId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Creates a role assignment by ID.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='roleId'>
-            /// The ID of the role assignment to create.
+            /// <param name='roleAssignmentName'>
+            /// The name of the role assignment. It can be any valid GUID.
             /// </param>
             /// <param name='parameters'>
             /// Parameters for the role assignment.
             /// </param>
-            public static RoleAssignment CreateById(this IRoleAssignmentsOperations operations, string roleId, RoleAssignmentCreateParameters parameters)
+            public static ValidationResponse Validate(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, RoleAssignmentCreateParameters parameters)
             {
-                return operations.CreateByIdAsync(roleId, parameters).GetAwaiter().GetResult();
+                return operations.ValidateAsync(scope, roleAssignmentName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates a role assignment by ID.
+            /// Validate a role assignment create or update operation by scope and name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='roleId'>
-            /// The ID of the role assignment to create.
+            /// <param name='scope'>
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+            /// </param>
+            /// <param name='roleAssignmentName'>
+            /// The name of the role assignment. It can be any valid GUID.
             /// </param>
             /// <param name='parameters'>
             /// Parameters for the role assignment.
@@ -330,124 +352,254 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RoleAssignment> CreateByIdAsync(this IRoleAssignmentsOperations operations, string roleId, RoleAssignmentCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ValidationResponse> ValidateAsync(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, RoleAssignmentCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateByIdWithHttpMessagesAsync(roleId, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ValidateWithHttpMessagesAsync(scope, roleAssignmentName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets a role assignment by ID.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='roleId'>
-            /// The ID of the role assignment to get.
-            /// </param>
-            public static RoleAssignment GetById(this IRoleAssignmentsOperations operations, string roleId)
-            {
-                return operations.GetByIdAsync(roleId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a role assignment by ID.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='roleId'>
-            /// The ID of the role assignment to get.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RoleAssignment> GetByIdAsync(this IRoleAssignmentsOperations operations, string roleId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetByIdWithHttpMessagesAsync(roleId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all role assignments for the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            public static IPage<RoleAssignment> List(this IRoleAssignmentsOperations operations, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>))
-            {
-                return operations.ListAsync(odataQuery).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all role assignments for the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<RoleAssignment>> ListAsync(this IRoleAssignmentsOperations operations, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets role assignments for a scope.
+            /// List all role assignments that apply to a scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of the role assignments.
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<RoleAssignment> ListForScope(this IRoleAssignmentsOperations operations, string scope, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>))
+            /// <param name='skipToken'>
+            /// The skipToken to apply on the operation. Use $skipToken={skiptoken} to
+            /// return paged role assignments following the skipToken passed. Only
+            /// supported on provider level calls.
+            /// </param>
+            public static IPage<RoleAssignment> ListForScope(this IRoleAssignmentsOperations operations, string scope, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), string skipToken = default(string))
             {
-                return operations.ListForScopeAsync(scope, odataQuery).GetAwaiter().GetResult();
+                return operations.ListForScopeAsync(scope, odataQuery, skipToken).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets role assignments for a scope.
+            /// List all role assignments that apply to a scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='scope'>
-            /// The scope of the role assignments.
+            /// The scope of the operation or resource. Valid scopes are: subscription
+            /// (format: '/subscriptions/{subscriptionId}'), resource group (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+            /// resource (format:
+            /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
+            /// <param name='skipToken'>
+            /// The skipToken to apply on the operation. Use $skipToken={skiptoken} to
+            /// return paged role assignments following the skipToken passed. Only
+            /// supported on provider level calls.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RoleAssignment>> ListForScopeAsync(this IRoleAssignmentsOperations operations, string scope, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<RoleAssignment>> ListForScopeAsync(this IRoleAssignmentsOperations operations, string scope, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListForScopeWithHttpMessagesAsync(scope, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForScopeWithHttpMessagesAsync(scope, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// Get a role assignment by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            public static RoleAssignment GetById(this IRoleAssignmentsOperations operations, string roleAssignmentId)
+            {
+                return operations.GetByIdAsync(roleAssignmentId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get a role assignment by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RoleAssignment> GetByIdAsync(this IRoleAssignmentsOperations operations, string roleAssignmentId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByIdWithHttpMessagesAsync(roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update a role assignment by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for the role assignment.
+            /// </param>
+            public static RoleAssignment CreateById(this IRoleAssignmentsOperations operations, string roleAssignmentId, RoleAssignmentCreateParameters parameters)
+            {
+                return operations.CreateByIdAsync(roleAssignmentId, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update a role assignment by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for the role assignment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RoleAssignment> CreateByIdAsync(this IRoleAssignmentsOperations operations, string roleAssignmentId, RoleAssignmentCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateByIdWithHttpMessagesAsync(roleAssignmentId, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Delete a role assignment by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            public static RoleAssignment DeleteById(this IRoleAssignmentsOperations operations, string roleAssignmentId)
+            {
+                return operations.DeleteByIdAsync(roleAssignmentId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete a role assignment by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RoleAssignment> DeleteByIdAsync(this IRoleAssignmentsOperations operations, string roleAssignmentId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteByIdWithHttpMessagesAsync(roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Validate a role assignment create or update operation by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for the role assignment.
+            /// </param>
+            public static ValidationResponse ValidateById(this IRoleAssignmentsOperations operations, string roleAssignmentId, RoleAssignmentCreateParameters parameters)
+            {
+                return operations.ValidateByIdAsync(roleAssignmentId, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Validate a role assignment create or update operation by ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='roleAssignmentId'>
+            /// The fully qualified ID of the role assignment including scope, resource
+            /// name, and resource type. Format:
+            /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+            /// Example:
+            /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for the role assignment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ValidationResponse> ValidateByIdAsync(this IRoleAssignmentsOperations operations, string roleAssignmentId, RoleAssignmentCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ValidateByIdWithHttpMessagesAsync(roleAssignmentId, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List all role assignments that apply to a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -455,13 +607,13 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<RoleAssignment> ListForResourceNext(this IRoleAssignmentsOperations operations, string nextPageLink)
+            public static IPage<RoleAssignment> ListForSubscriptionNext(this IRoleAssignmentsOperations operations, string nextPageLink)
             {
-                return operations.ListForResourceNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListForSubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets role assignments for a resource.
+            /// List all role assignments that apply to a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -472,16 +624,16 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RoleAssignment>> ListForResourceNextAsync(this IRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<RoleAssignment>> ListForSubscriptionNextAsync(this IRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListForResourceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForSubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List all role assignments that apply to a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -495,7 +647,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a resource group.
+            /// List all role assignments that apply to a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -515,7 +667,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets all role assignments for the subscription.
+            /// List all role assignments that apply to a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -523,13 +675,13 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<RoleAssignment> ListNext(this IRoleAssignmentsOperations operations, string nextPageLink)
+            public static IPage<RoleAssignment> ListForResourceNext(this IRoleAssignmentsOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListForResourceNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets all role assignments for the subscription.
+            /// List all role assignments that apply to a resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -540,16 +692,16 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RoleAssignment>> ListNextAsync(this IRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<RoleAssignment>> ListForResourceNextAsync(this IRoleAssignmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListForResourceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets role assignments for a scope.
+            /// List all role assignments that apply to a scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -563,7 +715,7 @@ namespace Microsoft.Azure.Management.Authorization
             }
 
             /// <summary>
-            /// Gets role assignments for a scope.
+            /// List all role assignments that apply to a scope.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

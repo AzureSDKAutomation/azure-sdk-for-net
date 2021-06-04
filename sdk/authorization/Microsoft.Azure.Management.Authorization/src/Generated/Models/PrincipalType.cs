@@ -26,5 +26,6 @@ namespace Microsoft.Azure.Management.Authorization.Models
         public const string MSI = "MSI";
         public const string DirectoryObjectOrGroup = "DirectoryObjectOrGroup";
         public const string Everyone = "Everyone";
+        public const string Device = "Device";
     }
 }

@@ -67,34 +67,49 @@ namespace Microsoft.Azure.Management.Authorization
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IClassicAdministratorsOperations.
+        /// Gets the IRoleAssignmentSchedulesOperations.
         /// </summary>
-        public virtual IClassicAdministratorsOperations ClassicAdministrators { get; private set; }
+        public virtual IRoleAssignmentSchedulesOperations RoleAssignmentSchedules { get; private set; }
 
         /// <summary>
-        /// Gets the IGlobalAdministratorOperations.
+        /// Gets the IRoleAssignmentScheduleInstancesOperations.
         /// </summary>
-        public virtual IGlobalAdministratorOperations GlobalAdministrator { get; private set; }
+        public virtual IRoleAssignmentScheduleInstancesOperations RoleAssignmentScheduleInstances { get; private set; }
 
         /// <summary>
-        /// Gets the IProviderOperationsMetadataOperations.
+        /// Gets the IRoleAssignmentScheduleRequestsOperations.
         /// </summary>
-        public virtual IProviderOperationsMetadataOperations ProviderOperationsMetadata { get; private set; }
+        public virtual IRoleAssignmentScheduleRequestsOperations RoleAssignmentScheduleRequests { get; private set; }
 
         /// <summary>
-        /// Gets the IPermissionsOperations.
+        /// Gets the IRoleEligibilitySchedulesOperations.
         /// </summary>
-        public virtual IPermissionsOperations Permissions { get; private set; }
+        public virtual IRoleEligibilitySchedulesOperations RoleEligibilitySchedules { get; private set; }
 
         /// <summary>
-        /// Gets the IRoleDefinitionsOperations.
+        /// Gets the IRoleEligibilityScheduleInstancesOperations.
         /// </summary>
-        public virtual IRoleDefinitionsOperations RoleDefinitions { get; private set; }
+        public virtual IRoleEligibilityScheduleInstancesOperations RoleEligibilityScheduleInstances { get; private set; }
 
         /// <summary>
-        /// Gets the IDenyAssignmentsOperations.
+        /// Gets the IRoleEligibilityScheduleRequestsOperations.
         /// </summary>
-        public virtual IDenyAssignmentsOperations DenyAssignments { get; private set; }
+        public virtual IRoleEligibilityScheduleRequestsOperations RoleEligibilityScheduleRequests { get; private set; }
+
+        /// <summary>
+        /// Gets the IRoleManagementPoliciesOperations.
+        /// </summary>
+        public virtual IRoleManagementPoliciesOperations RoleManagementPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IRoleManagementPolicyAssignmentsOperations.
+        /// </summary>
+        public virtual IRoleManagementPolicyAssignmentsOperations RoleManagementPolicyAssignments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEligibleChildResourcesOperations.
+        /// </summary>
+        public virtual IEligibleChildResourcesOperations EligibleChildResources { get; private set; }
 
         /// <summary>
         /// Gets the IRoleAssignmentsOperations.
@@ -342,12 +357,15 @@ namespace Microsoft.Azure.Management.Authorization
         /// </summary>
         private void Initialize()
         {
-            ClassicAdministrators = new ClassicAdministratorsOperations(this);
-            GlobalAdministrator = new GlobalAdministratorOperations(this);
-            ProviderOperationsMetadata = new ProviderOperationsMetadataOperations(this);
-            Permissions = new PermissionsOperations(this);
-            RoleDefinitions = new RoleDefinitionsOperations(this);
-            DenyAssignments = new DenyAssignmentsOperations(this);
+            RoleAssignmentSchedules = new RoleAssignmentSchedulesOperations(this);
+            RoleAssignmentScheduleInstances = new RoleAssignmentScheduleInstancesOperations(this);
+            RoleAssignmentScheduleRequests = new RoleAssignmentScheduleRequestsOperations(this);
+            RoleEligibilitySchedules = new RoleEligibilitySchedulesOperations(this);
+            RoleEligibilityScheduleInstances = new RoleEligibilityScheduleInstancesOperations(this);
+            RoleEligibilityScheduleRequests = new RoleEligibilityScheduleRequestsOperations(this);
+            RoleManagementPolicies = new RoleManagementPoliciesOperations(this);
+            RoleManagementPolicyAssignments = new RoleManagementPolicyAssignmentsOperations(this);
+            EligibleChildResources = new EligibleChildResourcesOperations(this);
             RoleAssignments = new RoleAssignmentsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
@@ -379,6 +397,8 @@ namespace Microsoft.Azure.Management.Authorization
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RoleManagementPolicyRule>("ruleType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RoleManagementPolicyRule>("ruleType"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

@@ -64,34 +64,49 @@ namespace Microsoft.Azure.Management.Authorization
 
 
         /// <summary>
-        /// Gets the IClassicAdministratorsOperations.
+        /// Gets the IRoleAssignmentSchedulesOperations.
         /// </summary>
-        IClassicAdministratorsOperations ClassicAdministrators { get; }
+        IRoleAssignmentSchedulesOperations RoleAssignmentSchedules { get; }
 
         /// <summary>
-        /// Gets the IGlobalAdministratorOperations.
+        /// Gets the IRoleAssignmentScheduleInstancesOperations.
         /// </summary>
-        IGlobalAdministratorOperations GlobalAdministrator { get; }
+        IRoleAssignmentScheduleInstancesOperations RoleAssignmentScheduleInstances { get; }
 
         /// <summary>
-        /// Gets the IProviderOperationsMetadataOperations.
+        /// Gets the IRoleAssignmentScheduleRequestsOperations.
         /// </summary>
-        IProviderOperationsMetadataOperations ProviderOperationsMetadata { get; }
+        IRoleAssignmentScheduleRequestsOperations RoleAssignmentScheduleRequests { get; }
 
         /// <summary>
-        /// Gets the IPermissionsOperations.
+        /// Gets the IRoleEligibilitySchedulesOperations.
         /// </summary>
-        IPermissionsOperations Permissions { get; }
+        IRoleEligibilitySchedulesOperations RoleEligibilitySchedules { get; }
 
         /// <summary>
-        /// Gets the IRoleDefinitionsOperations.
+        /// Gets the IRoleEligibilityScheduleInstancesOperations.
         /// </summary>
-        IRoleDefinitionsOperations RoleDefinitions { get; }
+        IRoleEligibilityScheduleInstancesOperations RoleEligibilityScheduleInstances { get; }
 
         /// <summary>
-        /// Gets the IDenyAssignmentsOperations.
+        /// Gets the IRoleEligibilityScheduleRequestsOperations.
         /// </summary>
-        IDenyAssignmentsOperations DenyAssignments { get; }
+        IRoleEligibilityScheduleRequestsOperations RoleEligibilityScheduleRequests { get; }
+
+        /// <summary>
+        /// Gets the IRoleManagementPoliciesOperations.
+        /// </summary>
+        IRoleManagementPoliciesOperations RoleManagementPolicies { get; }
+
+        /// <summary>
+        /// Gets the IRoleManagementPolicyAssignmentsOperations.
+        /// </summary>
+        IRoleManagementPolicyAssignmentsOperations RoleManagementPolicyAssignments { get; }
+
+        /// <summary>
+        /// Gets the IEligibleChildResourcesOperations.
+        /// </summary>
+        IEligibleChildResourcesOperations EligibleChildResources { get; }
 
         /// <summary>
         /// Gets the IRoleAssignmentsOperations.

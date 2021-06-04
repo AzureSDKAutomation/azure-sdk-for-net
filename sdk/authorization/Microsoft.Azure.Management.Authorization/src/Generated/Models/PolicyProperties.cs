@@ -13,27 +13,23 @@ namespace Microsoft.Azure.Management.Authorization.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Role Assignments filter
-    /// </summary>
-    public partial class RoleAssignmentFilter
+    public partial class PolicyProperties
     {
         /// <summary>
-        /// Initializes a new instance of the RoleAssignmentFilter class.
+        /// Initializes a new instance of the PolicyProperties class.
         /// </summary>
-        public RoleAssignmentFilter()
+        public PolicyProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RoleAssignmentFilter class.
+        /// Initializes a new instance of the PolicyProperties class.
         /// </summary>
-        /// <param name="principalId">Returns role assignment of the specific
-        /// principal.</param>
-        public RoleAssignmentFilter(string principalId = default(string))
+        /// <param name="scope">Details of the resource scope</param>
+        public PolicyProperties(PolicyPropertiesScope scope = default(PolicyPropertiesScope))
         {
-            PrincipalId = principalId;
+            Scope = scope;
             CustomInit();
         }
 
@@ -43,10 +39,10 @@ namespace Microsoft.Azure.Management.Authorization.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets returns role assignment of the specific principal.
+        /// Gets details of the resource scope
         /// </summary>
-        [JsonProperty(PropertyName = "principalId")]
-        public string PrincipalId { get; set; }
+        [JsonProperty(PropertyName = "scope")]
+        public PolicyPropertiesScope Scope { get; private set; }
 
     }
 }
