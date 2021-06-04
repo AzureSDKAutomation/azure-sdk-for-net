@@ -25,23 +25,8 @@ namespace Microsoft.Azure.Management.Authorization
     public partial interface IRoleAssignmentsOperations
     {
         /// <summary>
-        /// Gets role assignments for a resource.
+        /// List all role assignments that apply to a subscription.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='resourceProviderNamespace'>
-        /// The namespace of the resource provider.
-        /// </param>
-        /// <param name='parentResourcePath'>
-        /// The parent resource identity.
-        /// </param>
-        /// <param name='resourceType'>
-        /// The resource type of the resource.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the resource to get role assignments for.
-        /// </param>
         /// <param name='odataQuery'>
         /// OData parameters to apply to the operation.
         /// </param>
@@ -51,7 +36,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -60,12 +45,12 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForResourceWithHttpMessagesAsync(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForSubscriptionWithHttpMessagesAsync(ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets role assignments for a resource group.
+        /// List all role assignments that apply to a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='odataQuery'>
         /// OData parameters to apply to the operation.
@@ -76,7 +61,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -87,13 +72,23 @@ namespace Microsoft.Azure.Management.Authorization
         /// </exception>
         Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForResourceGroupWithHttpMessagesAsync(string resourceGroupName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a role assignment.
+        /// List all role assignments that apply to a resource.
         /// </summary>
-        /// <param name='scope'>
-        /// The scope of the role assignment to delete.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='roleAssignmentName'>
-        /// The name of the role assignment to delete.
+        /// <param name='resourceProviderNamespace'>
+        /// The namespace of the resource provider.
+        /// </param>
+        /// <param name='resourceType'>
+        /// The resource type name. For example the type name of a web app is
+        /// 'sites' (from Microsoft.Web/sites).
+        /// </param>
+        /// <param name='resourceName'>
+        /// The resource name.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -101,7 +96,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -110,25 +105,20 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RoleAssignment>> DeleteWithHttpMessagesAsync(string scope, string roleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForResourceWithHttpMessagesAsync(string resourceGroupName, string resourceProviderNamespace, string resourceType, string resourceName, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates a role assignment.
+        /// Get a role assignment by scope and name.
         /// </summary>
         /// <param name='scope'>
-        /// The scope of the role assignment to create. The scope can be any
-        /// REST resource instance. For example, use
-        /// '/subscriptions/{subscription-id}/' for a subscription,
-        /// '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
-        /// for a resource group, and
-        /// '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
-        /// for a resource.
+        /// The scope of the operation or resource. Valid scopes are:
+        /// subscription (format: '/subscriptions/{subscriptionId}'), resource
+        /// group (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
+        /// or resource (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
         /// </param>
         /// <param name='roleAssignmentName'>
-        /// The name of the role assignment to create. It can be any valid
-        /// GUID.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters for the role assignment.
+        /// The name of the role assignment. It can be any valid GUID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -136,32 +126,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RoleAssignment>> CreateWithHttpMessagesAsync(string scope, string roleAssignmentName, RoleAssignmentCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get the specified role assignment.
-        /// </summary>
-        /// <param name='scope'>
-        /// The scope of the role assignment.
-        /// </param>
-        /// <param name='roleAssignmentName'>
-        /// The name of the role assignment to get.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -172,32 +137,18 @@ namespace Microsoft.Azure.Management.Authorization
         /// </exception>
         Task<AzureOperationResponse<RoleAssignment>> GetWithHttpMessagesAsync(string scope, string roleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a role assignment.
+        /// Create or update a role assignment by scope and name.
         /// </summary>
-        /// <param name='roleId'>
-        /// The ID of the role assignment to delete.
+        /// <param name='scope'>
+        /// The scope of the operation or resource. Valid scopes are:
+        /// subscription (format: '/subscriptions/{subscriptionId}'), resource
+        /// group (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
+        /// or resource (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RoleAssignment>> DeleteByIdWithHttpMessagesAsync(string roleId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Creates a role assignment by ID.
-        /// </summary>
-        /// <param name='roleId'>
-        /// The ID of the role assignment to create.
+        /// <param name='roleAssignmentName'>
+        /// The name of the role assignment. It can be any valid GUID.
         /// </param>
         /// <param name='parameters'>
         /// Parameters for the role assignment.
@@ -208,7 +159,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -217,67 +168,97 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RoleAssignment>> CreateByIdWithHttpMessagesAsync(string roleId, RoleAssignmentCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RoleAssignment>> CreateWithHttpMessagesAsync(string scope, string roleAssignmentName, RoleAssignmentCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a role assignment by ID.
-        /// </summary>
-        /// <param name='roleId'>
-        /// The ID of the role assignment to get.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RoleAssignment>> GetByIdWithHttpMessagesAsync(string roleId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets all role assignments for the subscription.
-        /// </summary>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListWithHttpMessagesAsync(ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets role assignments for a scope.
+        /// Delete a role assignment by scope and name.
         /// </summary>
         /// <param name='scope'>
-        /// The scope of the role assignments.
+        /// The scope of the operation or resource. Valid scopes are:
+        /// subscription (format: '/subscriptions/{subscriptionId}'), resource
+        /// group (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
+        /// or resource (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+        /// </param>
+        /// <param name='roleAssignmentName'>
+        /// The name of the role assignment. It can be any valid GUID.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RoleAssignment>> DeleteWithHttpMessagesAsync(string scope, string roleAssignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validate a role assignment create or update operation by scope and
+        /// name.
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of the operation or resource. Valid scopes are:
+        /// subscription (format: '/subscriptions/{subscriptionId}'), resource
+        /// group (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
+        /// or resource (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+        /// </param>
+        /// <param name='roleAssignmentName'>
+        /// The name of the role assignment. It can be any valid GUID.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters for the role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ValidationResponse>> ValidateWithHttpMessagesAsync(string scope, string roleAssignmentName, RoleAssignmentCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List all role assignments that apply to a scope.
+        /// </summary>
+        /// <param name='scope'>
+        /// The scope of the operation or resource. Valid scopes are:
+        /// subscription (format: '/subscriptions/{subscriptionId}'), resource
+        /// group (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
+        /// or resource (format:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
         /// </param>
         /// <param name='odataQuery'>
         /// OData parameters to apply to the operation.
         /// </param>
+        /// <param name='skipToken'>
+        /// The skipToken to apply on the operation. Use $skipToken={skiptoken}
+        /// to return paged role assignments following the skipToken passed.
+        /// Only supported on provider level calls.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -286,9 +267,119 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForScopeWithHttpMessagesAsync(string scope, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForScopeWithHttpMessagesAsync(string scope, ODataQuery<RoleAssignmentFilter> odataQuery = default(ODataQuery<RoleAssignmentFilter>), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets role assignments for a resource.
+        /// Get a role assignment by ID.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The fully qualified ID of the role assignment including scope,
+        /// resource name, and resource type. Format:
+        /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+        /// Example:
+        /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RoleAssignment>> GetByIdWithHttpMessagesAsync(string roleAssignmentId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create or update a role assignment by ID.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The fully qualified ID of the role assignment including scope,
+        /// resource name, and resource type. Format:
+        /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+        /// Example:
+        /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters for the role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RoleAssignment>> CreateByIdWithHttpMessagesAsync(string roleAssignmentId, RoleAssignmentCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete a role assignment by ID.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The fully qualified ID of the role assignment including scope,
+        /// resource name, and resource type. Format:
+        /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+        /// Example:
+        /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RoleAssignment>> DeleteByIdWithHttpMessagesAsync(string roleAssignmentId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validate a role assignment create or update operation by ID.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The fully qualified ID of the role assignment including scope,
+        /// resource name, and resource type. Format:
+        /// /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}.
+        /// Example:
+        /// /subscriptions/&lt;SUB_ID&gt;/resourcegroups/&lt;RESOURCE_GROUP&gt;/providers/Microsoft.Authorization/roleAssignments/&lt;ROLE_ASSIGNMENT_NAME&gt;
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters for the role assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ValidationResponse>> ValidateByIdWithHttpMessagesAsync(string roleAssignmentId, RoleAssignmentCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List all role assignments that apply to a subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -299,7 +390,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -308,9 +399,9 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForResourceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForSubscriptionNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets role assignments for a resource group.
+        /// List all role assignments that apply to a resource group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -321,7 +412,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -332,7 +423,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// </exception>
         Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all role assignments for the subscription.
+        /// List all role assignments that apply to a resource.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -343,7 +434,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -352,9 +443,9 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<RoleAssignment>>> ListForResourceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets role assignments for a scope.
+        /// List all role assignments that apply to a scope.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -365,7 +456,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

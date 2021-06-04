@@ -14,33 +14,33 @@ namespace Microsoft.Azure.Management.Authorization.Models
     using System.Linq;
 
     /// <summary>
-    /// The name of the entity last modified it
+    /// Details of the principal
     /// </summary>
-    public partial class Principal
+    public partial class ExpandedPropertiesPrincipal
     {
         /// <summary>
-        /// Initializes a new instance of the Principal class.
+        /// Initializes a new instance of the ExpandedPropertiesPrincipal
+        /// class.
         /// </summary>
-        public Principal()
+        public ExpandedPropertiesPrincipal()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Principal class.
+        /// Initializes a new instance of the ExpandedPropertiesPrincipal
+        /// class.
         /// </summary>
-        /// <param name="id">The id of the principal made changes</param>
-        /// <param name="displayName">The name of the principal made
-        /// changes</param>
-        /// <param name="type">Type of principal such as user , group
-        /// etc</param>
-        /// <param name="email">Email of principal</param>
-        public Principal(string id = default(string), string displayName = default(string), string type = default(string), string email = default(string))
+        /// <param name="id">Id of the principal</param>
+        /// <param name="displayName">Display name of the principal</param>
+        /// <param name="email">Email id of the principal</param>
+        /// <param name="type">Type of the principal</param>
+        public ExpandedPropertiesPrincipal(string id = default(string), string displayName = default(string), string email = default(string), string type = default(string))
         {
             Id = id;
             DisplayName = displayName;
-            Type = type;
             Email = email;
+            Type = type;
             CustomInit();
         }
 
@@ -50,28 +50,28 @@ namespace Microsoft.Azure.Management.Authorization.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the id of the principal made changes
+        /// Gets or sets id of the principal
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the principal made changes
+        /// Gets or sets display name of the principal
         /// </summary>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets type of principal such as user , group etc
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets email of principal
+        /// Gets or sets email id of the principal
         /// </summary>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets type of the principal
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
 
     }
 }
