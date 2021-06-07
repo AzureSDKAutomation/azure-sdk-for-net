@@ -82,12 +82,11 @@ namespace Microsoft.Azure.Management.Peering.Models
         public string PeerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the validation state of the ASN associated with the
-        /// peer. Possible values include: 'None', 'Pending', 'Approved',
-        /// 'Failed'
+        /// Gets the validation state of the ASN associated with the peer.
+        /// Possible values include: 'None', 'Pending', 'Approved', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.validationState")]
-        public string ValidationState { get; set; }
+        public string ValidationState { get; private set; }
 
         /// <summary>
         /// Gets the error message for the validation state
