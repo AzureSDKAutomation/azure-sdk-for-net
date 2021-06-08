@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Management.BatchAI
               {
                 new Tuple<string, string, string>("BatchAI", "Clusters", "2018-05-01"),
                 new Tuple<string, string, string>("BatchAI", "Experiments", "2018-05-01"),
-                new Tuple<string, string, string>("BatchAI", "FileServers", "2018-05-01"),
                 new Tuple<string, string, string>("BatchAI", "Jobs", "2018-05-01"),
                 new Tuple<string, string, string>("BatchAI", "Operations", "2018-05-01"),
                 new Tuple<string, string, string>("BatchAI", "Usages", "2018-05-01"),
