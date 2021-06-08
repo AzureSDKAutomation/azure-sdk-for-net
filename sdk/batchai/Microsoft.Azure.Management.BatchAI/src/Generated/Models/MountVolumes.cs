@@ -33,13 +33,11 @@ namespace Microsoft.Azure.Management.BatchAI.Models
         /// </summary>
         /// <param name="azureFileShares">Azure File Shares.</param>
         /// <param name="azureBlobFileSystems">Azure Blob file systems.</param>
-        /// <param name="fileServers">File Servers.</param>
         /// <param name="unmanagedFileSystems">Unmanaged file systems.</param>
-        public MountVolumes(IList<AzureFileShareReference> azureFileShares = default(IList<AzureFileShareReference>), IList<AzureBlobFileSystemReference> azureBlobFileSystems = default(IList<AzureBlobFileSystemReference>), IList<FileServerReference> fileServers = default(IList<FileServerReference>), IList<UnmanagedFileSystemReference> unmanagedFileSystems = default(IList<UnmanagedFileSystemReference>))
+        public MountVolumes(IList<AzureFileShareReference> azureFileShares = default(IList<AzureFileShareReference>), IList<AzureBlobFileSystemReference> azureBlobFileSystems = default(IList<AzureBlobFileSystemReference>), IList<UnmanagedFileSystemReference> unmanagedFileSystems = default(IList<UnmanagedFileSystemReference>))
         {
             AzureFileShares = azureFileShares;
             AzureBlobFileSystems = azureBlobFileSystems;
-            FileServers = fileServers;
             UnmanagedFileSystems = unmanagedFileSystems;
             CustomInit();
         }
@@ -68,16 +66,6 @@ namespace Microsoft.Azure.Management.BatchAI.Models
         /// </remarks>
         [JsonProperty(PropertyName = "azureBlobFileSystems")]
         public IList<AzureBlobFileSystemReference> AzureBlobFileSystems { get; set; }
-
-        /// <summary>
-        /// Gets or sets file Servers.
-        /// </summary>
-        /// <remarks>
-        /// A collection of Batch AI File Servers that are to be mounted to the
-        /// cluster nodes.
-        /// </remarks>
-        [JsonProperty(PropertyName = "fileServers")]
-        public IList<FileServerReference> FileServers { get; set; }
 
         /// <summary>
         /// Gets or sets unmanaged file systems.
