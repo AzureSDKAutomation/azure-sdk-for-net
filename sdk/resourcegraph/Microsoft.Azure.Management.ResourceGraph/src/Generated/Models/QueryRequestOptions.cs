@@ -45,13 +45,19 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// management group level queries to decide whether to allow partial
         /// scopes for result in case the number of subscriptions exceed
         /// allowed limits.</param>
-        public QueryRequestOptions(string skipToken = default(string), int? top = default(int?), int? skip = default(int?), ResultFormat? resultFormat = default(ResultFormat?), bool? allowPartialScopes = default(bool?))
+        /// <param name="authorizationScopeFilter">Defines what level of
+        /// authorization resources should be returned based on the which
+        /// subscriptions and management groups are passed as scopes. Possible
+        /// values include: 'AtScopeAndBelow', 'AtScopeAndAbove',
+        /// 'AtScopeExact', 'AtScopeAboveAndBelow'</param>
+        public QueryRequestOptions(string skipToken = default(string), int? top = default(int?), int? skip = default(int?), ResultFormat? resultFormat = default(ResultFormat?), bool? allowPartialScopes = default(bool?), AuthorizationScopeFilter? authorizationScopeFilter = default(AuthorizationScopeFilter?))
         {
             SkipToken = skipToken;
             Top = top;
             Skip = skip;
             ResultFormat = resultFormat;
             AllowPartialScopes = allowPartialScopes;
+            AuthorizationScopeFilter = authorizationScopeFilter;
             CustomInit();
         }
 
@@ -97,6 +103,15 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// </summary>
         [JsonProperty(PropertyName = "allowPartialScopes")]
         public bool? AllowPartialScopes { get; set; }
+
+        /// <summary>
+        /// Gets or sets defines what level of authorization resources should
+        /// be returned based on the which subscriptions and management groups
+        /// are passed as scopes. Possible values include: 'AtScopeAndBelow',
+        /// 'AtScopeAndAbove', 'AtScopeExact', 'AtScopeAboveAndBelow'
+        /// </summary>
+        [JsonProperty(PropertyName = "authorizationScopeFilter")]
+        public AuthorizationScopeFilter? AuthorizationScopeFilter { get; set; }
 
         /// <summary>
         /// Validate the object.
