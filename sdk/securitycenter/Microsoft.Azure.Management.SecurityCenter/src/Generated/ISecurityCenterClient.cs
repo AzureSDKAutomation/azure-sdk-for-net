@@ -117,26 +117,6 @@ namespace Microsoft.Azure.Management.Security
         IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; }
 
         /// <summary>
-        /// Gets the IIotAlertTypesOperations.
-        /// </summary>
-        IIotAlertTypesOperations IotAlertTypes { get; }
-
-        /// <summary>
-        /// Gets the IIotAlertsOperations.
-        /// </summary>
-        IIotAlertsOperations IotAlerts { get; }
-
-        /// <summary>
-        /// Gets the IIotRecommendationTypesOperations.
-        /// </summary>
-        IIotRecommendationTypesOperations IotRecommendationTypes { get; }
-
-        /// <summary>
-        /// Gets the IIotRecommendationsOperations.
-        /// </summary>
-        IIotRecommendationsOperations IotRecommendations { get; }
-
-        /// <summary>
         /// Gets the ILocationsOperations.
         /// </summary>
         ILocationsOperations Locations { get; }
@@ -242,11 +222,6 @@ namespace Microsoft.Azure.Management.Security
         ITopologyOperations Topology { get; }
 
         /// <summary>
-        /// Gets the IAlertsOperations.
-        /// </summary>
-        IAlertsOperations Alerts { get; }
-
-        /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.
         /// </summary>
         IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; }
@@ -335,6 +310,46 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IOnPremiseIotSensorsOperations.
         /// </summary>
         IOnPremiseIotSensorsOperations OnPremiseIotSensors { get; }
+
+        /// <summary>
+        /// Gets the IIotSitesOperations.
+        /// </summary>
+        IIotSitesOperations IotSites { get; }
+
+        /// <summary>
+        /// Gets the IIotAlertsOperations.
+        /// </summary>
+        IIotAlertsOperations IotAlerts { get; }
+
+        /// <summary>
+        /// Gets the IIotAlertTypesOperations.
+        /// </summary>
+        IIotAlertTypesOperations IotAlertTypes { get; }
+
+        /// <summary>
+        /// Gets the IIotRecommendationsOperations.
+        /// </summary>
+        IIotRecommendationsOperations IotRecommendations { get; }
+
+        /// <summary>
+        /// Gets the IIotRecommendationTypesOperations.
+        /// </summary>
+        IIotRecommendationTypesOperations IotRecommendationTypes { get; }
+
+        /// <summary>
+        /// Gets the IAlertsOperations.
+        /// </summary>
+        IAlertsOperations Alerts { get; }
+
+        /// <summary>
+        /// Gets the IIngestionSettingsOperations.
+        /// </summary>
+        IIngestionSettingsOperations IngestionSettings { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareInventoriesOperations.
+        /// </summary>
+        ISoftwareInventoriesOperations SoftwareInventories { get; }
 
     }
 }
