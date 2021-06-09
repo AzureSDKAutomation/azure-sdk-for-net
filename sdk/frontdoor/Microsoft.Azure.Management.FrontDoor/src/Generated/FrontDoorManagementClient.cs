@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Management.FrontDoor
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client API version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -70,56 +75,6 @@ namespace Microsoft.Azure.Management.FrontDoor
         /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
-
-        /// <summary>
-        /// Gets the INetworkExperimentProfilesOperations.
-        /// </summary>
-        public virtual INetworkExperimentProfilesOperations NetworkExperimentProfiles { get; private set; }
-
-        /// <summary>
-        /// Gets the IPreconfiguredEndpointsOperations.
-        /// </summary>
-        public virtual IPreconfiguredEndpointsOperations PreconfiguredEndpoints { get; private set; }
-
-        /// <summary>
-        /// Gets the IExperimentsOperations.
-        /// </summary>
-        public virtual IExperimentsOperations Experiments { get; private set; }
-
-        /// <summary>
-        /// Gets the IReportsOperations.
-        /// </summary>
-        public virtual IReportsOperations Reports { get; private set; }
-
-        /// <summary>
-        /// Gets the IFrontDoorNameAvailabilityOperations.
-        /// </summary>
-        public virtual IFrontDoorNameAvailabilityOperations FrontDoorNameAvailability { get; private set; }
-
-        /// <summary>
-        /// Gets the IFrontDoorNameAvailabilityWithSubscriptionOperations.
-        /// </summary>
-        public virtual IFrontDoorNameAvailabilityWithSubscriptionOperations FrontDoorNameAvailabilityWithSubscription { get; private set; }
-
-        /// <summary>
-        /// Gets the IFrontDoorsOperations.
-        /// </summary>
-        public virtual IFrontDoorsOperations FrontDoors { get; private set; }
-
-        /// <summary>
-        /// Gets the IFrontendEndpointsOperations.
-        /// </summary>
-        public virtual IFrontendEndpointsOperations FrontendEndpoints { get; private set; }
-
-        /// <summary>
-        /// Gets the IEndpointsOperations.
-        /// </summary>
-        public virtual IEndpointsOperations Endpoints { get; private set; }
-
-        /// <summary>
-        /// Gets the IRulesEnginesOperations.
-        /// </summary>
-        public virtual IRulesEnginesOperations RulesEngines { get; private set; }
 
         /// <summary>
         /// Gets the IPoliciesOperations.
@@ -372,19 +327,10 @@ namespace Microsoft.Azure.Management.FrontDoor
         /// </summary>
         private void Initialize()
         {
-            NetworkExperimentProfiles = new NetworkExperimentProfilesOperations(this);
-            PreconfiguredEndpoints = new PreconfiguredEndpointsOperations(this);
-            Experiments = new ExperimentsOperations(this);
-            Reports = new ReportsOperations(this);
-            FrontDoorNameAvailability = new FrontDoorNameAvailabilityOperations(this);
-            FrontDoorNameAvailabilityWithSubscription = new FrontDoorNameAvailabilityWithSubscriptionOperations(this);
-            FrontDoors = new FrontDoorsOperations(this);
-            FrontendEndpoints = new FrontendEndpointsOperations(this);
-            Endpoints = new EndpointsOperations(this);
-            RulesEngines = new RulesEnginesOperations(this);
             Policies = new PoliciesOperations(this);
             ManagedRuleSets = new ManagedRuleSetsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2021-06-04";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -414,8 +360,6 @@ namespace Microsoft.Azure.Management.FrontDoor
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RouteConfiguration>("@odata.type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RouteConfiguration>("@odata.type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

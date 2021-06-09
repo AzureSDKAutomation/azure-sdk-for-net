@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// Possible values include: 'Disabled', 'Enabled'</param>
         /// <param name="action">Describes the override action to be applied
         /// when rule matches. Possible values include: 'Allow', 'Block',
-        /// 'Log', 'Redirect'</param>
+        /// 'Log', 'Redirect', 'AnomalyScoring'</param>
         /// <param name="exclusions">Describes the exclusions that are applied
         /// to this specific rule.</param>
         public ManagedRuleOverride(string ruleId, string enabledState = default(string), string action = default(string), IList<ManagedRuleExclusion> exclusions = default(IList<ManagedRuleExclusion>))
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <summary>
         /// Gets or sets describes the override action to be applied when rule
         /// matches. Possible values include: 'Allow', 'Block', 'Log',
-        /// 'Redirect'
+        /// 'Redirect', 'AnomalyScoring'
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
