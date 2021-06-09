@@ -20,5 +20,6 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         public const string Block = "Block";
         public const string Log = "Log";
         public const string Redirect = "Redirect";
+        public const string AnomalyScoring = "AnomalyScoring";
     }
 }

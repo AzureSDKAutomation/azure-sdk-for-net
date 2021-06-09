@@ -11,33 +11,29 @@
 namespace Microsoft.Azure.Management.FrontDoor.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Rules Engine Configuration to apply to a Routing Rule.
+    /// Holds properties relating to a ruleset and sku association.
     /// </summary>
-    public partial class RulesEngineUpdateParameters
+    public partial class RuleSetDataBag
     {
         /// <summary>
-        /// Initializes a new instance of the RulesEngineUpdateParameters
-        /// class.
+        /// Initializes a new instance of the RuleSetDataBag class.
         /// </summary>
-        public RulesEngineUpdateParameters()
+        public RuleSetDataBag()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RulesEngineUpdateParameters
-        /// class.
+        /// Initializes a new instance of the RuleSetDataBag class.
         /// </summary>
-        /// <param name="rules">A list of rules that define a particular Rules
-        /// Engine Configuration.</param>
-        public RulesEngineUpdateParameters(IList<RulesEngineRule> rules = default(IList<RulesEngineRule>))
+        /// <param name="state">Possible values include: 'GeneralAvailability',
+        /// 'Preview', 'Deprecated'</param>
+        public RuleSetDataBag(string state = default(string))
         {
-            Rules = rules;
+            State = state;
             CustomInit();
         }
 
@@ -47,11 +43,11 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of rules that define a particular Rules Engine
-        /// Configuration.
+        /// Gets or sets possible values include: 'GeneralAvailability',
+        /// 'Preview', 'Deprecated'
         /// </summary>
-        [JsonProperty(PropertyName = "rules")]
-        public IList<RulesEngineRule> Rules { get; set; }
+        [JsonProperty(PropertyName = "state")]
+        public string State { get; set; }
 
     }
 }

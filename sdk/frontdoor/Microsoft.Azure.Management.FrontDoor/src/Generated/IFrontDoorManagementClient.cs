@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Management.FrontDoor
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client API version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -65,56 +70,6 @@ namespace Microsoft.Azure.Management.FrontDoor
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
-
-        /// <summary>
-        /// Gets the INetworkExperimentProfilesOperations.
-        /// </summary>
-        INetworkExperimentProfilesOperations NetworkExperimentProfiles { get; }
-
-        /// <summary>
-        /// Gets the IPreconfiguredEndpointsOperations.
-        /// </summary>
-        IPreconfiguredEndpointsOperations PreconfiguredEndpoints { get; }
-
-        /// <summary>
-        /// Gets the IExperimentsOperations.
-        /// </summary>
-        IExperimentsOperations Experiments { get; }
-
-        /// <summary>
-        /// Gets the IReportsOperations.
-        /// </summary>
-        IReportsOperations Reports { get; }
-
-        /// <summary>
-        /// Gets the IFrontDoorNameAvailabilityOperations.
-        /// </summary>
-        IFrontDoorNameAvailabilityOperations FrontDoorNameAvailability { get; }
-
-        /// <summary>
-        /// Gets the IFrontDoorNameAvailabilityWithSubscriptionOperations.
-        /// </summary>
-        IFrontDoorNameAvailabilityWithSubscriptionOperations FrontDoorNameAvailabilityWithSubscription { get; }
-
-        /// <summary>
-        /// Gets the IFrontDoorsOperations.
-        /// </summary>
-        IFrontDoorsOperations FrontDoors { get; }
-
-        /// <summary>
-        /// Gets the IFrontendEndpointsOperations.
-        /// </summary>
-        IFrontendEndpointsOperations FrontendEndpoints { get; }
-
-        /// <summary>
-        /// Gets the IEndpointsOperations.
-        /// </summary>
-        IEndpointsOperations Endpoints { get; }
-
-        /// <summary>
-        /// Gets the IRulesEnginesOperations.
-        /// </summary>
-        IRulesEnginesOperations RulesEngines { get; }
 
         /// <summary>
         /// Gets the IPoliciesOperations.

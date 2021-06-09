@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 {
 
     /// <summary>
-    /// Defines values for HeaderActionType.
+    /// Defines values for ManagedRuleSetDefinitionState.
     /// </summary>
-    public static class HeaderActionType
+    public static class ManagedRuleSetDefinitionState
     {
-        public const string Append = "Append";
-        public const string Delete = "Delete";
-        public const string Overwrite = "Overwrite";
+        public const string GeneralAvailability = "GeneralAvailability";
+        public const string Preview = "Preview";
+        public const string Deprecated = "Deprecated";
     }
 }

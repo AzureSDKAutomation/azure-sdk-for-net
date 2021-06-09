@@ -14,30 +14,26 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines the Web Application Firewall policy for each host (if
-    /// applicable)
+    /// Defines the feature set for a RuleSet.
     /// </summary>
-    public partial class FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink
+    public partial class Features
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink
-        /// class.
+        /// Initializes a new instance of the Features class.
         /// </summary>
-        public FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink()
+        public Features()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink
-        /// class.
+        /// Initializes a new instance of the Features class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        public FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink(string id = default(string))
+        /// <param name="anomalyScoring">Flag for if AnomalyScoring is
+        /// supported or not.</param>
+        public Features(bool? anomalyScoring = default(bool?))
         {
-            Id = id;
+            AnomalyScoring = anomalyScoring;
             CustomInit();
         }
 
@@ -47,10 +43,10 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource ID.
+        /// Gets or sets flag for if AnomalyScoring is supported or not.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        [JsonProperty(PropertyName = "anomalyScoring")]
+        public bool? AnomalyScoring { get; set; }
 
     }
 }
