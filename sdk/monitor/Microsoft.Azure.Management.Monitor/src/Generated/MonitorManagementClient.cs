@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The Azure subscription Id.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
@@ -140,11 +140,6 @@ namespace Microsoft.Azure.Management.Monitor
         public virtual IMetricsOperations Metrics { get; private set; }
 
         /// <summary>
-        /// Gets the IMetricBaselineOperations.
-        /// </summary>
-        public virtual IMetricBaselineOperations MetricBaseline { get; private set; }
-
-        /// <summary>
         /// Gets the IBaselinesOperations.
         /// </summary>
         public virtual IBaselinesOperations Baselines { get; private set; }
@@ -198,17 +193,6 @@ namespace Microsoft.Azure.Management.Monitor
         /// Gets the IPrivateLinkScopedResourcesOperations.
         /// </summary>
         public virtual IPrivateLinkScopedResourcesOperations PrivateLinkScopedResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRules.
-        /// </summary>
-        public virtual IDataCollectionRules DataCollectionRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IDataCollectionRuleAssociations.
-        /// </summary>
-        public virtual IDataCollectionRuleAssociations DataCollectionRuleAssociations { get; private set; }
-
 
         /// <summary>
         /// Initializes a new instance of the MonitorManagementClient class.
@@ -465,7 +449,6 @@ namespace Microsoft.Azure.Management.Monitor
             TenantActivityLogs = new TenantActivityLogsOperations(this);
             MetricDefinitions = new MetricDefinitionsOperations(this);
             Metrics = new MetricsOperations(this);
-            MetricBaseline = new MetricBaselineOperations(this);
             Baselines = new BaselinesOperations(this);
             MetricAlerts = new MetricAlertsOperations(this);
             MetricAlertsStatus = new MetricAlertsStatusOperations(this);
@@ -477,8 +460,6 @@ namespace Microsoft.Azure.Management.Monitor
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkScopedResources = new PrivateLinkScopedResourcesOperations(this);
-            DataCollectionRules = new DataCollectionRules(this);
-            DataCollectionRuleAssociations = new DataCollectionRuleAssociations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
