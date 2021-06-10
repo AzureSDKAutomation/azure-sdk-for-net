@@ -50,18 +50,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// keys.</param>
         /// <param name="networkAccessPolicy">Possible values include:
         /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="publicNetworkAccess">Possible values include:
+        /// 'Enabled', 'Disabled'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="supportsHibernation">Indicates the OS on a snapshot
         /// supports hibernation.</param>
         /// <param name="tags">Resource tags</param>
-        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
+        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
             EncryptionSettingsCollection = encryptionSettingsCollection;
             Encryption = encryption;
             NetworkAccessPolicy = networkAccessPolicy;
+            PublicNetworkAccess = publicNetworkAccess;
             DiskAccessId = diskAccessId;
             SupportsHibernation = supportsHibernation;
             Tags = tags;
@@ -112,6 +115,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets ARM id of the DiskAccess resource for using private

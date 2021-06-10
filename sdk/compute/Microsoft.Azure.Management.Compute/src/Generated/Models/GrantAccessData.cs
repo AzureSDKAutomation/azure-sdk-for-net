@@ -34,10 +34,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 'Write'</param>
         /// <param name="durationInSeconds">Time duration in seconds until the
         /// SAS access expires.</param>
-        public GrantAccessData(string access, int durationInSeconds)
+        /// <param name="forCopyBetweenRegions">Flag used to fetch system SAS
+        /// for managed snapshot cross-region copy</param>
+        public GrantAccessData(string access, int durationInSeconds, bool? forCopyBetweenRegions = default(bool?))
         {
             Access = access;
             DurationInSeconds = durationInSeconds;
+            ForCopyBetweenRegions = forCopyBetweenRegions;
             CustomInit();
         }
 
@@ -57,6 +60,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "durationInSeconds")]
         public int DurationInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag used to fetch system SAS for managed snapshot
+        /// cross-region copy
+        /// </summary>
+        [JsonProperty(PropertyName = "forCopyBetweenRegions")]
+        public bool? ForCopyBetweenRegions { get; set; }
 
         /// <summary>
         /// Validate the object.
