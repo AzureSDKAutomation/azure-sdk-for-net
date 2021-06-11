@@ -37,17 +37,23 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// resource.</param>
         /// <param name="name">the name and the display name of the metric,
         /// i.e. it is localizable string.</param>
+        /// <param name="displayDescription">Detailed description of this
+        /// metric.</param>
         /// <param name="unit">the unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
         /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
         /// 'MilliCores', 'NanoCores', 'BitsPerSecond'</param>
         /// <param name="timeseries">the time series returned when a data query
         /// is performed.</param>
-        public Metric(string id, string type, LocalizableString name, Unit unit, IList<TimeSeriesElement> timeseries)
+        /// <param name="errorCode">'Success' or the error details on query
+        /// failures for this metric.</param>
+        public Metric(string id, string type, LocalizableString name, string displayDescription, string unit, IList<TimeSeriesElement> timeseries, string errorCode = default(string))
         {
             Id = id;
             Type = type;
             Name = name;
+            DisplayDescription = displayDescription;
+            ErrorCode = errorCode;
             Unit = unit;
             Timeseries = timeseries;
             CustomInit();
@@ -78,13 +84,26 @@ namespace Microsoft.Azure.Management.Monitor.Models
         public LocalizableString Name { get; set; }
 
         /// <summary>
+        /// Gets or sets detailed description of this metric.
+        /// </summary>
+        [JsonProperty(PropertyName = "displayDescription")]
+        public string DisplayDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets 'Success' or the error details on query failures for
+        /// this metric.
+        /// </summary>
+        [JsonProperty(PropertyName = "errorCode")]
+        public string ErrorCode { get; set; }
+
+        /// <summary>
         /// Gets or sets the unit of the metric. Possible values include:
         /// 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
         /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
         /// 'MilliCores', 'NanoCores', 'BitsPerSecond'
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
-        public Unit Unit { get; set; }
+        public string Unit { get; set; }
 
         /// <summary>
         /// Gets or sets the time series returned when a data query is
@@ -112,6 +131,14 @@ namespace Microsoft.Azure.Management.Monitor.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (DisplayDescription == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "DisplayDescription");
+            }
+            if (Unit == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Unit");
             }
             if (Timeseries == null)
             {
