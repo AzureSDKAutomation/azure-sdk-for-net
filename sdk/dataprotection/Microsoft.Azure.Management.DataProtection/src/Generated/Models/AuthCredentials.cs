@@ -13,17 +13,14 @@ namespace Microsoft.Azure.Management.DataProtection.Models
     using System.Linq;
 
     /// <summary>
-    /// TriggerContext
+    /// Base class for different types of authentication credentials.
     /// </summary>
-    /// <remarks>
-    /// Trigger context
-    /// </remarks>
-    public partial class TriggerContext
+    public partial class AuthCredentials
     {
         /// <summary>
-        /// Initializes a new instance of the TriggerContext class.
+        /// Initializes a new instance of the AuthCredentials class.
         /// </summary>
-        public TriggerContext()
+        public AuthCredentials()
         {
             CustomInit();
         }

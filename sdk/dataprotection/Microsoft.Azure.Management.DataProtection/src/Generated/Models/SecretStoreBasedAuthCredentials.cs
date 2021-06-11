@@ -10,32 +10,31 @@
 
 namespace Microsoft.Azure.Management.DataProtection.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// BasePolicyRule
+    /// Secret store based authentication credentials.
     /// </summary>
-    /// <remarks>
-    /// BasePolicy Rule
-    /// </remarks>
-    public partial class BasePolicyRule
+    public partial class SecretStoreBasedAuthCredentials : AuthCredentials
     {
         /// <summary>
-        /// Initializes a new instance of the BasePolicyRule class.
+        /// Initializes a new instance of the SecretStoreBasedAuthCredentials
+        /// class.
         /// </summary>
-        public BasePolicyRule()
+        public SecretStoreBasedAuthCredentials()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BasePolicyRule class.
+        /// Initializes a new instance of the SecretStoreBasedAuthCredentials
+        /// class.
         /// </summary>
-        public BasePolicyRule(string name)
+        /// <param name="secretStoreResource">Secret store resource</param>
+        public SecretStoreBasedAuthCredentials(SecretStoreResource secretStoreResource = default(SecretStoreResource))
         {
-            Name = name;
+            SecretStoreResource = secretStoreResource;
             CustomInit();
         }
 
@@ -45,21 +44,22 @@ namespace Microsoft.Azure.Management.DataProtection.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets secret store resource
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "secretStoreResource")]
+        public SecretStoreResource SecretStoreResource { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
+            if (SecretStoreResource != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+                SecretStoreResource.Validate();
             }
         }
     }
