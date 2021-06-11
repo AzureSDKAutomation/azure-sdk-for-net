@@ -15,27 +15,28 @@ namespace Microsoft.Azure.Management.DataProtection.Models
     using System.Linq;
 
     /// <summary>
-    /// BasePolicyRule
+    /// Class representing a secret store resource.
     /// </summary>
-    /// <remarks>
-    /// BasePolicy Rule
-    /// </remarks>
-    public partial class BasePolicyRule
+    public partial class SecretStoreResource
     {
         /// <summary>
-        /// Initializes a new instance of the BasePolicyRule class.
+        /// Initializes a new instance of the SecretStoreResource class.
         /// </summary>
-        public BasePolicyRule()
+        public SecretStoreResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BasePolicyRule class.
+        /// Initializes a new instance of the SecretStoreResource class.
         /// </summary>
-        public BasePolicyRule(string name)
+        /// <param name="secretStoreType">Gets or sets the type of secret
+        /// store. Possible values include: 'Invalid', 'AzureKeyVault'</param>
+        /// <param name="uri">Uri to get to the resource</param>
+        public SecretStoreResource(string secretStoreType, string uri = default(string))
         {
-            Name = name;
+            Uri = uri;
+            SecretStoreType = secretStoreType;
             CustomInit();
         }
 
@@ -45,9 +46,17 @@ namespace Microsoft.Azure.Management.DataProtection.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets uri to get to the resource
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "uri")]
+        public string Uri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of secret store. Possible values include:
+        /// 'Invalid', 'AzureKeyVault'
+        /// </summary>
+        [JsonProperty(PropertyName = "secretStoreType")]
+        public string SecretStoreType { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -57,9 +66,9 @@ namespace Microsoft.Azure.Management.DataProtection.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
+            if (SecretStoreType == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+                throw new ValidationException(ValidationRules.CannotBeNull, "SecretStoreType");
             }
         }
     }
