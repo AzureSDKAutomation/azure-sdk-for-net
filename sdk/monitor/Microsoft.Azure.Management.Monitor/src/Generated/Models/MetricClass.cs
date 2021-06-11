@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Management.Monitor.Models
 {
 
     /// <summary>
-    /// Defines values for ConditionalOperator.
+    /// Defines values for MetricClass.
     /// </summary>
-    public static class ConditionalOperator
+    public static class MetricClass
     {
-        public const string GreaterThanOrEqual = "GreaterThanOrEqual";
-        public const string LessThanOrEqual = "LessThanOrEqual";
-        public const string GreaterThan = "GreaterThan";
-        public const string LessThan = "LessThan";
-        public const string Equal = "Equal";
+        public const string Availability = "Availability";
+        public const string Transactions = "Transactions";
+        public const string Errors = "Errors";
+        public const string Latency = "Latency";
+        public const string Saturation = "Saturation";
     }
 }
