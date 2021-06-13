@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// 'Enabled'</param>
         /// <param name="defaultAction">Describes the default action to be
         /// applied when the managed rule matches. Possible values include:
-        /// 'Allow', 'Block', 'Log', 'Redirect'</param>
+        /// 'Allow', 'Block', 'Log', 'Redirect', 'AnomalyScoring'</param>
         /// <param name="description">Describes the functionality of the
         /// managed rule.</param>
         public ManagedRuleDefinition(string ruleId = default(string), string defaultState = default(string), string defaultAction = default(string), string description = default(string))
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <summary>
         /// Gets describes the default action to be applied when the managed
         /// rule matches. Possible values include: 'Allow', 'Block', 'Log',
-        /// 'Redirect'
+        /// 'Redirect', 'AnomalyScoring'
         /// </summary>
         [JsonProperty(PropertyName = "defaultAction")]
         public string DefaultAction { get; private set; }

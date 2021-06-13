@@ -45,15 +45,27 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="ruleSetType">Type of the managed rule set.</param>
         /// <param name="ruleSetVersion">Version of the managed rule set
         /// type.</param>
+        /// <param name="ruleSetFeatures">Feature set applying to the
+        /// Ruleset.</param>
+        /// <param name="supportedRuleActions">Supported actions for the
+        /// Rule.</param>
+        /// <param name="supportedRuleSetActions">Supported actions for the
+        /// entire RuleSet.</param>
+        /// <param name="supportedSkus">Map of objects for sku to related
+        /// properties like state, etc.</param>
         /// <param name="ruleGroups">Rule groups of the managed rule
         /// set.</param>
-        public ManagedRuleSetDefinition(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string ruleSetId = default(string), string ruleSetType = default(string), string ruleSetVersion = default(string), IList<ManagedRuleGroupDefinition> ruleGroups = default(IList<ManagedRuleGroupDefinition>))
+        public ManagedRuleSetDefinition(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string ruleSetId = default(string), string ruleSetType = default(string), string ruleSetVersion = default(string), ManagedRuleSetFeatures ruleSetFeatures = default(ManagedRuleSetFeatures), IList<string> supportedRuleActions = default(IList<string>), IList<string> supportedRuleSetActions = default(IList<string>), IDictionary<string, RuleSetDataBag> supportedSkus = default(IDictionary<string, RuleSetDataBag>), IList<ManagedRuleGroupDefinition> ruleGroups = default(IList<ManagedRuleGroupDefinition>))
             : base(id, name, type, location, tags)
         {
             ProvisioningState = provisioningState;
             RuleSetId = ruleSetId;
             RuleSetType = ruleSetType;
             RuleSetVersion = ruleSetVersion;
+            RuleSetFeatures = ruleSetFeatures;
+            SupportedRuleActions = supportedRuleActions;
+            SupportedRuleSetActions = supportedRuleSetActions;
+            SupportedSkus = supportedSkus;
             RuleGroups = ruleGroups;
             CustomInit();
         }
@@ -86,6 +98,30 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.ruleSetVersion")]
         public string RuleSetVersion { get; private set; }
+
+        /// <summary>
+        /// Gets feature set applying to the Ruleset.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.ruleSetFeatures")]
+        public ManagedRuleSetFeatures RuleSetFeatures { get; private set; }
+
+        /// <summary>
+        /// Gets supported actions for the Rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.supportedRuleActions")]
+        public IList<string> SupportedRuleActions { get; private set; }
+
+        /// <summary>
+        /// Gets supported actions for the entire RuleSet.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.supportedRuleSetActions")]
+        public IList<string> SupportedRuleSetActions { get; private set; }
+
+        /// <summary>
+        /// Gets map of objects for sku to related properties like state, etc.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.supportedSkus")]
+        public IDictionary<string, RuleSetDataBag> SupportedSkus { get; private set; }
 
         /// <summary>
         /// Gets rule groups of the managed rule set.

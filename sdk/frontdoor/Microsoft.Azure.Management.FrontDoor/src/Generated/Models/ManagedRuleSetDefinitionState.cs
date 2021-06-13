@@ -12,14 +12,12 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 {
 
     /// <summary>
-    /// Defines values for ActionType.
+    /// Defines values for ManagedRuleSetDefinitionState.
     /// </summary>
-    public static class ActionType
+    public static class ManagedRuleSetDefinitionState
     {
-        public const string Allow = "Allow";
-        public const string Block = "Block";
-        public const string Log = "Log";
-        public const string Redirect = "Redirect";
-        public const string AnomalyScoring = "AnomalyScoring";
+        public const string GeneralAvailability = "GeneralAvailability";
+        public const string Preview = "Preview";
+        public const string Deprecated = "Deprecated";
     }
 }
