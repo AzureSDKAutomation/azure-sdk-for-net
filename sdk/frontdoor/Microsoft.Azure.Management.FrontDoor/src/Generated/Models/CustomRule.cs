@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// <param name="matchConditions">List of match conditions.</param>
         /// <param name="action">Describes what action to be applied when rule
         /// matches. Possible values include: 'Allow', 'Block', 'Log',
-        /// 'Redirect'</param>
+        /// 'Redirect', 'AnomalyScoring'</param>
         /// <param name="name">Describes the name of the rule.</param>
         /// <param name="enabledState">Describes if the custom rule is in
         /// enabled or disabled state. Defaults to Enabled if not specified.
@@ -117,7 +117,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 
         /// <summary>
         /// Gets or sets describes what action to be applied when rule matches.
-        /// Possible values include: 'Allow', 'Block', 'Log', 'Redirect'
+        /// Possible values include: 'Allow', 'Block', 'Log', 'Redirect',
+        /// 'AnomalyScoring'
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
