@@ -27,8 +27,12 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// <summary>
         /// Initializes a new instance of the SkuResourceProperties class.
         /// </summary>
-        public SkuResourceProperties(IList<SkuSetting> skuSettings)
-            : base(skuSettings)
+        /// <param name="provisioningState">Possible values include:
+        /// 'NotSpecified', 'Accepted', 'Running', 'Creating', 'Created',
+        /// 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
+        /// 'MovingResources', 'TransientFailure', 'RolloutInProgress'</param>
+        public SkuResourceProperties(IList<SkuSetting> skuSettings, string provisioningState = default(string))
+            : base(skuSettings, provisioningState)
         {
             CustomInit();
         }

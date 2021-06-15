@@ -33,8 +33,12 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// 'NotSpecified', 'EventHub', 'WebHook'</param>
         /// <param name="messageScope">Possible values include: 'NotSpecified',
         /// 'RegisteredSubscriptions'</param>
-        public NotificationRegistrationPropertiesModel(string notificationMode = default(string), string messageScope = default(string), IList<string> includedEvents = default(IList<string>), IList<NotificationEndpoint> notificationEndpoints = default(IList<NotificationEndpoint>))
-            : base(notificationMode, messageScope, includedEvents, notificationEndpoints)
+        /// <param name="provisioningState">Possible values include:
+        /// 'NotSpecified', 'Accepted', 'Running', 'Creating', 'Created',
+        /// 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
+        /// 'MovingResources', 'TransientFailure', 'RolloutInProgress'</param>
+        public NotificationRegistrationPropertiesModel(string notificationMode = default(string), string messageScope = default(string), IList<string> includedEvents = default(IList<string>), IList<NotificationEndpoint> notificationEndpoints = default(IList<NotificationEndpoint>), string provisioningState = default(string))
+            : base(notificationMode, messageScope, includedEvents, notificationEndpoints, provisioningState)
         {
             CustomInit();
         }

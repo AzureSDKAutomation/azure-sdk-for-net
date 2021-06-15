@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.ProviderHub
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -84,11 +82,12 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
-            public static SkuResource CreateOrUpdate(this ISkusOperations operations, string providerNamespace, string resourceType, string sku, IList<SkuSetting> skuSettings)
+            public static SkuResource CreateOrUpdate(this ISkusOperations operations, string providerNamespace, string resourceType, string sku, ResourceTypeSku properties)
             {
-                return operations.CreateOrUpdateAsync(providerNamespace, resourceType, sku, skuSettings).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(providerNamespace, resourceType, sku, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -106,14 +105,15 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SkuResource> CreateOrUpdateAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string sku, IList<SkuSetting> skuSettings, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SkuResource> CreateOrUpdateAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string sku, ResourceTypeSku properties, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(providerNamespace, resourceType, sku, skuSettings, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(providerNamespace, resourceType, sku, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -232,11 +232,12 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
-            public static SkuResource CreateOrUpdateNestedResourceTypeFirst(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, IList<SkuSetting> skuSettings)
+            public static SkuResource CreateOrUpdateNestedResourceTypeFirst(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, ResourceTypeSku properties)
             {
-                return operations.CreateOrUpdateNestedResourceTypeFirstAsync(providerNamespace, resourceType, nestedResourceTypeFirst, sku, skuSettings).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateNestedResourceTypeFirstAsync(providerNamespace, resourceType, nestedResourceTypeFirst, sku, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -257,14 +258,15 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SkuResource> CreateOrUpdateNestedResourceTypeFirstAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, IList<SkuSetting> skuSettings, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SkuResource> CreateOrUpdateNestedResourceTypeFirstAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, ResourceTypeSku properties, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateNestedResourceTypeFirstWithHttpMessagesAsync(providerNamespace, resourceType, nestedResourceTypeFirst, sku, skuSettings, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateNestedResourceTypeFirstWithHttpMessagesAsync(providerNamespace, resourceType, nestedResourceTypeFirst, sku, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -398,11 +400,12 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
-            public static SkuResource CreateOrUpdateNestedResourceTypeSecond(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, IList<SkuSetting> skuSettings)
+            public static SkuResource CreateOrUpdateNestedResourceTypeSecond(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, ResourceTypeSku properties)
             {
-                return operations.CreateOrUpdateNestedResourceTypeSecondAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, sku, skuSettings).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateNestedResourceTypeSecondAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, sku, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -426,14 +429,15 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SkuResource> CreateOrUpdateNestedResourceTypeSecondAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, IList<SkuSetting> skuSettings, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SkuResource> CreateOrUpdateNestedResourceTypeSecondAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, ResourceTypeSku properties, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateNestedResourceTypeSecondWithHttpMessagesAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, sku, skuSettings, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateNestedResourceTypeSecondWithHttpMessagesAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, sku, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -582,11 +586,12 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
-            public static SkuResource CreateOrUpdateNestedResourceTypeThird(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, IList<SkuSetting> skuSettings)
+            public static SkuResource CreateOrUpdateNestedResourceTypeThird(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, ResourceTypeSku properties)
             {
-                return operations.CreateOrUpdateNestedResourceTypeThirdAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, nestedResourceTypeThird, sku, skuSettings).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateNestedResourceTypeThirdAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, nestedResourceTypeThird, sku, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -613,14 +618,15 @@ namespace Microsoft.Azure.Management.ProviderHub
             /// <param name='sku'>
             /// The SKU.
             /// </param>
-            /// <param name='skuSettings'>
+            /// <param name='properties'>
+            /// The required body parameters supplied to the resource sku operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SkuResource> CreateOrUpdateNestedResourceTypeThirdAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, IList<SkuSetting> skuSettings, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SkuResource> CreateOrUpdateNestedResourceTypeThirdAsync(this ISkusOperations operations, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, ResourceTypeSku properties, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateNestedResourceTypeThirdWithHttpMessagesAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, nestedResourceTypeThird, sku, skuSettings, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateNestedResourceTypeThirdWithHttpMessagesAsync(providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, nestedResourceTypeThird, sku, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

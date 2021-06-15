@@ -262,7 +262,8 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -285,7 +286,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateWithHttpMessagesAsync(string providerNamespace, string resourceType, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateWithHttpMessagesAsync(string providerNamespace, string resourceType, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -303,18 +304,13 @@ namespace Microsoft.Azure.Management.ProviderHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "sku");
             }
+            if (properties == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "properties");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (skuSettings == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "skuSettings");
-            }
-            ResourceTypeSku properties = new ResourceTypeSku();
-            if (skuSettings != null)
-            {
-                properties.SkuSettings = skuSettings;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -871,7 +867,8 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -894,7 +891,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeFirstWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeFirstWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -916,18 +913,13 @@ namespace Microsoft.Azure.Management.ProviderHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "sku");
             }
+            if (properties == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "properties");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (skuSettings == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "skuSettings");
-            }
-            ResourceTypeSku properties = new ResourceTypeSku();
-            if (skuSettings != null)
-            {
-                properties.SkuSettings = skuSettings;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1507,7 +1499,8 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1530,7 +1523,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeSecondWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeSecondWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1556,18 +1549,13 @@ namespace Microsoft.Azure.Management.ProviderHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "sku");
             }
+            if (properties == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "properties");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (skuSettings == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "skuSettings");
-            }
-            ResourceTypeSku properties = new ResourceTypeSku();
-            if (skuSettings != null)
-            {
-                properties.SkuSettings = skuSettings;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -2170,7 +2158,8 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2193,7 +2182,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeThirdWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeThirdWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -2223,18 +2212,13 @@ namespace Microsoft.Azure.Management.ProviderHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "sku");
             }
+            if (properties == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "properties");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (skuSettings == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "skuSettings");
-            }
-            ResourceTypeSku properties = new ResourceTypeSku();
-            if (skuSettings != null)
-            {
-                properties.SkuSettings = skuSettings;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;

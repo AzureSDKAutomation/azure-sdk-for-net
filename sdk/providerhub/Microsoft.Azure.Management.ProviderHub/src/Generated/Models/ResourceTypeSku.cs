@@ -28,9 +28,14 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// <summary>
         /// Initializes a new instance of the ResourceTypeSku class.
         /// </summary>
-        public ResourceTypeSku(IList<SkuSetting> skuSettings)
+        /// <param name="provisioningState">Possible values include:
+        /// 'NotSpecified', 'Accepted', 'Running', 'Creating', 'Created',
+        /// 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
+        /// 'MovingResources', 'TransientFailure', 'RolloutInProgress'</param>
+        public ResourceTypeSku(IList<SkuSetting> skuSettings, string provisioningState = default(string))
         {
             SkuSettings = skuSettings;
+            ProvisioningState = provisioningState;
             CustomInit();
         }
 
@@ -43,6 +48,15 @@ namespace Microsoft.Azure.Management.ProviderHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "skuSettings")]
         public IList<SkuSetting> SkuSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'NotSpecified', 'Accepted',
+        /// 'Running', 'Creating', 'Created', 'Deleting', 'Deleted',
+        /// 'Canceled', 'Failed', 'Succeeded', 'MovingResources',
+        /// 'TransientFailure', 'RolloutInProgress'
+        /// </summary>
+        [JsonProperty(PropertyName = "provisioningState")]
+        public string ProvisioningState { get; set; }
 
     }
 }
