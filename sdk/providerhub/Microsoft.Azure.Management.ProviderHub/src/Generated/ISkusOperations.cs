@@ -64,7 +64,9 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateWithHttpMessagesAsync(string providerNamespace, string resourceType, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateWithHttpMessagesAsync(string providerNamespace, string resourceType, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a resource type sku.
         /// </summary>
@@ -154,7 +156,9 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -171,7 +175,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeFirstWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeFirstWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a resource type sku.
         /// </summary>
@@ -253,7 +257,9 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -270,7 +276,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeSecondWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeSecondWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a resource type sku.
         /// </summary>
@@ -361,7 +367,9 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <param name='sku'>
         /// The SKU.
         /// </param>
-        /// <param name='skuSettings'>
+        /// <param name='properties'>
+        /// The required body parameters supplied to the resource sku
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -378,7 +386,7 @@ namespace Microsoft.Azure.Management.ProviderHub
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeThirdWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, IList<SkuSetting> skuSettings, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SkuResource>> CreateOrUpdateNestedResourceTypeThirdWithHttpMessagesAsync(string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, ResourceTypeSku properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a resource type sku.
         /// </summary>
