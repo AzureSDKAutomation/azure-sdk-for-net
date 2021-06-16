@@ -12,14 +12,12 @@ namespace Microsoft.Azure.Management.Monitor.Models
 {
 
     /// <summary>
-    /// Defines values for ConditionalOperator.
+    /// Defines values for NamespaceClassification.
     /// </summary>
-    public static class ConditionalOperator
+    public static class NamespaceClassification
     {
-        public const string GreaterThanOrEqual = "GreaterThanOrEqual";
-        public const string LessThanOrEqual = "LessThanOrEqual";
-        public const string GreaterThan = "GreaterThan";
-        public const string LessThan = "LessThan";
-        public const string Equal = "Equal";
+        public const string Platform = "Platform";
+        public const string Custom = "Custom";
+        public const string Qos = "Qos";
     }
 }
