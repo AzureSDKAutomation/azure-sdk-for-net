@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.AppPlatform
             RuntimeVersions = new RuntimeVersionsOperations(this);
             Skus = new SkusOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-11-01-preview";
+            ApiVersion = "2021-06-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -413,6 +413,8 @@ namespace Microsoft.Azure.Management.AppPlatform
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<UserSourceInfo>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<UserSourceInfo>("type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }

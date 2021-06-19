@@ -14,25 +14,29 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
     using System.Linq;
 
     /// <summary>
-    /// Source information for a deployment
+    /// Reference to a build result
     /// </summary>
-    public partial class UserSourceInfo
+    [Newtonsoft.Json.JsonObject("BuildResult")]
+    public partial class BuildResultUserSourceInfo : UserSourceInfo
     {
         /// <summary>
-        /// Initializes a new instance of the UserSourceInfo class.
+        /// Initializes a new instance of the BuildResultUserSourceInfo class.
         /// </summary>
-        public UserSourceInfo()
+        public BuildResultUserSourceInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserSourceInfo class.
+        /// Initializes a new instance of the BuildResultUserSourceInfo class.
         /// </summary>
         /// <param name="version">Version of the source</param>
-        public UserSourceInfo(string version = default(string))
+        /// <param name="buildResultId">Resource id of an existing succeeded
+        /// build result under the same Spring instance.</param>
+        public BuildResultUserSourceInfo(string version = default(string), string buildResultId = default(string))
+            : base(version)
         {
-            Version = version;
+            BuildResultId = buildResultId;
             CustomInit();
         }
 
@@ -42,10 +46,11 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets version of the source
+        /// Gets or sets resource id of an existing succeeded build result
+        /// under the same Spring instance.
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
-        public string Version { get; set; }
+        [JsonProperty(PropertyName = "buildResultId")]
+        public string BuildResultId { get; set; }
 
     }
 }
