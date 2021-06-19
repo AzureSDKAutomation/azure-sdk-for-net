@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.AppPlatform.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -32,28 +34,24 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="publicProperty">Indicates whether the App exposes
         /// public endpoint</param>
         /// <param name="url">URL of the App</param>
+        /// <param name="addonConfig">Collection of addons</param>
         /// <param name="provisioningState">Provisioning state of the App.
         /// Possible values include: 'Succeeded', 'Failed', 'Creating',
-        /// 'Updating'</param>
-        /// <param name="activeDeploymentName">Name of the active deployment of
-        /// the App</param>
+        /// 'Updating', 'Deleting'</param>
         /// <param name="fqdn">Fully qualified dns Name.</param>
         /// <param name="httpsOnly">Indicate if only https is allowed.</param>
-        /// <param name="createdTime">Date time when the resource is
-        /// created</param>
         /// <param name="temporaryDisk">Temporary disk settings</param>
         /// <param name="persistentDisk">Persistent disk settings</param>
         /// <param name="enableEndToEndTLS">Indicate if end to end TLS is
         /// enabled.</param>
-        public AppResourceProperties(bool? publicProperty = default(bool?), string url = default(string), string provisioningState = default(string), string activeDeploymentName = default(string), string fqdn = default(string), bool? httpsOnly = default(bool?), System.DateTime? createdTime = default(System.DateTime?), TemporaryDisk temporaryDisk = default(TemporaryDisk), PersistentDisk persistentDisk = default(PersistentDisk), bool? enableEndToEndTLS = default(bool?))
+        public AppResourceProperties(bool? publicProperty = default(bool?), string url = default(string), IDictionary<string, AddonProfile> addonConfig = default(IDictionary<string, AddonProfile>), string provisioningState = default(string), string fqdn = default(string), bool? httpsOnly = default(bool?), TemporaryDisk temporaryDisk = default(TemporaryDisk), PersistentDisk persistentDisk = default(PersistentDisk), bool? enableEndToEndTLS = default(bool?))
         {
             PublicProperty = publicProperty;
             Url = url;
+            AddonConfig = addonConfig;
             ProvisioningState = provisioningState;
-            ActiveDeploymentName = activeDeploymentName;
             Fqdn = fqdn;
             HttpsOnly = httpsOnly;
-            CreatedTime = createdTime;
             TemporaryDisk = temporaryDisk;
             PersistentDisk = persistentDisk;
             EnableEndToEndTLS = enableEndToEndTLS;
@@ -78,17 +76,17 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public string Url { get; private set; }
 
         /// <summary>
+        /// Gets or sets collection of addons
+        /// </summary>
+        [JsonProperty(PropertyName = "addonConfig")]
+        public IDictionary<string, AddonProfile> AddonConfig { get; set; }
+
+        /// <summary>
         /// Gets provisioning state of the App. Possible values include:
-        /// 'Succeeded', 'Failed', 'Creating', 'Updating'
+        /// 'Succeeded', 'Failed', 'Creating', 'Updating', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets or sets name of the active deployment of the App
-        /// </summary>
-        [JsonProperty(PropertyName = "activeDeploymentName")]
-        public string ActiveDeploymentName { get; set; }
 
         /// <summary>
         /// Gets or sets fully qualified dns Name.
@@ -101,12 +99,6 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "httpsOnly")]
         public bool? HttpsOnly { get; set; }
-
-        /// <summary>
-        /// Gets date time when the resource is created
-        /// </summary>
-        [JsonProperty(PropertyName = "createdTime")]
-        public System.DateTime? CreatedTime { get; private set; }
 
         /// <summary>
         /// Gets or sets temporary disk settings

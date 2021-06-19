@@ -14,25 +14,31 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
     using System.Linq;
 
     /// <summary>
-    /// Source information for a deployment
+    /// Uploaded Jar binary for a deployment
     /// </summary>
-    public partial class UserSourceInfo
+    [Newtonsoft.Json.JsonObject("Jar")]
+    public partial class JarUploadedUserSourceInfo : UploadedUserSourceInfo
     {
         /// <summary>
-        /// Initializes a new instance of the UserSourceInfo class.
+        /// Initializes a new instance of the JarUploadedUserSourceInfo class.
         /// </summary>
-        public UserSourceInfo()
+        public JarUploadedUserSourceInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserSourceInfo class.
+        /// Initializes a new instance of the JarUploadedUserSourceInfo class.
         /// </summary>
         /// <param name="version">Version of the source</param>
-        public UserSourceInfo(string version = default(string))
+        /// <param name="relativePath">Relative path of the storage which
+        /// stores the source</param>
+        /// <param name="runtimeVersion">Runtime version of the Jar
+        /// file</param>
+        public JarUploadedUserSourceInfo(string version = default(string), string relativePath = default(string), string runtimeVersion = default(string))
+            : base(version, relativePath)
         {
-            Version = version;
+            RuntimeVersion = runtimeVersion;
             CustomInit();
         }
 
@@ -42,10 +48,10 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets version of the source
+        /// Gets or sets runtime version of the Jar file
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
-        public string Version { get; set; }
+        [JsonProperty(PropertyName = "runtimeVersion")]
+        public string RuntimeVersion { get; set; }
 
     }
 }

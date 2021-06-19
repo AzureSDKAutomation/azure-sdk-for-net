@@ -38,10 +38,11 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// resource</param>
         /// <param name="location">The GEO location of the application, always
         /// the same with its parent resource</param>
-        public AppResource(string id = default(string), string name = default(string), string type = default(string), AppResourceProperties properties = default(AppResourceProperties), ManagedIdentityProperties identity = default(ManagedIdentityProperties), string location = default(string))
+        public AppResource(string id = default(string), string name = default(string), string type = default(string), AppResourceProperties properties = default(AppResourceProperties), SystemData systemData = default(SystemData), ManagedIdentityProperties identity = default(ManagedIdentityProperties), string location = default(string))
             : base(id, name, type)
         {
             Properties = properties;
+            SystemData = systemData;
             Identity = identity;
             Location = location;
             CustomInit();
@@ -57,6 +58,11 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public AppResourceProperties Properties { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Gets or sets the Managed Identity type of the app resource
