@@ -406,6 +406,8 @@ namespace Microsoft.Azure.Management.DataMigration
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MigrateOracleAzureDbPostgreSqlSyncTaskOutput>("resultType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput>("resultType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput>("resultType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MigrateMySqlAzureDbForMySqlOfflineTaskOutput>("resultType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MigrateMySqlAzureDbForMySqlOfflineTaskOutput>("resultType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MigrateMySqlAzureDbForMySqlSyncTaskOutput>("resultType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MigrateMySqlAzureDbForMySqlSyncTaskOutput>("resultType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MigrateSqlServerSqlDbSyncTaskOutput>("resultType"));
