@@ -155,6 +155,16 @@ namespace Microsoft.Azure.Management.DevTestLabs
         public virtual IServiceRunnersOperations ServiceRunners { get; private set; }
 
         /// <summary>
+        /// Gets the ISharedGalleriesOperations.
+        /// </summary>
+        public virtual ISharedGalleriesOperations SharedGalleries { get; private set; }
+
+        /// <summary>
+        /// Gets the ISharedImagesOperations.
+        /// </summary>
+        public virtual ISharedImagesOperations SharedImages { get; private set; }
+
+        /// <summary>
         /// Gets the IUsersOperations.
         /// </summary>
         public virtual IUsersOperations Users { get; private set; }
@@ -198,6 +208,16 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// Gets the IVirtualNetworksOperations.
         /// </summary>
         public virtual IVirtualNetworksOperations VirtualNetworks { get; private set; }
+
+        /// <summary>
+        /// Gets the IBastionHostsOperations.
+        /// </summary>
+        public virtual IBastionHostsOperations BastionHosts { get; private set; }
+
+        /// <summary>
+        /// Gets the IVmPoolsOperations.
+        /// </summary>
+        public virtual IVmPoolsOperations VmPools { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the DevTestLabsClient class.
@@ -456,6 +476,8 @@ namespace Microsoft.Azure.Management.DevTestLabs
             Policies = new PoliciesOperations(this);
             Schedules = new SchedulesOperations(this);
             ServiceRunners = new ServiceRunnersOperations(this);
+            SharedGalleries = new SharedGalleriesOperations(this);
+            SharedImages = new SharedImagesOperations(this);
             Users = new UsersOperations(this);
             Disks = new DisksOperations(this);
             Environments = new EnvironmentsOperations(this);
@@ -465,8 +487,10 @@ namespace Microsoft.Azure.Management.DevTestLabs
             VirtualMachines = new VirtualMachinesOperations(this);
             VirtualMachineSchedules = new VirtualMachineSchedulesOperations(this);
             VirtualNetworks = new VirtualNetworksOperations(this);
+            BastionHosts = new BastionHostsOperations(this);
+            VmPools = new VmPoolsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-09-15";
+            ApiVersion = "2018-10-15-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

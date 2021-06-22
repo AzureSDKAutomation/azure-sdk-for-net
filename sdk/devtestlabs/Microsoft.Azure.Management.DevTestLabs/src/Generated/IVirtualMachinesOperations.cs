@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// </exception>
         Task<AzureOperationResponse<LabVirtualMachine>> GetWithHttpMessagesAsync(string resourceGroupName, string labName, string name, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or replace an existing Virtual machine. This operation can
+        /// Create or replace an existing virtual machine. This operation can
         /// take a while to complete.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -143,7 +143,8 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Modify properties of virtual machines.
+        /// Allows modifying tags of virtual machines. All other properties
+        /// will be ignored.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -258,6 +259,31 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> ClaimWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Clears the artifact results of the virtual machine.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='labName'>
+        /// The name of the lab.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the virtual machine.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> ClearArtifactResultsWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Detach the specified disk from the virtual machine. This operation
         /// can take a while to complete.
@@ -530,7 +556,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// </exception>
         Task<AzureOperationResponse> UnClaimWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or replace an existing Virtual machine. This operation can
+        /// Create or replace an existing virtual machine. This operation can
         /// take a while to complete.
         /// </summary>
         /// <param name='resourceGroupName'>

@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Create or replace an existing Virtual machine. This operation can take a
+            /// Create or replace an existing virtual machine. This operation can take a
             /// while to complete.
             /// </summary>
             /// <param name='operations'>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Create or replace an existing Virtual machine. This operation can take a
+            /// Create or replace an existing virtual machine. This operation can take a
             /// while to complete.
             /// </summary>
             /// <param name='operations'>
@@ -220,7 +220,8 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Modify properties of virtual machines.
+            /// Allows modifying tags of virtual machines. All other properties will be
+            /// ignored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -243,7 +244,8 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Modify properties of virtual machines.
+            /// Allows modifying tags of virtual machines. All other properties will be
+            /// ignored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -416,6 +418,49 @@ namespace Microsoft.Azure.Management.DevTestLabs
             public static async Task ClaimAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.ClaimWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Clears the artifact results of the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='labName'>
+            /// The name of the lab.
+            /// </param>
+            /// <param name='name'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void ClearArtifactResults(this IVirtualMachinesOperations operations, string resourceGroupName, string labName, string name)
+            {
+                operations.ClearArtifactResultsAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Clears the artifact results of the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='labName'>
+            /// The name of the lab.
+            /// </param>
+            /// <param name='name'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ClearArtifactResultsAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ClearArtifactResultsWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -875,7 +920,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Create or replace an existing Virtual machine. This operation can take a
+            /// Create or replace an existing virtual machine. This operation can take a
             /// while to complete.
             /// </summary>
             /// <param name='operations'>
@@ -899,7 +944,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Create or replace an existing Virtual machine. This operation can take a
+            /// Create or replace an existing virtual machine. This operation can take a
             /// while to complete.
             /// </summary>
             /// <param name='operations'>

@@ -31,19 +31,27 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         /// <param name="status">The operation status.</param>
         /// <param name="statusCode">The status code for the operation.
-        /// Possible values include: 'Continue', 'SwitchingProtocols', 'OK',
-        /// 'Created', 'Accepted', 'NonAuthoritativeInformation', 'NoContent',
-        /// 'ResetContent', 'PartialContent', 'MultipleChoices',
-        /// 'MovedPermanently', 'Redirect', 'SeeOther', 'NotModified',
-        /// 'UseProxy', 'Unused', 'TemporaryRedirect', 'BadRequest',
-        /// 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
-        /// 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
-        /// 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
-        /// 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
+        /// Possible values include: 'Continue', 'SwitchingProtocols',
+        /// 'Processing', 'EarlyHints', 'OK', 'Created', 'Accepted',
+        /// 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
+        /// 'PartialContent', 'MultiStatus', 'AlreadyReported', 'IMUsed',
+        /// 'MultipleChoices', 'Ambiguous', 'MovedPermanently', 'Moved',
+        /// 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
+        /// 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb',
+        /// 'PermanentRedirect', 'BadRequest', 'Unauthorized',
+        /// 'PaymentRequired', 'Forbidden', 'NotFound', 'MethodNotAllowed',
+        /// 'NotAcceptable', 'ProxyAuthenticationRequired', 'RequestTimeout',
+        /// 'Conflict', 'Gone', 'LengthRequired', 'PreconditionFailed',
+        /// 'RequestEntityTooLarge', 'RequestUriTooLong',
         /// 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable',
-        /// 'ExpectationFailed', 'UpgradeRequired', 'InternalServerError',
-        /// 'NotImplemented', 'BadGateway', 'ServiceUnavailable',
-        /// 'GatewayTimeout', 'HttpVersionNotSupported'</param>
+        /// 'ExpectationFailed', 'MisdirectedRequest', 'UnprocessableEntity',
+        /// 'Locked', 'FailedDependency', 'UpgradeRequired',
+        /// 'PreconditionRequired', 'TooManyRequests',
+        /// 'RequestHeaderFieldsTooLarge', 'UnavailableForLegalReasons',
+        /// 'InternalServerError', 'NotImplemented', 'BadGateway',
+        /// 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported',
+        /// 'VariantAlsoNegotiates', 'InsufficientStorage', 'LoopDetected',
+        /// 'NotExtended', 'NetworkAuthenticationRequired'</param>
         /// <param name="error">Error details for the operation in case of a
         /// failure.</param>
         public OperationResult(string status = default(string), string statusCode = default(string), OperationError error = default(OperationError))
@@ -67,19 +75,27 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
 
         /// <summary>
         /// Gets or sets the status code for the operation. Possible values
-        /// include: 'Continue', 'SwitchingProtocols', 'OK', 'Created',
-        /// 'Accepted', 'NonAuthoritativeInformation', 'NoContent',
-        /// 'ResetContent', 'PartialContent', 'MultipleChoices',
-        /// 'MovedPermanently', 'Redirect', 'SeeOther', 'NotModified',
-        /// 'UseProxy', 'Unused', 'TemporaryRedirect', 'BadRequest',
-        /// 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
-        /// 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
-        /// 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
-        /// 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
+        /// include: 'Continue', 'SwitchingProtocols', 'Processing',
+        /// 'EarlyHints', 'OK', 'Created', 'Accepted',
+        /// 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
+        /// 'PartialContent', 'MultiStatus', 'AlreadyReported', 'IMUsed',
+        /// 'MultipleChoices', 'Ambiguous', 'MovedPermanently', 'Moved',
+        /// 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
+        /// 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb',
+        /// 'PermanentRedirect', 'BadRequest', 'Unauthorized',
+        /// 'PaymentRequired', 'Forbidden', 'NotFound', 'MethodNotAllowed',
+        /// 'NotAcceptable', 'ProxyAuthenticationRequired', 'RequestTimeout',
+        /// 'Conflict', 'Gone', 'LengthRequired', 'PreconditionFailed',
+        /// 'RequestEntityTooLarge', 'RequestUriTooLong',
         /// 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable',
-        /// 'ExpectationFailed', 'UpgradeRequired', 'InternalServerError',
-        /// 'NotImplemented', 'BadGateway', 'ServiceUnavailable',
-        /// 'GatewayTimeout', 'HttpVersionNotSupported'
+        /// 'ExpectationFailed', 'MisdirectedRequest', 'UnprocessableEntity',
+        /// 'Locked', 'FailedDependency', 'UpgradeRequired',
+        /// 'PreconditionRequired', 'TooManyRequests',
+        /// 'RequestHeaderFieldsTooLarge', 'UnavailableForLegalReasons',
+        /// 'InternalServerError', 'NotImplemented', 'BadGateway',
+        /// 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported',
+        /// 'VariantAlsoNegotiates', 'InsufficientStorage', 'LoopDetected',
+        /// 'NotExtended', 'NetworkAuthenticationRequired'
         /// </summary>
         [JsonProperty(PropertyName = "statusCode")]
         public string StatusCode { get; set; }

@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Modify properties of labs.
+            /// Allows modifying tags of labs. All other properties will be ignored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
             }
 
             /// <summary>
-            /// Modify properties of labs.
+            /// Allows modifying tags of labs. All other properties will be ignored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -357,6 +357,43 @@ namespace Microsoft.Azure.Management.DevTestLabs
             public static async Task CreateEnvironmentAsync(this ILabsOperations operations, string resourceGroupName, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.CreateEnvironmentWithHttpMessagesAsync(resourceGroupName, name, labVirtualMachineCreationParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Ensure the current user has a valid profile in the lab.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='name'>
+            /// The name of the lab.
+            /// </param>
+            public static void EnsureCurrentUserProfile(this ILabsOperations operations, string resourceGroupName, string name)
+            {
+                operations.EnsureCurrentUserProfileAsync(resourceGroupName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Ensure the current user has a valid profile in the lab.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='name'>
+            /// The name of the lab.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task EnsureCurrentUserProfileAsync(this ILabsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.EnsureCurrentUserProfileWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
