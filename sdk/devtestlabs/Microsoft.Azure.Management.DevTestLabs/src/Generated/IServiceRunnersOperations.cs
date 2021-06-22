@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -25,34 +24,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
     public partial interface IServiceRunnersOperations
     {
         /// <summary>
-        /// List service runners in a given lab.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='labName'>
-        /// The name of the lab.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<ServiceRunner>>> ListWithHttpMessagesAsync(string resourceGroupName, string labName, ODataQuery<ServiceRunner> odataQuery = default(ODataQuery<ServiceRunner>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Get service runner.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -64,6 +35,10 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// <param name='name'>
         /// The name of the service runner.
         /// </param>
+        /// <param name='expand'>
+        /// Specify the $expand query. Example:
+        /// 'properties($select=identityUsageType)'
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -79,9 +54,10 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServiceRunner>> GetWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceRunner>> GetWithHttpMessagesAsync(string resourceGroupName, string labName, string name, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or replace an existing Service runner.
+        /// Create or replace an existing service runner. This operation can
+        /// take a while to complete.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -112,7 +88,7 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// </exception>
         Task<AzureOperationResponse<ServiceRunner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string labName, string name, ServiceRunner serviceRunner, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete service runner.
+        /// Delete service runner. This operation can take a while to complete.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -137,10 +113,20 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List service runners in a given lab.
+        /// Create or replace an existing service runner. This operation can
+        /// take a while to complete.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='labName'>
+        /// The name of the lab.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the service runner.
+        /// </param>
+        /// <param name='serviceRunner'>
+        /// A container for a managed identity to execute DevTest lab services.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,6 +143,31 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ServiceRunner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceRunner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string labName, string name, ServiceRunner serviceRunner, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete service runner. This operation can take a while to complete.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='labName'>
+        /// The name of the lab.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the service runner.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string labName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
