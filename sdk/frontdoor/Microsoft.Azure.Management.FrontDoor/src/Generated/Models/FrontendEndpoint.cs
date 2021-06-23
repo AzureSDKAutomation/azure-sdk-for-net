@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// Application Firewall policy for each host (if applicable)</param>
         /// <param name="resourceState">Resource status. Possible values
         /// include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
-        /// 'Disabled', 'Deleting'</param>
+        /// 'Disabled', 'Deleting', 'Migrating', 'Migrated'</param>
         /// <param name="customHttpsProvisioningState">Provisioning status of
         /// Custom Https of the frontendEndpoint. Possible values include:
         /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Failed'</param>
@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 
         /// <summary>
         /// Gets or sets resource status. Possible values include: 'Creating',
-        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
+        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting',
+        /// 'Migrating', 'Migrated'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
         public string ResourceState { get; set; }

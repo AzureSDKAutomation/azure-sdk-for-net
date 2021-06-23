@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// applicable)</param>
         /// <param name="resourceState">Resource status. Possible values
         /// include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
-        /// 'Disabled', 'Deleting'</param>
+        /// 'Disabled', 'Deleting', 'Migrating', 'Migrated'</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
         public RoutingRule(string id = default(string), IList<SubResource> frontendEndpoints = default(IList<SubResource>), IList<string> acceptedProtocols = default(IList<string>), IList<string> patternsToMatch = default(IList<string>), string enabledState = default(string), RouteConfiguration routeConfiguration = default(RouteConfiguration), SubResource rulesEngine = default(SubResource), RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink webApplicationFirewallPolicyLink = default(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink), string resourceState = default(string), string name = default(string), string type = default(string))
@@ -126,7 +126,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 
         /// <summary>
         /// Gets or sets resource status. Possible values include: 'Creating',
-        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
+        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting',
+        /// 'Migrating', 'Migrated'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
         public string ResourceState { get; set; }

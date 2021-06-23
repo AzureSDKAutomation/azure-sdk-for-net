@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// 'Disabled'</param>
         /// <param name="resourceState">Resource status. Possible values
         /// include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
-        /// 'Disabled', 'Deleting'</param>
+        /// 'Disabled', 'Deleting', 'Migrating', 'Migrated'</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
         public HealthProbeSettingsModel(string id = default(string), string path = default(string), string protocol = default(string), int? intervalInSeconds = default(int?), string healthProbeMethod = default(string), string enabledState = default(string), string resourceState = default(string), string name = default(string), string type = default(string))
@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 
         /// <summary>
         /// Gets or sets resource status. Possible values include: 'Creating',
-        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
+        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting',
+        /// 'Migrating', 'Migrated'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
         public string ResourceState { get; set; }
