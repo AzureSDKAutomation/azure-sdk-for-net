@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// backend pool</param>
         /// <param name="resourceState">Resource status. Possible values
         /// include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
-        /// 'Disabled', 'Deleting'</param>
+        /// 'Disabled', 'Deleting', 'Migrating', 'Migrated'</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
         public BackendPool(string id = default(string), IList<Backend> backends = default(IList<Backend>), SubResource loadBalancingSettings = default(SubResource), SubResource healthProbeSettings = default(SubResource), string resourceState = default(string), string name = default(string), string type = default(string))
@@ -82,7 +82,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 
         /// <summary>
         /// Gets or sets resource status. Possible values include: 'Creating',
-        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
+        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting',
+        /// 'Migrating', 'Migrated'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
         public string ResourceState { get; set; }

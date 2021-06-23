@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// Engine Configuration.</param>
         /// <param name="resourceState">Resource status. Possible values
         /// include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
-        /// 'Disabled', 'Deleting'</param>
+        /// 'Disabled', 'Deleting', 'Migrating', 'Migrated'</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="id">Resource ID.</param>
@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
 
         /// <summary>
         /// Gets or sets resource status. Possible values include: 'Creating',
-        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
+        /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting',
+        /// 'Migrating', 'Migrated'
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceState")]
         public string ResourceState { get; set; }

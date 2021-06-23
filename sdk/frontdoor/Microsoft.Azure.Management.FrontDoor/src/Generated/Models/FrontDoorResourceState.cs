@@ -22,5 +22,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         public const string Disabling = "Disabling";
         public const string Disabled = "Disabled";
         public const string Deleting = "Deleting";
+        public const string Migrating = "Migrating";
+        public const string Migrated = "Migrated";
     }
 }
