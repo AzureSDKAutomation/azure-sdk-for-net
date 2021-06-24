@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for Protocol.
+    /// Defines values for PublicNetworkAccess.
     /// </summary>
-    public static class Protocol
+    public static class PublicNetworkAccess
     {
-        public const string Http = "http";
-        public const string Https = "https";
-        public const string Ws = "ws";
-        public const string Wss = "wss";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
     }
 }
