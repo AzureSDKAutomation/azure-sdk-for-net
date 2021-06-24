@@ -64,7 +64,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="tableOption">The option to handle sink table, such as
         /// autoCreate. For now only 'autoCreate' value is supported. Type:
         /// string (or Expression with resultType string).</param>
-        public AzureSqlSink(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object sqlWriterStoredProcedureName = default(object), object sqlWriterTableType = default(object), object preCopyScript = default(object), IDictionary<string, StoredProcedureParameter> storedProcedureParameters = default(IDictionary<string, StoredProcedureParameter>), object storedProcedureTableTypeParameterName = default(object), object tableOption = default(object))
+        /// <param name="sqlWriterUseTableLock">Whether to use table lock
+        /// during bulk copy. Type: boolean (or Expression with resultType
+        /// boolean).</param>
+        /// <param name="writeBehavior">Specify the write behavior when copying
+        /// data into azure sql. Possible values include: 'Insert', 'Upsert',
+        /// 'StoredProcedure'</param>
+        /// <param name="upsertOption">SQL upsert settings.</param>
+        public AzureSqlSink(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object sqlWriterStoredProcedureName = default(object), object sqlWriterTableType = default(object), object preCopyScript = default(object), IDictionary<string, StoredProcedureParameter> storedProcedureParameters = default(IDictionary<string, StoredProcedureParameter>), object storedProcedureTableTypeParameterName = default(object), object tableOption = default(object), object sqlWriterUseTableLock = default(object), string writeBehavior = default(string), SqlUpsetOptionSettings upsertOption = default(SqlUpsetOptionSettings))
             : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             SqlWriterStoredProcedureName = sqlWriterStoredProcedureName;
@@ -73,6 +80,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             StoredProcedureParameters = storedProcedureParameters;
             StoredProcedureTableTypeParameterName = storedProcedureTableTypeParameterName;
             TableOption = tableOption;
+            SqlWriterUseTableLock = sqlWriterUseTableLock;
+            WriteBehavior = writeBehavior;
+            UpsertOption = upsertOption;
             CustomInit();
         }
 
@@ -122,6 +132,27 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [JsonProperty(PropertyName = "tableOption")]
         public object TableOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to use table lock during bulk copy. Type:
+        /// boolean (or Expression with resultType boolean).
+        /// </summary>
+        [JsonProperty(PropertyName = "sqlWriterUseTableLock")]
+        public object SqlWriterUseTableLock { get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the write behavior when copying data into
+        /// azure sql. Possible values include: 'Insert', 'Upsert',
+        /// 'StoredProcedure'
+        /// </summary>
+        [JsonProperty(PropertyName = "writeBehavior")]
+        public string WriteBehavior { get; set; }
+
+        /// <summary>
+        /// Gets or sets SQL upsert settings.
+        /// </summary>
+        [JsonProperty(PropertyName = "upsertOption")]
+        public SqlUpsetOptionSettings UpsertOption { get; set; }
 
     }
 }
