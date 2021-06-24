@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Describes an available Compute SKU Location Information.
+    /// </summary>
     public partial class ResourceSkuLocationInfo
     {
         /// <summary>
@@ -33,11 +36,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// supported.</param>
         /// <param name="zoneDetails">Details of capabilities available to a
         /// SKU in specific zones.</param>
-        public ResourceSkuLocationInfo(string location = default(string), IList<string> zones = default(IList<string>), IList<ResourceSkuZoneDetails> zoneDetails = default(IList<ResourceSkuZoneDetails>))
+        /// <param name="extendedLocations">The names of extended
+        /// locations.</param>
+        /// <param name="type">The type of the extended location. Possible
+        /// values include: 'EdgeZone'</param>
+        public ResourceSkuLocationInfo(string location = default(string), IList<string> zones = default(IList<string>), IList<ResourceSkuZoneDetails> zoneDetails = default(IList<ResourceSkuZoneDetails>), IList<string> extendedLocations = default(IList<string>), string type = default(string), IList<ResourceSkuLocationInfoLocationDetailsItem> locationDetails = default(IList<ResourceSkuLocationInfoLocationDetailsItem>))
         {
             Location = location;
             Zones = zones;
             ZoneDetails = zoneDetails;
+            ExtendedLocations = extendedLocations;
+            Type = type;
+            LocationDetails = locationDetails;
             CustomInit();
         }
 
@@ -63,6 +73,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "zoneDetails")]
         public IList<ResourceSkuZoneDetails> ZoneDetails { get; private set; }
+
+        /// <summary>
+        /// Gets the names of extended locations.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocations")]
+        public IList<string> ExtendedLocations { get; private set; }
+
+        /// <summary>
+        /// Gets the type of the extended location. Possible values include:
+        /// 'EdgeZone'
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "locationDetails")]
+        public IList<ResourceSkuLocationInfoLocationDetailsItem> LocationDetails { get; private set; }
 
     }
 }
