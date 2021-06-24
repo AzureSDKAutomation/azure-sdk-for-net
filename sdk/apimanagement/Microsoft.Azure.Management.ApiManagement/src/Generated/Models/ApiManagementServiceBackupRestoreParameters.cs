@@ -33,20 +33,24 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// Initializes a new instance of the
         /// ApiManagementServiceBackupRestoreParameters class.
         /// </summary>
-        /// <param name="storageAccount">Azure Cloud Storage account (used to
-        /// place/retrieve the backup) name.</param>
-        /// <param name="accessKey">Azure Cloud Storage account (used to
-        /// place/retrieve the backup) access key.</param>
-        /// <param name="containerName">Azure Cloud Storage blob container name
-        /// used to place/retrieve the backup.</param>
+        /// <param name="storageAccount">The name of the Azure storage account
+        /// (used to place/retrieve the backup).</param>
+        /// <param name="containerName">The name of the blob container (used to
+        /// place/retrieve the backup).</param>
         /// <param name="backupName">The name of the backup file to
-        /// create.</param>
-        public ApiManagementServiceBackupRestoreParameters(string storageAccount, string accessKey, string containerName, string backupName)
+        /// create/retrieve.</param>
+        /// <param name="accessType">The type of access to be used for the
+        /// storage account. Possible values include: 'AccessKey',
+        /// 'ManagedIdentity'</param>
+        /// <param name="accessKey">Storage account access key. Required only
+        /// if `accessType` is set to `AccessKey`.</param>
+        public ApiManagementServiceBackupRestoreParameters(string storageAccount, string containerName, string backupName, string accessType = default(string), string accessKey = default(string))
         {
             StorageAccount = storageAccount;
-            AccessKey = accessKey;
             ContainerName = containerName;
             BackupName = backupName;
+            AccessType = accessType;
+            AccessKey = accessKey;
             CustomInit();
         }
 
@@ -56,31 +60,38 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets azure Cloud Storage account (used to place/retrieve
-        /// the backup) name.
+        /// Gets or sets the name of the Azure storage account (used to
+        /// place/retrieve the backup).
         /// </summary>
         [JsonProperty(PropertyName = "storageAccount")]
         public string StorageAccount { get; set; }
 
         /// <summary>
-        /// Gets or sets azure Cloud Storage account (used to place/retrieve
-        /// the backup) access key.
-        /// </summary>
-        [JsonProperty(PropertyName = "accessKey")]
-        public string AccessKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets azure Cloud Storage blob container name used to
-        /// place/retrieve the backup.
+        /// Gets or sets the name of the blob container (used to place/retrieve
+        /// the backup).
         /// </summary>
         [JsonProperty(PropertyName = "containerName")]
         public string ContainerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the backup file to create.
+        /// Gets or sets the name of the backup file to create/retrieve.
         /// </summary>
         [JsonProperty(PropertyName = "backupName")]
         public string BackupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of access to be used for the storage account.
+        /// Possible values include: 'AccessKey', 'ManagedIdentity'
+        /// </summary>
+        [JsonProperty(PropertyName = "accessType")]
+        public string AccessType { get; set; }
+
+        /// <summary>
+        /// Gets or sets storage account access key. Required only if
+        /// `accessType` is set to `AccessKey`.
+        /// </summary>
+        [JsonProperty(PropertyName = "accessKey")]
+        public string AccessKey { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -93,10 +104,6 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             if (StorageAccount == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageAccount");
-            }
-            if (AccessKey == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AccessKey");
             }
             if (ContainerName == null)
             {

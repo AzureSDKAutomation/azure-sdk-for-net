@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// The name of the API Management service.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Restore API Management service from backup
-            /// operation.
+            /// Parameters supplied to the ApiManagementService_Restore operation.
             /// </param>
             public static ApiManagementServiceResource Restore(this IApiManagementServiceOperations operations, string resourceGroupName, string serviceName, ApiManagementServiceBackupRestoreParameters parameters)
             {
@@ -59,8 +58,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// The name of the API Management service.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Restore API Management service from backup
-            /// operation.
+            /// Parameters supplied to the ApiManagementService_Restore operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -534,8 +532,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// The name of the API Management service.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Restore API Management service from backup
-            /// operation.
+            /// Parameters supplied to the ApiManagementService_Restore operation.
             /// </param>
             public static ApiManagementServiceResource BeginRestore(this IApiManagementServiceOperations operations, string resourceGroupName, string serviceName, ApiManagementServiceBackupRestoreParameters parameters)
             {
@@ -557,8 +554,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             /// The name of the API Management service.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Restore API Management service from backup
-            /// operation.
+            /// Parameters supplied to the ApiManagementService_Restore operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
