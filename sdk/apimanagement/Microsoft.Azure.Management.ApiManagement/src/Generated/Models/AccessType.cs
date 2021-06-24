@@ -12,13 +12,17 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for Protocol.
+    /// Defines values for AccessType.
     /// </summary>
-    public static class Protocol
+    public static class AccessType
     {
-        public const string Http = "http";
-        public const string Https = "https";
-        public const string Ws = "ws";
-        public const string Wss = "wss";
+        /// <summary>
+        /// Use access key.
+        /// </summary>
+        public const string AccessKey = "AccessKey";
+        /// <summary>
+        /// Use system assigned managed identity.
+        /// </summary>
+        public const string ManagedIdentity = "ManagedIdentity";
     }
 }
