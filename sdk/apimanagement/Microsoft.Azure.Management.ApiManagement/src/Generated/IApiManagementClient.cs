@@ -287,6 +287,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         IOpenIdConnectProviderOperations OpenIdConnectProvider { get; }
 
         /// <summary>
+        /// Gets the IOutboundNetworkDependenciesEndpointsOperations.
+        /// </summary>
+        IOutboundNetworkDependenciesEndpointsOperations OutboundNetworkDependenciesEndpoints { get; }
+
+        /// <summary>
         /// Gets the IPolicyOperations.
         /// </summary>
         IPolicyOperations Policy { get; }
