@@ -67,6 +67,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// keys.</param>
         /// <param name="networkAccessPolicy">Possible values include:
         /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="publicNetworkAccess">Possible values include:
+        /// 'Enabled', 'Disabled'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="tier">Performance tier of the disk (e.g, P4, S10) as
@@ -83,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="supportsHibernation">Indicates the OS on a disk
         /// supports hibernation.</param>
         /// <param name="tags">Resource tags</param>
-        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), int? maxShares = default(int?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?), PurchasePlan purchasePlan = default(PurchasePlan), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
+        public DiskUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), int? maxShares = default(int?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?), PurchasePlan purchasePlan = default(PurchasePlan), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -95,6 +97,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             MaxShares = maxShares;
             Encryption = encryption;
             NetworkAccessPolicy = networkAccessPolicy;
+            PublicNetworkAccess = publicNetworkAccess;
             DiskAccessId = diskAccessId;
             Tier = tier;
             BurstingEnabled = burstingEnabled;
@@ -190,6 +193,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets ARM id of the DiskAccess resource for using private
