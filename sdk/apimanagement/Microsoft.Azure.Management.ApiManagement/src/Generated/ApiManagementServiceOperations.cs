@@ -62,8 +62,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// The name of the API Management service.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Restore API Management service from backup
-        /// operation.
+        /// Parameters supplied to the ApiManagementService_Restore operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1352,8 +1351,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// The name of the API Management service.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Restore API Management service from backup
-        /// operation.
+        /// Parameters supplied to the ApiManagementService_Restore operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1378,6 +1376,10 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// </return>
         public async Task<AzureOperationResponse<ApiManagementServiceResource>> BeginRestoreWithHttpMessagesAsync(string resourceGroupName, string serviceName, ApiManagementServiceBackupRestoreParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1401,6 +1403,10 @@ namespace Microsoft.Azure.Management.ApiManagement
                     throw new ValidationException(ValidationRules.Pattern, "serviceName", "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$");
                 }
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (parameters == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
@@ -1408,14 +1414,6 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (parameters != null)
             {
                 parameters.Validate();
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1433,9 +1431,9 @@ namespace Microsoft.Azure.Management.ApiManagement
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -1604,6 +1602,10 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// </return>
         public async Task<AzureOperationResponse<ApiManagementServiceResource>> BeginBackupWithHttpMessagesAsync(string resourceGroupName, string serviceName, ApiManagementServiceBackupRestoreParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1627,6 +1629,10 @@ namespace Microsoft.Azure.Management.ApiManagement
                     throw new ValidationException(ValidationRules.Pattern, "serviceName", "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$");
                 }
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (parameters == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
@@ -1634,14 +1640,6 @@ namespace Microsoft.Azure.Management.ApiManagement
             if (parameters != null)
             {
                 parameters.Validate();
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1659,9 +1657,9 @@ namespace Microsoft.Azure.Management.ApiManagement
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
