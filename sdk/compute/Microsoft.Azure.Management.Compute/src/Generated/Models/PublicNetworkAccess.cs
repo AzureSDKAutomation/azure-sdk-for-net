@@ -12,10 +12,18 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for SecurityTypes.
+    /// Defines values for PublicNetworkAccess.
     /// </summary>
-    public static class SecurityTypes
+    public static class PublicNetworkAccess
     {
-        public const string TrustedLaunch = "TrustedLaunch";
+        /// <summary>
+        /// Export on disk will depend on the networkAccessPolicy
+        /// </summary>
+        public const string Enabled = "Enabled";
+        /// <summary>
+        /// The disk cannot be exported unless it is associated with a
+        /// diskAccess
+        /// </summary>
+        public const string Disabled = "Disabled";
     }
 }
