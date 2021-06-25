@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Network
     using System.Threading.Tasks;
 
     /// <summary>
-    /// NetworkInterfaceLoadBalancersOperations operations.
+    /// ServiceTagInformationOperations operations.
     /// </summary>
-    internal partial class NetworkInterfaceLoadBalancersOperations : IServiceOperations<NetworkManagementClient>, INetworkInterfaceLoadBalancersOperations
+    internal partial class ServiceTagInformationOperations : IServiceOperations<NetworkManagementClient>, IServiceTagInformationOperations
     {
         /// <summary>
-        /// Initializes a new instance of the NetworkInterfaceLoadBalancersOperations class.
+        /// Initializes a new instance of the ServiceTagInformationOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal NetworkInterfaceLoadBalancersOperations(NetworkManagementClient client)
+        internal ServiceTagInformationOperations(NetworkManagementClient client)
         {
             if (client == null)
             {
@@ -51,13 +51,19 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List all load balancers in a network interface.
+        /// Gets a list of service tag information resources with pagination.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// <param name='location'>
+        /// The location that will be used as a reference for cloud (not as a filter
+        /// based on location, you will get the list of service tags with prefix
+        /// details across all regions but limited to the cloud that your subscription
+        /// belongs to).
         /// </param>
-        /// <param name='networkInterfaceName'>
-        /// The name of the network interface.
+        /// <param name='noAddressPrefixes'>
+        /// Do not return address prefixes for the tag(s).
+        /// </param>
+        /// <param name='tagName'>
+        /// Return tag information for a particular tag.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -80,15 +86,11 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<LoadBalancer>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ServiceTagInformation>>> ListWithHttpMessagesAsync(string location, bool? noAddressPrefixes = default(bool?), string tagName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (resourceGroupName == null)
+            if (location == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (networkInterfaceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "networkInterfaceName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (Client.SubscriptionId == null)
             {
@@ -102,22 +104,30 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("networkInterfaceName", networkInterfaceName);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("noAddressPrefixes", noAddressPrefixes);
+                tracingParameters.Add("tagName", tagName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{networkInterfaceName}", System.Uri.EscapeDataString(networkInterfaceName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails").ToString();
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (noAddressPrefixes != null)
+            {
+                _queryParameters.Add(string.Format("noAddressPrefixes={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(noAddressPrefixes, Client.SerializationSettings).Trim('"'))));
+            }
+            if (tagName != null)
+            {
+                _queryParameters.Add(string.Format("tagName={0}", System.Uri.EscapeDataString(tagName)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -212,7 +222,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<LoadBalancer>>();
+            var _result = new AzureOperationResponse<IPage<ServiceTagInformation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -225,7 +235,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<LoadBalancer>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ServiceTagInformation>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -245,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// List all load balancers in a network interface.
+        /// Gets a list of service tag information resources with pagination.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -271,7 +281,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<LoadBalancer>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ServiceTagInformation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -385,7 +395,7 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<LoadBalancer>>();
+            var _result = new AzureOperationResponse<IPage<ServiceTagInformation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -398,7 +408,7 @@ namespace Microsoft.Azure.Management.Network
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<LoadBalancer>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ServiceTagInformation>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
