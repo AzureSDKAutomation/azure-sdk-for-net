@@ -40,7 +40,9 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// <param name="stageStatus">Status of the job stage. Possible values
         /// include: 'None', 'InProgress', 'Succeeded', 'Failed', 'Cancelled',
         /// 'Cancelling', 'SucceededWithErrors', 'WaitingForCustomerAction',
-        /// 'SucceededWithWarnings'</param>
+        /// 'SucceededWithWarnings', 'WaitingForCustomerActionForKek',
+        /// 'WaitingForCustomerActionForCleanUp',
+        /// 'CustomerActionPerformedForCleanUp'</param>
         /// <param name="stageTime">Time for the job stage in UTC ISO 8601
         /// format.</param>
         /// <param name="jobStageDetails">Job Stage Details</param>
@@ -81,7 +83,9 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// Gets status of the job stage. Possible values include: 'None',
         /// 'InProgress', 'Succeeded', 'Failed', 'Cancelled', 'Cancelling',
         /// 'SucceededWithErrors', 'WaitingForCustomerAction',
-        /// 'SucceededWithWarnings'
+        /// 'SucceededWithWarnings', 'WaitingForCustomerActionForKek',
+        /// 'WaitingForCustomerActionForCleanUp',
+        /// 'CustomerActionPerformedForCleanUp'
         /// </summary>
         [JsonProperty(PropertyName = "stageStatus")]
         public StageStatus? StageStatus { get; private set; }
