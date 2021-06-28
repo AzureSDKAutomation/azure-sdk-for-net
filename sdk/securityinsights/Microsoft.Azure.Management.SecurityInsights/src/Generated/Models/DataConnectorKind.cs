@@ -24,5 +24,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         public const string AmazonWebServicesCloudTrail = "AmazonWebServicesCloudTrail";
         public const string AzureAdvancedThreatProtection = "AzureAdvancedThreatProtection";
         public const string MicrosoftDefenderAdvancedThreatProtection = "MicrosoftDefenderAdvancedThreatProtection";
+        public const string Dynamics365 = "Dynamics365";
     }
 }
