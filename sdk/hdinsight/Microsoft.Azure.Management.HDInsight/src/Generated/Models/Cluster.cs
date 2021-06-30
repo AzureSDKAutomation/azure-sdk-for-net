@@ -39,13 +39,15 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// lives</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="etag">The ETag for the resource</param>
+        /// <param name="zones">The availability zones.</param>
         /// <param name="properties">The properties of the cluster.</param>
         /// <param name="identity">The identity of the cluster, if
         /// configured.</param>
-        public Cluster(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), ClusterGetProperties properties = default(ClusterGetProperties), ClusterIdentity identity = default(ClusterIdentity))
+        public Cluster(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), IList<string> zones = default(IList<string>), ClusterGetProperties properties = default(ClusterGetProperties), ClusterIdentity identity = default(ClusterIdentity))
             : base(id, name, type, location, tags)
         {
             Etag = etag;
+            Zones = zones;
             Properties = properties;
             Identity = identity;
             CustomInit();
@@ -61,6 +63,12 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the availability zones.
+        /// </summary>
+        [JsonProperty(PropertyName = "zones")]
+        public IList<string> Zones { get; set; }
 
         /// <summary>
         /// Gets or sets the properties of the cluster.
