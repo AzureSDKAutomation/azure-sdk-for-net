@@ -40,12 +40,12 @@ We guarantee that all client instance methods are thread-safe and independent of
 
 ### Additional concepts
 <!-- CLIENT COMMON BAR -->
-[Client options](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#configuring-service-clients-using-clientoptions) |
-[Accessing the response](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#accessing-http-response-details-using-responset) |
-[Long-running operations](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#consuming-long-running-operations-using-operationt) |
-[Handling failures](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#reporting-errors-requestfailedexception) |
-[Diagnostics](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md) |
-[Mocking](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#mocking) |
+[Client options](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#configuring-service-clients-using-clientoptions) |
+[Accessing the response](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#accessing-http-response-details-using-responset) |
+[Long-running operations](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#consuming-long-running-operations-using-operationt) |
+[Handling failures](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#reporting-errors-requestfailedexception) |
+[Diagnostics](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/Diagnostics.md) |
+[Mocking](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#mocking) |
 [Client lifetime](https://devblogs.microsoft.com/azure-sdk/lifetime-management-and-thread-safety-guarantees-of-azure-sdk-net-clients/)
 <!-- CLIENT COMMON BAR -->
 
@@ -63,10 +63,10 @@ We guarantee that all client instance methods are thread-safe and independent of
 You can query logs using the `LogsClient.QueryAsync`. The result would be returned as a table with a collection of rows:
 
 ```C# Snippet:QueryLogsAsTable
-Uri endpoint = new Uri("https://api.loganalytics.io");
+var endpoint = new Uri("https://api.loganalytics.io");
 string workspaceId = "<workspace_id>";
 
-LogsQueryClient client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
+var client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
 Response<LogsQueryResult> response = await client.QueryAsync(workspaceId, "AzureActivity | top 10 by TimeGenerated", TimeSpan.FromDays(1));
 
 LogsQueryResultTable table = response.Value.PrimaryTable;
@@ -90,7 +90,7 @@ public class MyLogEntryModel
 ```
 
 ```C# Snippet:QueryLogsAsModels
-LogsQueryClient client = new LogsQueryClient(TestEnvironment.LogsEndpoint, new DefaultAzureCredential());
+var client = new LogsQueryClient(TestEnvironment.LogsEndpoint, new DefaultAzureCredential());
 string workspaceId = "<workspace_id>";
 
 // Query TOP 10 resource groups by event count
@@ -109,10 +109,10 @@ foreach (var logEntryModel in response.Value)
 If your query return a single column (or a single value) of a primitive type you can use `LogsClient.QueryAsync<T>` overload to deserialize it:
 
 ```C# Snippet:QueryLogsAsPrimitive
-Uri endpoint = new Uri("https://api.loganalytics.io");
+var endpoint = new Uri("https://api.loganalytics.io");
 string workspaceId = "<workspace_id>";
 
-LogsQueryClient client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
+var client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
 
 // Query TOP 10 resource groups by event count
 Response<IReadOnlyList<string>> response = await client.QueryAsync<string>(workspaceId,
@@ -130,18 +130,19 @@ foreach (var resourceGroup in response.Value)
 You can execute multiple queries in on request using the `LogsClient.CreateBatchQuery`:
 
 ```C# Snippet:BatchQuery
-Uri endpoint = new Uri("https://api.loganalytics.io");
+var endpoint = new Uri("https://api.loganalytics.io");
 string workspaceId = "<workspace_id>";
 
-LogsQueryClient client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
+var client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
 
 // Query TOP 10 resource groups by event count
 // And total event count
-LogsBatchQuery batch = new LogsBatchQuery();
+var batch = new LogsBatchQuery();
+
 string countQueryId = batch.AddQuery(workspaceId, "AzureActivity | count", TimeSpan.FromDays(1));
 string topQueryId = batch.AddQuery(workspaceId, "AzureActivity | summarize Count = count() by ResourceGroup | top 10 by Count", TimeSpan.FromDays(1));
 
-Response<LogsBatchQueryResult> response = await client.QueryBatchAsync(batch);
+Response<LogsBatchQueryResults> response = await client.QueryBatchAsync(batch);
 
 var count = response.Value.GetResult<int>(countQueryId).Single();
 var topEntries = response.Value.GetResult<MyLogEntryModel>(topQueryId);
@@ -158,10 +159,10 @@ foreach (var logEntryModel in topEntries)
 You can also dynamically inspect the list of columns. The following example prints the result of the query as a table:
 
 ```C# Snippet:QueryLogsPrintTable
-Uri endpoint = new Uri("https://api.loganalytics.io");
+var endpoint = new Uri("https://api.loganalytics.io");
 string workspaceId = "<workspace_id>";
 
-LogsQueryClient client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
+var client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
 Response<LogsQueryResult> response = await client.QueryAsync(workspaceId, "AzureActivity | top 10 by TimeGenerated", TimeSpan.FromDays(1));
 
 LogsQueryResultTable table = response.Value.PrimaryTable;
@@ -187,33 +188,26 @@ foreach (var row in table.Rows)
 
 ### Increase query timeout
 
-Some queries take longer to execute than the default service timeout allows. You can use the `LogsQueryOptions` parameter to specify the service timeout.
+Some Logs queries take longer than 3 minutes to execute. The default server timeout is 3 minutes. You can increase the server timeout to a maximum of 10 minutes. In the following example, the `LogsQueryOptions` object's `ServerTimeout` property is used to set the server timeout to 10 minutes:
 
-```C# Snippet:QueryLogsPrintTable
-Uri endpoint = new Uri("https://api.loganalytics.io");
+```C# Snippet:QueryLogsWithTimeout
+var endpoint = new Uri("https://api.loganalytics.io");
 string workspaceId = "<workspace_id>";
 
-LogsQueryClient client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
-Response<LogsQueryResult> response = await client.QueryAsync(workspaceId, "AzureActivity | top 10 by TimeGenerated", TimeSpan.FromDays(1));
+var client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
 
-LogsQueryResultTable table = response.Value.PrimaryTable;
-
-foreach (var column in table.Columns)
-{
-    Console.Write(column.Name + ";");
-}
-
-Console.WriteLine();
-
-var columnCount = table.Columns.Count;
-foreach (var row in table.Rows)
-{
-    for (int i = 0; i < columnCount; i++)
+// Query TOP 10 resource groups by event count
+Response<IReadOnlyList<int>> response = await client.QueryAsync<int>(workspaceId,
+    "AzureActivity | summarize count()",
+    TimeSpan.FromDays(1),
+    options: new LogsQueryOptions()
     {
-        Console.Write(row[i] + ";");
-    }
+        ServerTimeout = TimeSpan.FromMinutes(10)
+    });
 
-    Console.WriteLine();
+foreach (var resourceGroup in response.Value)
+{
+    Console.WriteLine(resourceGroup);
 }
 ```
 
@@ -222,7 +216,7 @@ foreach (var row in table.Rows)
 You can query metrics using the `MetricsClient.QueryAsync`. For every requested metric a set of aggregated values would be returned inside the `TimeSeries` collection.
 
 ```C# Snippet:QueryMetrics
-Uri endpoint = new Uri("https://management.azure.com");
+var endpoint = new Uri("https://management.azure.com");
 string resourceId =
     "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.OperationalInsights/workspaces/<workspace_name>";
 
@@ -257,10 +251,10 @@ When you interact with the Azure Monitor Query client library using the .NET SDK
 For example, if you submit an invalid query a `400` error is returned, indicating "Bad Request".
 
 ```C# Snippet:BadRequest
-Uri endpoint = new Uri("https://api.loganalytics.io");
+var endpoint = new Uri("https://api.loganalytics.io");
 string workspaceId = "<workspace_id>";
 
-LogsQueryClient client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
+var client = new LogsQueryClient(endpoint, new DefaultAzureCredential());
 
 try
 {
@@ -308,7 +302,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct][coc].
 For more information see the [Code of Conduct FAQ][coc_faq] or contact 
 [opencode@microsoft.com][coc_contact] with any additional questions or comments.
 
-[query_client_src]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/monitor/Azure.Monitor.Query/src
+[query_client_src]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/monitor/Azure.Monitor.Query/src
 [query_client_nuget_package]: https://www.nuget.org/packages?q=Azure.Monitor.Query
 [monitor_rest_api]: https://docs.microsoft.com/rest/api/monitor/
 [azure_cli]: https://docs.microsoft.com/cli/azure

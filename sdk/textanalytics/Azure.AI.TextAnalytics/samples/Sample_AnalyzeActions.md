@@ -70,6 +70,7 @@ To run multiple actions in multiple documents, call `StartAnalyzeActionsAsync` o
         int docNumber = 1;
         foreach (RecognizeEntitiesActionResult entitiesActionResults in entitiesResults)
         {
+            Console.WriteLine($" Action name: {entitiesActionResults.ActionName}");
             foreach (RecognizeEntitiesResult documentResults in entitiesActionResults.DocumentsResults)
             {
                 Console.WriteLine($" Document #{docNumber++}");
@@ -92,6 +93,7 @@ To run multiple actions in multiple documents, call `StartAnalyzeActionsAsync` o
         docNumber = 1;
         foreach (RecognizePiiEntitiesActionResult piiActionResults in piiResults)
         {
+            Console.WriteLine($" Action name: {piiActionResults.ActionName}");
             foreach (RecognizePiiEntitiesResult documentResults in piiActionResults.DocumentsResults)
             {
                 Console.WriteLine($" Document #{docNumber++}");
@@ -114,6 +116,7 @@ To run multiple actions in multiple documents, call `StartAnalyzeActionsAsync` o
         docNumber = 1;
         foreach (ExtractKeyPhrasesActionResult keyPhrasesActionResult in keyPhrasesResults)
         {
+            Console.WriteLine($" Action name: {keyPhrasesActionResult.ActionName}");
             foreach (ExtractKeyPhrasesResult documentResults in keyPhrasesActionResult.DocumentsResults)
             {
                 Console.WriteLine($" Document #{docNumber++}");
@@ -131,6 +134,7 @@ To run multiple actions in multiple documents, call `StartAnalyzeActionsAsync` o
         docNumber = 1;
         foreach (RecognizeLinkedEntitiesActionResult linkedEntitiesActionResults in entityLinkingResults)
         {
+            Console.WriteLine($" Action name: {linkedEntitiesActionResults.ActionName}");
             foreach (RecognizeLinkedEntitiesResult documentResults in linkedEntitiesActionResults.DocumentsResults)
             {
                 Console.WriteLine($" Document #{docNumber++}");
@@ -162,6 +166,7 @@ To run multiple actions in multiple documents, call `StartAnalyzeActionsAsync` o
         docNumber = 1;
         foreach (AnalyzeSentimentActionResult analyzeSentimentActionsResult in analyzeSentimentResults)
         {
+            Console.WriteLine($" Action name: {analyzeSentimentActionsResult.ActionName}");
             foreach (AnalyzeSentimentResult documentResults in analyzeSentimentActionsResult.DocumentsResults)
             {
                 Console.WriteLine($" Document #{docNumber++}");
@@ -178,10 +183,10 @@ To run multiple actions in multiple documents, call `StartAnalyzeActionsAsync` o
 
 To see the full example source files, see:
 
-* [Synchronously StartAnalyzeActions ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperation.cs)
-* [Asynchronously StartAnalyzeActions ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperationAsync.cs)
-* [Synchronously StartAnalyzeActions Convenience ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperationConvenience.cs)
-* [Asynchronously StartAnalyzeActions Convenience](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperationConvenienceAsync.cs)
+* [Synchronously StartAnalyzeActions ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperation.cs)
+* [Asynchronously StartAnalyzeActions ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperationAsync.cs)
+* [Synchronously StartAnalyzeActions Convenience ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperationConvenience.cs)
+* [Asynchronously StartAnalyzeActions Convenience](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/tests/samples/Sample_AnalyzeOperationConvenienceAsync.cs)
 
-[DefaultAzureCredential]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/identity/Azure.Identity/README.md
-[README]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/README.md
+[DefaultAzureCredential]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/README.md
+[README]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/README.md

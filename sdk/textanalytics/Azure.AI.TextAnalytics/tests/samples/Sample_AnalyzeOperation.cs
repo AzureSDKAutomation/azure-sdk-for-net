@@ -22,8 +22,6 @@ namespace Azure.AI.TextAnalytics.Samples
 
             var client = new TextAnalyticsClient(new Uri(endpoint), new AzureKeyCredential(apiKey));
 
-            #region Snippet:TextAnalyticsAnalyzeOperation
-
             string documentA = @"We love this trail and make the trip every year. The views are breathtaking and well
                                 worth the hike! Yesterday was foggy though, so we missed the spectacular views.
                                 We tried again today and it was amazing. Everyone in my family liked the trail although
@@ -91,6 +89,7 @@ namespace Azure.AI.TextAnalytics.Samples
                 int docNumber = 1;
                 foreach (RecognizeEntitiesActionResult entitiesActionResults in entitiesResults)
                 {
+                    Console.WriteLine($" Action name: {entitiesActionResults.ActionName}");
                     foreach (RecognizeEntitiesResult documentResults in entitiesActionResults.DocumentsResults)
                     {
                         Console.WriteLine($" Document #{docNumber++}");
@@ -113,6 +112,7 @@ namespace Azure.AI.TextAnalytics.Samples
                 docNumber = 1;
                 foreach (RecognizePiiEntitiesActionResult piiActionResults in piiResults)
                 {
+                    Console.WriteLine($" Action name: {piiActionResults.ActionName}");
                     foreach (RecognizePiiEntitiesResult documentResults in piiActionResults.DocumentsResults)
                     {
                         Console.WriteLine($" Document #{docNumber++}");
@@ -135,6 +135,7 @@ namespace Azure.AI.TextAnalytics.Samples
                 docNumber = 1;
                 foreach (ExtractKeyPhrasesActionResult keyPhrasesActionResult in keyPhrasesResults)
                 {
+                    Console.WriteLine($" Action name: {keyPhrasesActionResult.ActionName}");
                     foreach (ExtractKeyPhrasesResult documentResults in keyPhrasesActionResult.DocumentsResults)
                     {
                         Console.WriteLine($" Document #{docNumber++}");
@@ -152,6 +153,7 @@ namespace Azure.AI.TextAnalytics.Samples
                 docNumber = 1;
                 foreach (RecognizeLinkedEntitiesActionResult linkedEntitiesActionResults in entityLinkingResults)
                 {
+                    Console.WriteLine($" Action name: {linkedEntitiesActionResults.ActionName}");
                     foreach (RecognizeLinkedEntitiesResult documentResults in linkedEntitiesActionResults.DocumentsResults)
                     {
                         Console.WriteLine($" Document #{docNumber++}");
@@ -183,6 +185,7 @@ namespace Azure.AI.TextAnalytics.Samples
                 docNumber = 1;
                 foreach (AnalyzeSentimentActionResult analyzeSentimentActionsResult in analyzeSentimentResults)
                 {
+                    Console.WriteLine($" Action name: {analyzeSentimentActionsResult.ActionName}");
                     foreach (AnalyzeSentimentResult documentResults in analyzeSentimentActionsResult.DocumentsResults)
                     {
                         Console.WriteLine($" Document #{docNumber++}");
@@ -195,7 +198,5 @@ namespace Azure.AI.TextAnalytics.Samples
                 }
             }
         }
-
-        #endregion
     }
 }
