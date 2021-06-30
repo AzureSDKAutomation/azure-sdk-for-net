@@ -115,7 +115,7 @@ namespace Azure.AI.TextAnalytics
         /// language is correct. Scores close to 1 indicate high certainty in
         /// the result.
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="countryHint">Indicates the country of origin of the
@@ -168,7 +168,7 @@ namespace Azure.AI.TextAnalytics
         /// language is correct. Scores close to 1 indicate high certainty in
         /// the result.
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="countryHint">Indicates the country of origin of the
@@ -220,7 +220,7 @@ namespace Azure.AI.TextAnalytics
         /// the inferred language is correct. Scores close to 1 indicate high
         /// certainty in the result.
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">A collection of documents to analyze.</param>
         /// <param name="countryHint">Indicates the country of origin of all of
@@ -254,7 +254,7 @@ namespace Azure.AI.TextAnalytics
         /// the inferred language is correct. Scores close to 1 indicate high
         /// certainty in the result.
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">A collection of documents to analyze.</param>
         /// <param name="countryHint">Indicates the country of origin of all of
@@ -288,7 +288,7 @@ namespace Azure.AI.TextAnalytics
         /// the inferred language is correct. Scores close to 1 indicate high
         /// certainty in the result.
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">A collection of documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -316,7 +316,7 @@ namespace Azure.AI.TextAnalytics
         /// the inferred language is correct. Scores close to 1 indicate high
         /// certainty in the result.
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">A collection of documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -402,7 +402,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -460,7 +460,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -518,7 +518,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all the documents are
@@ -554,7 +554,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all the documents are
@@ -590,7 +590,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -621,7 +621,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -711,10 +711,10 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -781,10 +781,10 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -851,10 +851,10 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -890,10 +890,10 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -929,10 +929,10 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options">The additional configurable <see cref="RecognizePiiEntitiesOptions"/> that may be passed when
@@ -963,10 +963,10 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options">The additional configurable <see cref="RecognizePiiEntitiesOptions"/> that may be passed when
@@ -1055,7 +1055,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1083,7 +1083,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The text to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1111,7 +1111,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1172,7 +1172,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The text to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1233,7 +1233,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all of the documents are written in.
@@ -1267,7 +1267,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all of the documents are written in.
@@ -1301,7 +1301,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all of the documents are written in.
@@ -1333,7 +1333,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all of the documents are written in.
@@ -1365,7 +1365,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -1394,7 +1394,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -1423,7 +1423,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options">The additional configurable <see cref="AnalyzeSentimentOptions"/> that may be passed when
@@ -1450,7 +1450,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options">The additional configurable <see cref="AnalyzeSentimentOptions"/> that may be passed when
@@ -1539,7 +1539,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1592,7 +1592,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1645,7 +1645,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all the documents are
@@ -1680,7 +1680,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that all the documents are
@@ -1715,7 +1715,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -1745,7 +1745,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -1829,7 +1829,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1885,7 +1885,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="document">The document to analyze.</param>
         /// <param name="language">The language that the document is written in.
@@ -1941,7 +1941,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that the documents are written in.
@@ -1975,7 +1975,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that the documents are written in.
@@ -2009,7 +2009,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -2038,7 +2038,7 @@ namespace Azure.AI.TextAnalytics
         /// <para>For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.</para>
         /// <para>For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.</para>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.</para>
         /// </summary>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options"><see cref="TextAnalyticsRequestOptions"/> used to
@@ -2124,16 +2124,11 @@ namespace Azure.AI.TextAnalytics
         /// For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
-        /// <remarks>
-        /// <para>Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.</para>
-        /// <para>
-        /// Note: In order to use this functionality, request to access public preview is required.
-        /// Azure Active Directory (AAD) is not currently supported. For more information see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health?tabs=ner#request-access-to-the-public-preview"/>.
-        /// </para>
-        /// </remarks>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
+        /// <remarks>
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
+        /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that the document is written in.</param>
         /// <param name="options">The additional configurable <see cref="AnalyzeHealthcareEntitiesOptions"/> </param>
@@ -2157,16 +2152,11 @@ namespace Azure.AI.TextAnalytics
         /// For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
-        /// <remarks>
-        /// <para>Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.</para>
-        /// <para>
-        /// Note: In order to use this functionality, request to access public preview is required.
-        /// Azure Active Directory (AAD) is not currently supported. For more information see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health?tabs=ner#request-access-to-the-public-preview"/>.
-        /// </para>
-        /// </remarks>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
+        /// <remarks>
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
+        /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="language">The language that the document is written in.
         /// If unspecified, this value will be set to the default language in
@@ -2197,16 +2187,11 @@ namespace Azure.AI.TextAnalytics
         /// For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
-        /// <remarks>
-        /// <para>Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.</para>
-        /// <para>
-        /// Note: In order to use this functionality, request to access public preview is required.
-        /// Azure Active Directory (AAD) is not currently supported. For more information see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health?tabs=ner#request-access-to-the-public-preview"/>.
-        /// </para>
-        /// </remarks>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
+        /// <remarks>
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
+        /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options">The additional configurable options<see cref="AnalyzeHealthcareEntitiesOptions"/></param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> controlling the request lifetime.</param>
@@ -2230,16 +2215,11 @@ namespace Azure.AI.TextAnalytics
         /// For a list of languages supported by this operation, see
         /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support"/>.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
-        /// <remarks>
-        /// <para>Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.</para>
-        /// <para>
-        /// Note: In order to use this functionality, request to access public preview is required.
-        /// Azure Active Directory (AAD) is not currently supported. For more information see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health?tabs=ner#request-access-to-the-public-preview"/>.
-        /// </para>
-        /// </remarks>
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
+        /// <remarks>
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
+        /// </remarks>
         /// <param name="documents">The documents to analyze.</param>
         /// <param name="options">The additional configurable options<see cref="AnalyzeHealthcareEntitiesOptions"/></param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> controlling the request lifetime.</param>
@@ -2321,10 +2301,10 @@ namespace Azure.AI.TextAnalytics
         /// PII entity recognition, linked entity recognition, key phrases extraction, and sentiment analysis.
         /// Accepts a list of strings which are analyzed asynchronously.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The list of documents to analyze.</param>
         /// <param name="language">The language that the document is written in.</param>
@@ -2349,10 +2329,10 @@ namespace Azure.AI.TextAnalytics
         /// PII entity recognition, linked entity recognition, key phrases extraction, and sentiment analysis.
         /// Accepts a list of strings which are analyzed asynchronously.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The list of documents to analyze.</param>
         /// <param name="actions"> The different actions to pass as arguments. <see cref="TextAnalyticsActions"/>
@@ -2377,10 +2357,10 @@ namespace Azure.AI.TextAnalytics
         /// PII entity recognition, linked entity recognition, key phrases extraction, and sentiment analysis.
         /// Accepts a list of strings which are analyzed asynchronously.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The list of documents to analyze.</param>
         /// <param name="actions"> The different actions to pass as arguments. <see cref="TextAnalyticsActions"/>
@@ -2404,10 +2384,10 @@ namespace Azure.AI.TextAnalytics
         /// PII entity recognition, linked entity recognition, key phrases extraction, and sentiment analysis.
         /// Accepts a list of strings which are analyzed asynchronously.
         /// For document length limits, maximum batch size, and supported text encoding, see
-        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits"/>.
+        /// <see href="https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/data-limits?tabs=version-3"/>.
         /// </summary>
         /// <remarks>
-        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1_Preview_5"/> and up.
+        /// Method is only available for <see cref="TextAnalyticsClientOptions.ServiceVersion.V3_1"/> and up.
         /// </remarks>
         /// <param name="documents">The list of documents to analyze.</param>
         /// <param name="actions"> The different actions to pass as arguments. <see cref="TextAnalyticsActions"/>
