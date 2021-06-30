@@ -12,16 +12,12 @@ namespace Microsoft.Azure.Management.Peering.Models
 {
 
     /// <summary>
-    /// Defines values for DirectPeeringType.
+    /// Defines values for Command.
     /// </summary>
-    public static class DirectPeeringType
+    public static class Command
     {
-        public const string Edge = "Edge";
-        public const string Transit = "Transit";
-        public const string Cdn = "Cdn";
-        public const string Internal = "Internal";
-        public const string Ix = "Ix";
-        public const string IxRs = "IxRs";
-        public const string Voice = "Voice";
+        public const string Traceroute = "Traceroute";
+        public const string Ping = "Ping";
+        public const string BgpRoute = "BgpRoute";
     }
 }

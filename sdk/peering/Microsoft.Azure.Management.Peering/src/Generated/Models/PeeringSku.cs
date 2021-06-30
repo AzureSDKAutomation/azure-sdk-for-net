@@ -57,25 +57,25 @@ namespace Microsoft.Azure.Management.Peering.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the tier of the peering SKU. Possible values include:
-        /// 'Basic', 'Premium'
+        /// Gets the tier of the peering SKU. Possible values include: 'Basic',
+        /// 'Premium'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
-        public string Tier { get; set; }
+        public string Tier { get; private set; }
 
         /// <summary>
-        /// Gets or sets the family of the peering SKU. Possible values
-        /// include: 'Direct', 'Exchange'
+        /// Gets the family of the peering SKU. Possible values include:
+        /// 'Direct', 'Exchange'
         /// </summary>
         [JsonProperty(PropertyName = "family")]
-        public string Family { get; set; }
+        public string Family { get; private set; }
 
         /// <summary>
-        /// Gets or sets the size of the peering SKU. Possible values include:
-        /// 'Free', 'Metered', 'Unlimited'
+        /// Gets the size of the peering SKU. Possible values include: 'Free',
+        /// 'Metered', 'Unlimited'
         /// </summary>
         [JsonProperty(PropertyName = "size")]
-        public string Size { get; set; }
+        public string Size { get; private set; }
 
     }
 }

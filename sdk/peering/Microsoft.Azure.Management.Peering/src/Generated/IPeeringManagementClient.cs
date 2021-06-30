@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Management.Peering
         ILegacyPeeringsOperations LegacyPeerings { get; }
 
         /// <summary>
+        /// Gets the ILookingGlassOperations.
+        /// </summary>
+        ILookingGlassOperations LookingGlass { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
@@ -117,6 +122,11 @@ namespace Microsoft.Azure.Management.Peering
         /// Gets the IReceivedRoutesOperations.
         /// </summary>
         IReceivedRoutesOperations ReceivedRoutes { get; }
+
+        /// <summary>
+        /// Gets the IConnectionMonitorTestsOperations.
+        /// </summary>
+        IConnectionMonitorTestsOperations ConnectionMonitorTests { get; }
 
         /// <summary>
         /// Gets the IPeeringServiceCountriesOperations.

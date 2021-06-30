@@ -10,12 +10,15 @@
 
 namespace Microsoft.Azure.Management.Peering.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The peering API operation.
     /// </summary>
+    [Rest.Serialization.JsonTransformation]
     public partial class Operation
     {
         /// <summary>
@@ -34,11 +37,14 @@ namespace Microsoft.Azure.Management.Peering.Models
         /// operation.</param>
         /// <param name="isDataAction">The flag that indicates whether the
         /// operation applies to data plane.</param>
-        public Operation(string name = default(string), OperationDisplayInfo display = default(OperationDisplayInfo), bool? isDataAction = default(bool?))
+        /// <param name="serviceSpecification">Service specification
+        /// payload.</param>
+        public Operation(string name = default(string), OperationDisplayInfo display = default(OperationDisplayInfo), bool? isDataAction = default(bool?), ServiceSpecification serviceSpecification = default(ServiceSpecification))
         {
             Name = name;
             Display = display;
             IsDataAction = isDataAction;
+            ServiceSpecification = serviceSpecification;
             CustomInit();
         }
 
@@ -65,6 +71,12 @@ namespace Microsoft.Azure.Management.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "isDataAction")]
         public bool? IsDataAction { get; private set; }
+
+        /// <summary>
+        /// Gets service specification payload.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serviceSpecification")]
+        public ServiceSpecification ServiceSpecification { get; private set; }
 
     }
 }

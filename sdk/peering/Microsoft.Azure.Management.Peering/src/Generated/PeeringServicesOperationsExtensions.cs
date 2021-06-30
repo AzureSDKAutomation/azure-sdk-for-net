@@ -265,6 +265,31 @@ namespace Microsoft.Azure.Management.Peering
             }
 
             /// <summary>
+            /// Initialize Peering Service for Connection Monitor functionality
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            public static void InitializeConnectionMonitor(this IPeeringServicesOperations operations)
+            {
+                operations.InitializeConnectionMonitorAsync().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Initialize Peering Service for Connection Monitor functionality
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task InitializeConnectionMonitorAsync(this IPeeringServicesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.InitializeConnectionMonitorWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Lists all of the peering services under the given subscription and resource
             /// group.
             /// </summary>
