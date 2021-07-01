@@ -217,6 +217,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IEmailTemplateOperations EmailTemplate { get; private set; }
 
         /// <summary>
+        /// Gets the IEventGridFilterOperations.
+        /// </summary>
+        public virtual IEventGridFilterOperations EventGridFilter { get; private set; }
+
+        /// <summary>
         /// Gets the IGatewayOperations.
         /// </summary>
         public virtual IGatewayOperations Gateway { get; private set; }
@@ -705,6 +710,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             ApiManagementService = new ApiManagementServiceOperations(this);
             Diagnostic = new DiagnosticOperations(this);
             EmailTemplate = new EmailTemplateOperations(this);
+            EventGridFilter = new EventGridFilterOperations(this);
             Gateway = new GatewayOperations(this);
             GatewayHostnameConfiguration = new GatewayHostnameConfigurationOperations(this);
             GatewayApi = new GatewayApiOperations(this);
@@ -750,7 +756,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             UserConfirmationPassword = new UserConfirmationPasswordOperations(this);
             ApiExport = new ApiExportOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-12-01";
+            ApiVersion = "2021-04-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
