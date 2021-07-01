@@ -14,27 +14,26 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// The object defining the schema of the exported API Detail
+    /// Defines headers for Get operation.
     /// </summary>
-    public partial class ApiExportResultValue
+    public partial class EventGridFilterGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ApiExportResultValue class.
+        /// Initializes a new instance of the EventGridFilterGetHeaders class.
         /// </summary>
-        public ApiExportResultValue()
+        public EventGridFilterGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ApiExportResultValue class.
+        /// Initializes a new instance of the EventGridFilterGetHeaders class.
         /// </summary>
-        /// <param name="link">Link to the Storage Blob containing the result
-        /// of the export operation. The Blob Uri is only valid for 5
-        /// minutes.</param>
-        public ApiExportResultValue(string link = default(string))
+        /// <param name="eTag">Current entity state version. Should be treated
+        /// as opaque and used to make conditional HTTP requests.</param>
+        public EventGridFilterGetHeaders(string eTag = default(string))
         {
-            Link = link;
+            ETag = eTag;
             CustomInit();
         }
 
@@ -44,11 +43,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets link to the Storage Blob containing the result of the
-        /// export operation. The Blob Uri is only valid for 5 minutes.
+        /// Gets or sets current entity state version. Should be treated as
+        /// opaque and used to make conditional HTTP requests.
         /// </summary>
-        [JsonProperty(PropertyName = "link")]
-        public string Link { get; set; }
+        [JsonProperty(PropertyName = "ETag")]
+        public string ETag { get; set; }
 
     }
 }

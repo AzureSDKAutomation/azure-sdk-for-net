@@ -212,6 +212,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         IEmailTemplateOperations EmailTemplate { get; }
 
         /// <summary>
+        /// Gets the IEventGridFilterOperations.
+        /// </summary>
+        IEventGridFilterOperations EventGridFilter { get; }
+
+        /// <summary>
         /// Gets the IGatewayOperations.
         /// </summary>
         IGatewayOperations Gateway { get; }
