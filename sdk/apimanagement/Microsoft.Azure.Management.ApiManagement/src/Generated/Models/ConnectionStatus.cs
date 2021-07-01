@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for Protocol.
+    /// Defines values for ConnectionStatus.
     /// </summary>
-    public static class Protocol
+    public static class ConnectionStatus
     {
-        public const string Http = "http";
-        public const string Https = "https";
-        public const string Ws = "ws";
-        public const string Wss = "wss";
+        public const string Unknown = "Unknown";
+        public const string Connected = "Connected";
+        public const string Disconnected = "Disconnected";
+        public const string Degraded = "Degraded";
     }
 }

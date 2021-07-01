@@ -12,13 +12,12 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for Protocol.
+    /// Defines values for Origin.
     /// </summary>
-    public static class Protocol
+    public static class Origin
     {
-        public const string Http = "http";
-        public const string Https = "https";
-        public const string Ws = "ws";
-        public const string Wss = "wss";
+        public const string Local = "Local";
+        public const string Inbound = "Inbound";
+        public const string Outbound = "Outbound";
     }
 }
