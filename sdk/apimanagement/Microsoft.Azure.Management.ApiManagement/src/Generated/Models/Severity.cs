@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for Protocol.
+    /// Defines values for Severity.
     /// </summary>
-    public static class Protocol
+    public static class Severity
     {
-        public const string Http = "http";
-        public const string Https = "https";
-        public const string Ws = "ws";
-        public const string Wss = "wss";
+        public const string Error = "Error";
+        public const string Warning = "Warning";
     }
 }

@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for Protocol.
+    /// Defines values for PreferredIPVersion.
     /// </summary>
-    public static class Protocol
+    public static class PreferredIPVersion
     {
-        public const string Http = "http";
-        public const string Https = "https";
-        public const string Ws = "ws";
-        public const string Wss = "wss";
+        public const string IPv4 = "IPv4";
+        public const string IPv6 = "IPv6";
     }
 }
