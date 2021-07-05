@@ -61,22 +61,5 @@ namespace Microsoft.Azure.Management.OperationalInsights.Models
         [JsonProperty(PropertyName = "properties.retentionInDays")]
         public int? RetentionInDays { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (RetentionInDays > 730)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "RetentionInDays", 730);
-            }
-            if (RetentionInDays < 30)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", 30);
-            }
-        }
     }
 }

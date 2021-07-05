@@ -107,10 +107,6 @@ namespace Microsoft.Azure.Management.OperationalInsights
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (workspaceName == null)
             {
@@ -340,10 +336,6 @@ namespace Microsoft.Azure.Management.OperationalInsights
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (workspaceName == null)
             {
@@ -367,14 +359,6 @@ namespace Microsoft.Azure.Management.OperationalInsights
             if (tableName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "tableName");
-            }
-            if (retentionInDays > 730)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "retentionInDays", 730);
-            }
-            if (retentionInDays < 30)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "retentionInDays", 30);
             }
             string apiVersion = "2020-08-01";
             Table parameters = new Table();
@@ -594,10 +578,6 @@ namespace Microsoft.Azure.Management.OperationalInsights
                 if (resourceGroupName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (workspaceName == null)
