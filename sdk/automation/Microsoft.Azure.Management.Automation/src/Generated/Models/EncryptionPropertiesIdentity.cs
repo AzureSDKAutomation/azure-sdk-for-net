@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="userAssignedIdentity">The user identity used for CMK.
         /// It will be an ARM resource id in the form:
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
-        public EncryptionPropertiesIdentity(object userAssignedIdentity = default(object))
+        public EncryptionPropertiesIdentity(string userAssignedIdentity = default(string))
         {
             UserAssignedIdentity = userAssignedIdentity;
             CustomInit();
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentity")]
-        public object UserAssignedIdentity { get; set; }
+        public string UserAssignedIdentity { get; set; }
 
     }
 }
