@@ -39,14 +39,21 @@ namespace Microsoft.Azure.Management.Security.Models
         /// multiples of 1000.</param>
         /// <param name="sentinelWorkspaceResourceIds">Sentinel Workspace
         /// Resource Ids</param>
+        /// <param name="onboardingKind">The kind of onboarding for the
+        /// subscription. Possible values include: 'Default',
+        /// 'MigratedToAzure', 'Evaluation', 'Purchased'</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public IotDefenderSettingsModel(int deviceQuota, IList<string> sentinelWorkspaceResourceIds, string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="evaluationEndTime">End time of the evaluation period,
+        /// if such exist</param>
+        public IotDefenderSettingsModel(int deviceQuota, IList<string> sentinelWorkspaceResourceIds, string onboardingKind, string id = default(string), string name = default(string), string type = default(string), System.DateTime? evaluationEndTime = default(System.DateTime?))
             : base(id, name, type)
         {
             DeviceQuota = deviceQuota;
             SentinelWorkspaceResourceIds = sentinelWorkspaceResourceIds;
+            OnboardingKind = onboardingKind;
+            EvaluationEndTime = evaluationEndTime;
             CustomInit();
         }
 
@@ -69,6 +76,20 @@ namespace Microsoft.Azure.Management.Security.Models
         public IList<string> SentinelWorkspaceResourceIds { get; set; }
 
         /// <summary>
+        /// Gets or sets the kind of onboarding for the subscription. Possible
+        /// values include: 'Default', 'MigratedToAzure', 'Evaluation',
+        /// 'Purchased'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.onboardingKind")]
+        public string OnboardingKind { get; set; }
+
+        /// <summary>
+        /// Gets end time of the evaluation period, if such exist
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.evaluationEndTime")]
+        public System.DateTime? EvaluationEndTime { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -79,6 +100,10 @@ namespace Microsoft.Azure.Management.Security.Models
             if (SentinelWorkspaceResourceIds == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SentinelWorkspaceResourceIds");
+            }
+            if (OnboardingKind == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "OnboardingKind");
             }
             if (DeviceQuota < 1000)
             {
