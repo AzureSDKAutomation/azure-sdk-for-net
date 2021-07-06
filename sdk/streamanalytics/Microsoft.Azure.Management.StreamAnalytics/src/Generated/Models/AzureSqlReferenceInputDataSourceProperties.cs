@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.StreamAnalytics.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Describes Azure SQL database reference input data source properties.
+    /// </summary>
     public partial class AzureSqlReferenceInputDataSourceProperties
     {
         /// <summary>

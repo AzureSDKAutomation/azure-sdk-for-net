@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The region in which to retrieve the subscription's quota information. You
-            /// can find out which regions Azure Stream Analytics is supported in here:
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
             /// https://azure.microsoft.com/en-us/regions/
             /// </param>
             public static SubscriptionQuotasListResult ListQuotas(this ISubscriptionsOperations operations, string location)
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The region in which to retrieve the subscription's quota information. You
-            /// can find out which regions Azure Stream Analytics is supported in here:
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
             /// https://azure.microsoft.com/en-us/regions/
             /// </param>
             /// <param name='cancellationToken'>
@@ -56,6 +56,412 @@ namespace Microsoft.Azure.Management.StreamAnalytics
             public static async Task<SubscriptionQuotasListResult> ListQuotasAsync(this ISubscriptionsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListQuotasWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics query on a sample input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testQuery'>
+            /// The query testing object that defines the input, output, and transformation
+            /// for the query testing.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static QueryTestingResult TestQueryMethod(this ISubscriptionsOperations operations, TestQuery testQuery, string location)
+            {
+                return operations.TestQueryMethodAsync(testQuery, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics query on a sample input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testQuery'>
+            /// The query testing object that defines the input, output, and transformation
+            /// for the query testing.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<QueryTestingResult> TestQueryMethodAsync(this ISubscriptionsOperations operations, TestQuery testQuery, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.TestQueryMethodWithHttpMessagesAsync(testQuery, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Compile the Stream Analytics query.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='compileQuery'>
+            /// The query compilation object which defines the input, output, and
+            /// transformation for the query compilation.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static QueryCompilationResult CompileQueryMethod(this ISubscriptionsOperations operations, CompileQuery compileQuery, string location)
+            {
+                return operations.CompileQueryMethodAsync(compileQuery, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Compile the Stream Analytics query.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='compileQuery'>
+            /// The query compilation object which defines the input, output, and
+            /// transformation for the query compilation.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<QueryCompilationResult> CompileQueryMethodAsync(this ISubscriptionsOperations operations, CompileQuery compileQuery, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CompileQueryMethodWithHttpMessagesAsync(compileQuery, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Sample the Stream Analytics input data.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='sampleInput'>
+            /// Defines the necessary parameters for sampling the Stream Analytics input
+            /// data.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static SampleInputResult SampleInputMethod(this ISubscriptionsOperations operations, SampleInput sampleInput, string location)
+            {
+                return operations.SampleInputMethodAsync(sampleInput, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Sample the Stream Analytics input data.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='sampleInput'>
+            /// Defines the necessary parameters for sampling the Stream Analytics input
+            /// data.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SampleInputResult> SampleInputMethodAsync(this ISubscriptionsOperations operations, SampleInput sampleInput, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.SampleInputMethodWithHttpMessagesAsync(sampleInput, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testInput'>
+            /// Defines the necessary parameters for testing the Stream Analytics input.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static TestDatasourceResult TestInputMethod(this ISubscriptionsOperations operations, TestInput testInput, string location)
+            {
+                return operations.TestInputMethodAsync(testInput, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testInput'>
+            /// Defines the necessary parameters for testing the Stream Analytics input.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TestDatasourceResult> TestInputMethodAsync(this ISubscriptionsOperations operations, TestInput testInput, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.TestInputMethodWithHttpMessagesAsync(testInput, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics output.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testOutput'>
+            /// Defines the necessary parameters for testing the Stream Analytics output.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static TestDatasourceResult TestOutputMethod(this ISubscriptionsOperations operations, TestOutput testOutput, string location)
+            {
+                return operations.TestOutputMethodAsync(testOutput, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics output.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testOutput'>
+            /// Defines the necessary parameters for testing the Stream Analytics output.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TestDatasourceResult> TestOutputMethodAsync(this ISubscriptionsOperations operations, TestOutput testOutput, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.TestOutputMethodWithHttpMessagesAsync(testOutput, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics query on a sample input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testQuery'>
+            /// The query testing object that defines the input, output, and transformation
+            /// for the query testing.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static QueryTestingResult BeginTestQueryMethod(this ISubscriptionsOperations operations, TestQuery testQuery, string location)
+            {
+                return operations.BeginTestQueryMethodAsync(testQuery, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics query on a sample input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testQuery'>
+            /// The query testing object that defines the input, output, and transformation
+            /// for the query testing.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<QueryTestingResult> BeginTestQueryMethodAsync(this ISubscriptionsOperations operations, TestQuery testQuery, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginTestQueryMethodWithHttpMessagesAsync(testQuery, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Sample the Stream Analytics input data.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='sampleInput'>
+            /// Defines the necessary parameters for sampling the Stream Analytics input
+            /// data.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static SampleInputResult BeginSampleInputMethod(this ISubscriptionsOperations operations, SampleInput sampleInput, string location)
+            {
+                return operations.BeginSampleInputMethodAsync(sampleInput, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Sample the Stream Analytics input data.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='sampleInput'>
+            /// Defines the necessary parameters for sampling the Stream Analytics input
+            /// data.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SampleInputResult> BeginSampleInputMethodAsync(this ISubscriptionsOperations operations, SampleInput sampleInput, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginSampleInputMethodWithHttpMessagesAsync(sampleInput, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testInput'>
+            /// Defines the necessary parameters for testing the Stream Analytics input.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static TestDatasourceResult BeginTestInputMethod(this ISubscriptionsOperations operations, TestInput testInput, string location)
+            {
+                return operations.BeginTestInputMethodAsync(testInput, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics input.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testInput'>
+            /// Defines the necessary parameters for testing the Stream Analytics input.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TestDatasourceResult> BeginTestInputMethodAsync(this ISubscriptionsOperations operations, TestInput testInput, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginTestInputMethodWithHttpMessagesAsync(testInput, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics output.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testOutput'>
+            /// Defines the necessary parameters for testing the Stream Analytics output.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            public static TestDatasourceResult BeginTestOutputMethod(this ISubscriptionsOperations operations, TestOutput testOutput, string location)
+            {
+                return operations.BeginTestOutputMethodAsync(testOutput, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Test the Stream Analytics output.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='testOutput'>
+            /// Defines the necessary parameters for testing the Stream Analytics output.
+            /// </param>
+            /// <param name='location'>
+            /// The region to which the request is sent. You can find out which regions
+            /// Azure Stream Analytics is supported in here:
+            /// https://azure.microsoft.com/en-us/regions/
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TestDatasourceResult> BeginTestOutputMethodAsync(this ISubscriptionsOperations operations, TestOutput testOutput, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginTestOutputMethodWithHttpMessagesAsync(testOutput, location, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
