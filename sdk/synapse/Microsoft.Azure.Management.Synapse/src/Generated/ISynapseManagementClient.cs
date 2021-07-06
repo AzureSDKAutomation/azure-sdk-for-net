@@ -374,5 +374,15 @@ namespace Microsoft.Azure.Management.Synapse
         /// </summary>
         IRestorableDroppedSqlPoolsOperations RestorableDroppedSqlPools { get; }
 
+        /// <summary>
+        /// Gets the ISparkConfigurationOperations.
+        /// </summary>
+        ISparkConfigurationOperations SparkConfiguration { get; }
+
+        /// <summary>
+        /// Gets the ISparkConfigurationsOperations.
+        /// </summary>
+        ISparkConfigurationsOperations SparkConfigurations { get; }
+
     }
 }
