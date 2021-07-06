@@ -380,6 +380,16 @@ namespace Microsoft.Azure.Management.Synapse
         public virtual IRestorableDroppedSqlPoolsOperations RestorableDroppedSqlPools { get; private set; }
 
         /// <summary>
+        /// Gets the ISparkConfigurationOperations.
+        /// </summary>
+        public virtual ISparkConfigurationOperations SparkConfiguration { get; private set; }
+
+        /// <summary>
+        /// Gets the ISparkConfigurationsOperations.
+        /// </summary>
+        public virtual ISparkConfigurationsOperations SparkConfigurations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SynapseManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -681,6 +691,8 @@ namespace Microsoft.Azure.Management.Synapse
             WorkspaceSqlAadAdmins = new WorkspaceSqlAadAdminsOperations(this);
             WorkspaceManagedIdentitySqlControlSettings = new WorkspaceManagedIdentitySqlControlSettingsOperations(this);
             RestorableDroppedSqlPools = new RestorableDroppedSqlPoolsOperations(this);
+            SparkConfiguration = new SparkConfigurationOperations(this);
+            SparkConfigurations = new SparkConfigurationsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2021-04-01-preview";
             AcceptLanguage = "en-US";
