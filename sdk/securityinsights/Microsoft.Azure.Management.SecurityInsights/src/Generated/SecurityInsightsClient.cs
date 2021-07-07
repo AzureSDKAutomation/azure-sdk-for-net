@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Management.SecurityInsights
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// API version for the operation
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// Azure subscription ID
         /// </summary>
         public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// API version for the operation
+        /// </summary>
+        public string ApiVersion { get; private set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -74,11 +74,6 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the IAlertRulesOperations.
@@ -104,6 +99,11 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// Gets the IDataConnectorsOperations.
         /// </summary>
         public virtual IDataConnectorsOperations DataConnectors { get; private set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the IIncidentsOperations.
@@ -356,12 +356,12 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// </summary>
         private void Initialize()
         {
-            Operations = new Operations(this);
             AlertRules = new AlertRulesOperations(this);
             Actions = new ActionsOperations(this);
             AlertRuleTemplates = new AlertRuleTemplatesOperations(this);
             Bookmarks = new BookmarksOperations(this);
             DataConnectors = new DataConnectorsOperations(this);
+            Operations = new Operations(this);
             Incidents = new IncidentsOperations(this);
             IncidentComments = new IncidentCommentsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
@@ -399,10 +399,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AlertRule>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AlertRuleTemplate>("kind"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AlertRuleTemplate>("kind"));
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DataConnector>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DataConnector>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Settings>("kind"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Settings>("kind"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<DataConnector>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<DataConnector>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
