@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Management.Sql.Models
     {
         [EnumMember(Value = "Default")]
         Default,
-        [EnumMember(Value = "Proxy")]
-        Proxy,
         [EnumMember(Value = "Redirect")]
-        Redirect
+        Redirect,
+        [EnumMember(Value = "Proxy")]
+        Proxy
     }
     internal static class ServerConnectionTypeEnumExtension
     {
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 case ServerConnectionType.Default:
                     return "Default";
-                case ServerConnectionType.Proxy:
-                    return "Proxy";
                 case ServerConnectionType.Redirect:
                     return "Redirect";
+                case ServerConnectionType.Proxy:
+                    return "Proxy";
             }
             return null;
         }
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 case "Default":
                     return ServerConnectionType.Default;
-                case "Proxy":
-                    return ServerConnectionType.Proxy;
                 case "Redirect":
                     return ServerConnectionType.Redirect;
+                case "Proxy":
+                    return ServerConnectionType.Proxy;
             }
             return null;
         }

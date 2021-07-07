@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// sku.name: GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Deleting', 'Updating', 'Unknown', 'Succeeded',
-        /// 'Failed'</param>
+        /// 'Failed', 'Accepted', 'Created', 'Deleted', 'Unrecognized',
+        /// 'Running', 'Canceled', 'NotSpecified', 'Registering',
+        /// 'TimedOut'</param>
         /// <param name="managedInstanceCreateMode">Specifies the mode of
         /// database creation.
         ///
@@ -180,7 +182,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets possible values include: 'Creating', 'Deleting', 'Updating',
-        /// 'Unknown', 'Succeeded', 'Failed'
+        /// 'Unknown', 'Succeeded', 'Failed', 'Accepted', 'Created', 'Deleted',
+        /// 'Unrecognized', 'Running', 'Canceled', 'NotSpecified',
+        /// 'Registering', 'TimedOut'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }

@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="identity">Managed instance identity</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Deleting', 'Updating', 'Unknown', 'Succeeded',
-        /// 'Failed'</param>
+        /// 'Failed', 'Accepted', 'Created', 'Deleted', 'Unrecognized',
+        /// 'Running', 'Canceled', 'NotSpecified', 'Registering',
+        /// 'TimedOut'</param>
         /// <param name="managedInstanceCreateMode">Specifies the mode of
         /// database creation.
         ///
@@ -172,7 +174,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets possible values include: 'Creating', 'Deleting', 'Updating',
-        /// 'Unknown', 'Succeeded', 'Failed'
+        /// 'Unknown', 'Succeeded', 'Failed', 'Accepted', 'Created', 'Deleted',
+        /// 'Unrecognized', 'Running', 'Canceled', 'NotSpecified',
+        /// 'Registering', 'TimedOut'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
