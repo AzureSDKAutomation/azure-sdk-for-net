@@ -10,26 +10,19 @@
 
 namespace Microsoft.Azure.Management.StreamAnalytics.Models
 {
-    using System.Linq;
 
     /// <summary>
-    /// Describes an input data source that contains stream data.
+    /// Defines values for TestDatasourceResultStatus.
     /// </summary>
-    public partial class StreamInputDataSource
+    public static class TestDatasourceResultStatus
     {
         /// <summary>
-        /// Initializes a new instance of the StreamInputDataSource class.
+        /// The test datasource operation succeeded.
         /// </summary>
-        public StreamInputDataSource()
-        {
-            CustomInit();
-        }
-
-
+        public const string TestSucceeded = "TestSucceeded";
         /// <summary>
-        /// An initialization method that performs custom operations like setting defaults
+        /// The test datasource operation failed.
         /// </summary>
-        partial void CustomInit();
-
+        public const string TestFailed = "TestFailed";
     }
 }
