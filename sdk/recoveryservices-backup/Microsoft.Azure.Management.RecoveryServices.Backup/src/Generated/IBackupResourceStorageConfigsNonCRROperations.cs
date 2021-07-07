@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     using System.Threading.Tasks;
 
     /// <summary>
-    /// BackupResourceEncryptionConfigsOperations operations.
+    /// BackupResourceStorageConfigsNonCRROperations operations.
     /// </summary>
-    public partial interface IBackupResourceEncryptionConfigsOperations
+    public partial interface IBackupResourceStorageConfigsNonCRROperations
     {
         /// <summary>
-        /// Fetches Vault Encryption config.
+        /// Fetches resource storage config.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BackupResourceEncryptionConfigExtendedResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BackupResourceConfigResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates Vault encryption config.
+        /// Updates vault storage model type.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -60,7 +60,36 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// present.
         /// </param>
         /// <param name='parameters'>
-        /// Vault encryption input config request
+        /// Vault storage config request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="NewErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BackupResourceConfigResource>> UpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, BackupResourceConfigResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates vault storage model type.
+        /// </summary>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='parameters'>
+        /// Vault storage config request
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -74,6 +103,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, BackupResourceEncryptionConfigResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> PatchWithHttpMessagesAsync(string vaultName, string resourceGroupName, BackupResourceConfigResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
