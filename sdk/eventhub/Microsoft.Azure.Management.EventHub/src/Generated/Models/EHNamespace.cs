@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// description</param>
         /// <param name="provisioningState">Provisioning state of the
         /// Namespace.</param>
+        /// <param name="status">Status of the Namespace.</param>
         /// <param name="createdAt">The time the Namespace was created.</param>
         /// <param name="updatedAt">The time the Namespace was updated.</param>
         /// <param name="serviceBusEndpoint">Endpoint you can use to perform
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// <param name="isAutoInflateEnabled">Value that indicates whether
         /// AutoInflate is enabled for eventhub namespace.</param>
         /// <param name="maximumThroughputUnits">Upper limit of throughput
-        /// units when AutoInflate is enabled, value should be within 0 to 20
+        /// units when AutoInflate is enabled, value should be within 0 to 40
         /// throughput units. ( '0' if AutoInflateEnabled = true)</param>
         /// <param name="kafkaEnabled">Value that indicates whether Kafka is
         /// enabled for eventhub namespace.</param>
@@ -63,12 +64,13 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// zones.</param>
         /// <param name="encryption">Properties of BYOK Encryption
         /// description</param>
-        public EHNamespace(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Identity identity = default(Identity), string provisioningState = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string clusterArmId = default(string), string metricId = default(string), bool? isAutoInflateEnabled = default(bool?), int? maximumThroughputUnits = default(int?), bool? kafkaEnabled = default(bool?), bool? zoneRedundant = default(bool?), Encryption encryption = default(Encryption))
+        public EHNamespace(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Identity identity = default(Identity), string provisioningState = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string clusterArmId = default(string), string metricId = default(string), bool? isAutoInflateEnabled = default(bool?), int? maximumThroughputUnits = default(int?), bool? kafkaEnabled = default(bool?), bool? zoneRedundant = default(bool?), Encryption encryption = default(Encryption))
             : base(id, name, type, location, tags)
         {
             Sku = sku;
             Identity = identity;
             ProvisioningState = provisioningState;
+            Status = status;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             ServiceBusEndpoint = serviceBusEndpoint;
@@ -104,6 +106,12 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets status of the Namespace.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.status")]
+        public string Status { get; private set; }
 
         /// <summary>
         /// Gets the time the Namespace was created.
@@ -144,7 +152,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
 
         /// <summary>
         /// Gets or sets upper limit of throughput units when AutoInflate is
-        /// enabled, value should be within 0 to 20 throughput units. ( '0' if
+        /// enabled, value should be within 0 to 40 throughput units. ( '0' if
         /// AutoInflateEnabled = true)
         /// </summary>
         [JsonProperty(PropertyName = "properties.maximumThroughputUnits")]
@@ -182,9 +190,9 @@ namespace Microsoft.Azure.Management.EventHub.Models
             {
                 Sku.Validate();
             }
-            if (MaximumThroughputUnits > 20)
+            if (MaximumThroughputUnits > 40)
             {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "MaximumThroughputUnits", 20);
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "MaximumThroughputUnits", 40);
             }
             if (MaximumThroughputUnits < 0)
             {
