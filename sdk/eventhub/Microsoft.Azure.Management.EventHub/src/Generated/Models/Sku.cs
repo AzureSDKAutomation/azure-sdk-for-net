@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// <param name="tier">The billing tier of this particular SKU.
         /// Possible values include: 'Basic', 'Standard'</param>
         /// <param name="capacity">The Event Hubs throughput units, value
-        /// should be 0 to 20 throughput units.</param>
+        /// should be 0 to 40 throughput units.</param>
         public Sku(string name, string tier = default(string), int? capacity = default(int?))
         {
             Name = name;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.EventHub.Models
 
         /// <summary>
         /// Gets or sets the Event Hubs throughput units, value should be 0 to
-        /// 20 throughput units.
+        /// 40 throughput units.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public int? Capacity { get; set; }
@@ -81,10 +81,6 @@ namespace Microsoft.Azure.Management.EventHub.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-            if (Capacity > 20)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Capacity", 20);
             }
             if (Capacity < 0)
             {
