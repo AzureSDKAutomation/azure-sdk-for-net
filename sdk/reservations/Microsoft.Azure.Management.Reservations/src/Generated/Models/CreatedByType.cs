@@ -12,14 +12,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
 {
 
     /// <summary>
-    /// Defines values for ExchangeOperationResultStatus.
+    /// Defines values for CreatedByType.
     /// </summary>
-    public static class ExchangeOperationResultStatus
+    public static class CreatedByType
     {
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string Cancelled = "Cancelled";
-        public const string PendingRefunds = "PendingRefunds";
-        public const string PendingPurchases = "PendingPurchases";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }
