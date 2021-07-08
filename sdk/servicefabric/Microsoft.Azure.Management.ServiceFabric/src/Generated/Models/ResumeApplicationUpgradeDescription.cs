@@ -14,24 +14,29 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     using System.Linq;
 
     /// <summary>
-    /// The structure of the error.
+    /// Describes the net upgrade domain to be updated during a manual
+    /// application upgrade.
     /// </summary>
-    public partial class ErrorModel
+    public partial class ResumeApplicationUpgradeDescription
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorModel class.
+        /// Initializes a new instance of the
+        /// ResumeApplicationUpgradeDescription class.
         /// </summary>
-        public ErrorModel()
+        public ResumeApplicationUpgradeDescription()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorModel class.
+        /// Initializes a new instance of the
+        /// ResumeApplicationUpgradeDescription class.
         /// </summary>
-        public ErrorModel(ErrorModelError error = default(ErrorModelError))
+        /// <param name="upgradeDomainName">the next UD to be updated during a
+        /// manual upgrade.</param>
+        public ResumeApplicationUpgradeDescription(string upgradeDomainName = default(string))
         {
-            Error = error;
+            UpgradeDomainName = upgradeDomainName;
             CustomInit();
         }
 
@@ -41,9 +46,10 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the next UD to be updated during a manual upgrade.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorModelError Error { get; set; }
+        [JsonProperty(PropertyName = "upgradeDomainName")]
+        public string UpgradeDomainName { get; set; }
 
     }
 }

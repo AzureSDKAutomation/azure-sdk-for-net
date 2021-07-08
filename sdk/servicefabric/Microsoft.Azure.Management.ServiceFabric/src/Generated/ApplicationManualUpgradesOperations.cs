@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ManagedClusterVersionsOperations operations.
+    /// ApplicationManualUpgradesOperations operations.
     /// </summary>
-    internal partial class ManagedClusterVersionsOperations : IServiceOperations<ServiceFabricManagementClient>, IManagedClusterVersionsOperations
+    internal partial class ApplicationManualUpgradesOperations : IServiceOperations<ServiceFabricManagementClient>, IApplicationManualUpgradesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ManagedClusterVersionsOperations class.
+        /// Initializes a new instance of the ApplicationManualUpgradesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ManagedClusterVersionsOperations(ServiceFabricManagementClient client)
+        internal ApplicationManualUpgradesOperations(ServiceFabricManagementClient client)
         {
             if (client == null)
             {
@@ -51,20 +51,55 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public ServiceFabricManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the list of Service Fabric cluster code versions available for the
-        /// specified OS type.
+        /// Resume manual upgrade for a Service Fabric application resource.
         /// </summary>
         /// <remarks>
-        /// Gets all available code versions for Service Fabric cluster resources by OS
-        /// type.
+        /// Resume manual upgrade for a Service Fabric application resource with the
+        /// specified upgrade domain.
         /// </remarks>
-        /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
         /// </param>
-        /// <param name='osType'>
-        /// The operating system of the cluster. Possible values include: 'Windows',
-        /// 'Ubuntu', 'RedHat', 'Ubuntu18_04'
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='upgradeDomainName'>
+        /// the next UD to be updated during a manual upgrade.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<ApplicationResource>> UpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string upgradeDomainName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse<ApplicationResource> _response = await BeginUpgradeWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, upgradeDomainName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Resume manual upgrade for a Service Fabric application resource.
+        /// </summary>
+        /// <remarks>
+        /// Resume manual upgrade for a Service Fabric application resource with the
+        /// specified upgrade domain.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='upgradeDomainName'>
+        /// the next UD to be updated during a manual upgrade.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -87,21 +122,29 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IList<ManagedClusterVersionDetails>>> ListByOSWithHttpMessagesAsync(string location, string osType, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ApplicationResource>> BeginUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string upgradeDomainName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
-            }
-            if (osType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "osType");
-            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-01-01-preview";
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (clusterName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "clusterName");
+            }
+            if (applicationName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "applicationName");
+            }
+            ResumeApplicationUpgradeDescription parameters = new ResumeApplicationUpgradeDescription();
+            if (upgradeDomainName != null)
+            {
+                parameters.UpgradeDomainName = upgradeDomainName;
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -109,22 +152,24 @@ namespace Microsoft.Azure.Management.ServiceFabric
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
-                tracingParameters.Add("osType", osType);
-                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("clusterName", clusterName);
+                tracingParameters.Add("applicationName", applicationName);
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListByOS", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginUpgrade", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/managedclusters/locations/{location}/osType/{osType}/clusterVersions").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
-            _url = _url.Replace("{osType}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(osType, Client.SerializationSettings).Trim('"')));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/upgrade").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{clusterName}", System.Uri.EscapeDataString(clusterName));
+            _url = _url.Replace("{applicationName}", System.Uri.EscapeDataString(applicationName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -133,7 +178,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -164,6 +209,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
             // Serialize Request
             string _requestContent = null;
+            if(parameters != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {
@@ -184,7 +235,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 202)
             {
                 var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -214,7 +265,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IList<ManagedClusterVersionDetails>>();
+            var _result = new AzureOperationResponse<ApplicationResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -222,12 +273,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
             }
             // Deserialize Response
-            if ((int)_statusCode == 200)
+            if ((int)_statusCode == 202)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IList<ManagedClusterVersionDetails>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ApplicationResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
