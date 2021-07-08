@@ -24,31 +24,6 @@ namespace Microsoft.Azure.Management.Reservations
     public partial interface IReservationOrderOperations
     {
         /// <summary>
-        /// Calculate price for a `ReservationOrder`.
-        /// </summary>
-        /// <remarks>
-        /// Calculate price for placing a `ReservationOrder`.
-        /// </remarks>
-        /// <param name='body'>
-        /// Information needed for calculate or purchase reservation
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CalculatePriceResponse>> CalculateWithHttpMessagesAsync(PurchaseRequest body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Get all `ReservationOrder`s.
         /// </summary>
         /// <remarks>

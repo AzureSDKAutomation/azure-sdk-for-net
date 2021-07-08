@@ -24,37 +24,6 @@ namespace Microsoft.Azure.Management.Reservations
     public partial interface IReservationOperations
     {
         /// <summary>
-        /// Get Available Scopes for `Reservation`.
-        /// </summary>
-        /// <remarks>
-        /// Get Available Scopes for `Reservation`.
-        ///
-        /// </remarks>
-        /// <param name='reservationOrderId'>
-        /// Order Id of the reservation
-        /// </param>
-        /// <param name='reservationId'>
-        /// Id of the Reservation Item
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<AvailableScopeProperties>> AvailableScopesWithHttpMessagesAsync(string reservationOrderId, string reservationId, AvailableScopeRequest body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Split the `Reservation`.
         /// </summary>
         /// <remarks>
@@ -228,19 +197,35 @@ namespace Microsoft.Azure.Management.Reservations
         /// </exception>
         Task<AzureOperationResponse<IPage<ReservationResponse>>> ListRevisionsWithHttpMessagesAsync(string reservationId, string reservationOrderId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get Available Scopes for `Reservation`.
+        /// List the reservations and the roll up counts of reservations group
+        /// by provisioning states that the user has access to in the current
+        /// tenant.
         /// </summary>
-        /// <remarks>
-        /// Get Available Scopes for `Reservation`.
-        ///
-        /// </remarks>
-        /// <param name='reservationOrderId'>
-        /// Order Id of the reservation
+        /// <param name='filter'>
+        /// May be used to filter by reservation properties. The filter
+        /// supports 'eq', 'or', and 'and'. It does not currently support 'ne',
+        /// 'gt', 'le', 'ge', or 'not'. Reservation properties include
+        /// sku/name, properties/{appliedScopeType, archived, displayName,
+        /// displayProvisioningState, effectiveDateTime, expiryDate,
+        /// provisioningState, quantity, renew, reservedResourceType, term,
+        /// userFriendlyAppliedScopeType, userFriendlyRenewState}
         /// </param>
-        /// <param name='reservationId'>
-        /// Id of the Reservation Item
+        /// <param name='orderby'>
+        /// May be used to sort order by reservation properties.
         /// </param>
-        /// <param name='body'>
+        /// <param name='refreshSummary'>
+        /// To indicate whether to refresh the roll up counts of the
+        /// reservations group by provisioning states
+        /// </param>
+        /// <param name='skiptoken'>
+        /// The number of reservations to skip from the list before returning
+        /// results
+        /// </param>
+        /// <param name='selectedState'>
+        /// The selected provisioning state
+        /// </param>
+        /// <param name='take'>
+        /// To number of reservations to return
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -248,7 +233,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -257,7 +242,7 @@ namespace Microsoft.Azure.Management.Reservations
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AvailableScopeProperties>> BeginAvailableScopesWithHttpMessagesAsync(string reservationOrderId, string reservationId, AvailableScopeRequest body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ReservationResponse>>> ListAllWithHttpMessagesAsync(string filter = default(string), string orderby = default(string), string refreshSummary = default(string), double? skiptoken = default(double?), string selectedState = default(string), double? take = default(double?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Split the `Reservation`.
         /// </summary>
@@ -397,5 +382,29 @@ namespace Microsoft.Azure.Management.Reservations
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<ReservationResponse>>> ListRevisionsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List the reservations and the roll up counts of reservations group
+        /// by provisioning states that the user has access to in the current
+        /// tenant.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ReservationResponse>>> ListAllNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

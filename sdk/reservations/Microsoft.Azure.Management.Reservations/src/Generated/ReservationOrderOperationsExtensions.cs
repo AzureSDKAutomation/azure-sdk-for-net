@@ -22,46 +22,6 @@ namespace Microsoft.Azure.Management.Reservations
     public static partial class ReservationOrderOperationsExtensions
     {
             /// <summary>
-            /// Calculate price for a `ReservationOrder`.
-            /// </summary>
-            /// <remarks>
-            /// Calculate price for placing a `ReservationOrder`.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='body'>
-            /// Information needed for calculate or purchase reservation
-            /// </param>
-            public static CalculatePriceResponse Calculate(this IReservationOrderOperations operations, PurchaseRequest body)
-            {
-                return operations.CalculateAsync(body).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Calculate price for a `ReservationOrder`.
-            /// </summary>
-            /// <remarks>
-            /// Calculate price for placing a `ReservationOrder`.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='body'>
-            /// Information needed for calculate or purchase reservation
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CalculatePriceResponse> CalculateAsync(this IReservationOrderOperations operations, PurchaseRequest body, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CalculateWithHttpMessagesAsync(body, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Get all `ReservationOrder`s.
             /// </summary>
             /// <remarks>
