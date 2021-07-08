@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// Represents a bookmark in Azure Security Insights.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Bookmark : ResourceWithEtag
+    public partial class Bookmark : ResourceWithEtagV1
     {
         /// <summary>
         /// Initializes a new instance of the Bookmark class.

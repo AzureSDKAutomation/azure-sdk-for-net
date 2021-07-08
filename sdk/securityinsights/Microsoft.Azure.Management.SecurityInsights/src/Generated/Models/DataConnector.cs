@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// <summary>
     /// Data connector.
     /// </summary>
-    public partial class DataConnector : ResourceWithEtag
+    public partial class DataConnector : ResourceWithEtagV1
     {
         /// <summary>
         /// Initializes a new instance of the DataConnector class.

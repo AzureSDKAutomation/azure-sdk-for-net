@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// Action for alert rule.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ActionRequest : ResourceWithEtag
+    public partial class ActionRequest : ResourceWithEtagV1
     {
         /// <summary>
         /// Initializes a new instance of the ActionRequest class.
