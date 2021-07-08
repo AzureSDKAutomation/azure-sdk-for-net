@@ -783,9 +783,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='name'>
             /// Name of the app.
             /// </param>
-            public static CsmPublishingCredentialsPoliciesCollection GetBasicPublishingCredentialsPolicies(this IWebAppsOperations operations, string resourceGroupName, string name)
+            public static IPage<CsmPublishingCredentialsPoliciesEntity> ListBasicPublishingCredentialsPolicies(this IWebAppsOperations operations, string resourceGroupName, string name)
             {
-                return operations.GetBasicPublishingCredentialsPoliciesAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return operations.ListBasicPublishingCredentialsPoliciesAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -808,9 +808,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CsmPublishingCredentialsPoliciesCollection> GetBasicPublishingCredentialsPoliciesAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<CsmPublishingCredentialsPoliciesEntity>> ListBasicPublishingCredentialsPoliciesAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetBasicPublishingCredentialsPoliciesWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBasicPublishingCredentialsPoliciesWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -6413,6 +6413,72 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Integrates this Web App with a Virtual Network. This requires that 1)
+            /// "swiftSupported" is true when doing a GET against this resource, and 2)
+            /// that the target Subnet has already been delegated, and is not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </summary>
+            /// <remarks>
+            /// Description for Integrates this Web App with a Virtual Network. This
+            /// requires that 1) "swiftSupported" is true when doing a GET against this
+            /// resource, and 2) that the target Subnet has already been delegated, and is
+            /// not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='connectionEnvelope'>
+            /// Properties of the Virtual Network connection. See example.
+            /// </param>
+            public static SwiftVirtualNetwork UpdateSwiftVirtualNetworkConnectionWithCheck(this IWebAppsOperations operations, string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope)
+            {
+                return operations.UpdateSwiftVirtualNetworkConnectionWithCheckAsync(resourceGroupName, name, connectionEnvelope).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Integrates this Web App with a Virtual Network. This requires that 1)
+            /// "swiftSupported" is true when doing a GET against this resource, and 2)
+            /// that the target Subnet has already been delegated, and is not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </summary>
+            /// <remarks>
+            /// Description for Integrates this Web App with a Virtual Network. This
+            /// requires that 1) "swiftSupported" is true when doing a GET against this
+            /// resource, and 2) that the target Subnet has already been delegated, and is
+            /// not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='connectionEnvelope'>
+            /// Properties of the Virtual Network connection. See example.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SwiftVirtualNetwork> UpdateSwiftVirtualNetworkConnectionWithCheckAsync(this IWebAppsOperations operations, string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateSwiftVirtualNetworkConnectionWithCheckWithHttpMessagesAsync(resourceGroupName, name, connectionEnvelope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets all network features used by the app (or deployment slot, if
             /// specified).
             /// </summary>
@@ -9568,9 +9634,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// </param>
             /// <param name='slot'>
             /// </param>
-            public static CsmPublishingCredentialsPoliciesCollection GetBasicPublishingCredentialsPoliciesSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
+            public static IPage<CsmPublishingCredentialsPoliciesEntity> ListBasicPublishingCredentialsPoliciesSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
             {
-                return operations.GetBasicPublishingCredentialsPoliciesSlotAsync(resourceGroupName, name, slot).GetAwaiter().GetResult();
+                return operations.ListBasicPublishingCredentialsPoliciesSlotAsync(resourceGroupName, name, slot).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -9595,9 +9661,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CsmPublishingCredentialsPoliciesCollection> GetBasicPublishingCredentialsPoliciesSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<CsmPublishingCredentialsPoliciesEntity>> ListBasicPublishingCredentialsPoliciesSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetBasicPublishingCredentialsPoliciesSlotWithHttpMessagesAsync(resourceGroupName, name, slot, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBasicPublishingCredentialsPoliciesSlotWithHttpMessagesAsync(resourceGroupName, name, slot, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -15605,6 +15671,80 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Integrates this Web App with a Virtual Network. This requires that 1)
+            /// "swiftSupported" is true when doing a GET against this resource, and 2)
+            /// that the target Subnet has already been delegated, and is not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </summary>
+            /// <remarks>
+            /// Description for Integrates this Web App with a Virtual Network. This
+            /// requires that 1) "swiftSupported" is true when doing a GET against this
+            /// resource, and 2) that the target Subnet has already been delegated, and is
+            /// not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='connectionEnvelope'>
+            /// Properties of the Virtual Network connection. See example.
+            /// </param>
+            /// <param name='slot'>
+            /// Name of the deployment slot. If a slot is not specified, the API will add
+            /// or update connections for the production slot.
+            /// </param>
+            public static SwiftVirtualNetwork CreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlot(this IWebAppsOperations operations, string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, string slot)
+            {
+                return operations.CreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotAsync(resourceGroupName, name, connectionEnvelope, slot).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Integrates this Web App with a Virtual Network. This requires that 1)
+            /// "swiftSupported" is true when doing a GET against this resource, and 2)
+            /// that the target Subnet has already been delegated, and is not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </summary>
+            /// <remarks>
+            /// Description for Integrates this Web App with a Virtual Network. This
+            /// requires that 1) "swiftSupported" is true when doing a GET against this
+            /// resource, and 2) that the target Subnet has already been delegated, and is
+            /// not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='connectionEnvelope'>
+            /// Properties of the Virtual Network connection. See example.
+            /// </param>
+            /// <param name='slot'>
+            /// Name of the deployment slot. If a slot is not specified, the API will add
+            /// or update connections for the production slot.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SwiftVirtualNetwork> CreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotWithHttpMessagesAsync(resourceGroupName, name, connectionEnvelope, slot, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes a Swift Virtual Network connection from an app (or deployment
             /// slot).
             /// </summary>
@@ -15657,6 +15797,80 @@ namespace Microsoft.Azure.Management.WebSites
             public static async Task DeleteSwiftVirtualNetworkSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteSwiftVirtualNetworkSlotWithHttpMessagesAsync(resourceGroupName, name, slot, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Integrates this Web App with a Virtual Network. This requires that 1)
+            /// "swiftSupported" is true when doing a GET against this resource, and 2)
+            /// that the target Subnet has already been delegated, and is not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </summary>
+            /// <remarks>
+            /// Description for Integrates this Web App with a Virtual Network. This
+            /// requires that 1) "swiftSupported" is true when doing a GET against this
+            /// resource, and 2) that the target Subnet has already been delegated, and is
+            /// not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='connectionEnvelope'>
+            /// Properties of the Virtual Network connection. See example.
+            /// </param>
+            /// <param name='slot'>
+            /// Name of the deployment slot. If a slot is not specified, the API will add
+            /// or update connections for the production slot.
+            /// </param>
+            public static SwiftVirtualNetwork UpdateSwiftVirtualNetworkConnectionWithCheckSlot(this IWebAppsOperations operations, string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, string slot)
+            {
+                return operations.UpdateSwiftVirtualNetworkConnectionWithCheckSlotAsync(resourceGroupName, name, connectionEnvelope, slot).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Integrates this Web App with a Virtual Network. This requires that 1)
+            /// "swiftSupported" is true when doing a GET against this resource, and 2)
+            /// that the target Subnet has already been delegated, and is not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </summary>
+            /// <remarks>
+            /// Description for Integrates this Web App with a Virtual Network. This
+            /// requires that 1) "swiftSupported" is true when doing a GET against this
+            /// resource, and 2) that the target Subnet has already been delegated, and is
+            /// not
+            /// in use by another App Service Plan other than the one this App is in.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the app.
+            /// </param>
+            /// <param name='connectionEnvelope'>
+            /// Properties of the Virtual Network connection. See example.
+            /// </param>
+            /// <param name='slot'>
+            /// Name of the deployment slot. If a slot is not specified, the API will add
+            /// or update connections for the production slot.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SwiftVirtualNetwork> UpdateSwiftVirtualNetworkConnectionWithCheckSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateSwiftVirtualNetworkConnectionWithCheckSlotWithHttpMessagesAsync(resourceGroupName, name, connectionEnvelope, slot, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -19553,7 +19767,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will get
             /// virtual network connections for the production slot.
             /// </param>
-            public static IList<VnetInfo> ListVnetConnectionsSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
+            public static IList<VnetInfoResource> ListVnetConnectionsSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
             {
                 return operations.ListVnetConnectionsSlotAsync(resourceGroupName, name, slot).GetAwaiter().GetResult();
             }
@@ -19581,7 +19795,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<VnetInfo>> ListVnetConnectionsSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VnetInfoResource>> ListVnetConnectionsSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListVnetConnectionsSlotWithHttpMessagesAsync(resourceGroupName, name, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19613,7 +19827,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will get
             /// the named virtual network for the production slot.
             /// </param>
-            public static VnetInfo GetVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot)
+            public static VnetInfoResource GetVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot)
             {
                 return operations.GetVnetConnectionSlotAsync(resourceGroupName, name, vnetName, slot).GetAwaiter().GetResult();
             }
@@ -19645,7 +19859,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> GetVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> GetVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetVnetConnectionSlotWithHttpMessagesAsync(resourceGroupName, name, vnetName, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19680,7 +19894,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will add
             /// or update connections for the production slot.
             /// </param>
-            public static VnetInfo CreateOrUpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot)
+            public static VnetInfoResource CreateOrUpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot)
             {
                 return operations.CreateOrUpdateVnetConnectionSlotAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot).GetAwaiter().GetResult();
             }
@@ -19715,7 +19929,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> CreateOrUpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> CreateOrUpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateVnetConnectionSlotWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19811,7 +20025,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will add
             /// or update connections for the production slot.
             /// </param>
-            public static VnetInfo UpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot)
+            public static VnetInfoResource UpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot)
             {
                 return operations.UpdateVnetConnectionSlotAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot).GetAwaiter().GetResult();
             }
@@ -19846,7 +20060,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> UpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> UpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateVnetConnectionSlotWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21249,7 +21463,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='name'>
             /// Name of the app.
             /// </param>
-            public static IList<VnetInfo> ListVnetConnections(this IWebAppsOperations operations, string resourceGroupName, string name)
+            public static IList<VnetInfoResource> ListVnetConnections(this IWebAppsOperations operations, string resourceGroupName, string name)
             {
                 return operations.ListVnetConnectionsAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
@@ -21273,7 +21487,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<VnetInfo>> ListVnetConnectionsAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VnetInfoResource>> ListVnetConnectionsAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListVnetConnectionsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21301,7 +21515,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='vnetName'>
             /// Name of the virtual network.
             /// </param>
-            public static VnetInfo GetVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName)
+            public static VnetInfoResource GetVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName)
             {
                 return operations.GetVnetConnectionAsync(resourceGroupName, name, vnetName).GetAwaiter().GetResult();
             }
@@ -21329,7 +21543,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> GetVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> GetVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetVnetConnectionWithHttpMessagesAsync(resourceGroupName, name, vnetName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21360,7 +21574,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='connectionEnvelope'>
             /// Properties of the Virtual Network connection. See example.
             /// </param>
-            public static VnetInfo CreateOrUpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope)
+            public static VnetInfoResource CreateOrUpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope)
             {
                 return operations.CreateOrUpdateVnetConnectionAsync(resourceGroupName, name, vnetName, connectionEnvelope).GetAwaiter().GetResult();
             }
@@ -21391,7 +21605,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> CreateOrUpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> CreateOrUpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateVnetConnectionWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21475,7 +21689,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='connectionEnvelope'>
             /// Properties of the Virtual Network connection. See example.
             /// </param>
-            public static VnetInfo UpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope)
+            public static VnetInfoResource UpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope)
             {
                 return operations.UpdateVnetConnectionAsync(resourceGroupName, name, vnetName, connectionEnvelope).GetAwaiter().GetResult();
             }
@@ -21506,7 +21720,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> UpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> UpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateVnetConnectionWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -23881,6 +24095,50 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Returns whether Scm basic auth is allowed and whether Ftp is allowed for a
+            /// given site.
+            /// </summary>
+            /// <remarks>
+            /// Description for Returns whether Scm basic auth is allowed and whether Ftp
+            /// is allowed for a given site.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<CsmPublishingCredentialsPoliciesEntity> ListBasicPublishingCredentialsPoliciesNext(this IWebAppsOperations operations, string nextPageLink)
+            {
+                return operations.ListBasicPublishingCredentialsPoliciesNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns whether Scm basic auth is allowed and whether Ftp is allowed for a
+            /// given site.
+            /// </summary>
+            /// <remarks>
+            /// Description for Returns whether Scm basic auth is allowed and whether Ftp
+            /// is allowed for a given site.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<CsmPublishingCredentialsPoliciesEntity>> ListBasicPublishingCredentialsPoliciesNextAsync(this IWebAppsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListBasicPublishingCredentialsPoliciesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// List the configurations of an app
             /// </summary>
             /// <remarks>
@@ -24829,6 +25087,50 @@ namespace Microsoft.Azure.Management.WebSites
             public static async Task<IPage<BackupItem>> ListBackupsSlotNextAsync(this IWebAppsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListBackupsSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns whether Scm basic auth is allowed and whether Ftp is allowed for a
+            /// given site.
+            /// </summary>
+            /// <remarks>
+            /// Description for Returns whether Scm basic auth is allowed and whether Ftp
+            /// is allowed for a given site.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<CsmPublishingCredentialsPoliciesEntity> ListBasicPublishingCredentialsPoliciesSlotNext(this IWebAppsOperations operations, string nextPageLink)
+            {
+                return operations.ListBasicPublishingCredentialsPoliciesSlotNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns whether Scm basic auth is allowed and whether Ftp is allowed for a
+            /// given site.
+            /// </summary>
+            /// <remarks>
+            /// Description for Returns whether Scm basic auth is allowed and whether Ftp
+            /// is allowed for a given site.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<CsmPublishingCredentialsPoliciesEntity>> ListBasicPublishingCredentialsPoliciesSlotNextAsync(this IWebAppsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListBasicPublishingCredentialsPoliciesSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

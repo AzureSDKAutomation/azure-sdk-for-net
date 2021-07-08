@@ -62,13 +62,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// the client secret, that is the thumbprint of a certificate used for
         /// signing purposes. This property acts as
         /// a replacement for the Client Secret. It is also optional.</param>
-        public AzureActiveDirectoryRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string openIdIssuer = default(string), string clientId = default(string), string clientSecretSettingName = default(string), string clientSecretCertificateThumbprint = default(string))
+        /// <param name="clientSecretCertificateSubjectAlternativeName">An
+        /// alternative to the client secret thumbprint, that is the subject
+        /// alternative name of a certificate used for signing purposes. This
+        /// property acts as
+        /// a replacement for the Client Secret Certificate Thumbprint. It is
+        /// also optional.</param>
+        /// <param name="clientSecretCertificateIssuer">An alternative to the
+        /// client secret thumbprint, that is the issuer of a certificate used
+        /// for signing purposes. This property acts as
+        /// a replacement for the Client Secret Certificate Thumbprint. It is
+        /// also optional.</param>
+        public AzureActiveDirectoryRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string openIdIssuer = default(string), string clientId = default(string), string clientSecretSettingName = default(string), string clientSecretCertificateThumbprint = default(string), string clientSecretCertificateSubjectAlternativeName = default(string), string clientSecretCertificateIssuer = default(string))
             : base(id, name, kind, type)
         {
             OpenIdIssuer = openIdIssuer;
             ClientId = clientId;
             ClientSecretSettingName = clientSecretSettingName;
             ClientSecretCertificateThumbprint = clientSecretCertificateThumbprint;
+            ClientSecretCertificateSubjectAlternativeName = clientSecretCertificateSubjectAlternativeName;
+            ClientSecretCertificateIssuer = clientSecretCertificateIssuer;
             CustomInit();
         }
 
@@ -117,6 +130,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.clientSecretCertificateThumbprint")]
         public string ClientSecretCertificateThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets an alternative to the client secret thumbprint, that
+        /// is the subject alternative name of a certificate used for signing
+        /// purposes. This property acts as
+        /// a replacement for the Client Secret Certificate Thumbprint. It is
+        /// also optional.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.clientSecretCertificateSubjectAlternativeName")]
+        public string ClientSecretCertificateSubjectAlternativeName { get; set; }
+
+        /// <summary>
+        /// Gets or sets an alternative to the client secret thumbprint, that
+        /// is the issuer of a certificate used for signing purposes. This
+        /// property acts as
+        /// a replacement for the Client Secret Certificate Thumbprint. It is
+        /// also optional.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.clientSecretCertificateIssuer")]
+        public string ClientSecretCertificateIssuer { get; set; }
 
     }
 }

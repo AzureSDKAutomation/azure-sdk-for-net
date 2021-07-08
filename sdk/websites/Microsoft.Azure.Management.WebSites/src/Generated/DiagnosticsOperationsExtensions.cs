@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='detectorName'>
             /// Detector Name
             /// </param>
-            public static DetectorDefinition GetSiteDetector(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName)
+            public static DetectorDefinitionResource GetSiteDetector(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName)
             {
                 return operations.GetSiteDetectorAsync(resourceGroupName, siteName, diagnosticCategory, detectorName).GetAwaiter().GetResult();
             }
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DetectorDefinition> GetSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DetectorDefinitionResource> GetSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteDetectorWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -1247,7 +1247,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='slot'>
             /// Slot Name
             /// </param>
-            public static DetectorDefinition GetSiteDetectorSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot)
+            public static DetectorDefinitionResource GetSiteDetectorSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot)
             {
                 return operations.GetSiteDetectorSlotAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, slot).GetAwaiter().GetResult();
             }
@@ -1279,7 +1279,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DetectorDefinition> GetSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DetectorDefinitionResource> GetSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSiteDetectorSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, slot, null, cancellationToken).ConfigureAwait(false))
                 {
