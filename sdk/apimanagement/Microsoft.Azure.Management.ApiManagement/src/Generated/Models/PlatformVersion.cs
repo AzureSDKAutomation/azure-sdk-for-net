@@ -12,25 +12,26 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for SoapApiType.
+    /// Defines values for PlatformVersion.
     /// </summary>
-    public static class SoapApiType
+    public static class PlatformVersion
     {
         /// <summary>
-        /// Imports a SOAP API having a RESTful front end.
+        /// Platform version cannot be determined, as compute platform is not
+        /// deployed.
         /// </summary>
-        public const string SoapToRest = "http";
+        public const string Undetermined = "undetermined";
         /// <summary>
-        /// Imports the SOAP API having a SOAP front end.
+        /// Platform running the service on Single Tenant V1 platform.
         /// </summary>
-        public const string SoapPassThrough = "soap";
+        public const string Stv1 = "stv1";
         /// <summary>
-        /// Imports the API having a Websocket front end.
+        /// Platform running the service on Single Tenant V2 platform.
         /// </summary>
-        public const string WebSocket = "websocket";
+        public const string Stv2 = "stv2";
         /// <summary>
-        /// Imports the API having a GraphQL front end.
+        /// Platform running the service on Multi Tenant V1 platform.
         /// </summary>
-        public const string GraphQL = "graphql";
+        public const string Mtv1 = "mtv1";
     }
 }

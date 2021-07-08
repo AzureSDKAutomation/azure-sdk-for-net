@@ -12,25 +12,21 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 {
 
     /// <summary>
-    /// Defines values for SoapApiType.
+    /// Defines values for AccessType.
     /// </summary>
-    public static class SoapApiType
+    public static class AccessType
     {
         /// <summary>
-        /// Imports a SOAP API having a RESTful front end.
+        /// Use access key.
         /// </summary>
-        public const string SoapToRest = "http";
+        public const string AccessKey = "AccessKey";
         /// <summary>
-        /// Imports the SOAP API having a SOAP front end.
+        /// Use system assigned managed identity.
         /// </summary>
-        public const string SoapPassThrough = "soap";
+        public const string SystemAssignedManagedIdentity = "SystemAssignedManagedIdentity";
         /// <summary>
-        /// Imports the API having a Websocket front end.
+        /// Use user assigned managed identity.
         /// </summary>
-        public const string WebSocket = "websocket";
-        /// <summary>
-        /// Imports the API having a GraphQL front end.
-        /// </summary>
-        public const string GraphQL = "graphql";
+        public const string UserAssignedManagedIdentity = "UserAssignedManagedIdentity";
     }
 }
