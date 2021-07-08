@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.Reservations
     using System.Threading.Tasks;
 
     /// <summary>
+    /// This API describe Azure Reservation
     /// </summary>
     public partial interface IAzureReservationAPIClient : System.IDisposable
     {
@@ -44,6 +45,11 @@ namespace Microsoft.Azure.Management.Reservations
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
+        /// Supported version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -63,39 +69,19 @@ namespace Microsoft.Azure.Management.Reservations
 
 
         /// <summary>
-        /// Gets the IReservationOperations.
-        /// </summary>
-        IReservationOperations Reservation { get; }
-
-        /// <summary>
         /// Gets the IReservationOrderOperations.
         /// </summary>
         IReservationOrderOperations ReservationOrder { get; }
 
         /// <summary>
+        /// Gets the IReservationOperations.
+        /// </summary>
+        IReservationOperations Reservation { get; }
+
+        /// <summary>
         /// Gets the IOperationOperations.
         /// </summary>
         IOperationOperations Operation { get; }
-
-        /// <summary>
-        /// Gets the ICalculateExchangeOperations.
-        /// </summary>
-        ICalculateExchangeOperations CalculateExchange { get; }
-
-        /// <summary>
-        /// Gets the IExchangeOperations.
-        /// </summary>
-        IExchangeOperations Exchange { get; }
-
-        /// <summary>
-        /// Gets the IQuotaOperations.
-        /// </summary>
-        IQuotaOperations Quota { get; }
-
-        /// <summary>
-        /// Gets the IQuotaRequestStatusOperations.
-        /// </summary>
-        IQuotaRequestStatusOperations QuotaRequestStatus { get; }
 
         /// <summary>
         /// Get the regions and skus that are available for RI purchase for the

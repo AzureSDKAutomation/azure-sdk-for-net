@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.Reservations.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// The definition of the reservation.
+    /// </summary>
     public partial class ReservationResponse : IResource
     {
         /// <summary>
@@ -32,9 +35,13 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// lives.</param>
         /// <param name="id">Identifier of the reservation</param>
         /// <param name="name">Name of the reservation</param>
+        /// <param name="sku">The sku information associated to this
+        /// reservation </param>
+        /// <param name="properties">The properties associated to this
+        /// reservation </param>
         /// <param name="type">Type of resource.
         /// "Microsoft.Capacity/reservationOrders/reservations"</param>
-        public ReservationResponse(string location = default(string), int? etag = default(int?), string id = default(string), string name = default(string), SkuName sku = default(SkuName), ReservationProperties properties = default(ReservationProperties), string type = default(string))
+        public ReservationResponse(string location = default(string), int? etag = default(int?), string id = default(string), string name = default(string), SkuName sku = default(SkuName), ReservationsProperties properties = default(ReservationsProperties), string type = default(string), SystemData systemData = default(SystemData))
         {
             Location = location;
             Etag = etag;
@@ -43,6 +50,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
             Sku = sku;
             Properties = properties;
             Type = type;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -75,14 +83,16 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public string Name { get; private set; }
 
         /// <summary>
+        /// Gets or sets the sku information associated to this reservation
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public SkuName Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets the properties associated to this reservation
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public ReservationProperties Properties { get; set; }
+        public ReservationsProperties Properties { get; set; }
 
         /// <summary>
         /// Gets type of resource.
@@ -90,6 +100,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

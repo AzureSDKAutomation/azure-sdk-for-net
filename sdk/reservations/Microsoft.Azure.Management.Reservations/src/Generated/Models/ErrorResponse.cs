@@ -11,28 +11,29 @@
 namespace Microsoft.Azure.Management.Reservations.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
-    public partial class SubscriptionScopeProperties
+    /// <summary>
+    /// Error response indicates that the service is not able to process the
+    /// incoming request. The reason is provided in the error message.
+    /// </summary>
+    public partial class ErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionScopeProperties
-        /// class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public SubscriptionScopeProperties()
+        public ErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionScopeProperties
-        /// class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public SubscriptionScopeProperties(IList<ScopeProperties> scopes = default(IList<ScopeProperties>))
+        /// <param name="error">The details of the error.</param>
+        public ErrorResponse(ErrorDetails error = default(ErrorDetails))
         {
-            Scopes = scopes;
+            Error = error;
             CustomInit();
         }
 
@@ -42,9 +43,10 @@ namespace Microsoft.Azure.Management.Reservations.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the details of the error.
         /// </summary>
-        [JsonProperty(PropertyName = "scopes")]
-        public IList<ScopeProperties> Scopes { get; set; }
+        [JsonProperty(PropertyName = "error")]
+        public ErrorDetails Error { get; set; }
 
     }
 }

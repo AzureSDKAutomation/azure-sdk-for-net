@@ -42,14 +42,23 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// reservation was created.</param>
         /// <param name="expiryDate">This is the date when the Reservation will
         /// expire.</param>
-        /// <param name="term">Possible values include: 'P1Y', 'P3Y'</param>
-        /// <param name="provisioningState">Current state of the
-        /// reservation.</param>
+        /// <param name="originalQuantity">Total Quantity of the SKUs purchased
+        /// in the Reservation.</param>
+        /// <param name="term">Possible values include: 'P1Y', 'P3Y',
+        /// 'P5Y'</param>
+        /// <param name="provisioningState">Current state of the reservation.
+        /// Possible values include: 'Validating', 'Authorizing',
+        /// 'PendingReview', 'Creating', 'PendingCapacity',
+        /// 'ConfirmedCapacity', 'PendingBilling', 'ConfirmedBilling',
+        /// 'BillingFailed', 'Failed', 'Created', 'Cancelled', 'Expired',
+        /// 'Merged', 'Succeeded', 'Pending', 'HoldCapacity',
+        /// 'PreFulfillFailed', 'PreFulfillCancelled', 'Swapped',
+        /// 'PendingRefunds', 'Exchanged', 'PendingRefundCollection'</param>
         /// <param name="billingPlan">Possible values include: 'Upfront',
         /// 'Monthly'</param>
         /// <param name="type">Type of resource.
         /// "Microsoft.Capacity/reservations"</param>
-        public ReservationOrderResponse(int? etag = default(int?), string id = default(string), string name = default(string), string displayName = default(string), System.DateTime? requestDateTime = default(System.DateTime?), System.DateTime? createdDateTime = default(System.DateTime?), System.DateTime? expiryDate = default(System.DateTime?), int? originalQuantity = default(int?), string term = default(string), string provisioningState = default(string), string billingPlan = default(string), ReservationOrderBillingPlanInformation planInformation = default(ReservationOrderBillingPlanInformation), IList<ReservationResponse> reservationsProperty = default(IList<ReservationResponse>), string type = default(string))
+        public ReservationOrderResponse(int? etag = default(int?), string id = default(string), string name = default(string), string displayName = default(string), System.DateTime? requestDateTime = default(System.DateTime?), System.DateTime? createdDateTime = default(System.DateTime?), System.DateTime? expiryDate = default(System.DateTime?), int? originalQuantity = default(int?), string term = default(string), string provisioningState = default(string), string billingPlan = default(string), ReservationOrderBillingPlanInformation planInformation = default(ReservationOrderBillingPlanInformation), IList<ReservationResponse> reservationsProperty = default(IList<ReservationResponse>), string type = default(string), SystemData systemData = default(SystemData))
         {
             Etag = etag;
             Id = id;
@@ -65,6 +74,7 @@ namespace Microsoft.Azure.Management.Reservations.Models
             PlanInformation = planInformation;
             ReservationsProperty = reservationsProperty;
             Type = type;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -118,18 +128,26 @@ namespace Microsoft.Azure.Management.Reservations.Models
         public System.DateTime? ExpiryDate { get; set; }
 
         /// <summary>
+        /// Gets or sets total Quantity of the SKUs purchased in the
+        /// Reservation.
         /// </summary>
         [JsonProperty(PropertyName = "properties.originalQuantity")]
         public int? OriginalQuantity { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'P1Y', 'P3Y'
+        /// Gets or sets possible values include: 'P1Y', 'P3Y', 'P5Y'
         /// </summary>
         [JsonProperty(PropertyName = "properties.term")]
         public string Term { get; set; }
 
         /// <summary>
-        /// Gets or sets current state of the reservation.
+        /// Gets or sets current state of the reservation. Possible values
+        /// include: 'Validating', 'Authorizing', 'PendingReview', 'Creating',
+        /// 'PendingCapacity', 'ConfirmedCapacity', 'PendingBilling',
+        /// 'ConfirmedBilling', 'BillingFailed', 'Failed', 'Created',
+        /// 'Cancelled', 'Expired', 'Merged', 'Succeeded', 'Pending',
+        /// 'HoldCapacity', 'PreFulfillFailed', 'PreFulfillCancelled',
+        /// 'Swapped', 'PendingRefunds', 'Exchanged', 'PendingRefundCollection'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; set; }
@@ -155,6 +173,11 @@ namespace Microsoft.Azure.Management.Reservations.Models
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }
