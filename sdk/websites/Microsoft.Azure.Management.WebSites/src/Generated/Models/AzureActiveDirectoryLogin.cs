@@ -42,11 +42,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// OpenID Connect authorization endpoint when
         /// a user logs in. Each parameter must be in the form
         /// "key=value".</param>
-        public AzureActiveDirectoryLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? disableWWWAuthenticate = default(bool?), IList<string> loginParameters = default(IList<string>))
+        /// <param name="disableWWWAuthenticate">&lt;code&gt;true&lt;/code&gt;
+        /// if the www-authenticate provider should be omitted from the
+        /// request; otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
+        public AzureActiveDirectoryLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> loginParameters = default(IList<string>), bool? disableWWWAuthenticate = default(bool?))
             : base(id, name, kind, type)
         {
-            DisableWWWAuthenticate = disableWWWAuthenticate;
             LoginParameters = loginParameters;
+            DisableWWWAuthenticate = disableWWWAuthenticate;
             CustomInit();
         }
 
@@ -56,17 +59,20 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.disableWWWAuthenticate")]
-        public bool? DisableWWWAuthenticate { get; set; }
-
-        /// <summary>
         /// Gets or sets login parameters to send to the OpenID Connect
         /// authorization endpoint when
         /// a user logs in. Each parameter must be in the form "key=value".
         /// </summary>
         [JsonProperty(PropertyName = "properties.loginParameters")]
         public IList<string> LoginParameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if the
+        /// www-authenticate provider should be omitted from the request;
+        /// otherwise, &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.disableWWWAuthenticate")]
+        public bool? DisableWWWAuthenticate { get; set; }
 
     }
 }

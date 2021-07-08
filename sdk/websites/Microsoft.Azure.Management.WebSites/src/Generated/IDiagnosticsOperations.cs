@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DetectorDefinition>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DetectorDefinitionResource>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Execute Detector
         /// </summary>
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DetectorDefinition>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DetectorDefinitionResource>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Execute Detector
         /// </summary>

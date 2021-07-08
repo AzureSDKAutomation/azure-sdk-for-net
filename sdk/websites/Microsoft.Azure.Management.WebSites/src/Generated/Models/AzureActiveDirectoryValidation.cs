@@ -45,11 +45,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// checks that should be made while validating the JWT Claims.</param>
         /// <param name="allowedAudiences">The list of audiences that can make
         /// successful authentication/authorization requests.</param>
-        public AzureActiveDirectoryValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), JwtClaimChecks jwtClaimChecks = default(JwtClaimChecks), IList<string> allowedAudiences = default(IList<string>))
+        /// <param name="defaultAuthorizationPolicy">The configuration settings
+        /// of the default authorization policy.</param>
+        public AzureActiveDirectoryValidation(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), JwtClaimChecks jwtClaimChecks = default(JwtClaimChecks), IList<string> allowedAudiences = default(IList<string>), DefaultAuthorizationPolicy defaultAuthorizationPolicy = default(DefaultAuthorizationPolicy))
             : base(id, name, kind, type)
         {
             JwtClaimChecks = jwtClaimChecks;
             AllowedAudiences = allowedAudiences;
+            DefaultAuthorizationPolicy = defaultAuthorizationPolicy;
             CustomInit();
         }
 
@@ -71,6 +74,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.allowedAudiences")]
         public IList<string> AllowedAudiences { get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration settings of the default
+        /// authorization policy.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.defaultAuthorizationPolicy")]
+        public DefaultAuthorizationPolicy DefaultAuthorizationPolicy { get; set; }
 
     }
 }
