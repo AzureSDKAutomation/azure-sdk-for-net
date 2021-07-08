@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// <summary>
     /// The Settings.
     /// </summary>
-    public partial class Settings : ResourceWithEtag
+    public partial class Settings : ResourceWithEtagV1
     {
         /// <summary>
         /// Initializes a new instance of the Settings class.

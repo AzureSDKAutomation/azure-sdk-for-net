@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Management.SecurityInsights
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// API version for the operation
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// Azure subscription ID
         /// </summary>
         string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// API version for the operation
+        /// </summary>
+        string ApiVersion { get; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -69,11 +69,6 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IAlertRulesOperations.
@@ -99,6 +94,11 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// Gets the IDataConnectorsOperations.
         /// </summary>
         IDataConnectorsOperations DataConnectors { get; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IIncidentsOperations.

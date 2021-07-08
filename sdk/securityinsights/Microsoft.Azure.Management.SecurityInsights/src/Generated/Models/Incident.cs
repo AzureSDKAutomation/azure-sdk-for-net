@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// Represents an incident in Azure Security Insights.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Incident : ResourceWithEtag
+    public partial class Incident : ResourceWithEtagV1
     {
         /// <summary>
         /// Initializes a new instance of the Incident class.

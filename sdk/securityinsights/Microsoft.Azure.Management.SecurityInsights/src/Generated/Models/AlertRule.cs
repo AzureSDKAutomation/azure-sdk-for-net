@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// <summary>
     /// Alert rule.
     /// </summary>
-    public partial class AlertRule : ResourceWithEtag
+    public partial class AlertRule : ResourceWithEtagV1
     {
         /// <summary>
         /// Initializes a new instance of the AlertRule class.

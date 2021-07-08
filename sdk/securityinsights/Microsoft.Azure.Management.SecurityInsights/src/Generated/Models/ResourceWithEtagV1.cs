@@ -18,24 +18,24 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// <summary>
     /// An azure resource object with an Etag property
     /// </summary>
-    public partial class ResourceWithEtag : IResource
+    public partial class ResourceWithEtagV1 : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceWithEtag class.
+        /// Initializes a new instance of the ResourceWithEtagV1 class.
         /// </summary>
-        public ResourceWithEtag()
+        public ResourceWithEtagV1()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceWithEtag class.
+        /// Initializes a new instance of the ResourceWithEtagV1 class.
         /// </summary>
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
-        public ResourceWithEtag(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public ResourceWithEtagV1(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
         {
             Id = id;
             Name = name;
