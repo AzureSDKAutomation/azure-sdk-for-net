@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// The name of the API Management service.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Restore API Management service from
-        /// backup operation.
+        /// Parameters supplied to the ApiManagementService_Restore operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -349,8 +348,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// The name of the API Management service.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Restore API Management service from
-        /// backup operation.
+        /// Parameters supplied to the ApiManagementService_Restore operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

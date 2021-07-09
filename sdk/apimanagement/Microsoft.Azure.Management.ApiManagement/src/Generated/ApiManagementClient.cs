@@ -292,6 +292,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IOpenIdConnectProviderOperations OpenIdConnectProvider { get; private set; }
 
         /// <summary>
+        /// Gets the IOutboundNetworkDependenciesEndpointsOperations.
+        /// </summary>
+        public virtual IOutboundNetworkDependenciesEndpointsOperations OutboundNetworkDependenciesEndpoints { get; private set; }
+
+        /// <summary>
         /// Gets the IPolicyOperations.
         /// </summary>
         public virtual IPolicyOperations Policy { get; private set; }
@@ -325,6 +330,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IDelegationSettingsOperations.
         /// </summary>
         public virtual IDelegationSettingsOperations DelegationSettings { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionOperations PrivateEndpointConnection { get; private set; }
 
         /// <summary>
         /// Gets the IProductOperations.
@@ -720,6 +730,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             NotificationRecipientUser = new NotificationRecipientUserOperations(this);
             NotificationRecipientEmail = new NotificationRecipientEmailOperations(this);
             OpenIdConnectProvider = new OpenIdConnectProviderOperations(this);
+            OutboundNetworkDependenciesEndpoints = new OutboundNetworkDependenciesEndpointsOperations(this);
             Policy = new PolicyOperations(this);
             PolicyDescription = new PolicyDescriptionOperations(this);
             PortalRevision = new PortalRevisionOperations(this);
@@ -727,6 +738,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             SignInSettings = new SignInSettingsOperations(this);
             SignUpSettings = new SignUpSettingsOperations(this);
             DelegationSettings = new DelegationSettingsOperations(this);
+            PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
             Product = new ProductOperations(this);
             ProductApi = new ProductApiOperations(this);
             ProductGroup = new ProductGroupOperations(this);
@@ -750,7 +762,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             UserConfirmationPassword = new UserConfirmationPasswordOperations(this);
             ApiExport = new ApiExportOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-12-01";
+            ApiVersion = "2021-04-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
