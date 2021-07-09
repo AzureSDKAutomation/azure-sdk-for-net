@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.AI.MetricsAdvisor.Models;
 using Azure.AI.MetricsAdvisor.Tests;
@@ -23,17 +24,19 @@ namespace Azure.AI.MetricsAdvisor.Samples
 
             string metricId = MetricId;
 
-            FeedbackDimensionFilter filter = new FeedbackDimensionFilter();
+            var dimensions = new Dictionary<string, string>()
+            {
+                { "city", "Belo Horizonte" }
+            };
+            var dimensionKey = new DimensionKey(dimensions);
 
-            filter.DimensionFilter.AddDimensionColumn("city", "Belo Horizonte");
-
-            var startTime = DateTimeOffset.Parse("2020-02-01T00:00:00Z");
-            var endTime = DateTimeOffset.Parse("2020-02-03T00:00:00Z");
+            var startsOn = DateTimeOffset.Parse("2020-02-01T00:00:00Z");
+            var endsOn = DateTimeOffset.Parse("2020-02-03T00:00:00Z");
 
             // Other types of feedback, such as MetricCommentFeedback, MetricChangePointFeedback,
             // and MetricPeriodFeedback are supported as well.
 
-            var anomalyFeedback = new MetricAnomalyFeedback(metricId, filter, startTime, endTime, AnomalyValue.NotAnomaly);
+            var anomalyFeedback = new MetricAnomalyFeedback(metricId, dimensionKey, startsOn, endsOn, AnomalyValue.NotAnomaly);
 
             Response<MetricFeedback> response = await client.AddFeedbackAsync(anomalyFeedback);
 
@@ -60,29 +63,29 @@ namespace Azure.AI.MetricsAdvisor.Samples
 
             Console.WriteLine($"Feedback ID: {feedback.Id}");
             Console.WriteLine($"Metric ID: {feedback.MetricId}");
-            Console.WriteLine($"Feedback type: {feedback.Type}");
+            Console.WriteLine($"Feedback type: {feedback.FeedbackKind}");
             Console.WriteLine();
 
-            if (feedback.Type == FeedbackType.Anomaly)
+            if (feedback.FeedbackKind == MetricFeedbackKind.Anomaly)
             {
                 MetricAnomalyFeedback anomalyFeedback = feedback as MetricAnomalyFeedback;
 
-                Console.WriteLine($"Detection configuration ID: {anomalyFeedback.AnomalyDetectionConfigurationId}");
+                Console.WriteLine($"Detection configuration ID: {anomalyFeedback.DetectionConfigurationId}");
                 Console.WriteLine($"Anomaly value: {anomalyFeedback.AnomalyValue}");
             }
-            else if (feedback.Type == FeedbackType.Comment)
+            else if (feedback.FeedbackKind == MetricFeedbackKind.Comment)
             {
                 MetricCommentFeedback commentFeedback = feedback as MetricCommentFeedback;
 
                 Console.WriteLine($"Comment: {commentFeedback.Comment}");
             }
-            else if (feedback.Type == FeedbackType.ChangePoint)
+            else if (feedback.FeedbackKind == MetricFeedbackKind.ChangePoint)
             {
                 MetricChangePointFeedback changePointFeedback = feedback as MetricChangePointFeedback;
 
                 Console.WriteLine($"Change point value: {changePointFeedback.ChangePointValue}");
             }
-            else if (feedback.Type == FeedbackType.Period)
+            else if (feedback.FeedbackKind == MetricFeedbackKind.Period)
             {
                 MetricPeriodFeedback periodFeedback = feedback as MetricPeriodFeedback;
 
@@ -105,9 +108,12 @@ namespace Azure.AI.MetricsAdvisor.Samples
 
             var options = new GetAllFeedbackOptions()
             {
-                StartTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z"),
-                EndTime = DateTimeOffset.Parse("2020-09-09T00:00:00Z"),
-                TimeMode = FeedbackQueryTimeMode.MetricTimestamp,
+                Filter = new FeedbackFilter()
+                {
+                    StartsOn = DateTimeOffset.Parse("2020-01-01T00:00:00Z"),
+                    EndsOn = DateTimeOffset.Parse("2020-09-09T00:00:00Z"),
+                    TimeMode = FeedbackQueryTimeMode.MetricTimestamp
+                },
                 MaxPageSize = 5
             };
 
@@ -117,7 +123,7 @@ namespace Azure.AI.MetricsAdvisor.Samples
             {
                 Console.WriteLine($"Feedback ID: {feedback.Id}");
                 Console.WriteLine($"Metric ID: {feedback.MetricId}");
-                Console.WriteLine($"Feedback type: {feedback.Type}");
+                Console.WriteLine($"Feedback type: {feedback.FeedbackKind}");
                 Console.WriteLine();
 
                 // Print at most 5 feedback entries.

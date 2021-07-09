@@ -24,16 +24,16 @@ namespace Azure.AI.MetricsAdvisor.Samples
 
             string detectionConfigurationId = DetectionConfigurationId;
 
-            var startTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
-            var endTime = DateTimeOffset.UtcNow;
-            var options = new GetAnomaliesForDetectionConfigurationOptions(startTime, endTime)
+            var startsOn = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
+            var endsOn = DateTimeOffset.UtcNow;
+            var options = new GetAnomaliesForDetectionConfigurationOptions(startsOn, endsOn)
             {
                 MaxPageSize = 3
             };
 
             int anomalyCount = 0;
 
-            await foreach (DataPointAnomaly anomaly in client.GetAnomaliesAsync(detectionConfigurationId, options))
+            await foreach (DataPointAnomaly anomaly in client.GetAnomaliesForDetectionConfigurationAsync(detectionConfigurationId, options))
             {
                 Console.WriteLine($"Anomaly value: {anomaly.Value}");
 
@@ -46,9 +46,9 @@ namespace Azure.AI.MetricsAdvisor.Samples
                 Console.WriteLine($"Severity: {anomaly.Severity}");
                 Console.WriteLine("Series key:");
 
-                foreach (KeyValuePair<string, string> keyValuePair in anomaly.SeriesKey.AsDictionary())
+                foreach (KeyValuePair<string, string> dimension in anomaly.SeriesKey)
                 {
-                    Console.WriteLine($"  Dimension '{keyValuePair.Key}': {keyValuePair.Value}");
+                    Console.WriteLine($"  Dimension '{dimension.Key}': {dimension.Value}");
                 }
 
                 Console.WriteLine();
@@ -84,7 +84,7 @@ namespace Azure.AI.MetricsAdvisor.Samples
 
             int anomalyCount = 0;
 
-            await foreach (DataPointAnomaly anomaly in client.GetAnomaliesAsync(alertConfigurationId, alertId, options))
+            await foreach (DataPointAnomaly anomaly in client.GetAnomaliesForAlertAsync(alertConfigurationId, alertId, options))
             {
                 Console.WriteLine($"Anomaly detection configuration ID: {anomaly.DetectionConfigurationId}");
                 Console.WriteLine($"Data feed ID: {anomaly.DataFeedId}");
@@ -97,14 +97,14 @@ namespace Azure.AI.MetricsAdvisor.Samples
                 }
 
                 Console.WriteLine($"Anomaly at timestamp: {anomaly.Timestamp}");
-                Console.WriteLine($"Anomaly detected at: {anomaly.CreatedTime}");
+                Console.WriteLine($"Anomaly detected at: {anomaly.CreatedOn}");
                 Console.WriteLine($"Status: {anomaly.Status}");
                 Console.WriteLine($"Severity: {anomaly.Severity}");
                 Console.WriteLine("Series key:");
 
-                foreach (KeyValuePair<string, string> keyValuePair in anomaly.SeriesKey.AsDictionary())
+                foreach (KeyValuePair<string, string> dimension in anomaly.SeriesKey)
                 {
-                    Console.WriteLine($"  Dimension '{keyValuePair.Key}': {keyValuePair.Value}");
+                    Console.WriteLine($"  Dimension '{dimension.Key}': {dimension.Value}");
                 }
 
                 Console.WriteLine();

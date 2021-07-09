@@ -16,7 +16,7 @@ Azure Cognitive Services Metrics Advisor is a cloud service that uses machine le
 Install the Azure Metrics Advisor client library for .NET with [NuGet][nuget]:
 
 ```PowerShell
-dotnet add package Azure.AI.MetricsAdvisor --version 1.0.0-beta.4
+dotnet add package Azure.AI.MetricsAdvisor --version 1.0.0
 ```
 
 ### Prerequisites
@@ -172,11 +172,11 @@ We guarantee that all client instance methods are thread-safe and independent of
 
 ### Additional concepts
 <!-- CLIENT COMMON BAR -->
-[Client options](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#configuring-service-clients-using-clientoptions) |
-[Accessing the response](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#accessing-http-response-details-using-responset) |
-[Handling failures](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#reporting-errors-requestfailedexception) |
-[Diagnostics](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md) |
-[Mocking](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/README.md#mocking) |
+[Client options](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#configuring-service-clients-using-clientoptions) |
+[Accessing the response](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#accessing-http-response-details-using-responset) |
+[Handling failures](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#reporting-errors-requestfailedexception) |
+[Diagnostics](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/Diagnostics.md) |
+[Mocking](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/README.md#mocking) |
 [Client lifetime](https://devblogs.microsoft.com/azure-sdk/lifetime-management-and-thread-safety-guarantees-of-azure-sdk-net-clients/)
 <!-- CLIENT COMMON BAR -->
 
@@ -219,10 +219,10 @@ DataFeed createdDataFeed = response.Value;
 
 Console.WriteLine($"Data feed ID: {createdDataFeed.Id}");
 Console.WriteLine($"Data feed status: {createdDataFeed.Status.Value}");
-Console.WriteLine($"Data feed created time: {createdDataFeed.CreatedTime.Value}");
+Console.WriteLine($"Data feed created time: {createdDataFeed.CreatedOn.Value}");
 
 Console.WriteLine($"Data feed administrators:");
-foreach (string admin in createdDataFeed.AdministratorsEmails)
+foreach (string admin in createdDataFeed.Administrators)
 {
     Console.WriteLine($" - {admin}");
 }
@@ -233,7 +233,7 @@ foreach (DataFeedMetric metric in createdDataFeed.Schema.MetricColumns)
     Console.WriteLine($" - {metric.Name}: {metric.Id}");
 }
 
-Console.WriteLine($"Dimension columns:");
+Console.WriteLine($"Dimensions:");
 foreach (DataFeedDimension dimension in createdDataFeed.Schema.DimensionColumns)
 {
     Console.WriteLine($" - {dimension.Name}");
@@ -247,9 +247,9 @@ Check the ingestion status of a previously created [`DataFeed`](#data-feed).
 ```C# Snippet:GetDataFeedIngestionStatusesAsync
 string dataFeedId = "<dataFeedId>";
 
-var startTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
-var endTime = DateTimeOffset.Parse("2020-09-09T00:00:00Z");
-var options = new GetDataFeedIngestionStatusesOptions(startTime, endTime)
+var startsOn = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
+var endsOn = DateTimeOffset.Parse("2020-09-09T00:00:00Z");
+var options = new GetDataFeedIngestionStatusesOptions(startsOn, endsOn)
 {
     MaxPageSize = 5
 };
@@ -300,7 +300,7 @@ detectCondition.HardThresholdCondition = new HardThresholdCondition(AnomalyDetec
 var smartSuppress = new SuppressCondition(4, 50);
 detectCondition.SmartDetectionCondition = new SmartDetectionCondition(10.0, AnomalyDetectorDirection.Up, smartSuppress);
 
-detectCondition.CrossConditionsOperator = DetectionConditionsOperator.Or;
+detectCondition.ConditionOperator = DetectionConditionOperator.Or;
 
 Response<AnomalyDetectionConfiguration> response = await adminClient.CreateDetectionConfigurationAsync(detectionConfiguration);
 
@@ -344,8 +344,8 @@ AnomalyAlertConfiguration alertConfiguration = new AnomalyAlertConfiguration()
 
 alertConfiguration.IdsOfHooksToAlert.Add(hookId);
 
-var scope = MetricAnomalyAlertScope.GetScopeForWholeSeries();
-var metricAlertConfiguration = new MetricAnomalyAlertConfiguration(anomalyDetectionConfigurationId, scope);
+var scope = MetricAnomalyAlertScope.CreateScopeForWholeSeries();
+var metricAlertConfiguration = new MetricAlertConfiguration(anomalyDetectionConfigurationId, scope);
 
 alertConfiguration.MetricAlertConfigurations.Add(metricAlertConfiguration);
 
@@ -363,9 +363,9 @@ Look through the [alerts](#anomaly-alert) created by a given anomaly alert confi
 ```C# Snippet:GetAlertsAsync
 string anomalyAlertConfigurationId = "<anomalyAlertConfigurationId>";
 
-var startTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
-var endTime = DateTimeOffset.UtcNow;
-var options = new GetAlertsOptions(startTime, endTime, AlertQueryTimeMode.AnomalyTime)
+var startsOn = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
+var endsOn = DateTimeOffset.UtcNow;
+var options = new GetAlertsOptions(startsOn, endsOn, AlertQueryTimeMode.AnomalyDetectedOn)
 {
     MaxPageSize = 5
 };
@@ -374,7 +374,7 @@ int alertCount = 0;
 
 await foreach (AnomalyAlert alert in client.GetAlertsAsync(anomalyAlertConfigurationId, options))
 {
-    Console.WriteLine($"Alert created at: {alert.CreatedTime}");
+    Console.WriteLine($"Alert created at: {alert.CreatedOn}");
     Console.WriteLine($"Alert at timestamp: {alert.Timestamp}");
     Console.WriteLine($"Id: {alert.Id}");
     Console.WriteLine();
@@ -397,7 +397,7 @@ var options = new GetAnomaliesForAlertOptions() { MaxPageSize = 3 };
 
 int anomalyCount = 0;
 
-await foreach (DataPointAnomaly anomaly in client.GetAnomaliesAsync(alertConfigurationId, alertId, options))
+await foreach (DataPointAnomaly anomaly in client.GetAnomaliesForAlertAsync(alertConfigurationId, alertId, options))
 {
     Console.WriteLine($"Anomaly detection configuration ID: {anomaly.DetectionConfigurationId}");
     Console.WriteLine($"Data feed ID: {anomaly.DataFeedId}");
@@ -410,14 +410,14 @@ await foreach (DataPointAnomaly anomaly in client.GetAnomaliesAsync(alertConfigu
     }
 
     Console.WriteLine($"Anomaly at timestamp: {anomaly.Timestamp}");
-    Console.WriteLine($"Anomaly detected at: {anomaly.CreatedTime}");
+    Console.WriteLine($"Anomaly detected at: {anomaly.CreatedOn}");
     Console.WriteLine($"Status: {anomaly.Status}");
     Console.WriteLine($"Severity: {anomaly.Severity}");
     Console.WriteLine("Series key:");
 
-    foreach (KeyValuePair<string, string> keyValuePair in anomaly.SeriesKey.AsDictionary())
+    foreach (KeyValuePair<string, string> dimension in anomaly.SeriesKey)
     {
-        Console.WriteLine($"  Dimension '{keyValuePair.Key}': {keyValuePair.Value}");
+        Console.WriteLine($"  Dimension '{dimension.Key}': {dimension.Value}");
     }
 
     Console.WriteLine();
@@ -510,40 +510,40 @@ This project has adopted the [Microsoft Open Source Code of Conduct][code_of_con
 ![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-net%2Fsdk%2Fmetricsadvisor%2FAzure.AI.MetricsAdvisor%2FREADME.png)
 
 <!-- LINKS -->
-[metricsadv_client_src]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src
+[metricsadv_client_src]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src
 [metricsadv_docs]: https://docs.microsoft.com/azure/cognitive-services/metrics-advisor
 [metricsadv_nuget_package]: https://www.nuget.org/packages/Azure.AI.MetricsAdvisor
 [metricsadv_refdocs]: https://aka.ms/azsdk/net/docs/ref/metricsadvisor
 [metricsadv_rest_api]: https://westus2.dev.cognitive.microsoft.com/docs/services/MetricsAdvisor
-[metricsadv_samples]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md
+[metricsadv_samples]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md
 [metricsadv_web_portal]: https://metricsadvisor.azurewebsites.net
 
-[metrics_advisor_admin_client_class]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorAdministrationClient.cs
-[metrics_advisor_client_class]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs
+[metrics_advisor_admin_client_class]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorAdministrationClient.cs
+[metrics_advisor_client_class]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs
 
-[metricsadv-sample1]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample01_DataFeedCrudOperations.cs
-[metricsadv-sample2]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample02_DataFeedIngestionOperations.cs
-[metricsadv-sample3]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample03_DetectionConfigurationCrudOperations.cs
-[metricsadv-sample4]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample04_HookCrudOperations.cs
-[metricsadv-sample5]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample05_AlertConfigurationCrudOperations.cs
-[metricsadv-sample6]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample06_QueryTriggeredAlerts.cs
-[metricsadv-sample7]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample07_QueryDetectedAnomalies.cs
-[metricsadv-sample8]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample08_QueryIncidentsAndRootCauses.cs
-[metricsadv-sample9]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample09_QueryTimeSeriesInformation.cs
-[metricsadv-sample10]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample10_FeedbackCrudOperations.cs
+[metricsadv-sample1]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample01_DataFeedCrudOperations.cs
+[metricsadv-sample2]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample02_DataFeedIngestionOperations.cs
+[metricsadv-sample3]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample03_DetectionConfigurationCrudOperations.cs
+[metricsadv-sample4]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample04_HookCrudOperations.cs
+[metricsadv-sample5]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample05_AlertConfigurationCrudOperations.cs
+[metricsadv-sample6]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample06_QueryTriggeredAlerts.cs
+[metricsadv-sample7]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample07_QueryDetectedAnomalies.cs
+[metricsadv-sample8]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample08_QueryIncidentsAndRootCauses.cs
+[metricsadv-sample9]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample09_QueryTimeSeriesInformation.cs
+[metricsadv-sample10]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/tests/Samples/Sample10_FeedbackCrudOperations.cs
 
 [aad_grant_access]: https://docs.microsoft.com/azure/cognitive-services/authentication#assign-a-role-to-a-service-principal
-[azure_identity]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/identity/Azure.Identity/README.md
+[azure_identity]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/README.md
 [cognitive_resource_cli]: https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli
 [cognitive_resource_portal]: https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account
-[DefaultAzureCredential]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/identity/Azure.Identity/README.md#defaultazurecredential
+[DefaultAzureCredential]: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/README.md#defaultazurecredential
 [register_aad_app]: https://docs.microsoft.com/azure/cognitive-services/authentication#assign-a-role-to-a-service-principal
 
-[logging]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core/samples/Diagnostics.md
+[logging]: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/core/Azure.Core/samples/Diagnostics.md
 
 [azure_cli]: https://docs.microsoft.com/cli/azure
 [azure_portal]: https://portal.azure.com
-[azure_sub]: https://azure.microsoft.com/free
+[azure_sub]: https://azure.microsoft.com/free/dotnet/
 [nuget]: https://www.nuget.org
 
 [cla]: https://cla.microsoft.com
