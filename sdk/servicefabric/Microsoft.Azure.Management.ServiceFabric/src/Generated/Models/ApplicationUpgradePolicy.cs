@@ -36,26 +36,20 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// of availability loss issues. The timeout is reset at the start of
         /// each upgrade domain. Valid values are between 0 and 42949672925
         /// inclusive. (unsigned 32-bit integer).</param>
-        /// <param name="forceRestart">If true, then processes are forcefully
-        /// restarted during upgrade even when the code version has not changed
-        /// (the upgrade only changes configuration or data).</param>
-        /// <param name="rollingUpgradeMonitoringPolicy">The policy used for
-        /// monitoring the application upgrade</param>
-        /// <param name="applicationHealthPolicy">Defines a health policy used
-        /// to evaluate the health of an application or one of its children
-        /// entities.
-        /// </param>
-        /// <param name="upgradeMode">The mode used to monitor health during a
-        /// rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual,
-        /// and Monitored. Possible values include: 'Invalid',
+        /// <param name="upgradeMode">Possible values include: 'Invalid',
         /// 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'</param>
-        public ApplicationUpgradePolicy(string upgradeReplicaSetCheckTimeout = default(string), bool? forceRestart = default(bool?), ArmRollingUpgradeMonitoringPolicy rollingUpgradeMonitoringPolicy = default(ArmRollingUpgradeMonitoringPolicy), ArmApplicationHealthPolicy applicationHealthPolicy = default(ArmApplicationHealthPolicy), string upgradeMode = default(string))
+        /// <param name="recreateApplication">Determines whether the
+        /// application should be recreated on update. If value=true, the rest
+        /// of the upgrade policy parameters are not allowed and it will result
+        /// in availability loss.</param>
+        public ApplicationUpgradePolicy(string upgradeReplicaSetCheckTimeout = default(string), bool? forceRestart = default(bool?), ArmRollingUpgradeMonitoringPolicy rollingUpgradeMonitoringPolicy = default(ArmRollingUpgradeMonitoringPolicy), ArmApplicationHealthPolicy applicationHealthPolicy = default(ArmApplicationHealthPolicy), string upgradeMode = default(string), bool? recreateApplication = default(bool?))
         {
             UpgradeReplicaSetCheckTimeout = upgradeReplicaSetCheckTimeout;
             ForceRestart = forceRestart;
             RollingUpgradeMonitoringPolicy = rollingUpgradeMonitoringPolicy;
             ApplicationHealthPolicy = applicationHealthPolicy;
             UpgradeMode = upgradeMode;
+            RecreateApplication = recreateApplication;
             CustomInit();
         }
 
@@ -77,35 +71,34 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         public string UpgradeReplicaSetCheckTimeout { get; set; }
 
         /// <summary>
-        /// Gets or sets if true, then processes are forcefully restarted
-        /// during upgrade even when the code version has not changed (the
-        /// upgrade only changes configuration or data).
         /// </summary>
         [JsonProperty(PropertyName = "forceRestart")]
         public bool? ForceRestart { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy used for monitoring the application upgrade
         /// </summary>
         [JsonProperty(PropertyName = "rollingUpgradeMonitoringPolicy")]
         public ArmRollingUpgradeMonitoringPolicy RollingUpgradeMonitoringPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets defines a health policy used to evaluate the health of
-        /// an application or one of its children entities.
-        ///
         /// </summary>
         [JsonProperty(PropertyName = "applicationHealthPolicy")]
         public ArmApplicationHealthPolicy ApplicationHealthPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the mode used to monitor health during a rolling
-        /// upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
-        /// Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+        /// Gets or sets possible values include: 'Invalid', 'UnmonitoredAuto',
         /// 'UnmonitoredManual', 'Monitored'
         /// </summary>
         [JsonProperty(PropertyName = "upgradeMode")]
         public string UpgradeMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets determines whether the application should be recreated
+        /// on update. If value=true, the rest of the upgrade policy parameters
+        /// are not allowed and it will result in availability loss.
+        /// </summary>
+        [JsonProperty(PropertyName = "recreateApplication")]
+        public bool? RecreateApplication { get; set; }
 
         /// <summary>
         /// Validate the object.
