@@ -33,21 +33,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the VMwareCbtContainerMappingInput
         /// class.
         /// </summary>
-        /// <param name="keyVaultId">The target key vault ARM Id.</param>
-        /// <param name="keyVaultUri">The target key vault URL.</param>
         /// <param name="storageAccountId">The storage account ARM Id.</param>
-        /// <param name="storageAccountSasSecretName">The secret name of the
-        /// storage account.</param>
-        /// <param name="serviceBusConnectionStringSecretName">The secret name
-        /// of the service bus connection string.</param>
         /// <param name="targetLocation">The target location.</param>
-        public VMwareCbtContainerMappingInput(string keyVaultId, string keyVaultUri, string storageAccountId, string storageAccountSasSecretName, string serviceBusConnectionStringSecretName, string targetLocation)
+        public VMwareCbtContainerMappingInput(string storageAccountId, string targetLocation)
         {
-            KeyVaultId = keyVaultId;
-            KeyVaultUri = keyVaultUri;
             StorageAccountId = storageAccountId;
-            StorageAccountSasSecretName = storageAccountSasSecretName;
-            ServiceBusConnectionStringSecretName = serviceBusConnectionStringSecretName;
             TargetLocation = targetLocation;
             CustomInit();
         }
@@ -58,34 +48,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target key vault ARM Id.
-        /// </summary>
-        [JsonProperty(PropertyName = "keyVaultId")]
-        public string KeyVaultId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the target key vault URL.
-        /// </summary>
-        [JsonProperty(PropertyName = "keyVaultUri")]
-        public string KeyVaultUri { get; set; }
-
-        /// <summary>
         /// Gets or sets the storage account ARM Id.
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountId")]
         public string StorageAccountId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secret name of the storage account.
-        /// </summary>
-        [JsonProperty(PropertyName = "storageAccountSasSecretName")]
-        public string StorageAccountSasSecretName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secret name of the service bus connection string.
-        /// </summary>
-        [JsonProperty(PropertyName = "serviceBusConnectionStringSecretName")]
-        public string ServiceBusConnectionStringSecretName { get; set; }
 
         /// <summary>
         /// Gets or sets the target location.
@@ -101,25 +67,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (KeyVaultId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KeyVaultId");
-            }
-            if (KeyVaultUri == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KeyVaultUri");
-            }
             if (StorageAccountId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageAccountId");
-            }
-            if (StorageAccountSasSecretName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "StorageAccountSasSecretName");
-            }
-            if (ServiceBusConnectionStringSecretName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ServiceBusConnectionStringSecretName");
             }
             if (TargetLocation == null)
             {
