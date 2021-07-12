@@ -36,12 +36,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="replicaDiskType">The replica disk type.</param>
         /// <param name="diskEncryptionSetId">The disk encryption set ARM
         /// Id.</param>
-        public HyperVReplicaAzureManagedDiskDetails(string diskId = default(string), string seedManagedDiskId = default(string), string replicaDiskType = default(string), string diskEncryptionSetId = default(string))
+        /// <param name="targetDiskName">The name for the target managed
+        /// disk.</param>
+        public HyperVReplicaAzureManagedDiskDetails(string diskId = default(string), string seedManagedDiskId = default(string), string replicaDiskType = default(string), string diskEncryptionSetId = default(string), string targetDiskName = default(string))
         {
             DiskId = diskId;
             SeedManagedDiskId = seedManagedDiskId;
             ReplicaDiskType = replicaDiskType;
             DiskEncryptionSetId = diskEncryptionSetId;
+            TargetDiskName = targetDiskName;
             CustomInit();
         }
 
@@ -73,6 +76,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name for the target managed disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetDiskName")]
+        public string TargetDiskName { get; set; }
 
     }
 }
