@@ -19,18 +19,25 @@ namespace Microsoft.Azure.Management.HealthcareApis
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateEndpointConnectionsOperations operations.
+    /// IotConnectorFhirDestinationOperations operations.
     /// </summary>
-    public partial interface IPrivateEndpointConnectionsOperations
+    public partial interface IIotConnectorFhirDestinationOperations
     {
         /// <summary>
-        /// Lists all private endpoint connections for a service.
+        /// Gets the properties of the specified Iot Connector FHIR
+        /// destination.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
+        /// </param>
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -47,20 +54,26 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<PrivateEndpointConnectionDescription>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotFhirDestination>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the
-        /// service.
+        /// Creates or updates an IoT Connector FHIR destination resource with
+        /// the specified parameters.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
+        /// </param>
+        /// <param name='iotFhirDestination'>
+        /// The parameters for creating or updating an IoT Connector FHIR
+        /// destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,23 +90,57 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnectionDescription>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotFhirDestination>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, IotFhirDestination iotFhirDestination, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update the state of the specified private endpoint connection
-        /// associated with the service.
+        /// Deletes an IoT Connector FHIR destination.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
         /// </param>
-        /// <param name='properties'>
-        /// The private endpoint connection properties.
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IotFhirDestination>> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates an IoT Connector FHIR destination resource with
+        /// the specified parameters.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the service instance.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
+        /// </param>
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
+        /// </param>
+        /// <param name='iotFhirDestination'>
+        /// The parameters for creating or updating an IoT Connector FHIR
+        /// destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -110,19 +157,21 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnectionDescription>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotFhirDestination>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, IotFhirDestination iotFhirDestination, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a private endpoint connection.
+        /// Deletes an IoT Connector FHIR destination.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,37 +179,7 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorDetailsException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update the state of the specified private endpoint connection
-        /// associated with the service.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the service instance.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Azure resource
-        /// </param>
-        /// <param name='properties'>
-        /// The private endpoint connection properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorDetailsException">
+        /// <exception cref="ErrorException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -169,32 +188,6 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnectionDescription>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a private endpoint connection.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the service instance.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Azure resource
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorDetailsException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IotFhirDestination>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -11,28 +11,33 @@
 namespace Microsoft.Azure.Management.HealthcareApis.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// Azure container registry configuration information
     /// </summary>
-    public partial class ErrorDetails
+    public partial class ServiceAcrConfigurationInfo
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the ServiceAcrConfigurationInfo
+        /// class.
         /// </summary>
-        public ErrorDetails()
+        public ServiceAcrConfigurationInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the ServiceAcrConfigurationInfo
+        /// class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="loginServers">The list of the ACR login
+        /// servers.</param>
+        public ServiceAcrConfigurationInfo(IList<string> loginServers = default(IList<string>))
         {
-            Error = error;
+            LoginServers = loginServers;
             CustomInit();
         }
 
@@ -42,10 +47,10 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error details
+        /// Gets or sets the list of the ACR login servers.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        [JsonProperty(PropertyName = "loginServers")]
+        public IList<string> LoginServers { get; set; }
 
     }
 }

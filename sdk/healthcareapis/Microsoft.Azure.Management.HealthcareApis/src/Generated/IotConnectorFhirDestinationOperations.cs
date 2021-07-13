@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.HealthcareApis
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateEndpointConnectionsOperations operations.
+    /// IotConnectorFhirDestinationOperations operations.
     /// </summary>
-    internal partial class PrivateEndpointConnectionsOperations : IServiceOperations<HealthcareApisManagementClient>, IPrivateEndpointConnectionsOperations
+    internal partial class IotConnectorFhirDestinationOperations : IServiceOperations<HealthcareApisManagementClient>, IIotConnectorFhirDestinationOperations
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnectionsOperations class.
+        /// Initializes a new instance of the IotConnectorFhirDestinationOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal PrivateEndpointConnectionsOperations(HealthcareApisManagementClient client)
+        internal IotConnectorFhirDestinationOperations(HealthcareApisManagementClient client)
         {
             if (client == null)
             {
@@ -51,13 +51,19 @@ namespace Microsoft.Azure.Management.HealthcareApis
         public HealthcareApisManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all private endpoint connections for a service.
+        /// Gets the properties of the specified Iot Connector FHIR destination.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
+        /// </param>
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -80,12 +86,8 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<PrivateEndpointConnectionDescription>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotFhirDestination>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
@@ -105,249 +107,58 @@ namespace Microsoft.Azure.Management.HealthcareApis
                     throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
-            if (resourceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
-            }
-            if (resourceName != null)
-            {
-                if (resourceName.Length > 24)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceName", 24);
-                }
-                if (resourceName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceName", 3);
-                }
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("resourceName", resourceName);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListByService", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new ErrorDetailsException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorDetails _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorDetails>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IEnumerable<PrivateEndpointConnectionDescription>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<PrivateEndpointConnectionDescription>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Gets the specified private endpoint connection associated with the service.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the service instance.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure
-        /// resource
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorDetailsException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<PrivateEndpointConnectionDescription>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroupName == null)
+            if (workspaceName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
             }
-            if (resourceGroupName != null)
+            if (workspaceName != null)
             {
-                if (resourceGroupName.Length > 90)
+                if (workspaceName.Length > 24)
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 24);
                 }
-                if (resourceGroupName.Length < 1)
+                if (workspaceName.Length < 3)
                 {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 3);
                 }
             }
-            if (resourceName == null)
+            if (iotConnectorName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "iotConnectorName");
             }
-            if (resourceName != null)
+            if (iotConnectorName != null)
             {
-                if (resourceName.Length > 24)
+                if (iotConnectorName.Length > 24)
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceName", 24);
+                    throw new ValidationException(ValidationRules.MaxLength, "iotConnectorName", 24);
                 }
-                if (resourceName.Length < 3)
+                if (iotConnectorName.Length < 3)
                 {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceName", 3);
+                    throw new ValidationException(ValidationRules.MinLength, "iotConnectorName", 3);
                 }
             }
-            if (Client.ApiVersion == null)
+            if (fhirDestinationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+                throw new ValidationException(ValidationRules.CannotBeNull, "fhirDestinationName");
             }
-            if (privateEndpointConnectionName == null)
+            if (fhirDestinationName != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
+                if (fhirDestinationName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "fhirDestinationName", 24);
+                }
+                if (fhirDestinationName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "fhirDestinationName", 3);
+                }
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -357,18 +168,20 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("resourceName", resourceName);
-                tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
+                tracingParameters.Add("workspaceName", workspaceName);
+                tracingParameters.Add("iotConnectorName", iotConnectorName);
+                tracingParameters.Add("fhirDestinationName", fhirDestinationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
-            _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
+            _url = _url.Replace("{iotConnectorName}", System.Uri.EscapeDataString(iotConnectorName));
+            _url = _url.Replace("{fhirDestinationName}", System.Uri.EscapeDataString(fhirDestinationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -462,7 +275,7 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateEndpointConnectionDescription>();
+            var _result = new AzureOperationResponse<IotFhirDestination>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -475,7 +288,7 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateEndpointConnectionDescription>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotFhirDestination>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -495,21 +308,24 @@ namespace Microsoft.Azure.Management.HealthcareApis
         }
 
         /// <summary>
-        /// Update the state of the specified private endpoint connection associated
-        /// with the service.
+        /// Creates or updates an IoT Connector FHIR destination resource with the
+        /// specified parameters.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
         /// </param>
-        /// <param name='properties'>
-        /// The private endpoint connection properties.
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
+        /// </param>
+        /// <param name='iotFhirDestination'>
+        /// The parameters for creating or updating an IoT Connector FHIR destination
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -517,25 +333,27 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PrivateEndpointConnectionDescription>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotFhirDestination>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, IotFhirDestination iotFhirDestination, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<PrivateEndpointConnectionDescription> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, privateEndpointConnectionName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<IotFhirDestination> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, iotConnectorName, fhirDestinationName, iotFhirDestination, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Deletes a private endpoint connection.
+        /// Deletes an IoT Connector FHIR destination.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -543,29 +361,32 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotFhirDestination>> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, privateEndpointConnectionName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<IotFhirDestination> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, iotConnectorName, fhirDestinationName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Update the state of the specified private endpoint connection associated
-        /// with the service.
+        /// Creates or updates an IoT Connector FHIR destination resource with the
+        /// specified parameters.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
         /// </param>
-        /// <param name='properties'>
-        /// The private endpoint connection properties.
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
+        /// </param>
+        /// <param name='iotFhirDestination'>
+        /// The parameters for creating or updating an IoT Connector FHIR destination
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -588,12 +409,8 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateEndpointConnectionDescription>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotFhirDestination>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, IotFhirDestination iotFhirDestination, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
@@ -613,36 +430,66 @@ namespace Microsoft.Azure.Management.HealthcareApis
                     throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
-            if (resourceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
-            }
-            if (resourceName != null)
-            {
-                if (resourceName.Length > 24)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceName", 24);
-                }
-                if (resourceName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceName", 3);
-                }
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (privateEndpointConnectionName == null)
+            if (Client.SubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (properties == null)
+            if (workspaceName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "properties");
+                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
             }
-            if (properties != null)
+            if (workspaceName != null)
             {
-                properties.Validate();
+                if (workspaceName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 24);
+                }
+                if (workspaceName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 3);
+                }
+            }
+            if (iotConnectorName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "iotConnectorName");
+            }
+            if (iotConnectorName != null)
+            {
+                if (iotConnectorName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "iotConnectorName", 24);
+                }
+                if (iotConnectorName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "iotConnectorName", 3);
+                }
+            }
+            if (fhirDestinationName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "fhirDestinationName");
+            }
+            if (fhirDestinationName != null)
+            {
+                if (fhirDestinationName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "fhirDestinationName", 24);
+                }
+                if (fhirDestinationName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "fhirDestinationName", 3);
+                }
+            }
+            if (iotFhirDestination == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "iotFhirDestination");
+            }
+            if (iotFhirDestination != null)
+            {
+                iotFhirDestination.Validate();
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -652,19 +499,21 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("resourceName", resourceName);
-                tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
-                tracingParameters.Add("properties", properties);
+                tracingParameters.Add("workspaceName", workspaceName);
+                tracingParameters.Add("iotConnectorName", iotConnectorName);
+                tracingParameters.Add("fhirDestinationName", fhirDestinationName);
+                tracingParameters.Add("iotFhirDestination", iotFhirDestination);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
-            _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
+            _url = _url.Replace("{iotConnectorName}", System.Uri.EscapeDataString(iotConnectorName));
+            _url = _url.Replace("{fhirDestinationName}", System.Uri.EscapeDataString(fhirDestinationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -708,9 +557,9 @@ namespace Microsoft.Azure.Management.HealthcareApis
 
             // Serialize Request
             string _requestContent = null;
-            if(properties != null)
+            if(iotFhirDestination != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(properties, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(iotFhirDestination, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -734,7 +583,7 @@ namespace Microsoft.Azure.Management.HealthcareApis
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
             {
                 var ex = new ErrorDetailsException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -764,7 +613,7 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<PrivateEndpointConnectionDescription>();
+            var _result = new AzureOperationResponse<IotFhirDestination>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -777,7 +626,43 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PrivateEndpointConnectionDescription>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotFhirDestination>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 201)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotFhirDestination>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 202)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotFhirDestination>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -797,17 +682,19 @@ namespace Microsoft.Azure.Management.HealthcareApis
         }
 
         /// <summary>
-        /// Deletes a private endpoint connection.
+        /// Deletes an IoT Connector FHIR destination.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
+        /// </param>
+        /// <param name='fhirDestinationName'>
+        /// The name of IoT Connector FHIR destination resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -815,8 +702,11 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorDetailsException">
+        /// <exception cref="ErrorException">
         /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
@@ -827,8 +717,12 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotFhirDestination>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, string fhirDestinationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -852,28 +746,50 @@ namespace Microsoft.Azure.Management.HealthcareApis
                     throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
-            if (resourceName == null)
+            if (workspaceName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
             }
-            if (resourceName != null)
+            if (workspaceName != null)
             {
-                if (resourceName.Length > 24)
+                if (workspaceName.Length > 24)
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceName", 24);
+                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 24);
                 }
-                if (resourceName.Length < 3)
+                if (workspaceName.Length < 3)
                 {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceName", 3);
+                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 3);
                 }
             }
-            if (Client.ApiVersion == null)
+            if (iotConnectorName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+                throw new ValidationException(ValidationRules.CannotBeNull, "iotConnectorName");
             }
-            if (privateEndpointConnectionName == null)
+            if (iotConnectorName != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
+                if (iotConnectorName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "iotConnectorName", 24);
+                }
+                if (iotConnectorName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "iotConnectorName", 3);
+                }
+            }
+            if (fhirDestinationName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "fhirDestinationName");
+            }
+            if (fhirDestinationName != null)
+            {
+                if (fhirDestinationName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "fhirDestinationName", 24);
+                }
+                if (fhirDestinationName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "fhirDestinationName", 3);
+                }
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -883,18 +799,20 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("resourceName", resourceName);
-                tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
+                tracingParameters.Add("workspaceName", workspaceName);
+                tracingParameters.Add("iotConnectorName", iotConnectorName);
+                tracingParameters.Add("fhirDestinationName", fhirDestinationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
-            _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
+            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
+            _url = _url.Replace("{iotConnectorName}", System.Uri.EscapeDataString(iotConnectorName));
+            _url = _url.Replace("{fhirDestinationName}", System.Uri.EscapeDataString(fhirDestinationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -960,11 +878,11 @@ namespace Microsoft.Azure.Management.HealthcareApis
             string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 202 && (int)_statusCode != 204)
             {
-                var ex = new ErrorDetailsException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorDetails _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorDetails>(_responseContent, Client.DeserializationSettings);
+                    Error _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<Error>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -988,12 +906,48 @@ namespace Microsoft.Azure.Management.HealthcareApis
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse();
+            var _result = new AzureOperationResponse<IotFhirDestination>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotFhirDestination>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 202)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotFhirDestination>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {

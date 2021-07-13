@@ -10,29 +10,32 @@
 
 namespace Microsoft.Azure.Management.HealthcareApis.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// The common properties for any location based resource, tracked or
+    /// proxy.
     /// </summary>
-    public partial class ErrorDetails
+    public partial class LocationBasedResource : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the LocationBasedResource class.
         /// </summary>
-        public ErrorDetails()
+        public LocationBasedResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the LocationBasedResource class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="location">The resource location.</param>
+        public LocationBasedResource(string location = default(string))
         {
-            Error = error;
+            Location = location;
             CustomInit();
         }
 
@@ -42,10 +45,10 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error details
+        /// Gets or sets the resource location.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
 
     }
 }

@@ -14,25 +14,25 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// The mapping content.
     /// </summary>
-    public partial class ErrorDetails
+    public partial class IotMappingProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the IotMappingProperties class.
         /// </summary>
-        public ErrorDetails()
+        public IotMappingProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the IotMappingProperties class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="content">The mapping.</param>
+        public IotMappingProperties(object content = default(object))
         {
-            Error = error;
+            Content = content;
             CustomInit();
         }
 
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error details
+        /// Gets or sets the mapping.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        [JsonProperty(PropertyName = "content")]
+        public object Content { get; set; }
 
     }
 }
