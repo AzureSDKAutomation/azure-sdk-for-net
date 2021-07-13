@@ -36,7 +36,17 @@ namespace Microsoft.Azure.Management.HybridData.Models
         [EnumMember(Value = "Cancelling")]
         Cancelling,
         [EnumMember(Value = "PartiallySucceeded")]
-        PartiallySucceeded
+        PartiallySucceeded,
+        [EnumMember(Value = "Waiting")]
+        Waiting,
+        [EnumMember(Value = "Cancelled_Skipped")]
+        CancelledSkipped,
+        [EnumMember(Value = "Failed_Skipped")]
+        FailedSkipped,
+        [EnumMember(Value = "Cancelled_Retried")]
+        CancelledRetried,
+        [EnumMember(Value = "Failed_Retried")]
+        FailedRetried
     }
     internal static class JobStatusEnumExtension
     {
@@ -65,6 +75,16 @@ namespace Microsoft.Azure.Management.HybridData.Models
                     return "Cancelling";
                 case JobStatus.PartiallySucceeded:
                     return "PartiallySucceeded";
+                case JobStatus.Waiting:
+                    return "Waiting";
+                case JobStatus.CancelledSkipped:
+                    return "Cancelled_Skipped";
+                case JobStatus.FailedSkipped:
+                    return "Failed_Skipped";
+                case JobStatus.CancelledRetried:
+                    return "Cancelled_Retried";
+                case JobStatus.FailedRetried:
+                    return "Failed_Retried";
             }
             return null;
         }
@@ -89,6 +109,16 @@ namespace Microsoft.Azure.Management.HybridData.Models
                     return JobStatus.Cancelling;
                 case "PartiallySucceeded":
                     return JobStatus.PartiallySucceeded;
+                case "Waiting":
+                    return JobStatus.Waiting;
+                case "Cancelled_Skipped":
+                    return JobStatus.CancelledSkipped;
+                case "Failed_Skipped":
+                    return JobStatus.FailedSkipped;
+                case "Cancelled_Retried":
+                    return JobStatus.CancelledRetried;
+                case "Failed_Retried":
+                    return JobStatus.FailedRetried;
             }
             return null;
         }

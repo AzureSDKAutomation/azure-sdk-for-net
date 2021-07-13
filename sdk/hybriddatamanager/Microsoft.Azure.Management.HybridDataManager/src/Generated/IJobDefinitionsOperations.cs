@@ -158,6 +158,99 @@ namespace Microsoft.Azure.Management.HybridData
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// This method cancels all the running or waiting jobs in a job
+        /// definition.
+        /// </summary>
+        /// <param name='dataServiceName'>
+        /// The data service type of the job definition.
+        /// </param>
+        /// <param name='jobDefinitionName'>
+        /// Name of the job definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='dataManagerName'>
+        /// The name of the DataManager Resource within the specified resource
+        /// group. DataManager names must be between 3 and 24 characters in
+        /// length and use any alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CancelWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// This method checks whether job scheduling is in-progress for the
+        /// job definition.
+        /// </summary>
+        /// <param name='dataServiceName'>
+        /// The data service type of the job definition.
+        /// </param>
+        /// <param name='jobDefinitionName'>
+        /// Name of the job definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='dataManagerName'>
+        /// The name of the DataManager Resource within the specified resource
+        /// group. DataManager names must be between 3 and 24 characters in
+        /// length and use any alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CheckStatusWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// This method retries the first failed or cancelled job that has not
+        /// already been skipped for the job definition.
+        /// </summary>
+        /// <param name='dataServiceName'>
+        /// The data service type of the job definition.
+        /// </param>
+        /// <param name='jobDefinitionName'>
+        /// Name of the job definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='dataManagerName'>
+        /// The name of the DataManager Resource within the specified resource
+        /// group. DataManager names must be between 3 and 24 characters in
+        /// length and use any alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> RetryWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// This method runs a job instance of the given job definition.
         /// </summary>
         /// <param name='dataServiceName'>
@@ -190,6 +283,36 @@ namespace Microsoft.Azure.Management.HybridData
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> RunWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, RunParameters runParameters, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// This method skips last executed failed or cancelled job.
+        /// </summary>
+        /// <param name='dataServiceName'>
+        /// The data service type of the job definition.
+        /// </param>
+        /// <param name='jobDefinitionName'>
+        /// Name of the job definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='dataManagerName'>
+        /// The name of the DataManager Resource within the specified resource
+        /// group. DataManager names must be between 3 and 24 characters in
+        /// length and use any alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> SkipWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// This method gets all the job definitions of the given data manager
         /// resource.
@@ -287,6 +410,68 @@ namespace Microsoft.Azure.Management.HybridData
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// This method cancels all the running or waiting jobs in a job
+        /// definition.
+        /// </summary>
+        /// <param name='dataServiceName'>
+        /// The data service type of the job definition.
+        /// </param>
+        /// <param name='jobDefinitionName'>
+        /// Name of the job definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='dataManagerName'>
+        /// The name of the DataManager Resource within the specified resource
+        /// group. DataManager names must be between 3 and 24 characters in
+        /// length and use any alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginCancelWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// This method checks whether job scheduling is in-progress for the
+        /// job definition.
+        /// </summary>
+        /// <param name='dataServiceName'>
+        /// The data service type of the job definition.
+        /// </param>
+        /// <param name='jobDefinitionName'>
+        /// Name of the job definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The Resource Group Name
+        /// </param>
+        /// <param name='dataManagerName'>
+        /// The name of the DataManager Resource within the specified resource
+        /// group. DataManager names must be between 3 and 24 characters in
+        /// length and use any alphanumeric and underscore only
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginCheckStatusWithHttpMessagesAsync(string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// This method runs a job instance of the given job definition.
         /// </summary>

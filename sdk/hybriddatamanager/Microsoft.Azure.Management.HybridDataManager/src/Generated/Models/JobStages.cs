@@ -33,7 +33,9 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// </summary>
         /// <param name="stageStatus">Status of the job stage. Possible values
         /// include: 'None', 'InProgress', 'Succeeded', 'WaitingForAction',
-        /// 'Failed', 'Cancelled', 'Cancelling', 'PartiallySucceeded'</param>
+        /// 'Failed', 'Cancelled', 'Cancelling', 'PartiallySucceeded',
+        /// 'Waiting', 'Cancelled_Skipped', 'Failed_Skipped',
+        /// 'Cancelled_Retried', 'Failed_Retried'</param>
         /// <param name="stageName">Name of the job stage.</param>
         /// <param name="jobStageDetails">Job Stage Details</param>
         /// <param name="errorDetails">Error details for the stage. This is
@@ -61,7 +63,9 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// <summary>
         /// Gets or sets status of the job stage. Possible values include:
         /// 'None', 'InProgress', 'Succeeded', 'WaitingForAction', 'Failed',
-        /// 'Cancelled', 'Cancelling', 'PartiallySucceeded'
+        /// 'Cancelled', 'Cancelling', 'PartiallySucceeded', 'Waiting',
+        /// 'Cancelled_Skipped', 'Failed_Skipped', 'Cancelled_Retried',
+        /// 'Failed_Retried'
         /// </summary>
         [JsonProperty(PropertyName = "stageStatus")]
         public JobStatus StageStatus { get; set; }

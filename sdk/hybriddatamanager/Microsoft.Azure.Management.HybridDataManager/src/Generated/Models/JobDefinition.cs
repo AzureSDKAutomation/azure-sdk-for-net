@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// 'southeastasia', 'southcentralus', 'southindia', 'northcentralus',
         /// 'northeurope', 'uksouth', 'ukwest', 'westcentralus', 'westeurope',
         /// 'westindia', 'westus', 'westus2'</param>
+        /// <param name="jobDefinitionSchemaVersion">Schema version of the job
+        /// definition.</param>
+        /// <param name="jobDefinitionState">State of the job definition.
+        /// Possible values include: 'Created', 'Queueing', 'Waiting',
+        /// 'Running', 'Complete', 'Cancelling', 'Cancelled', 'Paused'</param>
         /// <param name="userConfirmation">Enum to detect if user confirmation
         /// is required. If not passed will default to NotRequired. Possible
         /// values include: 'NotRequired', 'Required'</param>
@@ -64,7 +69,7 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// key identifier and key value. The key identifier is a way for the
         /// specific data source to understand the key. Value contains customer
         /// secret encrypted by the encryptionKeys.</param>
-        public JobDefinition(string dataSourceId, string dataSinkId, State state, string name = default(string), string id = default(string), string type = default(string), IList<Schedule> schedules = default(IList<Schedule>), System.DateTime? lastModifiedTime = default(System.DateTime?), RunLocation? runLocation = default(RunLocation?), UserConfirmation? userConfirmation = default(UserConfirmation?), object dataServiceInput = default(object), IList<CustomerSecret> customerSecrets = default(IList<CustomerSecret>))
+        public JobDefinition(string dataSourceId, string dataSinkId, State state, string name = default(string), string id = default(string), string type = default(string), IList<Schedule> schedules = default(IList<Schedule>), System.DateTime? lastModifiedTime = default(System.DateTime?), RunLocation? runLocation = default(RunLocation?), string jobDefinitionSchemaVersion = default(string), JobDefinitionState? jobDefinitionState = default(JobDefinitionState?), UserConfirmation? userConfirmation = default(UserConfirmation?), object dataServiceInput = default(object), IList<CustomerSecret> customerSecrets = default(IList<CustomerSecret>))
             : base(name, id, type)
         {
             DataSourceId = dataSourceId;
@@ -73,6 +78,8 @@ namespace Microsoft.Azure.Management.HybridData.Models
             State = state;
             LastModifiedTime = lastModifiedTime;
             RunLocation = runLocation;
+            JobDefinitionSchemaVersion = jobDefinitionSchemaVersion;
+            JobDefinitionState = jobDefinitionState;
             UserConfirmation = userConfirmation;
             DataServiceInput = dataServiceInput;
             CustomerSecrets = customerSecrets;
@@ -127,6 +134,20 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.runLocation")]
         public RunLocation? RunLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets schema version of the job definition.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.jobDefinitionSchemaVersion")]
+        public string JobDefinitionSchemaVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets state of the job definition. Possible values include:
+        /// 'Created', 'Queueing', 'Waiting', 'Running', 'Complete',
+        /// 'Cancelling', 'Cancelled', 'Paused'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.jobDefinitionState")]
+        public JobDefinitionState? JobDefinitionState { get; set; }
 
         /// <summary>
         /// Gets or sets enum to detect if user confirmation is required. If

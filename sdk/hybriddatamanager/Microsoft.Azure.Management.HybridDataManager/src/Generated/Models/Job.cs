@@ -34,7 +34,9 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// </summary>
         /// <param name="status">Status of the job. Possible values include:
         /// 'None', 'InProgress', 'Succeeded', 'WaitingForAction', 'Failed',
-        /// 'Cancelled', 'Cancelling', 'PartiallySucceeded'</param>
+        /// 'Cancelled', 'Cancelling', 'PartiallySucceeded', 'Waiting',
+        /// 'Cancelled_Skipped', 'Failed_Skipped', 'Cancelled_Retried',
+        /// 'Failed_Retried'</param>
         /// <param name="startTime">Time at which the job was started in UTC
         /// ISO 8601 format.</param>
         /// <param name="isCancellable">Describes whether the job is
@@ -53,14 +55,62 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// by the job in total.</param>
         /// <param name="totalItemsToProcess">Number of items to be processed
         /// by the job in total</param>
+        /// <param name="itemsDeleted">Number of items deleted by the job as of
+        /// now</param>
+        /// <param name="totalItemsToDelete">Number of items to be deleted by
+        /// the job in total</param>
+        /// <param name="filesCopiedCounter">Of the items copied by the job as
+        /// of now, how many are files</param>
+        /// <param name="filesDeletedCounter">Of the items deleted by the job
+        /// as of now, how many are files</param>
+        /// <param name="bytesCopied">Number of bytes actually copied by the
+        /// job as of now</param>
+        /// <param name="backupStartTime">Time getting the backup
+        /// started</param>
+        /// <param name="backupEndTime">Time getting the backup ended</param>
+        /// <param name="estimationConfigureComputeStartTime">Time configuring
+        /// compute for estimation stage started</param>
+        /// <param name="estimationConfigureComputeEndTime">Time configuring
+        /// compute for estimation stage ended</param>
+        /// <param name="directoryParserStartTime">Time enumerating source
+        /// directory started</param>
+        /// <param name="directoryParserEndTime">Time enumerating source
+        /// directory ended</param>
+        /// <param name="purgeDetectionStartTime">Time enumerating target
+        /// directory started</param>
+        /// <param name="purgeDetectionEndTime">Time enumerating target
+        /// directory ended</param>
+        /// <param name="estimationStartTime">Time estimating files
+        /// started</param>
+        /// <param name="estimationEndTime">Time estimating files ended</param>
+        /// <param name="postEstimationStartTime">Time deleting excess files
+        /// started</param>
+        /// <param name="postEstimationEndTime">Time deleting excess files
+        /// ended</param>
+        /// <param name="copyConfigureComputeStartTime">Time configuring
+        /// compute for copy stage started</param>
+        /// <param name="copyConfigureComputeEndTime">Time configuring compute
+        /// for copy stage ended</param>
+        /// <param name="copyStartTime">Time copying files started</param>
+        /// <param name="copyEndTime">Time copying files ended</param>
+        /// <param name="postCopyStartTime">Time copying logs and creating
+        /// share snapshot started</param>
+        /// <param name="postCopyEndTime">Time copying logs and creating share
+        /// snapshot ended</param>
+        /// <param name="cleanupComputeStartTime">Time cleaning up compute
+        /// started</param>
+        /// <param name="cleanupComputeEndTime">Time cleaning up compute
+        /// ended</param>
         /// <param name="details">Details of a job run. This field will only be
         /// sent for expand details filter.</param>
         /// <param name="dataSourceName">Name of the data source on which the
         /// job was triggered.</param>
         /// <param name="dataSinkName">Name of the data sink on which the job
         /// was triggered.</param>
+        /// <param name="copyErrors">Number of copy errors</param>
+        /// <param name="unsupportedFiles">Number of unsupported files</param>
         /// <param name="error">Top level error for the job.</param>
-        public Job(JobStatus status, System.DateTime startTime, IsJobCancellable isCancellable, string name = default(string), string id = default(string), string type = default(string), System.DateTime? endTime = default(System.DateTime?), long? bytesProcessed = default(long?), long? itemsProcessed = default(long?), long? totalBytesToProcess = default(long?), long? totalItemsToProcess = default(long?), JobDetails details = default(JobDetails), string dataSourceName = default(string), string dataSinkName = default(string), Error error = default(Error))
+        public Job(JobStatus status, System.DateTime startTime, IsJobCancellable isCancellable, string name = default(string), string id = default(string), string type = default(string), System.DateTime? endTime = default(System.DateTime?), long? bytesProcessed = default(long?), long? itemsProcessed = default(long?), long? totalBytesToProcess = default(long?), long? totalItemsToProcess = default(long?), long? itemsDeleted = default(long?), long? totalItemsToDelete = default(long?), long? filesCopiedCounter = default(long?), long? filesDeletedCounter = default(long?), long? bytesCopied = default(long?), System.DateTime? backupStartTime = default(System.DateTime?), System.DateTime? backupEndTime = default(System.DateTime?), System.DateTime? estimationConfigureComputeStartTime = default(System.DateTime?), System.DateTime? estimationConfigureComputeEndTime = default(System.DateTime?), System.DateTime? directoryParserStartTime = default(System.DateTime?), System.DateTime? directoryParserEndTime = default(System.DateTime?), System.DateTime? purgeDetectionStartTime = default(System.DateTime?), System.DateTime? purgeDetectionEndTime = default(System.DateTime?), System.DateTime? estimationStartTime = default(System.DateTime?), System.DateTime? estimationEndTime = default(System.DateTime?), System.DateTime? postEstimationStartTime = default(System.DateTime?), System.DateTime? postEstimationEndTime = default(System.DateTime?), System.DateTime? copyConfigureComputeStartTime = default(System.DateTime?), System.DateTime? copyConfigureComputeEndTime = default(System.DateTime?), System.DateTime? copyStartTime = default(System.DateTime?), System.DateTime? copyEndTime = default(System.DateTime?), System.DateTime? postCopyStartTime = default(System.DateTime?), System.DateTime? postCopyEndTime = default(System.DateTime?), System.DateTime? cleanupComputeStartTime = default(System.DateTime?), System.DateTime? cleanupComputeEndTime = default(System.DateTime?), JobDetails details = default(JobDetails), string dataSourceName = default(string), string dataSinkName = default(string), long? copyErrors = default(long?), long? unsupportedFiles = default(long?), Error error = default(Error))
             : base(name, id, type)
         {
             Status = status;
@@ -71,9 +121,36 @@ namespace Microsoft.Azure.Management.HybridData.Models
             ItemsProcessed = itemsProcessed;
             TotalBytesToProcess = totalBytesToProcess;
             TotalItemsToProcess = totalItemsToProcess;
+            ItemsDeleted = itemsDeleted;
+            TotalItemsToDelete = totalItemsToDelete;
+            FilesCopiedCounter = filesCopiedCounter;
+            FilesDeletedCounter = filesDeletedCounter;
+            BytesCopied = bytesCopied;
+            BackupStartTime = backupStartTime;
+            BackupEndTime = backupEndTime;
+            EstimationConfigureComputeStartTime = estimationConfigureComputeStartTime;
+            EstimationConfigureComputeEndTime = estimationConfigureComputeEndTime;
+            DirectoryParserStartTime = directoryParserStartTime;
+            DirectoryParserEndTime = directoryParserEndTime;
+            PurgeDetectionStartTime = purgeDetectionStartTime;
+            PurgeDetectionEndTime = purgeDetectionEndTime;
+            EstimationStartTime = estimationStartTime;
+            EstimationEndTime = estimationEndTime;
+            PostEstimationStartTime = postEstimationStartTime;
+            PostEstimationEndTime = postEstimationEndTime;
+            CopyConfigureComputeStartTime = copyConfigureComputeStartTime;
+            CopyConfigureComputeEndTime = copyConfigureComputeEndTime;
+            CopyStartTime = copyStartTime;
+            CopyEndTime = copyEndTime;
+            PostCopyStartTime = postCopyStartTime;
+            PostCopyEndTime = postCopyEndTime;
+            CleanupComputeStartTime = cleanupComputeStartTime;
+            CleanupComputeEndTime = cleanupComputeEndTime;
             Details = details;
             DataSourceName = dataSourceName;
             DataSinkName = dataSinkName;
+            CopyErrors = copyErrors;
+            UnsupportedFiles = unsupportedFiles;
             Error = error;
             CustomInit();
         }
@@ -86,7 +163,9 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// <summary>
         /// Gets or sets status of the job. Possible values include: 'None',
         /// 'InProgress', 'Succeeded', 'WaitingForAction', 'Failed',
-        /// 'Cancelled', 'Cancelling', 'PartiallySucceeded'
+        /// 'Cancelled', 'Cancelling', 'PartiallySucceeded', 'Waiting',
+        /// 'Cancelled_Skipped', 'Failed_Skipped', 'Cancelled_Retried',
+        /// 'Failed_Retried'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public JobStatus Status { get; set; }
@@ -136,6 +215,158 @@ namespace Microsoft.Azure.Management.HybridData.Models
         public long? TotalItemsToProcess { get; set; }
 
         /// <summary>
+        /// Gets or sets number of items deleted by the job as of now
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.itemsDeleted")]
+        public long? ItemsDeleted { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of items to be deleted by the job in total
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.totalItemsToDelete")]
+        public long? TotalItemsToDelete { get; set; }
+
+        /// <summary>
+        /// Gets or sets of the items copied by the job as of now, how many are
+        /// files
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.filesCopiedCounter")]
+        public long? FilesCopiedCounter { get; set; }
+
+        /// <summary>
+        /// Gets or sets of the items deleted by the job as of now, how many
+        /// are files
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.filesDeletedCounter")]
+        public long? FilesDeletedCounter { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of bytes actually copied by the job as of now
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.bytesCopied")]
+        public long? BytesCopied { get; set; }
+
+        /// <summary>
+        /// Gets or sets time getting the backup started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.backupStartTime")]
+        public System.DateTime? BackupStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time getting the backup ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.backupEndTime")]
+        public System.DateTime? BackupEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time configuring compute for estimation stage started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.estimationConfigureComputeStartTime")]
+        public System.DateTime? EstimationConfigureComputeStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time configuring compute for estimation stage ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.estimationConfigureComputeEndTime")]
+        public System.DateTime? EstimationConfigureComputeEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time enumerating source directory started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.directoryParserStartTime")]
+        public System.DateTime? DirectoryParserStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time enumerating source directory ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.directoryParserEndTime")]
+        public System.DateTime? DirectoryParserEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time enumerating target directory started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.purgeDetectionStartTime")]
+        public System.DateTime? PurgeDetectionStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time enumerating target directory ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.purgeDetectionEndTime")]
+        public System.DateTime? PurgeDetectionEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time estimating files started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.estimationStartTime")]
+        public System.DateTime? EstimationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time estimating files ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.estimationEndTime")]
+        public System.DateTime? EstimationEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time deleting excess files started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.postEstimationStartTime")]
+        public System.DateTime? PostEstimationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time deleting excess files ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.postEstimationEndTime")]
+        public System.DateTime? PostEstimationEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time configuring compute for copy stage started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.copyConfigureComputeStartTime")]
+        public System.DateTime? CopyConfigureComputeStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time configuring compute for copy stage ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.copyConfigureComputeEndTime")]
+        public System.DateTime? CopyConfigureComputeEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time copying files started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.copyStartTime")]
+        public System.DateTime? CopyStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time copying files ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.copyEndTime")]
+        public System.DateTime? CopyEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time copying logs and creating share snapshot started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.postCopyStartTime")]
+        public System.DateTime? PostCopyStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time copying logs and creating share snapshot ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.postCopyEndTime")]
+        public System.DateTime? PostCopyEndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time cleaning up compute started
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.cleanupComputeStartTime")]
+        public System.DateTime? CleanupComputeStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets time cleaning up compute ended
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.cleanupComputeEndTime")]
+        public System.DateTime? CleanupComputeEndTime { get; set; }
+
+        /// <summary>
         /// Gets or sets details of a job run. This field will only be sent for
         /// expand details filter.
         /// </summary>
@@ -154,6 +385,18 @@ namespace Microsoft.Azure.Management.HybridData.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataSinkName")]
         public string DataSinkName { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of copy errors
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.copyErrors")]
+        public long? CopyErrors { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of unsupported files
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.unsupportedFiles")]
+        public long? UnsupportedFiles { get; set; }
 
         /// <summary>
         /// Gets or sets top level error for the job.

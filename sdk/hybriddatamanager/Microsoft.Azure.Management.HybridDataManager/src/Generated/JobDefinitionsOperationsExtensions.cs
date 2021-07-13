@@ -250,6 +250,169 @@ namespace Microsoft.Azure.Management.HybridData
             }
 
             /// <summary>
+            /// This method cancels all the running or waiting jobs in a job definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            public static void Cancel(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName)
+            {
+                operations.CancelAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method cancels all the running or waiting jobs in a job definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CancelAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CancelWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// This method checks whether job scheduling is in-progress for the job
+            /// definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            public static void CheckStatus(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName)
+            {
+                operations.CheckStatusAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method checks whether job scheduling is in-progress for the job
+            /// definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CheckStatusAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CheckStatusWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// This method retries the first failed or cancelled job that has not already
+            /// been skipped for the job definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            public static void Retry(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName)
+            {
+                operations.RetryAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method retries the first failed or cancelled job that has not already
+            /// been skipped for the job definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task RetryAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.RetryWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// This method runs a job instance of the given job definition.
             /// </summary>
             /// <param name='operations'>
@@ -306,6 +469,59 @@ namespace Microsoft.Azure.Management.HybridData
             public static async Task RunAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, RunParameters runParameters, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.RunWithHttpMessagesAsync(dataServiceName, jobDefinitionName, runParameters, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// This method skips last executed failed or cancelled job.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            public static void Skip(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName)
+            {
+                operations.SkipAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method skips last executed failed or cancelled job.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task SkipAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.SkipWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -473,6 +689,114 @@ namespace Microsoft.Azure.Management.HybridData
             public static async Task BeginDeleteAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// This method cancels all the running or waiting jobs in a job definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            public static void BeginCancel(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName)
+            {
+                operations.BeginCancelAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method cancels all the running or waiting jobs in a job definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginCancelAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginCancelWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// This method checks whether job scheduling is in-progress for the job
+            /// definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            public static void BeginCheckStatus(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName)
+            {
+                operations.BeginCheckStatusAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// This method checks whether job scheduling is in-progress for the job
+            /// definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='dataServiceName'>
+            /// The data service type of the job definition.
+            /// </param>
+            /// <param name='jobDefinitionName'>
+            /// Name of the job definition.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The Resource Group Name
+            /// </param>
+            /// <param name='dataManagerName'>
+            /// The name of the DataManager Resource within the specified resource group.
+            /// DataManager names must be between 3 and 24 characters in length and use any
+            /// alphanumeric and underscore only
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginCheckStatusAsync(this IJobDefinitionsOperations operations, string dataServiceName, string jobDefinitionName, string resourceGroupName, string dataManagerName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginCheckStatusWithHttpMessagesAsync(dataServiceName, jobDefinitionName, resourceGroupName, dataManagerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
