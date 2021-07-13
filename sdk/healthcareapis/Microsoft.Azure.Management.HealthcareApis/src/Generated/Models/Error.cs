@@ -16,23 +16,23 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
     /// <summary>
     /// Error details.
     /// </summary>
-    public partial class ErrorDetails
+    public partial class Error
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the Error class.
         /// </summary>
-        public ErrorDetails()
+        public Error()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the Error class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="errorProperty">Error details</param>
+        public Error(ErrorDetailsInternal errorProperty = default(ErrorDetailsInternal))
         {
-            Error = error;
+            ErrorProperty = errorProperty;
             CustomInit();
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         /// Gets or sets error details
         /// </summary>
         [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        public ErrorDetailsInternal ErrorProperty { get; set; }
 
     }
 }

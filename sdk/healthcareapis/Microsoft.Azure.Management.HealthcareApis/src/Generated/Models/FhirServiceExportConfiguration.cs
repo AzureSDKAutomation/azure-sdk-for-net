@@ -14,25 +14,28 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// Export operation configuration information
     /// </summary>
-    public partial class ErrorDetails
+    public partial class FhirServiceExportConfiguration
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the FhirServiceExportConfiguration
+        /// class.
         /// </summary>
-        public ErrorDetails()
+        public FhirServiceExportConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the FhirServiceExportConfiguration
+        /// class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="storageAccountName">The name of the default export
+        /// storage account.</param>
+        public FhirServiceExportConfiguration(string storageAccountName = default(string))
         {
-            Error = error;
+            StorageAccountName = storageAccountName;
             CustomInit();
         }
 
@@ -42,10 +45,10 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error details
+        /// Gets or sets the name of the default export storage account.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        [JsonProperty(PropertyName = "storageAccountName")]
+        public string StorageAccountName { get; set; }
 
     }
 }

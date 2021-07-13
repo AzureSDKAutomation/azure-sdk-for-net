@@ -14,25 +14,26 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// The managed identity of a service.
     /// </summary>
-    public partial class ErrorDetails
+    public partial class ServiceManagedIdentity
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the ServiceManagedIdentity class.
         /// </summary>
-        public ErrorDetails()
+        public ServiceManagedIdentity()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the ServiceManagedIdentity class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="identity">Setting indicating whether the service has a
+        /// managed identity associated with it.</param>
+        public ServiceManagedIdentity(ServiceManagedIdentityIdentity identity = default(ServiceManagedIdentityIdentity))
         {
-            Error = error;
+            Identity = identity;
             CustomInit();
         }
 
@@ -42,10 +43,11 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error details
+        /// Gets or sets setting indicating whether the service has a managed
+        /// identity associated with it.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        [JsonProperty(PropertyName = "identity")]
+        public ServiceManagedIdentityIdentity Identity { get; set; }
 
     }
 }

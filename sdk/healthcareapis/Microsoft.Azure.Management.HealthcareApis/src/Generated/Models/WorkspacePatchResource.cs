@@ -10,29 +10,30 @@
 
 namespace Microsoft.Azure.Management.HealthcareApis.Models
 {
-    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// Workspace patch properties
     /// </summary>
-    public partial class ErrorDetails
+    public partial class WorkspacePatchResource : ResourceTags
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the WorkspacePatchResource class.
         /// </summary>
-        public ErrorDetails()
+        public WorkspacePatchResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the WorkspacePatchResource class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="tags">Resource tags.</param>
+        public WorkspacePatchResource(IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(tags)
         {
-            Error = error;
             CustomInit();
         }
 
@@ -40,12 +41,6 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets error details
-        /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
 
     }
 }

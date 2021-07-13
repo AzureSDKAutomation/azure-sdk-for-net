@@ -19,19 +19,21 @@ namespace Microsoft.Azure.Management.HealthcareApis
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateLinkResourcesOperations operations.
+    /// FhirDestinationsOperations operations.
     /// </summary>
-    public partial interface IPrivateLinkResourcesOperations
+    public partial interface IFhirDestinationsOperations
     {
         /// <summary>
-        /// Gets the private link resources that need to be created for a
-        /// service.
+        /// Lists all FHIR destinations for the given IoT Connector
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the service instance.
         /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
+        /// <param name='workspaceName'>
+        /// The name of workspace resource.
+        /// </param>
+        /// <param name='iotConnectorName'>
+        /// The name of IoT Connector resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -48,18 +50,12 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkResourceListResultDescription>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<IotFhirDestination>>> ListByIotConnectorWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string iotConnectorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a private link resource that need to be created for a service.
+        /// Lists all FHIR destinations for the given IoT Connector
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the service instance.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the service instance.
-        /// </param>
-        /// <param name='groupName'>
-        /// The name of the private link resource group.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -76,6 +72,6 @@ namespace Microsoft.Azure.Management.HealthcareApis
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkResourceDescription>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string groupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<IotFhirDestination>>> ListByIotConnectorNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

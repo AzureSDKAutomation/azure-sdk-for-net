@@ -11,28 +11,31 @@
 namespace Microsoft.Azure.Management.HealthcareApis.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// List of key value pairs that describe the resource. This will overwrite
+    /// the existing tags.
     /// </summary>
-    public partial class ErrorDetails
+    public partial class ResourceTags
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the ResourceTags class.
         /// </summary>
-        public ErrorDetails()
+        public ResourceTags()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetails class.
+        /// Initializes a new instance of the ResourceTags class.
         /// </summary>
-        /// <param name="error">Error details</param>
-        public ErrorDetails(ErrorDetailsInternal error = default(ErrorDetailsInternal))
+        /// <param name="tags">Resource tags.</param>
+        public ResourceTags(IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
-            Error = error;
+            Tags = tags;
             CustomInit();
         }
 
@@ -42,10 +45,10 @@ namespace Microsoft.Azure.Management.HealthcareApis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets error details
+        /// Gets or sets resource tags.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetailsInternal Error { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
     }
 }
